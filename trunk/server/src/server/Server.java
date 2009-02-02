@@ -15,6 +15,7 @@ public class Server {
         Environment.initProduction();
         System.out.println("Server up and running");
 
+
         try {
             System.in.read();
         } catch (IOException e) {
