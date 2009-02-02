@@ -13,7 +13,7 @@ public class Server {
 
     public static void main(String[] args) {
         Environment.initProduction();
-        System.out.println("Server up and running");
+        System.out.println("Server up and running jop");
 
 
         try {
