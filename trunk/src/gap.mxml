@@ -45,6 +45,7 @@
  <!--<mx:Consumer id="consumer" destination="gap" message="messageHandler(event.message)"/>-->
  <!--<mx:Producer id="producer" destination="gap"/>-->
 
+
  <mx:TabNavigator width="706" height="595" id="Chat" cornerRadius="5" backgroundColor="#BAD0D3">
   <!--<mx:Canvas label="Chat" width="100%" height="100%" cornerRadius="6" backgroundColor="#C8D6DC" color="#2F3D82">-->
    <!--<mx:Panel width="702" height="560" borderStyle="solid" backgroundColor="#88B1C6" x="0" y="0">-->
