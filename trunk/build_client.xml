@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="client" default="all">
+  
+     <property name="FLEX_HOME" value="D:/dev/flex/sdk"/>
+     <property name="deploy.dir" value="D:\dev\blazeds\tomcat\webapps\gap\gap-debug"/>
+     <property name="deploy.cfg.dir" value="D:\dev\blazeds\tomcat\webapps\gap\WEB-INF\flex"/>
+
+     <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+     <target name="all" depends="clean, prepare, compile_swf, wrapper" />
+
+     <target name="clean" >
+         <delete dir="${deploy.dir}" />
+     </target>
+
+     <target name="prepare" >
+         <mkdir dir="${deploy.dir}" />
+     </target>
+
+
+     <target name="compile_swf" description="compiles the flex sources">
+         <delete file="${deploy.dir}/gap.swf"/>
+         <mxmlc file="${basedir}/src/gap.mxml" 
+                output="${deploy.dir}/gap.swf"
+                services="${deploy.cfg.dir}/services-config.xml" >
+
+         <!--<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>-->
+         <!--<source-path path-element="${FLEX_HOME}/frameworks"/>-->
+
+             </mxmlc>
+     </target>
+
+     <target name="wrapper" >
+         <html-wrapper
+                 height="100%"
+                 width="100%"
+                 template="express-installation"
+                 bgcolor="red"
+                 history="true"
+                 title="Welcome to GAP"
+                 file="gap.html"
+                 application="gapApp"
+                 swf="gap"
+                 output="${deploy.dir}"/>
+     </target>
+
+</project>
