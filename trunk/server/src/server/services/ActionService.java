@@ -27,5 +27,6 @@ import server.actions.ActionScriptAction;
 public interface ActionService {
     public static String NAME = "ActionService";
 
+     // goto Clallaliaiafatattratta
     public ActionScriptAction execute(ActionScriptAction asa);
 }
