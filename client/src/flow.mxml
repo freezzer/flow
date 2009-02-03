@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+                themeColor="#3600FF" borderColor="#2274AE"
+                backgroundGradientAlphas="[1.0, 1.0]"
+                backgroundGradientColors="[#C5C9D0, #1E6B6C]" width="100%" height="100%">
+    <!--creationComplete="consumer.subscribe()"-->
+
+ <mx:Script>
+	<![CDATA[
+		import mx.collections.ArrayCollection;
+     import mx.controls.Alert;
+     import mx.rpc.events.ResultEvent;
+     [Bindable]
+     var list:ArrayCollection = new ArrayCollection();
+
+    private function actionResultHandler(event:ResultEvent):void {
+    	var a:ActionScriptAction = event.result as ActionScriptAction;
+    	list.addItem(a.data);
+    	list.addItem(a.message);
+    }
+
+    private function callServer():void {
+         var a:ActionScriptAction = new ActionScriptAction();
+         actionservice.execute(a);
+    }
+
+    //////////////////////////////////////////////////////////////////////////
+
+	import mx.messaging.messages.AsyncMessage;
+//	import mx.messaging.messages.IMessage;
+//
+//	private function send():void{
+//		var message:IMessage = new AsyncMessage();
+//		message.body.chatMessage = msg.text;
+//		producer.send(message);
+//		msg.text = "";
+//	}
+//	private function messageHandler(message:IMessage):void{
+//		log.text += message.body.chatMessage + "\n";
+//	}
+//
+	]]>
+ </mx:Script>
+ 
+ <!--<mx:Consumer id="consumer" destination="gap" message="messageHandler(event.message)"/>-->
+ <!--<mx:Producer id="producer" destination="gap"/>-->
+
+
+ <mx:TabNavigator width="706" height="595" id="Chat" cornerRadius="5" backgroundColor="#BAD0D3">
+  <!--<mx:Canvas label="Chat" width="100%" height="100%" cornerRadius="6" backgroundColor="#C8D6DC" color="#2F3D82">-->
+   <!--<mx:Panel width="702" height="560" borderStyle="solid" backgroundColor="#88B1C6" x="0" y="0">-->
+      <!--<mx:TextArea id="log" width="678" height="484" backgroundColor="#658263" color="#DDE9EB" backgroundAlpha="0.17"/>-->
+      <!--<mx:ControlBar>-->
+      	<!--<mx:TextInput id="msg" width="100%" enter="send()"/>-->
+      	<!--<mx:Button label="Send B" click="send()" fillAlphas="[1.0, 1.0, 1.0, 1.0]" fillColors="[#873A3A, #E4C7C7, #873A3A, #873A3A]" width="69"/>-->
+      <!--</mx:ControlBar>-->
+   <!--</mx:Panel>-->
+  <!--</mx:Canvas>-->
+  <mx:Canvas label="tesx" width="100%" height="100%" backgroundColor="#E8DD00" cornerRadius="6">
+      <mx:Button label="cal" click="callServer()" width="80" x="10" y="10" fontFamily="Arial" cornerRadius="12"/>
+      
+      <mx:DataGrid dataProvider="{list}" width="100%" height="60%" x="10" y="50" />
+  </mx:Canvas>
+ </mx:TabNavigator>
+
+ <mx:RemoteObject id="actionservice"
+                  destination="ActionService"
+                  result="actionResultHandler(event)"  />
+                  
+
+
+</mx:Application>
