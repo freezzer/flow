@@ -59,7 +59,7 @@ public class ServerAction {
     }
 
     public String getCatalog(){
-        return "gap";
+        return "flow";
     }
 
     public void commit(){
