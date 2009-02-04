@@ -26,18 +26,18 @@ public class ActionServiceImpl implements ActionService {
         asa.message = null;
 
         try {
+            Environment.getPersistentService().join(asa.getCatalog());
+
             ServerAction a = createAction(asa.getServerActionName());
             if (a == null) {
                 throw new RuntimeException("cant find ServerAction for [" + asa.serverActionName + "]");
             }
-
             ServerAction.setCurrent(a);
 
             if (a.needsUser()) {
                 a.setUser(Environment.getUserService().getActiveUser(asa.userId));
             }
 
-            Environment.getPersistentService().join(asa.getCatalog());
             a.setData(asa.data);
             a.execute();
             asa.data = a.getData();
@@ -46,7 +46,8 @@ public class ActionServiceImpl implements ActionService {
             return asa;
 
         } catch (Exception e) {
-            asa.detailErrorMessage = Util.getAllExceptionInfos(e);
+            e.printStackTrace();
+            asa.detailErrorMessage = e.getMessage();
             return asa;
         } finally {
             Environment.getPersistentService().rollback();

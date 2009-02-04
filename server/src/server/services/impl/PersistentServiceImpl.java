@@ -19,12 +19,12 @@ public class PersistentServiceImpl implements PersistentService {
     public PersistentServiceImpl() {
         String host = Ini.getString("db.host","localhost");
         String user = Ini.getString("db.user","root");
-        String catalog = Ini.getString("db.catalog","gapp");
+        String catalog = Ini.getString("db.catalog","flow");
         String pwd = Ini.getString("db.pwd","");
 
         new DB(host, user, catalog, pwd);
 
-        join("gapp");
+        join("flow");
         DB.session().createSequenze(UserService.USER_ID_SEQUENZE, 1);
         commit();
         leave();

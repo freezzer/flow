@@ -1,13 +1,20 @@
 package server.actions;
 
+import server.services.Environment;
+import de.ama.util.StringDivider;
+
 
 public class NewUserAction extends ServerAction {
 
     public void execute() {
-//        User user = (User) getDataPort().getBean();
-//        String userId = Environment.getUserService().newUser(user.getName(), user.getPwd());
-//        commit();
-//        getDataPort().setUserId(userId);
+        String tmp = (String) getData();
+        StringDivider sd = new StringDivider(tmp,"{del}");
+        if(sd.ok()){
+            String userId = Environment.getUserService().newUser(sd.pre() ,sd.post());
+            commit();
+            setData(userId);
+        }
+
     }
 
     public boolean needsUser() {

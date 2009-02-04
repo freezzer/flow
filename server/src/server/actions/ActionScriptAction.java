@@ -23,6 +23,6 @@ public class ActionScriptAction {
     }
 
     public String getCatalog() {
-        return Util.saveToString(catalog,"gap");
+        return Util.saveToString(catalog,"flow");
     }
 }
