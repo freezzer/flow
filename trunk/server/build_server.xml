@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="server" default="make">
 
-    <property name="deploy.dir" value="web\WEB-INF\classes"/>
+    <property name="deploy.dir" value="webapp\WEB-INF\classes"/>
 
 
      <target name="clean" >
@@ -30,7 +30,7 @@
             </fileset>
         </copy>
         <copy overwrite="false" todir="${deploy.dir}\..\lib">
-            <fileset dir="lib">
+            <fileset dir="libs">
                 <include name="**/*.jar"/>
             </fileset>
         </copy>
