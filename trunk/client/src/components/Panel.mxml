@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Container xmlns:mx="http://www.adobe.com/2006/mxml"
+              width="300" height="22">
+
+    <mx:Script> <![CDATA[
+        import mx.collections.ArrayCollection;
+import mx.collections.ArrayList;
+
+        private var data:Object;
+        private var path:String;
+        private var fields:Array;
+
+        public function getPath():String {
+            return path;
+        }
+
+        public function setPath(val:String):void {
+            path = val;
+        }
+
+
+        public function getData():Object {
+            return data;
+        }
+
+        public function setData(val:Object):void {
+            data = val;
+            
+        }
+
+        public function addField(val:EditField):void {
+            fields.addItem(val)
+        }
+
+
+        ]]></mx:Script>
+
+
+</mx:Container>

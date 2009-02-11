@@ -4,9 +4,7 @@
 
 	<mx:Script>
 		<![CDATA[
-			import mx.binding.utils.BindingUtils;
 			public var labeltext:String ;
-			[Bindable]
 			public var value:String ;
 			public var labelwidth:Number = 125;
 		]]>
