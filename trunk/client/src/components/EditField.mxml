@@ -4,6 +4,7 @@
 
 	<mx:Script>
 		<![CDATA[
+			public var path:String ;
 			public var labeltext:String ;
 			public var value:String ;
 			public var labelwidth:Number = 125;
