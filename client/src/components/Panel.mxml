@@ -3,12 +3,11 @@
               width="300" height="22">
 
     <mx:Script> <![CDATA[
-        import mx.collections.ArrayCollection;
-import mx.collections.ArrayList;
+        import mx.collections.ArrayList;
 
         private var data:Object;
         private var path:String;
-        private var fields:Array;
+        private var fields:ArrayList;
 
         public function getPath():String {
             return path;
@@ -29,9 +28,19 @@ import mx.collections.ArrayList;
         }
 
         public function addField(val:EditField):void {
-            fields.addItem(val)
+            fields.addItem(val);
         }
 
+        public function getField(path:String):EditField {
+            var i:int;
+            var len:int=fields.length;
+            var f:EditField=null;
+            for(i=0; i<len; i++){
+               f=fields.getItemAt(i) as EditField;
+               if(f.path==path) return f;
+            }
+            return null;
+        }
 
         ]]></mx:Script>
 
