@@ -7,12 +7,11 @@
   </component>
   <component name="Flex.Build.Configuration">
     <option name="DO_BUILD" value="true" />
-    <option name="OUTPUT_FILE_NAME" value="D:\dev\flow\web/flow.swf" />
+    <option name="OUTPUT_FILE_NAME" value="D:\dev\flow\tomcat\webapps/flow.swf" />
     <option name="COMPILER_CONFIGURATION_FILE" value="D:\dev\flow\client\compiler-config.xml" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/../web" />
-    <output-test url="file://$MODULE_DIR$/../out/test/client" />
+    <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
