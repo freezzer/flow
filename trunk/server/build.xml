@@ -4,13 +4,13 @@
     <property name="deploy.dir" value="D:\dev\flow\tomcat\flow\WEB-INF\classes"/>
 
 
-     <target name="A_clean_classes" >
+     <target name="clean" >
          <delete dir="classes" failonerror="false"/>
          <mkdir dir="classes" />
      </target>
 
 
-     <target name="A_compile" description="compiles the java sources">
+     <target name="compile" description="compiles the java sources">
         <javac destdir="classes" debug="on">
             <src path="src"/>
             <classpath>
@@ -71,14 +71,14 @@
         </java>
     </target>
     
-    <target name="deploy" description="deploy to tomcat" >
+    <target name="deploy" description="deploy to tomcat" depends="clean,compile">
         <copy overwrite="true" todir="${deploy.dir}">
             <fileset dir="classes">
                 <include name="**/**"/>
             </fileset>
         </copy>
         <copy overwrite="false" todir="${deploy.dir}\..\lib">
-            <fileset dir="libs">
+            <fileset dir="lib">
                 <include name="**/*.jar"/>
             </fileset>
         </copy>
