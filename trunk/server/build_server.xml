@@ -24,6 +24,55 @@
      </target>
 
 
+
+    <target name="compile_generated" description="compiles the sources">
+        <delete dir="classes/gen" failonerror="false"/>
+        <mkdir dir="classes/gen"/>
+        <javac destdir="classes" debug="on">
+            <src path="generated"/>
+            <src path="test"/>
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+            </classpath>
+        </javac>
+    </target>
+
+
+    <target name="generate_sources" description="generates the sources">
+        <delete dir="generated" failonerror="false"/>
+        <mkdir dir="generated"/>
+        <java classname="de.ama.generator.Starter" fork="true">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <pathelement location="classes"/>
+            </classpath>
+            <arg value="inFile"/>
+            <arg file="source/de/ama/model/TestApplication.xml"/>
+            <arg value="outDir"/>
+            <arg path="generated"/>
+        </java>
+    </target>
+
+
+    <target name="enhance" description="enhances the classes">
+        <java classname="de.ama.db.tools.Enhancer" fork="true">
+            <classpath>
+                <fileset dir="lib">
+                    <include name="**/*.jar"/>
+                </fileset>
+                <pathelement location="classes"/>
+            </classpath>
+            <arg value="indir"/>
+            <arg path="classes"/>
+            <arg value="verbose"/>
+            <arg value="1"/>
+        </java>
+    </target>
+    
     <target name="deploy" description="deploy to tomcat" depends="compile">
         <copy overwrite="true" todir="${deploy.dir}">
             <fileset dir="classes">
