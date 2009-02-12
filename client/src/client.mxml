@@ -9,7 +9,7 @@
         import mx.rpc.events.ResultEvent;
 
         [Bindable]
-                var list:ArrayCollection = new ArrayCollection();
+        var list:ArrayCollection = new ArrayCollection();
 
         private function actionResultHandler(event:ResultEvent):void {
             var a:ActionScriptAction = event.result as ActionScriptAction;
@@ -48,10 +48,10 @@
         <mx:Button label="login" click="login()" width="80" fontFamily="Arial" cornerRadius="12"
                    borderColor="#AF331E" horizontalCenter="-103" bottom="27"/>
 
-        <mx:Button label="newer" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
+        <mx:Button label="new" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
                    borderColor="#AF331E" horizontalCenter="-220" bottom="27"/>
 
-        <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="14" left="14" top="49" bottom="70"/>
+        <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="10" left="18" top="32" bottom="87"/>
     </mx:Canvas>
 
 </mx:Application>
