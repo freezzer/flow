@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderColor="#36AF66"
+                themeColor="#A4C910">
+
+    <mx:Script>
+	<![CDATA[
+ 	 import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.rpc.events.ResultEvent;
+
+        [Bindable]
+                var list:ArrayCollection = new ArrayCollection();
+
+        private function actionResultHandler(event:ResultEvent):void {
+            var a:ActionScriptAction = event.result as ActionScriptAction;
+
+            if (a.detailErrorMessage != null) {
+                Alert.show(a.detailErrorMessage);
+            }
+
+
+            list.addItem(a.data);
+            list.addItem(a.message);
+        }
+
+        private function login():void {
+            var a:ActionScriptAction = new ActionScriptAction();
+            a.serverActionName="LoginAction";
+            a.data="u1{del}.u1";
+            actionservice.execute(a);
+        }
+
+        private function newUser():void {
+            var a:ActionScriptAction = new ActionScriptAction();
+            a.serverActionName="NewUserAction";
+            a.data="u1{del}.u1";
+            actionservice.execute(a);
+        }
+
+
+	]]>
+ </mx:Script>
+
+    <mx:RemoteObject id="actionservice" destination="ActionService" result="actionResultHandler(event)"/>
+
+    <mx:Canvas label="tesx" width="100%" height="100%" backgroundColor="#ECCC99" cornerRadius="6" borderColor="#548AB0"
+               themeColor="#0E9D11">
+        <mx:Button label="login" click="login()" width="80" fontFamily="Arial" cornerRadius="12"
+                   borderColor="#AF331E" horizontalCenter="-103" bottom="27"/>
+
+        <mx:Button label="new" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
+                   borderColor="#AF331E" horizontalCenter="-220" bottom="27"/>
+
+        <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="14" left="14" top="49" bottom="70"/>
+    </mx:Canvas>
+
+</mx:Application>
