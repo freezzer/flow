@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<define>
+
+    <model dir="gen/app/bom">
+        <bean name="Person" persistent="true" unique-key="vorname+nachname">
+            <field name="vorname"/>
+            <field name="nachname"/>
+            <field name="telefon"/>
+            <collection name="adressen">
+                <bean name="Adresse">
+                    <field name="ort"/>
+                    <field name="plz"/>
+                    <field name="strasse"/>
+                </bean>
+            </collection>
+        </bean>
+    </model>
+
+    <view dir="D:/dev/Openlaszlo Server 4.1.1/Server/lps-4.1.1/ama" laszlo="true" model="Person" name="Person">
+
+        <lister title="Personen Auflister">
+            <button_panel refresh="Liste aktualisieren" edit="Vorgang bearbeiten" delete="Vorgang loeschen" />
+            <grid path="data:Person">
+                <column path="vorname" label="Vorname" searchable="true"/>
+                <column path="nachname" label="Nachname" searchable="true"/>
+                <column path="adressen/Adresse[1]/ort" label="1. Adresse" searchable="true"/>
+            </grid>
+        </lister>
+
+        <editor title="Personen Bearbeiter">
+            <panel>
+                <button_panel>
+                    <button label="Vorgang speichern" action="SaveBeanAction" icon="Save24.gif"/>
+                    <button label="Vorgang neu anlegen" action="CreateBeanAction" icon="New24.gif"/>
+                    <button label="Vorgang kopieren" action="CopyBeanAction" icon="Copy24.gif"/>
+                    <button label="Vorgang laden" action="LoadBeanAction" icon="Refresh24.gif"/>
+                    <button label="Vorgang loeschen" action="DeleteBeanAction" icon="Delete24.gif"/>
+                </button_panel>
+
+                <tree_panel horizontal="true">
+
+                    <panel w="200" x="10" y="30" >
+                      <tree_node path="data:Person" panel="PersonPanel" label="Person" fixedopen="true" >
+                        <tree_node path="adressen/Adresse" panel="AdressePanel" label="Adresse"  fixedopen="true">  </tree_node>
+                      </tree_node>
+                    </panel>
+
+                   <panel path="Person"  labelwidth="100" name="PersonPanel" x="10" y="30" title="Personendaten" >
+                      <input path="vorname"   label="Vorname"/>
+                      <input path="nachname"  label="Nachname"/>
+                      <input path="telefon"   label="Tel"/>
+                   </panel>
+                   <panel path="Adresse" labelwidth="100" name="AdressePanel" x="10" y="30" title="Adressdaten">
+                      <input path="ort"     label="Ort"/>
+                      <input path="plz"     label="Plz"/>
+                      <input path="strasse" label="Strasse"/>
+                   </panel>
+
+                </tree_panel>
+            </panel>
+        </editor>
+
+    </view>
+
+</define>
+
+
+
+

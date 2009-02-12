@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<define>
+
+    <model dir="gen/app/bom">
+        <bean name="User" persistent="true" unique-key="name">
+            <field name="name"/>
+            <field name="catalog"/>
+            <field name="password"/>
+        </bean>
+    </model>
+
+    <view dir="D:/dev/Openlaszlo Server 4.1.1/Server/lps-4.1.1/ama" laszlo="true" model="User" >
+
+        <lister title="User Auflister">
+            <button_panel refresh="Liste aktualisieren" edit="User bearbeiten" />
+            <grid path="data:User">
+                <column path="name" label="Name" searchable="true"/>
+                <column path="catalog" label="Mandant" searchable="true"/>
+            </grid>
+        </lister>
+
+        <editor title="User Bearbeiter">
+            <panel>
+                <button_panel>
+                    <button label="User speichern" action="SaveBeanAction" icon="Save24.gif"/>
+                    <button label="User neu anlegen" action="CreateBeanAction" icon="New24.gif"/>
+                    <button label="User kopieren" action="CopyBeanAction" icon="Copy24.gif"/>
+                    <button label="User laden" action="LoadBeanAction" icon="Refresh24.gif"/>
+                    <button label="User loeschen" action="DeleteBeanAction" icon="Delete24.gif"/>
+                </button_panel>
+                <panel path="data:User"  labelwidth="100"  x="10" y="30" title="Userdaten" visible="true">
+                      <input path="name"     label="Name"/>
+                      <input path="password" label="Passwort"/>
+                      <input path="catalog"  label="Mandant"/>
+                </panel>
+            </panel>
+        </editor>
+    </view>
+
+</define>
+
+
+
+

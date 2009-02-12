@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<define>
+
+    <model dir="gen/app/ausfuhr">
+        <bean name="Vorgang" persistent="true" unique-key="id">
+            <field name="nummer"/>
+            <field name="id"/>
+            <field name="typ"/>
+            <collection name="transitions">
+                <bean name="Transition">
+                    <field name="name"/>
+                    <field name="dir"/>
+                    <bean name="Workmodel">
+                        <bean name="Kopf">
+                            <field name="mrn"/>
+                            <field name="zollstelle"/>
+                            <field name="erstellt" type="date"/>
+                            <field name="angemeldet" type="Date"/>
+                        </bean>
+                        <bean name="Geschaeft">
+                            <field name="art"/>
+                            <field name="betrag"/>
+                            <field name="waehrung"/>
+                        </bean>
+                        <field name="zollstelle_ausfuhr"/>
+                        <field name="zollstelle_eam"/>
+                        <field name="zollstelle_ausgang"/>
+                        <collection name="positionen" type="Position">
+                            <bean name="Position">
+                                <field name="nummer"/>
+                                <field name="warennummer"/>
+                                <field name="roh_gewicht" type="Number" />
+                                <field name="netto_gewicht" type="number" />
+                                <collection name="verschluesse">
+                                    <bean name="Verschluss">
+                                        <field name="nummer"/>
+                                        <field name="zeichen"/>
+                                    </bean>
+                                </collection>
+                                <collection name="packstuecke">
+                                    <bean name="Packstueck">
+                                        <field name="nummer"/>
+                                        <field name="art"/>
+                                        <field name="anzahl"/>
+                                    </bean>
+                                </collection>
+                                <collection name="unterlagen">
+                                    <bean name="Unterlage">
+                                        <field name="nummer"/>
+                                        <field name="art"/>
+                                        <field name="bezeichnung"/>
+                                        <field name="begin"/>
+                                        <field name="ende"/>
+                                    </bean>
+                                </collection>
+                            </bean>
+                        </collection>
+                    </bean>
+                </bean>
+            </collection>
+        </bean>
+    </model>
+
+
+</define>
+
+
+
+
