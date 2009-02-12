@@ -23,12 +23,11 @@
 
 
 
-    <target name="compile_generated" description="compiles the sources">
+    <target name="compile2" description="compiles the sources">
         <delete dir="classes/gen" failonerror="false"/>
         <mkdir dir="classes/gen"/>
         <javac destdir="classes" debug="on">
             <src path="generated"/>
-            <src path="test"/>
             <classpath>
                 <fileset dir="lib">
                     <include name="**/*.jar"/>
@@ -38,10 +37,10 @@
     </target>
 
 
-    <target name="generate_sources" description="generates the sources">
+    <target name="generate" description="generates the sources">
         <delete dir="generated" failonerror="false"/>
         <mkdir dir="generated"/>
-        <java classname="de.ama.generator.Starter" fork="true">
+        <java classname="generator.Starter" fork="true">
             <classpath>
                 <fileset dir="lib">
                     <include name="**/*.jar"/>
@@ -49,7 +48,7 @@
                 <pathelement location="classes"/>
             </classpath>
             <arg value="inFile"/>
-            <arg file="source/de/ama/model/TestApplication.xml"/>
+            <arg file="model/TestApplication.xml"/>
             <arg value="outDir"/>
             <arg path="generated"/>
         </java>
@@ -71,10 +70,11 @@
         </java>
     </target>
     
-    <target name="deploy" description="deploy to tomcat" depends="clean,compile,enhance">
+    <target name="all" description="deploy to tomcat" depends="clean,compile,generate,compile2,enhance">
         <copy overwrite="true" todir="${deploy.dir}">
             <fileset dir="classes">
                 <include name="**/**"/>
+                <exclude name="generator/**"/>
             </fileset>
         </copy>
         <copy overwrite="false" todir="${deploy.dir}\..\lib">
