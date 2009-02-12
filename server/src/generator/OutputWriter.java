@@ -3,23 +3,14 @@ package generator;
 import de.ama.util.XmlElement;
 import de.ama.util.XmlModel;
 import org.jdom.Document;
-import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-/**
- * Created by IntelliJ IDEA.
- * User: ama
- * Date: 28.03.2006
- * Time: 23:28:46
- * To change this template use File | Settings | File Templates.
- */
 
 public class OutputWriter {
     private Tag templateRoot;
