@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderColor="#36AF66"
-                themeColor="#A4C910">
+                themeColor="#A4C910" xmlns:ns1="components.*">
 
     <mx:Script>
 	<![CDATA[
@@ -33,7 +33,7 @@
         private function newUser():void {
             var a:ActionScriptAction = new ActionScriptAction();
             a.serverActionName="NewUserAction";
-            a.data="u1{del}.u1";
+            a.data="u2{del}.u2";
             actionservice.execute(a);
         }
 
@@ -51,7 +51,9 @@
         <mx:Button label="new" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
                    borderColor="#AF331E" horizontalCenter="-220" bottom="27"/>
 
-        <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="10" left="18" top="32" bottom="87"/>
+        <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="10" left="18" top="171" bottom="87"/>
+        <ns1:EditField x="36" y="32">
+        </ns1:EditField>
     </mx:Canvas>
 
 </mx:Application>
