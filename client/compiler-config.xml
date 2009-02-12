@@ -2,9 +2,9 @@
   <compiler>
       <debug>true</debug>
       <keep-generated-actionscript>false</keep-generated-actionscript>
-      <services>d:\dev\flow\web\WEB-INF\flex\services-config.xml</services>
+      <services>d:\dev\flow\tomcat\flow\WEB-INF\flex\services-config.xml</services>
   </compiler>
   <file-specs>
-      <path-element>D:\dev\flow\client\src\flow.mxml</path-element>
+      <path-element>D:\dev\flow\client\src\client.mxml</path-element>
   </file-specs>
 </flex-config>

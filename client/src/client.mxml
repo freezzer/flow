@@ -48,7 +48,7 @@
         <mx:Button label="login" click="login()" width="80" fontFamily="Arial" cornerRadius="12"
                    borderColor="#AF331E" horizontalCenter="-103" bottom="27"/>
 
-        <mx:Button label="new" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
+        <mx:Button label="newer" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
                    borderColor="#AF331E" horizontalCenter="-220" bottom="27"/>
 
         <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="14" left="14" top="49" bottom="70"/>
