@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flexProperties flexServerType="2" serverContextRoot="/flow" serverRoot="D:/dev/flow/tomcat/flow" serverRootURL="http://localhost:8400/flow/" toolCompile="true" useServerFlexSDK="false" version="1"/>
+<flexProperties flexServerType="2" serverContextRoot="/war" serverRoot="D:/dev/flow/war" serverRootURL="http://localhost:8400/war" toolCompile="true" useServerFlexSDK="false" version="1"/>

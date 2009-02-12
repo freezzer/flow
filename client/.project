@@ -19,7 +19,7 @@
 		<link>
 			<name>bin-debug</name>
 			<type>2</type>
-			<location>D:/dev/flow/tomcat/flow/debug</location>
+			<location>D:/dev/flow/war/client</location>
 		</link>
 	</linkedResources>
 </projectDescription>
