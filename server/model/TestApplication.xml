@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<define>
+    <!--<import file="person.xml"/>-->
+    <!--<import file="user.xml"/>-->
+    <!--<import file="actions.xml"/>-->
+    <import file="Vorgang.xml"/>
+
+    <application dir="D:/dev/flow/client/src/generated" color="blue">
+        <comment>
+            Generated code by gna-gapp
+            Copyright Andreas Marochow, 2008 Hamburg Germany
+            E-Mail : andreas@marochow.de
+        </comment>
+
+        <!--<menubar color="silver">-->
+            <!--<menu name="System">-->
+                <!--<menuitem name="Anmelden"/>-->
+                <!--<menuitem name="Abmelden"/>-->
+            <!--</menu>-->
+            <!--<menu name="Stammdaten">-->
+                <!--<menuitem name="Uebersicht Personen" tab="true" lister="Person"/>-->
+                <!--<menuitem name="Neue Person anlegen" tab="true" editor="Person"/>-->
+            <!--</menu>-->
+            <!--<menu name="Administration">-->
+                <!--<menuitem name="Uebersicht User" tab="true" lister="User"/>-->
+                <!--<menuitem name="Neuen User anlegen" tab="true" editor="User"/>-->
+            <!--</menu>-->
+        <!--</menubar>-->
+
+        <!--<tabpanel x="2" y="24" color="silver"/>-->
+
+    </application>
+</define>
+
+
+
+

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<define dir="gen/app/action">
+    <action name="SaveBeanAction">
+        <execute multi="false">
+            String oid = saveBean(data);
+            commit();
+            getXmlOut().addChild(loadBean( oid ));
+        </execute>
+    </action>
+
+    <action name="CreateBeanAction">
+        <execute multi="false">
+            getXmlOut().addChild( createBean( data.getName() ));
+        </execute>
+    </action>
+
+    <action name="CopyBeanAction">
+        <execute multi="false">
+            getXmlOut().addChild( copyBean( data ));
+        </execute>
+    </action>
+
+    <action name="LoadBeanAction">
+        <execute multi="false" >
+            getXmlOut().addChild(loadBean( data.getNode("/oid").getText()));
+        </execute>
+    </action>
+</define>
+
+
+
+
