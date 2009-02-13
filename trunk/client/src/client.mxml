@@ -8,8 +8,6 @@
         import mx.controls.Alert;
         import mx.rpc.events.ResultEvent;
 
-        [Bindable]
-        var list:ArrayCollection = new ArrayCollection();
 
         private function actionResultHandler(event:ResultEvent):void {
             var a:ActionScriptAction = event.result as ActionScriptAction;
@@ -17,25 +15,25 @@
             if (a.detailErrorMessage != null) {
                 Alert.show(a.detailErrorMessage);
             }
-
-
-            list.addItem(a.data);
-            list.addItem(a.message);
+            
+			treeEditor.treeData= new XML(a.data);
         }
 
-        private function login():void {
+        private function newData(type:String):void {
             var a:ActionScriptAction = new ActionScriptAction();
-            a.serverActionName="LoginAction";
-            a.data="u1{del}.u1";
+            a.serverActionName="GetDataAction";
+            a.data=type;
             actionservice.execute(a);
         }
 
-        private function newUser():void {
+        private function sendData():void {
             var a:ActionScriptAction = new ActionScriptAction();
-            a.serverActionName="NewUserAction";
-            a.data="u2{del}.u2";
+            a.serverActionName="GetDataAction";
+            a.data=treeEditor.treeData;
             actionservice.execute(a);
         }
+
+
 
 
 	]]>
@@ -43,17 +41,14 @@
 
     <mx:RemoteObject id="actionservice" destination="ActionService" result="actionResultHandler(event)"/>
 
-    <mx:Canvas label="tesx" width="100%" height="100%" backgroundColor="#ECCC99" cornerRadius="6" borderColor="#548AB0"
-               themeColor="#0E9D11">
-        <mx:Button label="login" click="login()" width="80" fontFamily="Arial" cornerRadius="12"
-                   borderColor="#AF331E" horizontalCenter="-103" bottom="27"/>
-
-        <mx:Button label="new" click="newUser()" width="80" fontFamily="Arial" cornerRadius="12"
-                   borderColor="#AF331E" horizontalCenter="-220" bottom="27"/>
-
-        <mx:DataGrid dataProvider="{list}" borderColor="#DB9164" right="10" left="18" top="171" bottom="87"/>
-        <ns1:EditField x="36" y="32">
-        </ns1:EditField>
+    <mx:Canvas label="tesx" width="100%" height="100%" backgroundColor="#D7CEC0" cornerRadius="6" borderColor="#548AB0" themeColor="#0E9D11">
+        <ns1:TreeEditor x="10" y="20" id="treeEditor"/> 
     </mx:Canvas>
-
+    
+    <mx:Button label="call A" click="newData('a')" width="80" fontFamily="Arial" cornerRadius="4"
+                   borderColor="#AF331E" horizontalCenter="-261" bottom="10"/>
+    <mx:Button label="call B" click="newData('b')" width="80" fontFamily="Arial" cornerRadius="4"
+                   borderColor="#AF331E" horizontalCenter="-261" bottom="10"/>
+    <mx:Button label="send" click="sendData()" width="80" fontFamily="Arial" cornerRadius="4"
+                   borderColor="#AF331E" horizontalCenter="-261" bottom="10"/>
 </mx:Application>
