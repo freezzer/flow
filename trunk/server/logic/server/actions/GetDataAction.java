@@ -1,13 +1,15 @@
 package server.actions;
 
-import gen.app.ausfuhr.Workmodel;
-import gen.app.ausfuhr.Position;
-import gen.app.ausfuhr.Packstueck;
-import gen.app.ausfuhr.Kopf;
+
 
 import java.util.Date;
 
 import server.services.Environment;
+import server.actions.ServerAction;
+import bom.ausfuhr.Workmodel;
+import bom.ausfuhr.Position;
+import bom.ausfuhr.Packstueck;
+import bom.ausfuhr.Kopf;
 
 
 public class GetDataAction extends ServerAction {
