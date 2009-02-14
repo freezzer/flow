@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="server" >
 
-    <property name="deploy.dir" value="D:\dev\flow\war\WEB-INF\classes"/>
+    <property name="FLEX_HOME" value="D:\dev\adobe\flex_sdk_3"/>
+    <property name="home.dir" value="D:\dev\flow"/>
+
+    <property name="deploy.dir" value="${home.dir}\war"/>
+    <property name="cfg.dir" value="${home.dir}\server\conf"/>
+    <property name="client.src.dir" value="${home.dir}\client\src"/>
 
 
-     <target name="clean" >
+     <target name="server_clean" >
          <delete dir="classes" failonerror="false"/>
          <mkdir dir="classes" />
      </target>
@@ -28,6 +33,7 @@
         <mkdir dir="classes/gen"/>
         <javac destdir="classes" debug="on">
             <src path="generated"/>
+            <src path="logic"/>
             <classpath>
                 <fileset dir="lib">
                     <include name="**/*.jar"/>
@@ -70,21 +76,20 @@
         </java>
     </target>
     
-    <target name="all" description="deploy to tomcat" depends="clean,compile,generate,compile2,enhance,deploy" />
-
     <target name="deploy" description="deploy to tomcat">
-        <copy overwrite="true" todir="${deploy.dir}">
+        <copy overwrite="true" todir="${deploy.dir}\WEB-INF\classes">
             <fileset dir="classes">
                 <include name="**/**"/>
                 <exclude name="generator/**"/>
+                <exclude name="logic/**"/>
             </fileset>
         </copy>
-        <copy overwrite="false" todir="${deploy.dir}\..\lib">
+        <copy overwrite="false" todir="${deploy.dir}\WEB-INF\lib">
             <fileset dir="lib">
                 <include name="**/*.jar"/>
             </fileset>
         </copy>
-        <copy overwrite="false" todir="${deploy.dir}\..\flex">
+        <copy overwrite="false" todir="${deploy.dir}\WEB-INF\flex">
             <fileset dir="conf">
                 <include name="**/messaging-config.xml"/>
                 <include name="**/proxy-config.xml"/>
@@ -92,12 +97,50 @@
                 <include name="**/services-config.xml"/>
             </fileset>
         </copy>
-        <copy overwrite="false" todir="${deploy.dir}\..">
+        <copy overwrite="false" todir="${deploy.dir}\WEB-INF">
             <fileset dir="conf">
                 <include name="**/web.xml"/>
             </fileset>
         </copy>
     </target>
+
+    <!--  ********************************* CLIENT ************************************************* -->
+
+
+    <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
+
+
+    <target name="client_clean" >
+        <delete dir="${deploy.dir}/client" />
+        <mkdir dir="${deploy.dir}/client" />
+    </target>
+
+    <target name="compile_swf" description="compiles the flex sources" >
+        <delete file="${deploy.dir}/client/client.swf"/>
+        <mxmlc file="${client.src.dir}/client.mxml"
+               output="${deploy.dir}/client/client.swf"
+               services="${cfg.dir}/services-config.xml"
+                debug="true">
+        </mxmlc>
+    </target>
+
+    <target name="wrapper" >
+        <html-wrapper
+                height="100%"
+                width="100%"
+                template="express-installation"
+                bgcolor="red"
+                history="true"
+                title="Welcome to FLOW"
+                file="client.html"
+                application="flowApp"
+                swf="client"
+                output="${deploy.dir}/client"/>
+    </target>
+
+    <target name="server" description="make server and deploy to tomcat" depends="server_clean,compile,generate,compile2,enhance,deploy" />
+    <target name="client" description="make client and deploy to tomcat" depends="client_clean,compile_swf,wrapper" />
+    <target name="all" description="deploy to tomcat" depends="client, server" />
 
 
 </project>
