@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="server" >
+<project name="server" default="build.all">
 
     <property name="FLEX_HOME" value="D:\dev\adobe\flex_sdk_3"/>
     <property name="home.dir" value="D:\dev\flow"/>
@@ -8,14 +8,9 @@
     <property name="cfg.dir" value="${home.dir}\server\conf"/>
     <property name="client.src.dir" value="${home.dir}\client\src"/>
 
-
-     <target name="server_clean" >
+    <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="classes" failonerror="false"/>
          <mkdir dir="classes" />
-     </target>
-
-
-     <target name="compile" description="compiles the java sources">
         <javac destdir="classes" debug="on">
             <src path="src"/>
             <classpath>
@@ -28,7 +23,7 @@
 
 
 
-    <target name="compile2" description="compiles the sources">
+    <target name="server.compile.generated" description="compiles the sources">
         <delete dir="classes/gen" failonerror="false"/>
         <mkdir dir="classes/gen"/>
         <javac destdir="classes" debug="on">
@@ -61,7 +56,7 @@
     </target>
 
 
-    <target name="enhance" description="enhances the classes">
+    <target name="server.enhance" description="enhances the classes">
         <java classname="de.ama.db.tools.Enhancer" fork="true">
             <classpath>
                 <fileset dir="lib">
@@ -110,12 +105,12 @@
     <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
 
 
-    <target name="client_clean" >
+    <target name="client.clean" >
         <delete dir="${deploy.dir}/client" />
         <mkdir dir="${deploy.dir}/client" />
     </target>
 
-    <target name="compile_swf" description="compiles the flex sources" >
+    <target name="client.compile" description="compiles the flex sources" >
         <delete file="${deploy.dir}/client/client.swf"/>
         <mxmlc file="${client.src.dir}/client.mxml"
                output="${deploy.dir}/client/client.swf"
@@ -124,7 +119,7 @@
         </mxmlc>
     </target>
 
-    <target name="wrapper" >
+    <target name="client.wrapper" >
         <html-wrapper
                 height="100%"
                 width="100%"
@@ -138,9 +133,9 @@
                 output="${deploy.dir}/client"/>
     </target>
 
-    <target name="server" description="make server and deploy to tomcat" depends="server_clean,compile,generate,compile2,enhance,deploy" />
-    <target name="client" description="make client and deploy to tomcat" depends="client_clean,compile_swf,wrapper" />
-    <target name="all" description="deploy to tomcat" depends="client, server" />
+    <target name="build.server" description="make server and deploy to tomcat" depends="server.compile.environment,generate,server.compile.generated,server.enhance,deploy" />
+    <target name="build.client" description="make client and deploy to tomcat" depends="client.clean,client.compile,client.wrapper" />
+    <target name="build.all" description="deploy to tomcat" depends="build.client, build.server" />
 
 
 </project>
