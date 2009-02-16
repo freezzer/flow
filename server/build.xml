@@ -52,6 +52,8 @@
             <arg file="model/TestApplication.xml"/>
             <arg value="outDir"/>
             <arg path="generated"/>
+            <arg value="targets"/>
+            <arg value="java,flex"/>
         </java>
     </target>
 

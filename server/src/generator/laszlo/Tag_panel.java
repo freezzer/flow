@@ -17,29 +17,34 @@
 */
 
 
-package generator;
+package generator.laszlo;
 
-import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_menubar extends Tag {
+public class Tag_panel extends Tag {
 
     protected void beginWrite() {
-        String w = getAttribute(W, "$once{parent.width-2}");
-        String h = getAttribute(H, "25");
+        String spacing = getAttribute(SPACING,"5");
+        boolean horizontal = getAttribute(HORIZONTAL,false);
+        String title = getAttribute(TITLE,"");
+        String path = readPathAttribute();
+        String w = readStandardAttribute(W,"width");
+        String h = readStandardAttribute(H,"height");
+        String v = readStandardAttribute(VISIBLE,"visible");
 
-        String color = getAttribute(COLOR, "");
-        if(Util.isNotEmpty(color)) { color=" style='"+color+"colors'";  }
-
-        writeLine();
-        write("<menubar width='"+w+"' height='"+h+"' "+color+" >");
+        write("<view"+w+h+path+v+getStandardAttributesString()+" >");
+        write(" <simplelayout spacing='"+spacing+"' axis='"+(horizontal?"x":"y")+"'/>");
+        if(title.length()>0){
+        write(" <text> <b>"+title+"</b> </text>");
+        }
     }
 
     protected void endWrite() {
-        write("</menubar>");
+        write("</view>");
         flush();
     }
 

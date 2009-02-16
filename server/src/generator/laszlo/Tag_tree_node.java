@@ -17,21 +17,31 @@
 */
 
 
-package generator;
+package generator.laszlo;
+
+import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_tabpanel extends Tag {
+public class Tag_tree_node extends Tag {
 
+    protected void beginWrite() {
+        String label = getAttribute(LABEL);
+        String path = readPathAttribute();
+        String panelName = getAttribute(PANEL, "");
+        String fixedopen = getAttribute(FIXED_OPEN,"false");
+        String icon = getAttribute(ICON,"");
+        if (Util.isNotEmpty(icon)) {  icon = "icon='resources/"+icon+"'"; }
 
-    protected void mainWrite() {
-        String w = getAttribute(W, "$once{parent.width-2}");
-        String h = getAttribute(H, "$once{parent.height-30}");
-
-        write("<tabs "+getStandardAttributesString()+" height='"+h+"' width='"+w+"' id='mainTabs' >");
-        write("   <attribute name='tabclass' value='tabMainTab' type='string' />");
-        write("</tabs>");
+        write("<TreeNode "+path+" text='"+label+"' panelName='"+panelName+"' fixedopen='"+fixedopen+"' "+icon+" >");
     }
+
+    protected void endWrite() {
+        write("</TreeNode>");
+    }
+
+
 }

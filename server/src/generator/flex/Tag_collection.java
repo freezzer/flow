@@ -17,9 +17,10 @@
 */
 
 
-package generator;
+package generator.flex;
 
 import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
@@ -33,15 +34,11 @@ public class Tag_collection extends Tag {
 
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
-        String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
-        String list="java.util.List<"+type+">";
-
         writeLine();
-        write("private "+list+" "+ name +" = new java.util.ArrayList<"+type+">();");
-        write("public  "+list+" get" + Util.firstCharToUpper(name)+"() { return "+name+"; }");
-        write("public  void   set" + Util.firstCharToUpper(name)+"("+list+" in) { "+ (getAttribute(MANDATORY,false)?"check(in,\""+name+"\"); ":" ") + name+"=in; }");
-        write("public  void addItemTo" + Util.firstCharToUpper(name)+"( "+type+" in) { "+name+".add(in); }");
-        write("public  "+type+" getItemFrom" + Util.firstCharToUpper(name)+"(int i) { return "+name+".get(i); }");
+        write("public var "+name+":ArrayCollection = new ArrayCollection();");
+        if(getAttribute("tree_children",false)){
+            write("public function get children():ArrayCollection { return "+name+"; }");
+        }
     }
 
 

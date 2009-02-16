@@ -20,6 +20,7 @@
 package generator;
 
 import de.ama.util.UniversalIterator;
+import de.ama.util.Util;
 
 /**
  * User: x
@@ -27,23 +28,27 @@ import de.ama.util.UniversalIterator;
  */
 public class Starter {
     private static String[] args;
-    private String inFileName, outDirName, flawour;
+    private String inFileName, outDirName, targets;
 
     public Starter() {
         inFileName = getCommandLineParam("inFile", "mandatory");
         outDirName = getCommandLineParam("outDir", "mandatory");
-        flawour = getCommandLineParam("flawour", "laszlo");
+        targets    = getCommandLineParam("targets","mandatory");
+
+        if (Util.isEmpty(targets)) {
+            throw new RuntimeException("no targets specified use parameter [targets] with java,flex,...");
+        }
+
+        
     }
 
     public static void main(String[] args) {
        Starter.args = args;
        new Starter().run();
-
-
     }
 
     private void run() {
-        new OutputWriter(inFileName, outDirName, flawour).start();
+        new OutputWriter(inFileName, outDirName, targets).start();
     }
 
     private String getCommandLineParam(String key, String def) {
@@ -57,11 +62,12 @@ public class Starter {
 
         if (def.equals("mandatory")) {
             System.out.println("*********************************************************************************");
-            System.out.println("*   GECO Generate Code ");
+            System.out.println("*   flow Generate Code ");
             System.out.println("*                                                                             ");
-            System.out.println("*   usage:                                      ");
+            System.out.println("*   usage:                                        ");
             System.out.println("*   inFile    [input file.xml]        mandatory ! ");
             System.out.println("*   outDir    [output directory]      mandatory ! ");
+            System.out.println("*   targets   [geneation targets]     use: java,flex,laszlo,hibernate,to be continued ... ");
             System.out.println("*********************************************************************************");
             System.exit(1);
         }

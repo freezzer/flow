@@ -17,49 +17,32 @@
 */
 
 
-package generator;
+package generator.laszlo;
 
-import java.io.PrintWriter;
-import java.util.List;
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_application extends Tag {
-    
-    protected void beginWrite() {
-        addAttribute("color","white");
+public class Tag_view extends Tag {
 
-        String name = getAttribute(NAME,"application");
+    protected void beginWrite() {
+        String model = getParentAttribute(MODEL,"");
+        String name = getParentAttribute(NAME,model);
         String dir =  getParentAttribute(DIR,"");
         initPrintWriter(dir,name+".lzx");
 
+        write("<library>");
         write("<!-- ");
         write(getStoredObject(COMMENT));
         write("--> ");
-        write("<canvas height='100%' width='100%' >");
-        write(" <include href='components.lzx'/>");
-
-        checkHref(getPrintWriter() , (Tag) getRoot());
+        writeLine();
     }
 
     protected void endWrite() {
-        write("</canvas>");
+        write("</library>");
         flush();
-    }
-
-    private void checkHref(PrintWriter pw , Tag tag){
-        if(tag.getName().equals("view")){
-            String tmp = tag.getParentAttribute(MODEL,"");
-                   tmp  = tag.getParentAttribute(NAME,tmp);
-            write(" <include href='"+tmp+".lzx"+"'/>");
-        }
-        List children = tag.getChildren();
-        for (int i = 0; i < children.size(); i++) {
-            Tag child = (Tag) children.get(i);
-            checkHref(pw,child);
-        }
     }
 
 }

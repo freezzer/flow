@@ -17,9 +17,10 @@
 */
 
 
-package generator;
+package generator.flex;
 
 import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
@@ -35,23 +36,14 @@ public class Tag_field extends Tag {
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE,"String");
-        boolean create = getAttribute(CREATE,true);
         if(!isLeaf()){
             type = getChild(0).getRequiredAttribute(NAME);
         }
-        boolean str = "String".equals(type);
-        if("Date".equalsIgnoreCase(type))  { type = "java.util.Date";       create = false;}
-        if("Number".equalsIgnoreCase(type)){ type = "java.math.BigDecimal";  create = false; }
+        if("date".equalsIgnoreCase(type))  { type = "Date";    }
+        if("number".equalsIgnoreCase(type)){ type = "Number";  }
+        if("boolean".equalsIgnoreCase(type)){ type = "Boolean";  }
         writeLine();
-        write("private "+type+" "+ name +";");
-        if(str){
-            write("public  "+type+" get" + Util.firstCharToUpper(name)+"() { return de.ama.util.Util.saveToString("+name+"); }" );
-        } else {
-            String lazy="";
-            if(create) lazy="if("+name+"==null){ "+name+"=new "+type+"(); }";
-            write("public  "+type+" get" + Util.firstCharToUpper(name)+ "() { "+lazy+" return "+name+"; }"  );
-        }
-        write("public  void   set" + Util.firstCharToUpper(name)+"("+type+" in) { "+ (getAttribute(MANDATORY,false)?"check(in,\""+name+"\"); ":" ") + name+"=in; }");
+        write("public var "+name+":"+type+";");
     }
 
 

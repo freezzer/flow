@@ -17,33 +17,23 @@
 */
 
 
-package generator;
+package generator.laszlo;
+
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_panel extends Tag {
+public class Tag_menu extends Tag {
 
     protected void beginWrite() {
-        String spacing = getAttribute(SPACING,"5");
-        boolean horizontal = getAttribute(HORIZONTAL,false);
-        String title = getAttribute(TITLE,"");
-        String path = readPathAttribute();
-        String w = readStandardAttribute(W,"width");
-        String h = readStandardAttribute(H,"height");
-        String v = readStandardAttribute(VISIBLE,"visible");
-
-        write("<view"+w+h+path+v+getStandardAttributesString()+" >");
-        write(" <simplelayout spacing='"+spacing+"' axis='"+(horizontal?"x":"y")+"'/>");
-        if(title.length()>0){
-        write(" <text> <b>"+title+"</b> </text>");
-        }
+        String name = getRequiredAttribute(NAME);
+        write("<menu text='"+name+"'>");
     }
 
     protected void endWrite() {
-        write("</view>");
-        flush();
+        write("</menu>");
     }
 
 }
