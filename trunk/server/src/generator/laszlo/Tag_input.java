@@ -17,7 +17,9 @@
 */
 
 
-package generator;
+package generator.laszlo;
+
+import generator.Tag;
 
 /**
  * User: x

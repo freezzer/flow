@@ -17,30 +17,32 @@
 */
 
 
-package generator;
+package generator.java;
 
 import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_menuitem extends Tag {
+public class Tag_collection extends Tag {
+
+    public int getIndent() {
+        return 4;
+    }
 
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
-        boolean tab = getAttribute("tab",true);
-        String exec = "";
+        String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
+        String list="java.util.List<"+type+">";
 
-        String  editor = getAttribute("editor","");
-        if(Util.isNotEmpty(editor))
-           exec = "onselect=\""+editor+"_editor_helper.createTab() \"";
-
-        String  lister = getAttribute("lister","");
-        if(Util.isNotEmpty(lister))
-           exec = "onselect=\""+lister+"_lister_helper.createTab() \"";
-
-        write("<menuitem text='"+name+"' "+exec+" />");
+        writeLine();
+        write("private "+list+" "+ name +" = new java.util.ArrayList<"+type+">();");
+        write("public  "+list+" get" + Util.firstCharToUpper(name)+"() { return "+name+"; }");
+        write("public  void   set" + Util.firstCharToUpper(name)+"("+list+" in) { "+ (getAttribute(MANDATORY,false)?"check(in,\""+name+"\"); ":" ") + name+"=in; }");
+        write("public  void addItemTo" + Util.firstCharToUpper(name)+"( "+type+" in) { "+name+".add(in); }");
+        write("public  "+type+" getItemFrom" + Util.firstCharToUpper(name)+"(int i) { return "+name+".get(i); }");
     }
 
 

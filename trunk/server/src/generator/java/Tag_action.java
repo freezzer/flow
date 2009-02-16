@@ -17,7 +17,9 @@
 */
 
 
-package generator;
+package generator.java;
+
+import generator.Tag;
 
 import java.io.PrintWriter;
 
@@ -25,7 +27,7 @@ import java.io.PrintWriter;
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_action extends Tag{
+public class Tag_action extends Tag {
 
     protected int getIndent() {
         return 0;

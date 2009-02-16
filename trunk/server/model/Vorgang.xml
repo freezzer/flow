@@ -1,12 +1,13 @@
 <?xml version="1.0"?>
 <define>
 
-    <model dir="bom/ausfuhr">
+    <model java_dir="bom/ausfuhr" 
+           flex_dir="D:\dev\flow\client\src\generated" flex_package="generated">
         <bean name="Vorgang" persistent="true" unique-key="id">
             <field name="nummer"/>
             <field name="id"/>
             <field name="typ"/>
-            <collection name="transitions">
+            <collection name="transitions" tree_children="true">
                 <bean name="Transition">
                     <field name="name"/>
                     <field name="dir"/>
@@ -25,7 +26,7 @@
                         <field name="zollstelle_ausfuhr"/>
                         <field name="zollstelle_eam"/>
                         <field name="zollstelle_ausgang"/>
-                        <collection name="positionen" type="Position">
+                        <collection name="positionen" type="Position" tree_children="true">
                             <bean name="Position">
                                 <field name="nummer"/>
                                 <field name="warennummer"/>
@@ -37,7 +38,7 @@
                                         <field name="zeichen"/>
                                     </bean>
                                 </collection>
-                                <collection name="packstuecke">
+                                <collection name="packstuecke" tree_children="true">
                                     <bean name="Packstueck">
                                         <field name="nummer"/>
                                         <field name="art"/>

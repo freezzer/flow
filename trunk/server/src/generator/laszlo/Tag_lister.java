@@ -17,7 +17,9 @@
 */
 
 
-package generator;
+package generator.laszlo;
+
+import generator.Tag;
 
 /**
  * User: x
@@ -48,45 +50,39 @@ package generator;
 
 
  */
-public class Tag_grid extends Tag {
+public class Tag_lister extends Tag {
 
     protected void beginWrite() {
         String model = getRequiredParentAttribute(MODEL);
-        write(" <grid datapath='local:classroot.data:/list' visible='true' id='"+model+"_grid' width='$once{parent.width-2}'  height='$once{parent.height-2}' >");
+        String title = getParentAttribute(TITLE,model+" Editor");
+
+        writeLine();
+        write("<!-- ******************************** "+model+"_lister ******************************** --> ");
+        write("<node name='"+model+"_lister_helper' > ");
+        write("  <method name='createTab' >");
+        write("    p = new lz.customtabpane(mainTabs,{text:'"+title+"'});");
+        write("    l = new lz."+model+"_lister(p);");
+        write("    Person_grid.refresh();");
+        write("  </method>");
+        write("</node>");
+        write("<class name='"+model+"_lister' extends='view' >");
+        write("  <dataset name='query'>");
+        write("   <query>");
+        write("     <type>"+model+"</type>");
+        write("   </query>");
+        write("  </dataset>");
+        write("  <dataset name='data' />");
+        write("  <view width='${canvas.width}' height='${canvas.height-35}'>");
+        write("   <stableborderlayout axis='y'/>");
+//        write("   <view name='toolbar' id='"+model+"_lister_toolbar' height='20' width='${parent.width}' />");
     }
+
 
     protected void endWrite() {
         String model = getRequiredParentAttribute(MODEL);
-        write(" <method name='openEditor' >  <![CDATA[");
-        write("   var sel = "+model+"_grid.getSelection();");
-        write("   for ( var i=0; i<sel.length; i++ ) {");
-        write("      var dp = sel[i];");
-        write("      "+model+"_editor_helper.createTab(dp.xpathQuery( 'oid/text()' ));");
-        write("   }");
-        write("  ]]> </method> ");
-        writeLine();
-        write(" <method name='deleteBean' >  <![CDATA[");
-        write("   var data = new LzDataElement('data'); ");
-        write("   var sel = "+model+"_grid.getSelection();");
-        write("   for ( var i=0; i<sel.length; i++ ) {");
-        write("      var dp = sel[i];");
-        write("      var obj = new LzDataElement('"+model+"');");
-        write("      var oid = new LzDataElement('oid');");
-        write("      oid.appendChild(new LzDataText(dp.xpathQuery('oid/text()')));");
-        write("      obj.appendChild(oid);");
-        write("      data.appendChild(obj);");
-        write("      dp.deleteNode();");
-        write("   }");
-        write("   ActionService.execute('DeleteBeanAction',data);");
-        write("  ]]> </method> ");
-        writeLine();
-        write(" <method name='refresh' >  <![CDATA[");
-        write("   ActionService.execute('QueryBeansAction', classroot.query, classroot.data); ");
-        write("  ]]> </method> ");
-        write(" </grid>");
+        write("   <view name='statusbar' id='"+model+"_lister_statusbar' height='20' width='$once{parent.width}' />");
+        write("  </view>");
+        write("</class>");
         flush();
     }
-
-
-
 }

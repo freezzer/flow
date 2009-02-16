@@ -2,6 +2,7 @@ package generator;
 
 import de.ama.util.XmlElement;
 import de.ama.util.XmlModel;
+import de.ama.util.Util;
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 
@@ -18,7 +19,7 @@ public class OutputWriter {
     private String outDir;
     private File inDir;
     private List imports = new ArrayList();
-    private String flawour;
+    private String targets;
     private Map objectStore = new HashMap();
     private XmlElement classDictionary = new XmlElement("dictionary", "");
 
@@ -45,10 +46,10 @@ public class OutputWriter {
     }
 
 
-    public OutputWriter(String inFile, String outDir, String flawour) {
+    public OutputWriter(String inFile, String outDir, String targets) {
         this.inFilename = inFile;
         this.outDir = outDir;
-        this.flawour = flawour;
+        this.targets = targets;
     }
 
     public String getOutDir() {
@@ -97,14 +98,21 @@ public class OutputWriter {
         return new Tag(doc.getRootElement());
     }
 
-
+    private static String knownTargets = "java,flex,laszlo";
     public void start() {
-        objectStore.clear();
-        readTemplate();
-        ((Tag) templateRoot).execute();
+        String[] strings = targets.split(",");
+        for (int i = 0; i < strings.length; i++) {
+            Tag.target=strings[i];
+            if(knownTargets.indexOf(Tag.target)<0){
+                throw new IllegalArgumentException("unknown target "+Tag.target);
+            }
 
-        registerClass("QueryBeansAction", "de.ama.app.action.QueryBeansAction");
-        registerClass("DeleteBeanAction", "de.ama.app.action.DeleteBeanAction");
+            System.out.println("generating for target "+Tag.target);
+            objectStore.clear();
+            readTemplate();
+            ((Tag) templateRoot).execute();
+        }
+
 
         XmlModel m = new XmlModel(classDictionary);
         m.writeFile(new File(outDir, "repository.xml").getAbsolutePath(), true);
@@ -117,6 +125,7 @@ public class OutputWriter {
     }
 
     public void logError(String msg, Throwable e) {
+        System.out.println("ERROR : " + msg);
         e.printStackTrace();
     }
 
@@ -124,4 +133,7 @@ public class OutputWriter {
         System.out.println("ERROR : " + msg);
     }
 
+    public String getTargets() {
+        return targets;
+    }
 }

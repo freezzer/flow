@@ -7,9 +7,7 @@
 
     <application dir="D:/dev/flow/client/src/generated" color="blue">
         <comment>
-            Generated code by gna-gapp
-            Copyright Andreas Marochow, 2008 Hamburg Germany
-            E-Mail : andreas@marochow.de
+            Generated code by flow code generator
         </comment>
 
         <!--<menubar color="silver">-->

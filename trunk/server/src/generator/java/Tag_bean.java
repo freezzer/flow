@@ -17,9 +17,10 @@
 */
 
 
-package generator;
+package generator.java;
 
 import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
@@ -37,15 +38,17 @@ public class Tag_bean extends Tag{
 
     protected void beginWrite() {
         String name = getParentAttribute(NAME,"");
-        String dir =  getParentAttribute(DIR,"");
-        String pckg = dir.replace('/','.');
+        String dir =  getParentAttribute(JAVA_DIR,"");
+        String pckg =  getParentAttribute(JAVA_PACKAGE,"na");
+        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
+        
         if (getParent() instanceof Tag_bean) {
             Tag_field f = new Tag_field();
             f.setPrintWriter(getPrintWriter());
             f.addAttribute(NAME, Util.firstCharToLower(name));
             f.addAttribute(TYPE, pckg+"."+name);
             f.addAttribute(CREATE, getAttribute(CREATE));
-            f.mainWrite();
+            f.execute();
         }
 
 
@@ -59,6 +62,9 @@ public class Tag_bean extends Tag{
         writeLine();
 
         getWriter().registerClass(name,pckg+"."+name );
+
+        ///////////////////////////////////////////////////////////
+
 
     }
 

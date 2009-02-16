@@ -30,13 +30,18 @@ import java.util.HashMap;
 import java.util.ListIterator;
 import java.util.Map;
 
+import generator.laszlo.*;
+import generator.java.Tag_execute;
+import generator.java.Tag_action;
+
 /**
  * User: x
  * Date: 23.04.2008
  */
 public class Tag extends XmlElement implements Const {
-    private    static Map    ctorMap = new HashMap();
+//    private    static Map    ctorMap = new HashMap();
     protected  static String NOT_AVAILABEL = "na";
+    public static String target; 
 
     private OutputWriter writer;
     private PrintWriter printWriter;
@@ -45,50 +50,63 @@ public class Tag extends XmlElement implements Const {
         return true;
     }
 
-    private void registerConstructor(String id, Class clazz) {
-        ctorMap.put(id, clazz);
+    public String getFlavour(){
+        String tmp = getClass().getPackage().getName();
+        return tmp;
     }
+
+
+//    private void registerConstructor(String id, Class clazz) {
+//        ctorMap.put(id, clazz);
+//    }
        public Tag() {
     }
 
     public Tag(org.jdom.Element je) {
-        initConstructorTable();
+//        initConstructorTable();
         readJdomElement(je);
         readRecursive(je);
     }
 
-    private void initConstructorTable() {
-        if (ctorMap.size() == 0) {
-            registerConstructor("action", Tag_action.class);
-            registerConstructor("application", Tag_application.class);
-            registerConstructor("tabpanel", Tag_tabpanel.class);
-            registerConstructor("collection", Tag_collection.class);
-            registerConstructor("comment", Tag_comment.class);
-            registerConstructor("editor", Tag_editor.class);
-            registerConstructor("bean", Tag_bean.class);
-            registerConstructor("field", Tag_field.class);
-            registerConstructor("grid", Tag_grid.class);
-            registerConstructor("column", Tag_column.class);
-            registerConstructor("view", Tag_view.class);
-            registerConstructor("define", Tag.class);
-            registerConstructor("lister", Tag_lister.class);
-            registerConstructor("menu", Tag_menu.class);
-            registerConstructor("menuitem", Tag_menuitem.class);
-            registerConstructor("menubar", Tag_menubar.class);
-            registerConstructor("panel", Tag_panel.class);
-            registerConstructor("tree_node", Tag_tree_node.class);
-            registerConstructor("tree_panel", Tag_tree_panel.class);
-            registerConstructor("button", Tag_button.class);
-            registerConstructor("button_panel", Tag_button_panel.class);
-            registerConstructor("input", Tag_input.class);
-            registerConstructor("execute", Tag_execute.class);
-            registerConstructor("model", Tag.class);
-            registerConstructor("import", Tag_import.class);
-            registerConstructor("file", Tag_file.class);
-        }
-    }
+//    private void initConstructorTable() {
+//        if (ctorMap.size() == 0) {
+//            registerConstructor("java.bean",       generator.java.Tag_bean.class);
+//            registerConstructor("java.field",      generator.java.Tag_field.class);
+//            registerConstructor("java.collection", generator.java.Tag_collection.class);
+//
+//            registerConstructor("flex.field",      generator.flex.Tag_field.class);
+//            registerConstructor("flex.collection", generator.flex.Tag_collection.class);
+//            registerConstructor("flex.bean",       generator.flex.Tag_bean.class);
+//
+//
+//
+//            registerConstructor("action", Tag_action.class);
+//            registerConstructor("application", Tag_application.class);
+//            registerConstructor("tabpanel", Tag_tabpanel.class);
+//            registerConstructor("comment", Tag_comment.class);
+//            registerConstructor("editor", Tag_editor.class);
+//            registerConstructor("grid", Tag_grid.class);
+//            registerConstructor("column", Tag_column.class);
+//            registerConstructor("view", Tag_view.class);
+//            registerConstructor("define", Tag.class);
+//            registerConstructor("lister", Tag_lister.class);
+//            registerConstructor("menu", Tag_menu.class);
+//            registerConstructor("menuitem", Tag_menuitem.class);
+//            registerConstructor("menubar", Tag_menubar.class);
+//            registerConstructor("panel", Tag_panel.class);
+//            registerConstructor("tree_node", Tag_tree_node.class);
+//            registerConstructor("tree_panel", Tag_tree_panel.class);
+//            registerConstructor("button", Tag_button.class);
+//            registerConstructor("button_panel", Tag_button_panel.class);
+//            registerConstructor("input", Tag_input.class);
+//            registerConstructor("execute", Tag_execute.class);
+//            registerConstructor("model", Tag.class);
+//            registerConstructor("import", Tag_import.class);
+//            registerConstructor("file", Tag_file.class);
+//        }
+//    }
 
-    PrintWriter createPrintWriter(String _dir, String fileName) {
+    public PrintWriter createPrintWriter(String _dir, String fileName) {
         try {
             File dir = null;
             if(_dir.contains(":")){
@@ -106,7 +124,7 @@ public class Tag extends XmlElement implements Const {
         }
     }
 
-    void initPrintWriter(String _dir, String fileName) {
+    public void initPrintWriter(String _dir, String fileName) {
         PrintWriter printWriter = createPrintWriter(_dir, fileName);
         setPrintWriter(printWriter);
     }
@@ -150,19 +168,32 @@ public class Tag extends XmlElement implements Const {
 
     boolean isVerbose() { return "true".equals(getParentAttribute("verbose","false"));   }
 
-    protected XmlElement getEmptyInstance(org.jdom.Element je) {
 
+
+    protected Tag getTagImpl(String className) {
         try {
-            Class clazz = (Class) ctorMap.get(je.getName());
+            Class clazz = (Class) Class.forName(className);
             if (clazz != null) {
                 Tag i = (Tag) clazz.newInstance();
                 return i;
             }
         } catch (Exception e) {
-            logError("Could not createXmlElement for [" + je.getName()+"]");
+           return  null;
         }
-        logError("Could not createXmlElement for [" + je.getName()+"]");
         return null;
+    }
+
+    protected XmlElement getEmptyInstance(org.jdom.Element je) {
+
+        String className = "generator." + Tag.target + ".Tag_" + je.getName();
+        Tag tag = getTagImpl(className);
+        if(tag!=null) return tag;
+
+        className = "generator.Tag_" + je.getName();
+        tag = getTagImpl(className);
+        if(tag!=null) return tag;
+
+        return new Tag();
     }
 
 

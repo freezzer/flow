@@ -17,30 +17,34 @@
 */
 
 
-package generator;
+package generator.java;
+
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_view extends Tag {
+public class Tag_execute extends Tag {
 
-    protected void beginWrite() {
-        String model = getParentAttribute(MODEL,"");
-        String name = getParentAttribute(NAME,model);
-        String dir =  getParentAttribute(DIR,"");
-        initPrintWriter(dir,name+".lzx");
-
-        write("<library>");
-        write("<!-- ");
-        write(getStoredObject(COMMENT));
-        write("--> ");
-        writeLine();
+    protected int getIndent() {
+        return 4;
     }
 
-    protected void endWrite() {
-        write("</library>");
-        flush();
-    }
+    protected void mainWrite() {
+        boolean multi = getAttribute("multi",true);
+        String filter = getAttribute("filter","");
 
+    if(filter.length()>0)
+        write("if(!data.hasName(\""+filter+"\")) return true;");
+
+        write("try{");
+        write("  " + getText().trim());
+        write("} catch (Exception e) {  ");
+        write("  addError(e.getMessage()); ");
+        write("  e.printStackTrace(); ");
+        write("  rollback(); ");
+        write("}");
+        write("return "+multi+";");
+    }
 }

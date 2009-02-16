@@ -17,9 +17,10 @@
 */
 
 
-package generator;
+package generator.laszlo;
 
 import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x

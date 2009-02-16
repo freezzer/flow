@@ -17,21 +17,23 @@
 */
 
 
-package generator;
+package generator.laszlo;
+
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_menu extends Tag {
+public class Tag_tabpanel extends Tag {
 
-    protected void beginWrite() {
-        String name = getRequiredAttribute(NAME);
-        write("<menu text='"+name+"'>");
+
+    protected void mainWrite() {
+        String w = getAttribute(W, "$once{parent.width-2}");
+        String h = getAttribute(H, "$once{parent.height-30}");
+
+        write("<tabs "+getStandardAttributesString()+" height='"+h+"' width='"+w+"' id='mainTabs' >");
+        write("   <attribute name='tabclass' value='tabMainTab' type='string' />");
+        write("</tabs>");
     }
-
-    protected void endWrite() {
-        write("</menu>");
-    }
-
 }

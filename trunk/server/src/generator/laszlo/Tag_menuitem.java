@@ -17,29 +17,31 @@
 */
 
 
-package generator;
+package generator.laszlo;
 
 import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_tree_node extends Tag {
+public class Tag_menuitem extends Tag {
 
-    protected void beginWrite() {
-        String label = getAttribute(LABEL);
-        String path = readPathAttribute();
-        String panelName = getAttribute(PANEL, "");
-        String fixedopen = getAttribute(FIXED_OPEN,"false");
-        String icon = getAttribute(ICON,"");
-        if (Util.isNotEmpty(icon)) {  icon = "icon='resources/"+icon+"'"; }
+    protected void mainWrite() {
+        String name = getRequiredAttribute(NAME);
+        boolean tab = getAttribute("tab",true);
+        String exec = "";
 
-        write("<TreeNode "+path+" text='"+label+"' panelName='"+panelName+"' fixedopen='"+fixedopen+"' "+icon+" >");
-    }
+        String  editor = getAttribute("editor","");
+        if(Util.isNotEmpty(editor))
+           exec = "onselect=\""+editor+"_editor_helper.createTab() \"";
 
-    protected void endWrite() {
-        write("</TreeNode>");
+        String  lister = getAttribute("lister","");
+        if(Util.isNotEmpty(lister))
+           exec = "onselect=\""+lister+"_lister_helper.createTab() \"";
+
+        write("<menuitem text='"+name+"' "+exec+" />");
     }
 
 

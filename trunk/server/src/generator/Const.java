@@ -40,7 +40,15 @@ public interface Const {
     public static final String PATH = "path";
     public static final String ACTION = "action";
     public static final String METHOD = "method";
-    public static final String DIR = "dir";
+
+    public static final String DIR =        "dir";
+    public static final String JAVA_DIR =   "java_dir";
+    public static final String FLEX_DIR =   "flex_dir";
+    public static final String LASZLO_DIR = "laszlo_dir";
+
+    public static final String JAVA_PACKAGE =   "java_package";
+    public static final String FLEX_PACKAGE =   "flex_package";
+
     public static final String UNIQUE_KEY = "unique-key";
 
     public static final String SORTABLE = "sortable";

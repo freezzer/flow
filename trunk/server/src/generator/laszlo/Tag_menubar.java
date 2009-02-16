@@ -17,32 +17,31 @@
 */
 
 
-package generator;
+package generator.laszlo;
+
+import de.ama.util.Util;
+import generator.Tag;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_execute extends Tag {
+public class Tag_menubar extends Tag {
 
-    protected int getIndent() {
-        return 4;
+    protected void beginWrite() {
+        String w = getAttribute(W, "$once{parent.width-2}");
+        String h = getAttribute(H, "25");
+
+        String color = getAttribute(COLOR, "");
+        if(Util.isNotEmpty(color)) { color=" style='"+color+"colors'";  }
+
+        writeLine();
+        write("<menubar width='"+w+"' height='"+h+"' "+color+" >");
     }
 
-    protected void mainWrite() {
-        boolean multi = getAttribute("multi",true);
-        String filter = getAttribute("filter","");
-
-    if(filter.length()>0)
-        write("if(!data.hasName(\""+filter+"\")) return true;");
-
-        write("try{");
-        write("  " + getText().trim());
-        write("} catch (Exception e) {  ");
-        write("  addError(e.getMessage()); ");
-        write("  e.printStackTrace(); ");
-        write("  rollback(); ");
-        write("}");
-        write("return "+multi+";");
+    protected void endWrite() {
+        write("</menubar>");
+        flush();
     }
+
 }
