@@ -4,6 +4,9 @@
 
     <mx:Script>
 	<![CDATA[
+		import generated.Packstueck;
+		import generated.Position;
+		import generated.Workmodel;
  	 import mx.collections.ArrayCollection;
         import mx.controls.Alert;
         import mx.rpc.events.ResultEvent;
@@ -16,7 +19,7 @@
                 Alert.show(a.detailErrorMessage);
             }
             
-			treeEditor.treeData= new XML(a.data);
+			treeEditor.treeData= a.data;
         }
 
         private function newData(type:String):void {
@@ -29,7 +32,17 @@
         private function sendData():void {
             var a:ActionScriptAction = new ActionScriptAction();
             a.serverActionName="GetDataAction";
-            a.data=treeEditor.treeData;
+            var wm:Workmodel = new Workmodel();
+            wm.children.addItem(new Position()); 
+            wm.children.addItem(new Position());
+            var pos:Position = new Position();
+            pos.packstuecke.addItem(new Packstueck());
+            pos.packstuecke.addItem(new Packstueck());
+            pos.packstuecke.addItem(new Packstueck());
+            pos.packstuecke.addItem(new Packstueck());
+             
+            wm.children.addItem(pos); 
+            a.data=wm;
             actionservice.execute(a);
         }
 

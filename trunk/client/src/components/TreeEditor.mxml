@@ -2,7 +2,7 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 	<mx:Script><![CDATA[
 	 	[Bindable]
-		public var treeData:XML; 
+		public var treeData:Object; 
 		[Bindable]
 		public var selectedNode:Object;
 		
@@ -15,7 +15,7 @@
     <mx:HDividedBox color="0xffffff" width="100%" height="100%" x="5" y="5" paddingBottom="5" paddingRight="5">
          
             <mx:Tree id="myTree" width="30%" height="100%" labelField="@label"
-                showRoot="false" dataProvider="{treeData}" change="treeChanged(event)"/>
+                showRoot="false" dataProvider="{treeData}" change="treeChanged(event)" itemRenderer="components.MyTreeItemRenderer" />
 
             <mx:TextArea height="100%" width="70%"
                 text="Selected Item: {selectedNode.@label}"/>
