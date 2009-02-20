@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="server" default="build.all">
 
-    <property name="FLEX_HOME" value="D:\dev\adobe\flex_sdk_3"/>
-    <property name="home.dir" value="D:\dev\flow"/>
 
-    <property name="deploy.dir" value="${home.dir}\war"/>
-    <property name="cfg.dir" value="${home.dir}\server\conf"/>
-    <property name="client.src.dir" value="${home.dir}\client\src"/>
+    <property file="./build.properties" />
+
+    <property name="deploy.dir" value="${home.dir}/war"/>
+    <property name="cfg.dir" value="${home.dir}/server/conf"/>
+    <property name="client.src.dir" value="${home.dir}/client/src"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="classes" failonerror="false"/>
@@ -18,9 +18,8 @@
                     <include name="**/*.jar"/>
                 </fileset>
             </classpath>
-        </javac>
+        </javac>                                          
      </target>
-
 
 
     <target name="server.compile.generated" description="compiles the sources">
@@ -74,19 +73,19 @@
     </target>
     
     <target name="deploy" description="deploy to tomcat">
-        <copy overwrite="true" todir="${deploy.dir}\WEB-INF\classes">
+        <copy overwrite="true" todir="${deploy.dir}/WEB-INF/classes">
             <fileset dir="classes">
                 <include name="**/**"/>
                 <exclude name="generator/**"/>
                 <exclude name="logic/**"/>
             </fileset>
         </copy>
-        <copy overwrite="false" todir="${deploy.dir}\WEB-INF\lib">
+        <copy overwrite="false" todir="${deploy.dir}/WEB-INF/lib">
             <fileset dir="lib">
                 <include name="**/*.jar"/>
             </fileset>
         </copy>
-        <copy overwrite="false" todir="${deploy.dir}\WEB-INF\flex">
+        <copy overwrite="false" todir="${deploy.dir}/WEB-INF/flex">
             <fileset dir="conf">
                 <include name="**/messaging-config.xml"/>
                 <include name="**/proxy-config.xml"/>
@@ -94,7 +93,7 @@
                 <include name="**/services-config.xml"/>
             </fileset>
         </copy>
-        <copy overwrite="false" todir="${deploy.dir}\WEB-INF">
+        <copy overwrite="false" todir="${deploy.dir}/WEB-INF">
             <fileset dir="conf">
                 <include name="**/web.xml"/>
             </fileset>
