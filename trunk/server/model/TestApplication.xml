@@ -4,8 +4,8 @@
     <!--<import file="user.xml"/>-->
     <!--<import file="actions.xml"/>-->
     <import file="Vorgang.xml"/>
-
-    <application dir="D:/dev/flow/client/src/generated" color="blue">
+                       
+    <application dir="/client/src/generated" color="blue">
         <comment>
             Generated code by flow code generator
         </comment>
