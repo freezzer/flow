@@ -34,10 +34,6 @@ public class XmlServiceImpl implements XmlService {
     }
 
     private Object readBOFromXML(String xml) {
-//        xstream.alias("ViewDataPort", DataPort.class);
-//        xstream.alias("DataDataPort", DataPort.class);
-//        xstream.alias("DataPort", DataPort.class);
-
         return xstream.fromXML(xml);
     }
 
