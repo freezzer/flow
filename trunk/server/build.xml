@@ -136,7 +136,7 @@
 
     <target name="build.server" description="make server and deploy to tomcat" depends="server.compile.environment,generate,server.compile.generated,server.enhance,deploy" />
     <target name="build.client" description="make client and deploy to tomcat" depends="client.clean,client.compile,client.wrapper" />
-    <target name="build.all" description="deploy to tomcat" depends="build.client, build.server" />
+    <target name="build.all" description="deploy to tomcat" depends="build.server,build.client" />
 
 
 </project>

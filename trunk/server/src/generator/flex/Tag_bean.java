@@ -77,7 +77,6 @@ public class Tag_bean extends Tag{
 
         write("[RemoteClass(alias=\""+pckg+"."+name+"\")]");
         write("public class "+name+" "+" { ");
-        write("public class "+name+" "+" { ");
         writeLine();
     }
 
