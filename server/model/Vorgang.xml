@@ -9,11 +9,11 @@
             <field name="typ"/>
             <collection name="transitions" tree_children="true">
                 <bean name="Transition">
-                    <field name="name"/>
+                    <field name="name" label="true" />
                     <field name="dir"/>
                     <bean name="Workmodel">
                         <bean name="Kopf">
-                            <field name="mrn"/>
+                            <field name="mrn"  label="true" />
                             <field name="zollstelle"/>
                             <field name="erstellt" type="date"/>
                             <field name="angemeldet" type="Date"/>
@@ -28,26 +28,26 @@
                         <field name="zollstelle_ausgang"/>
                         <collection name="positionen" type="Position" tree_children="true">
                             <bean name="Position">
-                                <field name="nummer"/>
+                                <field name="nummer" label="true" />
                                 <field name="warennummer"/>
                                 <field name="roh_gewicht" type="Number" />
                                 <field name="netto_gewicht" type="number" />
                                 <collection name="verschluesse">
                                     <bean name="Verschluss">
-                                        <field name="nummer"/>
+                                        <field name="nummer" label="true" />
                                         <field name="zeichen"/>
                                     </bean>
                                 </collection>
                                 <collection name="packstuecke" tree_children="true">
                                     <bean name="Packstueck">
-                                        <field name="nummer"/>
+                                        <field name="nummer" label="true" />
                                         <field name="art"/>
                                         <field name="anzahl"/>
                                     </bean>
                                 </collection>
                                 <collection name="unterlagen">
                                     <bean name="Unterlage">
-                                        <field name="nummer"/>
+                                        <field name="nummer"  label="true" />
                                         <field name="art"/>
                                         <field name="bezeichnung"/>
                                         <field name="begin"/>
