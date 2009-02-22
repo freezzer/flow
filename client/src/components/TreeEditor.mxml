@@ -13,7 +13,7 @@
         
 	]]></mx:Script> 
 
-    <mx:HDividedBox color="0xffffff" width="100%" height="100%" x="5" y="5" paddingBottom="5" paddingRight="5">
+    <mx:HDividedBox color="0xffffff" width="100%" height="100%" >
          
             <mx:Tree id="myTree" width="30%" height="100%" labelField="label"
                 showRoot="true" dataProvider="{treeData}" change="treeChanged(event)"  color="#D02A2A"/>

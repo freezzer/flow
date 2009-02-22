@@ -26,7 +26,7 @@
             </menu>
         </menubar>
 
-        <!--<tabpanel x="2" y="24" color="silver"/>-->
+        <tabpanel />
 
     </application>
 </define>
