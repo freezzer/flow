@@ -36,14 +36,9 @@ public class Tag_menubar extends Tag {
 //        if(Util.isNotEmpty(color)) { color=" style='"+color+"colors'";  }
 
         writeLine();
-        write("   <mx:Script><![CDATA[\n" +
-              "       import mx.events.MenuEvent;\n" +
-              "       private function handleMenuClick(evt:MenuEvent):void {\n\n" +
-              "       }\n" +
-              "   ]]></mx:Script>\n\n");
 
-        write(" <mx:MenuBar id=\"mainMenuBar\" labelField=\"@label\" width='"+w+"' height='"+h+"'  " +
-              "   itemClick=\"handleMenuClick(event)\" >");
+        write(" <mx:MenuBar id='mainMenuBar' labelField='@label' width='"+w+"' height='"+h+"'  " +
+              "   itemClick='components.Util.handleMenuClick(event)' top='3' left='3' right='3' >");
         write("  <mx:XMLList>");
 
     }

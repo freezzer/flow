@@ -60,7 +60,7 @@ public class Tag_bean extends Tag{
         writeLine();
         write("package "+pckg+" {");
         write("import mx.collections.ArrayCollection;");
-        write("import util.Util");
+        write("import components.AsData;");
 
 //        getWriter().registerClass(name,pckg+"."+name );
 
@@ -76,7 +76,7 @@ public class Tag_bean extends Tag{
         String pckg = java_dir.replace('/','.');
 
         write("[RemoteClass(alias=\""+pckg+"."+name+"\")]");
-        write("public class "+name+" "+" { ");
+        write("public class "+name+" "+" extends AsData { ");
         writeLine();
     }
 

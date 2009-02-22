@@ -45,7 +45,7 @@ public class Tag_field extends Tag {
         writeLine();
         write("public var "+name+":"+type+";");
         if(getAttribute("label",false)){
-            write("public function get label():String { return Util.saveToString("+name+"); }");
+            write("public function get label():String { return saveToString("+name+"); }");
         }
     }
 
