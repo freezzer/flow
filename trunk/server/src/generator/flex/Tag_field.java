@@ -44,6 +44,9 @@ public class Tag_field extends Tag {
         if("boolean".equalsIgnoreCase(type)){ type = "Boolean";  }
         writeLine();
         write("public var "+name+":"+type+";");
+        if(getAttribute("label",false)){
+            write("public function get label():String { return Util.saveToString("+name+"); }");
+        }
     }
 
 
