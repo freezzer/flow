@@ -9,6 +9,14 @@ package components
 		    if(o==null)return def;
 		    return o.toString();
 		}
+		
+		public function getValue(key:String):Object{
+			return this[key];		}
+		
+		public function setValue(key:String, val:Object):void{
+			this[key] = val;
+		}
+
 	}
 	
 }
