@@ -11,12 +11,14 @@
          <menuitem label='Uebersicht Personen' type='lister'  model='Person' />
          <menuitem label='Neue Person anlegen' type='editor'  model='Person' />
      </menu>
-        
      <menu label='Administration'>
          <menuitem label='Uebersicht User' type='lister'  model='User' />
          <menuitem label='Neuen User anlegen' type='editor'  model='User' />
      </menu>
     </mx:XMLList>
    </mx:MenuBar>
-   <comps:AdvanceTabNavigator  height='100%' width='100%' id='mainTabs'  tabCloseEnable="true" tabDragEnable="true" />
+   <comps:AdvanceTabNavigator  height='100%' width='100%' id='mainTabs'  tabCloseEnable="true" tabDragEnable="true" >
+      <comps:EditField>
+      </comps:EditField>
+   </comps:AdvanceTabNavigator>
 </mx:Application>

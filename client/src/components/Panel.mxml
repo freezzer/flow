@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Container xmlns:mx="http://www.adobe.com/2006/mxml"
-              width="300" height="22">
+<mx:Container xmlns:mx="http://www.adobe.com/2006/mxml"  width="100%" height="100%" xmlns:ns1="components.*">
 
     <mx:Script> <![CDATA[
         import mx.collections.ArrayList;
-
-        private var data:Object;
+        import components.AsData;
+        import components.EditField;
+        
+        private var val:components.AsData;
         private var path:String;
         private var fields:ArrayList;
 
@@ -18,17 +19,24 @@
         }
 
 
-        public function getData():Object {
-            return data;
+        public function getData():AsData {
+            return val;
         }
 
-        public function setData(val:Object):void {
-            data = val;
+        public function setData(val:AsData):void {
+            this.val = val;
+            var i:int;
+            var len:int=fields.length;
+            var f:EditField=null;
+            for(i=0; i<len; i++){
+               f=fields.getItemAt(i) as EditField;
+               f.setValue( data.getValue(f.path) );
+            }
             
         }
 
-        public function addField(val:EditField):void {
-            fields.addItem(val);
+        public function addField(f:EditField):void {
+            fields.addItem(f);
         }
 
         public function getField(path:String):EditField {
@@ -43,6 +51,9 @@
         }
 
         ]]></mx:Script>
+        
+
+
 
 
 </mx:Container>
