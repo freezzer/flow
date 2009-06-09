@@ -1,0 +1,8 @@
+= flow is a model driven software-generator =
+
+hope to launch soon.
+
+it is maintained by [http://www.marochow.de/index.html andreas marochow], a software developer in hamburg/germany.
+
+it is driven by [http://marochow.de/gna-jorm/index.html gna_jorm] java or mapper, another
+project of me.
