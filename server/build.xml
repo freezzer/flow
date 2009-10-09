@@ -4,9 +4,7 @@
 
     <property file="./build.properties" />
 
-    <property name="deploy.dir" value="${home.dir}/war"/>
-    <property name="cfg.dir" value="${home.dir}/server/conf"/>
-    <property name="client.src.dir" value="${home.dir}/client/src"/>
+    <property name="deploy.dir" value="${home.dir}/webapp"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="classes" failonerror="false"/>
@@ -18,7 +16,13 @@
                     <include name="**/*.jar"/>
                 </fileset>
             </classpath>
-        </javac>                                          
+        </javac>
+        <copy todir="classes">
+            <fileset dir="src">
+                <include name="**/click.xml"/>
+            </fileset>
+        </copy>
+        
      </target>
 
 
@@ -72,6 +76,7 @@
         </java>
     </target>
     
+<!--
     <target name="deploy" description="deploy to tomcat">
         <copy overwrite="true" todir="${deploy.dir}/WEB-INF/classes">
             <fileset dir="classes">
@@ -99,6 +104,7 @@
             </fileset>
         </copy>
     </target>
+-->
 
     <!--  ********************************* CLIENT ************************************************* -->
 
@@ -106,37 +112,88 @@
     <taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/>
 
 
+
     <target name="client.clean" >
-        <delete dir="${deploy.dir}/client" />
-        <mkdir dir="${deploy.dir}/client" />
+      <delete dir="${deploy.dir}" failonerror="false"/>
+      <mkdir dir="${deploy.dir}" />
+      <mkdir dir="${deploy.dir}/${app.name}" />
+      <mkdir dir="${deploy.dir}/pages" />
     </target>
 
-    <target name="client.compile" description="compiles the flex sources" >
-        <delete file="${deploy.dir}/client/client.swf"/>
-        <mxmlc file="${client.src.dir}/client.mxml"
-               output="${deploy.dir}/client/client.swf"
-               services="${cfg.dir}/services-config.xml"
-                debug="true">
+    <target name="client.compile" description="compiles the flex sources">
+
+        <!--<mxmlc file="flex/src/backend.mxml"-->
+               <!--output="${deploy.dir}/${app.name}/backend.swf"-->
+               <!--debug="false" >-->
+
+            <!--<compiler.library-path dir="${home.dir}/flex/libs" append="true">-->
+                 <!--<include name="hessian-flex-3.1.5.swc" />-->
+           <!--</compiler.library-path>-->
+
+        <!--</mxmlc>-->
+
+        <mxmlc file="../client/client/src/${app.name}.mxml"
+               output="${deploy.dir}/${app.name}/${app.name}.swf"
+               debug="false" >
+
+         <compiler.library-path dir="${home.dir}/client/libs" append="true">
+              <include name="hessian-flex-3.1.5.swc" />
+              <include name="as3corelib.swc" />
+              <include name="map_flex_1_16.swc" />
+        </compiler.library-path>
+
         </mxmlc>
     </target>
 
-    <target name="client.wrapper" >
+
+    <target name="client.wrapper">
         <html-wrapper
                 height="100%"
                 width="100%"
                 template="express-installation"
-                bgcolor="red"
+                bgcolor="0xc0c0c0"
                 history="true"
-                title="Welcome to FLOW"
-                file="client.html"
-                application="flowApp"
-                swf="client"
-                output="${deploy.dir}/client"/>
+                title="Welcome to ${app.name}"
+                file="${app.name}.html"
+                application="${app.name}" swf="${app.name}"
+                output="${deploy.dir}/${app.name}"/>
     </target>
 
-    <target name="build.server" description="make server and deploy to tomcat" depends="server.compile.environment,generate,server.compile.generated,server.enhance,deploy" />
-    <target name="build.client" description="make client and deploy to tomcat" depends="client.clean,client.compile,client.wrapper" />
-    <target name="build.all" description="deploy to tomcat" depends="build.server,build.client" />
+    <target name="client.deploy">
+        <copy todir="${deploy.dir}/pages">
+            <fileset dir="src/de/ama/pages">
+                <include name="*.htm"/>
+            </fileset>
+        </copy>
+        <copy todir="${deploy.dir}/${app.name}">
+            <fileset dir="src/de/ama/pages">
+                <include name="*.html"/>
+                <include name="*.css"/>
+                <include name="*.gif"/>
+                <include name="*.jpg"/>
+                <include name="*.js"/>
+                <include name="*.swf"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="upload">
+        <ftp  verbose="yes" passive="yes" depends="yes"
+              server="amarow.de" remotedir="/home/ama/huyua" userid="ama" password="modrow81732">
+            <fileset dir=".">
+                <include name="bin/server.sh"/>
+                <include name="bin/schema.sh"/>
+                <include name="classes/**.**.xml"/>
+                <include name="classes/**/**.class"/>
+                <include name="lib/*.*"/>
+                <include name="webapp/**/*.*"/>
+            </fileset>
+        </ftp>
+    </target>
+    
+    <target name="build.server" description="make server and deploy to tomcat" depends="server.compile.environment,generate,server.compile.generated,server.enhance,client.deploy" />
+    <target name="build.client" description="make client and deploy to tomcat" depends="client.clean,client.compile,client.deploy,client.wrapper" />
+    <target name="build.all" description="make/deploy whole project" depends="build.server,build.client" />
 
 
 </project>

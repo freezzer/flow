@@ -29,7 +29,7 @@ public class UploadServlet extends HttpServlet {
         DiskFileItemFactory factory = new DiskFileItemFactory();                                    // We use the FileUpload package provided by Apache to process the request.
         ServletFileUpload upload = new ServletFileUpload(factory);
 
-        String catalog = Ini.getString("db.catalog", "huyua_production", "der default Catalog in Datenbank");
+        String catalog = Ini.getString("db.catalog", "flow", "der default Catalog in Datenbank");
         String description = "uploaded file";
         String userSessionId = null;
         boolean onlyImage = false;

@@ -66,7 +66,7 @@ public class GoogleServiceImpl implements GoogleService {
                 "&q=" + query);
 
         URLConnection connection = url.openConnection();
-        connection.addRequestProperty("Referer", "www.huyua.com.");
+        connection.addRequestProperty("Referer", "www.flow.com.");
 
         String line;
         StringBuilder builder = new StringBuilder();

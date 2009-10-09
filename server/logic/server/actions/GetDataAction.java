@@ -1,13 +1,12 @@
 package server.actions;
 
 
-import server.services.Environment;
+import de.ama.framework.action.ActionScriptAction;
 
 
-public class GetDataAction extends ServerAction {
+public class GetDataAction extends ActionScriptAction {
 
     public void execute() {
-        Object model = getData();
 
 //        if(model.equals("a")){
 //            Workmodel wm = new Workmodel();
@@ -26,10 +25,6 @@ public class GetDataAction extends ServerAction {
 //            model = kopf;
 //        }
 //
-        if(model!=null) {
-            String s = Environment.getXmlService().toXmlString(model);
-            System.out.println("received: \n" +s);
-        }
 
     }
 

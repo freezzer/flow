@@ -18,7 +18,7 @@ public class BorderPage extends Page {
 
     @Override
     public void onGet() {
-        Environment.getPersistentService().join("huyua_production");
+        Environment.getPersistentService().join("flow");
         stats = "u("+Environment.getPersistentService().getObjectCount(new Query(User.class))+")";
         Environment.getPersistentService().leave();
         super.onGet();
