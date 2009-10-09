@@ -3,16 +3,14 @@ package de.ama.framework.util;
 import de.ama.util.Log;
 
 import javax.imageio.*;
-import javax.imageio.stream.ImageInputStream;
 import javax.imageio.stream.FileImageOutputStream;
+import javax.imageio.stream.ImageInputStream;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
-
-import org.apache.commons.fileupload.FileItem;
 
 public class ImageConverter {
 

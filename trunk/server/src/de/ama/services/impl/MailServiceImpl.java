@@ -1,18 +1,15 @@
 package de.ama.services.impl;
 
-import de.ama.services.MailService;
 import de.ama.framework.mail.Email;
 import de.ama.framework.mail.MailFacade;
-import de.ama.util.Ini;
+import de.ama.services.MailService;
 import de.ama.util.Environment;
+import de.ama.util.Ini;
 
-import javax.mail.MessagingException;
+import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-import java.io.UnsupportedEncodingException;
-import java.io.IOException;
-import java.io.File;
 
 /**
  * Created by IntelliJ IDEA.

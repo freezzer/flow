@@ -1,7 +1,7 @@
 package de.ama.framework.action;
 
-import de.ama.huyua.UserData;
 import de.ama.services.Environment;
+import de.ama.services.impl.UserData;
 
 
 public class NewUserAction extends ActionScriptAction {

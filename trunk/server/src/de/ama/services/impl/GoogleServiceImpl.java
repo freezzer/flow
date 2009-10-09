@@ -2,6 +2,8 @@ package de.ama.services.impl;
 
 import de.ama.services.GoogleService;
 import de.ama.util.Util;
+import org.stringtree.json.JSONReader;
+import org.stringtree.json.JSONValidatingReader;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,10 +14,6 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Iterator;
-
-import org.stringtree.json.JSONValidatingReader;
-import org.stringtree.json.JSONReader;
 
 /**
  * Created by IntelliJ IDEA.

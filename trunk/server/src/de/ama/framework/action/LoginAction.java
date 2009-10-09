@@ -2,7 +2,7 @@ package de.ama.framework.action;
 
 import de.ama.services.Environment;
 import de.ama.services.impl.User;
-import de.ama.huyua.UserData;
+import de.ama.services.impl.UserData;
 import de.ama.util.Util;
 
 
