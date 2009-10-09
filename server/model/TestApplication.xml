@@ -9,7 +9,7 @@
         Generated code by flow code generator
     </comment>
 
-    <application dir="../../client/src/" name="client" color="blue">
+    <application dir="../../flex/src/" name="flow" color="blue">
 
         <menubar color="silver">
             <menu name="System">

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="110" height="26" initialize="init()">
+	<mx:Script>
+		<![CDATA[
+
+        import mx.controls.Image;
+
+
+		    [Embed(source="icons/starsgray.png")]
+		    private static const GRAY_STARS:Class;
+		    [Embed(source="icons/starsblue.png")]
+		    private static const BLUE_STARS:Class;
+		    [Embed(source="icons/starsgreen.png")]
+		    private static const GREEN_STARS:Class;
+		    [Embed(source="icons/starsred.png")]
+		    private static const RED_STARS:Class;
+
+		    public var maxValue:Number=104;
+		    public var snap:Boolean=true;
+		    
+		    private var back:Image = new Image();
+		    private var fore:Image = new Image();
+
+            public function init():void{
+		    	back.x=2; back.y=2; 
+		    	back.width=104; 	back.height=22;
+		    	back.scaleContent = false;
+                addChild(back);
+
+		    	fore.x=2; fore.y=2; 
+		    	fore.width=104; 	fore.height=22;
+		    	fore.scaleContent = false;
+		    	addChild(fore);
+		    }
+		    
+            private function slide(e:MouseEvent):void {
+            	if(e.buttonDown){
+            		value = e.localX/104 * maxValue;
+                }
+            }
+
+		    public function set activeSlider(b:Boolean):void{
+              if(b){
+                  addEventListener(MouseEvent.MOUSE_MOVE,slide);
+                  addEventListener(MouseEvent.MOUSE_DOWN,slide);
+              } else {
+                  removeEventListener(MouseEvent.MOUSE_MOVE,slide)
+                  removeEventListener(MouseEvent.MOUSE_DOWN,slide)
+              }
+
+            }
+		    public function set color(c:String):void{
+                back.source = GRAY_STARS;
+                
+		    	if("blue"==c){
+  		    	   fore.source = BLUE_STARS;
+		    	} else
+		    	if("green"==c){
+  		    	   fore.source = GREEN_STARS;
+		    	} else {
+                    fore.source = RED_STARS;
+                }
+		    }
+		    
+			public function set value(n:Number):void{
+				if(n<0.1)     n= 0.1;
+				if(n>maxValue)n = maxValue;
+				if(snap){
+					n = Math.round(n);
+				}
+  		        fore.width = n/maxValue*104;
+			}
+
+			public function get value():Number{
+				return maxValue/104*fore.width ;
+			}
+		]]>
+	</mx:Script>
+</mx:Canvas>

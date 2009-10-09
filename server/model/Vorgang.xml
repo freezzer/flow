@@ -2,7 +2,7 @@
 <define>
 
     <model java_dir="bom/ausfuhr" 
-           flex_dir="../../client/src/generated" flex_package="generated">
+           flex_dir="flex/src/generated" flex_package="generated">
         <bean name="Vorgang" persistent="true" unique-key="id">
             <field name="nummer"/>
             <field name="id"/>
