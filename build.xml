@@ -2,23 +2,23 @@
 <project name="server" default="build.all">
 
 
-    <property file="./build.properties" />
+    <property file="build.properties" />
 
     <property name="deploy.dir" value="${home.dir}/webapp"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
-         <delete dir="classes" failonerror="false"/>
-         <mkdir dir="classes" />
-        <javac destdir="classes" debug="on">
-            <src path="src"/>
+         <delete dir="server/classes" failonerror="false"/>
+         <mkdir dir="server/classes" />
+        <javac destdir="server/classes" debug="on">
+            <src path="server/src"/>
             <classpath>
-                <fileset dir="lib">
+                <fileset dir="server/lib">
                     <include name="**/*.jar"/>
                 </fileset>
             </classpath>
         </javac>
-        <copy todir="classes">
-            <fileset dir="src">
+        <copy todir="server/classes">
+            <fileset dir="server/src">
                 <include name="**/click.xml"/>
             </fileset>
         </copy>
@@ -27,13 +27,13 @@
 
 
     <target name="server.compile.generated" description="compiles the sources">
-        <delete dir="classes/gen" failonerror="false"/>
-        <mkdir dir="classes/gen"/>
-        <javac destdir="classes" debug="on">
-            <src path="generated"/>
-            <src path="logic"/>
+        <delete dir="server/classes/gen" failonerror="false"/>
+        <mkdir dir="server/classes/gen"/>
+        <javac destdir="server/classes" debug="on">
+            <src path="server/generated"/>
+            <src path="server/logic"/>
             <classpath>
-                <fileset dir="lib">
+                <fileset dir="server/lib">
                     <include name="**/*.jar"/>
                 </fileset>
             </classpath>
@@ -42,19 +42,19 @@
 
 
     <target name="generate" description="generates the sources">
-        <delete dir="generated" failonerror="false"/>
-        <mkdir dir="generated"/>
+        <delete dir="server/generated" failonerror="false"/>
+        <mkdir dir="server/generated"/>
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
-                <fileset dir="lib">
+                <fileset dir="server/lib">
                     <include name="**/*.jar"/>
                 </fileset>
-                <pathelement location="classes"/>
+                <pathelement location="server/classes"/>
             </classpath>
             <arg value="inFile"/>
-            <arg file="model/TestApplication.xml"/>
+            <arg file="server/model/TestApplication.xml"/>
             <arg value="outDir"/>
-            <arg path="generated"/>
+            <arg path="server/generated"/>
             <arg value="targets"/>
             <arg value="java,flex"/>
         </java>
@@ -64,13 +64,13 @@
     <target name="server.enhance" description="enhances the classes">
         <java classname="de.ama.db.tools.Enhancer" fork="true">
             <classpath>
-                <fileset dir="lib">
+                <fileset dir="server/lib">
                     <include name="**/*.jar"/>
                 </fileset>
-                <pathelement location="classes"/>
+                <pathelement location="server/classes"/>
             </classpath>
             <arg value="indir"/>
-            <arg path="classes"/>
+            <arg path="server/classes"/>
             <arg value="verbose"/>
             <arg value="1"/>
         </java>
@@ -132,11 +132,11 @@
 
         <!--</mxmlc>-->
 
-        <mxmlc file="../client/client/src/${app.name}.mxml"
+        <mxmlc file="flex/src/${app.name}.mxml"
                output="${deploy.dir}/${app.name}/${app.name}.swf"
                debug="false" >
 
-         <compiler.library-path dir="${home.dir}/client/libs" append="true">
+         <compiler.library-path dir="${home.dir}/flex/libs" append="true">
               <include name="hessian-flex-3.1.5.swc" />
               <include name="as3corelib.swc" />
               <include name="map_flex_1_16.swc" />
@@ -161,12 +161,12 @@
 
     <target name="client.deploy">
         <copy todir="${deploy.dir}/pages">
-            <fileset dir="src/de/ama/pages">
+            <fileset dir="server/src/de/ama/pages">
                 <include name="*.htm"/>
             </fileset>
         </copy>
         <copy todir="${deploy.dir}/${app.name}">
-            <fileset dir="src/de/ama/pages">
+            <fileset dir="server/src/de/ama/pages">
                 <include name="*.html"/>
                 <include name="*.css"/>
                 <include name="*.gif"/>
@@ -179,13 +179,13 @@
 
     <target name="upload">
         <ftp  verbose="yes" passive="yes" depends="yes"
-              server="amarow.de" remotedir="/home/ama/huyua" userid="ama" password="modrow81732">
+              server="amarow.de" remotedir="/home/ama/flow" userid="ama" password="modrow81732">
             <fileset dir=".">
-                <include name="bin/server.sh"/>
-                <include name="bin/schema.sh"/>
-                <include name="classes/**.**.xml"/>
-                <include name="classes/**/**.class"/>
-                <include name="lib/*.*"/>
+                <include name="server/bin/server.sh"/>
+                <include name="server/bin/schema.sh"/>
+                <include name="server/classes/**.**.xml"/>
+                <include name="server/classes/**/**.class"/>
+                <include name="server/lib/*.*"/>
                 <include name="webapp/**/*.*"/>
             </fileset>
         </ftp>
