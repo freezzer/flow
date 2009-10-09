@@ -30,7 +30,7 @@ public class PictureServiceImpl implements PictureService {
         Picture picture = new Picture();
         picture.setOwner(user);
         picture.setDescription(description);
-        String context = Ini.getString("server.context","/huyua"       ,"http context/doc-base of this server");
+        String context = Ini.getString("server.context","/flow"       ,"http context/doc-base of this server");
 
         long num = Environment.getPersistentService().getNextNumber(PICTURE_NUMBER);
         String fname = ""+ num +"_"+fileItem.getName();
@@ -59,7 +59,7 @@ public class PictureServiceImpl implements PictureService {
         Picture picture = (Picture) Environment.getPersistentService().getObject(pictureId);
         if(picture == null){     return ;  }  // =================================>
 
-        String context = Ini.getString("server.context","/huyua"       ,"http context/doc-base of this server");
+        String context = Ini.getString("server.context","/flow"       ,"http context/doc-base of this server");
         File file = de.ama.util.Environment.getFile("data/"+context ,picture.getFileName() );
         if(file.exists()){
             file.delete();

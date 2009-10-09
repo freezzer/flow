@@ -2,6 +2,7 @@ package de.ama.services.impl;
 
 import de.ama.services.PersistentService;
 import de.ama.db.PersistentMarker;
+import de.ama.framework.data.Data;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,7 +11,7 @@ import de.ama.db.PersistentMarker;
  * Time: 14:05:55
  * To change this template use File | Settings | File Templates.
  */
-public class PictureData implements PersistentMarker {
+public class PictureData extends Data {
 
     public User owner;
     public String description;

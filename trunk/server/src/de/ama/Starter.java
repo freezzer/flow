@@ -49,7 +49,7 @@ public class Starter {
             de.ama.services.Environment.initProduction();
             int port       = Ini.getInt("server.port",8080               ,"http port where this server is listening");
 
-            String context = Ini.getString("server.context","/huyua"       ,"http context/doc-base of this server");
+            String context = Ini.getString("server.context","/flow"       ,"http context/doc-base of this server");
 
             Server server = new Server(port);
 
