@@ -40,7 +40,7 @@
     <target name="generate" description="generates the sources">
         <delete dir="generated" failonerror="false"/>
         <mkdir dir="generated"/>
-        <java classname="generator.Starter" fork="true">
+        <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
                 <fileset dir="lib">
                     <include name="**/*.jar"/>

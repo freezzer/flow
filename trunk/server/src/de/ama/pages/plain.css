@@ -1,0 +1,173 @@
+body {
+	font:				100% "Lucida Grande", Verdana, "Lucida Sans Unicode", Arial, sans-serif;
+	margin:				30px;
+	padding:			0;
+}
+p {
+	font-size:			0.7em;
+	margin:				0 0 10px 0;
+}
+p.pages {
+	font-size:			0.57em;
+}
+li {
+	font-size:			0.7em;
+}
+img {
+	font-size:			0.65em;
+	border:				none;
+}
+h1 {
+	font:				2.1em Arial, Helvetica, sans-serif;
+	font-weight:		bold;
+	text-transform:		lowercase;
+	margin:				0;
+}
+h2 {
+	font:				1.6em Arial, Helvetica, sans-serif;
+	font-weight:		bold;
+	text-transform:		lowercase;
+	margin:				0 0 5px 0;
+}
+h3 {
+	font:				1.3em Arial, Helvetica, sans-serif;
+	font-weight:		bold;
+	text-transform:		lowercase;
+	margin:				0 0 5px 0;
+}
+h4 {
+	font:				0.85em Arial, Helvetica, sans-serif;
+	font-weight:		bold;
+	text-transform:		lowercase;
+	margin:				0 0 2px 0;
+}
+.thumbnail h4 {
+	font-size:			0.7em;
+	text-transform:		none;
+	margin:				0 0 15px 0;
+}
+h5 {
+	font:				0.72em Arial, Helvetica, sans-serif;
+	font-weight:		bold;
+	text-transform:		lowercase;
+	margin:				0 0 2px 0;
+}
+
+#subnav p {
+	font-size:			0.57em;
+	font-weight:		bold;
+	margin:				0 0 6px 0;
+}
+#subnav li {
+	font-size:			0.57em;
+	font-weight:		bold;
+	line-height:		125%;
+}
+#subnav #sideinfo, #subnav #search, #content {
+	margin-top:			15px;
+	border-top:			1px solid #CCC;
+	padding:			15px 0 0 0;
+}
+#subnav #sideinfo p {
+	font-weight:		normal;
+}
+#zoomthing {
+	margin:				0 0 10px 0;
+}
+#instructions {
+	font-size:			0.57em;
+	margin:				15px 0 0 0;
+}
+#rssfeedlist {
+	text-transform:		lowercase;
+}
+#footer {
+	font-size:			0.57em;
+	margin-top:			15px;
+	border-top:			1px solid #CCC;
+	padding:			15px 0 0 0;
+}
+.news #footer, .log #footer {
+	margin-top:			0;
+	border-top:			none;
+	padding-top:		0;
+}
+
+/* log */
+
+.entry {
+	margin-bottom:		15px;
+	border-bottom:		1px solid #CCC;
+	padding:			0 0 5px 0;
+}
+.pages {
+	margin-bottom:		15px;
+}
+.comment, #addcomment {
+	margin-bottom:		15px;
+	border-bottom:		1px solid #CCC;
+	padding:			0 0 5px 0;
+}
+#addcomment {
+	padding-bottom:		15px;
+}
+.news #entries {
+	margin-top:			15px;
+	border-top:			1px solid #CCC;
+	padding:			15px 0 0 0;
+}
+.entry h4, .comment h4 {
+	margin:				0;
+}
+.entry .date, .comment .date, .copyright {
+	font-size:			xx-small;
+	margin:				0 0 10px 0;
+}
+.entry .entrylinks {
+	font-size:			0.57em;
+	margin:				0 0 10px 0;
+}
+.image {
+	margin:				0 0 15px 0;
+}
+#rssfeedlist p {
+	margin:				0 0 8px 0;
+}
+#rssfeedlist .rssaddress, .commentmessage {
+	font-size:			0.7em;
+}
+
+/* forms */
+
+form {
+	margin:				0;
+	padding:			0;
+}
+#name, #email, #subject, #message,
+#formname, #formemail, #formsite, #formtext,
+#search input {
+	font:				0.7em "Lucida Grande", Arial, Helvetica, sans-serif;
+	width:				492px;
+}
+#search input {
+	width:				124px;
+}
+label, .label {
+	display:			block;
+	font-size:			0.57em;
+	font-weight:		bold;
+	margin:				2px 0 8px 0;
+}
+#button input {
+	font:				0.72em Arial, Helvetica, sans-serif;
+	font-weight:		bold;
+}
+.message {
+	font-size:			0.7em;
+	font-weight:		bold;
+	margin:				0 0 10px 0;
+}
+
+.checkbox {
+	font-size:			0.7em;
+}
