@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
+                xmlns:comps="de.ama.framework.gui.*"
+                layout="absolute" width="272" height="172"
+                title="Login" showCloseButton="true"
+                close="PopUpManager.removePopUp(this)"
+                borderAlpha="0.75" backgroundColor="#FFFFFF" backgroundAlpha="1.0" color="#000000" borderColor="#6E7272" borderStyle="solid" cornerRadius="3" alpha="1.0" borderThickness="8">
+    <mx:states>
+        <mx:State name="newAccount">
+            <mx:SetProperty name="height" value="312.63336"/>
+            <mx:SetProperty name="y" value="120"/>
+            <mx:SetProperty target="{okButton}" name="y" value="197"/>
+            <mx:SetProperty target="{pwdInput}" name="y" value="52"/>
+            <mx:SetProperty target="{label1}" name="y" value="54"/>
+            <mx:AddChild relativeTo="{userInput}" position="before">
+                <mx:Label x="49.65" y="84" text="Bestätigen" id="label0" width="87.26667" textAlign="right" height="18" fontWeight="bold"/>
+            </mx:AddChild>
+            <mx:AddChild relativeTo="{userInput}" position="before">
+                <mx:TextInput x="149" y="82" id="pwdRepeatInput" displayAsPassword="true" tabIndex="3" width="219.9" height="22" maxChars="20"/>
+            </mx:AddChild>
+            <mx:SetProperty name="width" value="447.30002"/>
+            <mx:SetProperty target="{okButton}" name="x" value="299.9"/>
+            <mx:SetProperty target="{pwdInput}" name="x" value="149"/>
+            <mx:SetProperty target="{userInput}" name="x" value="149"/>
+            <mx:SetProperty target="{label1}" name="x" value="78.35"/>
+            <mx:SetProperty target="{label2}" name="x" value="69.65"/>
+            <mx:SetProperty target="{label2}" name="text" value="Name"/>
+            <mx:SetProperty target="{label2}" name="width" value="67.333336"/>
+            <mx:SetProperty target="{label1}" name="width" value="58.666664"/>
+            <mx:SetStyle target="{label1}" name="textAlign" value="right"/>
+            <mx:SetStyle target="{label2}" name="textAlign" value="right"/>
+            <mx:SetProperty target="{label1}" name="height" value="18"/>
+            <mx:SetProperty target="{label2}" name="height" value="18"/>
+            <mx:SetProperty name="title" value="New Account"/>
+            <mx:SetProperty target="{okButton}" name="label" value="Ok"/>
+            <mx:SetProperty target="{userInput}" name="text"/>
+            <mx:SetProperty target="{pwdInput}" name="text"/>
+            <mx:SetStyle name="color" value="#000000"/>
+            <mx:AddChild relativeTo="{label1}" position="before">
+                <mx:Label x="69.65" y="113" text="Email" textAlign="right" width="67.333336" height="18" fontWeight="bold"/>
+            </mx:AddChild>
+            <mx:AddChild relativeTo="{pwdInput}" position="before">
+                <mx:TextInput x="149" y="112" id="emailInput" tabIndex="4" width="219.9" height="22" maxChars="40"/>
+            </mx:AddChild>
+            <mx:SetProperty target="{label1}" name="text" value="Passwort"/>
+            <mx:SetProperty target="{userInput}" name="width" value="219.9"/>
+            <mx:SetProperty target="{userInput}" name="height" value="22"/>
+            <mx:SetProperty target="{pwdInput}" name="width" value="219.9"/>
+            <mx:SetProperty target="{pwdInput}" name="height" value="22"/>
+            <mx:SetProperty target="{userInput}" name="y" value="23"/>
+            <mx:SetProperty target="{label2}" name="y" value="25"/>
+            <mx:SetProperty name="showCloseButton" value="true"/>
+            <mx:AddChild position="lastChild">
+                <mx:Label x="149" y="144" text="acxd12ul" id="monkeyLabel" width="80.25" color="#127D1C" fontFamily="Verdana" fontSize="12" height="21" textAlign="center" fontWeight="bold"/>
+            </mx:AddChild>
+            <mx:AddChild position="lastChild">
+                <mx:Label x="237.25" y="144" text="-&gt;" width="22" color="#0D7A02" fontFamily="Verdana" fontSize="12" height="21"/>
+            </mx:AddChild>
+            <mx:AddChild position="lastChild">
+                <mx:TextInput x="267.25" y="142" id="monkeyRepeat" displayAsPassword="false" tabIndex="5" width="101.65" text="" color="#000000" fontFamily="Verdana" fontSize="12" maxChars="10"/>
+            </mx:AddChild>
+            <mx:AddChild relativeTo="{label1}" position="before">
+                <mx:Label x="45.7" y="146" text="bitte abtippen" textAlign="right" width="95.3" height="18"/>
+            </mx:AddChild>
+            <mx:SetProperty target="{okButton}" name="tabIndex" value="6"/>
+            <mx:SetStyle target="{okButton}" name="color" value="#000000"/>
+            <mx:RemoveChild target="{linkbutton1}"/>
+            <mx:SetProperty target="{userInput}" name="maxChars" value="20"/>
+            <mx:SetProperty target="{pwdInput}" name="maxChars" value="20"/>
+        </mx:State>
+    </mx:states>
+
+
+    <mx:Script><![CDATA[
+        import de.ama.framework.action.ActionScriptAction;
+        import de.ama.framework.action.ActionStarter;
+        import de.ama.framework.action.LoginAction;
+        import de.ama.framework.action.NewUserAction;
+        import de.ama.framework.util.Callback;
+        import de.ama.framework.util.Environment;
+        import de.ama.framework.util.Util;
+
+        import mx.events.ValidationResultEvent;
+        import mx.managers.PopUpManager;
+
+        private var monkeyStrings:Array = ["aevgG5","4dexD4","1qSdft","xcd43S","1f2rT5","lk2Lc","aecgG5","4dex44","1qScft","xcdb3S","9f2vT5","hk2Lc"];
+        private var monkeyIndex:int = 0;
+
+
+        private function newAccount():Boolean {
+            return Util.isEqual(currentState, "newAccount");
+        }
+
+
+        public function actionReturnHandler(a:ActionScriptAction):void {
+            if (a is LoginAction) {
+                var la:LoginAction = LoginAction(a);
+                if (la.success) {
+                    Environment.registerLoginData(la);
+                    PopUpManager.removePopUp(this);
+                } else {
+                    Util.showMessage("Anmeldung fehlgeschlagen, falls Sie noch keinen Account haben, \n" +
+                                     "klicken Sie bitte auf 'neuer Account' ");
+                    userInput.text = "";
+                    pwdInput.text = "";
+                    linkbutton1.label="neuer Account";
+                    linkbutton1.setStyle("color","#ff0000");
+                    linkbutton1.setStyle("fontWeight","bold");
+                }
+            }
+            if (a is NewUserAction) {
+                var nua:NewUserAction = NewUserAction(a);
+                if (Util.isEqual("ok", nua.data)) {
+                    Util.showMessage("Ihr Account wurde angelegt");
+                    PopUpManager.removePopUp(this);
+                } else {
+                    Util.showMessage("Account konnte nicht angelegt werden,\n oder es besteht schon ein Account mit Ihren Namen.");
+                    userInput.text = "";
+                }
+
+            }
+
+        }
+
+        private function handleValid(eventObj:ValidationResultEvent):void {
+            if (eventObj.type == ValidationResultEvent.VALID)
+            // Enable Submit button.
+                okButton.enabled = true;
+            else
+                okButton.enabled = false;
+        }
+
+
+        public function okButtonPressed():void {
+            if (newAccount()) {
+                if (checksNewAccount()) {
+                    var na:NewUserAction = new NewUserAction();
+                    na.name = userInput.text;
+                    na.pwd = pwdInput.text;
+                    na.email = emailInput.text;
+                    na.type = NewUserAction.TYPE_NEW;
+                    ActionStarter.instance.execute(na, new Callback(this, actionReturnHandler));
+                }
+            } else {
+                if (checksLogin()) {
+                    var la:LoginAction = new LoginAction();
+                    la._user = userInput.text;
+                    la._pwd = pwdInput.text;
+                    ActionStarter.instance.execute(la, new Callback(this, actionReturnHandler));
+                }
+            }
+        }
+
+        private function createNewMonkeyLabel():void {
+            monkeyLabel.text = monkeyStrings[monkeyIndex];
+            monkeyIndex++;
+            if (monkeyIndex > monkeyStrings.length - 1) {
+                monkeyIndex = 0;
+            }
+            monkeyRepeat.text = "";
+        }
+
+        private function newAccountButtonPressed():void {
+            currentState = 'newAccount';
+            this.x = (parent.width / 2 - (this.width / 2));
+            createNewMonkeyLabel();
+        }
+
+
+        private function checksNewAccount():Boolean {
+            if (!checksLogin()) return false;
+
+            if (!Util.isEqual(pwdInput.text, pwdRepeatInput.text)) {
+                Util.showMessage("Bitte wiederholen Sie das Passwort im Feld Bestätigen \n" +
+                                 "Bitte beachten Sie auch die groß/klein Schreibweise.")
+                createNewMonkeyLabel();
+                return false;
+            }
+
+            if (!Util.isEqual(monkeyRepeat.text, monkeyLabel.text)) {
+                Util.showMessage("Bitte geben Sie die grüne Zeichenkette genau in das vorgesehene Feld ein.\n" +
+                                 "Bitte beachten Sie auch die groß/klein Schreibweise.")
+                createNewMonkeyLabel();
+                return false;
+            }
+
+            if (emailInput.text.length < 6 || emailInput.text.indexOf("@") < 1 || emailInput.text.indexOf(".") < 3) {
+                Util.showMessage("Im Feld Email muss eine gültige email Adresse angegeben werden");
+                createNewMonkeyLabel();
+                return false;
+            }
+
+
+            return true;
+
+        }
+
+        private function checksLogin():Boolean {
+
+            if (userInput.text.length < 5) {
+                Util.showMessage("Bitte geben Sie einen Namen mit mindestens 5 Zeichen ein");
+                return false;
+            }
+
+            if (userInput.text.length > 15) {
+                Util.showMessage("Bitte geben Sie einen Namen mit maximal 20 Zeichen ein");
+                return false;
+            }
+
+            var str:String = Util.isAlphaNumUml(userInput.text);
+            if (!Util.isEmpty(str)) {
+                Util.showMessage("Im Feld Name ist das Zeichen '"+str+"' nicht erlaubt");
+                return false;
+            }
+
+            if (pwdInput.text.length < 5) {
+                Util.showMessage("Bitte geben Sie ein Passwort mit mindestens 5 Zeichen ein");
+                return false;
+            }
+            
+            if (pwdInput.text.length > 15) {
+                Util.showMessage("Bitte geben Sie einen Passwort mit maximal 20 Zeichen ein");
+                return false;
+            }
+
+            str = Util.isAlphaNumUml(pwdInput.text);
+            if (!Util.isEmpty(str)) {
+                Util.showMessage("Im Feld Passwort ist das Zeichen '"+str+"' nicht erlaubt");
+                return false;
+            }
+
+            return true;
+
+        }
+
+        ]]></mx:Script>
+
+
+    <mx:Label x="21.35" y="7" text="Name" id="label2" textAlign="right" width="44.666668" height="18" fontWeight="bold"/>
+    <mx:Label x="6" y="42" text="Password" id="label1" textAlign="right" fontWeight="bold"/>
+
+    <mx:TextInput x="74" y="5" id="userInput" tabIndex="1" maxChars="20" />
+    <mx:TextInput x="74" y="40" id="pwdInput" displayAsPassword="true" tabIndex="2" maxChars="20"/>
+
+
+    <mx:Button x="167" y="84" label="Log in" click="okButtonPressed()" id="okButton" width="69" color="#000000" tabIndex="3"/>
+    <mx:LinkButton x="10" y="84" label="neu bei huyua ?" width="136" fontWeight="normal" textAlign="center" color="#1AA8C2" id="linkbutton1" click="newAccountButtonPressed()"/>
+
+
+</mx:TitleWindow>

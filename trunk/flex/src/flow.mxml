@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:comps="de.ama.framework.gui.*" layout="vertical" width='100%' height='100%' paddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' >
+
+   <mx:MenuBar id='mainMenuBar' labelField='@label' width='100%' height='20'  top='3' left='3' right='3' >
+    <mx:XMLList>
+     <menu label='System'>
+         <menuitem label='Anmelden' />
+         <menuitem label='Abmelden' />
+     </menu>
+     <menu label='Stammdaten'>
+         <menuitem label='Uebersicht Personen' type='lister'  model='Person' />
+         <menuitem label='Neue Person anlegen' type='editor'  model='Person' />
+     </menu>
+     <menu label='Administration'>
+         <menuitem label='Uebersicht User' type='lister'  model='User' />
+         <menuitem label='Neuen User anlegen' type='editor'  model='User' />
+     </menu>
+    </mx:XMLList>
+   </mx:MenuBar>
+   <comps:AdvanceTabNavigator  height='100%' width='100%' id='mainTabs'  tabCloseEnable="true" tabDragEnable="true" />
+</mx:Application>

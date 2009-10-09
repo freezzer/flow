@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
+                xmlns:comps="de.ama.framework.gui.*"
+                layout="absolute" width="456" height="182"
+                showCloseButton="true"
+                close="PopUpManager.removePopUp(this)"
+                borderAlpha="0.75" backgroundColor="#FFFFFF" backgroundAlpha="1.0" color="#000000" 
+                borderColor="#B5D7DD" borderStyle="solid" cornerRadius="0" alpha="1.0" 
+                borderThickness="6" title="Info">
+    <mx:states>
+        <mx:State name="expanded">
+            <mx:SetProperty name="height" value="376"/>
+            <mx:SetProperty target="{button1}" name="y" value="288"/>
+            <mx:AddChild position="lastChild">
+                <mx:TextArea x="10" y="71" width="400" height="209" id="detailsField" wordWrap="true" editable="false"/>
+            </mx:AddChild>
+            <mx:RemoveChild target="{linkbutton1}"/>
+        </mx:State>
+        <mx:State name="info">
+            <mx:RemoveChild target="{linkbutton1}"/>
+            <mx:SetStyle target="{msgField}" name="textAlign" value="center"/>
+            <mx:SetStyle target="{msgField}" name="fontWeight" value="bold"/>
+            <mx:SetProperty target="{button1}" name="y" value="46"/>
+            <mx:SetProperty name="height" value="126"/>
+            <mx:SetProperty target="{msgField}" name="height" value="38"/>
+            <mx:SetProperty name="showCloseButton" value="false"/>
+            <mx:SetProperty name="title"/>
+            <mx:SetStyle target="{msgField}" name="borderStyle" value="none"/>
+        </mx:State>
+    </mx:states>
+    <mx:Script><![CDATA[
+        import mx.managers.PopUpManager;
+
+        private var detailsMsg:String="";
+        
+        private function close():void {
+            PopUpManager.removePopUp(this);
+        }
+
+        private function expandHandler():void {
+            currentState = "expanded";
+            detailsField.text = detailsMsg;
+        }
+
+        public function set msg (s:String):void{
+            msgField.text = s;
+        }
+
+        public function set detailedMsg (s:String):void{
+            detailsMsg = s;
+        }
+
+
+        ]]></mx:Script>
+    <mx:Button x="367" y="94" label="OK" id="button1" click="close()"/>
+    <mx:TextArea x="10" y="0" width="400" height="52" id="msgField" wordWrap="true" editable="false" cornerRadius="0"/>
+    <mx:LinkButton x="10" y="60" label="details ..." color="#7DCADD" width="77" fontWeight="normal" height="18"
+                   id="linkbutton1" click="expandHandler()"/>
+
+
+
+</mx:TitleWindow>

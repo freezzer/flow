@@ -179,11 +179,11 @@ public class Tag extends XmlElement implements Const {
 
     protected XmlElement getEmptyInstance(org.jdom.Element je) {
 
-        String className = "generator." + Tag.target + ".Tag_" + je.getName();
+        String className = "de.ama.generator." + Tag.target + ".Tag_" + je.getName();
         Tag tag = getTagImpl(className);
         if(tag!=null) return tag;
 
-        className = "generator.Tag_" + je.getName();
+        className = "de.ama.generator.Tag_" + je.getName();
         tag = getTagImpl(className);
         if(tag!=null) return tag;
 
@@ -261,7 +261,7 @@ public class Tag extends XmlElement implements Const {
     }
 
     public void execute(){
-
+        System.out.println("Tag.execute "+ getClass().getName()+" "+getText());
         beginWrite();
 
         mainWrite();
