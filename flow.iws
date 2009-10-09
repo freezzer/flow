@@ -1,41 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\impl\UserServiceImpl.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/stringtree-json-2.0.9.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\actions\ServerAction.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/mysql-connector-java-5.1.0-bin.jar" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/server/beans" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/server/services" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/click-2.0.1-incubating.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/jetty-6.1.15.rc3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/servlet-api.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\impl\XmlServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\actions\NewUserAction.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.ipr" afterPath="$PROJECT_DIR$/flow.ipr" />
+    <list default="true" readonly="true" name="Default" comment="restart">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/server" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/gna-jorm-runtime-05.11.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\actions\LoginAction.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\PersistentService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/server/actions" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/activation.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\impl\PersistentServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\beans\User.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/google_api_key.txt" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\XmlService.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/server/services/impl" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/jetty-util-6.1.15.rc3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/famfamfam_silk_icons_v013.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/junit.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\UserService.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\actions\ActionScriptAction.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\impl\ActionServiceImpl.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/mail.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\Environment.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/javassist.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\services\ActionService.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/hessian-3.2.1.jar" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.project" afterPath="$PROJECT_DIR$/client/.project" />
@@ -436,10 +404,10 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34354487" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3115124" sideWeight="0.0" order="8" side_tool="false" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19413093" sideWeight="0.5" order="9" side_tool="false" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19413093" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26537216" sideWeight="0.7979684" order="0" side_tool="false" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26537216" sideWeight="0.7979684" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31946006" sideWeight="0.5" order="2" side_tool="false" />
