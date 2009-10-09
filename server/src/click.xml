@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<click-app automapping="false" >
+
+  <pages package="de.ama.pages" automapping="false" >
+      <page path="home.htm" classname="HomePage"/>
+      <page path="border.htm" classname="BorderPage"/>
+      <page path="impressum.htm" classname="ImpressumPage"/>
+  </pages>
+  <pages automapping="false" >
+      <page path="click/not-found.htm" classname="org.apache.click.Page"/> 
+      <page path="click/error.htm" classname="org.apache.click.util.ErrorPage"/>
+  </pages>
+
+  <mode value="debug"/>
+
+</click-app>
