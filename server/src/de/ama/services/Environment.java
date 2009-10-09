@@ -2,7 +2,6 @@ package de.ama.services;
 
 import de.ama.framework.util.PreMainInitializer;
 import de.ama.util.Util;
-import de.ama.util.Ini;
 
 import java.io.File;
 import java.util.HashMap;
@@ -25,7 +24,6 @@ public class Environment {
         
         singletons.put(UserService.NAME         ,getBean("de.ama.services.impl.UserServiceImpl"));
         singletons.put(ActionService.NAME       ,getBean("de.ama.services.impl.ActionServiceImpl"));
-        singletons.put(DomainService.NAME       ,getBean("de.ama.services.impl.DomainServiceImpl"));
         singletons.put(MailService.NAME         ,getBean("de.ama.services.impl.MailServiceImpl"));
         singletons.put(GoogleService.NAME         ,getBean("de.ama.services.impl.GoogleServiceImpl"));
     }
@@ -71,12 +69,12 @@ public class Environment {
         return (ActionService) getSingleton(ActionService.NAME);
     }
 
-    public static DomainService getDomainService() {
-        return (DomainService) getSingleton(DomainService.NAME);
-    }
-
     public static MailService getMailService() {
         return (MailService) getSingleton(MailService.NAME);
+    }
+
+    public static PictureService getPictureService() {
+        return (PictureService) getSingleton(PictureService.NAME);
     }
 
     public static GoogleService getGoogleService() {

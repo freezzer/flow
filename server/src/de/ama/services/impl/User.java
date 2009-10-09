@@ -1,7 +1,6 @@
 package de.ama.services.impl;
 
 import de.ama.db.PersistentMarker;
-import de.ama.util.Util;
 import de.ama.services.Environment;
 
 /**

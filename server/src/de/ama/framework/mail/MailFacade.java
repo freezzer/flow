@@ -1,11 +1,10 @@
 package de.ama.framework.mail;
 
 import de.ama.db.DB;
-import de.ama.db.OidIterator;
 import de.ama.db.Query;
+import de.ama.services.Environment;
 import de.ama.util.StringDivider;
 import de.ama.util.Util;
-import de.ama.services.Environment;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;

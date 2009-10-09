@@ -2,9 +2,37 @@
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="restart">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/src/server" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\Server.java" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\server\Bootstrap.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_column.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_column.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_tree_node.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_tree_node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/Environment.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/Environment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/DataAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/DataAction.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/PictureData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/mail/MailFacade.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/mail/MailFacade.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/servlet/UploadServlet.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/servlet/UploadServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/util/ImageConverter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/util/ImageConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_button.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_button.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/pages/BorderPage.java" afterPath="$PROJECT_DIR$/server/src/de/ama/pages/BorderPage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/UserData.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/GoogleServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/GoogleServiceImpl.java" />
+      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\services\DomainService.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/PictureService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_menubar.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_menubar.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_menuitem.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_menuitem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_menuitem.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_menuitem.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/mail/MailWithPasswordAuthentication.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/mail/MailWithPasswordAuthentication.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/Picture.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/NewUserAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/NewUserAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/Starter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/Starter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_bean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_collection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_button_panel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_button_panel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/MailServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/MailServiceImpl.java" />
+      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\services\impl\DomainServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/PictureServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_field.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/UserServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/User.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/User.java" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.project" afterPath="$PROJECT_DIR$/client/.project" />
@@ -65,19 +93,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Tag.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/generator/Tag.java">
+      <file leaf-file-name="LoginAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="40" column="13" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.0">
+            <state line="8" column="13" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NewUserAction.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/NewUserAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Environment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/Environment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="66" column="49" selection-start="2102" selection-end="2102" vertical-scroll-proportion="0.43037975">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Tag_comment.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/src/generator/Tag_comment.java">
+      <file leaf-file-name="PictureService.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/PictureService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="30" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.34948605">
+            <state line="16" column="11" selection-start="365" selection-end="365" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PictureServiceImpl.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PictureServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="86" column="55" selection-start="3244" selection-end="3295" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PictureData.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PictureData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="0" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Picture.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/Picture.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="40" column="34" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Data.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Data.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="582" column="39" selection-start="19147" selection-end="19147" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Date.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/../../Java/jdk1.5.0_03/src.zip!/java/util/Date.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="254" column="16" selection-start="10620" selection-end="10620" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UploadServlet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/servlet/UploadServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="79" column="37" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -163,6 +273,170 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="services" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="services" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="impl" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="servlet" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="server" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="action" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
           <option name="myItemId" value="client" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
@@ -225,10 +499,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.ama.services.impl" />
       <recent name="generator.flex" />
       <recent name="generator" />
       <recent name="generator.java" />
       <recent name="server.actions" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="de.ama.services.impl" />
     </key>
   </component>
   <component name="RestoreUpdateTree">
@@ -397,7 +675,7 @@
       <envs />
     </configuration>
     <configuration default="false" name="Starter" type="Application" factoryName="Application" enabled="false" merge="false" sample_coverage="true" runner="emma">
-      <option name="MAIN_CLASS_NAME" value="generator.Starter" />
+      <option name="MAIN_CLASS_NAME" value="de.ama.generator.Starter" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="inFile D:\dev\flow\server\model\TestApplication.xml outDir xxx targets flex,java" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -486,11 +764,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="1004" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32932165" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32844242" sideWeight="0.5" order="1" side_tool="false" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.144822" sideWeight="0.7979684" order="1" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34354487" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" />
@@ -498,7 +776,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19413093" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26537216" sideWeight="0.7979684" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26537216" sideWeight="0.7979684" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31946006" sideWeight="0.5" order="2" side_tool="false" />
@@ -572,23 +850,128 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/generator/OutputWriter.java">
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="16" selection-start="121" selection-end="121" vertical-scroll-proportion="0.0">
+        <state line="34" column="13" selection-start="998" selection-end="998" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/generator/Tag.java">
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag_comment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="13" selection-start="1136" selection-end="1136" vertical-scroll-proportion="0.0">
+        <state line="30" column="0" selection-start="907" selection-end="907" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/generator/Tag_comment.java">
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="0" selection-start="900" selection-end="900" vertical-scroll-proportion="0.34948605">
+        <state line="27" column="13" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/ActionServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="34" selection-start="105" selection-end="105" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/pages/BorderPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="0" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1255089637765" expanded="true" signature="30:190" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/UserData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="328" selection-end="328" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1255089637781" expanded="false" signature="38:65" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="13" selection-start="182" selection-end="182" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/NewUserAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/Picture.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="34" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PictureData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="0" selection-start="427" selection-end="427" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PictureServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="86" column="55" selection-start="3244" selection-end="3295" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/servlet/UploadServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="37" selection-start="3555" selection-end="3555" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/PictureService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="11" selection-start="365" selection-end="365" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/../../Java/jdk1.5.0_03/src.zip!/java/util/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="254" column="16" selection-start="10620" selection-end="10620" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Data.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="582" column="39" selection-start="19147" selection-end="19147" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/Environment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="66" column="49" selection-start="2102" selection-end="2102" vertical-scroll-proportion="0.43037975">
           <folding />
         </state>
       </provider>

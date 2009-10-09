@@ -1,12 +1,10 @@
 package de.ama.pages;
 
-import org.apache.click.Page;
-import org.apache.click.control.ActionLink;
+import de.ama.db.Query;
 import de.ama.services.Environment;
 import de.ama.services.impl.User;
-import de.ama.framework.data.QueryDescription;
-import de.ama.db.Query;
-import de.ama.huyua.Picture;
+import org.apache.click.Page;
+import org.apache.click.control.ActionLink;
 
 
 public class BorderPage extends Page {
@@ -22,7 +20,6 @@ public class BorderPage extends Page {
     public void onGet() {
         Environment.getPersistentService().join("huyua_production");
         stats = "u("+Environment.getPersistentService().getObjectCount(new Query(User.class))+")";
-        stats += " p("+Environment.getPersistentService().getObjectCount(new Query(Picture.class))+")";
         Environment.getPersistentService().leave();
         super.onGet();
     }

@@ -77,7 +77,7 @@ public class UploadServlet extends HttpServlet {
 
             User user = Environment.getUserService().getActiveUser(userSessionId);
             Environment.getPersistentService().join(catalog);
-            Environment.getDomainService().storePicture(user, fitem, description);
+            Environment.getPictureService().storePicture(user, fitem, description);
             Environment.getPersistentService().commit();
             
         } catch (Exception e) {

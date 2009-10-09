@@ -19,8 +19,8 @@
 
 package de.ama.generator.laszlo;
 
-import de.ama.util.Util;
 import de.ama.generator.Tag;
+import de.ama.util.Util;
 
 /**
  * User: x
