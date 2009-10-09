@@ -2,18 +2,10 @@
 <project relativePaths="true" version="4">
   <component name="AntConfiguration">
     <defaultAnt bundledAnt="true" />
-    <buildFile url="file://$PROJECT_DIR$/client/build_client.xml">
+    <buildFile url="file://$PROJECT_DIR$/server/build.xml">
       <additionalClassPath />
       <antReference projectDefault="true" />
       <customJdkName value="1.5" />
-      <maximumHeapSize value="128" />
-      <maximumStackSize value="32" />
-      <properties />
-    </buildFile>
-    <buildFile url="file://$PROJECT_DIR$/server/build_server.xml">
-      <additionalClassPath />
-      <antReference projectDefault="true" />
-      <customJdkName value="" />
       <maximumHeapSize value="128" />
       <maximumStackSize value="32" />
       <properties />
@@ -120,7 +112,7 @@
       <module fileurl="file://$PROJECT_DIR$/server/server.iml" filepath="$PROJECT_DIR$/server/server.iml" />
     </modules>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.6" project-jdk-type="JavaSDK" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="1.5" project-jdk-type="JavaSDK" />
   <component name="RmicSettings">
     <option name="IS_EANABLED" value="false" />
     <option name="DEBUGGING_INFO" value="true" />
@@ -129,7 +121,25 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
   </component>
   <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <list>
+                  <option value="https://flow.googlecode.com/svn/branches" />
+                  <option value="https://flow.googlecode.com/svn/tags" />
+                </list>
+              </option>
+              <option name="trunkUrl" value="https://flow.googlecode.com/svn/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="myVersion" value="124" />
+    <option name="mySupportsUserInfoFilter" value="true" />
   </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="svn" />
