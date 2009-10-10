@@ -1,5 +1,4 @@
 package de.ama.framework.util {
-import flash.events.DataEvent;
 import flash.events.Event;
 import flash.events.IOErrorEvent;
 import flash.net.FileFilter;

@@ -1,5 +1,6 @@
-package de.ama.framework.gui {
+package de.ama.framework.gui.fields {
 import de.ama.framework.data.Data;
+import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.util.Util;
 
 import flash.events.Event;
@@ -19,7 +20,7 @@ public class EditField extends Canvas{
     private var _labelWidth:int = 100;
 
 
-    public function EditField(caption:String="EditField", path:String=null) {
+    public function EditField(caption:String="de.ama.framework.gui.fields.EditField", path:String=null) {
         super.width=400;
         super.height=25;
 

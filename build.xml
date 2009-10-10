@@ -27,11 +27,11 @@
 
 
     <target name="server.compile.generated" description="compiles the sources">
-        <delete dir="server/classes/gen" failonerror="false"/>
-        <mkdir dir="server/classes/gen"/>
+        <delete dir="server/classes/generated" failonerror="false"/>
+        <mkdir dir="server/classes/generated"/>
         <javac destdir="server/classes" debug="on">
-            <src path="server/generated"/>
-            <src path="server/logic"/>
+            <src path="server/src/generated"/>
+            <src path="server/src/static"/>
             <classpath>
                 <fileset dir="server/lib">
                     <include name="**/*.jar"/>
@@ -42,8 +42,6 @@
 
 
     <target name="generate" description="generates the sources">
-        <delete dir="server/generated" failonerror="false"/>
-        <mkdir dir="server/generated"/>
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
                 <fileset dir="server/lib">
@@ -54,7 +52,7 @@
             <arg value="inFile"/>
             <arg file="server/model/TestApplication.xml"/>
             <arg value="outDir"/>
-            <arg path="server/generated"/>
+            <arg path="."/>
             <arg value="targets"/>
             <arg value="java,flex"/>
         </java>
@@ -191,8 +189,8 @@
         </ftp>
     </target>
     
-    <target name="build.server" description="make server and deploy to tomcat" depends="server.compile.environment,generate,server.compile.generated,server.enhance,client.deploy" />
-    <target name="build.client" description="make client and deploy to tomcat" depends="client.clean,client.compile,client.deploy,client.wrapper" />
+    <target name="build.server" description="make server " depends="server.compile.environment,generate,server.compile.generated,server.enhance,client.deploy" />
+    <target name="build.client" description="make client " depends="client.clean,client.compile,client.deploy,client.wrapper" />
     <target name="build.all" description="make/deploy whole project" depends="build.server,build.client" />
 
 

@@ -1,28 +1,27 @@
-package de.ama.framework.gui{
+package de.ama.framework.gui.frames{
 import flash.display.DisplayObject;
 import flash.events.MouseEvent;
 
+import mx.containers.TabNavigator;
+import mx.controls.Button;
+import mx.controls.tabBarClasses.Tab;
 import mx.core.DragSource;
-	import mx.core.IUIComponent;
-	import mx.containers.TabNavigator;
-	import mx.controls.tabBarClasses.Tab;
-	import mx.controls.Button;
-	import mx.controls.TabBar;
-	import mx.events.FlexEvent;
-	import mx.events.DragEvent;
-	import mx.managers.DragManager;
+import mx.core.IUIComponent;
+import mx.events.DragEvent;
+import mx.events.FlexEvent;
+import mx.managers.DragManager;
 
-	/**
-	 * @class AdvanceTabNavigator
+/**
+	 * @class de.ama.framework.gui.frames.AdvanceTabNavigator
 	 * @brief A New TabNavigator with Drag/Drop Enabled and Close Button
 	 * @author Jove
 	 * @version 1.1
 	 */
   	public class AdvanceTabNavigator extends TabNavigator	{
   		
-  		[Embed(source="icons/WindowCloseButton.gif")]
+  		[Embed(source="../icons/WindowCloseButton.gif")]
 		private static const WINDOW_CLOSE_BUTTON_1:Class;
-		[Embed(source="icons/WindowCloseButton2.gif")]
+		[Embed(source="../icons/WindowCloseButton2.gif")]
 		private static const WINDOW_CLOSE_BUTTON_2:Class;
 		
 		private static const TARGET_TAB_INDEX:String = "targetTabIndex";

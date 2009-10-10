@@ -31,6 +31,6 @@ public class Tag_tabpanel extends Tag {
     protected void mainWrite() {
         String w = getAttribute(W, "100%");
         String h = getAttribute(H, "100%");
-        write(" <comps:AdvanceTabNavigator "+getStandardAttributesString()+" height='"+h+"' width='"+w+"' id='mainTabs'  tabCloseEnable=\"true\" tabDragEnable=\"true\" />");
+        write(" <frames:AdvanceTabNavigator "+getStandardAttributesString()+" height='"+h+"' width='"+w+"' id='mainTabs'  tabCloseEnable=\"true\" tabDragEnable=\"true\" />");
     }
 }

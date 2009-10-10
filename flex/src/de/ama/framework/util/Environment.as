@@ -2,7 +2,6 @@ package de.ama.framework.util {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoginAction;
 import de.ama.framework.action.LogoutAction;
-import de.ama.framework.gui.*;
 import de.ama.services.impl.UserData;
 
 import flash.net.SharedObject;
@@ -81,7 +80,7 @@ public class Environment {
 
     public static  function login(allways:Boolean = false):void {
         if(!isLoggedIn() || allways){
-	        var dlg:LoginDialog = LoginDialog(PopUpManager.createPopUp(mx.core.Container(Application.application), LoginDialog, true));
+	        var dlg:LoginDialog = LoginDialog(PopUpManager.createPopUp(Container(Application.application), LoginDialog, true));
 	        dlg.x = (Application.application.width / 2 - (dlg.width / 2));
 	        dlg.y = (Application.application.height / 2 - (dlg.height / 2));
         }

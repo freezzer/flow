@@ -1,7 +1,6 @@
 package de.ama.framework.data {
 import de.ama.framework.util.Util;
 
-[RemoteClass(alias="de.ama.framework.data.Data")]
 public class Data{
     public var oidString:String;
     public var version:int;

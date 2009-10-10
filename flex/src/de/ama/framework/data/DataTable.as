@@ -3,7 +3,6 @@ import de.ama.framework.util.Util;
 
 import mx.collections.ArrayCollection;
 
-[RemoteClass(alias="de.ama.framework.data.DataTable")]
 public class DataTable {
 	public var collection:Array = new Array();
     public var protoType:Data;

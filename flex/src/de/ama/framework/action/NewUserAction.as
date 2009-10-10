@@ -1,7 +1,4 @@
 package de.ama.framework.action {
-import de.ama.framework.util.Util;
-
-[RemoteClass(alias="de.ama.framework.action.NewUserAction")]
 public class NewUserAction extends ActionScriptAction{
 	public static var TYPE_UPDATE:int = 1; 
 	public static var TYPE_GET:int    = 2; 

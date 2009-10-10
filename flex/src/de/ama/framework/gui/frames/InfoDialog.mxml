@@ -31,8 +31,8 @@
     <mx:Script><![CDATA[
         import mx.managers.PopUpManager;
 
-        private var detailsMsg:String="";
-        
+        private var detailsMsg:String = "";
+
         private function close():void {
             PopUpManager.removePopUp(this);
         }
@@ -42,11 +42,11 @@
             detailsField.text = detailsMsg;
         }
 
-        public function set msg (s:String):void{
+        public function set msg(s:String):void {
             msgField.text = s;
         }
 
-        public function set detailedMsg (s:String):void{
+        public function set detailedMsg(s:String):void {
             detailsMsg = s;
         }
 
