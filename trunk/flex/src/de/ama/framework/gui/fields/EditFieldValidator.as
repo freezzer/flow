@@ -1,4 +1,4 @@
-package de.ama.framework.gui
+package de.ama.framework.gui.fields
 {
 import mx.validators.StringValidator;
 import mx.validators.ValidationResult;

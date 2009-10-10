@@ -1,5 +1,8 @@
-package de.ama.framework.gui {
+package de.ama.framework.gui.frames {
 import de.ama.framework.data.Data;
+import de.ama.framework.gui.fields.BoolField;
+import de.ama.framework.gui.fields.DateField;
+import de.ama.framework.gui.fields.EditField;
 
 import mx.containers.Canvas;
 

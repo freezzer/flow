@@ -103,9 +103,9 @@
                                      "klicken Sie bitte auf 'neuer Account' ");
                     userInput.text = "";
                     pwdInput.text = "";
-                    linkbutton1.label="neuer Account";
-                    linkbutton1.setStyle("color","#ff0000");
-                    linkbutton1.setStyle("fontWeight","bold");
+                    linkbutton1.label = "neuer Account";
+                    linkbutton1.setStyle("color", "#ff0000");
+                    linkbutton1.setStyle("fontWeight", "bold");
                 }
             }
             if (a is NewUserAction) {
@@ -209,7 +209,7 @@
 
             var str:String = Util.isAlphaNumUml(userInput.text);
             if (!Util.isEmpty(str)) {
-                Util.showMessage("Im Feld Name ist das Zeichen '"+str+"' nicht erlaubt");
+                Util.showMessage("Im Feld Name ist das Zeichen '" + str + "' nicht erlaubt");
                 return false;
             }
 
@@ -217,7 +217,7 @@
                 Util.showMessage("Bitte geben Sie ein Passwort mit mindestens 5 Zeichen ein");
                 return false;
             }
-            
+
             if (pwdInput.text.length > 15) {
                 Util.showMessage("Bitte geben Sie einen Passwort mit maximal 20 Zeichen ein");
                 return false;
@@ -225,7 +225,7 @@
 
             str = Util.isAlphaNumUml(pwdInput.text);
             if (!Util.isEmpty(str)) {
-                Util.showMessage("Im Feld Passwort ist das Zeichen '"+str+"' nicht erlaubt");
+                Util.showMessage("Im Feld Passwort ist das Zeichen '" + str + "' nicht erlaubt");
                 return false;
             }
 

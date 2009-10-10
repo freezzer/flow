@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <define>
 
-    <model java_dir="bom/ausfuhr" 
-           flex_dir="flex/src/generated" flex_package="generated">
+    <model java_dir="server/src/generated/bom"  java_package="generated.bom"
+           flex_dir="flex/src/generated/bom"    flex_package="generated.bom">
         <bean name="Vorgang" persistent="true" unique-key="id">
             <field name="nummer"/>
             <field name="id"/>

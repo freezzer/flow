@@ -1,7 +1,10 @@
 package de.ama.framework.util
 {
-import de.ama.framework.gui.EditPanel;
-import de.ama.framework.gui.InfoDialog;
+import de.ama.framework.gui.frames.AdvanceTabNavigator;
+import de.ama.framework.gui.frames.EditPanel;
+import de.ama.framework.gui.frames.InfoDialog;
+import de.ama.framework.gui.frames.ListPane;
+import de.ama.framework.gui.frames.TreeEditor;
 
 import flash.display.DisplayObject;
 import flash.display.Sprite;
@@ -12,6 +15,7 @@ import mx.controls.Alert;
 import mx.core.Application;
 import mx.core.ApplicationGlobals;
 import mx.core.UIComponent;
+import mx.events.MenuEvent;
 import mx.managers.PopUpManager;
 import mx.utils.ObjectUtil;
 
@@ -185,8 +189,8 @@ public class Util
                 ac.addItem(col.getItemAt(i));
             }    
     	} else if(obj is Array){
-    		for(var i:int = 0; i<obj.length; i++){
-                ac.addItem(obj[i]);
+    		for(var x:int = 0; x<obj.length; i++){
+                ac.addItem(obj[x]);
             }    
     	} else {
     		throw IllegalOperationError("wrong parameter in Util.concat");
@@ -195,5 +199,22 @@ public class Util
     	return ac;
     }
 
+       public static function handleMenuClick(evt:MenuEvent):void {
+          var type:String = XML(evt.item).attribute("type")[0];
+          var model:String = XML(evt.item).attribute("model")[0];
+          var tabs:Object = Application.application.getChildByName("mainTabs");
+          if(type == "lister"){
+             var p:ListPane = new ListPane();
+             p.label=model;
+             AdvanceTabNavigator(tabs).addChild(p);
+             AdvanceTabNavigator(tabs).selectedChild=p;
+          }
+          if(type == "editor"){
+             var e:TreeEditor = new TreeEditor();
+             e.label=model;
+             AdvanceTabNavigator(tabs).addChild(e);
+             AdvanceTabNavigator(tabs).selectedChild=e;
+          }
+       }
 }
 }

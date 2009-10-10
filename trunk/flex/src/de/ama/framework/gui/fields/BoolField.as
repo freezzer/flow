@@ -1,4 +1,4 @@
-package de.ama.framework.gui {
+package de.ama.framework.gui.fields {
 import de.ama.framework.util.Util;
 
 import mx.controls.CheckBox;
@@ -6,7 +6,7 @@ import mx.controls.CheckBox;
 public class BoolField extends EditField{
 
 
-    public function BoolField(caption:String="BoolField", path:String=null) {
+    public function BoolField(caption:String="de.ama.framework.gui.fields.BoolField", path:String=null) {
         super(caption,path);
     }
 

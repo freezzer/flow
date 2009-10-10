@@ -13,7 +13,7 @@
 
         <menubar color="silver">
             <menu name="System">
-                <menuitem name="Anmelden"/>
+                <menuitem name="Anmelden" command=""/>
                 <menuitem name="Abmelden"/>
             </menu>
             <menu name="Stammdaten">

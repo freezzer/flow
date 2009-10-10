@@ -36,8 +36,15 @@ public class Tag_application extends Tag {
         initPrintWriter(dir,name+".mxml");
 
         write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-        write("<mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" xmlns:comps=\"de.ama.framework.gui.*\" layout=\"vertical\" " +
-                "width='"+w+"' height='"+h+"' paddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' >");
+        write("<mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" " +
+                "xmlns:frames=\"de.ama.framework.gui.frames.*\"" +
+                "\nlayout=\"vertical\" width='"+w+"' height='"+h+"'" +
+                "\npaddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' >");
+        writeLine();
+        write("    <mx:Script><![CDATA[\n" +
+                "        import de.ama.framework.util.Util;\n" +
+                "    ]]></mx:Script>");
+
 //        checkHref(getPrintWriter() , (Tag) getRoot());
     }
 
