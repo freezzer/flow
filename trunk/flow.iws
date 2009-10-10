@@ -1,47 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LogoutAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LogoutAction.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\BoolField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/BoolField.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\EditPanel.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/EditPanel.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/flow.mxml" afterPath="$PROJECT_DIR$/flex/src/flow.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/FileAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/FileAction.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/static" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\logic\server\actions\GetDataAction.java" afterPath="" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\build.properties" afterPath="$PROJECT_DIR$/build.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/DataAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/DataAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Environment.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Environment.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/DataTable.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/DataTable.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\EditField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/EditField.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Util.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Util.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/static" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/TestApplication.xml" afterPath="$PROJECT_DIR$/server/model/TestApplication.xml" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\LoginDialog.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/LoginDialog.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LoginAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LoginAction.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\DateField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/DateField.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tabpanel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tabpanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_menubar.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_menubar.java" />
+    <list default="true" readonly="true" name="Default" comment="first runs">
       <change type="DELETED" beforePath="$PROJECT_DIR$/server/logic/server/actions" afterPath="" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\VotingStars.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/VotingStars.mxml" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\AdvanceTabNavigator.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/AdvanceTabNavigator.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/NewUserAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/NewUserAction.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/ListPane.mxml" />
+      <change type="DELETED" beforePath="D:\dev\flow\server\build.properties" afterPath="" />
+      <change type="DELETED" beforePath="D:\dev\flow\server\logic\server\actions\GetDataAction.java" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/server/logic" afterPath="" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\EditFieldValidator.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/EditFieldValidator.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\InfoDialog.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/InfoDialog.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Vorgang.xml" afterPath="$PROJECT_DIR$/server/model/Vorgang.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/server/logic/server" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/FileManager.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/FileManager.as" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
