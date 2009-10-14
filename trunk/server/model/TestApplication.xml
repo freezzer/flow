@@ -9,7 +9,7 @@
         Generated code by flow code generator
     </comment>
 
-    <application dir="../../flex/src/" name="flow" color="blue">
+    <application dir="flex/src/" name="flow" color="blue">
 
         <menubar color="silver">
             <menu name="System">
@@ -19,6 +19,10 @@
             <menu name="Stammdaten">
                 <menuitem name="Uebersicht Personen" tab="true" lister="Person"/>
                 <menuitem name="Neue Person anlegen" tab="true" editor="Person"/>
+            </menu>
+            <menu name="Vorgaenge">
+                <menuitem name="Uebersicht Vorgaenge" tab="true" lister="Vorgang"/>
+                <menuitem name="Neuen Vorgang anlegen" tab="true" editor="Vorgang"/>
             </menu>
             <menu name="Administration">
                 <menuitem name="Uebersicht User" tab="true" lister="User"/>

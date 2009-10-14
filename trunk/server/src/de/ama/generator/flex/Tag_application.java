@@ -26,6 +26,7 @@ import de.ama.generator.Tag;
  * Date: 25.04.2008
  */
 public class Tag_application extends Tag {
+    private String bootstrapCode="";
 
     protected void beginWrite() {
         String w = getAttribute(W, "100%");
@@ -39,11 +40,9 @@ public class Tag_application extends Tag {
         write("<mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" " +
                 "xmlns:frames=\"de.ama.framework.gui.frames.*\"" +
                 "\nlayout=\"vertical\" width='"+w+"' height='"+h+"'" +
-                "\npaddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' >");
+                "\npaddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' \n" +
+                " applicationComplete=\"bootstrap()\" >");
         writeLine();
-        write("    <mx:Script><![CDATA[\n" +
-                "        import de.ama.framework.util.Util;\n" +
-                "    ]]></mx:Script>");
 
 //        checkHref(getPrintWriter() , (Tag) getRoot());
     }
@@ -53,7 +52,22 @@ public class Tag_application extends Tag {
         return 0;
     }
 
+    protected static String FORCE_IMPORT = "FORCE_IMPORT";
     protected void endWrite() {
+
+        write("    <mx:Script><![CDATA[");
+        write("      import de.ama.framework.util.Bootstrapper;");
+        write("      import de.ama.framework.util.Util;");
+        write("");
+        write("      // to force the flex compiler to include");
+        write(getCollectedCode(FORCE_IMPORT));
+        write("");
+        write("      private function bootstrap():void {");
+        write("          var bootStrapper:Bootstrapper = new Bootstrapper();");
+        write("          bootStrapper.execute();");
+        write("      }");
+        write("    ]]></mx:Script>");
+
         write("</mx:Application>");
         flush();
     }

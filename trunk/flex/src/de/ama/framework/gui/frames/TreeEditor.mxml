@@ -1,23 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
 	<mx:Script><![CDATA[
+        import de.ama.framework.data.Data;
+        import de.ama.framework.util.Util;
+
+        [Embed("../icons/folder.png")]
+        private var myFolderIcon:Class;
+
+        [Embed("../icons/group.png")]
+        private var myGroupIcon:Class;
+
+        [Embed("../icons/user.png")]
+        private var myUserIcon:Class;
+
         [Bindable]
-        public var treeData:Object;
+        private var dataTree:TreeNode;
+
         [Bindable]
         public var selectedNode:Object;
 
         public function treeChanged(event:Event):void {
-            selectedNode = Tree(event.target).selectedItem.toString();
+            selectedNode = Tree(event.target).selectedItem;
+        }
+
+
+        public function getPrototypeTree():TreeNode {
+            return null;
+        }
+
+        private function myIconFunction(item:Object):Class {
+            var iconClass:Class;
+            var iconName:String = item["iconName"];
+            if (iconName == null) {
+                return myFolderIcon;
+            } else {
+                switch (iconName) {
+                    case "user":
+                        return  myUserIcon;
+                    case "group":
+                        return myGroupIcon;
+                    case "folder":
+                        return myFolderIcon;
+                }
+            }
+
+            return myFolderIcon;
+        }
+
+        public function setData(data:Data):void {
+            dataTree = getPrototypeTree();
+            dataTree.setData(data);
+        }
+
+        public static function createEditor(dataType:String, data:Data = null):TreeEditor {
+            if (data == null) {
+                data = Data(Util.createObject("generated.bom."+dataType));
+            }
+
+            var ret:TreeEditor = data.createEditor();
+            ret.setData(data);
+
+            return ret;
         }
 
         ]]></mx:Script>
 
-    <mx:HDividedBox color="0xffffff" width="100%" height="100%" x="5" y="5" paddingBottom="5" paddingRight="5">
+    <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="5" paddingRight="5">
 
-            <mx:Tree id="myTree" width="30%" height="100%" labelField="label"
-                showRoot="true" dataProvider="{treeData}" change="treeChanged(event)" backgroundColor="#D3D0C5"/>
+            <mx:Tree id="myTree" width="20%" height="100%" 
+            	labelField="label" iconFunction="myIconFunction"
+                showRoot="true" dataProvider="{dataTree}" change="treeChanged(event)"
+                themeColor="#EDECDF" color="#CC6060" fontWeight="bold"/>
 
-            <mx:TextArea height="100%" width="70%"  text="Selected Item: {selectedNode}" color="#050505" backgroundColor="#E7E4DB"/>
+            <mx:TextArea height="100%" width="80%"  text="Selected Item: {selectedNode}" color="#050505" backgroundAlpha="1.0"/>
 
     </mx:HDividedBox>
 </mx:Canvas>

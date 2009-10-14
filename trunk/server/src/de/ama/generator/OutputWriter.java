@@ -75,7 +75,7 @@ public class OutputWriter {
         templateRoot.prepareRecursive();
         for (int i = 0; i < imports.size(); i++) {
             Tag imp = (Tag) imports.get(i);
-            templateRoot.addChild(imp);
+            templateRoot.addChild(imp,0);
         }
     }
 

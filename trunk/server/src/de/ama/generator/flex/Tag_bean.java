@@ -29,14 +29,12 @@ import de.ama.util.Util;
 public class Tag_bean extends Tag{
 
 
-    protected void prepareElement() {
-    }
-
     public int getIndent() {
         return 0;
     }
 
     protected void beginWrite() {
+        String editor = getAttribute(EDITOR,"");
         String name = getParentAttribute(NAME,"");
         String dir =  getParentAttribute(FLEX_DIR,"");
         String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
@@ -47,7 +45,8 @@ public class Tag_bean extends Tag{
             f.setPrintWriter(getPrintWriter());
             f.addAttribute(NAME, Util.firstCharToLower(name));
             f.addAttribute(TYPE, pckg+"."+name);
-            f.addAttribute(CREATE, getAttribute(CREATE));
+            f.addAttribute(TREE, getAttribute(TREE));
+            f.addAttribute(LABEL, getAttribute(LABEL));
             f.execute();
         }
 
@@ -60,24 +59,30 @@ public class Tag_bean extends Tag{
         writeLine();
         write("package "+pckg+" {");
         write("import mx.collections.ArrayCollection;");
-        write("import de.ama.framework.data.Data;");
+        write("import de.ama.framework.data.*;");
+        write("import de.ama.framework.util.*;");
 
-//        getWriter().registerClass(name,pckg+"."+name );
-
-        ///////////////////////////////////////////////////////////
-
-
-    }
-
-
-    protected void mainWrite() {
-        String name = getParentAttribute(NAME,"");
-
+        if(Util.isNotEmpty(editor)) {
+            write("import de.ama.framework.gui.frames.TreeEditor;");
+            write("import generated.view."+editor+";");
+        }
         write("public class "+name+" "+" extends Data { ");
-        writeLine();
+
+        collectCode(Tag_application.FORCE_IMPORT, "      import "+pckg+"."+name+";");
+        collectCode(Tag_application.FORCE_IMPORT, "      public var "+Util.firstCharToLower(name)+":"+name+";");
+
     }
 
     protected void endWrite() {
+        String name = getParentAttribute(NAME,"");
+        String editor = getAttribute(EDITOR,"");
+
+        writeLine();
+        if(Util.isNotEmpty(editor)) {
+          write("    override public function createEditor():TreeEditor {");
+          write("       return new "+editor+"();");
+          write("    }");
+        }
         writeLine();
         write("}}");
         flush();

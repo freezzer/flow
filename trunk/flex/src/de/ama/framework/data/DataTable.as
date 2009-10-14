@@ -8,9 +8,12 @@ public class DataTable {
     public var protoType:Data;
     public var deleting:Boolean;
 
-
-    public function DataTable(protoType:Data=null) {
+    public function DataTable(protoType:Data=null, create:int=0) {
         this.protoType = protoType;
+        for(var i:int=0; i<create; i++){
+            var clazz:Class = getTypeClass();
+            collection.push(new clazz());
+        }
     }
 
     public function fromArrayCollection(src:ArrayCollection):void{

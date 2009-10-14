@@ -10,6 +10,8 @@ import flash.display.DisplayObject;
 import flash.display.Sprite;
 import flash.errors.IllegalOperationError;
 
+import flash.utils.getDefinitionByName;
+
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
 import mx.core.Application;
@@ -110,10 +112,66 @@ public class Util
         }
     }
 
+    public static function divideString(str:String, del:String):Array {
+        var ret:Array = new Array();
+        var pos:int = str.indexOf(".");
+        if(pos>=0) {
+            ret.push(str.substring(0,pos));
+            ret.push(str.substring(pos+1));
+        } else {
+            ret.push(str);
+        }
+        return ret;
+    }
+
+    public static function getObjectProperty(obj:Object, path:String, def:String=""):String{
+        var object:Object = getObjectValue(obj, path);
+        return object==null ? def : object.toString();
+    }
+
+    public static function getObjectValue(obj:Object, path:String):Object{
+        var div:Array = divideString(path,".");
+        if(div.length>1){
+            var child:Object = getObjectValue(obj, div[0]);
+            if(child!=null){
+                return getObjectValue(child, div[1]);
+            }
+        }
+
+        try {
+            return obj[path];
+        } catch(e:Error) {
+        }
+        return null;
+    }
+
+    public static function setObjectValue(obj:Object, path:String, value:Object):void{
+        var div:Array = divideString(path,".");
+        if(div.length>1){
+            var child:Object = getObjectValue(obj, div[0]);
+            if(child!=null){
+                return setObjectValue(child, div[1], value);
+            }
+        }
+
+        try {
+            obj[path] = value;
+        } catch(e:Error) {
+        }
+    }
+
     public static function getClass(obj:Object):Class {
         return obj.constructor;
     }
 
+    public static function classForName(name:String):Class {
+        return getDefinitionByName(name) as Class;
+    }
+
+    public static function createObject(name:String):Object {
+        var c:Class = classForName(name);
+        return new c();
+    }
 
     public static function isEmpty(val:String):Boolean {
         if (val == null) return true;
@@ -210,8 +268,8 @@ public class Util
              AdvanceTabNavigator(tabs).selectedChild=p;
           }
           if(type == "editor"){
-             var e:TreeEditor = new TreeEditor();
-             e.label=model;
+             var e:TreeEditor = TreeEditor.createEditor(model);
+             e.label = model;
              AdvanceTabNavigator(tabs).addChild(e);
              AdvanceTabNavigator(tabs).selectedChild=e;
           }

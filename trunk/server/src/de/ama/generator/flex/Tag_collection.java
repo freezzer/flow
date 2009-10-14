@@ -33,10 +33,13 @@ public class Tag_collection extends Tag {
 
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
+        String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
+        int create = getAttribute(CREATE, getChild(0).getAttribute(CREATE,0));
         writeLine();
-        write("public var "+name+":ArrayCollection = new ArrayCollection();");
-        if(getAttribute("tree_children",false)){
-            write("public function get children():ArrayCollection { return "+name+"; }");
+        if( create>0 ){
+            write("public var "+name+":DataTable = new DataTable(new "+type+"(),"+create+");");
+        } else {
+            write("public var "+name+":DataTable = new DataTable(new "+type+"());");
         }
     }
 
