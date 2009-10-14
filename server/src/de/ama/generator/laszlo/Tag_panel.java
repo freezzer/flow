@@ -31,7 +31,7 @@ public class Tag_panel extends Tag {
         String spacing = getAttribute(SPACING,"5");
         boolean horizontal = getAttribute(HORIZONTAL,false);
         String title = getAttribute(TITLE,"");
-        String path = readPathAttribute();
+        String path = readPathAttributeLaszlo();
         String w = readStandardAttribute(W,"width");
         String h = readStandardAttribute(H,"height");
         String v = readStandardAttribute(VISIBLE,"visible");

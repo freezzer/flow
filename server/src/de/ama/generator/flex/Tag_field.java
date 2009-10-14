@@ -35,17 +35,24 @@ public class Tag_field extends Tag {
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE,"String");
+        boolean  create = getAttribute(CREATE, false);
+        String obj = "";
         if(!isLeaf()){
             type = getChild(0).getRequiredAttribute(NAME);
         }
-        if("date".equalsIgnoreCase(type))  { type = "Date";    }
-        if("number".equalsIgnoreCase(type)){ type = "Number";  }
-        if("boolean".equalsIgnoreCase(type)){ type = "Boolean";  }
         writeLine();
-        write("public var "+name+":"+type+";");
-        if(getAttribute("label",false)){
-            write("public function get label():String { return saveToString("+name+"); }");
+
+        if(STRING.equalsIgnoreCase(type)){    write("public var "+name+":String;"); }
+        else
+        if(DATE.equalsIgnoreCase(type)){    write("public var "+name+":String;"); }
+        else
+        if(NUMBER.equalsIgnoreCase(type)){  write("public var "+name+":Number;"); }
+        else
+        if(BOOLEAN.equalsIgnoreCase(type)){ write("public var "+name+":Boolean;"); }
+        else {
+            write("public var "+name+":"+type+" = new "+type+"();");
         }
+
     }
 
 

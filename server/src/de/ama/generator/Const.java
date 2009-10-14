@@ -26,9 +26,13 @@ public interface Const {
     public static final String COMMENT = "comment";
     public static final String NAME = "name";
     public static final String PANELNAME = "panelname";
+    public static final String PREFIX = "preix";
     public static final String LABEL = "label";
+    public static final String LABELPATH = "labelpath";
+    public static final String TREE = "tree";
     public static final String ICON = "icon";
     public static final String PANEL = "panel";
+    public static final String EDITOR = "editor";
     public static final String MODEL = "model";
     public static final String TYPE = "type";
     public static final String CREATE = "create";
@@ -40,6 +44,11 @@ public interface Const {
     public static final String PATH = "path";
     public static final String ACTION = "action";
     public static final String METHOD = "method";
+
+    public static final String DATE = "date";
+    public static final String STRING = "string";
+    public static final String NUMBER = "number";
+    public static final String BOOLEAN = "boolean";
 
     public static final String DIR =        "dir";
     public static final String JAVA_DIR =   "java_dir";
@@ -55,6 +64,7 @@ public interface Const {
     public static final String EDITABLE = "editable";
     public static final String SEARCHABLE = "searchable";
     public static final String FIXED_OPEN = "fixedopen";
+    public static final String LIST_VIEW = "listView";
 
     public static final String TITLE = "title";
     public static final String HORIZONTAL = "horizontal";

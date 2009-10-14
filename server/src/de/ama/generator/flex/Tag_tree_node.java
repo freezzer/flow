@@ -17,7 +17,7 @@
 */
 
 
-package de.ama.generator.laszlo;
+package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
 import de.ama.util.Util;
@@ -27,20 +27,36 @@ import de.ama.util.Util;
  * Date: 25.04.2008
  */
 public class Tag_tree_node extends Tag {
+    @Override
+    protected int getIndent() {
+        return 0;
+    }
 
     protected void beginWrite() {
         String label = getAttribute(LABEL);
-        String path = readPathAttributeLaszlo();
-        String panelName = getAttribute(PANEL, "");
-        String fixedopen = getAttribute(FIXED_OPEN,"false");
-        String icon = getAttribute(ICON,"");
-        if (Util.isNotEmpty(icon)) {  icon = "icon='resources/"+icon+"'"; }
+        String prefix = getAttribute(PREFIX,label);
+        String labelPath = getAttribute(LABELPATH,"");
+        String path = getAttribute(PATH,"");
+        String panel = getAttribute(PANEL, "default");
+        boolean fixedopen = getAttribute(FIXED_OPEN,true);
+        boolean listView = getAttribute(LIST_VIEW,false);
+        String icon = getAttribute(ICON,"folder");
 
-        write("<TreeNode "+path+" text='"+label+"' panelName='"+panelName+"' fixedopen='"+fixedopen+"' "+icon+" >");
+        write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\");");
+        if(getParent() instanceof Tag_tree_node) {
+           write("          parent.addPrototype(node);");
+        } else {
+           write("          root = node;");
+        }
+
+        if(!isLeaf()){
+           write("          parent = node;");
+        }
+
+        writeLine();
     }
 
     protected void endWrite() {
-        write("</TreeNode>");
     }
 
 

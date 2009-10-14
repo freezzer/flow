@@ -2,12 +2,41 @@
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="first runs">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/logic/server/actions" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\build.properties" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\logic\server\actions\GetDataAction.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/logic" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_tree_node.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_tree_node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/flow.mxml" afterPath="$PROJECT_DIR$/flex/src/flow.mxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/enhance.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/cmd.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_field.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_editor.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/server.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/system.ini" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/build.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/DataTable.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/DataTable.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Util.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Util.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/schema.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/logic/server" afterPath="" />
+      <change type="DELETED" beforePath="D:\dev\flow\server\flow.xml" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/setenv.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/server.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/TestApplication.xml" afterPath="$PROJECT_DIR$/server/model/TestApplication.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tree_node.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Bootstrapper.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_panel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/laszlo/Tag_panel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Factory.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_field.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Const.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Const.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/bin/schema.bat" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Vorgang.xml" afterPath="$PROJECT_DIR$/server/model/Vorgang.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -25,72 +54,7 @@
   </component>
   <component name="DebuggerManager">
     <line_breakpoints>
-      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java" line="39" class="de.ama.generator.flex.Tag_bean" package="de.ama.generator.flex">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" line="313" class="de.ama.generator.Tag" package="de.ama.generator">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_bean.java" line="39" class="de.ama.generator.java.Tag_bean" package="de.ama.generator.java">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_bean.java" line="35" class="de.ama.generator.java.Tag_bean" package="de.ama.generator.java">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" line="64" class="de.ama.generator.OutputWriter" package="de.ama.generator">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="false" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" line="168" class="de.ama.generator.Tag" package="de.ama.generator">
+      <breakpoint url="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java" line="62" class="de.ama.generator.flex.Tag_application" package="de.ama.generator.flex">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -144,77 +108,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Tag_application.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="50" column="41" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tag_bean.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="31" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tag.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="49" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Const.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Const.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="17" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TestApplication.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/model/TestApplication.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="28" selection-start="279" selection-end="285" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Vorgang.xml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/model/Vorgang.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="72" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+            <state line="50" column="97" selection-start="2753" selection-end="2753" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/build.xml">
+      <file leaf-file-name="Unterlage.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Unterlage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="34" selection-start="759" selection-end="759" vertical-scroll-proportion="0.71115535">
+            <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Data.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as">
+      <file leaf-file-name="Transition.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Transition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1255180734703" expanded="true" signature="337:346" placeholder="{...}" />
-                <marker date="1255180734703" expanded="true" signature="337:344" placeholder="{...}" />
-              </folding>
+            <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Position.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Position.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Geschaeft.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/generated/bom/Geschaeft.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Kopf.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/generated/bom/Kopf.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="20" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VorgangEditor.mxml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flex/src/generated/view/VorgangEditor.mxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Workmodel.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Workmodel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vorgang.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Vorgang.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Verschluss.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Verschluss.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -312,50 +291,6 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="model" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="logic" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
           <option name="myItemId" value="client" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
         </PATH_ELEMENT>
@@ -389,6 +324,58 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="generated" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="view" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="generated" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="bom" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -414,6 +401,156 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="util" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gui" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gui" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="frames" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="data" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="client" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
     </subPane>
   </component>
   <component name="ProjectReloadState">
@@ -435,16 +572,16 @@
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth1" value="133" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="104" />
     <property name="project.structure.last.edited" value="Modules" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth0" value="104" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth3" value="31" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="129" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatWidth2" value="129" />
     <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="RunManagerConfig.showSettingsBeforeRunnig" value="false" />
+    <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_flatOrder2" value="2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeWidth2" value="102" />
     <property name="MemberChooser.sorted" value="false" />
@@ -463,20 +600,20 @@
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder3" value="3" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder4" value="4" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder1" value="1" />
-    <property name="project.structure.side.proportion" value="0.2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder2" value="2" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="FileHistory.org.jetbrains.idea.svn.history.SvnHistoryProvider_treeOrder0" value="0" />
-    <property name="options.searchVisible" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="de.ama.generator.flex" />
       <recent name="de.ama.services.impl" />
       <recent name="generator.flex" />
       <recent name="generator" />
       <recent name="generator.java" />
-      <recent name="server.actions" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="de.ama.services.impl" />
@@ -538,7 +675,7 @@
     <configuration default="false" name="Starter" type="Application" factoryName="Application" enabled="false" merge="false" sample_coverage="true" runner="emma">
       <option name="MAIN_CLASS_NAME" value="de.ama.generator.Starter" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="inFile D:\dev\flow\server\model\TestApplication.xml outDir D:\dev\flow\server/generated targets flex,java" />
+      <option name="PROGRAM_PARAMETERS" value="inFile D:\dev\flow\server\model\TestApplication.xml outDir D:\dev\flow targets flex,java" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" value="" />
@@ -629,15 +766,15 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05530474" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2945824" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1407767" sideWeight="0.6591422" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29345372" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07281554" sideWeight="0.772009" order="1" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41196388" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3115124" sideWeight="0.0" order="8" side_tool="false" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33295712" sideWeight="0.5" order="9" side_tool="false" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2200903" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28317153" sideWeight="0.6591422" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23139158" sideWeight="0.772009" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3194131" sideWeight="0.5" order="2" side_tool="false" />
@@ -681,7 +818,18 @@
     <MESSAGE value="first runs" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/../adobe/builder/sdks/3.4.0/frameworks/projects/framework/src/mx/controls/treeClasses/HierarchicalCollectionView.as</url>
+          <line>292</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="flex">
+          <url>file://$PROJECT_DIR$/../adobe/builder/sdks/3.4.0/frameworks/projects/framework/src/mx/controls/treeClasses/HierarchicalCollectionView.as</url>
+          <line>258</line>
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XPathView.XPathProjectComponent">
     <history />
@@ -712,110 +860,114 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/DataAction.as">
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
+        <state line="27" column="13" selection-start="840" selection-end="840" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/FileAction.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/Invoker.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/LoginAction.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="0" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/LogoutAction.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/NewUserAction.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="34" selection-end="34" vertical-scroll-proportion="0.03142329">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_menuitem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="56" selection-start="816" selection-end="816" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1255180734703" expanded="true" signature="337:346" placeholder="{...}" />
-            <marker date="1255180734703" expanded="true" signature="337:344" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/model/TestApplication.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="28" selection-start="279" selection-end="285" vertical-scroll-proportion="0.0">
+        <state line="23" column="49" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_application.java">
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="50" column="41" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.0">
+        <state line="59" column="50" selection-start="1792" selection-end="1792" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_bean.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/ECMAScript.js2">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="31" selection-start="883" selection-end="883" vertical-scroll-proportion="0.0">
+        <state line="30" column="25" selection-start="1307" selection-end="1307" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag.java">
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tree_node.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="49" selection-start="1034" selection-end="1034" vertical-scroll-proportion="0.0">
+        <state line="46" column="47" selection-start="1642" selection-end="1642" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Const.java">
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="17" selection-start="808" selection-end="808" vertical-scroll-proportion="0.0">
+        <state line="81" column="41" selection-start="2518" selection-end="2518" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/server/model/Vorgang.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="72" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0">
+        <state line="50" column="97" selection-start="2753" selection-end="2753" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.xml">
+    <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Workmodel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="34" selection-start="759" selection-end="759" vertical-scroll-proportion="0.71115535">
+        <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Vorgang.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Verschluss.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Unterlage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Transition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/generated/bom/Position.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="51" selection-end="51" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/generated/bom/Geschaeft.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/generated/bom/Kopf.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="0" selection-start="312" selection-end="312" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/generated/view/VorgangEditor.mxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

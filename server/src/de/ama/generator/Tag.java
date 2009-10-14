@@ -27,13 +27,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ListIterator;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * User: x
  * Date: 23.04.2008
  */
 public class Tag extends XmlElement implements Const {
-//    private    static Map    ctorMap = new HashMap();
     protected  static String NOT_AVAILABEL = "na";
     public static String target; 
 
@@ -50,55 +51,14 @@ public class Tag extends XmlElement implements Const {
     }
 
 
-//    private void registerConstructor(String id, Class clazz) {
-//        ctorMap.put(id, clazz);
-//    }
        public Tag() {
     }
 
     public Tag(org.jdom.Element je) {
-//        initConstructorTable();
         readJdomElement(je);
         readRecursive(je);
     }
 
-//    private void initConstructorTable() {
-//        if (ctorMap.size() == 0) {
-//            registerConstructor("java.bean",       generator.java.Tag_bean.class);
-//            registerConstructor("java.field",      generator.java.Tag_field.class);
-//            registerConstructor("java.collection", generator.java.Tag_collection.class);
-//
-//            registerConstructor("flex.field",      generator.flex.Tag_field.class);
-//            registerConstructor("flex.collection", generator.flex.Tag_collection.class);
-//            registerConstructor("flex.bean",       generator.flex.Tag_bean.class);
-//
-//
-//
-//            registerConstructor("action", Tag_action.class);
-//            registerConstructor("application", Tag_application.class);
-//            registerConstructor("tabpanel", Tag_tabpanel.class);
-//            registerConstructor("comment", Tag_comment.class);
-//            registerConstructor("editor", Tag_editor.class);
-//            registerConstructor("grid", Tag_grid.class);
-//            registerConstructor("column", Tag_column.class);
-//            registerConstructor("view", Tag_view.class);
-//            registerConstructor("define", Tag.class);
-//            registerConstructor("lister", Tag_lister.class);
-//            registerConstructor("menu", Tag_menu.class);
-//            registerConstructor("menuitem", Tag_menuitem.class);
-//            registerConstructor("menubar", Tag_menubar.class);
-//            registerConstructor("panel", Tag_panel.class);
-//            registerConstructor("tree_node", Tag_tree_node.class);
-//            registerConstructor("tree_panel", Tag_tree_panel.class);
-//            registerConstructor("button", Tag_button.class);
-//            registerConstructor("button_panel", Tag_button_panel.class);
-//            registerConstructor("input", Tag_input.class);
-//            registerConstructor("execute", Tag_execute.class);
-//            registerConstructor("model", Tag.class);
-//            registerConstructor("import", Tag_import.class);
-//            registerConstructor("file", Tag_file.class);
-//        }
-//    }
 
     public PrintWriter createPrintWriter(String _dir, String fileName) {
         try {
@@ -144,7 +104,7 @@ public class Tag extends XmlElement implements Const {
         return "";
     }
 
-    protected String readPathAttribute(){
+    protected String readPathAttributeLaszlo(){
         String path = getAttribute(PATH,"");
         if(Util.isNotEmpty(path))   {
             if(path.startsWith("data:")){
@@ -190,7 +150,26 @@ public class Tag extends XmlElement implements Const {
         return new Tag();
     }
 
+    public void collectCode(String key,String code){
+        List fragments = (List) getStoredObject(key);
+        if(fragments==null){
+            fragments = new ArrayList();
+            storeObject(key,fragments);
+        }
+        fragments.add(code);
+    }
 
+    public String getCollectedCode(String key){
+        List fragments = (List) getStoredObject(key);
+        if(fragments==null)  return "";
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < fragments.size(); i++) {
+            String code = (String) fragments.get(i);
+            sb.append(code).append("\n");
+        }
+        return sb.toString();
+    }
 
     public void storeObject(String key, Object o) {
         ((Tag)getRoot()).getWriter().getObjectStore().put(key, o);
@@ -261,7 +240,6 @@ public class Tag extends XmlElement implements Const {
     }
 
     public void execute(){
-        System.out.println("Tag.execute "+ getClass().getName()+" "+getText());
         beginWrite();
 
         mainWrite();

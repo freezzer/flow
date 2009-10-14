@@ -41,7 +41,7 @@ public class Tag_field extends Tag {
             type = getChild(0).getRequiredAttribute(NAME);
         }
         boolean str = "String".equals(type);
-        if("date".equalsIgnoreCase(type))  { type = "java.util.Date";       create = false;}
+        if("date".equalsIgnoreCase(type))  { type = "String";       create = false; str = true;}
         if("number".equalsIgnoreCase(type)){ type = "java.math.BigDecimal";  create = false; }
         if("boolean".equalsIgnoreCase(type)){ type = "Boolean";  }
         writeLine();

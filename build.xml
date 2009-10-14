@@ -8,6 +8,7 @@
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="server/classes" failonerror="false"/>
+         <delete dir="server/src/generated" failonerror="false"/>
          <mkdir dir="server/classes" />
         <javac destdir="server/classes" debug="on">
             <src path="server/src"/>
@@ -41,7 +42,8 @@
     </target>
 
 
-    <target name="generate" description="generates the sources">
+    <target name="generate" depends="server.compile.environment" description="generates the sources">
+        <delete dir="flex/src/generated" failonerror="false"/>
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
                 <fileset dir="server/lib">
