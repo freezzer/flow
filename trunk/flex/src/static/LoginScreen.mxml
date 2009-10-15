@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="1033.5607" height="571.9697" backgroundColor="#F0F0F0">
+    <mx:Image source="static/dbh_logo_de.gif" scaleContent="false" top="4" width="973" horizontalCenter="0"/>
+    <mx:Canvas width="973" top="119.55000000000001" horizontalCenter="0" bottom="9.086395" backgroundColor="#D0D0CF" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+        <mx:Label y="91.25" text="Name" id="label2" textAlign="right" width="59.772728" height="18.030302"
+                  fontWeight="bold" x="327.1"/>
+        <mx:Label y="126.2" text="Password" id="label1" textAlign="right" fontWeight="bold" width="91.21213" height="20" x="295.6"/>
+        <mx:TextInput y="89.25" id="userInput" tabIndex="1" maxChars="20" x="406.45" width="169"/>
+        <mx:TextInput y="124.149994" id="pwdInput" displayAsPassword="true" tabIndex="2" maxChars="20" x="406.45" width="169"/>
+        <mx:Canvas width="111.6" height="105.7" backgroundColor="#F0F0F0" bottom="10.813614" right="10.100014" borderStyle="outset">
+            <mx:Image source="static/logo_certificated_09.jpg" verticalCenter="-1" horizontalCenter="2" width="74" height="52"/>
+        </mx:Canvas>
+        <mx:Canvas width="111.6" height="105.7" backgroundColor="#F0F0F0" bottom="133.21362" right="10.100014" borderStyle="outset">
+            <mx:Text x="10" y="10" text="Was gibt es neues&#xa; bei der dbh&#xa;&#xa;Handbuch&#xa;" width="87.6" height="81.7" fontFamily="Verdana"/>
+        </mx:Canvas>
+        <mx:LinkButton x="595.45" y="124.1" label="Login" width="68.65" height="24" fontWeight="bold" textAlign="center" click="login()"/>
+    </mx:Canvas>
+
+    <mx:Script><![CDATA[
+    	import mx.core.Application;
+        private function login():void {
+           Application.application.goTo("application");
+        }
+        ]]></mx:Script>
+
+</mx:Canvas>

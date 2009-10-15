@@ -26,25 +26,18 @@ import de.ama.generator.Tag;
  * Date: 25.04.2008
  */
 public class Tag_application extends Tag {
-    private String bootstrapCode="";
 
     protected void beginWrite() {
         String w = getAttribute(W, "100%");
         String h = getAttribute(H, "100%");
 
-        String name = getAttribute(NAME,"application");
-        String dir =  getParentAttribute(DIR,"");
+        String name = getAttribute(NAME,"Application");
+        String dir =  getParentAttribute(DIR,getParentAttribute(FLEX_DIR,""));
         initPrintWriter(dir,name+".mxml");
 
         write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
-        write("<mx:Application xmlns:mx=\"http://www.adobe.com/2006/mxml\" " +
-                "xmlns:frames=\"de.ama.framework.gui.frames.*\"" +
-                "\nlayout=\"vertical\" width='"+w+"' height='"+h+"'" +
-                "\npaddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' \n" +
-                " applicationComplete=\"bootstrap()\" >");
+        write("<mx:Canvas xmlns:mx=\"http://www.adobe.com/2006/mxml\" xmlns:frames=\"de.ama.framework.gui.frames.*\">");
         writeLine();
-
-//        checkHref(getPrintWriter() , (Tag) getRoot());
     }
 
     @Override
@@ -52,37 +45,36 @@ public class Tag_application extends Tag {
         return 0;
     }
 
-    protected static String FORCE_IMPORT = "FORCE_IMPORT";
     protected void endWrite() {
 
+        write("");
         write("    <mx:Script><![CDATA[");
-        write("      import de.ama.framework.util.Bootstrapper;");
-        write("      import de.ama.framework.util.Util;");
+        write("      import de.ama.framework.gui.frames.ListPane;");
+        write("      import de.ama.framework.gui.frames.TreeEditor;");
+        write("      import de.ama.framework.util.Factory;");
+        write("      import mx.events.MenuEvent;");
         write("");
-        write("      // to force the flex compiler to include");
-        write(getCollectedCode(FORCE_IMPORT));
+        write("        private function handleMenuClick(evt:MenuEvent):void {\n" +
+                "            var type:String = XML(evt.item).attribute(\"type\")[0];\n" +
+                "            var model:String = XML(evt.item).attribute(\"model\")[0];\n" +
+                "            if (type == \"lister\") {\n" +
+                "                var p:ListPane = Factory.createListPane(model);\n" +
+                "                p.label = model;\n" +
+                "                mainTabs.addChild(p);\n" +
+                "                mainTabs.selectedChild = p;\n" +
+                "            }\n" +
+                "            if (type == \"editor\") {\n" +
+                "                var e:TreeEditor = Factory.createEditor(model);\n" +
+                "                e.label = model;\n" +
+                "                mainTabs.addChild(e);\n" +
+                "                mainTabs.selectedChild = e;\n" +
+                "            }\n" +
+                "        }");
         write("");
-        write("      private function bootstrap():void {");
-        write("          var bootStrapper:Bootstrapper = new Bootstrapper();");
-        write("          bootStrapper.execute();");
-        write("      }");
         write("    ]]></mx:Script>");
-
-        write("</mx:Application>");
+        write("");
+        write("</mx:Canvas>");
         flush();
     }
-
-//    private void checkHref(PrintWriter pw , Tag tag){
-//        if(tag.getName().equals("view")){
-//            String tmp = tag.getParentAttribute(MODEL,"");
-//                   tmp  = tag.getParentAttribute(NAME,tmp);
-//            write(" <include href='"+tmp+".lzx"+"'/>");
-//        }
-//        List children = tag.getChildren();
-//        for (int i = 0; i < children.size(); i++) {
-//            Tag child = (Tag) children.get(i);
-//            checkHref(pw,child);
-//        }
-//    }
 
 }

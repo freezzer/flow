@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderColor="#154E76" backgroundColor="#F0F0F0">
 	<mx:Script><![CDATA[
         import de.ama.framework.data.Data;
-        import de.ama.framework.util.Util;
+        import de.ama.framework.util.Factory;
 
         [Embed("../icons/folder.png")]
         private var myFolderIcon:Class;
@@ -54,7 +54,7 @@
 
         public static function createEditor(dataType:String, data:Data = null):TreeEditor {
             if (data == null) {
-                data = Data(Util.createObject("generated.bom."+dataType));
+                data = Data(Factory.createObject(dataType));
             }
 
             var ret:TreeEditor = data.createEditor();
@@ -65,14 +65,21 @@
 
         ]]></mx:Script>
 
-    <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="5" paddingRight="5">
+    <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="4">
+    <mx:HBox id="buttonBar" verticalAlign="middle">
+    	<mx:LinkButton label="Neu" height="18" fontWeight="normal"/>
+    	<mx:LinkButton label="Copy" height="18" fontWeight="normal"/>
+    	<mx:LinkButton label="Delete" height="18" fontWeight="normal"/>
+    </mx:HBox>
+    <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="1" horizontalGap="8">
 
             <mx:Tree id="myTree" width="20%" height="100%" 
             	labelField="label" iconFunction="myIconFunction"
                 showRoot="true" dataProvider="{dataTree}" change="treeChanged(event)"
-                themeColor="#EDECDF" color="#CC6060" fontWeight="bold"/>
+                fontWeight="normal" borderStyle="solid" borderThickness="2" color="#56636C" cornerRadius="4"/>
 
-            <mx:TextArea height="100%" width="80%"  text="Selected Item: {selectedNode}" color="#050505" backgroundAlpha="1.0"/>
+            <mx:TextArea height="100%" width="80%"  text="Selected Item: {selectedNode}" color="#434B57" backgroundAlpha="1.0" borderStyle="solid" cornerRadius="4" borderThickness="2"/>
 
     </mx:HDividedBox>
+    </mx:VBox>
 </mx:Canvas>

@@ -4,50 +4,50 @@
     <model java_dir="server/src/generated/bom" java_package="generated.bom"
            flex_dir="flex/src/generated/bom" flex_package="generated.bom">
         <bean name="Vorgang" persistent="true" unique-key="id" editor="VorgangEditor">
-            <field name="nummer" />
+            <field name="nummer"/>
             <field name="id"/>
             <field name="typ"/>
-            <collection name="transitions" create="3" >
+            <collection name="transitions" create="3">
                 <bean name="Transition">
-                    <field name="name" />
+                    <field name="name"/>
                     <field name="dir"/>
-                    <bean name="Workmodel"  create="1">
-                        <bean name="Kopf" >
-                            <field name="mrn" />
+                    <bean name="Workmodel" create="1">
+                        <bean name="Kopf">
+                            <field name="mrn"/>
                             <field name="zollstelle"/>
                             <field name="erstellt" type="date"/>
                             <field name="angemeldet" type="Date"/>
                         </bean>
-                        <bean name="Geschaeft" >
-                            <field name="art" />
+                        <bean name="Geschaeft">
+                            <field name="art"/>
                             <field name="betrag"/>
                             <field name="waehrung"/>
                         </bean>
                         <field name="zollstelle_ausfuhr"/>
                         <field name="zollstelle_eam"/>
                         <field name="zollstelle_ausgang"/>
-                        <collection name="positionen" type="Position"  create="5">
-                            <bean name="Position" >
-                                <field name="nummer" />
+                        <collection name="positionen" create="5" type="Position">
+                            <bean name="Position">
+                                <field name="nummer"/>
                                 <field name="warennummer"/>
                                 <field name="roh_gewicht" type="Number"/>
                                 <field name="netto_gewicht" type="number"/>
-                                <collection name="verschluesse" create="1">
+                                <collection name="verschluesse" create="1" type="Verschluss">
                                     <bean name="Verschluss">
-                                        <field name="nummer" />
+                                        <field name="nummer"/>
                                         <field name="zeichen"/>
                                     </bean>
                                 </collection>
-                                <collection name="packstuecke"  create="2">
-                                    <bean name="Packstueck" >
-                                        <field name="nummer" />
+                                <collection name="packstuecke" create="2">
+                                    <bean name="Packstueck">
+                                        <field name="nummer"/>
                                         <field name="art"/>
                                         <field name="anzahl"/>
                                     </bean>
                                 </collection>
-                                <collection name="unterlagen"  create="3">
-                                    <bean name="Unterlage" >
-                                        <field name="nummer" />
+                                <collection name="unterlagen" create="3">
+                                    <bean name="Unterlage">
+                                        <field name="nummer"/>
                                         <field name="art"/>
                                         <field name="bezeichnung"/>
                                         <field name="begin"/>
@@ -64,18 +64,22 @@
 
     <view flex_dir="flex/src/generated/view" flex_package="generated.view" model="Vorgang">
 
-        <editor name="VorgangEditor" >
-            <tree_node label="Vorgang" >
+        <editor name="VorgangEditor">
+            <tree_node label="Vorgang">
                 <tree_node label="Transitionen" path="transitions">
                     <tree_node label="Kopf" path="workmodel.kopf" panel="KopfPanel"/>
                     <tree_node label="Positionen" path="workmodel.positionen" listView="true" panel="PosListPanel">
-                       <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel">
-                          <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" />
-                          <tree_node label="Packstueck"  path="packstuecke" panel="PackStueckPanel" icon="group"/>
-                          <tree_node label="Unterlagen"  path="unterlagen" panel="UnterlageListPanel" icon="user" listView="true" >
-                             <tree_node label="Unterlage"  path="unterlagen" panel="UnterlagePanel" icon="user"/>
-                          </tree_node>
-                       </tree_node>
+                        <command name="create" label="Position anlegen"/>
+                        <command name="delete" label="Position loeschen"/>
+                        <command name="copy" label="Position kopieren"/>
+                        <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel">
+                            <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="user"/>
+                            <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="group"/>
+                            <tree_node label="Unterlagen" path="unterlagen" panel="UnterlageListPanel" icon="folder"
+                                       listView="true">
+                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="user"/>
+                            </tree_node>
+                        </tree_node>
                     </tree_node>
                 </tree_node>
             </tree_node>

@@ -37,7 +37,7 @@ public class Tag_menubar extends Tag {
         writeLine();
 
         write(" <mx:MenuBar id='mainMenuBar' labelField='@label' width='"+w+"' height='"+h+"'" +
-              "\nitemClick='de.ama.framework.util.Util.handleMenuClick(event)' " +
+              "\nitemClick='handleMenuClick(event)' " +
                 "\ntop='3' left='3' right='3' >");
         write("  <mx:XMLList>");
 

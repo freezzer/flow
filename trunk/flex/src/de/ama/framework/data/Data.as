@@ -1,4 +1,5 @@
 package de.ama.framework.data {
+import de.ama.framework.gui.frames.ListPane;
 import de.ama.framework.gui.frames.TreeEditor;
 import de.ama.framework.util.Util;
 

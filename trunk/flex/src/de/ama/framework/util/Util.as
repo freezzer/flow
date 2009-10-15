@@ -257,22 +257,5 @@ public class Util
     	return ac;
     }
 
-       public static function handleMenuClick(evt:MenuEvent):void {
-          var type:String = XML(evt.item).attribute("type")[0];
-          var model:String = XML(evt.item).attribute("model")[0];
-          var tabs:Object = Application.application.getChildByName("mainTabs");
-          if(type == "lister"){
-             var p:ListPane = new ListPane();
-             p.label=model;
-             AdvanceTabNavigator(tabs).addChild(p);
-             AdvanceTabNavigator(tabs).selectedChild=p;
-          }
-          if(type == "editor"){
-             var e:TreeEditor = TreeEditor.createEditor(model);
-             e.label = model;
-             AdvanceTabNavigator(tabs).addChild(e);
-             AdvanceTabNavigator(tabs).selectedChild=e;
-          }
-       }
 }
 }

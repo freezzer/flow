@@ -175,6 +175,12 @@
                 <include name="*.swf"/>
             </fileset>
         </copy>
+        <copy todir="${deploy.dir}/${app.name}/static">
+            <fileset dir="flex/src/static">
+                <include name="**.*"/>
+                <exclude name="*.mxml"/>
+            </fileset>
+        </copy>
     </target>
 
     <target name="upload">

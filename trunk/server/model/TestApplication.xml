@@ -9,7 +9,10 @@
         Generated code by flow code generator
     </comment>
 
-    <application dir="flex/src/" name="flow" color="blue">
+
+    <application flex_dir="flex/src/generated/view" flex_package="generated.view">
+
+        <bootstrap/>
 
         <menubar color="silver">
             <menu name="System">

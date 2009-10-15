@@ -68,13 +68,12 @@ public class Tag_bean extends Tag{
         }
         write("public class "+name+" "+" extends Data { ");
 
-        collectCode(Tag_application.FORCE_IMPORT, "      import "+pckg+"."+name+";");
-        collectCode(Tag_application.FORCE_IMPORT, "      public var "+Util.firstCharToLower(name)+":"+name+";");
+        collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
+        collectCode(Tag_bootstrap.REGISTER_IN_FACTORY, "         Factory.register(\""+name+"\", "+name+");");
 
     }
 
     protected void endWrite() {
-        String name = getParentAttribute(NAME,"");
         String editor = getAttribute(EDITOR,"");
 
         writeLine();

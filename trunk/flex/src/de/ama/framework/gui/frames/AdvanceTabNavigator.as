@@ -19,9 +19,9 @@ import mx.managers.DragManager;
 	 */
   	public class AdvanceTabNavigator extends TabNavigator	{
   		
-  		[Embed(source="../icons/WindowCloseButton.gif")]
+  		[Embed(source="../icons/TabCloseButtonGray.gif")]
 		private static const WINDOW_CLOSE_BUTTON_1:Class;
-		[Embed(source="../icons/WindowCloseButton2.gif")]
+		[Embed(source="../icons/TabCloseButtonRed.png")]
 		private static const WINDOW_CLOSE_BUTTON_2:Class;
 		
 		private static const TARGET_TAB_INDEX:String = "targetTabIndex";
@@ -63,7 +63,7 @@ import mx.managers.DragManager;
 			tabCloseButton.setStyle("upSkin", WINDOW_CLOSE_BUTTON_1);
 			tabCloseButton.setStyle("overSkin", WINDOW_CLOSE_BUTTON_2);
 			tabCloseButton.setStyle("downSkin", WINDOW_CLOSE_BUTTON_2);
-			tabCloseButton.setStyle("horizontalGap","5");
+			tabCloseButton.setStyle("horizontalGap","1");
 			tabCloseButton.visible = false;
 			tabCloseButton.buttonMode = true;
 			tabCloseButton.useHandCursor = true;
