@@ -1,0 +1,82 @@
+/* CSS file */
+
+
+Canvas
+{
+	backgroundColor: #F0F0F0;
+}
+
+Application
+{
+	backgroundColor: #ffffff;
+	paddingBottom: 5;
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 5;
+}
+
+ViewStack
+{
+	backgroundColor: #ffffff;
+	borderStyle: none;
+}
+
+
+MenuBar
+{
+	fillAlphas: 1.0, 1.0;
+	fillColors: #EFEFEF, #B3ADAD;
+	fontWeight: normal;
+	rollOverColor: #E44D4D;
+}
+
+MenuBarItem
+{
+	
+}
+global
+{
+	themeColor: #E3001B;
+	fontFamily: Verdana;
+	fontSize: 12;
+	fontWeight: normal;
+	verticalScrollBarStyleName: menuVerticalScrollBar;
+}
+.menuVerticalScrollBar
+{
+}
+AdvanceTabNavigator
+{
+	backgroundColor: #F0F0F0;
+	tabStyleName: advanceTabNavigatorTab;
+	firstTabStyleName: advanceTabNavigatorFirstTab;
+	lastTabStyleName: advanceTabNavigatorLastTab;
+	selectedTabTextStyleName: advanceTabNavigatorSelectedTabText;
+	horizontalAlign: left;
+	horizontalGap: 0;
+	tabOffset: 0;
+	paddingTop: 2;
+}
+.advanceTabNavigatorTab
+{
+	fontWeight: normal;
+	horizontalGap: 0;
+	paddingRight: 15;
+}
+.advanceTabNavigatorFirstTab
+{
+	fontWeight: normal;
+	paddingRight: 15;
+}
+.advanceTabNavigatorLastTab
+{
+	fontWeight: normal;
+	paddingRight: 15;
+}
+.advanceTabNavigatorSelectedTabText
+{
+	fontWeight: bold;
+	color: #E51111;
+	paddingRight: 15;
+}
+

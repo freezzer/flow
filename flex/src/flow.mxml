@@ -1,61 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:frames="de.ama.framework.gui.frames.*"
-layout="vertical" width='100%' height='100%'
-paddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' 
- applicationComplete="bootstrap()"  borderColor="#DFE8EF" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #D7DDE9]" themeColor="#87CAF4">
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:frames="de.ama.framework.gui.frames.*"
+	xmlns:views="generated.view.*"
+	xmlns:static="static.*"
+    layout="vertical" width='100%' height='100%'
+    paddingTop='5' paddingLeft='5' paddingRight='5' paddingBottom='5' 
+    initialize="init()" >
 
+    <mx:Sequence id="slideOut" > <mx:Move  xFrom="0" xTo="700" duration="500" />    </mx:Sequence>
+    <mx:Sequence id="slideIn" >	<mx:Move  xFrom="700" xTo="0" duration="700" />    </mx:Sequence>
+		
+    <mx:ViewStack id="mainPanels" width="100%" height="100%" x="0" y="34" creationPolicy="all">
+       <static:LoginScreen     id="panelLogin"        hideEffect="{slideOut}" showEffect="{slideIn}" height="100%" width="100%"/>
+       <views:Application      id="panelApplication"  hideEffect="{slideOut}" showEffect="{slideIn}" height="100%" width="100%"/>
+    </mx:ViewStack>
 
-   <mx:MenuBar id='mainMenuBar' labelField='@label' width='100%' height='20'
-itemClick='de.ama.framework.util.Util.handleMenuClick(event)' 
-top='3' left='3' right='3'  themeColor="#ADD7E2" fontWeight="bold" cornerRadius="9" fillColors="[#FFFFFF, #CCCCCC]">
-    <mx:XMLList>
-     <menu label='System'>
-         <menuitem label='Anmelden' />
-         <menuitem label='Abmelden' />
-     </menu>
-     <menu label='Stammdaten'>
-         <menuitem label='Uebersicht Personen' type='lister'  model='Person' />
-         <menuitem label='Neue Person anlegen' type='editor'  model='Person' />
-     </menu>
-     <menu label='Vorgaenge'>
-         <menuitem label='Uebersicht Vorgaenge' type='lister'  model='Vorgang' />
-         <menuitem label='Neuen Vorgang anlegen' type='editor'  model='Vorgang' />
-     </menu>
-     <menu label='Administration'>
-         <menuitem label='Uebersicht User' type='lister'  model='User' />
-         <menuitem label='Neuen User anlegen' type='editor'  model='User' />
-     </menu>
-    </mx:XMLList>
-   </mx:MenuBar>
-   <frames:AdvanceTabNavigator  height='100%' width='100%' id='mainTabs'  tabCloseEnable="true" tabDragEnable="true"  borderColor="#A1A9A9"/>
     <mx:Script><![CDATA[
-      import de.ama.framework.util.Bootstrapper;
       import de.ama.framework.util.Util;
 
-      // to force the flex compiler to include
-      import generated.bom.Vorgang;
-      public var vorgang:Vorgang;
-      import generated.bom.Transition;
-      public var transition:Transition;
-      import generated.bom.Workmodel;
-      public var workmodel:Workmodel;
-      import generated.bom.Kopf;
-      public var kopf:Kopf;
-      import generated.bom.Geschaeft;
-      public var geschaeft:Geschaeft;
-      import generated.bom.Position;
-      public var position:Position;
-      import generated.bom.Verschluss;
-      public var verschluss:Verschluss;
-      import generated.bom.Packstueck;
-      public var packstueck:Packstueck;
-      import generated.bom.Unterlage;
-      public var unterlage:Unterlage;
+      import generated.view.Bootstrap;
 
+      import static.*;
 
-      private function bootstrap():void {
-          var bootStrapper:Bootstrapper = new Bootstrapper();
-          bootStrapper.execute();
+      public function goTo(dest:String):void {
+      	
+      	    if (Util.isEqual(dest, "login")) {
+                mainPanels.selectedChild = panelLogin;
+            }
+            else if (Util.isEqual(dest, "application")) {
+                mainPanels.selectedChild = panelApplication;
+            }
+      }
+      
+
+      private function init():void {
+          var bootstrap:Bootstrap = new Bootstrap();
+          bootstrap.execute();
       }
     ]]></mx:Script>
+
+<mx:Style source="static/styles.css"/>
 </mx:Application>
