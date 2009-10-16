@@ -13,6 +13,8 @@ Application
 	paddingLeft: 5;
 	paddingRight: 5;
 	paddingTop: 5;
+	backgroundGradientAlphas: 1.0, 1.0;
+	backgroundGradientColors: #F0F0F0, #F0F0F0;
 }
 
 ViewStack
@@ -24,10 +26,12 @@ ViewStack
 
 MenuBar
 {
-	fillAlphas: 1.0, 1.0;
-	fillColors: #EFEFEF, #B3ADAD;
+	fillAlphas: 0.15, 0.27, 1.0, 1.0;
+	fillColors: #E3001B, #E87D7D, #E3001B, #E3001B;
 	fontWeight: normal;
-	rollOverColor: #E44D4D;
+	cornerRadius: 4;
+	disabledColor: #BBC7C7;
+	rollOverColor: #E3001B;
 }
 
 MenuBarItem
@@ -47,7 +51,7 @@ global
 }
 AdvanceTabNavigator
 {
-	backgroundColor: #F0F0F0;
+	backgroundColor: #E0E0E0;
 	tabStyleName: advanceTabNavigatorTab;
 	firstTabStyleName: advanceTabNavigatorFirstTab;
 	lastTabStyleName: advanceTabNavigatorLastTab;
@@ -62,21 +66,28 @@ AdvanceTabNavigator
 	fontWeight: normal;
 	horizontalGap: 0;
 	paddingRight: 15;
+	themeColor: #F0F0F0;
 }
 .advanceTabNavigatorFirstTab
 {
 	fontWeight: normal;
 	paddingRight: 15;
+	themeColor: #F0F0F0;
 }
 .advanceTabNavigatorLastTab
 {
 	fontWeight: normal;
 	paddingRight: 15;
+	themeColor: #F0F0F0;
 }
 .advanceTabNavigatorSelectedTabText
 {
 	fontWeight: bold;
 	color: #E51111;
 	paddingRight: 15;
+	firstTabStyleName: tabNavigatorFirstTab;
+}
+.tabNavigatorFirstTab
+{
 }
 

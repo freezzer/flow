@@ -2,16 +2,7 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" borderColor="#154E76" backgroundColor="#F0F0F0">
 	<mx:Script><![CDATA[
         import de.ama.framework.data.Data;
-        import de.ama.framework.util.Factory;
-
-        [Embed("../icons/folder.png")]
-        private var myFolderIcon:Class;
-
-        [Embed("../icons/group.png")]
-        private var myGroupIcon:Class;
-
-        [Embed("../icons/user.png")]
-        private var myUserIcon:Class;
+        import de.ama.framework.gui.icons.IconStore;
 
         [Bindable]
         private var dataTree:TreeNode;
@@ -31,20 +22,7 @@
         private function myIconFunction(item:Object):Class {
             var iconClass:Class;
             var iconName:String = item["iconName"];
-            if (iconName == null) {
-                return myFolderIcon;
-            } else {
-                switch (iconName) {
-                    case "user":
-                        return  myUserIcon;
-                    case "group":
-                        return myGroupIcon;
-                    case "folder":
-                        return myFolderIcon;
-                }
-            }
-
-            return myFolderIcon;
+            return IconStore.getIcon(iconName);
         }
 
         public function setData(data:Data):void {
@@ -52,25 +30,9 @@
             dataTree.setData(data);
         }
 
-        public static function createEditor(dataType:String, data:Data = null):TreeEditor {
-            if (data == null) {
-                data = Data(Factory.createObject(dataType));
-            }
-
-            var ret:TreeEditor = data.createEditor();
-            ret.setData(data);
-
-            return ret;
-        }
-
         ]]></mx:Script>
 
     <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="4">
-    <mx:HBox id="buttonBar" verticalAlign="middle">
-    	<mx:LinkButton label="Neu" height="18" fontWeight="normal"/>
-    	<mx:LinkButton label="Copy" height="18" fontWeight="normal"/>
-    	<mx:LinkButton label="Delete" height="18" fontWeight="normal"/>
-    </mx:HBox>
     <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="1" horizontalGap="8">
 
             <mx:Tree id="myTree" width="20%" height="100%" 

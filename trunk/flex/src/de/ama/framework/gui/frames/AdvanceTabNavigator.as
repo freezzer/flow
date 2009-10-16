@@ -1,4 +1,6 @@
 package de.ama.framework.gui.frames{
+import de.ama.framework.gui.icons.IconStore;
+
 import flash.display.DisplayObject;
 import flash.events.MouseEvent;
 
@@ -19,11 +21,7 @@ import mx.managers.DragManager;
 	 */
   	public class AdvanceTabNavigator extends TabNavigator	{
   		
-  		[Embed(source="../icons/TabCloseButtonGray.gif")]
-		private static const WINDOW_CLOSE_BUTTON_1:Class;
-		[Embed(source="../icons/TabCloseButtonRed.png")]
-		private static const WINDOW_CLOSE_BUTTON_2:Class;
-		
+
 		private static const TARGET_TAB_INDEX:String = "targetTabIndex";
 		
 		protected var tabCloseButton:Button = new Button();
@@ -60,9 +58,9 @@ import mx.managers.DragManager;
 			tabCloseButton.height=10;
 			tabCloseButton.toolTip = "close";
 			tabCloseButton.focusEnabled=false;
-			tabCloseButton.setStyle("upSkin", WINDOW_CLOSE_BUTTON_1);
-			tabCloseButton.setStyle("overSkin", WINDOW_CLOSE_BUTTON_2);
-			tabCloseButton.setStyle("downSkin", WINDOW_CLOSE_BUTTON_2);
+			tabCloseButton.setStyle("upSkin",   IconStore.TAB_CLOSE_BUTTON_GRAY);
+			tabCloseButton.setStyle("overSkin", IconStore.TAB_CLOSE_BUTTON_RED);
+			tabCloseButton.setStyle("downSkin", IconStore.TAB_CLOSE_BUTTON_RED);
 			tabCloseButton.setStyle("horizontalGap","1");
 			tabCloseButton.visible = false;
 			tabCloseButton.buttonMode = true;

@@ -66,5 +66,18 @@ public class DataTable {
     public function clear():void{
         while(collection.length>0){ collection.pop(); }
     }
+
+    public function clone(dst:DataTable=null):DataTable {
+        if(dst==null){
+            dst = new DataTable(protoType);
+        }
+
+        for each (var data:Data in collection){
+            dst.addItem(data.clone());
+        }
+        
+        return dst;
+    }
+
 }
 }

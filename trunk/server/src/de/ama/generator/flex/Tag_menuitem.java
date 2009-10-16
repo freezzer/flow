@@ -29,18 +29,10 @@ import de.ama.util.Util;
 public class Tag_menuitem extends Tag {
 
     protected void mainWrite() {
-        String name = getRequiredAttribute(NAME);
-        String exec = "";
-
-        String  editor = getAttribute("editor","");
-        if(Util.isNotEmpty(editor))
-           exec = "type='editor'  model='"+editor+"' ";
-
-        String  lister = getAttribute("lister","");
-        if(Util.isNotEmpty(lister))
-            exec = "type='lister'  model='"+lister+"' ";
-
-        write("     <menuitem label='"+name+"' "+exec+"/>");
+        String command = getAttribute(COMMAND);
+        String label = getAttribute(LABEL);
+        String model = getAttribute(MODEL);
+        write("     <menuitem label='"+label+"' command='"+command+"' model='"+model+"'  />");
     }
 
 

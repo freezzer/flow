@@ -25,36 +25,22 @@ import de.ama.generator.Tag;
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_bootstrap extends Tag {
-    protected static final String FORCE_IMPORT = "FORCE_IMPORT";
-    protected static final String REGISTER_OBJECT = "REGISTER_OBJECT";
-    protected static final String REGISTER_COMMAND = "REGISTER_COMMAND";
+public class Tag_tabbed_application_panel extends Tag {
 
     protected void beginWrite() {
+        String w = getAttribute(W, "100%");
+        String h = getAttribute(H, "100%");
 
-        String name = getAttribute(NAME,"Bootstrap");
-        String dir =  getParentAttribute(DIR,"");
-        dir =  getParentAttribute(FLEX_DIR,dir);
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"");
-        initPrintWriter(dir,name+".as");
+        String name = getAttribute(NAME,"ContentPane");
+        String dir =  getParentAttribute(DIR,getParentAttribute(FLEX_DIR,""));
+        initPrintWriter(dir,name+".mxml");
 
-        write("/* ");
-        write(getStoredObject(COMMENT));
-        write("*/ ");
+        write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
+        write("<frames:TabbedApplicationPanel " +
+                "\nxmlns:mx=\"http://www.adobe.com/2006/mxml\" " +
+                "\nxmlns:frames=\"de.ama.framework.gui.frames.*\"" +
+                "\nimplements=\"de.ama.framework.gui.frames.ApplicationPanel\">");
         writeLine();
-        write("package "+pckg+" {");
-        write("import de.ama.framework.util.Factory;");
-        write(getCollectedCode(FORCE_IMPORT));
-        write("");
-        write("public class "+name+" {");
-        write("");
-        write("    public function execute():void {");
-        write(getCollectedCode(REGISTER_OBJECT));
-        write("");
-        write(getCollectedCode(REGISTER_COMMAND));
-        write("    }");
-        write("");
-        write("}}");
     }
 
     @Override
@@ -63,7 +49,9 @@ public class Tag_bootstrap extends Tag {
     }
 
     protected void endWrite() {
+
         write("");
+        write("</frames:TabbedApplicationPanel>");
         flush();
     }
 

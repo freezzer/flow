@@ -65,19 +65,15 @@
     <view flex_dir="flex/src/generated/view" flex_package="generated.view" model="Vorgang">
 
         <editor name="VorgangEditor">
-            <tree_node label="Vorgang">
-                <tree_node label="Transitionen" path="transitions">
-                    <tree_node label="Kopf" path="workmodel.kopf" panel="KopfPanel"/>
-                    <tree_node label="Positionen" path="workmodel.positionen" listView="true" panel="PosListPanel">
-                        <command name="create" label="Position anlegen"/>
-                        <command name="delete" label="Position loeschen"/>
-                        <command name="copy" label="Position kopieren"/>
-                        <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel">
-                            <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="user"/>
-                            <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="group"/>
-                            <tree_node label="Unterlagen" path="unterlagen" panel="UnterlageListPanel" icon="folder"
-                                       listView="true">
-                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="user"/>
+            <tree_node label="Vorgang" icon="lorry">
+                <tree_node label="Transitionen" path="transitions" icon="arrow.right">
+                    <tree_node label="Kopf" path="workmodel.kopf" panel="KopfPanel" icon="edit"/>
+                    <tree_node label="Positionen" path="workmodel.positionen" listView="true" panel="PosListPanel" icon="table" create="true" >
+                        <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel" icon="edit" delete="true" copy="true">
+                            <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock"/>
+                            <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack"/>
+                            <tree_node label="Unterlagen" path="unterlagen" panel="UnterlageListPanel" icon="table"  listView="true">
+                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock"/>
                             </tree_node>
                         </tree_node>
                     </tree_node>

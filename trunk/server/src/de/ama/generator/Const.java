@@ -24,6 +24,7 @@ package de.ama.generator;
  */
 public interface Const {
     public static final String COMMENT = "comment";
+    public static final String COMMAND = "command";
     public static final String NAME = "name";
     public static final String PANELNAME = "panelname";
     public static final String PREFIX = "preix";
@@ -33,6 +34,7 @@ public interface Const {
     public static final String ICON = "icon";
     public static final String PANEL = "panel";
     public static final String EDITOR = "editor";
+    public static final String LISTER = "lister";
     public static final String MODEL = "model";
     public static final String TYPE = "type";
     public static final String CREATE = "create";
