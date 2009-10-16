@@ -3,4 +3,11 @@
     <mx:Script><![CDATA[
 
         ]]></mx:Script>
+    <mx:DataGrid x="10" y="10" width="380" height="280">
+        <mx:columns>
+            <mx:DataGridColumn headerText="Column 1" dataField="col1"/>
+            <mx:DataGridColumn headerText="Column 2" dataField="col2"/>
+            <mx:DataGridColumn headerText="Column 3" dataField="col3"/>
+        </mx:columns>
+    </mx:DataGrid>
 </mx:Canvas>

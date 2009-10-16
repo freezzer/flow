@@ -25,28 +25,36 @@ import de.ama.generator.Tag;
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_menubar extends Tag {
+public class Tag_command extends Tag {
 
     protected void beginWrite() {
-        String w = getAttribute(W, "100%");
-        String h = getAttribute(H, "20");
 
-//        String color = getAttribute(COLOR, "");
-//        if(Util.isNotEmpty(color)) { color=" style='"+color+"colors'";  }
+        String name = getRequiredAttribute(NAME);
+        String dir = getParentAttribute(DIR, "");
+        dir = getParentAttribute(FLEX_DIR, dir);
+        String pckg = getParentAttribute(FLEX_PACKAGE, "");
+        initPrintWriter(dir, name + ".as");
 
+        write("/* ");
+        write(getStoredObject(COMMENT));
+        write("*/ ");
         writeLine();
+        write("package " + pckg + " {");
+        write("import de.ama.framework.util.*;");
+        write("import de.ama.framework.command.*;");
+        write("import de.ama.framework.data.*;");
+        write("public class "+name+" "+" extends Command { ");
 
-        write(" <mx:MenuBar id='mainMenuBar' labelField='@label' width='"+w+"' height='"+h+"'" +
-        "\n        itemClick='handleMenuClick(event)' " +
-        "\n        top='3' left='3' right='3' >");
-        write("  <mx:XMLList>");
+        collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
+        collectCode(Tag_bootstrap.REGISTER_COMMAND, "         Factory.registerCommand(\""+name+"\", "+name+");");
 
     }
 
     protected void endWrite() {
-        write("  </mx:XMLList>");
-        write(" </mx:MenuBar>");
+        writeLine();
+        write("}}");
         flush();
+
     }
 
 }

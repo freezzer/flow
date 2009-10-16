@@ -1,5 +1,5 @@
 package de.ama.framework.action {
-import de.ama.framework.data.SelectionModel;
+import de.ama.framework.command.SelectionModel;
 
 public class ActionScriptAction {
 
@@ -14,14 +14,6 @@ public class ActionScriptAction {
     public var versionMismatch:Boolean;
     public var dontCommit:Boolean;
     public var needsLogin:Boolean;
-
-
-	public function addOidString(oidString:String):void{
-		if(selectionModel==null){
-		   selectionModel = new SelectionModel();
-		}
-		selectionModel.addOidString(oidString);
-	}
 
 }
 }

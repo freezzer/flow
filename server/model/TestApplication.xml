@@ -1,41 +1,43 @@
 <?xml version="1.0"?>
 <define>
+    <comment><![CDATA[
+           generated code by flow "flex on wings"
+           this code is property of Andreas Marochow
+    ]]></comment>
+
     <!--<import file="person.xml"/>-->
     <!--<import file="user.xml"/>-->
     <!--<import file="actions.xml"/>-->
     <import file="Vorgang.xml"/>
 
-    <comment>
-        Generated code by flow code generator
-    </comment>
 
 
-    <application flex_dir="flex/src/generated/view" flex_package="generated.view">
-
+    <tabbed_application_panel name="MyApplicationPanel" flex_dir="flex/src/generated/view" flex_package="generated.view">
         <bootstrap/>
 
-        <menubar color="silver">
+        <menubar h="24">
             <menu name="System">
-                <menuitem name="Anmelden" command=""/>
-                <menuitem name="Abmelden"/>
+                <menuitem label="Abmelden" command="LogoutCommand" />
+                <menuitem label="Anmelden" command="LoginCommand" />
+                <menuitem label="Info"     command="ShowinfoCommand" />
             </menu>
             <menu name="Stammdaten">
-                <menuitem name="Uebersicht Personen" tab="true" lister="Person"/>
-                <menuitem name="Neue Person anlegen" tab="true" editor="Person"/>
+                <menuitem label="Uebersicht Personen" command="OpenListerCommand" model="Person"/>
+                <menuitem label="Neue Person anlegen" command="OpenEditorCommand" model="Person"/>
             </menu>
             <menu name="Vorgaenge">
-                <menuitem name="Uebersicht Vorgaenge" tab="true" lister="Vorgang"/>
-                <menuitem name="Neuen Vorgang anlegen" tab="true" editor="Vorgang"/>
+                <menuitem label="Uebersicht Vorgaenge"  command="OpenListerCommand" model="Vorgang"/>
+                <menuitem label="Neuen Vorgang anlegen" command="OpenEditorCommand" model="Vorgang"/>
             </menu>
             <menu name="Administration">
-                <menuitem name="Uebersicht User" tab="true" lister="User"/>
-                <menuitem name="Neuen User anlegen" tab="true" editor="User"/>
+                <menuitem label="Uebersicht User"    command="OpenListerCommand" model="User"/>
+                <menuitem label="Neuen User anlegen" command="OpenEditorCommand" model="User"/>
             </menu>
         </menubar>
+        
+    </tabbed_application_panel>
 
-        <tabpanel />
 
-    </application>
 </define>
 
 

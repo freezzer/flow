@@ -1,4 +1,5 @@
 package de.ama.framework.util {
+import de.ama.framework.command.Command;
 import de.ama.framework.data.Data;
 import de.ama.framework.gui.frames.ListPane;
 import de.ama.framework.gui.frames.TreeEditor;
@@ -12,34 +13,30 @@ public class Factory {
        dictionary[key] = c;
    }
 
+   public static function createData(key:String):Data{
+       return Data(createObject(key));
+   }
+
    public static function createObject(key:String):Object{
        var c:Class = dictionary[key];
        if(c!=null){
            return new c();
        }
-       throw Error("there is no Class for key ["+key+"] registered in Factory");
+
+       try {
+           return Util.createObject(key);
+       } catch(e:Error) {
+       }
+
+       throw Error("there is no Class for key ["+key+"] registered, and can not create by name ");
+
    }
 
-    public static function createListPane(dataType:String, data:Data = null):ListPane {
-//        if (data == null) {
-//            data = Data(createObject(dataType));
-//        }
-
-        var ret:ListPane = new ListPane();
-        //ret.setData(data);
-
-        return ret;
-    }
-    public static function createEditor(dataType:String, data:Data = null):TreeEditor {
-        if (data == null) {
-            data = Data(createObject(dataType));
-        }
-
-        var ret:TreeEditor = data.createEditor();
-        ret.setData(data);
-
-        return ret;
+    public static function registerCommand(key:String, c:Class):void{
+        dictionary[key] = c;
     }
 
-}
+    public static function createCommand(type:String):Command {
+        return Command(createObject(type));
+    }}
 }

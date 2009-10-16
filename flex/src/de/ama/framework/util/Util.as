@@ -12,6 +12,8 @@ import flash.errors.IllegalOperationError;
 
 import flash.utils.getDefinitionByName;
 
+import flash.utils.getQualifiedClassName;
+
 import mx.collections.ArrayCollection;
 import mx.controls.Alert;
 import mx.core.Application;
@@ -168,6 +170,18 @@ public class Util
         return getDefinitionByName(name) as Class;
     }
 
+    public static function getClassName(o:Object):String {
+        if(o==null) return "no classname for 'null'";
+        return getQualifiedClassName(o);
+    }
+
+    public static function getUnqualifiedClassName(o:Object):String {
+        if(o==null) return "no classname for 'null'";
+        var name:String = getClassName(o);
+        return name.split("::")[1];
+    }
+
+
     public static function createObject(name:String):Object {
         var c:Class = classForName(name);
         return new c();
@@ -256,6 +270,7 @@ public class Util
     	
     	return ac;
     }
+
 
 }
 }

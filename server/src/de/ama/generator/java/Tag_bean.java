@@ -28,10 +28,6 @@ import de.ama.util.Util;
  */
 public class Tag_bean extends Tag{
 
-
-    protected void prepareElement() {
-    }
-
     public int getIndent() {
         return 0;
     }
