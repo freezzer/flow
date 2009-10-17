@@ -66,14 +66,14 @@
 
         <editor name="VorgangEditor">
             <tree_node label="Vorgang" icon="lorry">
-                <tree_node label="Transitionen" path="transitions" icon="arrow.right">
+                <tree_node label="Transition" path="transitions" icon="arrow.right">
                     <tree_node label="Kopf" path="workmodel.kopf" panel="KopfPanel" icon="edit"/>
                     <tree_node label="Positionen" path="workmodel.positionen" listView="true" panel="PosListPanel" icon="table" create="true" >
                         <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel" icon="edit" delete="true" copy="true">
-                            <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock"/>
-                            <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack"/>
-                            <tree_node label="Unterlagen" path="unterlagen" panel="UnterlageListPanel" icon="table"  listView="true">
-                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock"/>
+                            <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock" delete="true" copy="true"/>
+                            <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack" delete="true" copy="true"/>
+                            <tree_node label="Unterlagen" path="unterlagen" panel="UnterlageListPanel" icon="table"  listView="true"  create="true" >
+                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock" delete="true" copy="true"/>
                             </tree_node>
                         </tree_node>
                     </tree_node>

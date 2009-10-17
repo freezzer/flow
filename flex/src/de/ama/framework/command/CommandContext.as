@@ -4,7 +4,6 @@ import de.ama.framework.util.Util;
 
 public class CommandContext {
     private var _properties:Array = null;
-    private var _target:Target = null;
     private var _invoker:Invoker = null;
     private var _selectionModel:SelectionModel = null;
 
@@ -48,14 +47,6 @@ public class CommandContext {
 
     public function set properties(value:Array):void {
         _properties = value;
-    }
-
-    public function get target():Target {
-        return _target;
-    }
-
-    public function set target(value:Target):void {
-        _target = value;
     }
 
     public function get invoker():Invoker {

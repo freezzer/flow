@@ -26,12 +26,12 @@ ViewStack
 
 MenuBar
 {
-	fillAlphas: 0.15, 0.27, 1.0, 1.0;
-	fillColors: #E3001B, #E87D7D, #E3001B, #E3001B;
+	fillAlphas: 0.15, 0.05, 0.61, 1.0;
+	fillColors: #E0E0E0, #E0E0E0, #CE6874, #CE6874;
 	fontWeight: normal;
 	cornerRadius: 4;
 	disabledColor: #BBC7C7;
-	rollOverColor: #E3001B;
+	rollOverColor: #CE6874;
 }
 
 MenuBarItem
@@ -40,7 +40,7 @@ MenuBarItem
 }
 global
 {
-	themeColor: #E3001B;
+	themeColor: #CE6874;
 	fontFamily: Verdana;
 	fontSize: 12;
 	fontWeight: normal;
@@ -66,28 +66,21 @@ AdvanceTabNavigator
 	fontWeight: normal;
 	horizontalGap: 0;
 	paddingRight: 15;
-	themeColor: #F0F0F0;
 }
 .advanceTabNavigatorFirstTab
 {
 	fontWeight: normal;
 	paddingRight: 15;
-	themeColor: #F0F0F0;
 }
 .advanceTabNavigatorLastTab
 {
 	fontWeight: normal;
 	paddingRight: 15;
-	themeColor: #F0F0F0;
 }
 .advanceTabNavigatorSelectedTabText
 {
 	fontWeight: bold;
-	color: #E51111;
 	paddingRight: 15;
-	firstTabStyleName: tabNavigatorFirstTab;
 }
-.tabNavigatorFirstTab
-{
-}
+
 

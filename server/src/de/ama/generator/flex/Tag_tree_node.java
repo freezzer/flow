@@ -20,7 +20,6 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
-import de.ama.util.Util;
 
 /**
  * User: x
@@ -40,9 +39,24 @@ public class Tag_tree_node extends Tag {
         String panel = getAttribute(PANEL, "default");
         boolean fixedopen = getAttribute(FIXED_OPEN,true);
         boolean listView = getAttribute(LIST_VIEW,false);
+
+        boolean create = getAttribute(CREATE,false);
+        boolean copy = getAttribute(COPY,false);
+        boolean delete = getAttribute(DELETE,false);
+
         String icon = getAttribute(ICON,"folder");
 
         write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\");");
+        if(create){
+        write("          node.commands.addItem(new CreateNodeCommand('"+label+" anlegen'));");
+        }
+        if(copy){
+        write("          node.commands.addItem(new CopyNodeCommand('"+label+" kopieren'));");
+        }
+        if(delete){
+        write("          node.commands.addItem(new DeleteNodeCommand('"+label+" loeschen'));");
+        }
+
         if(getParent() instanceof Tag_tree_node) {
            write("          parent.addPrototype(node);");
         } else {

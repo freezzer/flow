@@ -38,6 +38,8 @@ public interface Const {
     public static final String MODEL = "model";
     public static final String TYPE = "type";
     public static final String CREATE = "create";
+    public static final String DELETE = "delete";
+    public static final String COPY = "copy";
     public static final String CLASS = "class";
     public static final String MANDATORY = "mandatory";
     public static final String PERSISTENT = "persistent";

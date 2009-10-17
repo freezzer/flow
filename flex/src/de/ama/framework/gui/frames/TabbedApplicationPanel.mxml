@@ -5,31 +5,31 @@
 
 
     <mx:Script><![CDATA[
-    	import de.ama.framework.command.CommandContext;
+        import de.ama.framework.command.CommandContext;
         import de.ama.framework.command.Command;
         import de.ama.framework.command.SelectionModel;
         import de.ama.framework.data.Data;
         import de.ama.framework.util.BootstrapDefault;
         import de.ama.framework.util.Factory;
-        import de.ama.framework.util.Util;
 
         import generated.view.*;
 
         import mx.core.Container;
         import mx.events.MenuEvent;
-                                    
+
         private var mainTabs:AdvanceTabNavigator = null;
 
         public function init():void {
+
             mainTabs = new AdvanceTabNavigator();
-            mainTabs.setStyle("width","100%");
+            mainTabs.setStyle("width", "100%");
             mainTabs.tabCloseEnable = true;
             mainTabs.tabDragEnable = true;
-            mainTabs.setStyle("top","30");
-            mainTabs.setStyle("bottom","0");
-            mainTabs.setStyle("left","3");
-            mainTabs.setStyle("right","3");
-            mainTabs.setStyle("backgroundColor","#F0F0F0");
+            mainTabs.setStyle("top", "30");
+            mainTabs.setStyle("bottom", "0");
+            mainTabs.setStyle("left", "3");
+            mainTabs.setStyle("right", "3");
+            mainTabs.setStyle("backgroundColor", "#F0F0F0");
             addChild(mainTabs);
 
             var bootstrapDefault:BootstrapDefault = new BootstrapDefault();
@@ -40,8 +40,8 @@
         }
 
         public function addContent(child:Container):void {
-                mainTabs.addChild(child);
-                mainTabs.selectedChild = child;
+            mainTabs.addChild(child);
+            mainTabs.selectedChild = child;
         }
 
         protected function handleMenuClick(evt:MenuEvent):void {
@@ -50,11 +50,11 @@
 
             var cmd:Command = Factory.createCommand(command);
             var data:Data = Factory.createData(model);
-            cmd.context = new CommandContext();
             cmd.context.invoker = this;
             cmd.context.selectionModel = new SelectionModel(data);
             cmd.execute();
         }
+
 
 
         ]]></mx:Script>
