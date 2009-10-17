@@ -26,10 +26,6 @@ import de.ama.generator.Tag;
  * Date: 25.04.2008
  */
 public class Tag_tree_node extends Tag {
-    @Override
-    protected int getIndent() {
-        return 0;
-    }
 
     protected void beginWrite() {
         String label = getAttribute(LABEL);
@@ -44,7 +40,7 @@ public class Tag_tree_node extends Tag {
         boolean copy = getAttribute(COPY,false);
         boolean delete = getAttribute(DELETE,false);
 
-        String icon = getAttribute(ICON,"folder");
+        String icon = getAttribute(ICON, listView?"table":"edit");
 
         write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\");");
         if(create){
@@ -58,7 +54,7 @@ public class Tag_tree_node extends Tag {
         }
 
         if(getParent() instanceof Tag_tree_node) {
-           write("          parent.addPrototype(node);");
+           write("          parent.addTemplate(node);");
         } else {
            write("          root = node;");
         }
@@ -71,6 +67,10 @@ public class Tag_tree_node extends Tag {
     }
 
     protected void endWrite() {
+        if(getAttribute(LIST_VIEW,false)){
+           write("          parent = parent.parent;");
+        }
+
     }
 
 

@@ -9,7 +9,12 @@ import mx.core.Application;
 public class CopyDataCommand extends Command{
 
 
-    override public function execute():void {
+    public function CopyDataCommand(label:String="kopieren",icon:String="copy") {
+        super(label,icon);
+    }
+
+
+    override protected function execute():void {
         var data:Data = context.getData(true).clone();
 
         var e:TreeEditor = data.createEditor();

@@ -1,37 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
-	borderColor="#154E76" backgroundColor="#F0F0F0"
-	initialize="init()">
+	initialize="init()" implements="de.ama.framework.command.Invoker">
 	<mx:Script><![CDATA[
-		import de.ama.framework.command.SelectionModel;
-        import adobe.utils.CustomActions;
-
         import de.ama.framework.command.Command;
+        import de.ama.framework.command.SaveBoCommand;
+        import de.ama.framework.command.SelectionModel;
+        import de.ama.framework.data.Data;
         import de.ama.framework.data.Data;
         import de.ama.framework.gui.icons.IconStore;
 
+        import mx.collections.ArrayCollection;
+        import mx.controls.Button;
         import mx.controls.treeClasses.TreeItemRenderer;
         import mx.core.UITextField;
-
-        public var treeMenu:ContextMenu = new ContextMenu();
 
         public function init():void
         {
             treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
-            treeMenu.hideBuiltInItems();
+//            treeMenu.hideBuiltInItems();
+
+            editorCommands.addItem(new SaveBoCommand());
         }
 
 
         [Bindable]
-        private var dataTree:TreeNode;
+        private var toolBarCommands:ArrayCollection = new ArrayCollection();
 
         [Bindable]
-        public var selectedNode:Object;
+        private var editorCommands:ArrayCollection = new ArrayCollection();
+
+        [Bindable]
+        private var rootNode:TreeNode;
+
+        [Bindable]
+        public var selectedNode:TreeNode;
+
+        [Bindable]
+        public var treeMenu:ContextMenu = new ContextMenu();
+
+
+        private function refreshToolBar():void {
+            toolBarCommands.removeAll();
+            for each(var command:Command in selectedNode.commands) {
+                toolBarCommands.addItem(command);
+            }
+        }
 
         public function treeChanged(event:Event):void {
-            selectedNode = Tree(event.target).selectedItem;
+            selectedNode = TreeNode(Tree(event.target).selectedItem);
+            refreshToolBar();
         }
 
+        /**
+         * wird in Derivaten überschrieben um die Baum Definition zu liefern
+         * @return
+         */
         public function getPrototypeTree():TreeNode {
             return null;
         }
@@ -43,8 +66,12 @@
         }
 
         public function setData(data:Data):void {
-            dataTree = getPrototypeTree();
-            dataTree.setData(data);
+            rootNode = getPrototypeTree();
+            rootNode.setData(data);
+        }
+
+        public function getData():Data {
+            return rootNode.getData();
         }
 
 
@@ -67,34 +94,64 @@
         }
 
         private function menuItemSelectHandler(event:ContextMenuEvent):void {
-                var tf:UITextField = UITextField(event.mouseTarget);
-                var ir:TreeItemRenderer = TreeItemRenderer(tf.owner);
-                var node:TreeNode = TreeNode(ir.data);
-                for each(var command:Command in node.commands) {
-                    if(command.contextMenuItem == event.target){
-                       command.context.selectionModel = new SelectionModel(node.data);
-                       command.context.invoker=node;
-                       command.execute();                   	
-                    }
+            var tf:UITextField = UITextField(event.mouseTarget);
+            var ir:TreeItemRenderer = TreeItemRenderer(tf.owner);
+            var node:TreeNode = TreeNode(ir.data);
+            for each(var command:Command in node.commands) {
+                if (command.contextMenuItem == event.target) {
+                    command.context.selectionModel = new SelectionModel(node.data);
+                    command.context.invoker = node;
+                    command.start();
                 }
-            
+            }
+
         }
+
+        private function toolBarButtonHandler(event:MouseEvent):void {
+            var button:Button = Button(event.currentTarget);
+            var command:Command = Command(button.data);
+            if (selectedNode != null && selectedNode.parent != null) {
+                command.context.selectionModel = new SelectionModel(selectedNode.data);
+                command.context.invoker = selectedNode;
+                command.start();
+            }
+        }
+
+        private function editorButtonHandler(event:MouseEvent):void {
+            var button:Button = Button(event.currentTarget);
+            var command:Command = Command(button.data);
+            command.context.selectionModel = new SelectionModel(getData());
+            command.context.invoker = this;
+            command.start();
+        }
+
 
 
         ]]></mx:Script>
 
-    <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="4">
+    <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="4" verticalGap="0">
+    <mx:HBox width="100%" height="30" horizontalAlign="left" horizontalGap="4" id="toolBar" verticalAlign="middle" paddingRight="5" paddingLeft="5">
+        <mx:Repeater id="trp" dataProvider="{toolBarCommands}">
+            <mx:Button label="{Command(trp.currentItem).label}" click="toolBarButtonHandler(event)" data="{trp.currentItem}"
+                    icon="{Command(trp.currentItem).getIcon()}"   fontWeight="normal" textAlign="center"/>
+        </mx:Repeater>
+    </mx:HBox>
     <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="1" horizontalGap="8">
 
             <mx:Tree id="myTree" width="20%" height="100%" 
             	labelField="label" iconFunction="myIconFunction"
-                showRoot="true" dataProvider="{dataTree}" change="treeChanged(event)"
-                fontWeight="normal" borderStyle="solid" borderThickness="2" color="#7A858D" cornerRadius="4" 
+                showRoot="true" dataProvider="{rootNode}" change="treeChanged(event)"
                 contextMenu="{treeMenu}"
 				/>
 
             <mx:TextArea height="100%" width="80%"  text="Selected Item: {selectedNode}" color="#6F7884" backgroundAlpha="1.0" borderStyle="solid" cornerRadius="4" borderThickness="2"/>
 
     </mx:HDividedBox>
+    <mx:HBox width="100%" height="30" horizontalAlign="right" horizontalGap="4" id="southPanel" verticalAlign="middle" paddingRight="5" paddingLeft="5">
+        <mx:Repeater id="srp" dataProvider="{editorCommands}">
+            <mx:Button label="{Command(srp.currentItem).label}" click="editorButtonHandler(event)" data="{srp.currentItem}"
+                    icon="{Command(srp.currentItem).getIcon()}"   fontWeight="normal" textAlign="center"/>
+        </mx:Repeater>
+    </mx:HBox>
     </mx:VBox>
 </mx:Canvas>

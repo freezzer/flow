@@ -6,15 +6,16 @@
        import de.ama.framework.gui.frames.TreeNode;
 
        public class CreateNodeCommand  extends Command {
-           public function CreateNodeCommand(label:String) {
-               super(label);
+           
+           public function CreateNodeCommand(label:String="anlegen",icon:String="new") {
+               super(label,icon);
            }
 
-           override public function execute():void {
+           override protected function execute():void {
                var invoker:Invoker = context.invoker;
                if(invoker is TreeNode){
                    var node:TreeNode = TreeNode(invoker);
-                   node.createChild();
+                   node.addNewChild();
                }
            }
 

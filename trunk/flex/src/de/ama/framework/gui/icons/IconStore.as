@@ -31,7 +31,7 @@ public class IconStore {
   public static const CALCULATOR:Class;
 
   [Embed(source="../icons/bin.png")]
-  public static const BIN:Class;
+  public static const DELETE:Class;
 
   [Embed(source="../icons/zoom.png")]
   public static const SEARCH:Class;
@@ -116,7 +116,7 @@ public class IconStore {
           return CANCEL;
       } else {
           switch (iconName) {
-              case "user":          return  USER;
+              case "user":          return USER;
               case "group":         return GROUP;
               case "user.orange":   return USER_ORANGE;
               case "user.red":      return USER_RED;
@@ -127,7 +127,7 @@ public class IconStore {
               case "error":         return ERROR;
               case "accept":        return ACCEPT;
               case "cut":           return CUT;
-              case "bin":           return BIN;
+              case "delete":        return DELETE;
               case "calculator":    return CALCULATOR;
               case "clock":         return CLOCK;
               case "save":          return SAVE;
@@ -137,6 +137,7 @@ public class IconStore {
               case "arrow.right":   return ARROW_RIGHT;
               case "arrow.left":    return ARROW_LEFT;
               case "new":           return NEW;
+              case "create":        return NEW;
               case "search":        return SEARCH;
               case "wrench":        return WRENCH;
               case "edit":          return EDIT;

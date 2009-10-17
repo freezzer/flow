@@ -44,7 +44,6 @@ public class Starter {
 
 
         try {
-
             // DB Connection ....
             de.ama.services.Environment.initProduction();
             int port       = Ini.getInt("server.port",8080               ,"http port where this server is listening");

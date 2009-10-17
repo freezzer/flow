@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
            xmlns:frames="de.ama.framework.gui.frames.*"
-           initialize="init()" implements="de.ama.framework.command.Invoker" >
+           initialize="init()" >
 
 
     <mx:Script><![CDATA[
@@ -50,9 +50,8 @@
 
             var cmd:Command = Factory.createCommand(command);
             var data:Data = Factory.createData(model);
-            cmd.context.invoker = this;
             cmd.context.selectionModel = new SelectionModel(data);
-            cmd.execute();
+            cmd.start();
         }
 
 

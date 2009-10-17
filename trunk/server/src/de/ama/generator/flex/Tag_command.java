@@ -33,6 +33,8 @@ public class Tag_command extends Tag {
         String dir = getParentAttribute(DIR, "");
         dir = getParentAttribute(FLEX_DIR, dir);
         String pckg = getParentAttribute(FLEX_PACKAGE, "");
+        String icon = getAttribute(ICON, "");
+        String label = getAttribute(LABEL, "");
         initPrintWriter(dir, name + ".as");
 
         write("/* ");
@@ -44,7 +46,11 @@ public class Tag_command extends Tag {
         write("import de.ama.framework.command.*;");
         write("import de.ama.framework.data.*;");
         write("public class "+name+" "+" extends Command { ");
-
+        writeLine();
+        write("  public function "+name+"(label:String=\""+label+"\", icon:String=\""+icon+"\") {");
+        write("       super(label,icon); ");
+        write("  } ");
+        
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
         collectCode(Tag_bootstrap.REGISTER_COMMAND, "         Factory.registerCommand(\""+name+"\", "+name+");");
 
