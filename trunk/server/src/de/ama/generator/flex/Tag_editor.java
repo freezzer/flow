@@ -46,7 +46,8 @@ public class Tag_editor extends Tag {
         write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
         write("<TreeEditor xmlns=\"de.ama.framework.gui.frames.*\" xmlns:mx=\"http://www.adobe.com/2006/mxml\">");
         write("   <mx:Script> <![CDATA[");
-        write("     import de.ama.framework.gui.frames.TreeNode; ");
+        write("     import de.ama.framework.gui.frames.*; ");
+        write("     import de.ama.framework.command.*;; ");
         writeLine();
 
     }

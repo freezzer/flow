@@ -50,6 +50,11 @@ public class DataTable {
         collection.push(data);
     }
 
+    public function removeItem(data:Data):void{
+        var tmp:ArrayCollection = toArrayCollection();
+        tmp.removeItemAt(tmp.getItemIndex(data));
+    }
+
     public function get length():int{
         return collection.length;
     }

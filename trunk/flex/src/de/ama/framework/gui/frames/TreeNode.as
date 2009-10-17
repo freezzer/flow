@@ -1,12 +1,13 @@
 package de.ama.framework.gui.frames {
 import de.ama.framework.command.Command;
+import de.ama.framework.command.Invoker;
 import de.ama.framework.data.Data;
 import de.ama.framework.data.DataTable;
 import de.ama.framework.util.Util;
 
 import mx.collections.ArrayCollection;
 
-public class TreeNode {
+public class TreeNode implements Invoker{
 
     private var _parent:TreeNode;
     private var _data:Data;
@@ -37,6 +38,7 @@ public class TreeNode {
         if(i>0){
           children.removeItemAt(i);
           child.parent = null;
+          _dataTable.removeItem(child._data);  
         }
     }
 
@@ -93,18 +95,23 @@ public class TreeNode {
         }
     }
 
-    private function createNode(data:Data):TreeNode {
+    public function createNode(data:Data):TreeNode {
         var node:TreeNode = new TreeNode(this.path,
                  this.labelPrefix,
                  this.labelPath,
                  this.isListView,
                  this.iconName);
+         node.commands = this.commands;
          node.templates = this.templates;
 
         node.setData(data);
         return node;
     }
-
+    
+    public function createChild():void {
+        var node:TreeNode = createNode(dataTable.protoType.clone());
+        addChild(node);
+    }
 
     public function toString():String {
         if(_data!=null){
@@ -121,5 +128,15 @@ public class TreeNode {
     public function get parent():TreeNode {
         return _parent;
     }
+
+    function get data():Data {
+        return _data;
+    }
+
+    function get dataTable():DataTable {
+        return _dataTable;
+    }
+
+
 }
 }

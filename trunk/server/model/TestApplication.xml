@@ -15,7 +15,7 @@
     <tabbed_application_panel name="MyApplicationPanel" flex_dir="flex/src/generated/view" flex_package="generated.view">
         <bootstrap/>
 
-        <menubar h="24">
+        <menubar h="22">
             <menu name="System">
                 <menuitem label="Abmelden" command="LogoutCommand" />
                 <menuitem label="Anmelden" command="LoginCommand" />
