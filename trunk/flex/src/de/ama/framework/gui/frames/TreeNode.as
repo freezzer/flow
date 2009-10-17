@@ -101,7 +101,7 @@ public class TreeNode implements Invoker{
             		node._dataTable = DataTable(dataValue);
                     addChild(node,false);
             	} else {
-	                for each(var d:Data in DataTable(dataValue).collection) {
+	                for each(var d:Data in DataTable(dataValue)) {
 	                    addChild(proto.templateClone(d),false);
 	                }
 	            }
