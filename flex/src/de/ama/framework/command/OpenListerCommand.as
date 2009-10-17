@@ -8,8 +8,12 @@ import mx.core.Application;
 
 public class OpenListerCommand extends Command{
 
+    public function OpenListerCommand(label:String="Auflister",icon:String="table") {
+        super(label,icon);
+    }
 
-    override public function execute():void {
+
+    override protected function execute():void {
         var data:Data = context.getData(true);
 
         var l:ListPane = new ListPane();

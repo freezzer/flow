@@ -3,7 +3,7 @@
 
 Canvas
 {
-	backgroundColor: #F0F0F0;
+	backgroundColor: #E0E0E0;
 }
 
 Application
@@ -81,6 +81,17 @@ AdvanceTabNavigator
 {
 	fontWeight: bold;
 	paddingRight: 15;
+}
+Tree
+{
+	borderStyle: solid;
+	borderThickness: 2;
+	cornerRadius: 4;
+	fontWeight: normal;
+	color: #0F0F0F;
+	rollOverColor: #F7E8EA;
+	selectionColor: #F3596B;
+	textSelectedColor: #FFFFFF;
 }
 
 

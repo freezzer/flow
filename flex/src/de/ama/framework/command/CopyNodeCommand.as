@@ -3,15 +3,16 @@
        import de.ama.framework.gui.frames.TreeNode;
 
        public class CopyNodeCommand  extends Command {
-           public function CopyNodeCommand(label:String) {
-               super(label);
+
+           public function CopyNodeCommand(label:String="kopieren",icon:String="copy") {
+               super(label,icon);
            }
 
-           override public function execute():void {
+           override protected function execute():void {
                var invoker:Invoker = context.invoker;
                if(invoker is TreeNode){
                    var parent:TreeNode = TreeNode(invoker).parent;
-                   parent.removeChild(TreeNode(invoker))
+                   parent.addChild(TreeNode(invoker).clone(),true)
                }
            }
 

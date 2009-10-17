@@ -2,6 +2,7 @@ package de.ama.framework.gui.frames {
 import de.ama.framework.command.Command;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.data.Data;
+import de.ama.framework.data.Data;
 import de.ama.framework.data.DataTable;
 import de.ama.framework.util.Util;
 
@@ -17,6 +18,7 @@ public class TreeNode implements Invoker{
     public var templates:ArrayCollection = new ArrayCollection();
     public var commands:ArrayCollection = new ArrayCollection();
 
+    public var type:String;
     public var path:String;
     public var labelPrefix:String;
     public var labelPath:String;
@@ -33,29 +35,39 @@ public class TreeNode implements Invoker{
         this.templates = templates;
     }
 
+    public function addCommand(command:Command):void {
+        commands.addItem(command);
+    }
+
     public function removeChild(child:TreeNode):void {
         var i:int = children.getItemIndex(child);
-        if(i>0){
+        if(i>=0){
           children.removeItemAt(i);
           child.parent = null;
           _dataTable.removeItem(child._data);  
         }
     }
 
-    public function addCommand(command:Command):void {
-        commands.addItem(command);
-    }
-
-    public function addChild(child:TreeNode):void {
+    public function addChild(child:TreeNode, intoDataTable:Boolean):void {
         child.parent = this;
+        if(intoDataTable){
+           dataTable.addItem(child.data);
+        }
         children.addItem(child);
     }
 
-    public function clone():TreeNode {
-        return createNode(_data.clone());
+    public function addNewChild():void {
+        var data:Data = dataTable.addNewItem();
+        var template:TreeNode = findTemplate(data);
+        addChild(template.templateClone(data),false);
     }
 
-    public function addPrototype(child:TreeNode):void {
+    public function clone():TreeNode {
+        return templateClone(_data.clone());
+    }
+
+    public function addTemplate(child:TreeNode):void {
+        child.parent = this;
         templates.addItem(child);
     }
 
@@ -65,6 +77,10 @@ public class TreeNode implements Invoker{
         }
         return Util.saveToString(labelPrefix,"node");
 
+    }
+
+    public function getData():Data {
+        return data;
     }
 
     public function setData(data:Data):void {
@@ -81,21 +97,21 @@ public class TreeNode implements Invoker{
             var dataValue:Object = _data.getValue(proto.path);
             if (dataValue is DataTable ) {
             	if(proto.isListView){
-            		var node:TreeNode = proto.createNode(_data);
+            		var node:TreeNode = proto.templateClone(_data);
             		node._dataTable = DataTable(dataValue);
-                    addChild(node);
+                    addChild(node,false);
             	} else {
 	                for each(var d:Data in DataTable(dataValue).collection) {
-	                    addChild(proto.createNode(d));
+	                    addChild(proto.templateClone(d),false);
 	                }
 	            }
             } else if (dataValue is Data) {
-                addChild(proto.createNode(Data(dataValue)));
+                addChild(proto.templateClone(Data(dataValue)),false);
             }
         }
     }
 
-    public function createNode(data:Data):TreeNode {
+    public function templateClone(data:Data):TreeNode {
         var node:TreeNode = new TreeNode(this.path,
                  this.labelPrefix,
                  this.labelPath,
@@ -107,17 +123,27 @@ public class TreeNode implements Invoker{
         node.setData(data);
         return node;
     }
-    
-    public function createChild():void {
-        var node:TreeNode = createNode(dataTable.protoType.clone());
-        addChild(node);
+
+    public function findTemplate(data:Data):TreeNode {
+        if(templates.length==1){
+            return TreeNode(templates.getItemAt(0));
+        }
+        
+        for each(var proto:TreeNode in templates) {
+            if(Util.isEqual(proto.type,data.getName())){
+                return proto;
+            }
+        }
+        return null;
     }
 
     public function toString():String {
-        if(_data!=null){
-            return _data.getName();
+        if(dataTable!=null){
+            return dataTable.asString("");
+        } else if(data!=null){
+            return data.asString("");
         }
-        return "TreeNode";
+        return "TreeNode has no Data";
     }
 
     public function set parent(parent:TreeNode):void {
@@ -129,11 +155,11 @@ public class TreeNode implements Invoker{
         return _parent;
     }
 
-    function get data():Data {
+    public function get data():Data {
         return _data;
     }
 
-    function get dataTable():DataTable {
+    public function get dataTable():DataTable {
         return _dataTable;
     }
 

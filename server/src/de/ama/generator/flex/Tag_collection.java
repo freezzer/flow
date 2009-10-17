@@ -34,12 +34,16 @@ public class Tag_collection extends Tag {
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
+        String dir =  getParentAttribute(FLEX_DIR,"");
+        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
+        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
+
         int create = getAttribute(CREATE, getChild(0).getAttribute(CREATE,0));
         writeLine();
         if( create>0 ){
-            write("public var "+name+":DataTable = new DataTable(new "+type+"(),"+create+");");
+            write("public var "+name+":DataTable = new DataTable(\""+pckg+"."+type+"\","+create+");");
         } else {
-            write("public var "+name+":DataTable = new DataTable(new "+type+"());");
+            write("public var "+name+":DataTable = new DataTable(\""+pckg+"."+type+"\");");
         }
     }
 

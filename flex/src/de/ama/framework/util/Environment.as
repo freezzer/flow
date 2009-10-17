@@ -2,6 +2,7 @@ package de.ama.framework.util {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoginAction;
 import de.ama.framework.action.LogoutAction;
+import de.ama.framework.gui.frames.LoginDialog;
 import de.ama.services.impl.UserData;
 
 import flash.net.SharedObject;
@@ -21,9 +22,9 @@ public class Environment {
 
     public static function initForProduction():void{
         _hostAdress     = "localhost";
-        _hostPort       = 0;
-        _hostContext    = "huyua";
-        _catalog        = "huyua_production";
+        _hostPort       = 8080;
+        _hostContext    = "flow";
+        _catalog        = "flow";
     }
 
 
@@ -95,8 +96,6 @@ public class Environment {
         var la:LogoutAction = new LogoutAction();
         ActionStarter.instance.execute(la);
         eraseLoginData();
-        Util.showMessage("Vielen Dank für die Teilnahme bei huyua. \n" + 
-        		         "Bitte erzählen Sie Ihren Freunden von huyua.");
     }
 
     public static function registerHostAdress():void{

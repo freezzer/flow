@@ -1,9 +1,6 @@
 package de.ama.framework.data {
-import de.ama.framework.gui.frames.ListPane;
 import de.ama.framework.gui.frames.TreeEditor;
 import de.ama.framework.util.Util;
-
-import flash.utils.getQualifiedClassName;
 
 import mx.utils.ObjectUtil;
 
@@ -50,7 +47,7 @@ public class Data{
                value = Data(value).clone();
             } else if(value is DataTable){
                var table:DataTable = DataTable(value);
-               value = table.clone(dst[key]);
+               value = table.clone();
             }
             dst[key] = value;
         }
@@ -58,6 +55,27 @@ public class Data{
         dst.oidString=null;
         dst.version=0;
         return dst;
+    }
+
+
+    public function asString(indent:String):String {
+  		indent += "  ";
+    	
+        var ret:String="\n"+indent+"Data ("+getName()+")";
+        var info:Object = ObjectUtil.getClassInfo(this);
+
+        for each(var key:String in info.properties) {
+            var value:* = this[key];
+            if(value is Data){
+               ret += Data(value).asString(indent);
+            } else if(value is DataTable){
+               var table:DataTable = DataTable(value);
+               ret += table.asString(indent);
+            }
+        }
+        
+        indent.substr(0,indent.length-3);
+        return ret;
     }
 
 }

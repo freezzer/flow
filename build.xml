@@ -4,7 +4,7 @@
 
     <property file="build.properties" />
 
-    <property name="deploy.dir" value="${home.dir}/webapp"/>
+    <property name="deploy.dir" value="${home.dir}/server/webapp"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="server/classes" failonerror="false"/>

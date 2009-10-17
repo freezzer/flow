@@ -3,16 +3,14 @@ import de.ama.framework.util.Util;
 
 import mx.collections.ArrayCollection;
 
-public class DataTable {
+public class DataTable  {
 	public var collection:Array = new Array();
-    public var protoType:Data;
-    public var deleting:Boolean;
+    public var templateClassName:String;
 
-    public function DataTable(protoType:Data=null, create:int=0) {
-        this.protoType = protoType;
+    public function DataTable(protoType:String, create:int=0) {
+        this.templateClassName = protoType;
         for(var i:int=0; i<create; i++){
-            var clazz:Class = getTypeClass();
-            collection.push(new clazz());
+            addNewItem();
         }
     }
 
@@ -46,6 +44,13 @@ public class DataTable {
         }
     }
 
+    public function addNewItem():Data{
+        var clazz:Class = getTypeClass();
+        var data:Data = new clazz();
+        collection.push(data);
+        return data;
+    }
+
     public function addItem(data:Data):void{
         collection.push(data);
     }
@@ -60,7 +65,7 @@ public class DataTable {
     }
 
     public function getTypeClass():Class{
-        return Util.getClass(protoType);
+        return Util.classForName(templateClassName);
     }
 
 
@@ -74,7 +79,7 @@ public class DataTable {
 
     public function clone(dst:DataTable=null):DataTable {
         if(dst==null){
-            dst = new DataTable(protoType);
+            dst = new DataTable(templateClassName);
         }
 
         for each (var data:Data in collection){
@@ -82,6 +87,19 @@ public class DataTable {
         }
         
         return dst;
+    }
+
+    public function asString(indent:String):String {
+ 		indent += "  ";
+
+        var ret:String = "\n"+indent+"DataTable of " + templateClassName+" " + length;
+        
+        for each (var data:Data in collection){
+            ret += data.asString(indent);
+        }
+
+        indent.substr(0,indent.length-3);
+        return ret;
     }
 
 }

@@ -5,15 +5,15 @@
        public class DeleteNodeCommand  extends Command {
 
 
-           public function DeleteNodeCommand(label:String) {
-               super(label);
+           public function DeleteNodeCommand(label:String="loeschen",icon:String="delete") {
+               super(label,icon);
            }
 
-           override public function execute():void {
+           override protected function execute():void {
                var invoker:Invoker = context.invoker;
                if(invoker is TreeNode){
                    var parent:TreeNode = TreeNode(invoker).parent;
-                   parent.removeChild(TreeNode(invoker))
+                   parent.removeChild(TreeNode(invoker));
                }
            }
        }}
