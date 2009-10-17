@@ -1,44 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="Commands&#10;">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\schema.bat" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/flow.mxml" afterPath="$PROJECT_DIR$/flex/src/flow.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/static/styles.css" afterPath="$PROJECT_DIR$/flex/src/static/styles.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/SaveBoAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Invoker.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Invoker.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/SaveBoCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TabbedApplicationPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TabbedApplicationPanel.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Environment.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Environment.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenListerCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenListerCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/DataTable.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/DataTable.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tree_node.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tree_node.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\enhance.bat" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CopyDataCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CopyDataCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_command.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_command.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\setenv.bat" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenEditorCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenEditorCommand.as" />
+    <list default="true" readonly="true" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/setenv.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/schema.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/cmd.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/server.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/system.ini" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/enhance.bat" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\server.bat" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/server/bin" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\flex\src\de\ama\framework\action\Invoker.as" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/SaveBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/Starter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/Starter.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\system.ini" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CopyNodeCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CopyNodeCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\server.sh" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CreateNodeCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CreateNodeCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/DeleteNodeCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/DeleteNodeCommand.as" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\cmd.bat" afterPath="" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\bin\schema.sh" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/IconStore.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/IconStore.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Vorgang.xml" afterPath="$PROJECT_DIR$/server/model/Vorgang.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/schema.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/server.bat" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -153,7 +126,7 @@
       <file leaf-file-name="Position.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flex/src/generated/bom/Position.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="81" selection-start="282" selection-end="282" vertical-scroll-proportion="0.29929578">
+            <state line="26" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.6584507">
               <folding />
             </state>
           </provider>
@@ -543,7 +516,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="-4" width="1288" height="1004" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.05530474" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" />
@@ -555,7 +528,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32167044" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26375404" sideWeight="0.6704289" order="0" side_tool="false" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26375404" sideWeight="0.6704289" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3194131" sideWeight="0.5" order="2" side_tool="false" />
@@ -580,7 +553,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commands&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Client Server &#10;" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -599,6 +572,7 @@
     <MESSAGE value="first runs" />
     <MESSAGE value="TreeEditor" />
     <MESSAGE value="Commands&#10;" />
+    <MESSAGE value="Client Server &#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -743,7 +717,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flex/src/generated/bom/Position.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="81" selection-start="282" selection-end="282" vertical-scroll-proportion="0.29929578">
+        <state line="26" column="0" selection-start="580" selection-end="580" vertical-scroll-proportion="0.6584507">
           <folding />
         </state>
       </provider>
