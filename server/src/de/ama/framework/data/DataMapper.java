@@ -172,12 +172,16 @@ public abstract class DataMapper {
             }
 
             bos.add(o);
-            oldContainer.remove(o);
+
+            // remove macht Probleme wenn hashCode und equals überschrieben wird
+            for (Iterator iterator = oldContainer.iterator(); iterator.hasNext();) {
+                if(iterator.next() == o){
+                    iterator.remove();
+                }
+            }
         }
 
-        if(table.deleting ){
-           DB.session().deleteObjects(oldContainer);
-        }
+        DB.session().deleteObjects(oldContainer);
 
     }
 
