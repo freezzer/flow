@@ -6,7 +6,8 @@
        import de.ama.framework.gui.frames.TreeNode;
 
        public class CreateNodeCommand  extends Command {
-           
+           private var type:String;
+
            public function CreateNodeCommand(label:String="anlegen",icon:String="new") {
                super(label,icon);
            }
@@ -15,7 +16,11 @@
                var invoker:Invoker = context.invoker;
                if(invoker is TreeNode){
                    var node:TreeNode = TreeNode(invoker);
-                   node.addNewChild();
+                   if(node.isListView){
+                      node.addNewChild();
+                   } else {
+                      node.parent.addNewChild(); 
+                   }
                }
            }
 

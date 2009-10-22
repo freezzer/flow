@@ -75,7 +75,7 @@ public class Util
     public static function showMessage(m:String):void {
         var dlg:InfoDialog = InfoDialog(PopUpManager.createPopUp(DisplayObject(Application.application), InfoDialog, true));
         dlg.msg=saveToString(m);
-        dlg.currentState="info";
+ //       dlg.currentState="info";
         PopUpManager.centerPopUp(dlg);
     }
 
@@ -87,9 +87,9 @@ public class Util
         var dlg:InfoDialog = InfoDialog(PopUpManager.createPopUp(DisplayObject(Application.application), InfoDialog, true));
         dlg.msg=saveToString(m);
         dlg.detailedMsg=saveToString(details);
-        if(isEmpty(details)){
-          dlg.currentState="info";
-        }
+//        if(isEmpty(details)){
+//          dlg.currentState="info";
+//        }
         PopUpManager.centerPopUp(dlg);
     }
 
@@ -271,6 +271,13 @@ public class Util
     	return ac;
     }
 
+    public static function createArray(type:String , size:int=0): Array{
+        var ret:Array = new Array();
+        for(var i:int=0; i<size; i++){
+           ret.push(createObject(type));
+        }
+        return ret;
+    }
 
 }
 }

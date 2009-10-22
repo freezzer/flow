@@ -30,7 +30,7 @@
                             <bean name="Position">
                                 <field name="nummer"/>
                                 <field name="warennummer"/>
-                                <field name="roh_gewicht" type="Number"/>
+                                <field name="roh_gewicht"   type="Number"/>
                                 <field name="netto_gewicht" type="number"/>
                                 <collection name="verschluesse" create="1" type="Verschluss">
                                     <bean name="Verschluss">
@@ -65,19 +65,20 @@
     <view flex_dir="flex/src/generated/view" flex_package="generated.view" model="Vorgang">
 
         <editor name="VorgangEditor">
-            <tree_node label="Vorgang" icon="lorry">
-                <tree_node label="Transition" path="transitions" icon="arrow.right">
-                    <tree_node label="Kopf" path="workmodel.kopf" panel="KopfPanel" />
-                    <tree_node label="Positionen" path="workmodel.positionen" create="true" listView="true" >
-                        <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel" delete="true" copy="true">
-                            <tree_node label="Verschluesse" path="verschluesse" create="true" listView="true" >
-                                <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock" delete="true" copy="true"/>
+            <tree_node label="Vorgang" icon="lorry" type="Vorgang" path="/">
+                <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition">
+                    <tree_node label="Kopf" path="workmodel.kopf" panel="KopfPanel" type="Kopf"/>
+                    <tree_node label="Geschaeft" path="workmodel.geschaeft" panel="GeschaeftPanel" type="Geschaeft"/>
+                    <tree_node label="Positionen" path="workmodel.positionen" create="true" listView="true" type="Position">
+                        <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel" delete="true" copy="true" create="true" type="Position">
+                            <tree_node label="Verschluesse" path="verschluesse" create="true" listView="true" type="Verschluss">
+                                <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock" delete="true" copy="true" create="true" type="Verschluss"/>
                             </tree_node>
-                            <tree_node label="Packstuecke" path="packstuecke" listView="true" create="true" >
-                                <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack" delete="true" copy="true"/>
+                            <tree_node label="Packstuecke" path="packstuecke" listView="true" create="true" type="Packstueck">
+                                <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack" delete="true" copy="true" create="true" type="Packstueck"/>
                             </tree_node>
-                            <tree_node label="Unterlagen" path="unterlagen" listView="true"  create="true" >
-                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock" delete="true" copy="true"/>
+                            <tree_node label="Unterlagen" path="unterlagen" listView="true"  create="true"  type="Unterlage">
+                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock" delete="true" copy="true" create="true" type="Unterlage"/>
                             </tree_node>
                         </tree_node>
                     </tree_node>

@@ -26,12 +26,12 @@ import de.ama.generator.Tag;
  * Date: 25.04.2008
  */
 public class Tag_tree_node extends Tag {
-
     protected void beginWrite() {
         String label = getAttribute(LABEL);
         String prefix = getAttribute(PREFIX,label);
+        String type = getRequiredAttribute(TYPE);
         String labelPath = getAttribute(LABELPATH,"");
-        String path = getAttribute(PATH,"");
+        String path = getRequiredAttribute(PATH);
         String panel = getAttribute(PANEL, "default");
         boolean fixedopen = getAttribute(FIXED_OPEN,true);
         boolean listView = getAttribute(LIST_VIEW,false);
@@ -42,7 +42,7 @@ public class Tag_tree_node extends Tag {
 
         String icon = getAttribute(ICON, listView?"table":"edit");
 
-        write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\");");
+        write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\", \""+type+"\");");
         if(create){
         write("          node.commands.addItem(new CreateNodeCommand('"+label+" anlegen'));");
         }

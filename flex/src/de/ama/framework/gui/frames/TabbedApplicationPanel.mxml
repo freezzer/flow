@@ -7,7 +7,8 @@
     <mx:Script><![CDATA[
         import de.ama.framework.command.CommandContext;
         import de.ama.framework.command.Command;
-        import de.ama.framework.command.SelectionModel;
+        import de.ama.framework.command.MenuInvoker;
+        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.data.Data;
         import de.ama.framework.util.BootstrapDefault;
         import de.ama.framework.util.Factory;
@@ -50,10 +51,9 @@
 
             var cmd:Command = Factory.createCommand(command);
             var data:Data = Factory.createData(model);
-            cmd.context.selectionModel = new SelectionModel(data);
+            cmd.newContext().invoker = new MenuInvoker(data);
             cmd.start();
         }
-
 
 
         ]]></mx:Script>

@@ -1,5 +1,6 @@
 package de.ama.framework.command {
 import de.ama.framework.data.Data;
+import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Util;
 
 public class CommandContext {
@@ -9,15 +10,15 @@ public class CommandContext {
 
 
     public function getData(required:Boolean):Data{
-        if(required && selectionModel == null){
-            throw new Error("CommandContext Illegal state: selectionModel is required in getData()");
+        if(required && _invoker == null){
+            throw new Error("CommandContext Illegal state: invoker is required in getData()");
         }
 
-        if(required && selectionModel.getFirstSelection() == null){
-            throw new Error("CommandContext Illegal state: selectionModel getFirstSelection failed");
+        if(required && _invoker.getData() == null){
+            throw new Error("invoker has null Data");
         }
 
-        return selectionModel.getFirstSelection();
+        return _invoker.getData();
     }
 
     //////////////////////////////////////////////////////////////////////

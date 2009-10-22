@@ -56,7 +56,7 @@
             <arg value="outDir"/>
             <arg path="."/>
             <arg value="targets"/>
-            <arg value="java,flex"/>
+            <arg value="flex,java"/>
         </java>
     </target>
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
-	initialize="init()" implements="de.ama.framework.command.Invoker">
+	initialize="init()" implements="de.ama.framework.command.Invoker" creationComplete="expand()">
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
+        import de.ama.framework.command.LoadBoCommand;
         import de.ama.framework.command.SaveBoCommand;
-        import de.ama.framework.command.SelectionModel;
+        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.data.Data;
         import de.ama.framework.data.Data;
         import de.ama.framework.gui.icons.IconStore;
@@ -14,12 +15,12 @@
         import mx.controls.treeClasses.TreeItemRenderer;
         import mx.core.UITextField;
 
-        public function init():void
-        {
+        public function init():void {
             treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
-//            treeMenu.hideBuiltInItems();
+            treeMenu.hideBuiltInItems();
 
             editorCommands.addItem(new SaveBoCommand());
+            editorCommands.addItem(new LoadBoCommand());
         }
 
 
@@ -65,10 +66,20 @@
             return IconStore.getIcon(iconName);
         }
 
+        public function expand():void {
+        	if(rootNode==null) return;
+        	if(rootNode.tree==null) return;
+        	
+        	rootNode.openDefaultNodes();
+        }
+        
         public function setData(data:Data):void {
             rootNode = getPrototypeTree();
             rootNode.setData(data);
         }
+
+
+		
 
         public function getData():Data {
             return rootNode.getData();
@@ -99,7 +110,7 @@
             var node:TreeNode = TreeNode(ir.data);
             for each(var command:Command in node.commands) {
                 if (command.contextMenuItem == event.target) {
-                    command.context.selectionModel = new SelectionModel(node.data);
+                    command.newContext().selectionModel = new SelectionModel(node.data);
                     command.context.invoker = node;
                     command.start();
                 }
@@ -111,7 +122,7 @@
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
             if (selectedNode != null && selectedNode.parent != null) {
-                command.context.selectionModel = new SelectionModel(selectedNode.data);
+                command.newContext().selectionModel = new SelectionModel(selectedNode.data);
                 command.context.invoker = selectedNode;
                 command.start();
             }
@@ -120,11 +131,10 @@
         private function editorButtonHandler(event:MouseEvent):void {
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
-            command.context.selectionModel = new SelectionModel(getData());
+            command.newContext().selectionModel = new SelectionModel(getData());
             command.context.invoker = this;
             command.start();
         }
-
 
 
         ]]></mx:Script>
@@ -141,8 +151,7 @@
             <mx:Tree id="myTree" width="20%" height="100%" 
             	labelField="label" iconFunction="myIconFunction"
                 showRoot="true" dataProvider="{rootNode}" change="treeChanged(event)"
-                contextMenu="{treeMenu}"
-				/>
+                contextMenu="{treeMenu}" />
 
             <mx:TextArea height="100%" width="80%"  text="Selected Item: {selectedNode}" color="#6F7884" backgroundAlpha="1.0" borderStyle="solid" cornerRadius="4" borderThickness="2"/>
 

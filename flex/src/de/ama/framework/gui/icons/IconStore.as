@@ -111,6 +111,12 @@ public class IconStore {
   [Embed(source="../icons/printer.png")]
   public static const PRINT:Class;
 
+  [Embed(source="../icons/arrow_refresh.png")]
+  public static const REFRESH:Class;
+
+  [Embed(source="../icons/arrow_redo.png")]
+  public static const REDO:Class;
+
   public static function getIcon(iconName:String):Class{
       if (iconName == null) {
           return CANCEL;
@@ -149,6 +155,8 @@ public class IconStore {
               case "pack":          return PACK;
               case "dock":          return DOCK;
               case "print":         return PRINT;
+              case "refresh":       return REFRESH;
+              case "redo":          return REDO;
           }
       }
 

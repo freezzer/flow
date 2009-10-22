@@ -20,6 +20,8 @@ public class OpenEditorCommand extends Command{
         var cp:ApplicationPanel = Application.application.getContentPane();
         cp.addContent(e);
 
+		e.expand();
+
     }
 }
 }

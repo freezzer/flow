@@ -1,5 +1,5 @@
 package de.ama.framework.action {
-import de.ama.framework.command.SelectionModel;
+import de.ama.framework.data.SelectionModel;
 
 public class ActionScriptAction {
 

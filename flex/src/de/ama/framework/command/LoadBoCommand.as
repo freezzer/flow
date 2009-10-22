@@ -1,24 +1,26 @@
 package de.ama.framework.command {
 import de.ama.framework.action.ActionStarter;
+import de.ama.framework.action.LoadBoAction;
 import de.ama.framework.action.SaveBoAction;
 import de.ama.framework.data.Data;
+import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 
-public class SaveBoCommand extends Command{
+public class LoadBoCommand extends Command{
 
 
-    public function SaveBoCommand(label:String="speichern",icon:String="save") {
+    public function LoadBoCommand(label:String="laden",icon:String="refresh") {
         super(label,icon);
     }
 
 
     override protected function execute():void {
-        var sa:SaveBoAction    = new SaveBoAction();
-        sa.data = context.invoker.getData();
+        var sa:LoadBoAction    = new LoadBoAction();
+        sa.selectionModel = new SelectionModel(context.invoker.getData());
         ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
     }
 
-    private function resulthandler(action:SaveBoAction): void {
+    private function resulthandler(action:LoadBoAction): void {
         context.invoker.setData(Data(action.data));
     }
 }

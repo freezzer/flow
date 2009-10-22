@@ -19,7 +19,7 @@ public class DataAction extends de.ama.framework.action.ActionScriptAction {
     public void execute() throws Exception {
 
         if (data == null) {  // load
-            Object o = Environment.getPersistentService().getObject(selectionModel.getSingleSelection().oidString);
+            Object o = getBo(selectionModel.getSingleSelection());
             data = Util.createObject(DataDictionary.getDataClassForBo(o));
             mapBoToData(o, (Data) data);
         } else {           // save

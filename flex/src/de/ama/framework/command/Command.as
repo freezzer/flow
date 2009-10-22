@@ -35,16 +35,17 @@ public class Command {
         _context = value;
     }
 
+    public function newContext():CommandContext {
+  		_context = new CommandContext();
+        return _context;
+    }
+
     public function get context():CommandContext {
-    	if(_context==null){
-    		_context = new CommandContext();
-    	}
         return _context;
     }
 
     public function start():void{
         execute();
-        _context = null;
         _contextMenuItem = null;
     }
 

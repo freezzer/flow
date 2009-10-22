@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
                 xmlns:comps="de.ama.framework.gui.*"
-                layout="absolute" width="456" height="182"
+                layout="absolute" width="456" height="252"
                 showCloseButton="true"
                 close="PopUpManager.removePopUp(this)"
                 borderAlpha="0.75" backgroundColor="#FFFFFF" backgroundAlpha="1.0" color="#000000" 
@@ -31,30 +31,30 @@
     <mx:Script><![CDATA[
         import mx.managers.PopUpManager;
 
-        private var detailsMsg:String = "";
-
+        private var detailsMsg:String="";
+        
         private function close():void {
             PopUpManager.removePopUp(this);
         }
 
         private function expandHandler():void {
             currentState = "expanded";
-            detailsField.text = detailsMsg;
+            detailsField.text = msgField.text +"\n"+detailsMsg;
         }
 
-        public function set msg(s:String):void {
+        public function set msg (s:String):void{
             msgField.text = s;
         }
 
-        public function set detailedMsg(s:String):void {
+        public function set detailedMsg (s:String):void{
             detailsMsg = s;
         }
 
 
         ]]></mx:Script>
-    <mx:Button x="367" y="94" label="OK" id="button1" click="close()"/>
-    <mx:TextArea x="10" y="0" width="400" height="52" id="msgField" wordWrap="true" editable="false" cornerRadius="0"/>
-    <mx:LinkButton x="10" y="60" label="details ..." color="#7DCADD" width="77" fontWeight="normal" height="18"
+    <mx:Button x="367" y="168" label="OK" id="button1" click="close()"/>
+    <mx:TextArea x="10" y="0" width="400" height="128" id="msgField" wordWrap="true" editable="false" cornerRadius="0"/>
+    <mx:LinkButton x="10" y="148.95" label="details ..." color="#7DCADD" width="77" fontWeight="normal" height="18"
                    id="linkbutton1" click="expandHandler()"/>
 
 

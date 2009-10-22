@@ -13,16 +13,15 @@ import java.io.Serializable;
  * @author Andreas Marochow
  */
 public class Selection implements Serializable {
-    public  String oidString;
+        private  String className;
+        private  int oid;
 
-    public Selection() {
+    public String getClassName() {
+        className = className.replace("::",".");
+        return className;
     }
 
-    public Selection(Data data) {
-        setData(data);
-    }
-
-    public void setData(Data data) {
-        this.oidString = data.getOidString();
+    public int getOid() {
+        return oid;
     }
 }
