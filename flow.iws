@@ -2,50 +2,7 @@
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/Selection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/Selection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/EditField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/EditField.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Data.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LoadBoAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/DataAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/DataAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/arrow_refresh.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TabbedApplicationPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TabbedApplicationPanel.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\command\SelectionModel.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/SelectionModel.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Selection.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tree_node.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_tree_node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CommandContext.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CommandContext.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Util.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Util.as" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\de\ama\framework\data\DataTable2.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/arrow_redo.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/application_view_columns.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/PersistentService.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/PersistentService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenEditorCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenEditorCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/DataTable.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/DataTable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Tag_collection.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/MenuInvoker.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_import.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_import.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/DateField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/DateField.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_collection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_bean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CreateNodeCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CreateNodeCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/SaveBoAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/SaveBoAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/LoadBoCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Tag_field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/SaveBoCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/SaveBoCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/InfoDialog.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/InfoDialog.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/IconStore.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/IconStore.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Vorgang.xml" afterPath="$PROJECT_DIR$/server/model/Vorgang.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -163,7 +120,7 @@
       <file leaf-file-name="TreeEditor.mxml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="75" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.17734724">
+            <state line="9" column="0" selection-start="493" selection-end="493" vertical-scroll-proportion="0.08792847">
               <folding />
             </state>
           </provider>
@@ -1183,7 +1140,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="75" selection-start="1548" selection-end="1548" vertical-scroll-proportion="0.17734724">
+        <state line="9" column="0" selection-start="493" selection-end="493" vertical-scroll-proportion="0.08792847">
           <folding />
         </state>
       </provider>

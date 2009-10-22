@@ -7,7 +7,6 @@
         import de.ama.framework.command.SaveBoCommand;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.data.Data;
-        import de.ama.framework.data.Data;
         import de.ama.framework.gui.icons.IconStore;
 
         import mx.collections.ArrayCollection;
