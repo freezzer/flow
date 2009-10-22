@@ -5,7 +5,7 @@ import de.ama.framework.util.Util;
 import mx.utils.ObjectUtil;
 
 public class Data{
-    public var oidString:String;
+    public var oid:int;
     public var version:int;
 
     public function readProperties(src:Object):void{
@@ -45,14 +45,20 @@ public class Data{
             var value:* = this[key];
             if(value is Data){
                value = Data(value).clone();
-            } else if(value is DataTable){
-               var table:DataTable = DataTable(value);
-               value = table.clone();
+            } else if(value is Array){
+               var destTable:Array = new Array(value.length);
+               var array:Array = value as Array;
+               var d:Data = null;
+               for (var i:int=0; i< array.length; i++ ) {
+  					d= Data(array[i]);
+               	    destTable[i] =  d;
+               }
+                  
             }
             dst[key] = value;
         }
 
-        dst.oidString=null;
+        dst.oid=0;
         dst.version=0;
         return dst;
     }
@@ -61,22 +67,27 @@ public class Data{
     public function asString(indent:String):String {
   		indent += "  ";
     	
-        var ret:String="\n"+indent+"Data ("+getName()+")";
+        var ret:String="\n"+indent+"Data ("+getName()+") " + oid+":"+version;
         var info:Object = ObjectUtil.getClassInfo(this);
 
         for each(var key:String in info.properties) {
             var value:* = this[key];
             if(value is Data){
                ret += Data(value).asString(indent);
-            } else if(value is DataTable){
-               var table:DataTable = DataTable(value);
-               ret += table.asString(indent);
+            } else if(value is Array){
+               var table:Array = value as Array;
+               ret += indent+ "Array ("+table.length+")";	
+               for each(var d:Data in table) {
+               	  ret += d.asString(indent);
+               }
+
             }
         }
         
         indent.substr(0,indent.length-3);
         return ret;
     }
+
 
 }
 }

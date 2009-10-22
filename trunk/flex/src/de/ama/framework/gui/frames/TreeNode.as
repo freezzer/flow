@@ -2,17 +2,20 @@ package de.ama.framework.gui.frames {
 import de.ama.framework.command.Command;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.data.Data;
-import de.ama.framework.data.Data;
-import de.ama.framework.data.DataTable;
+import de.ama.framework.util.Factory;
 import de.ama.framework.util.Util;
 
 import mx.collections.ArrayCollection;
+import mx.controls.Tree;
 
 public class TreeNode implements Invoker{
 
+    private var _tree:Tree;
+    
+    
     private var _parent:TreeNode;
     private var _data:Data;
-    private var _dataTable:DataTable;
+    private var _dataTable:Array;
 
     public var children:ArrayCollection = new ArrayCollection();
     public var templates:ArrayCollection = new ArrayCollection();
@@ -23,16 +26,22 @@ public class TreeNode implements Invoker{
     public var labelPrefix:String;
     public var labelPath:String;
     public var isListView:Boolean = false;
+    public var defaultOpen:Boolean = false;
     public var iconName:String = "folder";
 
 
-    public function TreeNode(path:String, labelPrefix:String, labelPath:String, isListView:Boolean, iconName:String) {
+    public function TreeNode(path:String, labelPrefix:String, labelPath:String, isListView:Boolean, iconName:String, type:String=null) {
         this.path = path;
         this.labelPath = labelPath;
         this.labelPrefix = labelPrefix;
         this.isListView = isListView;
         this.iconName = iconName;
         this.templates = templates;
+        this.type = type;
+    }
+
+    public function setDefaultOpen(b:Boolean):void {
+        defaultOpen = b;
     }
 
     public function addCommand(command:Command):void {
@@ -44,22 +53,22 @@ public class TreeNode implements Invoker{
         if(i>=0){
           children.removeItemAt(i);
           child.parent = null;
-          _dataTable.removeItem(child._data);  
+
         }
     }
 
     public function addChild(child:TreeNode, intoDataTable:Boolean):void {
         child.parent = this;
         if(intoDataTable){
-           dataTable.addItem(child.data);
+           _dataTable.push(child.data);
         }
         children.addItem(child);
     }
 
     public function addNewChild():void {
-        var data:Data = dataTable.addNewItem();
+        var data:Data = Factory.createData(type);
         var template:TreeNode = findTemplate(data);
-        addChild(template.templateClone(data),false);
+        addChild(template.templateClone(data),true);
     }
 
     public function clone():TreeNode {
@@ -95,13 +104,13 @@ public class TreeNode implements Invoker{
 
         for each(var proto:TreeNode in templates) {
             var dataValue:Object = _data.getValue(proto.path);
-            if (dataValue is DataTable ) {
+            if (dataValue is Array ) {
             	if(proto.isListView){
             		var node:TreeNode = proto.templateClone(_data);
-            		node._dataTable = DataTable(dataValue);
+            		node._dataTable = dataValue as Array;
                     addChild(node,false);
             	} else {
-	                for each(var d:Data in DataTable(dataValue)) {
+	                for each(var d:Data in dataValue) {
 	                    addChild(proto.templateClone(d),false);
 	                }
 	            }
@@ -116,9 +125,11 @@ public class TreeNode implements Invoker{
                  this.labelPrefix,
                  this.labelPath,
                  this.isListView,
-                 this.iconName);
+                 this.iconName,
+                 this.type);
          node.commands = this.commands;
          node.templates = this.templates;
+         node.defaultOpen = this.defaultOpen;
 
         node.setData(data);
         return node;
@@ -138,11 +149,18 @@ public class TreeNode implements Invoker{
     }
 
     public function toString():String {
-        if(dataTable!=null){
-            return dataTable.asString("");
-        } else if(data!=null){
-            return data.asString("");
-        }
+        if(_dataTable!=null){
+            var ret:String = "Array: "+_dataTable.length;
+            for each (var data:Data in _dataTable ){
+               ret += data.asString("  ");
+            }
+            return ret;
+        } 
+        
+        if(_data!=null){
+            return _data.asString("");
+        } 
+
         return "TreeNode has no Data";
     }
 
@@ -150,17 +168,42 @@ public class TreeNode implements Invoker{
         _parent = parent;
     }
 
-
     public function get parent():TreeNode {
         return _parent;
+    }
+
+    public function set tree(t:Tree):void {
+    	root._tree = t;
+    }
+
+    public function get tree():Tree {
+    	return root._tree;
+    }
+
+    public function get root():TreeNode {
+        if(_parent==null){
+           return this;
+        };
+        return parent.root;
     }
 
     public function get data():Data {
         return _data;
     }
 
-    public function get dataTable():DataTable {
-        return _dataTable;
+    public function openDefaultNodes():void {
+    	if(defaultOpen){
+    		tree.expandItem(this,true);
+    	}
+
+    	for each(var node:TreeNode in children){
+    		node.openDefaultNodes();
+    	}
+
+    }
+
+    public function get dataCollection():ArrayCollection {
+        return new ArrayCollection(_dataTable);
     }
 
 

@@ -27,6 +27,10 @@ public interface PersistentService {
     long getObjectCount(Query q);
 
     String makePersistent(Object o);
+
+    void attacheObject(Object o);
+    Object releaseObject(Object o);
+
     String getOidString(Object o);
     void delete(String oid);
     void delete(Query q);

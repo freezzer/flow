@@ -46,7 +46,7 @@ public class Tag_field extends Tag {
         else
         if(DATE.equalsIgnoreCase(type)){    write("public var "+name+":String;"); }
         else
-        if(NUMBER.equalsIgnoreCase(type)){  write("public var "+name+":Number;"); }
+        if(NUMBER.equalsIgnoreCase(type)){  write("public var "+name+":String;"); }
         else
         if(BOOLEAN.equalsIgnoreCase(type)){ write("public var "+name+":Boolean;"); }
         else {

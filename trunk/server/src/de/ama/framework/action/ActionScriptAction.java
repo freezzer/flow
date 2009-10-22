@@ -4,6 +4,7 @@ import de.ama.framework.data.*;
 import de.ama.services.Environment;
 import de.ama.services.impl.User;
 import de.ama.util.Util;
+import de.ama.db.Query;
 
 import java.util.Collection;
 
@@ -177,7 +178,7 @@ public class ActionScriptAction implements java.io.Serializable {
     }
 
     public Object getBo(Selection s) {
-        return getBo(s.oidString);
+        return Environment.getPersistentService().getObject(new Query(Util.createClass(s.getClassName()),"oid",Query.EQ, s.getOid()),true);
     }
 
     public Object getBo(String oidString) {

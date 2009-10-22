@@ -41,9 +41,9 @@ public class Tag_collection extends Tag {
         int create = getAttribute(CREATE, getChild(0).getAttribute(CREATE,0));
         writeLine();
         if( create>0 ){
-            write("public var "+name+":DataTable = new DataTable(\""+pckg+"."+type+"\","+create+");");
+            write("public var "+name+":Array = Util.createArray(\""+pckg+"."+type+"\","+create+");");
         } else {
-            write("public var "+name+":DataTable = new DataTable(\""+pckg+"."+type+"\");");
+            write("public var "+name+":Array = new Array();");
         }
     }
 

@@ -3,9 +3,11 @@ package de.ama.framework.action;
 import de.ama.framework.data.Data;
 import de.ama.framework.data.DataDictionary;
 import de.ama.framework.data.DataTable;
+import de.ama.framework.data.Selection;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
 import de.ama.util.Util;
+import de.ama.db.Query;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,18 +16,14 @@ import de.ama.util.Util;
  * Time: 18:30:43
  * To change this template use File | Settings | File Templates.
  */
-public class SaveBoAction extends ActionScriptAction {
+public class LoadBoAction extends ActionScriptAction {
 
     @Override
     public void execute() throws Exception {
 
+        Selection s = selectionModel.getSingleSelection();
+        data = getBo(s);
         PersistentService ps = Environment.getPersistentService();
-        ps.attacheObject(data);
-
-        commit();
-
-//        String s = ps.getOidString(data);
-//        data = ps.getObject(s);
         data = ps.releaseObject(data);
 
     }

@@ -35,16 +35,12 @@ public class Tag_collection extends Tag {
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
-        String dir =  getParentAttribute(JAVA_DIR,"");
-        String pckg =  getParentAttribute(JAVA_PACKAGE,"na");
-        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
-
-        String table="de.ama.framework.data.DataTable";
+        String list="java.util.List<"+type+">";
 
         writeLine();
-        write("private "+table+" "+ name +" = new "+table+"(\""+pckg+"."+type+"\");");
-        write("public  "+table+" get" + Util.firstCharToUpper(name)+"() { return "+name+"; }");
-        write("public  void   set" + Util.firstCharToUpper(name)+"("+table+" in) { "+ (getAttribute(MANDATORY,false)?"check(in,\""+name+"\"); ":" ") + name+"=in; }");
+        write("private "+list+" "+ name +" = new java.util.ArrayList<"+type+">();");
+        write("public  "+list+" get" + Util.firstCharToUpper(name)+"() { return "+name+"; }");
+        write("public  void   set" + Util.firstCharToUpper(name)+"("+list+" in) { "+ (getAttribute(MANDATORY,false)?"check(in,\""+name+"\"); ":" ") + name+"=in; }");
 //        write("public  void addItemTo" + Util.firstCharToUpper(name)+"( "+type+" in) { "+name+".add(in); }");
 //        write("public  "+type+" getItemFrom" + Util.firstCharToUpper(name)+"(int i) { return "+name+".get(i); }");
     }

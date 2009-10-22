@@ -28,7 +28,9 @@ public class Tag_import extends Tag{
     public void prepareElement() {
         String filename = getRequiredAttribute("file");
         try {
-            getWriter().readImport(filename);
+            Tag tag = getWriter().readTemplateFile(filename);
+            tag.prepareRecursive();
+            addChild(tag);
         } catch (Exception e) {
             throw new RuntimeException("can not read import ["+ filename+"]", e);
         }

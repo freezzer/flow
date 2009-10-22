@@ -36,6 +36,8 @@ public class Tag_bean extends Tag{
         String name = getParentAttribute(NAME,"");
         String dir =  getParentAttribute(JAVA_DIR,"");
         String pckg =  getParentAttribute(JAVA_PACKAGE,"na");
+        String persistent = getParentAttribute(PERSISTENT, "false");
+
         if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
         
         if (getParent() instanceof Tag_bean) {
@@ -61,17 +63,12 @@ public class Tag_bean extends Tag{
 
         ///////////////////////////////////////////////////////////
 
-
-    }
-
-
-    protected void mainWrite() {
-        String name = getParentAttribute(NAME,"");
-        String persistent = getParentAttribute(PERSISTENT, "false");
-        String ext = "";
-        if("true".equals(persistent)) ext+= " implements de.ama.db.PersistentMarker";
+        String ext = " implements java.io.Serializable ";
+        if("true".equals(persistent)) ext+= ", de.ama.db.PersistentMarker";
         write("public class "+name+" "+ext+" { ");
+
     }
+
 
     protected void endWrite() {
         writeLine();

@@ -290,6 +290,7 @@ public class Tag extends XmlElement implements Const {
 
     protected void write(Object str){
         getPrintWriter().println(Util.createString(getIndent(),"  ")+str);
+       // System.out.println(str+" to "+ getPrintWriter().hashCode() );
     }
 
     protected int getIndent() {
@@ -302,6 +303,7 @@ public class Tag extends XmlElement implements Const {
 
     protected void flush(){
        getPrintWriter().flush();
+       // System.out.println("------------------- flush "+ getPrintWriter().hashCode() );
     }
 
     protected Tag getChild(int i) {

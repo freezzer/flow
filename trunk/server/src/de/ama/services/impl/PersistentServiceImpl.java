@@ -1,14 +1,14 @@
 package de.ama.services.impl;
 
-import de.ama.db.DB;
-import de.ama.db.OidIterator;
-import de.ama.db.Persistent;
-import de.ama.db.Query;
+import de.ama.db.*;
+import de.ama.db.binding.FieldBinding;
+import de.ama.db.binding.Dictionary;
+import de.ama.db.binding.Constants;
 import de.ama.services.PersistentService;
 import de.ama.services.UserService;
 import de.ama.util.Util;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * User: x
@@ -56,7 +56,7 @@ public class PersistentServiceImpl implements PersistentService {
 
     public void join(String catalog) {
         DB.joinCatalog(catalog);
-        DB.session().setVerbose(true);
+        //DB.session().setVerbose(true);
     }
 
     public void leave() {
@@ -96,6 +96,15 @@ public class PersistentServiceImpl implements PersistentService {
     public String makePersistent(Object o) {
         DB.session().setObject(o);
         return DB.session().getOidString(o);
+    }
+
+    public void attacheObject(Object o) {
+        DB.session().attacheObject(o);
+    }
+
+    public Object releaseObject(Object o) {
+        DB.session().releaseObject(o);
+        return o;
     }
 
     public String getOidString(Object o) {
