@@ -1,6 +1,7 @@
 package de.ama.framework.util {
 import de.ama.framework.command.Command;
 import de.ama.framework.data.Data;
+import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.gui.frames.ListPane;
 import de.ama.framework.gui.frames.TreeEditor;
 
@@ -11,10 +12,6 @@ public class Factory {
 
    public static function register(key:String, c:Class):void{
        dictionary[key] = c;
-   }
-
-   public static function createData(key:String):Data{
-       return Data(createObject(key));
    }
 
    public static function createObject(key:String):Object{
@@ -32,11 +29,27 @@ public class Factory {
 
    }
 
+    /////////////////////// Data //////////////////////////////////////
+
+    public static function createData(key:String):Data{
+        return Data(createObject(key));
+    }
+
+    /////////////////////// Comand //////////////////////////////////////
+
     public static function registerCommand(key:String, c:Class):void{
         dictionary[key] = c;
     }
-
     public static function createCommand(type:String):Command {
         return Command(createObject(type));
+    }
+
+    /////////////////////// Panel //////////////////////////////////////
+
+    public static function registerPanel(key:String, c:Class):void{
+        dictionary[key] = c;
+    }
+    public static function createPanel(type:String):EditPanel {
+        return EditPanel(createObject(type));
     }}
 }
