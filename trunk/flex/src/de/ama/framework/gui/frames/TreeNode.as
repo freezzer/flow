@@ -53,7 +53,8 @@ public class TreeNode implements Invoker{
         if(i>=0){
           children.removeItemAt(i);
           child.parent = null;
-
+          var coll:ArrayCollection =  new ArrayCollection(_dataTable);
+          coll.removeItemAt(coll.getItemIndex(child.data));  
         }
     }
 
@@ -201,11 +202,6 @@ public class TreeNode implements Invoker{
     	}
 
     }
-
-    public function get dataCollection():ArrayCollection {
-        return new ArrayCollection(_dataTable);
-    }
-
 
 }
 }

@@ -20,52 +20,55 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.util.Util;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_bootstrap extends Tag {
-    protected static final String FORCE_IMPORT = "FORCE_IMPORT";
-    protected static final String REGISTER_OBJECT = "REGISTER_OBJECT";
-    protected static final String REGISTER_COMMAND = "REGISTER_COMMAND";
-    protected static final String REGISTER_PANEL = "REGISTER_PANEL";
 
-    protected void beginWrite() {
-
-        String name = getAttribute(NAME,"Bootstrap");
-        String dir =  getParentAttribute(DIR,"");
-        dir =  getParentAttribute(FLEX_DIR,dir);
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"");
-        initPrintWriter(dir,name+".as");
-
-        write("/* ");
-        write(getStoredObject(COMMENT));
-        write("*/ ");
-        writeLine();
-        write("package "+pckg+" {");
-        write("import de.ama.framework.util.Factory;");
-        write(getCollectedCode(FORCE_IMPORT));
-        write("");
-        write("public class "+name+" {");
-        write("");
-        write("    public function execute():void {");
-        write(getCollectedCode(REGISTER_OBJECT));
-        write("");
-        write(getCollectedCode(REGISTER_COMMAND));
-        write("    }");
-        write("");
-        write("}}");
-    }
-
+public class Tag_panel extends Tag {
     @Override
     protected int getIndent() {
         return 0;
     }
 
+    protected void beginWrite() {
+        String name = getParentAttribute(NAME,"");
+        String dir =  getParentAttribute(FLEX_DIR,"");
+        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
+
+        String spacing = getAttribute(SPACING,"5");
+        boolean horizontal = getAttribute(HORIZONTAL,false);
+        String title = getAttribute(TITLE,"");
+        String path = getRequiredAttribute(PATH);
+        String w = readStandardAttribute(W,"width");
+        String h = readStandardAttribute(H,"height");
+        String v = readStandardAttribute(VISIBLE,"visible");
+
+        initPrintWriter(dir,name+".as");
+
+        write("/* ");
+        write(getStoredObject(COMMENT));
+        write("*/ ");
+
+        writeLine();
+        write("package "+pckg+" {");
+        write("import de.ama.framework.data.*;");
+        write("import de.ama.framework.util.*;");
+
+        write("public class "+name+" "+" extends EditPane { ");
+
+        collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
+        collectCode(Tag_bootstrap.REGISTER_PANEL, "         Factory.registerPanel(\""+name+"\", "+name+");");
+    }
+
     protected void endWrite() {
-        write("");
+        writeLine();
+        write("}}");
         flush();
     }
+
+
 
 }
