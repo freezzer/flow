@@ -51,8 +51,8 @@ public class Tag_bootstrap extends Tag {
         write("");
         write("    public function execute():void {");
         write(getCollectedCode(REGISTER_OBJECT));
-        write("");
         write(getCollectedCode(REGISTER_COMMAND));
+        write(getCollectedCode(REGISTER_PANEL));
         write("    }");
         write("");
         write("}}");

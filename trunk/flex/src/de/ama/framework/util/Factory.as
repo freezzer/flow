@@ -49,7 +49,12 @@ public class Factory {
     public static function registerPanel(key:String, c:Class):void{
         dictionary[key] = c;
     }
-    public static function createPanel(type:String):EditPanel {
-        return EditPanel(createObject(type));
+    public static function createPanel(name:String):EditPanel {
+       var c:Class = dictionary[name];
+       if(c!=null){
+           return EditPanel(new c());
+       }
+
+       return new EditPanel("/",true);  // DefaultPanel
     }}
 }

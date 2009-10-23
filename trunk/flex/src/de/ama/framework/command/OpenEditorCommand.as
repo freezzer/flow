@@ -19,9 +19,6 @@ public class OpenEditorCommand extends Command{
         e.label = context.getProperty("label",data.getName()+" Editor");
         var cp:ApplicationPanel = Application.application.getContentPane();
         cp.addContent(e);
-
-		e.expand();
-
     }
 }
 }

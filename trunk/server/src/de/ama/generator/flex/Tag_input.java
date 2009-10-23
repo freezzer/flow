@@ -20,6 +20,7 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.util.Util;
 
 /**
  * User: x
@@ -28,32 +29,34 @@ import de.ama.generator.Tag;
 public class Tag_input extends Tag {
 
     public int getIndent() {
-        return 4;
+        return 8;
     }
 
 
     protected void mainWrite() {
-        String name = getRequiredAttribute(NAME);
-        String type = getAttribute(TYPE,"String");
-        String path = getAttribute(PATH,"String");
-        writeLine();
+        String label = getRequiredAttribute(LABEL);
+        String type = getAttribute(TYPE, "String");
+        String path = getRequiredAttribute(PATH);
+        int x = getAttribute(X, -1);
+        int y = getAttribute(Y, -1);
+        String  labelWith = getParentAttribute(LABELWIDTH,"");
 
-        if(STRING.equalsIgnoreCase(type)){
-            write("public var "+name+":String;"); }
-        else
-        if(DATE.equalsIgnoreCase(type)){
-            write("public var "+name+":String;"); }
-        else
-        if(NUMBER.equalsIgnoreCase(type)){
-            write("public var "+name+":String;"); }
-        else
-        if(BOOLEAN.equalsIgnoreCase(type)){
-            write("public var "+name+":Boolean;"); }
-        else {
-            write("public var "+name+":"+type+" = new "+type+"();");
+
+        if (STRING.equalsIgnoreCase(type)) {
+            write("field = insertTextField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+        } else if (DATE.equalsIgnoreCase(type)) {
+            write("field = insertDateField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+        } else if (NUMBER.equalsIgnoreCase(type)) {
+            write("field = insertTextField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+        } else if (BOOLEAN.equalsIgnoreCase(type)) {
+            write("field = insertBoolField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+        } else if (LOOKUP.equalsIgnoreCase(type)) {
+            write("field = insertTextField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
         }
 
+        if(!Util.isEmpty(labelWith)){
+            write("field.labelWidth="+labelWith+";");
+        }
     }
-
 
 }

@@ -29,7 +29,7 @@ public class Tag_tree_node extends Tag {
     protected void beginWrite() {
         String label = getAttribute(LABEL);
         String prefix = getAttribute(PREFIX,label);
-        String type = getRequiredAttribute(TYPE);
+        String type = getAttribute(TYPE,"");
         String labelPath = getAttribute(LABELPATH,"");
         String path = getRequiredAttribute(PATH);
         String panel = getAttribute(PANEL, "default");
@@ -42,7 +42,7 @@ public class Tag_tree_node extends Tag {
 
         String icon = getAttribute(ICON, listView?"table":"edit");
 
-        write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\", \""+type+"\");");
+        write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+panel+"\");");
         if(create){
         write("          node.commands.addItem(new CreateNodeCommand('"+label+" anlegen'));");
         }
