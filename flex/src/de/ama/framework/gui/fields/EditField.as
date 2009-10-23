@@ -4,6 +4,7 @@ import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.util.Util;
 
 import flash.events.Event;
+import flash.events.FocusEvent;
 
 import mx.containers.Canvas;
 import mx.controls.Label;
@@ -17,7 +18,7 @@ public class EditField extends Canvas{
 
     private var _fullpath:String;
     private var _localpath:String;
-    private var _labelWidth:int = 100;
+    private var _labelWidth:int = 160;
 
 
     public function EditField(caption:String="EditField", path:String=null) {
@@ -29,19 +30,23 @@ public class EditField extends Canvas{
         _localpath = path;
 
         _input.setStyle("color","black");
-        _input.addEventListener(Event.CHANGE,inputCanged);
+        _input.addEventListener(Event.CHANGE, onInputCanged);
+        _input.addEventListener(FocusEvent.FOCUS_OUT, onFocusLost);
 
         _label.setStyle("color","black");
-        _label.setStyle("textAlign","right");
+        _label.setStyle("textAlign","left");
         _label.setStyle("paddingRight","8");
         _label.y=3;
 
     }
 
-    protected function inputCanged(e:Event):void {
-        var d:Data = editPanel.getData();
-        d[_localpath] = getValue();
 
+    protected function onInputCanged(e:Event):void {
+    }
+
+    protected function onFocusLost(e:FocusEvent):void {
+        var d:Data = editPanel.getData();
+        d.setValue(localpath, getValue());
     }
 
     public function createLabel(caption:String):void{
@@ -60,10 +65,11 @@ public class EditField extends Canvas{
         addChild(_input);
     }
 
-    public function set labelWith(w:int):void{
+    public function set labelWidth(w:int):void{
         _labelWidth = w;
         _input.x = _labelWidth +10;
         _input.width = super.width - 15 - _labelWidth;
+        _label.width = labelWidth;
     }
 
     public function get labelWidth():int {
@@ -99,15 +105,11 @@ public class EditField extends Canvas{
         return _localpath;
     }
 
-    public function get path():String {
+    public function get fullpath():String {
         if(Util.isEmpty(_fullpath)){
             _fullpath = editPanel.path +"/"+ _localpath
         }
         return _fullpath;
-    }
-
-    public function set path(p:String):void {
-       _localpath = path;
     }
 
     public function getValue():Object {

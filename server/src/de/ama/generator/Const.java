@@ -53,6 +53,7 @@ public interface Const {
     public static final String STRING = "string";
     public static final String NUMBER = "number";
     public static final String BOOLEAN = "boolean";
+    public static final String LOOKUP = "lookup";
 
     public static final String DIR =        "dir";
     public static final String JAVA_DIR =   "java_dir";

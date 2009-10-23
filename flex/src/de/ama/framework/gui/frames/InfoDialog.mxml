@@ -15,6 +15,7 @@
                 <mx:TextArea x="10" y="71" width="400" height="209" id="detailsField" wordWrap="true" editable="false"/>
             </mx:AddChild>
             <mx:RemoveChild target="{linkbutton1}"/>
+            <mx:SetProperty target="{msgField}" name="height" value="63"/>
         </mx:State>
         <mx:State name="info">
             <mx:RemoveChild target="{linkbutton1}"/>
@@ -53,8 +54,8 @@
 
         ]]></mx:Script>
     <mx:Button x="367" y="168" label="OK" id="button1" click="close()"/>
-    <mx:TextArea x="10" y="0" width="400" height="128" id="msgField" wordWrap="true" editable="false" cornerRadius="0"/>
-    <mx:LinkButton x="10" y="148.95" label="details ..." color="#7DCADD" width="77" fontWeight="normal" height="18"
+    <mx:TextArea x="10" y="0" width="400" height="91" id="msgField" wordWrap="true" editable="false" cornerRadius="0"/>
+    <mx:LinkButton x="10" y="123.95" label="details ..." color="#7DCADD" width="77" fontWeight="normal" height="18"
                    id="linkbutton1" click="expandHandler()"/>
 
 

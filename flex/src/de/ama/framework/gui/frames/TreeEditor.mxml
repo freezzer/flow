@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" 
-	initialize="init()" implements="de.ama.framework.command.Invoker" creationComplete="expand()">
+<mx:Canvas implements="de.ama.framework.command.Invoker"
+           xmlns:mx="http://www.adobe.com/2006/mxml"
+           xmlns:frames="de.ama.framework.gui.frames.*"
+           width="100%" height="100%"
+	       initialize="init()"
+           creationComplete="onCreationComplete()">
+
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
         import de.ama.framework.command.LoadBoCommand;
         import de.ama.framework.command.SaveBoCommand;
-        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.data.Data;
+        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.gui.icons.IconStore;
 
-        import mx.collections.ArrayCollection;
+        import de.ama.framework.util.Callback;
+
+        import de.ama.framework.util.Factory;
+
         import mx.controls.Button;
         import mx.controls.treeClasses.TreeItemRenderer;
         import mx.core.UITextField;
 
         public function init():void {
+        }
+
+        public function onCreationComplete():void {
             treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
             treeMenu.hideBuiltInItems();
 
-            editorCommands.addItem(new SaveBoCommand());
-            editorCommands.addItem(new LoadBoCommand());
+            buttonbar.addCommand(new SaveBoCommand());
+            buttonbar.addCommand(new LoadBoCommand());
+            buttonbar.callBack = new Callback(this, editorButtonHandler);
+
+            toolbar.callBack = new Callback(this, toolBarButtonHandler);
+
+            if (rootNode != null) {
+                rootNode.openDefaultNodes();
+            }
         }
 
-
-        [Bindable]
-        private var toolBarCommands:ArrayCollection = new ArrayCollection();
-
-        [Bindable]
-        private var editorCommands:ArrayCollection = new ArrayCollection();
 
         [Bindable]
         private var rootNode:TreeNode;
@@ -40,15 +52,40 @@
 
 
         private function refreshToolBar():void {
-            toolBarCommands.removeAll();
+            toolbar.clear();
             for each(var command:Command in selectedNode.commands) {
-                toolBarCommands.addItem(command);
+                toolbar.addCommand(command);
             }
         }
 
         public function treeChanged(event:Event):void {
             selectedNode = TreeNode(Tree(event.target).selectedItem);
             refreshToolBar();
+            replaceEditPanel();
+        }
+
+
+        public function replaceEditPanel():void {
+            var newPanel:EditPanel = Factory.createPanel(selectedNode.panelName);
+            newPanel.reset();
+            newPanel.setData(selectedNode.getData());
+
+            var oldChild:EditPanel = getCurrentEditPanel();
+            if (oldChild != null) {
+                oldChild.endEditing();
+                contenPanel.removeChild(oldChild);
+            }
+
+            contenPanel.addChild(newPanel);
+            newPanel.startEditing();
+        }
+
+        public function getCurrentEditPanel():EditPanel {
+            var children:Array = contenPanel.getChildren();
+            if(children!=null && children.length>0){
+                return EditPanel(children[0]);
+            }
+            return null;
         }
 
         /**
@@ -65,20 +102,11 @@
             return IconStore.getIcon(iconName);
         }
 
-        public function expand():void {
-        	if(rootNode==null) return;
-        	if(rootNode.tree==null) return;
-        	
-        	rootNode.openDefaultNodes();
-        }
-        
         public function setData(data:Data):void {
             rootNode = getPrototypeTree();
             rootNode.setData(data);
         }
 
-
-		
 
         public function getData():Data {
             return rootNode.getData();
@@ -138,28 +166,20 @@
 
         ]]></mx:Script>
 
-    <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="4" verticalGap="0">
-    <mx:HBox width="100%" height="30" horizontalAlign="left" horizontalGap="4" id="toolBar" verticalAlign="middle" paddingRight="5" paddingLeft="5">
-        <mx:Repeater id="trp" dataProvider="{toolBarCommands}">
-            <mx:Button label="{Command(trp.currentItem).label}" click="toolBarButtonHandler(event)" data="{trp.currentItem}"
-                    icon="{Command(trp.currentItem).getIcon()}"   fontWeight="normal" textAlign="center"/>
-        </mx:Repeater>
-    </mx:HBox>
-    <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="1" horizontalGap="8">
+    <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="2" verticalGap="0">
+        <frames:CommandButtonBar id="toolbar" horizontalAlign="left" useLabels="false"/>
 
-            <mx:Tree id="myTree" width="20%" height="100%" 
-            	labelField="label" iconFunction="myIconFunction"
-                showRoot="true" dataProvider="{rootNode}" change="treeChanged(event)"
-                contextMenu="{treeMenu}" />
+        <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1"
+                        paddingTop="1" horizontalGap="8">
 
-            <mx:TextArea height="100%" width="80%"  text="Selected Item: {selectedNode}" color="#6F7884" backgroundAlpha="1.0" borderStyle="solid" cornerRadius="4" borderThickness="2"/>
+            <mx:Tree id="myTree" width="200" height="100%"  labelField="label" iconFunction="myIconFunction"
+                     showRoot="true" dataProvider="{rootNode}" change="treeChanged(event)" contextMenu="{treeMenu}"/>
+            
+            <mx:Canvas width="600" height="100%" id="contenPanel" />
 
-    </mx:HDividedBox>
-    <mx:HBox width="100%" height="30" horizontalAlign="right" horizontalGap="4" id="southPanel" verticalAlign="middle" paddingRight="5" paddingLeft="5">
-        <mx:Repeater id="srp" dataProvider="{editorCommands}">
-            <mx:Button label="{Command(srp.currentItem).label}" click="editorButtonHandler(event)" data="{srp.currentItem}"
-                    icon="{Command(srp.currentItem).getIcon()}"   fontWeight="normal" textAlign="center"/>
-        </mx:Repeater>
-    </mx:HBox>
+
+        </mx:HDividedBox>
+
+        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right" />
     </mx:VBox>
 </mx:Canvas>

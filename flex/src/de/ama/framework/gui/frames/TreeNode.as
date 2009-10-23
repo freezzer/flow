@@ -25,12 +25,14 @@ public class TreeNode implements Invoker{
     public var path:String;
     public var labelPrefix:String;
     public var labelPath:String;
+    public var panelName:String;
     public var isListView:Boolean = false;
     public var defaultOpen:Boolean = false;
     public var iconName:String = "folder";
 
 
-    public function TreeNode(path:String, labelPrefix:String, labelPath:String, isListView:Boolean, iconName:String, type:String=null) {
+    public function TreeNode(path:String, labelPrefix:String, labelPath:String, isListView:Boolean,
+                             iconName:String, type:String=null, panelName:String=null) {
         this.path = path;
         this.labelPath = labelPath;
         this.labelPrefix = labelPrefix;
@@ -38,6 +40,7 @@ public class TreeNode implements Invoker{
         this.iconName = iconName;
         this.templates = templates;
         this.type = type;
+        this.panelName = panelName;
     }
 
     public function setDefaultOpen(b:Boolean):void {
@@ -127,7 +130,8 @@ public class TreeNode implements Invoker{
                  this.labelPath,
                  this.isListView,
                  this.iconName,
-                 this.type);
+                 this.type,
+                 this.panelName);
          node.commands = this.commands;
          node.templates = this.templates;
          node.defaultOpen = this.defaultOpen;
@@ -193,7 +197,9 @@ public class TreeNode implements Invoker{
     }
 
     public function openDefaultNodes():void {
-    	if(defaultOpen){
+        if(tree==null) return;
+
+        if(defaultOpen){
     		tree.expandItem(this,true);
     	}
 

@@ -4,18 +4,27 @@ import de.ama.framework.gui.fields.BoolField;
 import de.ama.framework.gui.fields.DateField;
 import de.ama.framework.gui.fields.EditField;
 
+import de.ama.framework.util.Util;
+
+import flash.utils.describeType;
+
 import mx.containers.Canvas;
+import mx.effects.easing.Back;
 
 public class EditPanel extends Canvas{
 
     private var _path:String;
-    private var _fcount:int = 1;
+    private var _generic:Boolean;
+    private var _data:Data;
 
-
-    public function EditPanel(path:String = null) {
+    public function EditPanel(path:String = "", generic:Boolean = false) {
         _path = path;
-        _fcount = 1;
-
+        _generic = generic;
+        // setStyle("backgroundColor","0xf0f0f0");
+        setStyle("paddingLeft","10");
+        setStyle("paddingRight","10");
+        setStyle("paddingTop","10");
+        setStyle("paddingBottom","10");
     }
 
     public function get path():String {
@@ -27,11 +36,17 @@ public class EditPanel extends Canvas{
     }
 
     public function getData():Data {
-        return Data(data);
+        return _data;
     }
 
-    public function setData(val:Data):void {
-        data = val;
+
+    public function setData(data:Data):void {
+        _data = data;
+
+        if (_generic) {
+            createDefaultFields(_data);
+        }
+
         var childs:Array = getChildren();
         var i:int;
         var len:int = childs.length;
@@ -39,26 +54,54 @@ public class EditPanel extends Canvas{
         for (i = 0; i < len; i++) {
             if (childs[i] is EditField) {
                 f = childs[i];
-                f.setValue(data[f.localpath]);
+                f.setValue(data.getValue(f.localpath));
             }
         }
     }
 
-    public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1):void {
-        insertField(new EditField(label, path), x, y);
+    public function createDefaultFields(data:Data):void {
+        var classInfo:XML = describeType(data);
+        for each (var v:XML in classInfo..variable) {
+        	var t:String = v.@type;
+            switch(t){
+              case "String": {
+              	 insertTextField(Util.firstCharToUpper(v.@name), v.@name);
+              	 break;
+              }
+              case "Boolean":{
+              	  insertBoolField(Util.firstCharToUpper(v.@name), v.@name);
+              	 break;
+              }
+              case "Date": {
+              	 insertDateField(Util.firstCharToUpper(v.@name), v.@name);
+              	 break;
+              }
+            }
+        }
     }
 
-    public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1):void {
-        insertField(new BoolField(label, path), x, y);
+
+    public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1):EditField {
+        var editField:EditField = new EditField(label, path);
+        insertField(editField, x, y);
+        return editField;
     }
 
-    public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1):void {
-        insertField(new DateField(label, path), x, y);
+    public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1):BoolField {
+        var boolField:BoolField = new BoolField(label, path);
+        insertField(boolField, x, y);
+        return boolField;
+    }
+
+    public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1):DateField {
+        var dateField:DateField = new DateField(label, path);
+        insertField(dateField, x, y);
+        return dateField;
     }
 
     public function insertField(f:EditField, x:int = -1, y:int = -1):void {
         f.x = x > 0 ? x : 10;
-        f.y = y > 0 ? y : ((_fcount++) * 20) + 5;
+        f.y = y > 0 ? y : (numChildren * 30);
         addChild(f);
     }
 
@@ -70,10 +113,23 @@ public class EditPanel extends Canvas{
         for (i = 0; i < len; i++) {
             if (childs[i] is EditField) {
                 f = EditField(childs.getItemAt(i));
-                if (f.path == path) return f;
+                if (f.localpath == path) return f;
             }
         }
         return null;
+    }
+
+
+    public function endEditing():void {
+
+    }
+
+
+    public function startEditing():void {
+    }
+
+
+    public function reset():void {
     }
 
 }

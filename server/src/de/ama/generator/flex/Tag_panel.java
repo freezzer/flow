@@ -39,12 +39,12 @@ public class Tag_panel extends Tag {
         String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
 
         String spacing = getAttribute(SPACING,"5");
-        boolean horizontal = getAttribute(HORIZONTAL,false);
         String title = getAttribute(TITLE,"");
-        String path = getRequiredAttribute(PATH);
-        String w = readStandardAttribute(W,"width");
-        String h = readStandardAttribute(H,"height");
-        String v = readStandardAttribute(VISIBLE,"visible");
+        String path = getAttribute(PATH,"");
+        int x = getAttribute(X,0);
+        int y = getAttribute(Y,0);
+        int w = getAttribute(W,-1);
+        int h = getAttribute(H,-1);
 
         initPrintWriter(dir,name+".as");
 
@@ -54,17 +54,23 @@ public class Tag_panel extends Tag {
 
         writeLine();
         write("package "+pckg+" {");
-        write("import de.ama.framework.data.*;");
-        write("import de.ama.framework.util.*;");
+        write("import de.ama.framework.gui.fields.EditField;");
+        write("import de.ama.framework.gui.frames.EditPanel;");
 
-        write("public class "+name+" "+" extends EditPane { ");
-
+        write("public class "+name+" "+" extends EditPanel { ");
+        write("    public function KopfPanel() {");
+        write("        var field:EditField;");
+        write("        x="+x+";  y="+y+";");
+   if(w>0)
+        write("        width="+w+";");
+   if(h>0)
+        write("        height="+h+";");
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
         collectCode(Tag_bootstrap.REGISTER_PANEL, "         Factory.registerPanel(\""+name+"\", "+name+");");
     }
 
     protected void endWrite() {
-        writeLine();
+        write("    }");
         write("}}");
         flush();
     }

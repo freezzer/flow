@@ -25,9 +25,9 @@ import mx.utils.ObjectUtil;
 
 public class Util
 {
-    private static var ALPHA:String="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    private static var NUM:String="1234567890"
-    private static var UML:String="äöüÄÖÜ"
+    private static var ALPHA:String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    private static var NUM:String = "1234567890"
+    private static var UML:String = "äöüÄÖÜ"
 
 
     private static var globalStore:Array = new Array();
@@ -74,22 +74,22 @@ public class Util
 
     public static function showMessage(m:String):void {
         var dlg:InfoDialog = InfoDialog(PopUpManager.createPopUp(DisplayObject(Application.application), InfoDialog, true));
-        dlg.msg=saveToString(m);
- //       dlg.currentState="info";
+        dlg.msg = saveToString(m);
+        //       dlg.currentState="info";
         PopUpManager.centerPopUp(dlg);
     }
 
-    public static function showQuestion(m:String, parent:Sprite=null, f:Function=null):void {
-        Alert.show(m, "Question",3,parent,f);
+    public static function showQuestion(m:String, parent:Sprite = null, f:Function = null):void {
+        Alert.show(m, "Question", 3, parent, f);
     }
 
-    public static function showError(m:String, details:String=null):void {
+    public static function showError(m:String, details:String = null):void {
         var dlg:InfoDialog = InfoDialog(PopUpManager.createPopUp(DisplayObject(Application.application), InfoDialog, true));
-        dlg.msg=saveToString(m);
-        dlg.detailedMsg=saveToString(details);
-//        if(isEmpty(details)){
-//          dlg.currentState="info";
-//        }
+        dlg.msg = saveToString(m);
+        dlg.detailedMsg = saveToString(details);
+        //        if(isEmpty(details)){
+        //          dlg.currentState="info";
+        //        }
         PopUpManager.centerPopUp(dlg);
     }
 
@@ -117,25 +117,25 @@ public class Util
     public static function divideString(str:String, del:String):Array {
         var ret:Array = new Array();
         var pos:int = str.indexOf(".");
-        if(pos>=0) {
-            ret.push(str.substring(0,pos));
-            ret.push(str.substring(pos+1));
+        if (pos >= 0) {
+            ret.push(str.substring(0, pos));
+            ret.push(str.substring(pos + 1));
         } else {
             ret.push(str);
         }
         return ret;
     }
 
-    public static function getObjectProperty(obj:Object, path:String, def:String=""):String{
+    public static function getObjectProperty(obj:Object, path:String, def:String = ""):String {
         var object:Object = getObjectValue(obj, path);
-        return object==null ? def : object.toString();
+        return object == null ? def : object.toString();
     }
 
-    public static function getObjectValue(obj:Object, path:String):Object{
-        var div:Array = divideString(path,".");
-        if(div.length>1){
+    public static function getObjectValue(obj:Object, path:String):Object {
+        var div:Array = divideString(path, ".");
+        if (div.length > 1) {
             var child:Object = getObjectValue(obj, div[0]);
-            if(child!=null){
+            if (child != null) {
                 return getObjectValue(child, div[1]);
             }
         }
@@ -147,11 +147,11 @@ public class Util
         return null;
     }
 
-    public static function setObjectValue(obj:Object, path:String, value:Object):void{
-        var div:Array = divideString(path,".");
-        if(div.length>1){
+    public static function setObjectValue(obj:Object, path:String, value:Object):void {
+        var div:Array = divideString(path, ".");
+        if (div.length > 1) {
             var child:Object = getObjectValue(obj, div[0]);
-            if(child!=null){
+            if (child != null) {
                 return setObjectValue(child, div[1], value);
             }
         }
@@ -171,12 +171,12 @@ public class Util
     }
 
     public static function getClassName(o:Object):String {
-        if(o==null) return "no classname for 'null'";
+        if (o == null) return "no classname for 'null'";
         return getQualifiedClassName(o);
     }
 
     public static function getUnqualifiedClassName(o:Object):String {
-        if(o==null) return "no classname for 'null'";
+        if (o == null) return "no classname for 'null'";
         var name:String = getClassName(o);
         return name.split("::")[1];
     }
@@ -216,67 +216,79 @@ public class Util
     public static function isUml(inputValue:String): String {
         return containsOnlyChars(inputValue, UML);
     }
+
     public static function isAlpha(inputValue:String): String {
         return containsOnlyChars(inputValue, ALPHA);
     }
+
     public static function isAlphaNum(inputValue:String): String {
-        return containsOnlyChars(inputValue, ALPHA+NUM);
+        return containsOnlyChars(inputValue, ALPHA + NUM);
     }
+
     public static function isAlphaNumUml(inputValue:String): String {
-        return containsOnlyChars(inputValue, ALPHA+NUM+UML);
+        return containsOnlyChars(inputValue, ALPHA + NUM + UML);
     }
 
     public static function containsOnlyChars(inputValue:String, allowed:String): String {
-	    var i:int = 0;
+        var i:int = 0;
         var tmp:String;
-        for(i=0;i<inputValue.length;i++){
-          	tmp=inputValue.charAt(i);
-          	if(allowed.indexOf(tmp)<0){
-          		return tmp;
-          	}
+        for (i = 0; i < inputValue.length; i++) {
+            tmp = inputValue.charAt(i);
+            if (allowed.indexOf(tmp) < 0) {
+                return tmp;
+            }
         }
         return null;
     }
 
-    public static function containsChars(inputValue:String, chars:String ): Boolean{
-       return containsForbiddenChars(inputValue, chars) != null; 
+    public static function containsChars(inputValue:String, chars:String): Boolean {
+        return containsForbiddenChars(inputValue, chars) != null;
     }
-    public static function containsForbiddenChars(inputValue:String, forbidden:String ): String{
-	    var i:int = 0;
+
+    public static function containsForbiddenChars(inputValue:String, forbidden:String): String {
+        var i:int = 0;
         var tmp:String;
-        for(i=0;i<forbidden.length;i++){
-          	tmp=forbidden.charAt(i);
-          	if(inputValue.indexOf(tmp)>=0){
-          		return tmp;
-          	}
+        for (i = 0; i < forbidden.length; i++) {
+            tmp = forbidden.charAt(i);
+            if (inputValue.indexOf(tmp) >= 0) {
+                return tmp;
+            }
         }
         return null;
     }
 
-    public static function concat(ac:ArrayCollection, obj:Object ): ArrayCollection{
-    	
-    	if(obj is ArrayCollection){
-    		var col:ArrayCollection = ArrayCollection(obj);
-    		for(var i:int = 0; i<col.length; i++){
+    public static function concat(ac:ArrayCollection, obj:Object): ArrayCollection {
+
+        if (obj is ArrayCollection) {
+            var col:ArrayCollection = ArrayCollection(obj);
+            for (var i:int = 0; i < col.length; i++) {
                 ac.addItem(col.getItemAt(i));
-            }    
-    	} else if(obj is Array){
-    		for(var x:int = 0; x<obj.length; i++){
+            }
+        } else if (obj is Array) {
+            for (var x:int = 0; x < obj.length; i++) {
                 ac.addItem(obj[x]);
-            }    
-    	} else {
-    		throw IllegalOperationError("wrong parameter in Util.concat");
-    	}
-    	
-    	return ac;
+            }
+        } else {
+            throw IllegalOperationError("wrong parameter in Util.concat");
+        }
+
+        return ac;
     }
 
-    public static function createArray(type:String , size:int=0): Array{
+    public static function createArray(type:String, size:int = 0): Array {
         var ret:Array = new Array();
-        for(var i:int=0; i<size; i++){
-           ret.push(createObject(type));
+        for (var i:int = 0; i < size; i++) {
+            ret.push(createObject(type));
         }
         return ret;
+    }
+
+    public static function firstCharToUpper(str:String):String {
+        return str.charAt(0).toUpperCase() + str.substr(1);
+    }
+
+    public static function firstCharToLower(str:String):String {
+        return str.charAt(0).toLowerCase() + str.substr(1);
     }
 
 }

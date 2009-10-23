@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="30" 
+	  styleName="buttonBar" horizontalGap="4" verticalAlign="middle">
+
+        <mx:Repeater id="trp" dataProvider="{commands}">
+            <mx:Button label="{getLabel(Command(trp.currentItem))}"
+            	       toolTip="{Command(trp.currentItem).label}"  
+            	       click="onButtonClick(event)"
+                       data="{trp.currentItem}"
+                       icon="{Command(trp.currentItem).getIcon()}" fontWeight="normal" textAlign="center"/>
+        </mx:Repeater>
+
+
+
+    <mx:Script><![CDATA[
+        import de.ama.framework.command.Command;
+
+        import de.ama.framework.util.Callback;
+
+        import mx.collections.ArrayCollection;
+
+        [Bindable]
+        public var commands:ArrayCollection = new ArrayCollection();
+
+        public var callBack:Callback ;
+        public var useLabels:Boolean = true ;
+
+
+        private function getLabel(command:Command):String {
+            if(useLabels){
+                return command.label;
+            }
+            return "";
+
+        }
+
+        public function clear():void {
+            commands.removeAll();
+        }
+
+        public function addCommand(command:Command):void {
+            commands.addItem(command);
+        }
+
+        private function onButtonClick(event:MouseEvent):void {
+            if(callBack==null) throw Error("a ButtonBar needs a Callback, set callBack");
+
+            callBack.execute(event);
+        }
+
+        ]]></mx:Script>
+</mx:HBox>
