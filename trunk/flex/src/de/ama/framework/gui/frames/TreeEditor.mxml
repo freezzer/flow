@@ -166,16 +166,16 @@
 
         ]]></mx:Script>
 
-    <mx:VBox width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1" paddingTop="2" verticalGap="0">
+    <mx:VBox width="100%" height="100%" paddingBottom="0" paddingRight="0" paddingLeft="0" paddingTop="0" verticalGap="0">
         <frames:CommandButtonBar id="toolbar" horizontalAlign="left" useLabels="false"/>
 
         <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1"
-                        paddingTop="1" horizontalGap="8">
+                        paddingTop="1" horizontalGap="8" backgroundColor="#F0F0F0">
 
             <mx:Tree id="myTree" width="200" height="100%"  labelField="label" iconFunction="myIconFunction"
                      showRoot="true" dataProvider="{rootNode}" change="treeChanged(event)" contextMenu="{treeMenu}"/>
             
-            <mx:Canvas width="600" height="100%" id="contenPanel" />
+            <mx:Canvas height="100%" id="contenPanel"  borderStyle="solid" borderThickness="2" cornerRadius="4"/>
 
 
         </mx:HDividedBox>
