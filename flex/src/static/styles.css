@@ -45,6 +45,7 @@ global
 	fontSize: 12;
 	fontWeight: normal;
 	verticalScrollBarStyleName: menuVerticalScrollBar;
+	headerStyleName: accordionHeader;
 }
 .menuVerticalScrollBar
 {
@@ -93,8 +94,18 @@ Tree
 	selectionColor: #F3596B;
 	textSelectedColor: #FFFFFF;
 }
-ButtonBar
+HBox.CommandButtonBar
 {
+	horizontalGap: 4;
+	verticalAlign: middle;
+	borderStyle: none;
+	paddingLeft: 4;
+	paddingRight: 4;
+	backgroundColor: #F0F0F0;
+}
+Canvas.EditPanel
+{
+	backgroundColor: #E0E0E0;
 }
 
 
