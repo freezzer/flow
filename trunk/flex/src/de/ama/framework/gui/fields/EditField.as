@@ -29,11 +29,11 @@ public class EditField extends Canvas{
         createInput();
         _localpath = path;
 
-        _input.setStyle("color","black");
+        _input.setStyle("color","0x202020");
         _input.addEventListener(Event.CHANGE, onInputCanged);
         _input.addEventListener(FocusEvent.FOCUS_OUT, onFocusLost);
 
-        _label.setStyle("color","black");
+        _label.setStyle("color","0x202020");
         _label.setStyle("textAlign","left");
         _label.setStyle("paddingRight","8");
         _label.y=3;

@@ -15,23 +15,19 @@
     <tabbed_application_panel name="MyApplicationPanel" flex_dir="flex/src/generated/view" flex_package="generated.view">
         <bootstrap/>
 
-        <menubar h="22">
+        <menubar h="23">
             <menu name="System">
                 <menuitem label="Abmelden" command="LogoutCommand" />
                 <menuitem label="Anmelden" command="LoginCommand" />
                 <menuitem label="Info"     command="ShowinfoCommand" />
             </menu>
-            <menu name="Stammdaten">
-                <menuitem label="Uebersicht Personen" command="OpenListerCommand" model="Person"/>
-                <menuitem label="Neue Person anlegen" command="OpenEditorCommand" model="Person"/>
-            </menu>
             <menu name="Vorgaenge">
-                <menuitem label="Uebersicht Vorgaenge"  command="OpenListerCommand" lister="VorgangLister"/>
-                <menuitem label="Neuen Vorgang anlegen" command="OpenEditorCommand" editor="VorgangEditor"  />
-            </menu>
-            <menu name="Administration">
-                <menuitem label="Uebersicht User"    command="OpenListerCommand" model="User"/>
-                <menuitem label="Neuen User anlegen" command="OpenEditorCommand" model="User"/>
+                <menuitem >
+                    <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
+                </menuitem>
+                <menuitem>
+                   <command  label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"  />
+                </menuitem>
             </menu>
         </menubar>
         

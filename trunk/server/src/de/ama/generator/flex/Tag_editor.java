@@ -63,6 +63,7 @@ public class Tag_editor extends Tag {
         write("       var parent:TreeNode;");
         write("       var node:TreeNode;");
         write("       var root:TreeNode;");
+        write("       var cmd:Command;");
         writeLine();
         
         // hier kommen die TreeNodes

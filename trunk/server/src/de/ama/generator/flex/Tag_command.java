@@ -38,54 +38,60 @@ public class Tag_command extends Tag {
         String label = getAttribute(LABEL, "");
         String use = getAttribute(USE, "");
         String editor = getAttribute(EDITOR, "");
+        String lister = getAttribute(LISTER, "");
 
-        if(Util.isNotEmpty(use)){
-            write("     import de.ama.framework.command."+use+";");
-            write("     cmd = new "+use+"(\""+label+"\",\""+icon+"\");");
-            if(Util.isNotEmpty(editor))
-            write("     cmd.setProperty(\"editor\",\""+editor+"\");");
-            if(Util.isNotEmpty(name))
-            write("     cmd.setProperty(\"name\",\""+name+"\");");
-            write("     addToolbarCommand(cmd);");
-            write("     ");
-            return;
+        String cmdOwner = getParent() instanceof Tag_tree_node ? "node." : "";
+
+        /////////////////////////// Command benutzen/////////////////////////////////
+
+        if (getParent() instanceof Tag_menuitem) {
+            write("  <menuitem label='" + label + "' command='" + Util.saveToString(use, name) + "' "
+                    + (lister.length() > 0 ? " lister='" + lister + "' " : "")
+                    + (editor.length() > 0 ? " editor='" + editor + "' " : "")
+                    + " />");
+        } else {
+            if (Util.isNotEmpty(name)) // import non CRUD command
+                write("     import " + pckg + "." + name + ";");
+
+            write("     cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\",\"" + icon + "\");");
+            if (Util.isNotEmpty(editor))
+            write("     cmd.setProperty(\"editor\",\"" + editor + "\");");
+            if (Util.isNotEmpty(lister))
+            write("     cmd.setProperty(\"lister\",\"" + lister + "\");");
+            if (Util.isNotEmpty(name))
+            write("     cmd.setProperty(\"name\",\"" + name + "\");");
+            write("     " + cmdOwner + "addToolbarCommand(cmd);");
         }
 
-        write("     import "+pckg+"."+name+";");
-        write("     cmd =new "+name+"(\""+label+"\",\""+icon+"\"));");
-        if(Util.isNotEmpty(editor))
-        write("     cmd.setProperty(\"editor\",\""+editor+"\");");
-        if(Util.isNotEmpty(name))
-        write("     cmd.setProperty(\"name\",\""+name+"\");");
-        write("     addToolbarCommand(cmd);");
-        write("     ");
+        ////////////////////////  Command generieren //////////////////////////////////////////
 
+        if (Util.isNotEmpty(name)) {
 
-        initPrintWriter(dir, name + ".as");
-        write("/* ");
-        write(getStoredObject(COMMENT));
-        write("*/ ");
-        writeLine();
-        write("package " + pckg + " {");
-        write("import de.ama.framework.util.*;");
-        write("import de.ama.framework.command.*;");
-        write("import de.ama.framework.data.*;");
-        write("public class "+name+" "+" extends Command { ");
-        writeLine();
-        write("    public function "+name+"(label:String=\""+label+"\", icon:String=\""+icon+"\") {");
-        write("       super(label,icon); ");
-        write("    } ");
-        write("      ");
-        write("    override protected function execute():void {");
-        write("      ");
-        write("    } ");
-        write("    ");
-        write("}}");
-        flush();
+            initPrintWriter(dir, name + ".as");
+            write("/* ");
+            write(getStoredObject(COMMENT));
+            write("*/ ");
+            writeLine();
+            write("package " + pckg + " {");
+            write("import de.ama.framework.util.*;");
+            write("import de.ama.framework.command.*;");
+            write("import de.ama.framework.data.*;");
+            write("public class " + name + " " + " extends Command { ");
+            writeLine();
+            write("    public function " + name + "(label:String=\"" + label + "\", icon:String=\"" + icon + "\") {");
+            write("       super(label,icon); ");
+            write("    } ");
+            write("      ");
+            write("    override protected function execute():void {");
+            write("      ");
+            write("    } ");
+            write("    ");
+            write("}}");
+            flush();
 
-        collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
-        collectCode(Tag_bootstrap.REGISTER_COMMAND, "         Factory.registerCommand(\""+name+"\", "+name+");");
-
+            collectCode(Tag_bootstrap.FORCE_IMPORT, "import " + pckg + "." + name + ";");
+            collectCode(Tag_bootstrap.REGISTER_COMMAND, "         Factory.registerCommand(\"" + name + "\", " + name + ");");
+        }
     }
 
 

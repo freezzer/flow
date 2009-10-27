@@ -21,6 +21,8 @@ package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
 
+import java.util.List;
+
 /**
  * User: x
  * Date: 25.04.2008
@@ -28,49 +30,46 @@ import de.ama.generator.Tag;
 public class Tag_tree_node extends Tag {
     protected void beginWrite() {
         String label = getAttribute(LABEL);
-        String prefix = getAttribute(PREFIX,label);
         String type = getAttribute(TYPE,"");
-        String labelPath = getAttribute(LABELPATH,"");
         String path = getRequiredAttribute(PATH);
         String panel = getAttribute(PANEL, "default");
         boolean fixedopen = getAttribute(FIXED_OPEN,true);
         boolean listView = getAttribute(LIST_VIEW,false);
 
-        boolean create = getAttribute(CREATE,false);
-        boolean copy = getAttribute(COPY,false);
-        boolean delete = getAttribute(DELETE,false);
-
         String icon = getAttribute(ICON, listView?"table":"edit");
 
-        write("          node = new TreeNode(\""+path+"\", \""+prefix+"\", \""+labelPath+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+panel+"\");");
-        if(create){
-        write("          node.commands.addItem(new CreateNodeCommand('"+label+" anlegen'));");
-        }
-        if(copy){
-        write("          node.commands.addItem(new CopyNodeCommand('"+label+" kopieren'));");
-        }
-        if(delete){
-        write("          node.commands.addItem(new DeleteNodeCommand('"+label+" loeschen'));");
-        }
+        writeLine();
+        write("      node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+panel+"\");");
 
         if(getParent() instanceof Tag_tree_node) {
-           write("          parent.addTemplate(node);");
+           write("      parent.addTemplate(node);");
         } else {
-           write("          root = node;");
+           write("      root = node;");
         }
 
-        if(!isLeaf()){
-           write("          parent = node;");
+        if(!isLeafNode()){
+           write("      parent = node;");
         }
 
-        writeLine();
     }
+
+    private boolean isLeafNode() {
+        List children = getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            Object o =  children.get(i);
+            if (o instanceof Tag_tree_node) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     protected void endWrite() {
         if(getAttribute(LIST_VIEW,false)){
-           write("          parent = parent.parent;");
+           write("      parent = parent.parent;");
         }
-
     }
 
 
