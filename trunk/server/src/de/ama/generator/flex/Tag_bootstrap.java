@@ -29,6 +29,8 @@ public class Tag_bootstrap extends Tag {
     protected static final String FORCE_IMPORT = "FORCE_IMPORT";
     protected static final String REGISTER_OBJECT = "REGISTER_OBJECT";
     protected static final String REGISTER_COMMAND = "REGISTER_COMMAND";
+    protected static final String REGISTER_LISTER = "REGISTER_LISTER";
+    protected static final String REGISTER_EDITOR = "REGISTER_EDITOR";
     protected static final String REGISTER_PANEL = "REGISTER_PANEL";
 
     protected void beginWrite() {
@@ -53,6 +55,8 @@ public class Tag_bootstrap extends Tag {
         write(getCollectedCode(REGISTER_OBJECT));
         write(getCollectedCode(REGISTER_COMMAND));
         write(getCollectedCode(REGISTER_PANEL));
+        write(getCollectedCode(REGISTER_EDITOR));
+        write(getCollectedCode(REGISTER_LISTER));
         write("    }");
         write("");
         write("}}");

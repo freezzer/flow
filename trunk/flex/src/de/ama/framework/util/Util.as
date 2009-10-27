@@ -3,7 +3,7 @@ package de.ama.framework.util
 import de.ama.framework.gui.frames.AdvanceTabNavigator;
 import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.gui.frames.InfoDialog;
-import de.ama.framework.gui.frames.ListPane;
+import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.gui.frames.TreeEditor;
 
 import flash.display.DisplayObject;

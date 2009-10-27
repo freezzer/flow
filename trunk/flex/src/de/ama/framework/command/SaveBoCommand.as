@@ -14,12 +14,12 @@ public class SaveBoCommand extends Command{
 
     override protected function execute():void {
         var sa:SaveBoAction    = new SaveBoAction();
-        sa.data = context.invoker.getData();
+        sa.data = invoker.getData();
         ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
     }
 
     private function resulthandler(action:SaveBoAction): void {
-        context.invoker.setData(Data(action.data));
+        invoker.setData(Data(action.data));
     }
 }
 }

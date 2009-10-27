@@ -26,19 +26,12 @@ import de.ama.util.Util;
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_menuitem extends Tag {
+public class Tag_column extends Tag {
 
     protected void mainWrite() {
-        String command = getRequiredAttribute(COMMAND);
         String label = getRequiredAttribute(LABEL);
-        String model = getAttribute(MODEL,"");
-        String lister = getAttribute(LISTER,"");
-        String editor = getAttribute(EDITOR,"");
-        write("     <menuitem label='"+label+"' command='"+command+"' "
-              + (model.length()  >0 ? " model='" +model +"' " : "")
-              + (lister.length() >0 ? " lister='"+lister+"' " : "")
-              + (editor.length() >0 ? " editor='"+editor+"' " : "")
-              +" />");
+        String path = getRequiredAttribute(PATH);
+        write("     addCollumn(\""+label+"\" , \""+path+"\");");
     }
 
 

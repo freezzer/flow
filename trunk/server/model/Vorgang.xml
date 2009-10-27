@@ -68,15 +68,15 @@
             <tree_node label="Vorgang" icon="lorry" type="Vorgang" path="/">
                 <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel" />
-                    <tree_node label="Positionen" path="workmodel.positionen" create="true" listView="true" type="Position">
+                    <tree_node label="Positionen" path="workmodel.positionen" create="true" listView="true" type="Position" panel="PositionenLister">
                         <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel" delete="true" copy="true" create="true" type="Position">
                             <tree_node label="Verschluesse" path="verschluesse" create="true" listView="true" type="Verschluss">
                                 <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock" delete="true" copy="true" create="true" type="Verschluss"/>
                             </tree_node>
-                            <tree_node label="Packstuecke" path="packstuecke" listView="true" create="true" type="Packstueck">
+                            <tree_node label="Packstuecke" path="packstuecke" listView="true" create="true" type="Packstueck" panel="PackstueckLister">
                                 <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack" delete="true" copy="true" create="true" type="Packstueck"/>
                             </tree_node>
-                            <tree_node label="Unterlagen" path="unterlagen" listView="true"  create="true"  type="Unterlage">
+                            <tree_node label="Unterlagen" path="unterlagen" listView="true"  create="true"  type="Unterlage" panel="UnterlagenLister">
                                 <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock" delete="true" copy="true" create="true" type="Unterlage"/>
                             </tree_node>
                         </tree_node>
@@ -85,17 +85,50 @@
             </tree_node>
         </editor>
 
-        <panel name="KopfPanel" >
+        <!--  ********************* Panels *******************************   -->
+
+        <panel name="KopfPanel" label="Kopfdaten des Vorgangs" >
            <input label="MRN"           path="kopf.mrn" type="string" />
            <input label="Zollstelle"    path="kopf.zollstelle" type="lookup" />
            <input label="erstellt am"   path="kopf.erstellt" type="date" />
            <input label="angemeldet am" path="kopf.angemeldet" type="date" />
            <input label="container"     path="kopf.container" type="Boolean" />
-
            <input label="Geschaeftsart"     path="geschaeft.art"  />
            <input label="Waehrung"     path="geschaeft.waehrung"  />
            <input label="Betrag"      path="geschaeft.betrag"  />
         </panel>
+
+        <!--  ********************* Listen *******************************   -->
+
+        <lister name="VorgangLister" model="Vorgang">
+          <command  use="LoadTableCommand"  icon="refresh" label="Übersicht Vorgänge neu laden"/>
+          <command  use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang öffnen" icon="edit"/>
+
+          <column label="Nummer" path="nummer"/>
+          <column label="Id"     path="id"/>
+          <column label="Typ"    path="typ"/>
+        </lister>
+
+        <lister name="PositionenLister"  >
+            <column label="Nummer"        path="nummer" />
+            <column label="Warennummer"   path="warennummer"/>
+            <column label="Rohgewicht"    path="roh_gewicht" />
+            <column label="Nettogewicht"  path="netto_gewicht" />
+        </lister>
+
+        <lister name="UnterlagenLister"  >
+            <column label="Nummer"      path="nummer" />
+            <column label="Art"         path="art" />
+            <column label="Bezeichnung" path="bezeichnung" />
+            <column label="Begin"       path="begin" />
+            <column label="Ende"        path="ende" />
+        </lister>
+
+        <lister name="PackstueckLister"  >
+            <column label="Nummer"      path="nummer" />
+            <column label="Art"         path="art" />
+            <column label="Anzahl"      path="anzahl" />
+        </lister>
 
 
     </view>

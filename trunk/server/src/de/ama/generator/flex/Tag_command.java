@@ -20,6 +20,7 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.util.Util;
 
 /**
  * User: x
@@ -29,14 +30,38 @@ public class Tag_command extends Tag {
 
     protected void beginWrite() {
 
-        String name = getRequiredAttribute(NAME);
+        String name = getAttribute(NAME);
         String dir = getParentAttribute(DIR, "");
         dir = getParentAttribute(FLEX_DIR, dir);
         String pckg = getParentAttribute(FLEX_PACKAGE, "");
         String icon = getAttribute(ICON, "");
         String label = getAttribute(LABEL, "");
-        initPrintWriter(dir, name + ".as");
+        String use = getAttribute(USE, "");
+        String editor = getAttribute(EDITOR, "");
 
+        if(Util.isNotEmpty(use)){
+            write("     import de.ama.framework.command."+use+";");
+            write("     cmd = new "+use+"(\""+label+"\",\""+icon+"\");");
+            if(Util.isNotEmpty(editor))
+            write("     cmd.setProperty(\"editor\",\""+editor+"\");");
+            if(Util.isNotEmpty(name))
+            write("     cmd.setProperty(\"name\",\""+name+"\");");
+            write("     addToolbarCommand(cmd);");
+            write("     ");
+            return;
+        }
+
+        write("     import "+pckg+"."+name+";");
+        write("     cmd =new "+name+"(\""+label+"\",\""+icon+"\"));");
+        if(Util.isNotEmpty(editor))
+        write("     cmd.setProperty(\"editor\",\""+editor+"\");");
+        if(Util.isNotEmpty(name))
+        write("     cmd.setProperty(\"name\",\""+name+"\");");
+        write("     addToolbarCommand(cmd);");
+        write("     ");
+
+
+        initPrintWriter(dir, name + ".as");
         write("/* ");
         write(getStoredObject(COMMENT));
         write("*/ ");
@@ -47,20 +72,21 @@ public class Tag_command extends Tag {
         write("import de.ama.framework.data.*;");
         write("public class "+name+" "+" extends Command { ");
         writeLine();
-        write("  public function "+name+"(label:String=\""+label+"\", icon:String=\""+icon+"\") {");
+        write("    public function "+name+"(label:String=\""+label+"\", icon:String=\""+icon+"\") {");
         write("       super(label,icon); ");
-        write("  } ");
-        
+        write("    } ");
+        write("      ");
+        write("    override protected function execute():void {");
+        write("      ");
+        write("    } ");
+        write("    ");
+        write("}}");
+        flush();
+
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
         collectCode(Tag_bootstrap.REGISTER_COMMAND, "         Factory.registerCommand(\""+name+"\", "+name+");");
 
     }
 
-    protected void endWrite() {
-        writeLine();
-        write("}}");
-        flush();
-
-    }
 
 }

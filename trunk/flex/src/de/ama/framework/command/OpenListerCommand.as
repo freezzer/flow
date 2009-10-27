@@ -1,7 +1,6 @@
 package de.ama.framework.command {
-import de.ama.framework.data.Data;
 import de.ama.framework.gui.frames.ApplicationPanel;
-import de.ama.framework.gui.frames.ListPane;
+import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.util.Factory;
 
 import mx.core.Application;
@@ -14,12 +13,15 @@ public class OpenListerCommand extends Command{
 
 
     override protected function execute():void {
-        var data:Data = context.getData(true);
 
-        var l:ListPane = new ListPane();
-        l.label = context.getProperty("label",data.getName()+" Auflister");
+        var lp:ListPanel = Factory.createLister(getProperty("lister"))
+        lp.label = label;
+        lp.useToolbar = true;
+
         var cp:ApplicationPanel = Application.application.getContentPane();
-        cp.addContent(l);
+        cp.addContent(lp);
+
+        lp.reload();
 
     }
 }

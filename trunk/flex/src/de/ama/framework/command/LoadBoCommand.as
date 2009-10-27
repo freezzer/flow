@@ -1,7 +1,6 @@
 package de.ama.framework.command {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadBoAction;
-import de.ama.framework.action.SaveBoAction;
 import de.ama.framework.data.Data;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
@@ -16,12 +15,12 @@ public class LoadBoCommand extends Command{
 
     override protected function execute():void {
         var sa:LoadBoAction    = new LoadBoAction();
-        sa.selectionModel = new SelectionModel(context.invoker.getData());
+        sa.selectionModel = new SelectionModel(invoker.getData());
         ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
     }
 
     private function resulthandler(action:LoadBoAction): void {
-        context.invoker.setData(Data(action.data));
+        invoker.setData(Data(action.data));
     }
 }
 }

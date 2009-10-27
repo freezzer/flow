@@ -15,13 +15,14 @@ public class CopyDataCommand extends Command{
 
 
     override protected function execute():void {
-        var data:Data = context.getData(true).clone();
+        var data:Data = getData(true).clone();
 
-        var e:TreeEditor = data.createEditor();
-        e.label = context.getProperty("label",data.getName()+" Editor");
-        e.setData(data);
+        var editor:TreeEditor = Factory.createEditor(getProperty("editor"));
+        editor.label = label;
+
+        editor.setData(data);
         var cp:ApplicationPanel = Application.application.getContentPane();
-        cp.addContent(e);
+        cp.addContent(editor);
     }
 }
 }

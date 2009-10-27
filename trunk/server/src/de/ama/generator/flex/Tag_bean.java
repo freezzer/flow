@@ -70,7 +70,7 @@ public class Tag_bean extends Tag{
         write("public class "+name+" "+" extends Data { ");
 
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
-        collectCode(Tag_bootstrap.REGISTER_OBJECT, "         Factory.register(\""+name+"\", "+name+");");
+        collectCode(Tag_bootstrap.REGISTER_OBJECT, "         Factory.registerBean(\""+name+"\", "+name+");");
 
     }
 

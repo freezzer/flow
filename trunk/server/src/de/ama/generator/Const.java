@@ -48,6 +48,7 @@ public interface Const {
     public static final String PATH = "path";
     public static final String ACTION = "action";
     public static final String METHOD = "method";
+    public static final String USE = "use";
 
     public static final String DATE = "date";
     public static final String STRING = "string";

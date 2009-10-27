@@ -2,19 +2,30 @@ package de.ama.framework.util {
 import de.ama.framework.command.Command;
 import de.ama.framework.data.Data;
 import de.ama.framework.gui.frames.EditPanel;
-import de.ama.framework.gui.frames.ListPane;
+import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.gui.frames.TreeEditor;
 
 public class Factory {
 
-    private static var dictionary:Object = new Object();
+    private static var bean_dictionary:Object = new Object();
+    private static var panel_dictionary:Object = new Object();
+    private static var editor_dictionary:Object = new Object();
+    private static var lister_dictionary:Object = new Object();
+    private static var command_dictionary:Object = new Object();
 
 
-    public static function register(key:String, c:Class):void {
+    private static function register(dictionary:Object, key:String, c:Class):void {
+        if(dictionary[key]!=null){
+            throw Error("Factory: duplicate key ["+key+"] in dictionary "+dictionary);
+        }
         dictionary[key] = c;
     }
 
-    public static function createObject(key:String):Object {
+    private static function createClass(dictionary:Object, key:String):Class {
+        return dictionary[key];
+    }
+
+    private static function createObject(dictionary:Object, key:String):Object {
         var c:Class = dictionary[key];
         if (c != null) {
             return new c();
@@ -29,30 +40,38 @@ public class Factory {
 
     }
 
-    /////////////////////// Data //////////////////////////////////////
+    /////////////////////// Beans //////////////////////////////////////
 
-    public static function createData(key:String):Data {
-        return Data(createObject(key));
+    public static function registerBean(key:String, c:Class):void {
+        register(bean_dictionary,key,c);
     }
 
-    /////////////////////// Comand //////////////////////////////////////
+    public static function createBean(key:String):Data {
+        return Data(createObject(bean_dictionary,key));
+    }
+
+    public static function createBeanClass(key:String):Class {
+        return createClass(bean_dictionary,key);
+    }
+
+    /////////////////////// Comands //////////////////////////////////////
 
     public static function registerCommand(key:String, c:Class):void {
-        dictionary[key] = c;
+        register(command_dictionary,key,c);
     }
 
     public static function createCommand(type:String):Command {
-        return Command(createObject(type));
+        return Command(createObject(command_dictionary, type));
     }
 
-    /////////////////////// Panel //////////////////////////////////////
+    /////////////////////// Panels //////////////////////////////////////
 
     public static function registerPanel(key:String, c:Class):void {
-        dictionary[key] = c;
+        register(panel_dictionary,key,c);
     }
 
     public static function createPanel(name:String):EditPanel {
-        var c:Class = dictionary[name];
+        var c:Class = panel_dictionary[name];
         if (c != null) {
             return EditPanel(new c());
         }
@@ -61,5 +80,33 @@ public class Factory {
         ret.generic = true;
         return ret;
     }
+
+    /////////////////////// Listers /////////////////////////////////////
+
+    public static function registerLister(name:String, c:Class):void {
+        register(lister_dictionary,name,c);
+    }
+
+    public static function createLister(name:String):ListPanel {
+        var c:Class = lister_dictionary[name];
+        if (c != null) {
+            return ListPanel(new c());
+        }
+
+        var ret:ListPanel = new ListPanel();  // DefaultPanel
+        ret.generic = true;
+        return ret;
+    }
+
+    /////////////////////// Editors /////////////////////////////////////
+
+    public static function registerEditor(key:String, c:Class):void {
+        register(editor_dictionary,key,c);
+    }
+
+    public static function createEditor(type:String):TreeEditor {
+        return TreeEditor(createObject(editor_dictionary,type));
+    }
+
 }
 }

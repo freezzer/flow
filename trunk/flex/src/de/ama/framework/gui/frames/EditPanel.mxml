@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"
-        initialize="init()">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
+	implements="de.ama.framework.gui.frames.Panel"
+    initialize="init()">
 
     <mx:Script><![CDATA[
         import de.ama.framework.data.Data;
@@ -41,7 +42,7 @@
             if (_generic) {
                 createDefaultFields(_data);
             }
-
+            
             var childs:Array = getChildren();
             var i:int;
             var len:int = childs.length;
@@ -55,6 +56,10 @@
         }
 
         public function createDefaultFields(data:Data):void {
+			if(Util.isEmpty(label)){
+                label = data.getName();
+			}	
+
             var classInfo:XML = describeType(data);
             for each (var v:XML in classInfo..variable) {
                 var t:String = v.@type;
@@ -73,6 +78,7 @@
                     }
                 }
             }
+            
         }
 
 
@@ -121,6 +127,7 @@
 
 
         public function startEditing():void {
+            reset();
         }
 
 
@@ -129,7 +136,7 @@
 
 
         ]]></mx:Script>
-    <mx:Label text="Label" left="10" top="10" id="caption" fontWeight="bold"/>
+    <mx:Label text="Label" left="-1" top="-1" id="caption" fontWeight="normal" fontSize="10" color="#806363"/>
 
 
 </mx:Canvas>

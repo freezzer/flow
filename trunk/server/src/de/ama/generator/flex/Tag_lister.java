@@ -20,14 +20,13 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
-import de.ama.util.Util;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
 
-public class Tag_editor extends Tag {
+public class Tag_lister extends Tag {
     @Override
     protected int getIndent() {
         return 0;
@@ -36,43 +35,42 @@ public class Tag_editor extends Tag {
     @Override
     protected void beginWrite() {
         String model = getRequiredParentAttribute(MODEL);
-        String editorName = getParentAttribute(NAME,model+"Editor");
+        String listerName = getParentAttribute(NAME,model+"Lister");
         String dir =  getParentAttribute(FLEX_DIR,"");
         String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
         if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
 
-        collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+editorName+";");
-        collectCode(Tag_bootstrap.REGISTER_EDITOR, "         Factory.registerEditor(\""+editorName+"\", "+editorName+");");
+        initPrintWriter(dir,listerName+".as");
 
-        initPrintWriter(dir,editorName+".as");
-        write("package generated.view {     ");
-        write("import de.ama.framework.gui.frames.*; ");
-        write("import de.ama.framework.command.*; ");
+        write("package generated.view {");
         write("import de.ama.framework.data.Data;");
-        write("import de.ama.framework.util.*;");
-        write("public class "+editorName+" extends TreeEditor {");
+        write("import de.ama.framework.gui.frames.ListPanel;");
+        write("import de.ama.framework.util.Factory;");
+        write("import de.ama.framework.command.Command;");
+        write("     ");
+        write("public class "+listerName+" extends ListPanel {");
         write("     ");
         write("     override public function createData():Data {");
-        write("       return Factory.createBean(\""+model+"\"); ");
+        write("         return Factory.createBean(\""+model+"\"); ");
         write("     } ");
         write("     ");
+        write("     override public function addBehavior():void { ");
+        write("     var cmd:Command = null;");
+
+        collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+listerName+";");
+        collectCode(Tag_bootstrap.REGISTER_LISTER, "         Factory.registerLister(\""+listerName+"\", "+listerName+");");
+
     }
 
     protected void mainWrite() {
-        write("     override public function getPrototypeTree():TreeNode {");
-        write("       var parent:TreeNode;");
-        write("       var node:TreeNode;");
-        write("       var root:TreeNode;");
-        writeLine();
-        
-        // hier kommen die TreeNodes
+        // hier kommen die Commands
+        // hier kommen die Columns
     }
 
 
     protected void endWrite() {
-        write("       return root; ");
         write("     } ");
-        write("   }");
+        write("  }");
         write("}");
 
         writeLine();

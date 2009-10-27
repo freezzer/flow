@@ -9,7 +9,6 @@
            }
 
            override protected function execute():void {
-               var invoker:Invoker = context.invoker;
                if(invoker is TreeNode){
                    var parent:TreeNode = TreeNode(invoker).parent;
                    parent.addChild(TreeNode(invoker).clone(),true)

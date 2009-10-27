@@ -26,8 +26,8 @@
                 <menuitem label="Neue Person anlegen" command="OpenEditorCommand" model="Person"/>
             </menu>
             <menu name="Vorgaenge">
-                <menuitem label="Uebersicht Vorgaenge"  command="OpenListerCommand" model="Vorgang"/>
-                <menuitem label="Neuen Vorgang anlegen" command="OpenEditorCommand" model="Vorgang"/>
+                <menuitem label="Uebersicht Vorgaenge"  command="OpenListerCommand" lister="VorgangLister"/>
+                <menuitem label="Neuen Vorgang anlegen" command="OpenEditorCommand" editor="VorgangEditor"  />
             </menu>
             <menu name="Administration">
                 <menuitem label="Uebersicht User"    command="OpenListerCommand" model="User"/>
