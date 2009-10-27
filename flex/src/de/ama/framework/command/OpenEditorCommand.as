@@ -24,11 +24,10 @@ public class OpenEditorCommand extends Command{
     override protected function execute():void {
 
         editor = Factory.createEditor(getProperty("editor"));
-        editor.label = label;
 
-        if(invoker!=null && invoker.getSelectionModel() !=null){
+        if(selectionModel.getFirstSelection()!=null){
             var sa:LoadBoAction    = new LoadBoAction();
-            sa.selectionModel = invoker.getSelectionModel();
+            sa.selectionModel = selectionModel;
             ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
         } else {
             showEditor(null);
@@ -41,7 +40,7 @@ public class OpenEditorCommand extends Command{
     }
 
     private function showEditor(data:Data):void {
-        editor.setData(data);   // forces new empty data
+        editor.setData(data);   // null forces new empty data
         var cp:ApplicationPanel = Application.application.getContentPane();
         cp.addContent(editor);
     }

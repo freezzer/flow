@@ -120,8 +120,11 @@
                data = createData();
             }
 
+            
             rootNode = getPrototypeTree();
             rootNode.setData(data);
+
+            label = rootNode.label;
         }
 
 
@@ -163,9 +166,7 @@
             var node:TreeNode = TreeNode(ir.data);
             for each(var command:Command in node.commands) {
                 if (command.contextMenuItem == event.target) {
-                    command.selectionModel = new SelectionModel(node.data);
-                    command.invoker = node;
-                    command.start();
+                    command.start(node);
                 }
             }
 
@@ -175,18 +176,14 @@
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
             if (selectedNode != null && selectedNode.parent != null) {
-                command.selectionModel = new SelectionModel(selectedNode.data);
-                command.invoker = selectedNode;
-                command.start();
+                command.start(selectedNode);
             }
         }
 
         private function editorButtonHandler(event:MouseEvent):void {
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
-            command.selectionModel = new SelectionModel(getData());
-            command.invoker = this;
-            command.start();
+            command.start(this);
         }
 
 

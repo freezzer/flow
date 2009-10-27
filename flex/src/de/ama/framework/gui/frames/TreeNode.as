@@ -17,6 +17,7 @@ public class TreeNode implements Invoker{
     private var _parent:TreeNode;
     private var _data:Data;
     private var _dataTable:Array;
+    public var  _label:String;
 
     public var children:ArrayCollection = new ArrayCollection();
     public var templates:ArrayCollection = new ArrayCollection();
@@ -24,19 +25,16 @@ public class TreeNode implements Invoker{
 
     public var type:String;
     public var path:String;
-    public var labelPrefix:String;
-    public var labelPath:String;
     public var panelName:String;
     public var isListView:Boolean = false;
     public var defaultOpen:Boolean = false;
     public var iconName:String = "folder";
 
 
-    public function TreeNode(path:String, labelPrefix:String, labelPath:String, isListView:Boolean,
+    public function TreeNode(path:String, label:String, isListView:Boolean,
                              iconName:String, type:String=null, panelName:String=null) {
         this.path = path;
-        this.labelPath = labelPath;
-        this.labelPrefix = labelPrefix;
+        this._label = label;
         this.isListView = isListView;
         this.iconName = iconName;
         this.templates = templates;
@@ -48,7 +46,7 @@ public class TreeNode implements Invoker{
         defaultOpen = b;
     }
 
-    public function addCommand(command:Command):void {
+    public function addToolbarCommand(command:Command):void {
         commands.addItem(command);
     }
 
@@ -86,10 +84,22 @@ public class TreeNode implements Invoker{
     }
 
     public function get label():String {
-        if (!Util.isEmpty(labelPath)) {
-            return Util.saveToString(labelPrefix) + _data.getProperty(labelPath);
+    	
+    	if(_data!=null){
+	        if (Util.isEmpty(_label)) {
+	            return _data.getName();
+	        }
+	
+	        if(_label.indexOf("{")>=0 && _label.indexOf("}")>0) {
+	           var pre:String = _label.split("{")[0];
+	           var post:String = _label.split("}")[1];
+	           var lpath:String = _label.substring(_label.indexOf("{")+1,_label.indexOf("}"));
+	           var prop:String = _data.getProperty(lpath);
+	           return pre+prop+post;
+	        }
         }
-        return Util.saveToString(labelPrefix,"node");
+
+        return _label;
 
     }
 
@@ -132,8 +142,7 @@ public class TreeNode implements Invoker{
 
     public function templateClone(data:Data):TreeNode {
         var node:TreeNode = new TreeNode(this.path,
-                 this.labelPrefix,
-                 this.labelPath,
+                 this._label,
                  this.isListView,
                  this.iconName,
                  this.type,

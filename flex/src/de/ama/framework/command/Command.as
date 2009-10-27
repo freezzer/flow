@@ -80,19 +80,13 @@ public class Command {
         return _selectionModel;
     }
 
-    public function set selectionModel(value:SelectionModel):void {
-        _selectionModel = value;
-    }
-
     public function get invoker():Invoker {
         return _invoker;
     }
 
-    public function set invoker(value:Invoker):void {
-        _invoker = value;
-    }
-
-    public function start():void{
+    public function start(invoker:Invoker):void{
+        _invoker=invoker;
+        _selectionModel=_invoker.getSelectionModel();
         execute();
         _contextMenuItem = null;
     }

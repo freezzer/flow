@@ -46,7 +46,7 @@ public class Tag_lister extends Tag {
         write("import de.ama.framework.data.Data;");
         write("import de.ama.framework.gui.frames.ListPanel;");
         write("import de.ama.framework.util.Factory;");
-        write("import de.ama.framework.command.Command;");
+        write("import de.ama.framework.command.*;");
         write("     ");
         write("public class "+listerName+" extends ListPanel {");
         write("     ");

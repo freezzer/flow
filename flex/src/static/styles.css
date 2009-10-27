@@ -24,15 +24,6 @@ ViewStack
 }
 
 
-MenuBar
-{
-	fillAlphas: 0.15, 0.05, 0.61, 1.0;
-	fillColors: #E0E0E0, #E0E0E0, #CE6874, #CE6874;
-	fontWeight: normal;
-	cornerRadius: 4;
-	disabledColor: #BBC7C7;
-	rollOverColor: #CE6874;
-}
 
 MenuBarItem
 {
@@ -67,6 +58,9 @@ AdvanceTabNavigator
 	fontWeight: normal;
 	horizontalGap: 0;
 	paddingRight: 15;
+	tabStyleName: tabNavigatorTab;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	firstTabStyleName: tabNavigatorFirstTab;
 }
 .advanceTabNavigatorFirstTab
 {
@@ -89,10 +83,11 @@ Tree
 	borderThickness: 2;
 	cornerRadius: 4;
 	fontWeight: normal;
-	color: #0F0F0F;
+	color: #202020;
 	rollOverColor: #F7E8EA;
 	selectionColor: #F3596B;
 	textSelectedColor: #FFFFFF;
+	verticalScrollBarStyleName: treeVerticalScrollBar;
 }
 HBox.CommandButtonBar
 {
@@ -114,7 +109,7 @@ DataGrid
 	borderStyle: none;
 	horizontalGridLines: false;
 	headerStyleName: dataGridHeader;
-	color: #000000;
+	color: #202020;
 	rollOverColor: #F7E8EA;
 	selectionColor: #F3596B;
 	textSelectedColor: #FFFFFF;
@@ -122,9 +117,20 @@ DataGrid
 .dataGridHeader
 {
 	fontFamily: Verdana;
-	fontSize: 12;
-	fontWeight: bold;
-	color: #000000;
+	fontWeight: normal;
+	color: #202020;
+}
+.treeVerticalScrollBar
+{
+}
+.tabNavigatorTab
+{
+}
+.tabNavigatorSelectedTabText
+{
+}
+.tabNavigatorFirstTab
+{
 }
 
 

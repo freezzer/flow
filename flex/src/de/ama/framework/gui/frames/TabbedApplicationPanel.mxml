@@ -44,23 +44,30 @@
             mainTabs.selectedChild = child;
         }
 
+
         protected function handleMenuClick(evt:MenuEvent):void {
-            var command:String = XML(evt.item).attribute("command")[0];
-            var model:String = XML(evt.item).attribute("model")[0];
-            var lister:String = XML(evt.item).attribute("lister")[0];
-            var editor:String = XML(evt.item).attribute("editor")[0];
+            var mitem:XML = XML(evt.item);
+            var command:String = mitem.attribute("command")[0];
+            var model:String = mitem.attribute("model")[0];
+            var lister:String = mitem.attribute("lister")[0];
+            var editor:String = mitem.attribute("editor")[0];
+            var label:String = mitem.attribute("label")[0];
 
             var cmd:Command = Factory.createCommand(command);
-
-            if (!Util.isEmpty(model)) {
-                var data:Data = Factory.createBean(model);
-                cmd.invoker = new MenuInvoker(data);
-            }
             cmd.setProperty("command", command);
             cmd.setProperty("model", model);
             cmd.setProperty("lister", lister);
             cmd.setProperty("editor", editor);
-            cmd.start();
+            cmd.setProperty("label", label);
+
+            var invoker:MenuInvoker;
+            if (!Util.isEmpty(model)) {
+                invoker = new MenuInvoker(Factory.createBean(model));
+            } else {
+                invoker = new MenuInvoker();
+            }
+
+            cmd.start(invoker);
         }
 
 

@@ -65,22 +65,48 @@
     <view flex_dir="flex/src/generated/view" flex_package="generated.view" model="Vorgang">
 
         <editor name="VorgangEditor">
-            <tree_node label="Vorgang" icon="lorry" type="Vorgang" path="/">
+            <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="" >
+                <command  use="DeleteBoCommand" label="Vorgang löschen" icon="delete"/>
+
                 <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel" />
-                    <tree_node label="Positionen" path="workmodel.positionen" create="true" listView="true" type="Position" panel="PositionenLister">
-                        <tree_node label="Position" path="workmodel.positionen" panel="PositionPanel" delete="true" copy="true" create="true" type="Position">
-                            <tree_node label="Verschluesse" path="verschluesse" create="true" listView="true" type="Verschluss">
-                                <tree_node label="Verschluss" path="verschluesse" panel="VerschlussPanel" icon="lock" delete="true" copy="true" create="true" type="Verschluss"/>
+
+                    <tree_node label="Positionen" path="workmodel.positionen" listView="true" type="Position" panel="PositionenLister">
+                        <command  use="CreateNodeCommand" label="neue Position" icon="new"/>
+                        <tree_node label="Position {nummer}" path="workmodel.positionen" panel="PositionPanel"  type="Position">
+                            <command  use="CreateNodeCommand" label="neue Position"     icon="new"/>
+                            <command  use="CopyNodeCommand"   label="Position kopieren" icon="copy"/>
+                            <command  use="DeleteNodeCommand" label="Position löschen"  icon="delete"/>
+
+                            <tree_node label="Verschluesse" path="verschluesse" listView="true" type="Verschluss" panel="VerschlussLister">
+                                <command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>
+                                <tree_node label="Verschluss {nummer}" path="verschluesse" panel="VerschlussPanel" icon="lock"   type="Verschluss">
+                                    <command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>
+                                    <command  use="CopyNodeCommand"   label="Verschluss kopieren" icon="copy"/>
+                                    <command  use="DeleteNodeCommand" label="Verschluss löschen"  icon="delete"/>
+                                </tree_node>
                             </tree_node>
-                            <tree_node label="Packstuecke" path="packstuecke" listView="true" create="true" type="Packstueck" panel="PackstueckLister">
-                                <tree_node label="Packstueck" path="packstuecke" panel="PackStueckPanel" icon="pack" delete="true" copy="true" create="true" type="Packstueck"/>
+                            
+                            <tree_node label="Packstuecke" path="packstuecke" listView="true" type="Packstueck" panel="PackstueckLister">
+                                <command  use="CreateNodeCommand" label="neues Packstück" icon="new"/>
+                                <tree_node label="Packstueck {nummer}" path="packstuecke" panel="PackStueckPanel" icon="pack"  type="Packstueck">
+                                    <command  use="CreateNodeCommand" label="neues Packstück" icon="new"/>
+                                    <command  use="CopyNodeCommand"   label="Packstück kopieren" icon="copy"/>
+                                    <command  use="DeleteNodeCommand" label="Packstück löschen"  icon="delete"/>
+                                </tree_node>
                             </tree_node>
-                            <tree_node label="Unterlagen" path="unterlagen" listView="true"  create="true"  type="Unterlage" panel="UnterlagenLister">
-                                <tree_node label="Unterlage" path="unterlagen" panel="UnterlagePanel" icon="dock" delete="true" copy="true" create="true" type="Unterlage"/>
+
+                            <tree_node label="Unterlagen" path="unterlagen" listView="true"   type="Unterlage" panel="UnterlagenLister">
+                                <command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
+                                <tree_node label="Unterlage {art}" path="unterlagen" panel="UnterlagePanel" icon="dock"  type="Unterlage">
+                                    <command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
+                                    <command  use="CopyNodeCommand"   label="Unterlage kopieren" icon="copy"/>
+                                    <command  use="DeleteNodeCommand" label="Unterlage löschen"  icon="delete"/>
+                                </tree_node>
                             </tree_node>
                         </tree_node>
                     </tree_node>
+
                 </tree_node>
             </tree_node>
         </editor>
@@ -103,6 +129,7 @@
         <lister name="VorgangLister" model="Vorgang">
           <command  use="LoadTableCommand"  icon="refresh" label="Übersicht Vorgänge neu laden"/>
           <command  use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang öffnen" icon="edit"/>
+          <command  use="DeleteBoCommand"   label="Vorgang löschen" icon="delete"/>
 
           <column label="Nummer" path="nummer"/>
           <column label="Id"     path="id"/>
@@ -128,6 +155,11 @@
             <column label="Nummer"      path="nummer" />
             <column label="Art"         path="art" />
             <column label="Anzahl"      path="anzahl" />
+        </lister>
+
+        <lister name="VerschlussLister"  >
+            <column label="Nummer"      path="nummer" />
+            <column label="Zeichen"      path="teichen" />
         </lister>
 
 

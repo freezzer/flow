@@ -92,9 +92,7 @@
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
             if (selectionModel != null) {
-                command.selectionModel = selectionModel
-                command.invoker = this;
-                command.start();
+                command.start(this);
             }
 
         }
