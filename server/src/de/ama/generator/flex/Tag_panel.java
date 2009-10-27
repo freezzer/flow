@@ -39,7 +39,7 @@ public class Tag_panel extends Tag {
         String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
 
         String spacing = getAttribute(SPACING,"5");
-        String title = getAttribute(TITLE,"");
+        String label = getAttribute(LABEL,name);
         String path = getAttribute(PATH,"");
         int x = getAttribute(X,0);
         int y = getAttribute(Y,0);
@@ -58,13 +58,14 @@ public class Tag_panel extends Tag {
         write("import de.ama.framework.gui.frames.EditPanel;");
 
         write("public class "+name+" "+" extends EditPanel { ");
-        write("    public function KopfPanel() {");
+        write("    public function "+name+"() {");
         write("        var field:EditField;");
         write("        x="+x+";  y="+y+";");
    if(w>0)
         write("        width="+w+";");
    if(h>0)
         write("        height="+h+";");
+        write("        label=\""+label+"\";");
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
         collectCode(Tag_bootstrap.REGISTER_PANEL, "         Factory.registerPanel(\""+name+"\", "+name+");");
     }

@@ -42,7 +42,7 @@ global
 {
 	themeColor: #CE6874;
 	fontFamily: Verdana;
-	fontSize: 12;
+	fontSize: 11;
 	fontWeight: normal;
 	verticalScrollBarStyleName: menuVerticalScrollBar;
 	headerStyleName: accordionHeader;
@@ -106,6 +106,25 @@ HBox.CommandButtonBar
 Canvas.EditPanel
 {
 	backgroundColor: #E0E0E0;
+	borderStyle: none;
+	cornerRadius: 0;
+}
+DataGrid
+{
+	borderStyle: none;
+	horizontalGridLines: false;
+	headerStyleName: dataGridHeader;
+	color: #000000;
+	rollOverColor: #F7E8EA;
+	selectionColor: #F3596B;
+	textSelectedColor: #FFFFFF;
+}
+.dataGridHeader
+{
+	fontFamily: Verdana;
+	fontSize: 12;
+	fontWeight: bold;
+	color: #000000;
 }
 
 

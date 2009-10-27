@@ -2,6 +2,7 @@ package de.ama.framework.gui.frames {
 import de.ama.framework.command.Command;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.data.Data;
+import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Factory;
 import de.ama.framework.util.Util;
 
@@ -70,7 +71,7 @@ public class TreeNode implements Invoker{
     }
 
     public function addNewChild():void {
-        var data:Data = Factory.createData(type);
+        var data:Data = Factory.createBean(type);
         var template:TreeNode = findTemplate(data);
         addChild(template.templateClone(data),true);
     }
@@ -103,6 +104,11 @@ public class TreeNode implements Invoker{
         _data = data;
         build();
     }
+
+    public function getSelectionModel():SelectionModel {
+        return new SelectionModel(getData());
+    }
+
 
     private function build():void {
 
@@ -194,6 +200,10 @@ public class TreeNode implements Invoker{
 
     public function get data():Data {
         return _data;
+    }
+
+    public function get dataTable():Array {
+        return _dataTable;
     }
 
     public function openDefaultNodes():void {

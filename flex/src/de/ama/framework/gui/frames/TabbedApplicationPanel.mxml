@@ -5,13 +5,12 @@
 
 
     <mx:Script><![CDATA[
-        import de.ama.framework.command.CommandContext;
         import de.ama.framework.command.Command;
         import de.ama.framework.command.MenuInvoker;
-        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.data.Data;
         import de.ama.framework.util.BootstrapDefault;
         import de.ama.framework.util.Factory;
+        import de.ama.framework.util.Util;
 
         import generated.view.*;
 
@@ -48,10 +47,19 @@
         protected function handleMenuClick(evt:MenuEvent):void {
             var command:String = XML(evt.item).attribute("command")[0];
             var model:String = XML(evt.item).attribute("model")[0];
+            var lister:String = XML(evt.item).attribute("lister")[0];
+            var editor:String = XML(evt.item).attribute("editor")[0];
 
             var cmd:Command = Factory.createCommand(command);
-            var data:Data = Factory.createData(model);
-            cmd.newContext().invoker = new MenuInvoker(data);
+
+            if (!Util.isEmpty(model)) {
+                var data:Data = Factory.createBean(model);
+                cmd.invoker = new MenuInvoker(data);
+            }
+            cmd.setProperty("command", command);
+            cmd.setProperty("model", model);
+            cmd.setProperty("lister", lister);
+            cmd.setProperty("editor", editor);
             cmd.start();
         }
 

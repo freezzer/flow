@@ -61,29 +61,42 @@
         public function treeChanged(event:Event):void {
             selectedNode = TreeNode(Tree(event.target).selectedItem);
             refreshToolBar();
-            replaceEditPanel();
-        }
 
-
-        public function replaceEditPanel():void {
-            var newPanel:EditPanel = Factory.createPanel(selectedNode.panelName);
-            newPanel.reset();
-            newPanel.setData(selectedNode.getData());
-
-            var oldChild:EditPanel = getCurrentEditPanel();
-            if (oldChild != null) {
-                oldChild.endEditing();
-                contenPanel.removeChild(oldChild);
+            if (selectedNode.isListView) {
+                var lp:ListPanel = Factory.createLister(selectedNode.panelName);
+                replaceCurrentPanel(lp);
+                lp.dataTable = selectedNode.dataTable;
+            } else {
+                var ep:EditPanel = Factory.createPanel(selectedNode.panelName);
+                replaceCurrentPanel(ep);
+                ep.setData(selectedNode.getData());
             }
 
-            contenPanel.addChild(newPanel);
-            newPanel.startEditing();
         }
 
-        public function getCurrentEditPanel():EditPanel {
+        private function replaceCurrentPanel(newPanel:Panel):void {
+
+            var oldPanel:Panel = getCurrentPanel();
+            if (oldPanel != null) {
+                if (oldPanel is EditPanel) {
+                    EditPanel(oldPanel).endEditing();
+                }
+
+                contenPanel.removeChild(DisplayObject(oldPanel));
+
+                if (newPanel is EditPanel) {
+                    EditPanel(newPanel).startEditing();
+                }
+            }
+
+            contenPanel.addChild(DisplayObject(newPanel));
+
+        }
+
+        public function getCurrentPanel():Panel {
             var children:Array = contenPanel.getChildren();
-            if(children!=null && children.length>0){
-                return EditPanel(children[0]);
+            if (children != null && children.length > 0) {
+                return Panel(children[0]);
             }
             return null;
         }
@@ -103,6 +116,10 @@
         }
 
         public function setData(data:Data):void {
+            if(data==null){
+               data = createData();
+            }
+
             rootNode = getPrototypeTree();
             rootNode.setData(data);
         }
@@ -111,6 +128,15 @@
         public function getData():Data {
             return rootNode.getData();
         }
+
+        public function createData():Data {
+            return null;
+        }
+
+        public function getSelectionModel():SelectionModel {
+            return new SelectionModel(getData());
+        }
+
 
 
         public function contextMenuTriggered(event:ContextMenuEvent):void
@@ -137,8 +163,8 @@
             var node:TreeNode = TreeNode(ir.data);
             for each(var command:Command in node.commands) {
                 if (command.contextMenuItem == event.target) {
-                    command.newContext().selectionModel = new SelectionModel(node.data);
-                    command.context.invoker = node;
+                    command.selectionModel = new SelectionModel(node.data);
+                    command.invoker = node;
                     command.start();
                 }
             }
@@ -149,8 +175,8 @@
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
             if (selectedNode != null && selectedNode.parent != null) {
-                command.newContext().selectionModel = new SelectionModel(selectedNode.data);
-                command.context.invoker = selectedNode;
+                command.selectionModel = new SelectionModel(selectedNode.data);
+                command.invoker = selectedNode;
                 command.start();
             }
         }
@@ -158,8 +184,8 @@
         private function editorButtonHandler(event:MouseEvent):void {
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
-            command.newContext().selectionModel = new SelectionModel(getData());
-            command.context.invoker = this;
+            command.selectionModel = new SelectionModel(getData());
+            command.invoker = this;
             command.start();
         }
 

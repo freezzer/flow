@@ -13,7 +13,6 @@
            }
 
            override protected function execute():void {
-               var invoker:Invoker = context.invoker;
                if(invoker is TreeNode){
                    var node:TreeNode = TreeNode(invoker);
                    if(node.isListView){

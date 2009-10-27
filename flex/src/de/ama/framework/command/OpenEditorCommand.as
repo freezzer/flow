@@ -1,11 +1,20 @@
 package de.ama.framework.command {
+import de.ama.framework.action.ActionStarter;
+import de.ama.framework.action.LoadBoAction;
 import de.ama.framework.data.Data;
+import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.frames.ApplicationPanel;
+import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.gui.frames.TreeEditor;
+
+import de.ama.framework.util.Callback;
+import de.ama.framework.util.Factory;
 
 import mx.core.Application;
 
 public class OpenEditorCommand extends Command{
+
+    private var editor:TreeEditor = null;
 
     public function OpenEditorCommand(label:String="Bearbeiten",icon:String="edit") {
         super(label,icon);
@@ -13,12 +22,29 @@ public class OpenEditorCommand extends Command{
 
 
     override protected function execute():void {
-        var data:Data = context.getData(true);
-        var e:TreeEditor = data.createEditor();
-        e.setData(data);
-        e.label = context.getProperty("label",data.getName()+" Editor");
-        var cp:ApplicationPanel = Application.application.getContentPane();
-        cp.addContent(e);
+
+        editor = Factory.createEditor(getProperty("editor"));
+        editor.label = label;
+
+        if(invoker!=null && invoker.getSelectionModel() !=null){
+            var sa:LoadBoAction    = new LoadBoAction();
+            sa.selectionModel = invoker.getSelectionModel();
+            ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
+        } else {
+            showEditor(null);
+        }
+
     }
+
+    private function resulthandler(action:LoadBoAction): void {
+        showEditor(Data(action.data));
+    }
+
+    private function showEditor(data:Data):void {
+        editor.setData(data);   // forces new empty data
+        var cp:ApplicationPanel = Application.application.getContentPane();
+        cp.addContent(editor);
+    }
+
 }
 }

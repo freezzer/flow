@@ -41,17 +41,20 @@ public class Tag_input extends Tag {
         int y = getAttribute(Y, -1);
         String  labelWith = getParentAttribute(LABELWIDTH,"");
 
-
+        String xy="";
+        if(x>=0 || y>=0){
+            xy= " ," + x + "," + y;
+        }
         if (STRING.equalsIgnoreCase(type)) {
-            write("field = insertTextField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+            write("field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         } else if (DATE.equalsIgnoreCase(type)) {
-            write("field = insertDateField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+            write("field = insertDateField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         } else if (NUMBER.equalsIgnoreCase(type)) {
-            write("field = insertTextField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+            write("field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         } else if (BOOLEAN.equalsIgnoreCase(type)) {
-            write("field = insertBoolField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+            write("field = insertBoolField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         } else if (LOOKUP.equalsIgnoreCase(type)) {
-            write("field = insertTextField(\"" + label + "\",\"" + path + "\"," + x + "," + y + ");");
+            write("field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         }
 
         if(!Util.isEmpty(labelWith)){
