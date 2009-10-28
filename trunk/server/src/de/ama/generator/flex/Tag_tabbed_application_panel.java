@@ -32,14 +32,21 @@ public class Tag_tabbed_application_panel extends Tag {
         String h = getAttribute(H, "100%");
 
         String name = getAttribute(NAME,"ContentPane");
-        String dir =  getParentAttribute(DIR,getParentAttribute(FLEX_DIR,""));
+        String dir =  getDir();
         initPrintWriter(dir,name+".mxml");
 
         write("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
         write("<frames:TabbedApplicationPanel " +
                 "\nxmlns:mx=\"http://www.adobe.com/2006/mxml\" " +
                 "\nxmlns:frames=\"de.ama.framework.gui.frames.*\"" +
-                "\nimplements=\"de.ama.framework.gui.frames.ApplicationPanel\">");
+                "\nimplements=\"de.ama.framework.gui.frames.ApplicationPanel\">"+
+                "\n   <mx:Script><![CDATA[\n" +
+                "\n" +
+                "       override protected function executeGeneratedBootstrap():void {\n" +
+                "           var bootstrap:Bootstrap = new Bootstrap();\n" +
+                "           bootstrap.execute();\n" +
+                "           \n" +
+                "       }]]></mx:Script>");
         writeLine();
     }
 

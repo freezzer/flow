@@ -34,11 +34,9 @@ public class Tag_bean extends Tag{
     }
 
     protected void beginWrite() {
-        String editor = getAttribute(EDITOR,"");
         String name = getParentAttribute(NAME,"");
-        String dir =  getParentAttribute(FLEX_DIR,"");
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
-        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
+        String dir =  getDir();
+        String pckg =  getPackage();
         
         if (getParent() instanceof Tag_bean) {
             Tag_field f = new Tag_field();
@@ -63,10 +61,6 @@ public class Tag_bean extends Tag{
         write("import de.ama.framework.data.*;");
         write("import de.ama.framework.util.*;");
 
-        if(Util.isNotEmpty(editor)) {
-            write("import de.ama.framework.gui.frames.TreeEditor;");
-            write("import generated.view."+editor+";");
-        }
         write("public class "+name+" "+" extends Data { ");
 
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
@@ -75,14 +69,7 @@ public class Tag_bean extends Tag{
     }
 
     protected void endWrite() {
-        String editor = getAttribute(EDITOR,"");
-
         writeLine();
-        if(Util.isNotEmpty(editor)) {
-          write("    override public function createEditor():TreeEditor {");
-          write("       return new "+editor+"();");
-          write("    }");
-        }
         writeLine();
         write("}}");
         flush();

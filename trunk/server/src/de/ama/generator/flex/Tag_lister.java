@@ -36,13 +36,12 @@ public class Tag_lister extends Tag {
     protected void beginWrite() {
         String model = getRequiredParentAttribute(MODEL);
         String listerName = getParentAttribute(NAME,model+"Lister");
-        String dir =  getParentAttribute(FLEX_DIR,"");
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
-        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
+        String dir =  getDir();
+        String pckg =  getPackage();
 
         initPrintWriter(dir,listerName+".as");
 
-        write("package generated.view {");
+        write("package "+pckg+" {");
         write("import de.ama.framework.data.Data;");
         write("import de.ama.framework.gui.frames.ListPanel;");
         write("import de.ama.framework.util.Factory;");

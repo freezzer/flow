@@ -12,7 +12,7 @@
 
 
 
-    <tabbed_application_panel name="MyApplicationPanel" flex_dir="flex/src/generated/view" flex_package="generated.view">
+    <tabbed_application_panel name="MyApplicationPanel" package="app">
         <bootstrap/>
 
         <menubar h="23">

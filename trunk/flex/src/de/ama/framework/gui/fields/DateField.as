@@ -2,7 +2,7 @@ package de.ama.framework.gui.fields {
 import mx.controls.DateField;
 
 public class DateField extends EditField{
-    public static var FORMAT = "DD.MM.YYYY";
+    public static var FORMAT:String = "DD.MM.YYYY";
 
     public function DateField(caption:String="DateField", path:String = null) {
         super(caption, path);

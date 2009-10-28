@@ -34,12 +34,10 @@ public class Tag_bean extends Tag{
 
     protected void beginWrite() {
         String name = getParentAttribute(NAME,"");
-        String dir =  getParentAttribute(JAVA_DIR,"");
-        String pckg =  getParentAttribute(JAVA_PACKAGE,"na");
+        String dir =  getDir();
+        String pckg =  getPackage();
         String persistent = getParentAttribute(PERSISTENT, "false");
 
-        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
-        
         if (getParent() instanceof Tag_bean) {
             Tag_field f = new Tag_field();
             f.setPrintWriter(getPrintWriter());

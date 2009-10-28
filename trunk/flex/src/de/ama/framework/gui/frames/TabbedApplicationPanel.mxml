@@ -7,17 +7,18 @@
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
         import de.ama.framework.command.MenuInvoker;
-        import de.ama.framework.data.Data;
         import de.ama.framework.util.BootstrapDefault;
         import de.ama.framework.util.Factory;
         import de.ama.framework.util.Util;
 
-        import generated.view.*;
 
         import mx.core.Container;
         import mx.events.MenuEvent;
 
         private var mainTabs:AdvanceTabNavigator = null;
+
+        protected function executeGeneratedBootstrap():void {
+        }
 
         public function init():void {
 
@@ -35,8 +36,7 @@
             var bootstrapDefault:BootstrapDefault = new BootstrapDefault();
             bootstrapDefault.execute();
 
-            var bootstrap:Bootstrap = new Bootstrap();
-            bootstrap.execute();
+            executeGeneratedBootstrap();
         }
 
         public function addContent(child:Container):void {

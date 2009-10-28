@@ -35,10 +35,10 @@ public class Tag_action extends Tag {
 
     protected void beginWrite() {
         String name = getRequiredAttribute(NAME);
-        String dir =  getParentAttribute(DIR,"");
-        String pckg = dir.replace('/','.');
-        PrintWriter pw = createPrintWriter(dir,name+".java");
-        setPrintWriter(pw);
+        String dir =  getDir();
+        String pckg = getPackage();
+
+        initPrintWriter(dir,name+".java");
 
         write("/*");
         write(getStoredObject(COMMENT));

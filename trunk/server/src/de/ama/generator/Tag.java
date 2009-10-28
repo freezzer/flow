@@ -35,8 +35,7 @@ import java.util.ArrayList;
  * Date: 23.04.2008
  */
 public class Tag extends XmlElement implements Const {
-    protected  static String NOT_AVAILABEL = "na";
-    public static String target; 
+    public static String target;
 
     private OutputWriter writer;
     private PrintWriter printWriter;
@@ -139,7 +138,7 @@ public class Tag extends XmlElement implements Const {
 
     protected XmlElement getEmptyInstance(org.jdom.Element je) {
 
-        String className = "de.ama.generator." + Tag.target + ".Tag_" + je.getName();
+        String className = "de.ama.generator." + target + ".Tag_" + je.getName();
         Tag tag = getTagImpl(className);
         if(tag!=null) return tag;
 
@@ -310,5 +309,22 @@ public class Tag extends XmlElement implements Const {
         return (Tag) getChildren().get(i);
     }
 
+    protected String getDir(){
+        String dir = getParentAttribute(DIR,"");
+        if(Util.isEmpty(dir)){
+            String pckg =  getRequiredParentAttribute(PACKAGE);
+            dir = pckg.replace(".","/");
+        }
+
+        String targetDir = target;
+        if(target.equals("java")) targetDir = "server";
+
+        return targetDir+"/"+ SRC+"/"+GENERATED + "/" + dir ;
+    }
+
+    protected String getPackage(){
+        String pckg =  getRequiredParentAttribute(PACKAGE);
+        return GENERATED +"."+ pckg;
+    }
 
 }

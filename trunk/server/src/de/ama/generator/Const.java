@@ -23,6 +23,8 @@ package de.ama.generator;
  * Date: 26.04.2008
  */
 public interface Const {
+    public static final String NOT_AVAILABEL = "na";
+
     public static final String COMMENT = "comment";
     public static final String COMMAND = "command";
     public static final String NAME = "name";
@@ -56,13 +58,11 @@ public interface Const {
     public static final String BOOLEAN = "boolean";
     public static final String LOOKUP = "lookup";
 
-    public static final String DIR =        "dir";
-    public static final String JAVA_DIR =   "java_dir";
-    public static final String FLEX_DIR =   "flex_dir";
-    public static final String LASZLO_DIR = "laszlo_dir";
+    public static final String DIR =       "dir";
+    public static final String PACKAGE =   "package";
 
-    public static final String JAVA_PACKAGE =   "java_package";
-    public static final String FLEX_PACKAGE =   "flex_package";
+    public static final String SRC =   "src";
+    public static final String GENERATED =  "generated";
 
     public static final String UNIQUE_KEY = "unique-key";
 
