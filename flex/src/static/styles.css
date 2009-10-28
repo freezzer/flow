@@ -41,6 +41,15 @@ global
 .menuVerticalScrollBar
 {
 }
+.advanceTabNavigatorTab
+{
+	fontWeight: normal;
+	horizontalGap: 0;
+	paddingRight: 15;
+	tabStyleName: tabNavigatorTab;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	firstTabStyleName: tabNavigatorFirstTab;
+}
 AdvanceTabNavigator
 {
 	backgroundColor: #E0E0E0;
@@ -52,15 +61,6 @@ AdvanceTabNavigator
 	horizontalGap: 0;
 	tabOffset: 0;
 	paddingTop: 2;
-}
-.advanceTabNavigatorTab
-{
-	fontWeight: normal;
-	horizontalGap: 0;
-	paddingRight: 15;
-	tabStyleName: tabNavigatorTab;
-	selectedTabTextStyleName: tabNavigatorSelectedTabText;
-	firstTabStyleName: tabNavigatorFirstTab;
 }
 .advanceTabNavigatorFirstTab
 {
@@ -87,7 +87,6 @@ Tree
 	rollOverColor: #F7E8EA;
 	selectionColor: #F3596B;
 	textSelectedColor: #FFFFFF;
-	verticalScrollBarStyleName: treeVerticalScrollBar;
 }
 HBox.CommandButtonBar
 {
@@ -120,17 +119,6 @@ DataGrid
 	fontWeight: normal;
 	color: #202020;
 }
-.treeVerticalScrollBar
-{
-}
-.tabNavigatorTab
-{
-}
-.tabNavigatorSelectedTabText
-{
-}
-.tabNavigatorFirstTab
-{
-}
+
 
 

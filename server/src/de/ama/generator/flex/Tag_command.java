@@ -31,9 +31,8 @@ public class Tag_command extends Tag {
     protected void beginWrite() {
 
         String name = getAttribute(NAME);
-        String dir = getParentAttribute(DIR, "");
-        dir = getParentAttribute(FLEX_DIR, dir);
-        String pckg = getParentAttribute(FLEX_PACKAGE, "");
+        String dir =  getDir();
+        String pckg =  getPackage();
         String icon = getAttribute(ICON, "");
         String label = getAttribute(LABEL, "");
         String use = getAttribute(USE, "");

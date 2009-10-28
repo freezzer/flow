@@ -37,15 +37,14 @@ public class Tag_editor extends Tag {
     protected void beginWrite() {
         String model = getRequiredParentAttribute(MODEL);
         String editorName = getParentAttribute(NAME,model+"Editor");
-        String dir =  getParentAttribute(FLEX_DIR,"");
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
-        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
+        String dir =  getDir();
+        String pckg =  getPackage();
 
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+editorName+";");
         collectCode(Tag_bootstrap.REGISTER_EDITOR, "         Factory.registerEditor(\""+editorName+"\", "+editorName+");");
 
         initPrintWriter(dir,editorName+".as");
-        write("package generated.view {     ");
+        write("package "+pckg+" {     ");
         write("import de.ama.framework.gui.frames.*; ");
         write("import de.ama.framework.command.*; ");
         write("import de.ama.framework.data.Data;");

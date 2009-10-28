@@ -35,8 +35,8 @@ public class Tag_panel extends Tag {
 
     protected void beginWrite() {
         String name = getParentAttribute(NAME,"");
-        String dir =  getParentAttribute(FLEX_DIR,"");
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
+        String dir =  getDir();
+        String pckg =  getPackage();
 
         String spacing = getAttribute(SPACING,"5");
         String label = getAttribute(LABEL,name);

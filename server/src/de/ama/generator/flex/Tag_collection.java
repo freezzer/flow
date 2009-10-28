@@ -34,9 +34,8 @@ public class Tag_collection extends Tag {
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
-        String dir =  getParentAttribute(FLEX_DIR,"");
-        String pckg =  getParentAttribute(FLEX_PACKAGE,"na");
-        if("na".equals(pckg)){  pckg = dir.replace('/','.'); }
+        String dir =  getDir();
+        String pckg =  getPackage();
 
         int create = getAttribute(CREATE, getChild(0).getAttribute(CREATE,0));
         writeLine();
