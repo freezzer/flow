@@ -34,7 +34,7 @@ public class Tag_lister extends Tag {
 
     @Override
     protected void beginWrite() {
-        String model = getRequiredParentAttribute(MODEL);
+        String model = getRequiredAttribute(MODEL);
         String listerName = getParentAttribute(NAME,model+"Lister");
         String dir =  getDir();
         String pckg =  getPackage();

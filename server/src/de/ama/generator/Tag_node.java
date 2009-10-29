@@ -17,31 +17,14 @@
 */
 
 
-package de.ama.generator.laszlo;
-
-import de.ama.generator.Tag;
-import de.ama.util.Util;
+package de.ama.generator;
 
 /**
  * User: x
  * Date: 25.04.2008
  */
-public class Tag_tree_node extends Tag {
+public class Tag_node extends Tag {
 
-    protected void beginWrite() {
-        String label = getAttribute(LABEL);
-        String path = readPathAttributeLaszlo();
-        String panelName = getAttribute(PANEL, "");
-        String fixedopen = getAttribute(OPEN,"false");
-        String icon = getAttribute(ICON,"");
-        if (Util.isNotEmpty(icon)) {  icon = "icon='resources/"+icon+"'"; }
-
-        write("<TreeNode "+path+" text='"+label+"' panelName='"+panelName+"' fixedopen='"+fixedopen+"' "+icon+" >");
-    }
-
-    protected void endWrite() {
-        write("</TreeNode>");
-    }
 
 
 }

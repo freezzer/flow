@@ -25,58 +25,14 @@ ViewStack
 
 
 
-MenuBarItem
-{
-	
-}
 global
 {
 	themeColor: #CE6874;
 	fontFamily: Verdana;
 	fontSize: 11;
 	fontWeight: normal;
-	verticalScrollBarStyleName: menuVerticalScrollBar;
-	headerStyleName: accordionHeader;
 }
-.menuVerticalScrollBar
-{
-}
-.advanceTabNavigatorTab
-{
-	fontWeight: normal;
-	horizontalGap: 0;
-	paddingRight: 15;
-	tabStyleName: tabNavigatorTab;
-	selectedTabTextStyleName: tabNavigatorSelectedTabText;
-	firstTabStyleName: tabNavigatorFirstTab;
-}
-AdvanceTabNavigator
-{
-	backgroundColor: #E0E0E0;
-	tabStyleName: advanceTabNavigatorTab;
-	firstTabStyleName: advanceTabNavigatorFirstTab;
-	lastTabStyleName: advanceTabNavigatorLastTab;
-	selectedTabTextStyleName: advanceTabNavigatorSelectedTabText;
-	horizontalAlign: left;
-	horizontalGap: 0;
-	tabOffset: 0;
-	paddingTop: 2;
-}
-.advanceTabNavigatorFirstTab
-{
-	fontWeight: normal;
-	paddingRight: 15;
-}
-.advanceTabNavigatorLastTab
-{
-	fontWeight: normal;
-	paddingRight: 15;
-}
-.advanceTabNavigatorSelectedTabText
-{
-	fontWeight: bold;
-	paddingRight: 15;
-}
+
 Tree
 {
 	borderStyle: solid;
@@ -119,6 +75,42 @@ DataGrid
 	fontWeight: normal;
 	color: #202020;
 }
-
+AdvanceTabNavigator
+{
+	backgroundColor: #E0E0E0;
+	tabStyleName: advanceTabNavigatorTab;
+	firstTabStyleName: advanceTabNavigatorFirstTab;
+	lastTabStyleName: advanceTabNavigatorLastTab;
+	selectedTabTextStyleName: advanceTabNavigatorSelectedTabText;
+	horizontalAlign: left;
+	horizontalGap: 0;
+	tabOffset: 0;
+	paddingTop: 0;
+}
+.advanceTabNavigatorTab
+{
+	backgroundColor: #E0E0E0;
+	fontWeight: normal;
+	horizontalGap: 0;
+	paddingRight: 15;
+	tabStyleName: tabNavigatorTab;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	firstTabStyleName: tabNavigatorFirstTab;
+}
+.advanceTabNavigatorFirstTab
+{
+	backgroundColor: #E0E0E0;
+	fontWeight: normal;
+	paddingRight: 15;
+}
+.advanceTabNavigatorLastTab
+{
+	backgroundColor: #E0E0E0;
+	fontWeight: normal;
+	paddingRight: 15;
+}
+.tabNavigatorTab
+{
+}
 
 

@@ -20,6 +20,7 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.util.Util;
 
 import java.util.List;
 
@@ -28,18 +29,22 @@ import java.util.List;
  * Date: 25.04.2008
  */
 public class Tag_tree_node extends Tag {
+    private boolean listView;
+
     protected void beginWrite() {
         String label = getAttribute(LABEL);
-        String type = getAttribute(TYPE,"");
+        String model = getParentAttribute(MODEL,"");
         String path = getRequiredAttribute(PATH);
         String panel = getAttribute(PANEL, "default");
-        boolean fixedopen = getAttribute(FIXED_OPEN,true);
-        boolean listView = getAttribute(LIST_VIEW,false);
+        boolean open = getAttribute(OPEN,false);
+        String lister = getAttribute(LISTER,"");
+        listView = Util.isNotEmpty(lister);
 
         String icon = getAttribute(ICON, listView?"table":"edit");
 
         writeLine();
-        write("      node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+panel+"\");");
+        write("      node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+model+"\", \""+(listView?lister:panel)+"\");");
+        write("      node.defaultOpen="+open+";");
 
         if(getParent() instanceof Tag_tree_node) {
            write("      parent.addTemplate(node);");
@@ -47,27 +52,20 @@ public class Tag_tree_node extends Tag {
            write("      root = node;");
         }
 
-        if(!isLeafNode()){
+        if(hasSubNodes()){
            write("      parent = node;");
         }
 
     }
 
-    private boolean isLeafNode() {
-        List children = getChildren();
-        for (int i = 0; i < children.size(); i++) {
-            Object o =  children.get(i);
-            if (o instanceof Tag_tree_node) {
-                return false;
-            }
-        }
-
-        return true;
+    private boolean hasSubNodes() {
+        List<Tag> tags = getChildren(Tag_tree_node.class);
+        return tags.size()>0;
     }
 
 
     protected void endWrite() {
-        if(getAttribute(LIST_VIEW,false)){
+        if(listView){
            write("      parent = parent.parent;");
         }
     }

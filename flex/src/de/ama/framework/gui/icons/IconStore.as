@@ -30,8 +30,11 @@ public class IconStore {
   [Embed(source="../icons/calculator.png")]
   public static const CALCULATOR:Class;
 
-  [Embed(source="../icons/bin.png")]
+  [Embed(source="../icons/page_delete.png")]
   public static const DELETE:Class;
+
+  [Embed(source="../icons/book_delete.png")]
+  public static const DELETE_BOOK:Class;
 
   [Embed(source="../icons/zoom.png")]
   public static const SEARCH:Class;
@@ -54,11 +57,17 @@ public class IconStore {
   [Embed(source="../icons/error.png")]
   public static const ERROR:Class;
 
-  [Embed(source="../icons/page_white.png")]
+  [Embed(source="../icons/page_add.png")]
   public static const NEW:Class;
 
-  [Embed(source="../icons/page_white_copy.png")]
+  [Embed(source="../icons/book_add.png")]
+  public static const NEW_BOOK:Class;
+
+  [Embed(source="../icons/page_copy.png")]
   public static const COPY:Class;
+
+  [Embed(source="../icons/page_copy.png")]
+  public static const COPY_BOOK:Class;
 
   [Embed(source="../icons/user.png")]
   public static const USER:Class;

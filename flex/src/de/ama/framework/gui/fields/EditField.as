@@ -35,7 +35,6 @@ public class EditField extends Canvas{
 
         _label.setStyle("color","0x202020");
         _label.setStyle("textAlign","left");
-        _label.setStyle("paddingRight","8");
         _label.y=3;
 
     }
@@ -76,6 +75,10 @@ public class EditField extends Canvas{
         return _labelWidth;
     }
 
+    override public function set width(w:Number):void {
+        super.width = w+5;
+        labelWidth = _labelWidth;
+    }
 
     public override function get label():String {
         return _label.text;

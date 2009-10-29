@@ -59,7 +59,7 @@ public class Tag_command extends Tag {
             write("     cmd.setProperty(\"lister\",\"" + lister + "\");");
             if (Util.isNotEmpty(name))
             write("     cmd.setProperty(\"name\",\"" + name + "\");");
-            write("     " + cmdOwner + "addToolbarCommand(cmd);");
+            write("     " + cmdOwner + "addCommand(cmd);");
         }
 
         ////////////////////////  Command generieren //////////////////////////////////////////

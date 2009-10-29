@@ -195,7 +195,7 @@ public class Tag extends XmlElement implements Const {
 
     public String getRequiredAttribute(String key) {
         if(!hasAttribute(key)) {
-            throw new RuntimeException("required attribute "+key+" not present, see Tag<"+getName()+">");
+            throw new RuntimeException("required attribute "+key+" not present in:\n <"+getName()+" "+getAttributesString()+" ../>");
         }
         return getAttribute(key);
     }
@@ -210,7 +210,7 @@ public class Tag extends XmlElement implements Const {
     public String getRequiredParentAttribute(String key) {
         String s = getParentAttribute(key, "na");
         if("na".equals(s)){
-            throw new RuntimeException("required parent_attribute "+key+" not present, Tag<"+getName()+">");
+            throw new RuntimeException("required (parent-)attribute "+key+" not present in:\n <"+getName()+" "+getAttributesString()+" ../>");
         }
         return s;
     }
@@ -308,6 +308,20 @@ public class Tag extends XmlElement implements Const {
     protected Tag getChild(int i) {
         return (Tag) getChildren().get(i);
     }
+
+    protected List<Tag> getChildren(Class c) {
+        List<Tag> ret = new ArrayList<Tag>();
+        ListIterator listIterator = getChildIterator();
+        while (listIterator.hasNext()) {
+            Object tag = listIterator.next();
+            if(c == tag.getClass()){
+                ret.add((Tag) tag);
+            }
+        }
+        return ret;
+    }
+
+
 
     protected String getDir(){
         String dir = getParentAttribute(DIR,"");
