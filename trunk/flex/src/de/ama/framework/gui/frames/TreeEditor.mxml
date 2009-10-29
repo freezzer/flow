@@ -4,7 +4,8 @@
            xmlns:frames="de.ama.framework.gui.frames.*"
            width="100%" height="100%"
 	       initialize="init()"
-           creationComplete="onCreationComplete()">
+	       creationComplete="onCreationComplete()"
+           >
 
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
@@ -31,21 +32,13 @@
 
             buttonbar.addCommand(new SaveBoCommand());
             buttonbar.addCommand(new LoadBoCommand());
-            buttonbar.callBack = new Callback(this, editorButtonHandler);
+            buttonbar._callBack = new Callback(this, editorButtonHandler);
 
-            toolbar.callBack = new Callback(this, toolBarButtonHandler);
-
-            if (rootNode != null) {
-                rootNode.openDefaultNodes();
-            }
+            toolbar._callBack = new Callback(this, toolBarButtonHandler);
         }
-
 
         [Bindable]
         private var rootNode:TreeNode;
-
-        [Bindable]
-        public var selectedNode:TreeNode;
 
         [Bindable]
         public var treeMenu:ContextMenu = new ContextMenu();
@@ -58,8 +51,19 @@
             }
         }
 
+        private function expandDefaultNodes():void {
+            if (rootNode != null) {
+                rootNode.tree = myTree;
+                rootNode.openDefaultNodes();
+                rootNode.select();
+            }
+        }
+
+        public function get selectedNode():TreeNode {
+            return TreeNode(myTree.selectedItem);
+        }
+
         public function treeChanged(event:Event):void {
-            selectedNode = TreeNode(Tree(event.target).selectedItem);
             refreshToolBar();
 
             if (selectedNode.isListView) {
@@ -116,15 +120,20 @@
         }
 
         public function setData(data:Data):void {
-            if(data==null){
-               data = createData();
+            if (data == null) {
+                data = createData();
             }
 
-            
+            if (rootNode != null) {
+                rootNode.tree = null;
+            }
+
             rootNode = getPrototypeTree();
             rootNode.setData(data);
 
             label = rootNode.label;
+
+            callLater(expandDefaultNodes);
         }
 
 
@@ -139,7 +148,6 @@
         public function getSelectionModel():SelectionModel {
             return new SelectionModel(getData());
         }
-
 
 
         public function contextMenuTriggered(event:ContextMenuEvent):void
@@ -189,20 +197,21 @@
 
         ]]></mx:Script>
 
-    <mx:VBox width="100%" height="100%" paddingBottom="0" paddingRight="0" paddingLeft="0" paddingTop="0" verticalGap="0">
+    <mx:VBox width="100%" height="100%" paddingBottom="0" paddingRight="0" paddingLeft="0" paddingTop="0" verticalGap="0" >
         <frames:CommandButtonBar id="toolbar" horizontalAlign="left" useLabels="false"/>
 
         <mx:HDividedBox color="0xffffff" width="100%" height="100%" paddingBottom="1" paddingRight="1" paddingLeft="1"
-                        paddingTop="1" horizontalGap="8" backgroundColor="#F0F0F0">
+                        paddingTop="1" horizontalGap="8" backgroundColor="#F0F0F0" >
 
             <mx:Tree id="myTree" width="200" height="100%"  labelField="label" iconFunction="myIconFunction"
-                     showRoot="true" dataProvider="{rootNode}" change="treeChanged(event)" contextMenu="{treeMenu}"/>
+                     showRoot="true" dataProvider="{rootNode}"  change="treeChanged(event)" contextMenu="{treeMenu}"
+                     />
             
             <mx:Canvas height="100%" id="contenPanel"  borderStyle="solid" borderThickness="2" cornerRadius="4"/>
 
 
         </mx:HDividedBox>
 
-        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right" />
+        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right" useLabels="true" />
     </mx:VBox>
 </mx:Canvas>

@@ -31,7 +31,8 @@ public class Tag_column extends Tag {
     protected void mainWrite() {
         String label = getRequiredAttribute(LABEL);
         String path = getRequiredAttribute(PATH);
-        write("     addCollumn(\""+label+"\" , \""+path+"\");");
+        boolean  editable = Boolean.parseBoolean(getParentAttribute(EDITABLE,"false"));
+        write("     addCollumn(\""+label+"\" , \""+path+"\","+editable+");");
     }
 
 

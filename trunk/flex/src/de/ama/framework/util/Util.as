@@ -132,6 +132,10 @@ public class Util
     }
 
     public static function getObjectValue(obj:Object, path:String):Object {
+    	if(isEmpty(path) || isEqual(".",path) || isEqual("/",path) ){
+    		return obj;
+    	}
+    	
         var div:Array = divideString(path, ".");
         if (div.length > 1) {
             var child:Object = getObjectValue(obj, div[0]);
@@ -148,6 +152,7 @@ public class Util
     }
 
     public static function setObjectValue(obj:Object, path:String, value:Object):void {
+
         var div:Array = divideString(path, ".");
         if (div.length > 1) {
             var child:Object = getObjectValue(obj, div[0]);

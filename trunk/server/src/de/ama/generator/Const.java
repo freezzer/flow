@@ -31,6 +31,7 @@ public interface Const {
     public static final String PANELNAME = "panelname";
     public static final String PREFIX = "preix";
     public static final String LABEL = "label";
+    public static final String BORDER = "border";
     public static final String LABELPATH = "labelpath";
     public static final String TREE = "tree";
     public static final String ICON = "icon";
@@ -56,6 +57,8 @@ public interface Const {
     public static final String STRING = "string";
     public static final String NUMBER = "number";
     public static final String BOOLEAN = "boolean";
+    public static final String LIST = "list";
+    public static final String AREA = "area";
     public static final String LOOKUP = "lookup";
 
     public static final String DIR =       "dir";
@@ -69,7 +72,7 @@ public interface Const {
     public static final String SORTABLE = "sortable";
     public static final String EDITABLE = "editable";
     public static final String SEARCHABLE = "searchable";
-    public static final String FIXED_OPEN = "fixedopen";
+    public static final String OPEN = "open";
     public static final String LIST_VIEW = "listView";
 
     public static final String TITLE = "title";
@@ -80,7 +83,7 @@ public interface Const {
     public static final String Y = "y";
     public static final String W = "w";
     public static final String H = "h";
-    public static final String SPACING = "spacing";
+    public static final String GAP = "gap";
     public static final String COLOR = "color";
     public static final String BGCOLOR = "bgcolor";
 

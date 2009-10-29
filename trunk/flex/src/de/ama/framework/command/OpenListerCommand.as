@@ -16,7 +16,7 @@ public class OpenListerCommand extends Command{
 
         var lp:ListPanel = Factory.createLister(getProperty("lister"))
         lp.label = label;
-        lp.useToolbar = true;
+        lp.useToolbar = 1;
 
         var cp:ApplicationPanel = Application.application.getContentPane();
         cp.addContent(lp);

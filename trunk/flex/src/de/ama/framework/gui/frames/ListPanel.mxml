@@ -2,10 +2,13 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
            xmlns:frames="de.ama.framework.gui.frames.*"
            implements="de.ama.framework.gui.frames.Panel,de.ama.framework.command.Invoker"
-           	top="0" bottom="0" left="0" right="0"
+           width="100%" height="100%"
            initialize="init()"
-           creationComplete="onCreationComplete()">
+           creationComplete="onCreationComplete()" borderStyle="solid" borderColor="#808080">
     <mx:Script><![CDATA[
+        import mx.controls.listClasses.ListItemRenderer;
+        import mx.core.Container;
+
         import de.ama.framework.action.ActionStarter;
         import de.ama.framework.action.LoadTableAction;
         import de.ama.framework.command.Command;
@@ -16,31 +19,35 @@
         import mx.collections.ArrayCollection;
         import mx.controls.Button;
         import mx.controls.dataGridClasses.DataGridColumn;
+        import mx.core.UITextField;
         import mx.events.ListEvent;
 
         [Bindable]
-        protected var _dataTable:Array;
+        protected var rows:ArrayCollection = new ArrayCollection();
 
         public var commands:ArrayCollection = new ArrayCollection();
         public var listMenu:ContextMenu = new ContextMenu();
 
         public var generic:Boolean;
-        public var useToolbar:Boolean;
-        public var toolbar:CommandButtonBar;
+
+        public static var SMALL:int = 2;
+        public static var LARGE:int = 1;
+        public static var NO:int = 0;
+        public var useToolbar:int = NO;
+        public var toolbar:ICommandButtonBar;
 
         private var selectionModel:SelectionModel;
 
 
         public function init():void {
-            createToolbar();
             addBehavior();
+            createToolbar();
         }
 
         public function onCreationComplete():void {
-            //            treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
-            //            treeMenu.hideBuiltInItems();
-            //
-            //            toolbar.callBack = new Callback(this, toolBarButtonHandler);
+            listMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
+            listMenu.hideBuiltInItems();
+
         }
 
 
@@ -60,51 +67,112 @@
         }
 
         private function loadTableHandler(a:LoadTableAction):void {
-            _dataTable = a.data as Array;
+            dataTable = a.data as Array;
         }
 
         public function get dataTable():Array {
-            return _dataTable;
+            return rows.source;
         }
 
         public function set dataTable(value:Array):void {
-            _dataTable = value;
+            rows = new ArrayCollection(value);
+        }
+
+        public function addNewRow():void {
+            var data:Data = createData();
+            rows.addItem(data);
+            grid.selectedItem = data;
+        }
+
+        public function copySelectedRow():void {
+            var data:Data = Data(grid.selectedItem).clone();
+            rows.addItem(data);
+            grid.selectedItem = data;
+        }
+
+        public function removeSelectedRow():void {
+            var newIndex:int = Math.max(grid.selectedIndex-1,0);
+            var data:Data = Data(grid.selectedItem);
+            rows.removeItemAt(rows.getItemIndex(data));
+            grid.selectedIndex = newIndex;
         }
 
 
         /////////////////////////////////// Toolbar ///////////////////////////////////////////
 
         public function createToolbar():void {
-            if (! useToolbar) return;
-            toolbar = new CommandButtonBar();
-            toolbar.useLabels = false;
-            toolbar.setStyle("horizontalAlign", "left")
-            toolbar.callBack = new Callback(this, toolBarButtonHandler);
-            contentPanel.addChildAt(toolbar, 0);
+            if (useToolbar > NO) {
+                if (useToolbar == SMALL) {
+                    toolbar = new CommandButtonBarSmall();
+                    Container(toolbar).label = label;
+                } else if (useToolbar == LARGE) {
+                    toolbar = new CommandButtonBar();
+                }
+                toolbar.callBack = new Callback(this, toolBarButtonHandler);
+                for each (var command:Command in commands) {
+                    toolbar.addCommand(command);
+                }
+                contentPanel.addChildAt(DisplayObject(toolbar), 0);
+            }
         }
 
-        public function addToolbarCommand(command:Command):void {
-            if (! useToolbar) return;
-            toolbar.addCommand(command);
+        public function addCommand(command:Command):void {
+            commands.addItem(command);
         }
 
         private function toolBarButtonHandler(event:MouseEvent):void {
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
-            if (selectionModel != null) {
-                command.start(this);
-            }
-
+            command.start(this);
         }
+
+        /////////////////////////////////// ContextMenu ///////////////////////////////////////////
+
+
+
+        public function contextMenuTriggered(event:ContextMenuEvent):void
+        {
+            if (event.mouseTarget is UITextField) {
+                var tf:UITextField = UITextField(event.mouseTarget);
+                var ir:ListItemRenderer = ListItemRenderer(tf.owner);
+                var data:Data = Data(ir.data);
+                grid.selectedItem = data;
+                var cmis:Array = new Array();
+                for each(var command:Command in commands) {
+                    var cmi:ContextMenuItem = new ContextMenuItem(command.label);
+                    command.contextMenuItem = cmi;
+                    cmi.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
+                    cmis.push(cmi);
+                }
+                listMenu.customItems = cmis;
+            }
+        }
+
+        private function menuItemSelectHandler(event:ContextMenuEvent):void {
+            var tf:UITextField = UITextField(event.mouseTarget);
+            var ir:ListItemRenderer = ListItemRenderer(tf.owner);
+            var data:Data = Data(ir.data);
+            for each(var command:Command in commands) {
+                if (command.contextMenuItem == event.target) {
+                    command.start(this);
+                }
+            }
+        }
+
+
 
         /////////////////////////////////// Columns ///////////////////////////////////////////
 
-        public function addCollumn(label:String, path:String):void {
+        public function addCollumn(label:String, path:String, editable:Boolean):void {
             var col:DataGridColumn = new DataGridColumn(label);
             col.dataField = path;
+            col.editable = editable;
             var array:Array = grid.columns;
             array.push(col);
             grid.columns = array;
+            if (editable) {
+                grid.editable = true;
+            }
         }
 
 
@@ -122,6 +190,14 @@
             return selectionModel;
         }
 
+        public function getRowCount():int {
+            if (rows == null) {
+                return 0;
+            }
+            return rows.length;
+        }
+
+
         /////////////////////////////////// Overwrites ///////////////////////////////////////////
 
         public function createData():Data {
@@ -129,7 +205,8 @@
         }
 
         public function addBehavior():void {
-            // children write here
+            addCollumn("Column1", "", false);
+            addCollumn("Column2", "", false);
         }
 
         ]]></mx:Script>
@@ -137,9 +214,9 @@
     <mx:VBox id="contentPanel" width="100%" height="100%" paddingBottom="0" paddingRight="0" paddingLeft="0" paddingTop="0"
              verticalGap="0">
 
-        <mx:DataGrid id="grid" dataProvider="{_dataTable}" 
+        <mx:DataGrid id="grid" dataProvider="{rows}"
         	      	change="onSelectionChange(event)" width="100%" height="100%"
-        	      	contextMenu="{listMenu}" allowMultipleSelection="true">
+        	      	contextMenu="{listMenu}" allowMultipleSelection="true" >
         </mx:DataGrid >
 
     </mx:VBox>

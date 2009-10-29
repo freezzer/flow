@@ -29,22 +29,22 @@
                             <bean name="Position">
                                 <field name="nummer"/>
                                 <field name="warennummer"/>
-                                <field name="roh_gewicht"   type="Number"/>
+                                <field name="roh_gewicht" type="Number"/>
                                 <field name="netto_gewicht" type="number"/>
-                                <collection name="verschluesse" create="1" type="Verschluss">
+                                <collection name="verschluesse">
                                     <bean name="Verschluss">
                                         <field name="nummer"/>
                                         <field name="zeichen"/>
                                     </bean>
                                 </collection>
-                                <collection name="packstuecke" create="1">
+                                <collection name="packstuecke">
                                     <bean name="Packstueck">
                                         <field name="nummer"/>
                                         <field name="art"/>
                                         <field name="anzahl"/>
                                     </bean>
                                 </collection>
-                                <collection name="unterlagen" create="1">
+                                <collection name="unterlagen">
                                     <bean name="Unterlage">
                                         <field name="nummer"/>
                                         <field name="art"/>
@@ -64,45 +64,46 @@
     <view package="vorgang.view" model="Vorgang">
 
         <editor name="VorgangEditor">
-            <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="" >
-                <command  use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
+            <tree_node label="Vorgang {nummer}" icon="lorry" model="Vorgang" path="" open="true">
+                <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
 
-                <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition">
-                    <tree_node label="Kopf" path="workmodel" panel="KopfPanel" />
+                <tree_node label="Transition" path="transitions" icon="arrow.right" model="Transition" open="true">
+                    <tree_node label="Kopf" path="workmodel" panel="KopfPanel"/>
 
-                    <tree_node label="Positionen" path="workmodel.positionen" listView="true" type="Position" panel="PositionenLister">
-                        <command  use="CreateNodeCommand" label="neue Position" icon="new"/>
-                        <tree_node label="Position {nummer}" path="workmodel.positionen" panel="PositionPanel"  type="Position">
-                            <command  use="CreateNodeCommand" label="neue Position"     icon="new"/>
-                            <command  use="CopyNodeCommand"   label="Position kopieren" icon="copy"/>
-                            <command  use="DeleteNodeCommand" label="Position loeschen"  icon="delete"/>
+                    <tree_node label="Positionen" path="workmodel.positionen" model="Position" lister="PositionenLister"
+                               open="true">
+                        <command use="CreateNodeCommand" label="neue Position" icon="new"/>
+                        <tree_node label="Position {nummer}" path="workmodel.positionen" panel="PosPanel">
+                            <command use="CreateNodeCommand" label="neue Position" icon="new"/>
+                            <command use="CopyNodeCommand" label="Position kopieren" icon="copy"/>
+                            <command use="DeleteNodeCommand" label="Position loeschen" icon="delete"/>
 
-                            <tree_node label="Verschluesse" path="verschluesse" listView="true" type="Verschluss" panel="VerschlussLister">
-                                <command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>
-                                <tree_node label="Verschluss {nummer}" path="verschluesse" panel="VerschlussPanel" icon="lock"   type="Verschluss">
-                                    <command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>
-                                    <command  use="CopyNodeCommand"   label="Verschluss kopieren" icon="copy"/>
-                                    <command  use="DeleteNodeCommand" label="Verschluss loeschen"  icon="delete"/>
-                                </tree_node>
-                            </tree_node>
-                            
-                            <tree_node label="Packstuecke" path="packstuecke" listView="true" type="Packstueck" panel="PackstueckLister">
-                                <command  use="CreateNodeCommand" label="neues Packstueck" icon="new"/>
-                                <tree_node label="Packstueck {nummer}" path="packstuecke" panel="PackStueckPanel" icon="pack"  type="Packstueck">
-                                    <command  use="CreateNodeCommand" label="neues Packstueck" icon="new"/>
-                                    <command  use="CopyNodeCommand"   label="Packstueck kopieren" icon="copy"/>
-                                    <command  use="DeleteNodeCommand" label="Packstueck loeschen"  icon="delete"/>
-                                </tree_node>
-                            </tree_node>
+                            <!--<tree_node label="Verschluesse" path="verschluesse" model="Verschluss" lister="VerschlussLister">-->
+                            <!--<command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>-->
+                            <!--<tree_node label="Verschluss {nummer}" path="verschluesse" panel="VerschlussPanel" icon="lock"   type="Verschluss">-->
+                            <!--<command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>-->
+                            <!--<command  use="CopyNodeCommand"   label="Verschluss kopieren" icon="copy"/>-->
+                            <!--<command  use="DeleteNodeCommand" label="Verschluss loeschen"  icon="delete"/>-->
+                            <!--</tree_node>-->
+                            <!--</tree_node>-->
 
-                            <tree_node label="Unterlagen" path="unterlagen" listView="true"   type="Unterlage" panel="UnterlagenLister">
-                                <command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
-                                <tree_node label="Unterlage {art}" path="unterlagen" panel="UnterlagePanel" icon="dock"  type="Unterlage">
-                                    <command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
-                                    <command  use="CopyNodeCommand"   label="Unterlage kopieren" icon="copy"/>
-                                    <command  use="DeleteNodeCommand" label="Unterlage loeschen"  icon="delete"/>
-                                </tree_node>
-                            </tree_node>
+                            <!--<tree_node label="Packstuecke" path="packstuecke" model="Packstueck" lister="PackstueckLister">-->
+                            <!--<command  use="CreateNodeCommand" label="neues Packstueck" icon="new"/>-->
+                            <!--<tree_node label="Packstueck {nummer}" path="packstuecke" panel="PackStueckPanel" icon="pack"  >-->
+                            <!--<command  use="CreateNodeCommand" label="neues Packstueck" icon="new"/>-->
+                            <!--<command  use="CopyNodeCommand"   label="Packstueck kopieren" icon="copy"/>-->
+                            <!--<command  use="DeleteNodeCommand" label="Packstueck loeschen"  icon="delete"/>-->
+                            <!--</tree_node>-->
+                            <!--</tree_node>-->
+
+                            <!--<tree_node label="Unterlagen" path="unterlagen" model="Unterlage" lister="UnterlagenLister">-->
+                            <!--<command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>-->
+                            <!--<tree_node label="Unterlage {art}" path="unterlagen" panel="UnterlagePanel" icon="dock"  >-->
+                            <!--<command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>-->
+                            <!--<command  use="CopyNodeCommand"   label="Unterlage kopieren" icon="copy"/>-->
+                            <!--<command  use="DeleteNodeCommand" label="Unterlage loeschen"  icon="delete"/>-->
+                            <!--</tree_node>-->
+                            <!--</tree_node>-->
                         </tree_node>
                     </tree_node>
 
@@ -112,55 +113,83 @@
 
         <!--  ********************* Panels *******************************   -->
 
-        <panel name="KopfPanel" label="Kopfdaten des Vorgangs" >
-           <input label="MRN"           path="kopf.mrn" type="string" />
-           <input label="Zollstelle"    path="kopf.zollstelle" type="lookup" />
-           <input label="erstellt am"   path="kopf.erstellt" type="date" />
-           <input label="angemeldet am" path="kopf.angemeldet" type="date" />
-           <input label="container"     path="kopf.container" type="Boolean" />
-           <input label="Geschaeftsart"     path="geschaeft.art"  />
-           <input label="Waehrung"     path="geschaeft.waehrung"  />
-           <input label="Betrag"      path="geschaeft.betrag"  />
+        <panel name="KopfPanel" label="Kopfdaten des Vorgangs" gap="3">
+            <panel name="KopfAllgemeinPanel" label="Allgemein" border="true" x="10" y="25" path="kopf">
+                <input label="MRN" path="mrn" type="string"/>
+                <input label="Zollstelle" path="zollstelle" type="lookup"/>
+                <input label="erstellt am" path="erstellt" type="date"/>
+                <input label="angemeldet am" path="angemeldet" type="date"/>
+                <input label="container" path="container" type="Boolean"/>
+            </panel>
+            <panel name="GeschaeftPanel" label="Geschaeft" border="true" x="10" y="210" path="geschaeft">
+                <input label="Geschaeftsart" path="art"/>
+                <input label="Waehrung" path="waehrung"/>
+                <input label="Betrag" path="betrag"/>
+            </panel>
+        </panel>
+
+        <panel name="PosPanel">
+            <panel name="PosHead" y="5" x="5" label="Warendaten" border="true">
+                <input label="Nummer" path="nummer"/>
+                <input label="Warennummer" path="warennummer"/>
+                <input label="Rohgewicht" path="roh_gewicht" type="number"/>
+                <input label="Nettogewicht" path="netto_gewicht" type="number"/>
+            </panel>
+            <panel use="UVPPanel" y="5" x="450" border="true" label="Dokumente"/>
+        </panel>
+
+        <panel name="UVPPanel" editable="true" label="Unterlagen PackStuecke Verschluesse">
+            <input label="Unterlagen" path="unterlagen" type="list">
+                <lister name="UnterlagenLister" model="Unterlage">
+                    <command use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
+                    <command use="CopyNodeCommand" label="Unterlage kopieren" icon="copy"/>
+                    <command use="DeleteNodeCommand" label="Unterlage loeschen" icon="delete"/>
+                    <column label="Nummer" path="nummer"/>
+                    <column label="Art" path="art"/>
+                    <column label="Bezeichnung" path="bezeichnung"/>
+                    <column label="Begin" path="begin"/>
+                    <column label="Ende" path="ende"/>
+                </lister>
+            </input>
+            <input label="Packstuecke" path="packstuecke" type="list">
+                <lister name="PackstueckLister" model="Packstueck">
+                    <command use="CreateNodeCommand" label="neues Packstueck" icon="new"/>
+                    <command use="CopyNodeCommand" label="Packstueck kopieren" icon="copy"/>
+                    <command use="DeleteNodeCommand" label="Packstueck loeschen" icon="delete"/>
+                    <column label="Nummer" path="nummer"/>
+                    <column label="Art" path="art"/>
+                    <column label="Anzahl" path="anzahl"/>
+                </lister>
+            </input>
+            <input label="Verschluesse" path="verschluesse" type="list">
+                <lister name="VerschlussLister" model="Verschluss">
+                    <command use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>
+                    <command use="CopyNodeCommand" label="Verschluss kopieren" icon="copy"/>
+                    <command use="DeleteNodeCommand" label="Verschluss loeschen" icon="delete"/>
+                    <column label="Nummer" path="nummer"/>
+                    <column label="Zeichen" path="zeichen"/>
+                </lister>
+            </input>
         </panel>
 
         <!--  ********************* Listen *******************************   -->
 
         <lister name="VorgangLister" model="Vorgang">
-          <command  use="LoadTableCommand"  icon="refresh" label="Uebersicht Vorgaenge neu laden"/>
-          <command  use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen" icon="edit"/>
-          <command  use="DeleteBoCommand"   label="Vorgang loeschen" icon="delete"/>
+            <command use="LoadTableCommand" icon="refresh" label="Uebersicht Vorgaenge neu laden"/>
+            <command use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen" icon="edit"/>
+            <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
 
-          <column label="Nummer" path="nummer"/>
-          <column label="Id"     path="id"/>
-          <column label="Typ"    path="typ"/>
+            <column label="Nummer" path="nummer"/>
+            <column label="Id" path="id"/>
+            <column label="Typ" path="typ"/>
         </lister>
 
-        <lister name="PositionenLister"  >
-            <column label="Nummer"        path="nummer" />
-            <column label="Warennummer"   path="warennummer"/>
-            <column label="Rohgewicht"    path="roh_gewicht" />
-            <column label="Nettogewicht"  path="netto_gewicht" />
+        <lister name="PositionenLister" model="Postion">
+            <column label="Nummer" path="nummer"/>
+            <column label="Warennummer" path="warennummer"/>
+            <column label="Rohgewicht" path="roh_gewicht"/>
+            <column label="Nettogewicht" path="netto_gewicht"/>
         </lister>
-
-        <lister name="UnterlagenLister"  >
-            <column label="Nummer"      path="nummer" />
-            <column label="Art"         path="art" />
-            <column label="Bezeichnung" path="bezeichnung" />
-            <column label="Begin"       path="begin" />
-            <column label="Ende"        path="ende" />
-        </lister>
-
-        <lister name="PackstueckLister"  >
-            <column label="Nummer"      path="nummer" />
-            <column label="Art"         path="art" />
-            <column label="Anzahl"      path="anzahl" />
-        </lister>
-
-        <lister name="VerschlussLister"  >
-            <column label="Nummer"      path="nummer" />
-            <column label="Zeichen"      path="teichen" />
-        </lister>
-
 
     </view>
 

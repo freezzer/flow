@@ -8,6 +8,7 @@ import de.ama.framework.util.Util;
 
 import mx.collections.ArrayCollection;
 import mx.controls.Tree;
+import mx.events.ListEvent;
 
 public class TreeNode implements Invoker{
 
@@ -46,10 +47,16 @@ public class TreeNode implements Invoker{
         defaultOpen = b;
     }
 
-    public function addToolbarCommand(command:Command):void {
+    public function addCommand(command:Command):void {
         commands.addItem(command);
     }
 
+
+    public function select():void {
+        tree.selectedItem = this;
+        tree.dispatchEvent(new ListEvent(ListEvent.CHANGE));
+    }
+    
     public function removeChild(child:TreeNode):void {
         var i:int = children.getItemIndex(child);
         if(i>=0){
@@ -57,16 +64,23 @@ public class TreeNode implements Invoker{
           child.parent = null;
           var coll:ArrayCollection =  new ArrayCollection(_dataTable);
           coll.removeItemAt(coll.getItemIndex(child.data));  
+		  if(i>0){
+            TreeNode(children.getItemAt(i-1)).select();
+		  }	else {
+		  	this.select();
+		  }
         }
     }
 
     public function addChild(child:TreeNode, intoDataTable:Boolean):void {
         child.parent = this;
-        if(intoDataTable){
-           _dataTable.push(child.data);
-        }
         children.addItem(child);
+        if(intoDataTable){
+          _dataTable.push(child.data);
+          child.select();
+        }
     }
+
 
     public function addNewChild():void {
         var data:Data = Factory.createBean(type);
@@ -203,7 +217,7 @@ public class TreeNode implements Invoker{
     public function get root():TreeNode {
         if(_parent==null){
            return this;
-        };
+        }
         return parent.root;
     }
 

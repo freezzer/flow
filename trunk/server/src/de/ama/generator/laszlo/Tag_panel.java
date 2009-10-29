@@ -28,7 +28,7 @@ import de.ama.generator.Tag;
 public class Tag_panel extends Tag {
 
     protected void beginWrite() {
-        String spacing = getAttribute(SPACING,"5");
+        String spacing = getAttribute(GAP,"5");
         boolean horizontal = getAttribute(HORIZONTAL,false);
         String title = getAttribute(TITLE,"");
         String path = readPathAttributeLaszlo();

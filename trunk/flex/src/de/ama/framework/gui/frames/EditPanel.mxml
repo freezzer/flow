@@ -1,21 +1,26 @@
 <?xml version="1.0" ?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
 	implements="de.ama.framework.gui.frames.Panel"
-    initialize="init()" color="#202020">
+    initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   borderStyle="none">
 
     <mx:Script><![CDATA[
+        import mx.controls.Spacer;
+
         import de.ama.framework.data.Data;
         import de.ama.framework.gui.fields.BoolField;
         import de.ama.framework.gui.fields.DateField;
         import de.ama.framework.gui.fields.EditField;
+        import de.ama.framework.gui.fields.ListField;
+        import de.ama.framework.gui.fields.TextAreaField;
         import de.ama.framework.util.Util;
 
         private function init():void {
-        	caption.text = label;
+            caption.text = label;
         }
 
+        public  var gap:int = 10;
         private var _path:String;
-        private var _generic:Boolean = true;
+        private var _generic:Boolean = false;
         private var _data:Data;
 
 
@@ -42,23 +47,27 @@
             if (_generic) {
                 createDefaultFields(_data);
             }
-            
+
             var childs:Array = getChildren();
             var i:int;
             var len:int = childs.length;
             var f:EditField = null;
+            var p:EditPanel = null;
             for (i = 0; i < len; i++) {
                 if (childs[i] is EditField) {
                     f = childs[i];
                     f.setValue(data.getValue(f.localpath));
+                }else if (childs[i] is EditPanel) {
+                    p = childs[i];
+                    p.setData(Data(data.getValue(p.path)));
                 }
             }
         }
 
         public function createDefaultFields(data:Data):void {
-			if(Util.isEmpty(label)){
+            if (Util.isEmpty(label)) {
                 label = data.getName();
-			}	
+            }
 
             var classInfo:XML = describeType(data);
             for each (var v:XML in classInfo..variable) {
@@ -78,7 +87,8 @@
                     }
                 }
             }
-            
+
+
         }
 
 
@@ -100,10 +110,35 @@
             return dateField;
         }
 
+        public function insertListField(label:String, path:String = null, x:int = -1, y:int = -1):ListField {
+            var listField:ListField = new ListField(label, path);
+            listField.height = 150;
+            insertField(listField, x, y);
+            return listField;
+        }
+
+        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1):TextAreaField {
+            var textAreaField:TextAreaField = new TextAreaField(label, path);
+            textAreaField.height = 90;
+            insertField(textAreaField, x, y);
+            return textAreaField;
+        }
+
         public function insertField(f:EditField, x:int = -1, y:int = -1):void {
             f.x = x > 0 ? x : 10;
-            f.y = y > 0 ? y : (numChildren * 30) + 30;
+            if (y < 0) {
+                if (numChildren > 0) {
+                    var c:DisplayObject = getChildAt(numChildren - 1);
+                    y = c.y + c.height + gap;
+                } else {
+                    y = 30;
+                }
+            }
+            f.y = y;
             addChild(f);
+
+            height = f.y+f.height+gap+gap;
+            width  = Math.max(width, f.x+f.width+gap);
         }
 
         public function getEditField(path:String):EditField {
@@ -136,7 +171,7 @@
 
 
         ]]></mx:Script>
-    <mx:Label text="Label" left="-1" top="-1" id="caption" fontWeight="normal" fontSize="10" color="#806363"/>
+    <mx:Label text="Label" left="1" top="-1" id="caption" fontWeight="normal" fontSize="10" color="#808080" fontStyle="normal" textAlign="left"/>
 
 
 </mx:Canvas>
