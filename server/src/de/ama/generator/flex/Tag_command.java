@@ -50,16 +50,16 @@ public class Tag_command extends Tag {
                     + " />");
         } else {
             if (Util.isNotEmpty(name)) // import non CRUD command
-                write("     import " + pckg + "." + name + ";");
+                write("   import " + pckg + "." + name + ";");
 
-            write("     cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\",\"" + icon + "\");");
+            write("   cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\",\"" + icon + "\");");
             if (Util.isNotEmpty(editor))
-            write("     cmd.setProperty(\"editor\",\"" + editor + "\");");
+            write("   cmd.setProperty(\"editor\",\"" + editor + "\");");
             if (Util.isNotEmpty(lister))
-            write("     cmd.setProperty(\"lister\",\"" + lister + "\");");
+            write("   cmd.setProperty(\"lister\",\"" + lister + "\");");
             if (Util.isNotEmpty(name))
-            write("     cmd.setProperty(\"name\",\"" + name + "\");");
-            write("     " + cmdOwner + "addCommand(cmd);");
+            write("   cmd.setProperty(\"name\",\"" + name + "\");");
+            write("   " + cmdOwner + "addCommand(cmd);");
         }
 
         ////////////////////////  Command generieren //////////////////////////////////////////

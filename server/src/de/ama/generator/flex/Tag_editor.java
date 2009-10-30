@@ -55,23 +55,28 @@ public class Tag_editor extends Tag {
         write("       return Factory.createBean(\""+model+"\"); ");
         write("     } ");
         write("     ");
+
     }
 
     protected void mainWrite() {
+        write("     override public function addCommands():void {");
+        write("        var cmd:Command;");
+                        executeChildren(Tag_command.class);
+        write("     } ");
+        write("");
         write("     override public function getPrototypeTree():TreeNode {");
         write("       var parent:TreeNode;");
         write("       var node:TreeNode;");
         write("       var root:TreeNode;");
         write("       var cmd:Command;");
-        writeLine();
-        
-        // hier kommen die TreeNodes
+        write("");
+            executeChildren(Tag_tree_node.class);
+        write("       return root; ");
+        write("     } ");
     }
 
 
     protected void endWrite() {
-        write("       return root; ");
-        write("     } ");
         write("   }");
         write("}");
 

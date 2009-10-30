@@ -4,8 +4,6 @@
     initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   borderStyle="none">
 
     <mx:Script><![CDATA[
-        import mx.controls.Spacer;
-
         import de.ama.framework.data.Data;
         import de.ama.framework.gui.fields.BoolField;
         import de.ama.framework.gui.fields.DateField;
@@ -57,7 +55,7 @@
                 if (childs[i] is EditField) {
                     f = childs[i];
                     f.setValue(data.getValue(f.localpath));
-                }else if (childs[i] is EditPanel) {
+                } else if (childs[i] is EditPanel) {
                     p = childs[i];
                     p.setData(Data(data.getValue(p.path)));
                 }
@@ -73,6 +71,7 @@
             for each (var v:XML in classInfo..variable) {
                 var t:String = v.@type;
                 switch (t) {
+                    case "Number":
                     case "String": {
                         insertTextField(Util.firstCharToUpper(v.@name), v.@name);
                         break;
@@ -87,8 +86,6 @@
                     }
                 }
             }
-
-
         }
 
 
@@ -137,8 +134,8 @@
             f.y = y;
             addChild(f);
 
-            height = f.y+f.height+gap+gap;
-            width  = Math.max(width, f.x+f.width+gap);
+            height = f.y + f.height + gap + gap;
+            width = Math.max(width, f.x + f.width + gap);
         }
 
         public function getEditField(path:String):EditField {

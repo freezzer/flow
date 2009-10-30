@@ -33,7 +33,7 @@ public class Tag_lister extends Tag {
     }
 
     @Override
-    protected void beginWrite() {
+    protected void mainWrite() {
         String model = getRequiredAttribute(MODEL);
         String listerName = getParentAttribute(NAME,model+"Lister");
         String dir =  getDir();
@@ -52,26 +52,26 @@ public class Tag_lister extends Tag {
         write("     override public function createData():Data {");
         write("         return Factory.createBean(\""+model+"\"); ");
         write("     } ");
-        write("     ");
-        write("     override public function addBehavior():void { ");
-        write("     var cmd:Command = null;");
+        write("");
+        write("     override public function addCommands():void {");
+        write("          var cmd:Command;");
+                         executeChildren(Tag_command.class);
+        write("     } ");
+        write("");
+        write("     override public function addCollumns():void {");
+                         executeChildren(Tag_column.class);
+        write("     } ");
+        write("");
 
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+listerName+";");
         collectCode(Tag_bootstrap.REGISTER_LISTER, "         Factory.registerLister(\""+listerName+"\", "+listerName+");");
 
     }
 
-    protected void mainWrite() {
-        // hier kommen die Commands
-        // hier kommen die Columns
-    }
-
 
     protected void endWrite() {
-        write("     } ");
         write("  }");
         write("}");
-
         writeLine();
         flush();
     }

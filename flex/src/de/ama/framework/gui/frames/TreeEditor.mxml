@@ -9,19 +9,23 @@
 
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-        import de.ama.framework.command.LoadBoCommand;
         import de.ama.framework.command.SaveBoCommand;
         import de.ama.framework.data.Data;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.gui.icons.IconStore;
-
         import de.ama.framework.util.Callback;
-
         import de.ama.framework.util.Factory;
 
         import mx.controls.Button;
         import mx.controls.treeClasses.TreeItemRenderer;
         import mx.core.UITextField;
+
+        [Bindable]
+        private var rootNode:TreeNode;
+
+        [Bindable]
+        public var treeMenu:ContextMenu = new ContextMenu();
+
 
         public function init():void {
         }
@@ -30,19 +34,16 @@
             treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
             treeMenu.hideBuiltInItems();
 
-            buttonbar.addCommand(new SaveBoCommand());
-            buttonbar.addCommand(new LoadBoCommand());
             buttonbar._callBack = new Callback(this, editorButtonHandler);
 
             toolbar._callBack = new Callback(this, toolBarButtonHandler);
+
+            addCommands();
         }
 
-        [Bindable]
-        private var rootNode:TreeNode;
-
-        [Bindable]
-        public var treeMenu:ContextMenu = new ContextMenu();
-
+        public function addCommand(command:Command):void {
+            buttonbar.addCommand(command);
+        }
 
         private function refreshToolBar():void {
             toolbar.clear();
@@ -141,10 +142,6 @@
             return rootNode.getData();
         }
 
-        public function createData():Data {
-            return null;
-        }
-
         public function getSelectionModel():SelectionModel {
             return new SelectionModel(getData());
         }
@@ -192,6 +189,17 @@
             var button:Button = Button(event.currentTarget);
             var command:Command = Command(button.data);
             command.start(this);
+        }
+
+
+        /////////////////////////////////// Overwrites ///////////////////////////////////////////
+
+        public function createData():Data {
+            return null;
+        }
+
+        public function addCommands():void {
+            addCommand(new SaveBoCommand());
         }
 
 

@@ -29,6 +29,7 @@ import java.io.PrintWriter;
 import java.util.ListIterator;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * User: x
@@ -39,6 +40,7 @@ public class Tag extends XmlElement implements Const {
 
     private OutputWriter writer;
     private PrintWriter printWriter;
+    private boolean executed = false;
 
     protected boolean withAttributes() {
         return true;
@@ -103,24 +105,9 @@ public class Tag extends XmlElement implements Const {
         return "";
     }
 
-    protected String readPathAttributeLaszlo(){
-        String path = getAttribute(PATH,"");
-        if(Util.isNotEmpty(path))   {
-            if(path.startsWith("data:")){
-               path=" datapath='local:classroot.data:/"+path.substring(5)+"'";
-            } else if(path.startsWith("query:")){
-               path=" datapath='local:classroot.query:/"+path.substring(6)+"'";
-            } else {
-                path=" datapath='"+path+"'";
-            }
-        }
-        return path;
-    }
-
     // ----------------- properties --------------------------
 
     boolean isVerbose() { return "true".equals(getParentAttribute("verbose","false"));   }
-
 
 
     protected Tag getTagImpl(String className) {
@@ -162,11 +149,14 @@ public class Tag extends XmlElement implements Const {
         List fragments = (List) getStoredObject(key);
         if(fragments==null)  return "";
 
+        storeObject(key,null); 
+
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < fragments.size(); i++) {
             String code = (String) fragments.get(i);
             sb.append(code).append("\n");
         }
+
         return sb.toString();
     }
 
@@ -195,9 +185,13 @@ public class Tag extends XmlElement implements Const {
 
     public String getRequiredAttribute(String key) {
         if(!hasAttribute(key)) {
-            throw new RuntimeException("required attribute "+key+" not present in:\n <"+getName()+" "+getAttributesString()+" ../>");
+            throwAttributeException(key);
         }
         return getAttribute(key);
+    }
+
+    public String throwAttributeException(String key) {
+        throw new RuntimeException("required attribute *["+key+"]* not present in:\n   look at --> <"+getName()+" "+getAttributesString()+" ../>");
     }
 
     public String getParentAttribute(String key,String def) {
@@ -210,7 +204,7 @@ public class Tag extends XmlElement implements Const {
     public String getRequiredParentAttribute(String key) {
         String s = getParentAttribute(key, "na");
         if("na".equals(s)){
-            throw new RuntimeException("required (parent-)attribute "+key+" not present in:\n <"+getName()+" "+getAttributesString()+" ../>");
+            throwAttributeException(key);
         }
         return s;
     }
@@ -239,14 +233,18 @@ public class Tag extends XmlElement implements Const {
     }
 
     public void execute(){
-        beginWrite();
+        if(!executed) {
 
-        mainWrite();
+            beginWrite();
 
-        childrenWrite();
+            mainWrite();
 
-        endWrite();
+            childrenWrite();
 
+            endWrite();
+
+            executed = true;
+        }
     }
 
 
@@ -258,6 +256,16 @@ public class Tag extends XmlElement implements Const {
         }
     }
 
+    protected void executeChildren(Class c) {
+        List<Tag> tags = getChildren(c);
+        for (int i = 0; i < tags.size(); i++) {
+            Tag tag = tags.get(i);
+            tag.execute();
+        }
+    }
+
+
+
     protected void mainWrite() {
         //To change body of created methods use File | Settings | File Templates.
     }
@@ -268,23 +276,6 @@ public class Tag extends XmlElement implements Const {
 
     protected void endWrite() {
         //To change body of created methods use File | Settings | File Templates.
-    }
-
-    protected boolean containsScript(String in){
-        if(Util.isEmpty(in)) return false;
-        if(in.contains(".")) return true;
-        if(in.contains("*")) return true;
-        if(in.contains("/")) return true;
-        if(in.contains("+")) return true;
-        if(in.contains("-")) return true;
-        return false;
-    }
-
-    protected String scriptEnvelope(String in, String pre) {
-        if(containsScript(in)){
-            return "$"+Util.saveToString(pre)+"{"+in+"}";
-        }
-        return in;
     }
 
     protected void write(Object str){
@@ -302,7 +293,6 @@ public class Tag extends XmlElement implements Const {
 
     protected void flush(){
        getPrintWriter().flush();
-       // System.out.println("------------------- flush "+ getPrintWriter().hashCode() );
     }
 
     protected Tag getChild(int i) {
@@ -320,8 +310,6 @@ public class Tag extends XmlElement implements Const {
         }
         return ret;
     }
-
-
 
     protected String getDir(){
         String dir = getParentAttribute(DIR,"");

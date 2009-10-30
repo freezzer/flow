@@ -64,15 +64,12 @@
     <view package="vorgang.view" model="Vorgang">
 
         <editor name="VorgangEditor">
-            <tree_node label="Vorgang {nummer}" icon="lorry" model="Vorgang" path="" open="true">
-                <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
-
-                <tree_node label="Transition" path="transitions" icon="arrow.right" model="Transition" open="true">
+            <tree_node label="Vorgang {nummer}" icon="lorry" model="Vorgang" path="." open="true" panel="default">
+                <tree_node label="Transition" path="transitions" icon="arrow.right" model="Transition" open="true" panel="default">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel"/>
-
-                    <tree_node label="Positionen" path="workmodel.positionen" model="Position" lister="PositionenLister"
-                               open="true">
+                    <tree_node label="Positionen" path="workmodel.positionen" model="Position" lister="PositionenLister"  open="true">
                         <command use="CreateNodeCommand" label="neue Position" icon="new"/>
+                        <!--<tree_node label="Dokumente {nummer}" path="workmodel.positionen" panel="DokumentePanel"/>-->
                         <tree_node label="Position {nummer}" path="workmodel.positionen" panel="PosPanel">
                             <command use="CreateNodeCommand" label="neue Position" icon="new"/>
                             <command use="CopyNodeCommand" label="Position kopieren" icon="copy"/>
@@ -109,6 +106,11 @@
 
                 </tree_node>
             </tree_node>
+
+            <command use="SaveBoCommand" label="Vorgang speichern" icon="save"/>
+            <command use="LoadBoCommand" label="Vorgang laden" icon="refresh"/>
+            <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
+
         </editor>
 
         <!--  ********************* Panels *******************************   -->
@@ -135,10 +137,10 @@
                 <input label="Rohgewicht" path="roh_gewicht" type="number"/>
                 <input label="Nettogewicht" path="netto_gewicht" type="number"/>
             </panel>
-            <panel use="UVPPanel" y="5" x="450" border="true" label="Dokumente"/>
+            <panel use="DokumentePanel" y="5" x="450" border="true" label="Dokumente"/>
         </panel>
 
-        <panel name="UVPPanel" editable="true" label="Unterlagen PackStuecke Verschluesse">
+        <panel name="DokumentePanel" editable="true" label="Unterlagen PackStuecke Verschluesse">
             <input label="Unterlagen" path="unterlagen" type="list">
                 <lister name="UnterlagenLister" model="Unterlage">
                     <command use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
