@@ -91,7 +91,7 @@ public class OutputWriter {
 //        }
     }
 
-    private static String knownTargets = "java,flex,laszlo";
+    private static String knownTargets = "java,flex";
     public void start() {
 
         String[] strings = targets.split(",");

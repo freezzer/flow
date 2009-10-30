@@ -1,13 +1,15 @@
 <?xml version="1.0"?>
 <define>
 
-    <model dir="gen/app/bom">
+    <model package="person.bom" >
         <bean name="Person" persistent="true" unique-key="vorname+nachname">
             <field name="vorname"/>
             <field name="nachname"/>
             <field name="telefon"/>
-            <collection name="adressen">
+            <field name="email"/>
+            <collection name="adressen" create="1">
                 <bean name="Adresse">
+                    <field name="land"/>
                     <field name="ort"/>
                     <field name="plz"/>
                     <field name="strasse"/>
@@ -16,48 +18,33 @@
         </bean>
     </model>
 
-    <view dir="D:/dev/Openlaszlo Server 4.1.1/Server/lps-4.1.1/ama" laszlo="true" model="Person" name="Person">
+    <view package="person.view" model="Person" >
 
-        <lister title="Personen Auflister">
-            <button_panel refresh="Liste aktualisieren" edit="Vorgang bearbeiten" delete="Vorgang loeschen" />
-            <grid path="data:Person">
-                <column path="vorname" label="Vorname" searchable="true"/>
-                <column path="nachname" label="Nachname" searchable="true"/>
-                <column path="adressen/Adresse[1]/ort" label="1. Adresse" searchable="true"/>
-            </grid>
+        <lister name="PersonLister" label="Personen Auflister" model="Person">
+            <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
+            <command use="OpenEditorCommand" editor="PersonEditor" label="Person bearbeiten" icon="edit"/>
+            <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
+
+            <column path="vorname" label="Vorname" searchable="true"/>
+            <column path="nachname" label="Nachname" searchable="true"/>
+            <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
         </lister>
 
-        <editor title="Personen Bearbeiter">
-            <panel>
-                <button_panel>
-                    <button label="Vorgang speichern" action="SaveBeanAction" icon="Save24.gif"/>
-                    <button label="Vorgang neu anlegen" action="CreateBeanAction" icon="New24.gif"/>
-                    <button label="Vorgang kopieren" action="CopyBeanAction" icon="Copy24.gif"/>
-                    <button label="Vorgang laden" action="LoadBeanAction" icon="Refresh24.gif"/>
-                    <button label="Vorgang loeschen" action="DeleteBeanAction" icon="Delete24.gif"/>
-                </button_panel>
+        <editor name="PersonEditor">
+            <tree_node label="Person" path="." model="Person" icon="user" open="true" panel="default" >
+                <tree_node label="Adressen" path="adressen" icon="table" open="true" model="Adresse" lister="default">
+                    <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
+                    <tree_node label="Adresse {ort}" path="adressen" icon="form" open="true" model="Adresse" panel="default">
+                        <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
+                        <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
+                        <command use="DeleteNodeCommand" label="Adresse loeschen" icon="delete"/>
+                    </tree_node>
+                </tree_node>
+            </tree_node>
 
-                <tree_panel horizontal="true">
-
-                    <panel w="200" x="10" y="30" >
-                      <tree_node path="data:Person" panel="PersonPanel" label="Person" fixedopen="true" >
-                        <tree_node path="adressen/Adresse" panel="AdressePanel" label="Adresse"  fixedopen="true">  </tree_node>
-                      </tree_node>
-                    </panel>
-
-                   <panel path="Person"  labelwidth="100" name="PersonPanel" x="10" y="30" title="Personendaten" >
-                      <input path="vorname"   label="Vorname"/>
-                      <input path="nachname"  label="Nachname"/>
-                      <input path="telefon"   label="Tel"/>
-                   </panel>
-                   <panel path="Adresse" labelwidth="100" name="AdressePanel" x="10" y="30" title="Adressdaten">
-                      <input path="ort"     label="Ort"/>
-                      <input path="plz"     label="Plz"/>
-                      <input path="strasse" label="Strasse"/>
-                   </panel>
-
-                </tree_panel>
-            </panel>
+            <command use="SaveBoCommand" label="Person speichern" icon="save"/>
+            <command use="LoadBoCommand" label="Person laden" icon="refresh"/>
+            <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
         </editor>
 
     </view>

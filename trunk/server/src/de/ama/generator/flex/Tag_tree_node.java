@@ -29,31 +29,39 @@ import java.util.List;
  * Date: 25.04.2008
  */
 public class Tag_tree_node extends Tag {
+
     private boolean listView;
 
     protected void beginWrite() {
-        String label = getAttribute(LABEL);
-        String model = getParentAttribute(MODEL,"");
+        String label = getRequiredAttribute(LABEL);
+        String model = getRequiredParentAttribute(MODEL);
         String path = getRequiredAttribute(PATH);
-        String panel = getAttribute(PANEL, "default");
+        String panel = getAttribute(PANEL, "");
         boolean open = getAttribute(OPEN,false);
         String lister = getAttribute(LISTER,"");
+
+        if(!hasAttribute(LISTER) && !hasAttribute(PANEL)){
+           throwAttributeException(LISTER+" or "+PANEL);
+        }
+
         listView = Util.isNotEmpty(lister);
 
         String icon = getAttribute(ICON, listView?"table":"edit");
 
         writeLine();
-        write("      node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+model+"\", \""+(listView?lister:panel)+"\");");
-        write("      node.defaultOpen="+open+";");
+        write("  node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+model+"\", \""+(listView?lister:panel)+"\");");
+        write("  node.defaultOpen="+open+";");
 
         if(getParent() instanceof Tag_tree_node) {
-           write("      parent.addTemplate(node);");
+           write("  parent.addTemplate(node);");
         } else {
-           write("      root = node;");
+           write("  root = node;");
         }
 
+        executeChildren(Tag_command.class);
+
         if(hasSubNodes()){
-           write("      parent = node;");
+           write("  parent = node;");
         }
 
     }
@@ -66,7 +74,8 @@ public class Tag_tree_node extends Tag {
 
     protected void endWrite() {
         if(listView){
-           write("      parent = parent.parent;");
+           write("");
+           write("  parent = parent.parent; // end of "+getAttribute(LISTER,""));
         }
     }
 

@@ -34,7 +34,6 @@ public class Tag_collection extends Tag {
     protected void mainWrite() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
-        String dir =  getDir();
         String pckg =  getPackage();
 
         int create = getAttribute(CREATE, getChild(0).getAttribute(CREATE,0));

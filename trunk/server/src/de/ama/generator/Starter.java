@@ -67,7 +67,7 @@ public class Starter {
             System.out.println("*   usage:                                        ");
             System.out.println("*   inFile    [input file.xml]        mandatory ! ");
             System.out.println("*   outDir    [output directory]      mandatory ! ");
-            System.out.println("*   targets   [geneation targets]     use: java,flex,laszlo,hibernate,to be continued ... ");
+            System.out.println("*   targets   [geneation targets]     use: java,flex,hibernate,to be continued ... ");
             System.out.println("*********************************************************************************");
             System.exit(1);
         }

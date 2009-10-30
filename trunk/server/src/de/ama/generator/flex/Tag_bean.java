@@ -43,7 +43,6 @@ public class Tag_bean extends Tag{
             f.setPrintWriter(getPrintWriter());
             f.addAttribute(NAME, Util.firstCharToLower(name));
             f.addAttribute(TYPE, pckg+"."+name);
-            f.addAttribute(TREE, getAttribute(TREE));
             f.addAttribute(LABEL, getAttribute(LABEL));
             f.execute();
         }

@@ -5,9 +5,7 @@
            this code is property of Andreas Marochow
     ]]></comment>
 
-    <!--<import file="person.xml"/>-->
-    <!--<import file="user.xml"/>-->
-    <!--<import file="actions.xml"/>-->
+    <import file="Person.xml"/>
     <import file="Vorgang.xml"/>
 
 
@@ -27,6 +25,14 @@
                 </menuitem>
                 <menuitem>
                    <command  label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"  />
+                </menuitem>
+            </menu>
+            <menu name="Personen">
+                <menuitem >
+                    <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
+                </menuitem>
+                <menuitem>
+                   <command  label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"  />
                 </menuitem>
             </menu>
         </menubar>
