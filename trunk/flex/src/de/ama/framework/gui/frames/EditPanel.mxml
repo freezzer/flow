@@ -1,7 +1,8 @@
 <?xml version="1.0" ?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
 	implements="de.ama.framework.gui.frames.Panel"
-    initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   borderStyle="none">
+    initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   
+    borderStyle="none" xmlns:ns1="generated.person.view.*" clipContent="false">
 
     <mx:Script><![CDATA[
         import de.ama.framework.data.Data;
@@ -13,7 +14,9 @@
         import de.ama.framework.util.Util;
 
         private function init():void {
-            caption.text = label;
+            addFields();
+            addPanels();
+            showTitle(label);
         }
 
         public  var gap:int = 10;
@@ -62,6 +65,13 @@
             }
         }
 
+        public function showTitle(txt:String):void {
+        	if(Util.isEmpty(txt)) return;
+        	if(Util.isEqual(getStyle("borderStyle"),"none") ) return;
+			title.text = txt;        	
+        	titleBox.visible = true;
+        }
+        
         public function createDefaultFields(data:Data):void {
             if (Util.isEmpty(label)) {
                 label = data.getName();
@@ -88,7 +98,6 @@
             }
         }
 
-
         public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1):EditField {
             var editField:EditField = new EditField(label, path);
             insertField(editField, x, y);
@@ -107,8 +116,8 @@
             return dateField;
         }
 
-        public function insertListField(label:String, path:String = null, x:int = -1, y:int = -1):ListField {
-            var listField:ListField = new ListField(label, path);
+        public function insertListField(label:String, path:String = null, lister:String=null,x:int = -1, y:int = -1):ListField {
+            var listField:ListField = new ListField(label, path, lister);
             listField.height = 150;
             insertField(listField, x, y);
             return listField;
@@ -124,11 +133,11 @@
         public function insertField(f:EditField, x:int = -1, y:int = -1):void {
             f.x = x > 0 ? x : 10;
             if (y < 0) {
-                if (numChildren > 0) {
+                if (numChildren > 1) {
                     var c:DisplayObject = getChildAt(numChildren - 1);
                     y = c.y + c.height + gap;
                 } else {
-                    y = 30;
+                    y = 20;
                 }
             }
             f.y = y;
@@ -166,9 +175,16 @@
         public function reset():void {
         }
 
+        public function addPanels():void {
+        }
+
+        public function addFields():void {
+        }
+
 
         ]]></mx:Script>
-    <mx:Label text="Label" left="1" top="-1" id="caption" fontWeight="normal" fontSize="10" color="#808080" fontStyle="normal" textAlign="left"/>
 
-
+         <mx:Box id="titleBox" paddingLeft="3" paddingRight="3" y="-7" backgroundColor="#E0E0E0" borderStyle="solid" borderColor="#E0E0E0" cornerRadius="3" horizontalCenter="0" visible="false" height="14">
+             <mx:Label  id="title" fontWeight="normal" fontSize="10" color="#808080" fontStyle="normal" textAlign="left"  text="xxx"/>
+         </mx:Box>
 </mx:Canvas>

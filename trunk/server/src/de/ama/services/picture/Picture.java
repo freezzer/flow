@@ -1,6 +1,6 @@
-package de.ama.services.impl;
+package de.ama.services.picture;
 
-import de.ama.services.PersistentService;
+import de.ama.services.user.User;
 import de.ama.db.PersistentMarker;
 
 /**

@@ -1,6 +1,6 @@
 package de.ama.services;
 
-import de.ama.services.impl.User;
+import de.ama.services.user.User;
 
 /**
  * Created by IntelliJ IDEA.

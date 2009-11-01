@@ -5,16 +5,17 @@ import de.ama.framework.data.Data;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.frames.ApplicationPanel;
 import de.ama.framework.gui.frames.ListPanel;
-import de.ama.framework.gui.frames.TreeEditor;
+import de.ama.framework.gui.frames.IEditor;
 
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Factory;
 
 import mx.core.Application;
+import mx.core.Container;
 
 public class OpenEditorCommand extends Command{
 
-    private var editor:TreeEditor = null;
+    private var editor:IEditor = null;
 
     public function OpenEditorCommand(label:String="Bearbeiten",icon:String="edit") {
         super(label,icon);
@@ -40,9 +41,10 @@ public class OpenEditorCommand extends Command{
     }
 
     private function showEditor(data:Data):void {
-        editor.setData(data);   // null forces new empty data
         var cp:ApplicationPanel = Application.application.getContentPane();
-        cp.addContent(editor);
+        cp.addContent(Container(editor));
+
+        editor.setData(data);   // null forces new empty data
     }
 
 }

@@ -1,8 +1,8 @@
 package de.ama.framework.action;
 
 import de.ama.services.Environment;
-import de.ama.services.impl.User;
-import de.ama.services.impl.UserData;
+import de.ama.services.user.UserData;
+import de.ama.services.user.User;
 import de.ama.util.Util;
 
 

@@ -2,8 +2,8 @@ package de.ama.framework.util {
 import de.ama.framework.command.Command;
 import de.ama.framework.data.Data;
 import de.ama.framework.gui.frames.EditPanel;
+import de.ama.framework.gui.frames.IEditor;
 import de.ama.framework.gui.frames.ListPanel;
-import de.ama.framework.gui.frames.TreeEditor;
 
 public class Factory {
 
@@ -104,8 +104,8 @@ public class Factory {
         register(editor_dictionary,key,c);
     }
 
-    public static function createEditor(type:String):TreeEditor {
-        return TreeEditor(createObject(editor_dictionary,type));
+    public static function createEditor(type:String):IEditor {
+        return IEditor(createObject(editor_dictionary,type));
     }
 
 }

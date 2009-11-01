@@ -1,4 +1,4 @@
-package de.ama.services.impl;
+package de.ama.services.user;
 
 import de.ama.db.PersistentMarker;
 import de.ama.services.Environment;

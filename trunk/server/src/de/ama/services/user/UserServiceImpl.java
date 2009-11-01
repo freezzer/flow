@@ -1,8 +1,9 @@
-package de.ama.services.impl;
+package de.ama.services.user;
 
 import de.ama.db.Query;
 import de.ama.services.Environment;
 import de.ama.services.UserService;
+import de.ama.services.user.UserSession;
 import de.ama.util.Util;
 
 import java.util.HashMap;

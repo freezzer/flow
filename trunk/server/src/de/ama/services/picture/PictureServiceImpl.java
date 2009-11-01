@@ -1,9 +1,10 @@
-package de.ama.services.impl;
+package de.ama.services.picture;
 
 import de.ama.db.Query;
 import de.ama.framework.util.ImageConverter;
 import de.ama.services.Environment;
 import de.ama.services.PictureService;
+import de.ama.services.user.User;
 import de.ama.util.Ini;
 import de.ama.util.Log;
 import de.ama.util.Util;

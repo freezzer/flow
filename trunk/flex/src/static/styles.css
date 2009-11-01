@@ -68,6 +68,16 @@ DataGrid
 	rollOverColor: #F7E8EA;
 	selectionColor: #F3596B;
 	textSelectedColor: #FFFFFF;
+	horizontalGridLineColor: #E0E0E0;
+	verticalGridLineColor: #CCCCCC;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	paddingLeft: 1;
+	paddingRight: 0;
+	paddingTop: 1;
+	paddingBottom: 1;
+	verticalAlign: middle;
+	alternatingItemColors: #F0F0F0, #FFFFFF;
+	headerColors: #F0F0F0, #D0D0D0;
 }
 .dataGridHeader
 {
@@ -75,42 +85,10 @@ DataGrid
 	fontWeight: normal;
 	color: #202020;
 }
-AdvanceTabNavigator
+.dataGridVerticalScrollBar
 {
-	backgroundColor: #E0E0E0;
-	tabStyleName: advanceTabNavigatorTab;
-	firstTabStyleName: advanceTabNavigatorFirstTab;
-	lastTabStyleName: advanceTabNavigatorLastTab;
-	selectedTabTextStyleName: advanceTabNavigatorSelectedTabText;
-	horizontalAlign: left;
-	horizontalGap: 0;
-	tabOffset: 0;
-	paddingTop: 0;
-}
-.advanceTabNavigatorTab
-{
-	backgroundColor: #E0E0E0;
-	fontWeight: normal;
-	horizontalGap: 0;
-	paddingRight: 15;
-	tabStyleName: tabNavigatorTab;
-	selectedTabTextStyleName: tabNavigatorSelectedTabText;
-	firstTabStyleName: tabNavigatorFirstTab;
-}
-.advanceTabNavigatorFirstTab
-{
-	backgroundColor: #E0E0E0;
-	fontWeight: normal;
-	paddingRight: 15;
-}
-.advanceTabNavigatorLastTab
-{
-	backgroundColor: #E0E0E0;
-	fontWeight: normal;
-	paddingRight: 15;
-}
-.tabNavigatorTab
-{
+	cornerRadius: 0;
+	thumbOffset: 1;
 }
 
 

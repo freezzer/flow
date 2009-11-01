@@ -2,7 +2,7 @@ package de.ama.framework.action;
 
 import de.ama.framework.data.*;
 import de.ama.services.Environment;
-import de.ama.services.impl.User;
+import de.ama.services.user.User;
 import de.ama.util.Util;
 import de.ama.db.Query;
 

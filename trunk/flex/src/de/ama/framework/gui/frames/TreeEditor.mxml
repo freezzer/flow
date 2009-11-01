@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas implements="de.ama.framework.command.Invoker"
+<mx:Canvas implements="de.ama.framework.gui.frames.IEditor"
            xmlns:mx="http://www.adobe.com/2006/mxml"
            xmlns:frames="de.ama.framework.gui.frames.*"
            width="100%" height="100%"
@@ -13,8 +13,7 @@
         import de.ama.framework.data.Data;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.gui.icons.IconStore;
-        import de.ama.framework.util.Callback;
-        import de.ama.framework.util.Factory;
+        import de.ama.framework.util.*;
 
         import mx.controls.Button;
         import mx.controls.treeClasses.TreeItemRenderer;
@@ -26,6 +25,9 @@
         [Bindable]
         public var treeMenu:ContextMenu = new ContextMenu();
 
+        private var lastSelectedIndex = 0;
+
+        private var _label:String=null;
 
         public function init():void {
         }
@@ -51,17 +53,45 @@
                 toolbar.addCommand(command);
             }
         }
+        
+        override public function set label(txt:String):void {
+            _label = txt; 
+            super.label = txt;       	
+        }
+        
+        override public function get label():String {
+	    	if(getData() != null){
+		        if (Util.isEmpty(_label)) {
+		            return getData().getName();
+		        }
+		
+		        if(_label.indexOf("{")>=0 && _label.indexOf("}")>0) {
+		           var pre:String = _label.split("{")[0];
+		           var post:String = _label.split("}")[1];
+		           var lpath:String = _label.substring(_label.indexOf("{")+1,_label.indexOf("}"));
+		           var prop:String = getData().getProperty(lpath);
+		           return pre+prop+post;
+		        }
+	        }
+	        return _label;
+        }
+
 
         private function expandDefaultNodes():void {
             if (rootNode != null) {
                 rootNode.tree = myTree;
                 rootNode.openDefaultNodes();
-                rootNode.select();
+                myTree.selectedIndex = lastSelectedIndex;
+                var panel:Panel = getCurrentPanel();
             }
         }
 
         public function get selectedNode():TreeNode {
             return TreeNode(myTree.selectedItem);
+        }
+
+        public function get selectedNodeIndex():int {
+            return myTree.selectedIndex;
         }
 
         public function treeChanged(event:Event):void {
@@ -132,13 +162,14 @@
             rootNode = getPrototypeTree();
             rootNode.setData(data);
 
-            label = rootNode.label;
+            label = _label;
 
             callLater(expandDefaultNodes);
         }
 
 
         public function getData():Data {
+            lastSelectedIndex = myTree.selectedIndex;
             return rootNode.getData();
         }
 

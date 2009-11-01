@@ -132,7 +132,7 @@ public class Util
     }
 
     public static function getObjectValue(obj:Object, path:String):Object {
-    	if(isEmpty(path) || isEqual(".",path) || isEqual("/",path) ){
+    	if(isEmpty(path) || isEqual(".",path) ){
     		return obj;
     	}
     	
