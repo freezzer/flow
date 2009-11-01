@@ -56,9 +56,8 @@ public class Tag_input extends Tag {
         } else if (LOOKUP.equalsIgnoreCase(type)) {
             write("field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         } else if (LIST.equalsIgnoreCase(type)) {
-            write("field = insertListField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-            String listerName = isLeaf() ? getRequiredAttribute(LISTER) : getChild(0).getAttribute(NAME);
-            write("ListField(field).setListPanel(Factory.createLister(\""+listerName+"\"));");
+            String lister = isLeaf() ? getRequiredAttribute(LISTER) : getChild(0).getAttribute(NAME);
+            write("field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xy+ ");");
         } else if (AREA.equalsIgnoreCase(type)) {
             write("field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
         }

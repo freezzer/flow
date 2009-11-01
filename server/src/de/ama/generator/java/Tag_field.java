@@ -43,7 +43,7 @@ public class Tag_field extends Tag {
         boolean str = "String".equals(type);
         if("date".equalsIgnoreCase(type))  { type = "String";  create = false; str = true;}
         if("number".equalsIgnoreCase(type)){ type = "String";  create = false; }
-        if("boolean".equalsIgnoreCase(type)){ type = "Boolean"; create = false; }
+        if("boolean".equalsIgnoreCase(type)){ type = "boolean"; create = false; }
         writeLine();
         write("private "+type+" "+ name +";");
         if(str){

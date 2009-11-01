@@ -22,7 +22,7 @@ public class Environment {
 
         PreMainInitializer.initForServer();
         
-        singletons.put(UserService.NAME         ,getBean("de.ama.services.impl.UserServiceImpl"));
+        singletons.put(UserService.NAME         ,getBean("de.ama.services.user.UserServiceImpl"));
         singletons.put(ActionService.NAME       ,getBean("de.ama.services.impl.ActionServiceImpl"));
         singletons.put(MailService.NAME         ,getBean("de.ama.services.impl.MailServiceImpl"));
         singletons.put(GoogleService.NAME         ,getBean("de.ama.services.impl.GoogleServiceImpl"));

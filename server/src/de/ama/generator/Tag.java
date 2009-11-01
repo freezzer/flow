@@ -176,6 +176,10 @@ public class Tag extends XmlElement implements Const {
         if(printWriter!=null){
             return printWriter;
         }
+
+        if(isRoot()) 
+            return printWriter;
+
         return ((Tag)getParent()).getPrintWriter();
     }
 

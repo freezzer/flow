@@ -30,7 +30,7 @@
             <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
         </lister>
 
-        <editor name="PersonEditor">
+        <tree_editor name="PersonEditor" label="Daten von {nachname} ">
             <tree_node label="Person" path="." model="Person" icon="user" open="true" panel="default" >
                 <tree_node label="Adressen" path="adressen" icon="table" open="true" model="Adresse" lister="default">
                     <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
@@ -45,7 +45,7 @@
             <command use="SaveBoCommand" label="Person speichern" icon="save"/>
             <command use="LoadBoCommand" label="Person laden" icon="refresh"/>
             <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
-        </editor>
+        </tree_editor>
 
     </view>
 

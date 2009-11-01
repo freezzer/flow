@@ -1,5 +1,6 @@
 package de.ama.framework.gui.fields {
 import de.ama.framework.gui.frames.ListPanel;
+import de.ama.framework.util.Factory;
 import de.ama.framework.util.Util;
 
 import mx.controls.TextArea;
@@ -7,12 +8,17 @@ import mx.controls.TextArea;
 public class ListField extends EditField{
 
 
-    public function ListField(caption:String="TextField", path:String=null) {
+    public function ListField(caption:String="ListField", path:String=null, lister:String=null) {
         super(caption,path);
+        if(!Util.isEmpty(lister)){
+            setListPanel(Factory.createLister(lister));
+        }
     }
 
     public override function createInput():void{
-        setListPanel(new ListPanel());
+        if(_input==null){
+            setListPanel(new ListPanel());
+        }
     }
 
     public function setListPanel(lp:ListPanel):void{

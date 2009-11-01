@@ -28,7 +28,7 @@ import de.ama.util.Util;
  */
 public class Tag_command extends Tag {
 
-    protected void beginWrite() {
+    protected void mainWrite() {
 
         String name = getAttribute(NAME);
         String dir =  getDir();

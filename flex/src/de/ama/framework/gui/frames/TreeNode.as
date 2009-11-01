@@ -98,7 +98,6 @@ public class TreeNode implements Invoker{
     }
 
     public function get label():String {
-    	
     	if(_data!=null){
 	        if (Util.isEmpty(_label)) {
 	            return _data.getName();
@@ -112,9 +111,7 @@ public class TreeNode implements Invoker{
 	           return pre+prop+post;
 	        }
         }
-
         return _label;
-
     }
 
     public function getData():Data {

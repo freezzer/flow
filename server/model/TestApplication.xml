@@ -5,6 +5,7 @@
            this code is property of Andreas Marochow
     ]]></comment>
 
+    <import file="Permission.xml"/>
     <import file="Person.xml"/>
     <import file="Vorgang.xml"/>
 
@@ -19,20 +20,26 @@
                 <menuitem label="Anmelden" command="LoginCommand" />
                 <menuitem label="Info"     command="ShowinfoCommand" />
             </menu>
-            <menu name="Vorgaenge">
+            <menu name="Daten">
                 <menuitem >
                     <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
                 </menuitem>
                 <menuitem>
                    <command  label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"  />
                 </menuitem>
-            </menu>
-            <menu name="Personen">
                 <menuitem >
                     <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
                 </menuitem>
                 <menuitem>
                    <command  label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"  />
+                </menuitem>
+            </menu>
+            <menu name="Admin">
+                <menuitem >
+                    <command label="Uebersicht Berechtigungen" use="OpenListerCommand" lister="PermissionLister"/>
+                </menuitem>
+                <menuitem>
+                   <command  label="Neue Berechtigung anlegen" use="OpenEditorCommand" editor="PermissionEditor"  />
                 </menuitem>
             </menu>
         </menubar>

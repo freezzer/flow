@@ -20,6 +20,7 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.util.Util;
 
 /**
  * User: x
@@ -34,6 +35,7 @@ public class Tag_lister extends Tag {
 
     @Override
     protected void mainWrite() {
+        String label = getAttribute(LABEL);
         String model = getRequiredAttribute(MODEL);
         String listerName = getParentAttribute(NAME,model+"Lister");
         String dir =  getDir();
@@ -59,24 +61,19 @@ public class Tag_lister extends Tag {
         write("     } ");
         write("");
         write("     override public function addCollumns():void {");
+        if(!Util.isEmpty(label))
+        write("          label = \""+label+"\"");
+        write("  ");
                          executeChildren(Tag_column.class);
         write("     } ");
-        write("");
+        write("}}");
+        writeLine();
+        flush();
 
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+listerName+";");
         collectCode(Tag_bootstrap.REGISTER_LISTER, "         Factory.registerLister(\""+listerName+"\", "+listerName+");");
 
     }
-
-
-    protected void endWrite() {
-        write("  }");
-        write("}");
-        writeLine();
-        flush();
-    }
-
-
 
 
 }

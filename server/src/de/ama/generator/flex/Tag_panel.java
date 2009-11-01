@@ -37,7 +37,47 @@ public class Tag_panel extends Tag {
         return 0;
     }
 
+
     protected void beginWrite() {
+
+        if(getPrintWriter()==null) return;
+
+        if(isLeaf()){
+                String panelName = getRequiredAttribute(USE);
+                String label = getAttribute(LABEL,"");
+                String path = getAttribute(PATH,"");
+                int x  = getAttribute(X,-1);
+                int y  = getAttribute(Y,-1);
+                int w  = getAttribute(W,-1);
+                int h  = getAttribute(H,-1);
+                String gap  = getParentAttribute(GAP,"");
+                boolean  border = getAttribute(BORDER,false);
+                write("        panel=Factory.createPanel(\""+panelName+"\");");
+           if(Util.isNotEmpty(label))
+                write("        panel.label=\""+label+"\";");
+           if(x>=0)
+                write("        panel.x="+x+";");
+           if(y>=0)
+                write("        panel.y="+y+";");
+           if(w>=0)
+                write("        panel.width="+w+";");
+           if(h>=0)
+                write("        panel.height="+h+";");
+           if(Util.isNotEmpty(gap))
+                write("        panel.gap="+gap+";");
+           if(Util.isNotEmpty(path))
+                write("        panel.path=\""+path+"\";");
+
+                write("        panel.setStyle(\"borderStyle\",\""+(border?"solid":"none")+"\");");
+                write("        addChild(panel);");
+        } else {
+                String panelName = getRequiredAttribute(NAME);
+                write("        addChild(Factory.createPanel(\""+panelName+"\"));");
+        }
+    }
+
+
+    protected void mainWrite() {
 
         String use = getAttribute(USE, "");
         if (Util.isNotEmpty(use)) return;  // reiner Platzhalter
@@ -69,8 +109,6 @@ public class Tag_panel extends Tag {
 
         write("public class "+name+" "+" extends EditPanel { ");
         write("    public function "+name+"() {");
-        write("        var field:EditField;");
-        write("        var panel:EditPanel;");
         write("        x="+x+";  y="+y+";");
         write("        setStyle(\"borderStyle\",\""+(border?"solid":"none")+"\");");
    if(w>0)
@@ -83,56 +121,23 @@ public class Tag_panel extends Tag {
         write("        label=\""+label+"\";");
    if(Util.isNotEmpty(path))
         write("        path=\""+path+"\";");
+        write("    }");
         write("   ");
+        write("     override public function addPanels():void {");
+        write("        var panel:EditPanel;");
+                        executeChildren(Tag_panel.class);
+        write("     } ");
+        write("   ");
+        write("     override public function addFields():void {");
+        write("        var field:EditField;");
+                        executeChildren(Tag_input.class);
+        write("     } ");
+        write("");
+        write("}}");
+        flush();
 
         collectCode(Tag_bootstrap.FORCE_IMPORT, "import "+pckg+"."+name+";");
         collectCode(Tag_bootstrap.REGISTER_PANEL, "         Factory.registerPanel(\""+name+"\", "+name+");");
-    }
-
-    protected void endWrite() {
-        String use = getAttribute(USE, "");
-        if (Util.isNotEmpty(use)) return;  // reiner Platzhalter
-
-        write("   ");
-        List<Tag> tags = getChildren(Tag_panel.class);
-        for (int i = 0; i < tags.size(); i++) {
-            Tag tag = tags.get(i);
-            if(tag.isLeaf()){
-                String panelName = tag.getRequiredAttribute(USE);
-                String label = tag.getAttribute(LABEL,"");
-                String path = tag.getAttribute(PATH,"");
-                int x  = tag.getAttribute(X,-1);
-                int y  = tag.getAttribute(Y,-1);
-                int w  = tag.getAttribute(W,-1);
-                int h  = tag.getAttribute(H,-1);
-                String gap  = tag.getParentAttribute(GAP,"");
-                boolean  border = tag.getAttribute(BORDER,false);
-                write("        panel=Factory.createPanel(\""+panelName+"\");");
-           if(Util.isNotEmpty(label))
-                write("        panel.label=\""+label+"\";");
-           if(x>=0)
-                write("        panel.x="+x+";");
-           if(y>=0)
-                write("        panel.y="+y+";");
-           if(w>=0)
-                write("        panel.width="+w+";");
-           if(h>=0)
-                write("        panel.height="+h+";");
-           if(Util.isNotEmpty(gap))
-                write("        panel.gap="+gap+";");
-           if(Util.isNotEmpty(path))
-                write("        panel.path=\""+path+"\";");
-
-                write("        panel.setStyle(\"borderStyle\",\""+(border?"solid":"none")+"\");");
-                write("        addChild(panel);");
-            } else {
-                String panelName = tag.getRequiredAttribute(NAME);
-                write("        addChild(Factory.createPanel(\""+panelName+"\"));");
-            }
-        }
-        write("    }");
-        write("}}");
-        flush();
     }
 
 

@@ -61,9 +61,9 @@
         </bean>
     </model>
 
-    <view package="vorgang.view" model="Vorgang">
+    <view package="vorgang.view" model="Vorgang" permission_context="Vorgang">
 
-        <editor name="VorgangEditor">
+        <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}">
             <tree_node label="Vorgang {nummer}" icon="lorry" model="Vorgang" path="." open="true" panel="default">
                 <tree_node label="Transition" path="transitions" icon="arrow.right" model="Transition" open="true" panel="default">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel"/>
@@ -111,7 +111,7 @@
             <command use="LoadBoCommand" label="Vorgang laden" icon="refresh"/>
             <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
 
-        </editor>
+        </tree_editor>
 
         <!--  ********************* Panels *******************************   -->
 
@@ -131,13 +131,13 @@
         </panel>
 
         <panel name="PosPanel">
-            <panel name="PosHead" y="5" x="5" label="Warendaten" border="true">
+            <panel name="PosHead" y="10" x="5" label="Warendaten" border="true">
                 <input label="Nummer" path="nummer"/>
                 <input label="Warennummer" path="warennummer"/>
                 <input label="Rohgewicht" path="roh_gewicht" type="number"/>
                 <input label="Nettogewicht" path="netto_gewicht" type="number"/>
             </panel>
-            <panel use="DokumentePanel" y="5" x="450" border="true" label="Dokumente"/>
+            <panel use="DokumentePanel" y="10" x="445" border="true" label="Dokumente"/>
         </panel>
 
         <panel name="DokumentePanel" editable="true" label="Unterlagen PackStuecke Verschluesse">
@@ -176,7 +176,7 @@
 
         <!--  ********************* Listen *******************************   -->
 
-        <lister name="VorgangLister" model="Vorgang">
+        <lister name="VorgangLister" model="Vorgang" label="Vorgaenge">
             <command use="LoadTableCommand" icon="refresh" label="Uebersicht Vorgaenge neu laden"/>
             <command use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen" icon="edit"/>
             <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
@@ -186,7 +186,7 @@
             <column label="Typ" path="typ"/>
         </lister>
 
-        <lister name="PositionenLister" model="Postion">
+        <lister name="PositionenLister" model="Postion" label="Ware" >
             <column label="Nummer" path="nummer"/>
             <column label="Warennummer" path="warennummer"/>
             <column label="Rohgewicht" path="roh_gewicht"/>

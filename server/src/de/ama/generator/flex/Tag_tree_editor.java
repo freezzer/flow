@@ -27,7 +27,7 @@ import de.ama.util.Util;
  * Date: 25.04.2008
  */
 
-public class Tag_editor extends Tag {
+public class Tag_tree_editor extends Tag {
     @Override
     protected int getIndent() {
         return 0;
@@ -50,32 +50,31 @@ public class Tag_editor extends Tag {
         write("import de.ama.framework.command.*; ");
         write("import de.ama.framework.data.Data;");
         write("import de.ama.framework.util.*;");
-        write("public class "+editorName+" extends Editor {");
+        write("public class "+editorName+" extends TreeEditor {");
         write("     ");
         write("     override public function createData():Data {");
         write("       return Factory.createBean(\""+model+"\"); ");
         write("     } ");
         write("     ");
-
         write("     override public function addCommands():void {");
         write("        label = \""+label+"\"");
         write("        var cmd:Command;");
-                        executeChildren(Tag_command.class);
+                       executeChildren(Tag_command.class);
         write("     } ");
         write("");
-
-        write("     override public function addPanels():void {");
-        write("        var panel:EditPanel;");
-                        executeChildren(Tag_panel.class);
-        write("     } ");
+        write("     override public function getPrototypeTree():TreeNode {");
+        write("       var parent:TreeNode;");
+        write("       var node:TreeNode;");
+        write("       var root:TreeNode;");
+        write("       var cmd:Command;");
         write("");
+                      executeChildren(Tag_tree_node.class);
+        write("       return root; ");
+        write("     } ");
         write("   }");
         write("}");
-
         writeLine();
         flush();
-
     }
-
 
 }

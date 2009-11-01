@@ -1,7 +1,7 @@
 package de.ama.framework.servlet;
 
 import de.ama.services.Environment;
-import de.ama.services.impl.User;
+import de.ama.services.user.User;
 import de.ama.util.Ini;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
