@@ -34,7 +34,7 @@ public class Tag_tree_node extends Tag {
 
     protected void beginWrite() {
         String label = getRequiredAttribute(LABEL);
-        String model = getRequiredParentAttribute(MODEL);
+        String type = getRequiredParentAttribute(TYPE);
         String path = getRequiredAttribute(PATH);
         String panel = getAttribute(PANEL, "");
         boolean open = getAttribute(OPEN,false);
@@ -49,7 +49,7 @@ public class Tag_tree_node extends Tag {
         String icon = getAttribute(ICON, listView?"table":"edit");
 
         writeLine();
-        write("  node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+model+"\", \""+(listView?lister:panel)+"\");");
+        write("  node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+(listView?lister:panel)+"\");");
         write("  node.defaultOpen="+open+";");
 
         if(getParent() instanceof Tag_tree_node) {

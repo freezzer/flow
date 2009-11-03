@@ -49,9 +49,6 @@ public class Tag_action extends Tag {
         write("import de.ama.app.action.*;");
         write("import de.ama.app.service.*;");
         writeLine();
-
-        getWriter().registerClass(name,pckg+"."+name );
-
     }
 
 

@@ -36,8 +36,8 @@ public class Tag_lister extends Tag {
     @Override
     protected void mainWrite() {
         String label = getAttribute(LABEL);
-        String model = getRequiredAttribute(MODEL);
-        String listerName = getParentAttribute(NAME,model+"Lister");
+        String type = getRequiredAttribute(TYPE);
+        String listerName = getParentAttribute(NAME,type+"Lister");
         String dir =  getDir();
         String pckg =  getPackage();
 
@@ -52,7 +52,7 @@ public class Tag_lister extends Tag {
         write("public class "+listerName+" extends ListPanel {");
         write("     ");
         write("     override public function createData():Data {");
-        write("         return Factory.createBean(\""+model+"\"); ");
+        write("         return Factory.createBean(\""+type+"\"); ");
         write("     } ");
         write("");
         write("     override public function addCommands():void {");

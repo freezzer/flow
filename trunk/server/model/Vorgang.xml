@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 <define>
+    <permission package="permission" name="PermissionVorgang"/>
 
     <model package="vorgang.bom">
+
+
         <bean name="Vorgang" persistent="true" unique-key="id" editor="VorgangEditor">
             <field name="nummer"/>
             <field name="id"/>
@@ -61,13 +64,12 @@
         </bean>
     </model>
 
-    <view package="vorgang.view" model="Vorgang" permission_context="Vorgang">
-
+    <view package="vorgang.view" type="Vorgang">
         <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}">
-            <tree_node label="Vorgang {nummer}" icon="lorry" model="Vorgang" path="." open="true" panel="default">
-                <tree_node label="Transition" path="transitions" icon="arrow.right" model="Transition" open="true" panel="default">
+            <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="." open="true" panel="default">
+                <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition" open="true" panel="default">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel"/>
-                    <tree_node label="Positionen" path="workmodel.positionen" model="Position" lister="PositionenLister"  open="true">
+                    <tree_node label="Positionen" path="workmodel.positionen" type="Position" lister="PositionenLister"  open="true">
                         <command use="CreateNodeCommand" label="neue Position" icon="new"/>
                         <!--<tree_node label="Dokumente {nummer}" path="workmodel.positionen" panel="DokumentePanel"/>-->
                         <tree_node label="Position {nummer}" path="workmodel.positionen" panel="PosPanel">
@@ -75,7 +77,7 @@
                             <command use="CopyNodeCommand" label="Position kopieren" icon="copy"/>
                             <command use="DeleteNodeCommand" label="Position loeschen" icon="delete"/>
 
-                            <!--<tree_node label="Verschluesse" path="verschluesse" model="Verschluss" lister="VerschlussLister">-->
+                            <!--<tree_node label="Verschluesse" path="verschluesse" type="Verschluss" lister="VerschlussLister">-->
                             <!--<command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>-->
                             <!--<tree_node label="Verschluss {nummer}" path="verschluesse" panel="VerschlussPanel" icon="lock"   type="Verschluss">-->
                             <!--<command  use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>-->
@@ -84,7 +86,7 @@
                             <!--</tree_node>-->
                             <!--</tree_node>-->
 
-                            <!--<tree_node label="Packstuecke" path="packstuecke" model="Packstueck" lister="PackstueckLister">-->
+                            <!--<tree_node label="Packstuecke" path="packstuecke" type="Packstueck" lister="PackstueckLister">-->
                             <!--<command  use="CreateNodeCommand" label="neues Packstueck" icon="new"/>-->
                             <!--<tree_node label="Packstueck {nummer}" path="packstuecke" panel="PackStueckPanel" icon="pack"  >-->
                             <!--<command  use="CreateNodeCommand" label="neues Packstueck" icon="new"/>-->
@@ -93,7 +95,7 @@
                             <!--</tree_node>-->
                             <!--</tree_node>-->
 
-                            <!--<tree_node label="Unterlagen" path="unterlagen" model="Unterlage" lister="UnterlagenLister">-->
+                            <!--<tree_node label="Unterlagen" path="unterlagen" type="Unterlage" lister="UnterlagenLister">-->
                             <!--<command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>-->
                             <!--<tree_node label="Unterlage {art}" path="unterlagen" panel="UnterlagePanel" icon="dock"  >-->
                             <!--<command  use="CreateNodeCommand" label="neue Unterlage" icon="new"/>-->
@@ -142,7 +144,7 @@
 
         <panel name="DokumentePanel" editable="true" label="Unterlagen PackStuecke Verschluesse">
             <input label="Unterlagen" path="unterlagen" type="list">
-                <lister name="UnterlagenLister" model="Unterlage">
+                <lister name="UnterlagenLister" type="Unterlage">
                     <command use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
                     <command use="CopyNodeCommand" label="Unterlage kopieren" icon="copy"/>
                     <command use="DeleteNodeCommand" label="Unterlage loeschen" icon="delete"/>
@@ -154,7 +156,7 @@
                 </lister>
             </input>
             <input label="Packstuecke" path="packstuecke" type="list">
-                <lister name="PackstueckLister" model="Packstueck">
+                <lister name="PackstueckLister" type="Packstueck">
                     <command use="CreateNodeCommand" label="neues Packstueck" icon="new"/>
                     <command use="CopyNodeCommand" label="Packstueck kopieren" icon="copy"/>
                     <command use="DeleteNodeCommand" label="Packstueck loeschen" icon="delete"/>
@@ -164,7 +166,7 @@
                 </lister>
             </input>
             <input label="Verschluesse" path="verschluesse" type="list">
-                <lister name="VerschlussLister" model="Verschluss">
+                <lister name="VerschlussLister" type="Verschluss">
                     <command use="CreateNodeCommand" label="neuer Verschluss" icon="new"/>
                     <command use="CopyNodeCommand" label="Verschluss kopieren" icon="copy"/>
                     <command use="DeleteNodeCommand" label="Verschluss loeschen" icon="delete"/>
@@ -176,7 +178,7 @@
 
         <!--  ********************* Listen *******************************   -->
 
-        <lister name="VorgangLister" model="Vorgang" label="Vorgaenge">
+        <lister name="VorgangLister" type="Vorgang" label="Vorgaenge">
             <command use="LoadTableCommand" icon="refresh" label="Uebersicht Vorgaenge neu laden"/>
             <command use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen" icon="edit"/>
             <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
@@ -186,7 +188,7 @@
             <column label="Typ" path="typ"/>
         </lister>
 
-        <lister name="PositionenLister" model="Postion" label="Ware" >
+        <lister name="PositionenLister" type="Postion" label="Ware" >
             <column label="Nummer" path="nummer"/>
             <column label="Warennummer" path="warennummer"/>
             <column label="Rohgewicht" path="roh_gewicht"/>

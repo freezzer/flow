@@ -57,7 +57,8 @@ public class Tag_bean extends Tag{
         write("package "+pckg+";");
         writeLine();
 
-        getWriter().registerClass(name,pckg+"."+name );
+        collectCode(Tag_bootstrap.BOOTSTRAP_IMPORT, "import "+pckg+"."+name+";");
+        collectCode(Tag_bootstrap.REGISTER_BEAN, "         Environment.registerBean(\""+name+"\", "+name+".class);");
 
         ///////////////////////////////////////////////////////////
 
