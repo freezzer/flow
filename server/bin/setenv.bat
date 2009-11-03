@@ -1,4 +1,4 @@
-set JAVA=D:\Java\jdk1.5.0_03\bin\java
+set JAVA=C:\Programme\Java\jdk1.5.0_14\bin\java
 set HOME=D:\dev\flow\server
 set LIB=%HOME%\lib
 set CATALOG=flow

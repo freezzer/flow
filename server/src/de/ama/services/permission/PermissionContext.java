@@ -52,7 +52,7 @@ public class PermissionContext implements java.io.Serializable , de.ama.db.Persi
          addSwitches();
     }
 
-    private void add(PermissionSwitch ps){
+    protected void add(PermissionSwitch ps){
        if(!switches.contains(ps)){
            switches.add(ps);
        }

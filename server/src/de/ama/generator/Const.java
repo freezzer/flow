@@ -33,7 +33,6 @@ public interface Const {
     public static final String PANEL = "panel";
     public static final String EDITOR = "editor";
     public static final String LISTER = "lister";
-    public static final String MODEL = "model";
     public static final String TYPE = "type";
     public static final String CREATE = "create";
     public static final String MANDATORY = "mandatory";

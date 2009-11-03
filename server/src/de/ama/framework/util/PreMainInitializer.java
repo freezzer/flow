@@ -68,6 +68,7 @@ public class PreMainInitializer {
             // Klassen mit den folgenden Pattern im Namen werden geladen. Es wird versucht eine Methode
             // namens preMain() auf ihnen aufzurufen.
             preMainInitializer.addKeyWord("Data");
+            preMainInitializer.addKeyWord("Bootstrap");
 
 
             // Die Zip-archives in der gleichen Reihenfolge wie im ClassPath angeben.

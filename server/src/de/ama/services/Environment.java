@@ -12,27 +12,28 @@ import java.util.Map;
  * Date: 19.05.2008
  */
 public class Environment {
-    private static Map beanDictionary = new HashMap();
-    private static Map singletons = new HashMap();
+    private static Map<String,Class> beanDictionary = new HashMap<String,Class>();
+    private static Map<String,Object> singletons = new HashMap<String,Object>();
 
     /**
      * Common Umgebung "hochfahren"
      */
     public static void initCommon(){
 
+        singletons.put(UserService.NAME         , Util.createObject("de.ama.services.user.UserServiceImpl"));
+        singletons.put(PermissionService.NAME  , Util.createObject("de.ama.services.permission.PermissionServiceImpl"));
+        singletons.put(ActionService.NAME       ,Util.createObject("de.ama.services.impl.ActionServiceImpl"));
+        singletons.put(MailService.NAME         ,Util.createObject("de.ama.services.impl.MailServiceImpl"));
+        singletons.put(GoogleService.NAME         ,Util.createObject("de.ama.services.impl.GoogleServiceImpl"));
+
         PreMainInitializer.initForServer();
-        
-        singletons.put(UserService.NAME         ,getBean("de.ama.services.user.UserServiceImpl"));
-        singletons.put(ActionService.NAME       ,getBean("de.ama.services.impl.ActionServiceImpl"));
-        singletons.put(MailService.NAME         ,getBean("de.ama.services.impl.MailServiceImpl"));
-        singletons.put(GoogleService.NAME         ,getBean("de.ama.services.impl.GoogleServiceImpl"));
     }
     /**
      * Produktionsumgebung "hochfahren"
      */
     public static void initProduction(){
         if(!beanDictionary.isEmpty()) return ;
-        singletons.put(PersistentService.NAME   ,getBean("de.ama.services.impl.PersistentServiceImpl"));
+        singletons.put(PersistentService.NAME   ,Util.createObject("de.ama.services.impl.PersistentServiceImpl"));
 
         initCommon();
     }
@@ -44,7 +45,7 @@ public class Environment {
      */
     public static void initTest(){
         if(!singletons.isEmpty()) return ;
-        singletons.put(PersistentService.NAME   ,getBean("de.ama.services.impl.PersistentServiceTestImpl"));
+        singletons.put(PersistentService.NAME   ,Util.createObject("de.ama.services.impl.PersistentServiceTestImpl"));
 
         initCommon();
     }
@@ -81,6 +82,10 @@ public class Environment {
         return (GoogleService) getSingleton(GoogleService.NAME);
     }
 
+    public static PermissionService getPermissionService() {
+        return (PermissionService) getSingleton(PermissionService.NAME);
+    }
+
     public static Object getSingleton(String name) {
         return singletons.get(name);
     }
@@ -105,27 +110,16 @@ public class Environment {
     }
 
     public static Class getBeanClass(String name) {
-        String className = (String) beanDictionary.get(name);
-
-        if(className==null && !name.contains(".")){
-            className="server.beans."+Util.firstCharToUpper(name);
+        Class c =  beanDictionary.get(name);
+        if(c==null){
+            throw new IllegalArgumentException("bean not registered for name ["+ name+"]");
         }
-
-        if(className==null ){
-            className=name;
-        }
-
-        Class ret = null;
-        try {
-            ret = Util.createClass(className);
-        } catch (Exception e) {
-            throw new IllegalArgumentException("can not create bean-class for name ["+ name+"]",e);
-        }
-        if(ret==null){
-            throw new IllegalArgumentException("can not create bean-class for name ["+ name+"]");
-        }
-        return ret;
+        return c;
     }
 
+
+    public static void registerBean(String name, Class c ){
+        beanDictionary.put(name,c);
+    }
 
 }

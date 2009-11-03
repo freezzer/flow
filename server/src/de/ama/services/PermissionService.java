@@ -15,6 +15,8 @@ public interface PermissionService {
     public static String NAME = "PermissionService";
 
     public PermissionContext getPermissionContext(String userId, String context);
-    public List<PermissionContext> getPermissionContexts(String userId);
-
+    public List<PermissionContext> getUserPermissionContexts(String userId);
+    public List<String> getAllPermissionContextKeys();
+    public void registerPermissionContext(String context, Class  c );
+    
 }

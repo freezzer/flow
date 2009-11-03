@@ -36,8 +36,8 @@ public class Tag_tree_editor extends Tag {
     @Override
     protected void mainWrite() {
         String label = getRequiredAttribute(LABEL);
-        String model = getRequiredParentAttribute(MODEL);
-        String editorName = getParentAttribute(NAME,model+"Editor");
+        String type = getRequiredParentAttribute(TYPE);
+        String editorName = getParentAttribute(NAME,type+"Editor");
         String dir =  getDir();
         String pckg =  getPackage();
 
@@ -53,7 +53,7 @@ public class Tag_tree_editor extends Tag {
         write("public class "+editorName+" extends TreeEditor {");
         write("     ");
         write("     override public function createData():Data {");
-        write("       return Factory.createBean(\""+model+"\"); ");
+        write("       return Factory.createBean(\""+type+"\"); ");
         write("     } ");
         write("     ");
         write("     override public function addCommands():void {");

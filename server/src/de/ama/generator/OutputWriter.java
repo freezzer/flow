@@ -19,15 +19,6 @@ public class OutputWriter {
     private File inDir;
     private String targets;
     private Map objectStore = new HashMap();
-    private XmlElement classDictionary = new XmlElement("dictionary", "");
-
-    public void registerClass(String name, String className) {
-        XmlElement node = new XmlElement("element", "");
-        node.addChild(new XmlElement("name", name));
-        node.addChild(new XmlElement("class", className));
-        classDictionary.addChild(node);
-    }
-
 
     public Map getObjectStore() {
         return objectStore;
@@ -110,8 +101,6 @@ public class OutputWriter {
         }
 
 
-        XmlModel m = new XmlModel(classDictionary);
-        m.writeFile(new File(outDir, "repository.xml").getAbsolutePath(), true);
     }
 
     ///////////////////////////// Logging //////////////////////////////////////////////

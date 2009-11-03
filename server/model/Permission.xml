@@ -1,18 +1,19 @@
 <?xml version="1.0"?>
 <define>
 
-    <view package="permission.view" model="Permission" >
+    <view package="permission.view" type="Permission" >
 
-        <lister name="PermissionLister" label="Berechtigungen Auflister" model="Permission">
+        <lister name="PermissionLister" label="Berechtigungen Auflister" type="Permission">
             <command use="LoadTableCommand" icon="refresh" label="Uebersicht Berechtigungen neu laden"/>
             <command use="OpenEditorCommand" editor="PermissionEditor" label="Berechtigung bearbeiten" icon="edit"/>
             <command use="DeleteBoCommand" label="Berechtigung loeschen" icon="delete"/>
 
+            <column path="permitted" label="On/Off" searchable="true"/>
             <column path="userName" label="Name" searchable="true"/>
-            <column path="context" label="Bereich" searchable="true"/>
+            <column path="context" label="Kontext" searchable="true"/>
         </lister>
 
-        <editor name="PermissionEditor" model="Permission" label="Berechtigung fuer {userName}">
+        <editor name="PermissionEditor" type="Permission" label="Berechtigung fuer {userName}">
             <panel use="default" path="." label="Switches" x="10" y="10" gap="3" />
 
             <command use="SaveBoCommand" label="Berechtigung speichern" icon="save"/>
