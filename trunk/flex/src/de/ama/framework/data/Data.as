@@ -40,18 +40,19 @@ public class Data{
         for each(var key:String in info.properties) {
             var value:* = this[key];
             if(value is Data){
-               value = Data(value).clone();
+               dst[key] = Data(value).clone();
             } else if(value is Array){
-               var destTable:Array = new Array(value.length);
-               var array:Array = value as Array;
+               var sourceTable:Array = value as Array;
+               var destTable:Array = new Array();
                var d:Data = null;
-               for (var i:int=0; i< array.length; i++ ) {
-  					d= Data(array[i]);
-               	    destTable[i] =  d;
+               for (var i:int=0; i< sourceTable.length; i++ ) {
+  					d= Data(sourceTable[i]);
+               	    destTable.push(d.clone());
                }
-                  
+               dst[key] = destTable;
+            } else {
+               dst[key] = value;
             }
-            dst[key] = value;
         }
 
         dst.oid=0;

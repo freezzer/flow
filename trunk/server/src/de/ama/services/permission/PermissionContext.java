@@ -7,6 +7,9 @@
 
 package de.ama.services.permission;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class PermissionContext implements java.io.Serializable , de.ama.db.PersistentMarker {
 
     private boolean permitted;
@@ -24,5 +27,36 @@ public class PermissionContext implements java.io.Serializable , de.ama.db.Persi
     private String context;
     public  String getContext() { return de.ama.util.Util.saveToString(context); }
     public  void   setContext(String in) {  context=in; }
+
+    private List<PermissionSwitch> switches = new ArrayList<PermissionSwitch>();
+    public List<PermissionSwitch> getSwitches() {   return switches; }
+    public void setSwitches(List<PermissionSwitch> switches) {   this.switches = switches;   }
+
+    public boolean isPermitted(String key){
+        for (int i = 0; i < switches.size(); i++) {
+            PermissionSwitch s = switches.get(i);
+            if(s.key.equals(key)){
+                return s.isOn;
+            }
+        }
+        return false;
+    }
+
+    protected void addSwitches(){
+//        add(new PermissionSwitch("vorgang.position.anlegen"));
+//        add(new PermissionSwitch("vorgang.position.loeschen"));
+//        add(new PermissionSwitch("vorgang.position.kopieren"));
+    }
+
+    public void onAfterLoad()  {
+         addSwitches();
+    }
+
+    private void add(PermissionSwitch ps){
+       if(!switches.contains(ps)){
+           switches.add(ps);
+       }
+    }
+
 
 }
