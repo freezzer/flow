@@ -1,14 +1,14 @@
 package de.ama.services.permission;
 
-import de.ama.services.PermissionService;
-import de.ama.services.Environment;
 import de.ama.db.Query;
+import de.ama.services.Environment;
+import de.ama.services.PermissionService;
 import de.ama.util.Util;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.ArrayList;
 
 /**
  * Created by IntelliJ IDEA.
@@ -24,18 +24,26 @@ public class PermissionServiceImpl implements PermissionService{
     public PermissionContext getPermissionContext(String userId, String context) {
         Query q_context = new Query(PermissionContext.class, "context", Query.EQ, context);
         Query q_userId = new Query(PermissionContext.class, "userId", Query.EQ, userId);
-        PermissionContext ret = (PermissionContext) Environment.getPersistentService().getObject(q_context.and(q_userId),true);
+        PermissionContext ret = (PermissionContext) Environment.getPersistentService().getObject(q_context.and(q_userId),false);
 
         if(ret!=null){
            Environment.getPersistentService().releaseObject(ret);
            return ret;
         }
 
-        return (PermissionContext) Util.createObject(permissionContexts.get(context));
+        ret = (PermissionContext) Util.createObject(permissionContexts.get(context));
+        ret.onAfterLoad();
+        return ret;
     }
 
     public List<PermissionContext> getUserPermissionContexts(String userId) {
-        return Environment.getPersistentService().getObjects(new Query(PermissionContext.class, "userId", Query.EQ, userId));
+        List<PermissionContext> ret = new ArrayList<PermissionContext>();
+        List<String> allPermissionContextKeys = getAllPermissionContextKeys();
+        for (int i = 0; i < allPermissionContextKeys.size(); i++) {
+            String key = allPermissionContextKeys.get(i);
+            ret.add(getPermissionContext(userId,key));
+        }
+        return ret;
     }
 
     public List<String> getAllPermissionContextKeys() {

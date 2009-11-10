@@ -19,7 +19,7 @@
             showTitle(label);
         }
 
-        public  var gap:int = 10;
+        public  var gap:int = 5;
         private var _path:String;
         private var _generic:Boolean = false;
         private var _data:Data;
@@ -116,9 +116,9 @@
             return dateField;
         }
 
-        public function insertListField(label:String, path:String = null, lister:String=null,x:int = -1, y:int = -1):ListField {
+        public function insertListField(label:String, path:String = null, lister:String=null,x:int = -1, y:int = -1,h:int=150):ListField {
             var listField:ListField = new ListField(label, path, lister);
-            listField.height = 150;
+            listField.height = h;
             insertField(listField, x, y);
             return listField;
         }

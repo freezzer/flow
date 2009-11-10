@@ -42,6 +42,7 @@
             addCommands();
         }
 
+
         public function onCreationComplete():void {
             createToolbar();
 
@@ -132,10 +133,11 @@
 
         /////////////////////////////////// Columns ///////////////////////////////////////////
 
-        public function addCollumn(label:String, path:String, editable:Boolean):void {
+        public function addCollumn(label:String, path:String, editable:Boolean, w:int=100):void {
             var col:DataGridColumn = new DataGridColumn(label);
             col.dataField = path;
             col.editable = editable;
+            col.width = w;
             var array:Array = grid.columns;
             array.push(col);
             grid.columns = array;

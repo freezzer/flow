@@ -21,6 +21,7 @@ package de.ama.generator;
 
 import de.ama.util.Util;
 import de.ama.util.XmlElement;
+import de.ama.util.Composite;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -29,7 +30,6 @@ import java.io.PrintWriter;
 import java.util.ListIterator;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  * User: x
@@ -125,7 +125,7 @@ public class Tag extends XmlElement implements Const {
 
     protected XmlElement getEmptyInstance(org.jdom.Element je) {
 
-        String className = "de.ama.generator." + target + ".Tag_" + je.getName();
+        String className = "de.ama.generator." + target + "."+Util.firstCharToUpper(target) +"_"+ je.getName();
         Tag tag = getTagImpl(className);
         if(tag!=null) return tag;
 
@@ -133,7 +133,9 @@ public class Tag extends XmlElement implements Const {
         tag = getTagImpl(className);
         if(tag!=null) return tag;
 
-        return new Tag();
+        Tag ret = new Tag();
+        ret.setName(je.getName());
+        return ret;
     }
 
     public void collectCode(String key,String code){
@@ -205,6 +207,13 @@ public class Tag extends XmlElement implements Const {
         return ((Tag)getParent()).getParentAttribute(key, def);
     }
 
+    public String getParentAttribute(String parentName, String key,String def) {
+        if( (getName().equals(parentName) && hasAttribute(key)) || isRoot()) {
+            return getAttribute(key, def);
+        }
+        return ((Tag)getParent()).getParentAttribute(parentName, key, def);
+    }
+
     public String getRequiredParentAttribute(String key) {
         String s = getParentAttribute(key, "na");
         if("na".equals(s)){
@@ -236,71 +245,19 @@ public class Tag extends XmlElement implements Const {
         this.writer = writer;
     }
 
-    public void execute(){
+    public final void execute(){
         if(!executed) {
-
-            beginWrite();
-
-            mainWrite();
-
-            childrenWrite();
-
-            endWrite();
-
             executed = true;
+
+            writeFile();
+
+            ListIterator listIterator = getChildIterator();
+            while (listIterator.hasNext()) {
+                Tag tag = (Tag) listIterator.next();
+                tag.execute();
+            }
+
         }
-    }
-
-
-    protected void childrenWrite() {
-        ListIterator listIterator = getChildIterator();
-        while (listIterator.hasNext()) {
-            Tag tag = (Tag) listIterator.next();
-            tag.execute();
-        }
-    }
-
-    protected void executeChildren(Class c) {
-        List<Tag> tags = getChildren(c);
-        for (int i = 0; i < tags.size(); i++) {
-            Tag tag = tags.get(i);
-            tag.execute();
-        }
-    }
-
-
-
-    protected void mainWrite() {
-        //To change body of created methods use File | Settings | File Templates.
-    }
-
-    protected void beginWrite() {
-        //To change body of created methods use File | Settings | File Templates.
-    }
-
-    protected void endWrite() {
-        //To change body of created methods use File | Settings | File Templates.
-    }
-
-    protected void write(Object str){
-        getPrintWriter().println(Util.createString(getIndent(),"  ")+str);
-       // System.out.println(str+" to "+ getPrintWriter().hashCode() );
-    }
-
-    protected int getIndent() {
-        return getLevel();
-    }
-
-    protected void writeLine(){
-       getPrintWriter().println();
-    }
-
-    protected void flush(){
-       getPrintWriter().flush();
-    }
-
-    protected Tag getChild(int i) {
-        return (Tag) getChildren().get(i);
     }
 
     protected List<Tag> getChildren(Class c) {
@@ -313,6 +270,80 @@ public class Tag extends XmlElement implements Const {
             }
         }
         return ret;
+    }
+
+    protected void executeChildren(Class c) {
+        List<Tag> tags = getChildren(c);
+        for (int i = 0; i < tags.size(); i++) {
+            Tag tag = tags.get(i);
+            tag.execute();
+        }
+    }
+
+    protected void visitParent(String tagName, Visitor visitor) {
+        if(getName().equals(tagName)) {
+            visitor.visit(this);
+        }
+
+        if(isRoot()) return;
+
+        ((Tag)getParent()).visitParent(tagName, visitor);
+    }
+
+    protected void visitAllChildren(String tagName, Visitor visitor) {
+        Tag root = (Tag) getRoot();
+        root.visitChildren(tagName,visitor,true);
+    }
+
+    protected void visitChildren(String tagName) {
+        visitChildren(tagName,new VisitorGenerate(),false);
+
+    }
+
+    protected void visitChildren(String tagName, Visitor visitor, boolean recursive) {
+        List<Tag> tags = getChildren();
+        for (int i = 0; i < tags.size(); i++) {
+            Tag tag = tags.get(i);
+            if(tag.getName().equals(tagName)){
+                visitor.visit(tag);
+            }
+
+            if(recursive){
+                tag.visitChildren(tagName, visitor, recursive);
+            }
+        }
+    }
+
+    public void visit(Tag visitor){
+    }
+
+    public void generate() {
+        //To change body of created methods use File | Settings | File Templates.
+    }
+
+    public void writeFile() {
+        //To change body of created methods use File | Settings | File Templates.
+    }
+
+    protected void write(Object str){
+        getPrintWriter().println(Util.createString(getIndent(),"  ")+str);
+       // System.out.println(str+" to "+ getPrintWriter().hashCode() );
+    }
+
+    protected int getIndent() {
+        return 0;
+    }
+
+    protected void writeLine(){
+       getPrintWriter().println();
+    }
+
+    protected void flush(){
+       getPrintWriter().flush();
+    }
+
+    protected Tag getChild(int i) {
+        return (Tag) getChildren().get(i);
     }
 
     protected String getDir(){
@@ -328,9 +359,22 @@ public class Tag extends XmlElement implements Const {
         return targetDir+"/"+ SRC+"/"+GENERATED + "/" + dir ;
     }
 
-    protected String getPackage(){
+    public String getPackage(){
         String pckg =  getRequiredParentAttribute(PACKAGE);
         return GENERATED +"."+ pckg;
     }
+
+    public Tag getParent(String name) {
+        if(getName().equals(name)){
+            return this;
+        }
+
+        if(isRoot()) 
+            return null;
+
+        return ((Tag) getParent()).getParent(name);
+    }
+
+
 
 }

@@ -3,7 +3,7 @@ import de.ama.framework.command.Command;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.data.Data;
 import de.ama.framework.data.SelectionModel;
-import de.ama.framework.util.Factory;
+import de.ama.services.Factory;
 import de.ama.framework.util.Util;
 
 import mx.collections.ArrayCollection;

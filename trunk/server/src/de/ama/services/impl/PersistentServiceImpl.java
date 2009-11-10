@@ -1,9 +1,6 @@
 package de.ama.services.impl;
 
 import de.ama.db.*;
-import de.ama.db.binding.FieldBinding;
-import de.ama.db.binding.Dictionary;
-import de.ama.db.binding.Constants;
 import de.ama.services.PersistentService;
 import de.ama.services.UserService;
 import de.ama.util.Util;
@@ -103,7 +100,16 @@ public class PersistentServiceImpl implements PersistentService {
     }
 
     public Object releaseObject(Object o) {
-        DB.session().releaseObject(o);
+        if (o instanceof Persistent) {
+            Persistent persistent = (Persistent) o;
+            DB.session().releaseObject(persistent);
+        } else if (o instanceof Collection) {
+            Collection col = (Collection) o;
+            for (Iterator iterator = col.iterator(); iterator.hasNext();) {
+                Object io = iterator.next();
+                DB.session().releaseObject(io);
+            }
+        }
         return o;
     }
 

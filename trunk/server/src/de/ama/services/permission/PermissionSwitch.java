@@ -9,7 +9,7 @@ import de.ama.db.PersistentMarker;
  * Time: 00:56:38
  * To change this template use File | Settings | File Templates.
  */
-public class PermissionSwitch implements PersistentMarker {
+public class PermissionSwitch implements PersistentMarker,java.io.Serializable  {
     public String key;
     public boolean isOn;
 

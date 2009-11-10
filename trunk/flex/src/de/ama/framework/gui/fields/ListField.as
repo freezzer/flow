@@ -1,6 +1,6 @@
 package de.ama.framework.gui.fields {
 import de.ama.framework.gui.frames.ListPanel;
-import de.ama.framework.util.Factory;
+import de.ama.services.Factory;
 import de.ama.framework.util.Util;
 
 import mx.controls.TextArea;

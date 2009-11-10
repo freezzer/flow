@@ -5,17 +5,17 @@ import de.ama.framework.data.Data;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.frames.ApplicationPanel;
 import de.ama.framework.gui.frames.ListPanel;
-import de.ama.framework.gui.frames.IEditor;
+import de.ama.framework.gui.frames.Editor;
 
 import de.ama.framework.util.Callback;
-import de.ama.framework.util.Factory;
+import de.ama.services.Factory;
 
 import mx.core.Application;
 import mx.core.Container;
 
 public class OpenEditorCommand extends Command{
 
-    private var editor:IEditor = null;
+    private var editor:Editor = null;
 
     public function OpenEditorCommand(label:String="Bearbeiten",icon:String="edit") {
         super(label,icon);

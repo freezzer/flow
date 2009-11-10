@@ -1,7 +1,7 @@
 package de.ama.framework.command {
 import de.ama.framework.gui.frames.ApplicationPanel;
 import de.ama.framework.gui.frames.ListPanel;
-import de.ama.framework.util.Factory;
+import de.ama.services.Factory;
 
 import mx.core.Application;
 
