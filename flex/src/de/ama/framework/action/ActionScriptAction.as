@@ -13,7 +13,7 @@ public class ActionScriptAction {
 
     public var versionMismatch:Boolean;
     public var dontCommit:Boolean;
-    public var needsLogin:Boolean;
+    public var needsLogin:Boolean = true;
 
 }
 }

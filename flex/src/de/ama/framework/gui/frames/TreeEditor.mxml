@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas implements="de.ama.framework.gui.frames.IEditor"
-           xmlns:mx="http://www.adobe.com/2006/mxml"
+<frames:Editor xmlns:mx="http://www.adobe.com/2006/mxml"
            xmlns:frames="de.ama.framework.gui.frames.*"
            width="100%" height="100%"
-	       initialize="init()"
-	       creationComplete="onCreationComplete()"
+	        creationComplete="onCreationComplete()"
            >
 
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-        import de.ama.framework.command.SaveBoCommand;
         import de.ama.framework.data.Data;
-        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.gui.icons.IconStore;
         import de.ama.framework.util.*;
+        import de.ama.services.Factory;
 
         import mx.controls.Button;
         import mx.controls.treeClasses.TreeItemRenderer;
@@ -27,24 +24,14 @@
 
         private var lastSelectedIndex = 0;
 
-        private var _label:String=null;
 
-        public function init():void {
-        }
-
-        public function onCreationComplete():void {
+        override public function onCreationComplete():void {
             treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
             treeMenu.hideBuiltInItems();
 
-            buttonbar._callBack = new Callback(this, editorButtonHandler);
-
             toolbar._callBack = new Callback(this, toolBarButtonHandler);
 
-            addCommands();
-        }
-
-        public function addCommand(command:Command):void {
-            buttonbar.addCommand(command);
+            super.onCreationComplete();
         }
 
         private function refreshToolBar():void {
@@ -52,28 +39,6 @@
             for each(var command:Command in selectedNode.commands) {
                 toolbar.addCommand(command);
             }
-        }
-        
-        override public function set label(txt:String):void {
-            _label = txt; 
-            super.label = txt;       	
-        }
-        
-        override public function get label():String {
-	    	if(getData() != null){
-		        if (Util.isEmpty(_label)) {
-		            return getData().getName();
-		        }
-		
-		        if(_label.indexOf("{")>=0 && _label.indexOf("}")>0) {
-		           var pre:String = _label.split("{")[0];
-		           var post:String = _label.split("}")[1];
-		           var lpath:String = _label.substring(_label.indexOf("{")+1,_label.indexOf("}"));
-		           var prop:String = getData().getProperty(lpath);
-		           return pre+prop+post;
-		        }
-	        }
-	        return _label;
         }
 
 
@@ -136,13 +101,6 @@
             return null;
         }
 
-        /**
-         * wird in Derivaten überschrieben um die Baum Definition zu liefern
-         * @return
-         */
-        public function getPrototypeTree():TreeNode {
-            return null;
-        }
 
         private function myIconFunction(item:Object):Class {
             var iconClass:Class;
@@ -150,31 +108,25 @@
             return IconStore.getIcon(iconName);
         }
 
-        public function setData(data:Data):void {
-            if (data == null) {
-                data = createData();
+        override public function setData(data:Data):void {
+            super.setData(data);
+
+            if(_data!=null){
+                if (rootNode != null) {
+                    rootNode.tree = null;
+                }
+
+                rootNode = getPrototypeTree();
+                rootNode.setData(_data);
+
+                callLater(expandDefaultNodes);
             }
-
-            if (rootNode != null) {
-                rootNode.tree = null;
-            }
-
-            rootNode = getPrototypeTree();
-            rootNode.setData(data);
-
-            label = _label;
-
-            callLater(expandDefaultNodes);
         }
 
 
-        public function getData():Data {
+        override public function getData():Data {
             lastSelectedIndex = myTree.selectedIndex;
-            return rootNode.getData();
-        }
-
-        public function getSelectionModel():SelectionModel {
-            return new SelectionModel(getData());
+            return super.getData();
         }
 
 
@@ -216,21 +168,14 @@
             }
         }
 
-        private function editorButtonHandler(event:MouseEvent):void {
-            var button:Button = Button(event.currentTarget);
-            var command:Command = Command(button.data);
-            command.start(this);
-        }
-
-
         /////////////////////////////////// Overwrites ///////////////////////////////////////////
 
-        public function createData():Data {
+        /**
+         * wird in Derivaten überschrieben um die Baum Definition zu liefern
+         * @return
+         */
+        public function getPrototypeTree():TreeNode {
             return null;
-        }
-
-        public function addCommands():void {
-            addCommand(new SaveBoCommand());
         }
 
 
@@ -245,7 +190,7 @@
             <mx:Tree id="myTree" width="200" height="100%"  labelField="label" iconFunction="myIconFunction"
                      showRoot="true" dataProvider="{rootNode}"  change="treeChanged(event)" contextMenu="{treeMenu}"
                      />
-            
+
             <mx:Canvas height="100%" id="contenPanel"  borderStyle="solid" borderThickness="2" cornerRadius="4"/>
 
 
@@ -253,4 +198,4 @@
 
         <frames:CommandButtonBar id="buttonbar" horizontalAlign="right" useLabels="true" />
     </mx:VBox>
-</mx:Canvas>
+</frames:Editor>

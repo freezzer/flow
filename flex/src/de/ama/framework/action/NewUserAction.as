@@ -12,7 +12,7 @@ public class NewUserAction extends ActionScriptAction{
 
 
     public function NewUserAction() {
-        needsLogin = type!=TYPE_NEW;
+        needsLogin =false;
     }
 
 }

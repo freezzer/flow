@@ -26,6 +26,7 @@ public interface Const {
 
     public static final String COMMENT = "comment";
     public static final String COMMAND = "command";
+    public static final String COLUMN = "column";
     public static final String NAME = "name";
     public static final String LABEL = "label";
     public static final String BORDER = "border";
@@ -39,6 +40,16 @@ public interface Const {
     public static final String PERSISTENT = "persistent";
     public static final String PATH = "path";
     public static final String USE = "use";
+    public static final String FIELD = "field";
+    public static final String COLLECTION = "collection";
+    public static final String BEAN = "bean";
+    public static final String PERMISSION = "permission";
+    public static final String TREE_NODE = "tree_node";
+    public static final String TREE_EDITOR = "tree_editor";
+    public static final String INPUT = "input";
+    public static final String MENU = "menu";
+    public static final String MENUBAR = "menubar";
+    public static final String MENUITEM = "menuitem";
 
     public static final String DATE = "date";
     public static final String STRING = "string";

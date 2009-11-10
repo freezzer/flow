@@ -43,9 +43,6 @@ public class PermissionContext implements java.io.Serializable , de.ama.db.Persi
     }
 
     protected void addSwitches(){
-//        add(new PermissionSwitch("vorgang.position.anlegen"));
-//        add(new PermissionSwitch("vorgang.position.loeschen"));
-//        add(new PermissionSwitch("vorgang.position.kopieren"));
     }
 
     public void onAfterLoad()  {

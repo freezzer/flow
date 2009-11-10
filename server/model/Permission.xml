@@ -1,29 +1,47 @@
 <?xml version="1.0"?>
 <define>
 
-    <view package="permission.view" type="Permission" >
+    <!--<model package="permission">-->
+        <!--<bean name="PermissionsData" >-->
+            <!--<collection name="contexts" create="1">-->
+                <!--<bean name="PermissionContext">-->
+                    <!--<field name="permitted" />-->
+                    <!--<field name="userName" />-->
+                    <!--<field name="context"/>-->
+                    <!--<field name="userId" />-->
+                    <!--<collection name="switches" >-->
+                        <!--<bean name="PermissionSwitch">-->
+                            <!--<field name="key" />-->
+                            <!--<field name="isOn" type = "Boolean"/>-->
+                        <!--</bean>-->
+                    <!--</collection>-->
+                <!--</bean>-->
+            <!--</collection>-->
+        <!--</bean>-->
+    <!--</model>-->
 
-        <lister name="PermissionLister" label="Berechtigungen Auflister" type="Permission">
-            <command use="LoadTableCommand" icon="refresh" label="Uebersicht Berechtigungen neu laden"/>
-            <command use="OpenEditorCommand" editor="PermissionEditor" label="Berechtigung bearbeiten" icon="edit"/>
-            <command use="DeleteBoCommand" label="Berechtigung loeschen" icon="delete"/>
+    <view package="permission.view" >
+        <tree_editor name="PermissionEditor" type="PermissionsData" label="Berechtigung fuer {userName}" >
+            <tree_node label="Berechtigungen" path="." type="PermissionsData" icon="wrench" open="true"  panel="default">
+                 <tree_node label="Kontext" path="contexts" type="PermissionContext" icon="user" open="true" panel="ContextPanel" />
+            </tree_node>
 
-            <column path="permitted" label="On/Off" searchable="true"/>
-            <column path="userName" label="Name" searchable="true"/>
-            <column path="context" label="Kontext" searchable="true"/>
-        </lister>
+            <command name="SavePermissionCommand" label="Berechtigung speichern" icon="save"/>
+            <command name="LoadPermissionsCommand" label="Berechtigungen laden" icon="refresh"/>
+        </tree_editor>
 
-        <editor name="PermissionEditor" type="Permission" label="Berechtigung fuer {userName}">
-            <panel use="default" path="." label="Switches" x="10" y="10" gap="3" />
+        <panel name="ContextPanel" editable="true" label="Berechtigungs Kontext">
+            <input label="permitted" path="permitted" type="boolean"/>
+            <input label="userName" path="userName"/>
+            <input label="context" path="context"/>
 
-            <command use="SaveBoCommand" label="Berechtigung speichern" icon="save"/>
-            <command use="LoadBoCommand" label="Berechtigung laden" icon="refresh"/>
-        </editor>
+            <input label="Switches" path="switches" type="list">
+                <lister name="SwitchesLister" type="default">
+                </lister>
+            </input>
+        </panel>
 
     </view>
 
 </define>
-
-
-
 

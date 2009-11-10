@@ -1,9 +1,8 @@
 <?xml version="1.0"?>
 <define>
 
-    <permission package="permission" name="PermissionPerson"/>
 
-    <model package="person.bom" >
+    <model package="person.bom">
 
         <bean name="Person" persistent="true" unique-key="vorname+nachname">
             <field name="vorname"/>
@@ -21,36 +20,42 @@
         </bean>
     </model>
 
-    <view package="person.view" type="Person" >
+    <permission package="permission" name="PermissionPerson">
 
-        <lister name="PersonLister" label="Personen Auflister" type="Person">
-            <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
-            <command use="OpenEditorCommand" editor="PersonEditor" label="Person bearbeiten" icon="edit"/>
-            <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
+        <view package="person.view" type="Person">
 
-            <column path="vorname" label="Vorname" searchable="true"/>
-            <column path="nachname" label="Nachname" searchable="true"/>
-            <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
-        </lister>
+            <lister name="PersonLister" label="Personen Auflister" type="Person">
+                <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
+                <command use="OpenEditorCommand" editor="PersonEditor" label="Person bearbeiten" icon="edit"/>
+                <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
 
-        <tree_editor name="PersonEditor" label="Daten von {nachname} ">
-            <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default" >
-                <tree_node label="Adressen" path="adressen" icon="table" open="true" type="Adresse" lister="default">
-                    <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
-                    <tree_node label="Adresse {ort}" path="adressen" icon="form" open="true" type="Adresse" panel="default">
+                <column path="vorname" label="Vorname" searchable="true"/>
+                <column path="nachname" label="Nachname" searchable="true"/>
+                <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
+            </lister>
+
+            <tree_editor name="PersonEditor" label="Daten von {nachname} ">
+                <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default">
+                    <tree_node label="Adressen" path="adressen" icon="table" open="true" type="Adresse"
+                               lister="default">
                         <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
-                        <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
-                        <command use="DeleteNodeCommand" label="Adresse loeschen" icon="delete"/>
+                        <tree_node label="Adresse {ort}" path="adressen" icon="form" open="true" type="Adresse"
+                                   panel="default">
+                            <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
+                            <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
+                            <command use="DeleteNodeCommand" label="Adresse loeschen" icon="delete"/>
+                        </tree_node>
                     </tree_node>
                 </tree_node>
-            </tree_node>
 
-            <command use="SaveBoCommand" label="Person speichern" icon="save"/>
-            <command use="LoadBoCommand" label="Person laden" icon="refresh"/>
-            <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
-        </tree_editor>
+                <command use="SaveBoCommand" label="Person speichern" icon="save"/>
+                <command use="LoadBoCommand" label="Person laden" icon="refresh"/>
+                <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
+            </tree_editor>
 
-    </view>
+        </view>
+
+    </permission>
 
 </define>
 

@@ -35,11 +35,8 @@
                 </menuitem>
             </menu>
             <menu name="Admin">
-                <menuitem >
-                    <command label="Uebersicht Berechtigungen" use="OpenListerCommand" lister="PermissionLister"/>
-                </menuitem>
                 <menuitem>
-                   <command  label="Neue Berechtigung anlegen" use="OpenEditorCommand" editor="PermissionEditor"  />
+                   <command  label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"  />
                 </menuitem>
             </menu>
         </menubar>

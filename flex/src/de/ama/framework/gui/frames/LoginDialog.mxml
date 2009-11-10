@@ -77,8 +77,9 @@
         import de.ama.framework.action.LoginAction;
         import de.ama.framework.action.NewUserAction;
         import de.ama.framework.util.Callback;
-        import de.ama.framework.util.Environment;
         import de.ama.framework.util.Util;
+
+        import de.ama.services.Environment;
 
         import mx.events.ValidationResultEvent;
         import mx.managers.PopUpManager;

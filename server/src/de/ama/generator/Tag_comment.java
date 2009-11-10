@@ -25,7 +25,7 @@ package de.ama.generator;
  */
 public class Tag_comment extends Tag {
 
-    public void execute() {
+    public void writeFile() {
         storeObject(COMMENT, getText());
     }
 }

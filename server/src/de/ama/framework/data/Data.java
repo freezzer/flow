@@ -28,6 +28,7 @@ import java.util.List;
  */
 public abstract class Data implements Serializable {
     private int version = 0;
+    private int oid = 0;
     private String oidString;
 
     private transient ArrayList queryDescriptions;

@@ -1,7 +1,7 @@
 package de.ama.framework.action {
 import de.ama.framework.util.Callback;
-import de.ama.framework.util.Environment;
 import de.ama.framework.util.Util;
+import de.ama.services.Environment;
 
 import hessian.client.HessianService;
 

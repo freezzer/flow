@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <define>
-    <permission package="permission" name="PermissionVorgang"/>
 
     <model package="vorgang.bom">
 
@@ -64,7 +63,8 @@
         </bean>
     </model>
 
-    <view package="vorgang.view" type="Vorgang">
+    <permission package="permission" name="PermissionVorgang">
+      <view package="vorgang.view" type="Vorgang">
         <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}">
             <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="." open="true" panel="default">
                 <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition" open="true" panel="default">
@@ -196,6 +196,7 @@
         </lister>
 
     </view>
+   </permission>
 
 </define>
 

@@ -9,6 +9,8 @@
                        data="{trp.currentItem}"
                        icon="{Command(trp.currentItem).getIcon()}"
                        fontWeight="normal" textAlign="center"
+                       enabled="{Command(trp.currentItem).isPermitted()}"
+                       mouseEnabled="{Command(trp.currentItem).isPermitted()}"
                        fillColors="[#FFFFFF, #CCCCCC, #CE6874, #CE6874]"
                        fillAlphas="[1.0, 1.0, 1.0, 1.0]" cornerRadius="4"/>
         </mx:Repeater>
@@ -17,10 +19,8 @@
 
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-
         import de.ama.framework.util.Callback;
 
-        import mx.collections.ArrayCollection;
         import mx.collections.ArrayCollection;
 
         [Bindable]

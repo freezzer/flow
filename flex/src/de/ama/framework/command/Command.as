@@ -2,8 +2,10 @@ package de.ama.framework.command {
 import de.ama.framework.data.Data;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.icons.IconStore;
-
 import de.ama.framework.util.Util;
+import de.ama.services.Environment;
+
+import de.ama.services.permission.PermissionService;
 
 import flash.ui.ContextMenuItem;
 
@@ -15,6 +17,8 @@ public class Command {
     private var _selectionModel:SelectionModel = null;
 
     private var _contextMenuItem:ContextMenuItem=null;
+    private var _permissionId:String;
+    private var _permitted:int = -1;
 
     ////////////////////////////// Properties ////////////////////////////////////////
 
@@ -93,6 +97,28 @@ public class Command {
 
     protected function execute():void{
 
+    }
+
+    //////////////////////////////// permission /////////////////////////////////
+
+    public function set permissionId(value:String):void {
+        _permissionId = value;
+    }
+
+    public function isPermitted():Boolean {
+    	if(_permitted < 0){
+    	   _permitted  = PermissionService.instance.isPermitted(this) ? 1 : 0;
+    	}
+    	
+    	return (_permitted == 1);
+    }
+
+    public function get permissionContext():String {
+        return _permissionId.split(":")[0];
+    }
+
+    public function get permissionKey():String {
+        return _permissionId.split(":")[1];
     }
 }
 }

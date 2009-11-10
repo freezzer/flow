@@ -7,8 +7,8 @@
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
         import de.ama.framework.command.MenuInvoker;
-        import de.ama.framework.util.BootstrapDefault;
-        import de.ama.framework.util.Factory;
+        import de.ama.services.BootstrapDefault;
+        import de.ama.services.Factory;
         import de.ama.framework.util.Util;
 
 
@@ -30,7 +30,7 @@
             mainTabs.setStyle("bottom", "0");
             mainTabs.setStyle("left", "3");
             mainTabs.setStyle("right", "3");
-//            mainTabs.setStyle("backgroundColor", "#F0F0F0");
+            //            mainTabs.setStyle("backgroundColor", "#F0F0F0");
             addChild(mainTabs);
 
             var bootstrapDefault:BootstrapDefault = new BootstrapDefault();
