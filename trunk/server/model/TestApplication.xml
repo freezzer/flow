@@ -5,7 +5,7 @@
            this code is property of Andreas Marochow
     ]]></comment>
 
-    <import file="Permission.xml"/>
+    <!--<import file="Permission.xml"/>-->
     <import file="Person.xml"/>
     <import file="Vorgang.xml"/>
 

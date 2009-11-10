@@ -24,7 +24,7 @@ public class LoginAction extends ActionScriptAction {
             mapBoToData(u,ud);
             data = ud;
 
-            permissionContexts = Environment.getPermissionService().getUserPermissionContexts(u.getId());
+            permissionContexts = Environment.getPermissionService().getUserPermissionContexts(u);
 
         }
     }

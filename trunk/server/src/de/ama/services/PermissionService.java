@@ -1,6 +1,7 @@
 package de.ama.services;
 
 import de.ama.services.permission.PermissionContext;
+import de.ama.services.user.User;
 
 import java.util.List;
 
@@ -14,8 +15,8 @@ import java.util.List;
 public interface PermissionService {
     public static String NAME = "PermissionService";
 
-    public PermissionContext getPermissionContext(String userId, String context);
-    public List<PermissionContext> getUserPermissionContexts(String userId);
+    public PermissionContext getPermissionContext(User user, String context);
+    public List<PermissionContext> getUserPermissionContexts(User user);
     public List<String> getAllPermissionContextKeys();
     public void registerPermissionContext(String context, Class  c );
     

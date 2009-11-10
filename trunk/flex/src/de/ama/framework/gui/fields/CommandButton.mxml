@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Button xmlns:mx="http://www.adobe.com/2006/mxml"
+            	       click="onButtonClick(event)"
+                       fillColors="[#FFFFFF, #CCCCCC, #CE6874, #CE6874]"
+                       fillAlphas="[1.0, 1.0, 1.0, 1.0]" cornerRadius="4"
+	>
+
+
+    <mx:Script><![CDATA[
+        import de.ama.framework.command.Command;
+        import de.ama.framework.util.Callback;
+
+        public var _callBack:Callback ;
+        public var _small:Boolean = false ;
+
+
+        private function onButtonClick(event:MouseEvent):void {
+            if (_callBack == null) {
+                throw new Error("a button needs a");
+            }
+            _callBack.execute(event);
+
+        }
+
+        public function get command():Command {
+            return Command(data);
+        }
+
+        public function set command(cmd:Command):void {
+            data = cmd;
+            setStyle("icon", cmd.getIcon());
+            setStyle("fontWeight", "normal");
+            setStyle("textAlign", "center");
+            enabled = cmd.isPermitted();
+            mouseEnabled = cmd.isPermitted();
+            small = _small;
+        }
+
+
+        public function set callBack(cb:Callback):void {
+            _callBack = cb;
+        }
+
+        public function set small(b:Boolean):void {
+            _small = b;
+            if (command != null && _small) {
+                label = toolTip = "";
+                height=18;
+                width=18;
+                setStyle("cornerRadius","2");
+                setStyle("borderColor","#FFFFFF");
+            } else {
+                label = command.label;
+                toolTip = command.label;
+            }
+        }
+        ]]></mx:Script>
+	
+</mx:Button>

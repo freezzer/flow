@@ -3,6 +3,7 @@ package de.ama.services.permission;
 import de.ama.db.Query;
 import de.ama.services.Environment;
 import de.ama.services.PermissionService;
+import de.ama.services.user.User;
 import de.ama.util.Util;
 
 import java.util.ArrayList;
@@ -21,9 +22,9 @@ public class PermissionServiceImpl implements PermissionService{
     private Map<String,Class> permissionContexts = new HashMap<String,Class>();
 
 
-    public PermissionContext getPermissionContext(String userId, String context) {
+    public PermissionContext getPermissionContext(User user, String context) {
         Query q_context = new Query(PermissionContext.class, "context", Query.EQ, context);
-        Query q_userId = new Query(PermissionContext.class, "userId", Query.EQ, userId);
+        Query q_userId = new Query(PermissionContext.class, "userId", Query.EQ, user.getId());
         PermissionContext ret = (PermissionContext) Environment.getPersistentService().getObject(q_context.and(q_userId),false);
 
         if(ret!=null){
@@ -33,15 +34,17 @@ public class PermissionServiceImpl implements PermissionService{
 
         ret = (PermissionContext) Util.createObject(permissionContexts.get(context));
         ret.onAfterLoad();
+        ret.setUserId(user.getId());
+        ret.setUserName(user.getName());
         return ret;
     }
 
-    public List<PermissionContext> getUserPermissionContexts(String userId) {
+    public List<PermissionContext> getUserPermissionContexts(User user) {
         List<PermissionContext> ret = new ArrayList<PermissionContext>();
         List<String> allPermissionContextKeys = getAllPermissionContextKeys();
         for (int i = 0; i < allPermissionContextKeys.size(); i++) {
             String key = allPermissionContextKeys.get(i);
-            ret.add(getPermissionContext(userId,key));
+            ret.add(getPermissionContext(user , key));
         }
         return ret;
     }

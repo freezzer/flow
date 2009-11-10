@@ -31,7 +31,7 @@ public class Editor extends Canvas implements Invoker{
     public function onCreationComplete():void {
         addCommands();
         addPanels();
-        buttonbar._callBack = new Callback(this, editorButtonHandler);
+        buttonbar.callBack = new Callback(this, editorButtonHandler);
     }
 
 

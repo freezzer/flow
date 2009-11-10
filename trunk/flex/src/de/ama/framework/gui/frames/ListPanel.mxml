@@ -35,7 +35,7 @@
         public static var LARGE:int = 1;
         public static var NO:int = 0;
         public var useToolbar:int = NO;
-        public var toolbar:ICommandButtonBar;
+        public var toolbar:CommandButtonBar;
 
         public function init():void {
             addCollumns();
@@ -72,16 +72,13 @@
 
         public function createToolbar():void {
             if (useToolbar > NO) {
+                toolbar = new CommandButtonBar();
                 if (useToolbar == SMALL) {
-                    toolbar = new CommandButtonBarSmall();
-                    Container(toolbar).label = label;
-                } else if (useToolbar == LARGE) {
-                    toolbar = new CommandButtonBar();
+                    toolbar.small = true;
+                    toolbar.label = label;
                 }
                 toolbar.callBack = new Callback(this, toolBarButtonHandler);
-                for each (var command:Command in commands) {
-                    toolbar.addCommand(command);
-                }
+                toolbar.commands = commands
                 contentPanel.addChildAt(DisplayObject(toolbar), 0);
             }
         }
@@ -103,14 +100,14 @@
         {
             var cmis:Array = new Array();
             var data:Data = null;
- 
+
             if (event.mouseTarget is IDataRenderer) {
                 data = Data(IDataRenderer(event.mouseTarget).data);
             }
 
-			if(data!=null){
-	            grid.selectedItem = data;
-	        }
+            if (data != null) {
+                grid.selectedItem = data;
+            }
 
             for each(var command:Command in commands) {
                 var cmi:ContextMenuItem = new ContextMenuItem(command.label);
@@ -118,7 +115,7 @@
                 cmi.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, menuItemSelectHandler);
                 cmis.push(cmi);
             }
- 
+
             listMenu.customItems = cmis;
         }
 
@@ -133,7 +130,7 @@
 
         /////////////////////////////////// Columns ///////////////////////////////////////////
 
-        public function addCollumn(label:String, path:String, editable:Boolean, w:int=100):void {
+        public function addCollumn(label:String, path:String, editable:Boolean, w:int = 100):void {
             var col:DataGridColumn = new DataGridColumn(label);
             col.dataField = path;
             col.editable = editable;
@@ -195,14 +192,14 @@
         }
 
         public function copySelectedRow():void {
-            if (grid.selectedIndex < 0 && grid.selectedItem==null) return;
+            if (grid.selectedIndex < 0 && grid.selectedItem == null) return;
             var data:Data = Data(grid.selectedItem).clone();
             rows.addItem(data);
             grid.selectedItem = data;
         }
 
         public function removeSelectedRow():void {
-            if (grid.selectedIndex < 0 && grid.selectedItem==null) return;
+            if (grid.selectedIndex < 0 && grid.selectedItem == null) return;
             var newIndex:int = Math.max(grid.selectedIndex - 1, 0);
             var data:Data = Data(grid.selectedItem);
             rows.removeItemAt(rows.getItemIndex(data));

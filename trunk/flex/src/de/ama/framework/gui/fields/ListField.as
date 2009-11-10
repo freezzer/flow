@@ -1,12 +1,10 @@
 package de.ama.framework.gui.fields {
 import de.ama.framework.gui.frames.ListPanel;
-import de.ama.services.Factory;
 import de.ama.framework.util.Util;
-
-import mx.controls.TextArea;
+import de.ama.services.Factory;
 
 public class ListField extends EditField{
-
+	private var _labelText:String;
 
     public function ListField(caption:String="ListField", path:String=null, lister:String=null) {
         super(caption,path);
@@ -21,12 +19,25 @@ public class ListField extends EditField{
         }
     }
 
+
+    override public function createLabel(caption:String):void {
+		_labelText = caption;
+    }
+    
+    public override function get label():String {
+        return _labelText;
+    }
+
+
+    override public function set labelWidth(w:int):void {
+    }
+
     public function setListPanel(lp:ListPanel):void{
         if(_input!=null){
             removeChild(_input);
         }
         lp.useToolbar = ListPanel.SMALL;
-        lp.label = label;
+        lp.label = _labelText;
         _input = lp;
         _input.x = 5;
         _input.width = super.width - 10;

@@ -21,11 +21,11 @@ public class GetPermissionAction extends ActionScriptAction {
         } else
 
         if("all".equals(context)){
-            data = Environment.getPermissionService().getUserPermissionContexts(getUser().getId());
+            data = Environment.getPermissionService().getUserPermissionContexts(getUser());
         }
 
         else {
-            data = Environment.getPermissionService().getPermissionContext(getUser().getId(), context);
+            data = Environment.getPermissionService().getPermissionContext(getUser(), context);
         }
 
         if(data!=null){
