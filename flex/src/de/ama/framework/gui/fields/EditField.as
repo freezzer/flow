@@ -33,9 +33,11 @@ public class EditField extends Canvas{
         _input.addEventListener(Event.CHANGE, onInputCanged);
         _input.addEventListener(FocusEvent.FOCUS_OUT, onFocusLost);
 
-        _label.setStyle("color","0x202020");
-        _label.setStyle("textAlign","left");
-        _label.y=3;
+		if(_label!=null){
+	        _label.setStyle("color","0x202020");
+	        _label.setStyle("textAlign","left");
+	        _label.y=3;
+        }
 
     }
 

@@ -41,6 +41,10 @@ public class Java_permission extends Tag {
         writeLine();
         write("public class "+name+" extends de.ama.services.permission.PermissionContext { ");
         writeLine();
+        write("    public "+name+"() {");
+        write("        setContext(\""+name+"\");");
+        write("    }");
+        writeLine();
         write("    @Override");
         write("    protected void addSwitches(){");
         writeLine();

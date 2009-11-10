@@ -1,20 +1,10 @@
 <?xml version="1.0" ?>
-<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="30"
- styleName="CommandButtonBar" implements="de.ama.framework.gui.frames.ICommandButtonBar" >
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:fields="de.ama.framework.gui.fields.*" width="100%" height="30"
+         styleName="CommandButtonBar" >
 
-        <mx:Repeater id="trp" dataProvider="{commands}">
-            <mx:Button label="{getLabel(Command(trp.currentItem))}"
-            	       toolTip="{getTooltip(Command(trp.currentItem))}"
-            	       click="onButtonClick(event)"
-                       data="{trp.currentItem}"
-                       icon="{Command(trp.currentItem).getIcon()}"
-                       fontWeight="normal" textAlign="center"
-                       enabled="{Command(trp.currentItem).isPermitted()}"
-                       mouseEnabled="{Command(trp.currentItem).isPermitted()}"
-                       fillColors="[#FFFFFF, #CCCCCC, #CE6874, #CE6874]"
-                       fillAlphas="[1.0, 1.0, 1.0, 1.0]" cornerRadius="4"/>
-        </mx:Repeater>
-
+    <mx:Repeater id="trp" dataProvider="{commands}">
+        <fields:CommandButton command="{trp.currentItem}" small="{_small}" callBack="{callBack}"/>
+    </mx:Repeater>
 
 
     <mx:Script><![CDATA[
@@ -22,29 +12,29 @@
         import de.ama.framework.util.Callback;
 
         import mx.collections.ArrayCollection;
+        import mx.controls.Label;
 
         [Bindable]
         public var commands:ArrayCollection = new ArrayCollection();
 
-        public var _callBack:Callback ;
-        public var useLabels:Boolean = false ;
+        private var _label:Label;
+        public var callBack:Callback ;
+        public var _small:Boolean = false ;
 
-        public function set callBack(value:Callback):void {
-            _callBack = value;
+
+        public function set small(value:Boolean):void {
+            _small = value;
+            _label = new Label();
+            _label.setStyle("horizontalAlign","left");
+            _label.percentWidth = 100;
+            addChildAt(_label, 0);
+
+            height = 20;
         }
 
-        private function getLabel(command:Command):String {
-            if (useLabels) {
-                return command.label;
-            }
-            return "";
-        }
 
-        private function getTooltip(command:Command):String {
-            if (useLabels) {
-                return "";
-            }
-            return command.label;
+        override public function set label(value:String):void {
+            _label.text = value;
         }
 
         public function clear():void {
@@ -57,12 +47,6 @@
 
         public function getCommands():ArrayCollection {
             return commands;
-        }
-
-        private function onButtonClick(event:MouseEvent):void {
-            if (_callBack == null) throw Error("a ButtonBar needs a Callback, set callBack");
-
-            _callBack.execute(event);
         }
 
         ]]></mx:Script>

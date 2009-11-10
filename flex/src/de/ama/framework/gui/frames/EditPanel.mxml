@@ -5,6 +5,7 @@
     borderStyle="none" xmlns:ns1="generated.person.view.*" clipContent="false">
 
     <mx:Script><![CDATA[
+        import de.ama.framework.command.Command;
         import de.ama.framework.data.Data;
         import de.ama.framework.gui.fields.BoolField;
         import de.ama.framework.gui.fields.DateField;
@@ -13,6 +14,9 @@
         import de.ama.framework.gui.fields.TextAreaField;
         import de.ama.framework.util.Util;
 
+        import mx.controls.Button;
+        import mx.core.UIComponent;
+
         private function init():void {
             addFields();
             addPanels();
@@ -20,6 +24,7 @@
         }
 
         public  var gap:int = 5;
+        public  var labelWidth:int = 100;
         private var _path:String;
         private var _generic:Boolean = false;
         private var _data:Data;
@@ -66,12 +71,12 @@
         }
 
         public function showTitle(txt:String):void {
-        	if(Util.isEmpty(txt)) return;
-        	if(Util.isEqual(getStyle("borderStyle"),"none") ) return;
-			title.text = txt;        	
-        	titleBox.visible = true;
+            if (Util.isEmpty(txt)) return;
+            if (Util.isEqual(getStyle("borderStyle"), "none")) return;
+            title.text = txt;
+            titleBox.visible = true;
         }
-        
+
         public function createDefaultFields(data:Data):void {
             if (Util.isEmpty(label)) {
                 label = data.getName();
@@ -98,39 +103,55 @@
             }
         }
 
-        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1):EditField {
+        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1):EditField {
             var editField:EditField = new EditField(label, path);
-            insertField(editField, x, y);
+            editField.labelWidth = lw < 0 ? labelWidth : lw;
+            insertComponent(editField, x, y);
             return editField;
         }
 
-        public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1):BoolField {
+        public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1):BoolField {
             var boolField:BoolField = new BoolField(label, path);
-            insertField(boolField, x, y);
+            boolField.labelWidth = lw < 0 ? labelWidth : lw;
+            insertComponent(boolField, x, y);
             return boolField;
         }
 
-        public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1):DateField {
+        public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1):DateField {
             var dateField:DateField = new DateField(label, path);
-            insertField(dateField, x, y);
+            dateField.labelWidth = lw < 0 ? labelWidth : lw;
+            insertComponent(dateField, x, y);
             return dateField;
         }
 
-        public function insertListField(label:String, path:String = null, lister:String=null,x:int = -1, y:int = -1,h:int=150):ListField {
+        public function insertListField(label:String, path:String = null, lister:String = null, x:int = -1, y:int = -1, h:int = 150, lw:int = -1):ListField {
             var listField:ListField = new ListField(label, path, lister);
             listField.height = h;
-            insertField(listField, x, y);
+            listField.labelWidth = lw < 0 ? labelWidth : lw;
+            insertComponent(listField, x, y);
             return listField;
         }
 
-        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1):TextAreaField {
+        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, h:int = 90, lw:int = -1):TextAreaField {
             var textAreaField:TextAreaField = new TextAreaField(label, path);
-            textAreaField.height = 90;
-            insertField(textAreaField, x, y);
+            textAreaField.height = h;
+            textAreaField.labelWidth = lw < 0 ? labelWidth : lw;
+            insertComponent(textAreaField, x, y);
             return textAreaField;
         }
 
-        public function insertField(f:EditField, x:int = -1, y:int = -1):void {
+        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1):Button {
+            var button:Button = new Button();
+            button.label = cmd.label;
+            button.setStyle("icon", cmd.getIcon());
+            button.toolTip = cmd.label;
+            button.enabled = cmd.isPermitted();
+            button.mouseEnabled = cmd.isPermitted();
+            insertComponent(button, x, y);
+            return button;
+        }
+
+        public function insertComponent(f:UIComponent, x:int = -1, y:int = -1):void {
             f.x = x > 0 ? x : 10;
             if (y < 0) {
                 if (numChildren > 1) {
@@ -146,6 +167,7 @@
             height = f.y + f.height + gap + gap;
             width = Math.max(width, f.x + f.width + gap);
         }
+
 
         public function getEditField(path:String):EditField {
             var childs:Array = getChildren();

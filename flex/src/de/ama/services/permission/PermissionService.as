@@ -20,6 +20,10 @@ public class PermissionService {
     public function isPermitted(cmd:Command):Boolean{
         for each(var s:PermissionContext in permissionContexts) {
             if(Util.isEqual(s.context , cmd.permissionContext)) {
+            	if(!s.permitted){
+            		return false;
+            	} 
+            	
                 return s.isPermitted(cmd.permissionKey);
             }
         }

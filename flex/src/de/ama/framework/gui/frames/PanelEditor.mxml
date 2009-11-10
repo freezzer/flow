@@ -16,6 +16,6 @@
 
             <mx:Canvas id="contenPanel"  borderStyle="solid" borderThickness="2" cornerRadius="4" width="100%" height="100%"/>
 
-        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right" useLabels="true"  verticalAlign="middle"/>
+        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right"  verticalAlign="middle"/>
     </mx:VBox>
 </frames:Editor>

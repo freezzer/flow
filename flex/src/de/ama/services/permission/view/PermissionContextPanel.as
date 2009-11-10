@@ -7,7 +7,6 @@
 
 package de.ama.services.permission.view {
 import de.ama.framework.gui.fields.*;
-import de.ama.services.Factory;
 import de.ama.framework.gui.frames.EditPanel;
 public class PermissionContextPanel  extends EditPanel {
     public function PermissionContextPanel() {
@@ -21,12 +20,12 @@ public class PermissionContextPanel  extends EditPanel {
      } 
    
      override public function addFields():void {
-        var field:EditField;
-        field = insertBoolField("Permitted","permitted");
-        field = insertTextField("UserName","userName");
-        field = insertTextField("Kontext","context");
-
-        field = insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",470,20,500);
+        labelWidth = 70;
+        insertTextField("Kontext","context");
+        insertTextField("UserName","userName");
+        insertBoolField("Permitted","permitted");
+        insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",470,20,500);
+        insertCommandButton(new LoadPermissionsCommand(),170,150 );
         
      } 
 
