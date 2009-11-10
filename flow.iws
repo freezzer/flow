@@ -1,85 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
   <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="Permission, Data Copy">
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_command.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_menu.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/flow.mxml" afterPath="$PROJECT_DIR$/flex/src/flow.mxml" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\util\BootstrapDefault.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/BootstrapDefault.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/user/UserData.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/user/UserData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_comment.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_comment.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_lister.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_lister.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/user" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/CommandButtonBar.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/CommandButtonBar.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_tabbed_application_panel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_tabbed_application_panel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenListerCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenListerCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/EditPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/EditPanel.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/LoginDialog.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/LoginDialog.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CopyDataCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/CopyDataCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionSwitch.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionSwitch.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\services\impl\UserData.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/user/UserData.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_menubar.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menubar.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_editor.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Permission.xml" afterPath="$PROJECT_DIR$/server/model/Permission.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/TestApplication.xml" afterPath="$PROJECT_DIR$/server/model/TestApplication.xml" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LoginAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/LoginAction.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_tree_node.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_tree_node.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeNode.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\util\Factory.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/Factory.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_column.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_tree_editor.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_tree_editor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/services/permission/GetPermissionAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Const.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Const.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_collection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/bin/setenv.bat" afterPath="$PROJECT_DIR$/server/bin/setenv.bat" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionSwitch.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bean.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/VisitorGenerate.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\frames\Editor.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/PanelEditor.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/CommandButtonBarSmall.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/CommandButtonBarSmall.mxml" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_panel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_panel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TabbedApplicationPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TabbedApplicationPanel.mxml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionContext.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_permission.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_permission.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\de\ama\generator\Tag_node.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_tabpanel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_tabpanel.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_menuitem.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menuitem.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_permission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionServiceImpl.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_bootstrap.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenEditorCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/OpenEditorCommand.as" />
+    <list default="true" readonly="true" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionSwitchesLister.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/SavePermissionCommand.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionsData.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_delete.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_copy.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionContextPanel.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/LoadPermissionsCommand.as" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/flex/src/de/ama/services/impl" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/Data.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/Data.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\de\ama\generator\Tag_file.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionStarter.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionStarter.as" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionService.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_bootstrap.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/ListPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/ListPanel.mxml" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_collection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Person.xml" afterPath="$PROJECT_DIR$/server/model/Person.xml" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bean.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\frames\IEditor.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/Editor.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\util\Environment.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/Environment.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\flex\Tag_input.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_input.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/GetPermissionAction.as" />
-      <change type="MOVED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_action.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/ListField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/ListField.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/NewUserAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/NewUserAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Visitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/static/LoginScreen.mxml" afterPath="$PROJECT_DIR$/flex/src/static/LoginScreen.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionContext.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionContext.java" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\de\ama\generator\java\Tag_command.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Vorgang.xml" afterPath="$PROJECT_DIR$/server/model/Vorgang.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionEditor.as" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_add.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_edit.png" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -151,24 +89,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Permission.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/model/Permission.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="119" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PermissionContext.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionContext.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="344" selection-end="494" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="PermissionsData.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionsData.as">
           <provider selected="true" editor-type-id="text-editor">
@@ -178,68 +98,68 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PermissionService.as" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="SavePermissionCommand.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/view/SavePermissionCommand.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_add.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_add.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_copy.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_copy.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page_delete.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_delete.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book_add.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_add.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book_delete.png" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_delete.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="book_edit.png" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_edit.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PermissionService.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionService.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="56" column="15" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.7469244">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Environment.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/Environment.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="93" column="70" selection-start="2937" selection-end="2937" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginAction.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/LoginAction.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="38" selection-start="218" selection-end="218" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PermissionServiceImpl.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="49" selection-start="1269" selection-end="1269" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/LoginAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="13" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GetPermissionAction.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/permission/GetPermissionAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="54" selection-start="652" selection-end="652" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PermissionService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/PermissionService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="35" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
+            <state line="56" column="15" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -273,332 +193,6 @@
           <option name="myItemId" value="flow" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="services" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="services" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="permission" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="generator" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="generator" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="java" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="action" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="server" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="model" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -639,80 +233,6 @@
         </PATH_ELEMENT>
         <PATH_ELEMENT>
           <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="generated" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="app" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="generated" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="generated" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="permission" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -772,223 +292,7 @@
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
         <PATH_ELEMENT>
-          <option name="myItemId" value="services" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="permission" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="services" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="permission" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="view" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
           <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="gui" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="icons" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="gui" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="frames" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="gui" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flow" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="client" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="flex" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="src" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="de" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="ama" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="framework" />
-          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="action" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
@@ -1064,6 +368,118 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="de.ama.services.impl" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree">
+    <UpdateInfo date="10.11.09 01:36" ActionInfo="_Update">
+      <UpdatedFiles>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated from server" />
+          <option name="myStatusName" value="Changed on server" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CHANGED_ON_SERVER" />
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Updated" />
+            <option name="myStatusName" value="Changed" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="UPDATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Created" />
+            <option name="myStatusName" value="Created" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="CREATED" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Deleted" />
+            <option name="myStatusName" value="Deleted" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="true" />
+            <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          </FILE-GROUP>
+          <FILE-GROUP>
+            <option name="myUpdateName" value="Restored" />
+            <option name="myStatusName" value="Will be restored" />
+            <option name="mySupportsDeletion" value="false" />
+            <option name="myCanBeAbsent" value="false" />
+            <option name="myId" value="RESTORED" />
+          </FILE-GROUP>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Modified" />
+          <option name="myStatusName" value="Modified" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MODIFIED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Skipped" />
+          <option name="myStatusName" value="Skipped" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SKIPPED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with conflicts" />
+          <option name="myStatusName" value="Will be merged with conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_CONFLICTS" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with property conflicts" />
+          <option name="myStatusName" value="Will be merged with property conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged" />
+          <option name="myStatusName" value="Will be merged" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Not in repository" />
+          <option name="myStatusName" value="Not in repository" />
+          <option name="mySupportsDeletion" value="true" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UNKNOWN" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally added" />
+          <option name="myStatusName" value="Locally added" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_ADDED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Locally removed" />
+          <option name="myStatusName" value="Locally removed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="LOCALLY_REMOVED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Switched" />
+          <option name="myStatusName" value="Switched" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="SWITCHED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Merged with tree conflicts" />
+          <option name="myStatusName" value="Will be merged with tree conflicts" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+          <PATH vcs="svn" revision="282">D:\dev\flow\flex\src\de\ama\services\impl</PATH>
+        </FILE-GROUP>
+      </UpdatedFiles>
+    </UpdateInfo>
   </component>
   <component name="RunManager" selected="Application.Starter">
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1245,7 +661,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Permission, Data Copy" />
+    <option name="LAST_COMMIT_MESSAGE" value="Visitor,Permission" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -1269,6 +685,7 @@
     <MESSAGE value="laszlo is gone" />
     <MESSAGE value="Context Menu" />
     <MESSAGE value="Permission, Data Copy" />
+    <MESSAGE value="Visitor,Permission" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1313,69 +730,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/TreeEditor.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="117" column="0" selection-start="3648" selection-end="3648" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/EditPanel.mxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="20" selection-start="915" selection-end="915" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionContextPanel.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="927" selection-end="927" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/TestApplication.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="35" selection-start="243" selection-end="243" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/IconStore.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="13" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionEditor.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="65" selection-start="1418" selection-end="1418" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/model/Permission.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="119" selection-start="1141" selection-end="1141" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionsData.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="26" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionContext.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="344" selection-end="494" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/PermissionService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="35" selection-start="463" selection-end="463" vertical-scroll-proportion="0.0">
@@ -1424,9 +778,58 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionService.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="56" column="15" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.7469244">
+        <state line="56" column="15" selection-start="1747" selection-end="1747" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/PermissionsData.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="26" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/services/permission/view/SavePermissionCommand.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_add.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_copy.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/page_delete.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_add.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_delete.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/book_edit.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
       </provider>
     </entry>
   </component>
