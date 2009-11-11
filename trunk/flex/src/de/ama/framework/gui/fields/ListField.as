@@ -1,4 +1,5 @@
 package de.ama.framework.gui.fields {
+import de.ama.framework.command.Command;
 import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.util.Util;
 import de.ama.services.Factory;
@@ -64,5 +65,7 @@ public class ListField extends EditField{
     }
 
 
-}
+    public function addCommand(cmd:Command):void {
+        ListPanel(_input).addCommand(cmd);
+    }}
 }

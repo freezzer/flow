@@ -1,4 +1,6 @@
 package de.ama.framework.gui.frames {
-public interface Panel {
+import de.ama.framework.command.Invoker;
+
+public interface Panel extends Invoker{
 }
 }

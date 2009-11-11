@@ -1,10 +1,9 @@
 package de.ama.services {
 import de.ama.framework.util.*;
-import de.ama.framework.command.Command;
+import de.ama.framework.command.*;
 import de.ama.framework.data.Data;
-import de.ama.framework.gui.frames.EditPanel;
-import de.ama.framework.gui.frames.Editor;
-import de.ama.framework.gui.frames.ListPanel;
+import de.ama.framework.gui.frames.*;
+import de.ama.services.permission.*;
 
 public class Factory {
 
@@ -13,6 +12,7 @@ public class Factory {
     private static var editor_dictionary:Object = new Object();
     private static var lister_dictionary:Object = new Object();
     private static var command_dictionary:Object = new Object();
+    private static var permission_dictionary:Object = new Object();
 
 
     private static function register(dictionary:Object, key:String, c:Class):void {
@@ -108,6 +108,17 @@ public class Factory {
     public static function createEditor(type:String):Editor {
         return Editor(createObject(editor_dictionary,type));
     }
+
+    /////////////////////// Permissions //////////////////////////////////////
+
+    public static function registerPermission(key:String, c:Class):void {
+        register(permission_dictionary,key,c);
+    }
+
+    public static function createPermission(key:String):PermissionContext {
+        return PermissionContext(createObject(permission_dictionary,key));
+    }
+
 
 }
 }

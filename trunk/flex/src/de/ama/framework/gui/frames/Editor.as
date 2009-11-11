@@ -31,10 +31,7 @@ public class Editor extends Canvas implements Invoker{
     public function onCreationComplete():void {
         addCommands();
         addPanels();
-        buttonbar.callBack = new Callback(this, editorButtonHandler);
     }
-
-
 
     //////////////////////////// permission ///////////////////////////////////
 
@@ -105,13 +102,6 @@ public class Editor extends Canvas implements Invoker{
 
     public function addCommands():void {
         addCommand(new SaveBoCommand());
-    }
-
-
-    protected function editorButtonHandler(event:MouseEvent):void {
-        var button:Button = Button(event.currentTarget);
-        var command:Command = Command(button.data);
-        command.start(this);
     }
 
     //////////////////////////// panels ///////////////////////////////////

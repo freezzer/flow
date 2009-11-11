@@ -8,19 +8,22 @@
 
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-        import de.ama.framework.util.Callback;
+        import de.ama.framework.command.Invoker;
 
-        public var _callBack:Callback ;
         public var _small:Boolean = false ;
+        public var _invoker:Invoker ;
+
+        public function set invoker(invoker:Invoker):void {
+            _invoker = invoker;
+        }
 
 
         private function onButtonClick(event:MouseEvent):void {
-            if (_callBack == null) {
-                throw new Error("a button needs a");
+            if(_invoker==null){
+                throw new Error("CommandButton without invoker is not allowed");
             }
-            _callBack.execute(event);
-
-        }
+            command.start(_invoker);
+       }
 
         public function get command():Command {
             return Command(data);
@@ -36,10 +39,6 @@
             small = _small;
         }
 
-
-        public function set callBack(cb:Callback):void {
-            _callBack = cb;
-        }
 
         public function set small(b:Boolean):void {
             _small = b;

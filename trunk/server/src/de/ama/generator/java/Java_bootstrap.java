@@ -57,7 +57,7 @@ public class Java_bootstrap extends Tag {
          visitAllChildren(PERMISSION, new Visitor(){
               public void visit(Tag visitor) {
                   String name = visitor.getRequiredAttribute(NAME);
-                  write("         Environment.getPermissionService().registerPermissionContext(\""+name+"\", "+visitor.getPackage()+"."+name+".class);");
+                  write("         Environment.getPermissionService().registerPermissionContext(\""+name+"\", "+visitor.getPackage()+".Permission"+name+".class);");
               }
           });
         write("    }");

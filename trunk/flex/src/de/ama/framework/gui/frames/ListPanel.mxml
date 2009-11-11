@@ -16,10 +16,7 @@
         import de.ama.framework.util.Util;
 
         import mx.collections.ArrayCollection;
-        import mx.controls.Button;
         import mx.controls.dataGridClasses.DataGridColumn;
-        import mx.controls.dataGridClasses.DataGridItemRenderer;
-        import mx.core.Container;
         import mx.core.IDataRenderer;
         import mx.events.ListEvent;
 
@@ -67,6 +64,11 @@
             return selectionModel;
         }
 
+        public function refreshGui():void {
+            rows.refresh();
+        }
+
+
 
         /////////////////////////////////// Toolbar ///////////////////////////////////////////
 
@@ -77,7 +79,7 @@
                     toolbar.small = true;
                     toolbar.label = label;
                 }
-                toolbar.callBack = new Callback(this, toolBarButtonHandler);
+                toolbar.invoker = this;
                 toolbar.commands = commands
                 contentPanel.addChildAt(DisplayObject(toolbar), 0);
             }
@@ -85,12 +87,6 @@
 
         public function addCommand(command:Command):void {
             commands.addItem(command);
-        }
-
-        private function toolBarButtonHandler(event:MouseEvent):void {
-            var button:Button = Button(event.currentTarget);
-            var command:Command = Command(button.data);
-            command.start(this);
         }
 
         /////////////////////////////////// ContextMenu ///////////////////////////////////////////

@@ -106,6 +106,9 @@ public class Command {
     }
 
     public function isPermitted():Boolean {
+    	if(Util.isEmpty(_permissionId)){
+    		return true;
+    	}
     	if(_permitted < 0){
     	   _permitted  = PermissionService.instance.isPermitted(this) ? 1 : 0;
     	}

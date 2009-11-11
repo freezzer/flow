@@ -11,7 +11,7 @@ import de.ama.db.PersistentMarker;
  */
 public class PermissionSwitch implements PersistentMarker,java.io.Serializable  {
     public String key;
-    public boolean isOn;
+    public boolean isOn = true;
 
     public PermissionSwitch(String key) {
         this.key = key;

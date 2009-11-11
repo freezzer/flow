@@ -5,10 +5,11 @@
     <property file="build.properties" />
 
     <property name="deploy.dir" value="${home.dir}/server/webapp"/>
+    <property name="root_package" value="comp"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="server/classes" failonerror="false"/>
-         <delete dir="server/src/generated" failonerror="false"/>
+         <delete dir="server/src/${root_package}" failonerror="false"/>
          <mkdir dir="server/classes" />
         <javac destdir="server/classes" debug="on">
             <src path="server/src"/>
@@ -28,11 +29,10 @@
 
 
     <target name="server.compile.generated" description="compiles the sources">
-        <delete dir="server/classes/generated" failonerror="false"/>
-        <mkdir dir="server/classes/generated"/>
+        <delete dir="server/classes/${root_package}" failonerror="false"/>
+        <mkdir dir="server/classes/${root_package}"/>
         <javac destdir="server/classes" debug="on">
-            <src path="server/src/generated"/>
-            <src path="server/src/static"/>
+            <src path="server/src/${root_package}"/>
             <classpath>
                 <fileset dir="server/lib">
                     <include name="**/*.jar"/>
@@ -43,7 +43,7 @@
 
 
     <target name="generate" depends="server.compile.environment" description="generates the sources">
-        <delete dir="flex/src/generated" failonerror="false"/>
+        <delete dir="flex/src/${root_package}" failonerror="false"/>
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
                 <fileset dir="server/lib">
@@ -53,8 +53,8 @@
             </classpath>
             <arg value="inFile"/>
             <arg file="server/model/TestApplication.xml"/>
-            <arg value="outDir"/>
-            <arg path="."/>
+            <arg value="root_package"/>
+            <arg value="${root_package}"/>
             <arg value="targets"/>
             <arg value="flex,java"/>
         </java>

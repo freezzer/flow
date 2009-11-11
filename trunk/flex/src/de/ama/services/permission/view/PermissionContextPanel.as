@@ -24,9 +24,9 @@ public class PermissionContextPanel  extends EditPanel {
         insertTextField("Kontext","context");
         insertTextField("UserName","userName");
         insertBoolField("Permitted","permitted");
-        insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",470,20,500);
-        insertCommandButton(new LoadPermissionsCommand(),170,150 );
-        
-     } 
+        var lf:ListField = insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",470,20,500);
+        lf.addCommand(new SelectAllCommand()); 
+        lf.addCommand(new SelectNoneCommand());
+     }
 
 }}

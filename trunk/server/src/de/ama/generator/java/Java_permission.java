@@ -28,7 +28,7 @@ public class Java_permission extends Tag {
         String name = getRequiredAttribute(NAME);
         String dir =  getDir();
         String pckg =  getPackage();
-        initPrintWriter(dir,name+".java");
+        initPrintWriter(dir,"Permission"+name+".java");
 
 
         write("/* ");
@@ -39,9 +39,9 @@ public class Java_permission extends Tag {
         writeLine();
         write("import de.ama.services.permission.PermissionSwitch;");
         writeLine();
-        write("public class "+name+" extends de.ama.services.permission.PermissionContext { ");
+        write("public class Permission"+name+" extends de.ama.services.permission.PermissionContext { ");
         writeLine();
-        write("    public "+name+"() {");
+        write("    public Permission"+name+"() {");
         write("        setContext(\""+name+"\");");
         write("    }");
         writeLine();

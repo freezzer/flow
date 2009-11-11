@@ -3,29 +3,34 @@
          styleName="CommandButtonBar" >
 
     <mx:Repeater id="trp" dataProvider="{commands}">
-        <fields:CommandButton command="{trp.currentItem}" small="{_small}" callBack="{callBack}"/>
+        <fields:CommandButton command="{trp.currentItem}" small="{_small}" invoker="{_invoker}"/>
     </mx:Repeater>
 
 
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-        import de.ama.framework.util.Callback;
+
+        import de.ama.framework.command.Invoker;
 
         import mx.collections.ArrayCollection;
         import mx.controls.Label;
 
         [Bindable]
-        public var commands:ArrayCollection = new ArrayCollection();
-
+        private var _commands:ArrayCollection = new ArrayCollection();
+        
         private var _label:Label;
-        public var callBack:Callback ;
-        public var _small:Boolean = false ;
+        private var _small:Boolean = false ;
+        private var _invoker:Invoker ;
 
+
+        public function set invoker(invoker:Invoker):void {
+            _invoker = invoker;
+        }
 
         public function set small(value:Boolean):void {
             _small = value;
             _label = new Label();
-            _label.setStyle("horizontalAlign","left");
+            _label.setStyle("horizontalAlign", "left");
             _label.percentWidth = 100;
             addChildAt(_label, 0);
 
@@ -37,16 +42,21 @@
             _label.text = value;
         }
 
+
+        public function get commands():ArrayCollection {
+            return _commands;
+        }
+
+        public function set commands(value:ArrayCollection):void {
+            _commands = value;
+        }
+
         public function clear():void {
             commands.removeAll();
         }
 
         public function addCommand(command:Command):void {
             commands.addItem(command);
-        }
-
-        public function getCommands():ArrayCollection {
-            return commands;
         }
 
         ]]></mx:Script>

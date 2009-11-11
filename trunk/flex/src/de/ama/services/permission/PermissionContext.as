@@ -20,6 +20,12 @@ public function isPermitted(key:String):Boolean{
     return false;
 }
 
+public function allPermitted(b:Boolean):void{
+    for each(var s:PermissionSwitch in switches) {
+       s.isOn = b;
+    }
+}
+
 
 
 }

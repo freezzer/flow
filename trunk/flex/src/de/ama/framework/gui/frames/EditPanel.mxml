@@ -2,12 +2,14 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
 	implements="de.ama.framework.gui.frames.Panel"
     initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   
-    borderStyle="none" xmlns:ns1="generated.person.view.*" clipContent="false">
+    borderStyle="none"  clipContent="false">
 
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
         import de.ama.framework.data.Data;
+        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.gui.fields.BoolField;
+        import de.ama.framework.gui.fields.CommandButton;
         import de.ama.framework.gui.fields.DateField;
         import de.ama.framework.gui.fields.EditField;
         import de.ama.framework.gui.fields.ListField;
@@ -141,12 +143,9 @@
         }
 
         public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1):Button {
-            var button:Button = new Button();
-            button.label = cmd.label;
-            button.setStyle("icon", cmd.getIcon());
-            button.toolTip = cmd.label;
-            button.enabled = cmd.isPermitted();
-            button.mouseEnabled = cmd.isPermitted();
+            var button:CommandButton = new CommandButton();
+            button.command = cmd;
+            button.invoker = this;
             insertComponent(button, x, y);
             return button;
         }
@@ -197,6 +196,7 @@
         public function reset():void {
         }
 
+
         public function addPanels():void {
         }
 
@@ -204,9 +204,13 @@
         }
 
 
+        public function getSelectionModel():SelectionModel {
+            return new SelectionModel(getData());
+        }
+
         ]]></mx:Script>
 
-         <mx:Box id="titleBox" paddingLeft="3" paddingRight="3" y="-7" backgroundColor="#E0E0E0" borderStyle="solid" borderColor="#E0E0E0" cornerRadius="3" horizontalCenter="0" visible="false" height="14">
+         <mx:Box id="titleBox" paddingLeft="3" paddingRight="3" y="-8" backgroundColor="#E0E0E0" borderStyle="solid" borderColor="#E0E0E0" cornerRadius="3" horizontalCenter="0" visible="false" height="16">
              <mx:Label  id="title" fontWeight="normal" fontSize="10" color="#808080" fontStyle="normal" textAlign="left"  text="xxx"/>
          </mx:Box>
 </mx:Canvas>
