@@ -99,8 +99,8 @@ public class Flex_bootstrap extends Tag {
                         public void visit(Tag visitor) {
                             String name = visitor.getRequiredAttribute(NAME);
                             String pckg = visitor.getPackage();
-                            write("        import " + pckg + "." + name + ";");
-                            write("        Factory.registerBean(\"" + name + "\", " +pckg+"."+ name + ");");
+                            write("        import " + pckg + ".Permission" + name + ";");
+                            write("        Factory.registerPermission(\"" + name + "\", " +pckg+".Permission"+ name + ");");
                         }
                     });
         write("    }");

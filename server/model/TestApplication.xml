@@ -10,38 +10,41 @@
     <import file="Vorgang.xml"/>
 
 
+    <permission package="permission" name="MainMenu">
 
-    <tabbed_application_panel name="MyApplicationPanel" package="app">
-        <bootstrap/>
+        <tabbed_application_panel name="MyApplicationPanel" package="app">
+            <bootstrap/>
 
-        <menubar h="23">
-            <menu name="System">
-                <menuitem label="Abmelden" command="LogoutCommand" />
-                <menuitem label="Anmelden" command="LoginCommand" />
-                <menuitem label="Info"     command="ShowinfoCommand" />
-            </menu>
-            <menu name="Daten">
-                <menuitem >
-                    <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
-                </menuitem>
-                <menuitem>
-                   <command  label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"  />
-                </menuitem>
-                <menuitem >
-                    <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
-                </menuitem>
-                <menuitem>
-                   <command  label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"  />
-                </menuitem>
-            </menu>
-            <menu name="Admin">
-                <menuitem>
-                   <command  label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"  />
-                </menuitem>
-            </menu>
-        </menubar>
-        
-    </tabbed_application_panel>
+            <menubar h="23">
+                <menu name="System">
+                    <menuitem label="Abmelden" command="LogoutCommand"/>
+                    <menuitem label="Anmelden" command="LoginCommand"/>
+                    <menuitem label="Info" command="ShowinfoCommand"/>
+                </menu>
+                <menu name="Daten">
+                    <menuitem>
+                        <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
+                    </menuitem>
+                    <menuitem>
+                        <command label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"/>
+                    </menuitem>
+                    <menuitem>
+                        <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
+                    </menuitem>
+                    <menuitem>
+                        <command label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"/>
+                    </menuitem>
+                </menu>
+                <menu name="Admin">
+                    <menuitem>
+                        <command label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"/>
+                    </menuitem>
+                </menu>
+            </menubar>
+
+
+        </tabbed_application_panel>
+    </permission>
 
 
 </define>

@@ -23,12 +23,7 @@ public class PermissionEditor extends TreeEditor {
         cmd.permissionId = "global: (Berechtigung speichern)";
         cmd.setProperty("name","SavePermissionCommand");
         addCommand(cmd);
-        import de.ama.services.permission.view.LoadPermissionsCommand;
-        cmd = new LoadPermissionsCommand("Berechtigungen laden","refresh");
-        cmd.permissionId = "global: (Berechtigungen laden)";
-        cmd.setProperty("name","LoadPermissionsCommand");
-        addCommand(cmd);
-     } 
+     }
 
      override public function getPrototypeTree():TreeNode {
         var parent:TreeNode;
@@ -37,12 +32,12 @@ public class PermissionEditor extends TreeEditor {
         var cmd:Command;
 
 
-        node = new TreeNode(".", "Berechtigungen", false, "wrench", "PermissionsData", "default");
+        node = new TreeNode("contexts", "Berechtigungen", true, "wrench", "PermissionsData", "default");
         node.defaultOpen=true;
         root = node;
         parent = node;
 
-        node = new TreeNode("contexts", "Kontext", false, "user", "PermissionContext", "PermissionContextPanel");
+        node = new TreeNode("contexts", "Bereich {context}", false, "user", "PermissionContext", "PermissionContextPanel");
         node.defaultOpen=true;
         parent.addTemplate(node);
 

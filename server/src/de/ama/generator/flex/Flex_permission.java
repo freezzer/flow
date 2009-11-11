@@ -28,7 +28,7 @@ public class Flex_permission extends Tag {
         String name = getRequiredAttribute(NAME);
         String dir =  getDir();
         String pckg =  getPackage();
-        initPrintWriter(dir,name+".as");
+        initPrintWriter(dir,"Permission"+name+".as");
 
 
         write("/* ");
@@ -38,7 +38,7 @@ public class Flex_permission extends Tag {
         write("package "+pckg+" {");
         write("import de.ama.services.permission.*;");
 
-        write("public class "+name+" "+" extends PermissionContext { ");
+        write("public class Permission"+name+" "+" extends PermissionContext { ");
         writeLine();
         write("}}");
         flush();

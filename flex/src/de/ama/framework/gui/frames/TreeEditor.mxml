@@ -8,12 +8,9 @@
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
         import de.ama.framework.data.Data;
-        import de.ama.framework.gui.fields.CommandButton;
         import de.ama.framework.gui.icons.IconStore;
-        import de.ama.framework.util.*;
         import de.ama.services.Factory;
 
-        import mx.controls.Button;
         import mx.controls.treeClasses.TreeItemRenderer;
         import mx.core.UITextField;
 
@@ -29,9 +26,7 @@
         override public function onCreationComplete():void {
             treeMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
             treeMenu.hideBuiltInItems();
-
-            toolbar.callBack = new Callback(this, toolBarButtonHandler);
-
+            toolbar.invoker = this;
             super.onCreationComplete();
         }
 
@@ -155,17 +150,28 @@
             var node:TreeNode = TreeNode(ir.data);
             for each(var command:Command in node.commands) {
                 if (command.contextMenuItem == event.target) {
-                    command.start(node);
+                    command.start(this);
                 }
             }
 
         }
 
-        private function toolBarButtonHandler(event:MouseEvent):void {
-            var button:CommandButton = CommandButton(event.currentTarget);
-            var command:Command = button.command;
-            if (selectedNode != null && selectedNode.parent != null) {
-                command.start(selectedNode);
+        public function removeSelectedNode():void {
+            var node:TreeNode = selectedNode;
+            node.parent.removeChild(node);
+        }
+
+        public function copySelectedNode():void {
+            var node:TreeNode = selectedNode;
+            node.parent.addChild(node.clone(), true);
+        }
+
+        public function addNewNode():void {
+            var node:TreeNode = selectedNode;
+            if (node.isListView) {
+                node.addNewChild();
+            } else {
+                node.parent.addNewChild();
             }
         }
 
@@ -197,6 +203,6 @@
 
         </mx:HDividedBox>
 
-        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right"/>
+        <frames:CommandButtonBar id="buttonbar" horizontalAlign="right" invoker="{this}"/>
     </mx:VBox>
 </frames:Editor>

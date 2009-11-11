@@ -28,11 +28,11 @@ import de.ama.util.Util;
  */
 public class Starter {
     private static String[] args;
-    private String inFileName, outDirName, targets;
+    private String inFileName, root_package, targets;
 
     public Starter() {
         inFileName = getCommandLineParam("inFile", "mandatory");
-        outDirName = getCommandLineParam("outDir", "mandatory");
+        root_package = getCommandLineParam("root_package", "mandatory");
         targets    = getCommandLineParam("targets","mandatory");
 
         if (Util.isEmpty(targets)) {
@@ -48,7 +48,7 @@ public class Starter {
     }
 
     private void run() {
-        new OutputWriter(inFileName, outDirName, targets).start();
+        new OutputWriter(inFileName, root_package, targets).start();
     }
 
     private String getCommandLineParam(String key, String def) {
@@ -65,9 +65,9 @@ public class Starter {
             System.out.println("*   flow Generate Code ");
             System.out.println("*                                                                             ");
             System.out.println("*   usage:                                        ");
-            System.out.println("*   inFile    [input file.xml]        mandatory ! ");
-            System.out.println("*   outDir    [output directory]      mandatory ! ");
-            System.out.println("*   targets   [geneation targets]     use: java,flex,hibernate,to be continued ... ");
+            System.out.println("*   inFile       [input file.xml]        mandatory ! ");
+            System.out.println("*   root_package [root_package]          mandatory !, your company name ");
+            System.out.println("*   targets      [geneation targets]     use: java,flex,hibernate,to be continued ... ");
             System.out.println("*********************************************************************************");
             System.exit(1);
         }

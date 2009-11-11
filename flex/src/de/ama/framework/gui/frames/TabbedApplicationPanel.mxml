@@ -12,6 +12,9 @@
         import de.ama.framework.util.Util;
 
 
+        import mx.controls.Menu;
+        import mx.controls.MenuBar;
+        import mx.controls.menuClasses.MenuBarItem;
         import mx.core.Container;
         import mx.events.MenuEvent;
 
@@ -21,6 +24,9 @@
         }
 
         public function init():void {
+
+            //mainMenuBar = new MenuBar();
+            //mainMenuBar.addChild(new MenuBarItem())
 
             mainTabs = new AdvanceTabNavigator();
             mainTabs.setStyle("width", "100%");
@@ -39,6 +45,11 @@
             executeGeneratedBootstrap();
         }
 
+        public function addMenu(label:String):void {
+            var menu:Menu = new Menu();
+            menu.labelField
+        }
+
         public function addContent(child:Container):void {
             mainTabs.addChild(child);
             mainTabs.selectedChild = child;
@@ -48,26 +59,18 @@
         protected function handleMenuClick(evt:MenuEvent):void {
             var mitem:XML = XML(evt.item);
             var command:String = mitem.attribute("command")[0];
-            var model:String = mitem.attribute("model")[0];
             var lister:String = mitem.attribute("lister")[0];
             var editor:String = mitem.attribute("editor")[0];
             var label:String = mitem.attribute("label")[0];
 
             var cmd:Command = Factory.createCommand(command);
             cmd.setProperty("command", command);
-            cmd.setProperty("model", model);
             cmd.setProperty("lister", lister);
             cmd.setProperty("editor", editor);
             cmd.setProperty("label", label);
 
             var invoker:MenuInvoker;
-            if (!Util.isEmpty(model)) {
-                invoker = new MenuInvoker(Factory.createBean(model));
-            } else {
-                invoker = new MenuInvoker();
-            }
-
-            cmd.start(invoker);
+            cmd.start(new MenuInvoker());
         }
 
 

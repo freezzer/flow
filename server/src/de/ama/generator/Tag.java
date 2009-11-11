@@ -21,7 +21,6 @@ package de.ama.generator;
 
 import de.ama.util.Util;
 import de.ama.util.XmlElement;
-import de.ama.util.Composite;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -63,12 +62,7 @@ public class Tag extends XmlElement implements Const {
 
     public PrintWriter createPrintWriter(String _dir, String fileName) {
         try {
-            File dir = null;
-            if(_dir.contains(":")){
-              dir= new File(_dir);
-            } else {
-              dir = new File(getWriter().getOutDir()+"/"+ _dir );
-            }
+            File dir = new File(".",_dir);
             if (!dir.exists()) {
                 dir.mkdirs();
             }
@@ -346,6 +340,10 @@ public class Tag extends XmlElement implements Const {
         return (Tag) getChildren().get(i);
     }
 
+    private String getRootPackage() {
+        return getWriter().getRootPackage();
+    }
+
     protected String getDir(){
         String dir = getParentAttribute(DIR,"");
         if(Util.isEmpty(dir)){
@@ -356,12 +354,12 @@ public class Tag extends XmlElement implements Const {
         String targetDir = target;
         if(target.equals("java")) targetDir = "server";
 
-        return targetDir+"/"+ SRC+"/"+GENERATED + "/" + dir ;
+        return targetDir+"/"+ SRC+"/"+getRootPackage() + "/" + dir ;
     }
 
     public String getPackage(){
         String pckg =  getRequiredParentAttribute(PACKAGE);
-        return GENERATED +"."+ pckg;
+        return getRootPackage() +"."+ pckg;
     }
 
     public Tag getParent(String name) {

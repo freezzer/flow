@@ -12,7 +12,7 @@ import java.util.List;
 
 public class PermissionContext implements java.io.Serializable , de.ama.db.PersistentMarker {
 
-    private boolean permitted;
+    private boolean permitted = true;
     public  boolean getPermitted() {  return permitted; }
     public  void   setPermitted(boolean in) {  permitted=in; }
 

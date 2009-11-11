@@ -4,6 +4,7 @@
 
        package de.ama.framework.command {
        import de.ama.framework.gui.frames.ListPanel;
+       import de.ama.framework.gui.frames.TreeEditor;
        import de.ama.framework.gui.frames.TreeNode;
 
        public class CreateNodeCommand  extends Command {
@@ -14,13 +15,9 @@
            }
 
            override protected function execute():void {
-               if(invoker is TreeNode){
-                   var node:TreeNode = TreeNode(invoker);
-                   if(node.isListView){
-                      node.addNewChild();
-                   } else {
-                      node.parent.addNewChild(); 
-                   }
+               if(invoker is TreeEditor){
+                   var treeEditor:TreeEditor = TreeEditor(invoker);
+                   treeEditor.addNewNode();
                }
                if(invoker is ListPanel){
                    var lp:ListPanel = ListPanel(invoker);

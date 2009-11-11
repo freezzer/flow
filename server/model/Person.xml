@@ -20,7 +20,7 @@
         </bean>
     </model>
 
-    <permission package="permission" name="PermissionPerson">
+    <permission package="permission" name="Person">
 
         <view package="person.view" type="Person">
 

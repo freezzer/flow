@@ -17,22 +17,18 @@ package de.ama.generator;
 
 */
 
-import de.ama.util.XmlElement;
-import de.ama.util.XmlModel;
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
 public class OutputWriter {
     private Tag templateRoot;
     private String inFilename;
-    private String outDir;
+    private String root_package;
     private File inDir;
     private String targets;
     private Map objectStore = new HashMap();
@@ -65,12 +61,12 @@ public class OutputWriter {
 
     public OutputWriter(String inFile, String outDir, String targets) {
         this.inFilename = inFile;
-        this.outDir = outDir;
+        this.root_package = outDir;
         this.targets = targets;
     }
 
-    public String getOutDir() {
-        return outDir;
+    public String getRootPackage() {
+        return root_package;
     }
 
     protected void composeTemplates() {

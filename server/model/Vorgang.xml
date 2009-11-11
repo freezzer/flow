@@ -63,7 +63,7 @@
         </bean>
     </model>
 
-    <permission package="permission" name="PermissionVorgang">
+    <permission package="permission" name="Vorgang">
       <view package="vorgang.view" type="Vorgang">
         <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}">
             <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="." open="true" panel="default">
