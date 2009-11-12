@@ -8,10 +8,15 @@
 package de.ama.services.permission.view {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.SaveBoAction;
-import de.ama.framework.util.*;
 import de.ama.framework.command.*;
-import de.ama.framework.data.*;
-public class SavePermissionCommand  extends Command { 
+import de.ama.framework.gui.frames.TreeEditor;
+import de.ama.framework.util.*;
+import de.ama.services.permission.PermissionContext;
+import de.ama.services.permission.PermissionsData;
+
+public class SavePermissionCommand  extends Command {
+    private var permissionsData:PermissionsData;
+    private var index:int;
 
     public function SavePermissionCommand(label:String="Berechtigung speichern", icon:String="save") {
        super(label,icon); 
@@ -19,12 +24,24 @@ public class SavePermissionCommand  extends Command {
       
     override protected function execute():void {
         var sa:SaveBoAction    = new SaveBoAction();
-        sa.data = invoker.getData();
-        ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
+        var te:TreeEditor = TreeEditor(invoker);
+        var pc:Object = te.selectedNode.data;
+
+        if(pc is PermissionContext){
+            permissionsData = PermissionsData(te.getData());
+            index = permissionsData.contexts.indexOf(pc);
+            sa.data = pc;
+            ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
+        }
     }
 
     private function resulthandler(action:SaveBoAction): void {
-        invoker.setData(Data(action.data));
+        permissionsData.contexts[index] = action.data;
+        invoker.setData(permissionsData);
     }
 
+
+    override public function isPermitted():Boolean {
+        return true;
+    }
 }}

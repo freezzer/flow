@@ -29,4 +29,9 @@ public class SelectAllCommand  extends Command {
         }
         lp.refreshGui();
     }
+    
+    override public function isPermitted():Boolean {
+        return true;
+    }
+
 }}

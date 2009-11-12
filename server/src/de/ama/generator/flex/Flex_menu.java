@@ -27,9 +27,10 @@ public class Flex_menu extends Tag {
 
     public void generate() {
         String name = getRequiredAttribute(NAME);
-        write("    <menu label='"+name+"'>");
+        writeLine();
+        write("        //////////////////////////// Menu "+name+" ////////////////////////");
+        write("        menu = addMenu(\""+name+"\");");
         visitChildren(MENUITEM);
-        write("    </menu>");
     }
 
 }

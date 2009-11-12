@@ -27,19 +27,8 @@ public class Flex_menuitem extends Tag {
 
     @Override
     public void generate() {
-        visitChildren(COMMAND,new Visitor(){
-            public void visit(Tag visitor) {
-                String name  =  visitor.getAttribute(NAME);
-                String label =  visitor.getAttribute(LABEL, "");
-                String use =    visitor.getAttribute(USE, "");
-                String editor = visitor.getAttribute(EDITOR, "");
-                String lister = visitor.getAttribute(LISTER, "");
-
-                write("       <menuitem label='" + label + "' command='" + Util.saveToString(use, name) + "' "
-                        + (lister.length() > 0 ? " lister='" + lister + "' " : "")
-                        + (editor.length() > 0 ? " editor='" + editor + "' " : "")
-                        + " />");
-            }
-        },false);
+        visitChildren(COMMAND);
+        write("        menu.addItem(cmd);");
+        write("   ");
     }
 }
