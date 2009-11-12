@@ -37,7 +37,7 @@ public class ListField extends EditField{
         if(_input!=null){
             removeChild(_input);
         }
-        lp.useToolbar = ListPanel.SMALL;
+        lp.toolbarSize = CommandButton.SMALL;
         lp.label = _labelText;
         _input = lp;
         _input.x = 5;

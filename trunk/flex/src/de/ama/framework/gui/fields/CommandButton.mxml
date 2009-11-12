@@ -10,8 +10,13 @@
         import de.ama.framework.command.Command;
         import de.ama.framework.command.Invoker;
 
-        public var _small:Boolean = false ;
+        public var _size:int = 0 ;
         public var _invoker:Invoker ;
+
+        public static var SMALL:int = 1;
+        public static var MEDIUM:int = 2;
+        public static var LARGE:int = 3;
+
 
         public function set invoker(invoker:Invoker):void {
             _invoker = invoker;
@@ -19,11 +24,11 @@
 
 
         private function onButtonClick(event:MouseEvent):void {
-            if(_invoker==null){
+            if (_invoker == null) {
                 throw new Error("CommandButton without invoker is not allowed");
             }
             command.start(_invoker);
-       }
+        }
 
         public function get command():Command {
             return Command(data);
@@ -31,23 +36,28 @@
 
         public function set command(cmd:Command):void {
             data = cmd;
-            setStyle("icon", cmd.getIcon());
+            setStyle("icon", cmd.icon);
             setStyle("fontWeight", "normal");
             setStyle("textAlign", "center");
             enabled = cmd.isPermitted();
             mouseEnabled = cmd.isPermitted();
-            small = _small;
+            size = _size;
         }
 
 
-        public function set small(b:Boolean):void {
-            _small = b;
-            if (command != null && _small) {
-                label = toolTip = "";
-                height=18;
-                width=18;
-                setStyle("cornerRadius","2");
-                setStyle("borderColor","#FFFFFF");
+        public function set size(s:int):void {
+            _size = s;
+            if (command != null && _size==CommandButton.SMALL) {
+                label = "";
+                toolTip = command.label;
+                height = 18;
+                width = 18;
+                setStyle("cornerRadius", "2");
+                setStyle("borderColor", "#FFFFFF");
+            } else if (command != null && _size==CommandButton.MEDIUM) {
+                label = "";
+                toolTip = command.label;
+                width = 30;
             } else {
                 label = command.label;
                 toolTip = command.label;

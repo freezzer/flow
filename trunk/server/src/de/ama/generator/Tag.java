@@ -190,8 +190,15 @@ public class Tag extends XmlElement implements Const {
         return getAttribute(key);
     }
 
-    public String throwAttributeException(String key) {
-        throw new RuntimeException("required attribute *["+key+"]* not present in:\n   look at --> <"+getName()+" "+getAttributesString()+" ../>");
+    public String getRequiredAttributeAlternative(String key1, String key2) {
+        if(hasAttribute(key1)){
+            return getAttribute(key1);
+        }
+        if(hasAttribute(key2)){
+            return getAttribute(key2);
+        }
+        throwAttributeException(key1+" or "+key2);
+        return null;
     }
 
     public String getParentAttribute(String key,String def) {
@@ -373,6 +380,23 @@ public class Tag extends XmlElement implements Const {
         return ((Tag) getParent()).getParent(name);
     }
 
+    //////////////////////////////////////// Util ////////////////////////////////////////
+
+    public String quote(String in){
+        return "\""+in+"\"";
+    }
+
+    public String squote(String in){
+        return "'"+in+"'";
+    }
+
+    public boolean isEmpty(String  in){
+        return Util.isEmpty(in);
+    }
+
+    public String throwAttributeException(String key) {
+        throw new RuntimeException("required attribute *["+key+"]* not present in:\n   look at --> <"+getName()+" "+getAttributesString()+" ../>");
+    }
 
 
 }

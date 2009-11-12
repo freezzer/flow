@@ -1,4 +1,17 @@
 /* CSS file */
+Menu
+{
+	borderThickness: 2;
+	cornerRadius: 4;
+	borderStyle: solid;
+	leading: 4;
+	paddingLeft: 2;
+	paddingRight: 2;
+	paddingTop: 2;
+	paddingBottom: 2;
+	backgroundColor: #F0F0F0;
+	backgroundAlpha: 0.97;
+}
 
 
 Canvas

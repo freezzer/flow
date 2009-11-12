@@ -32,7 +32,7 @@
                 </menu>
                 <menu name="Admin">
                     <menuitem>
-                        <command label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"/>
+                        <command label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor" permitted="true"/>
                     </menuitem>
                 </menu>
             </menubar>

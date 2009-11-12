@@ -20,7 +20,6 @@ package de.ama.generator.java;
 
 import de.ama.generator.Tag;
 import de.ama.generator.Visitor;
-import de.ama.util.Util;
 
 public class Java_permission extends Tag {
 
@@ -51,12 +50,8 @@ public class Java_permission extends Tag {
             visitChildren(COMMAND,new Visitor(){
                 public void visit(Tag visitor) {
                     String label = visitor.getRequiredAttribute("label");
-                    String name = visitor.getAttribute("name","");
-                    String use = visitor.getAttribute("use",name);
-                    if(Util.isEmpty(use) && Util.isEmpty(name)){
-                        throwAttributeException("name or use");
-                    }
-                    write("           add(new PermissionSwitch(\""+use+" ("+label+")\"));");
+                    String name = visitor.getRequiredAttributeAlternative(NAME, USE);
+                    write("           add(new PermissionSwitch(\""+name+" ("+label+")\"));");
                 }
             },true);
         write("    }");

@@ -12,6 +12,7 @@
         import de.ama.framework.command.CreateNodeCommand;
         import de.ama.framework.data.Data;
         import de.ama.framework.data.SelectionModel;
+        import de.ama.framework.gui.fields.CommandButton;
         import de.ama.framework.util.Callback;
         import de.ama.framework.util.Util;
 
@@ -28,20 +29,17 @@
 
         public var generic:Boolean = false;
 
-        public static var SMALL:int = 2;
-        public static var LARGE:int = 1;
-        public static var NO:int = 0;
-        public var useToolbar:int = NO;
+        public var toolbarSize:int = 0;
         public var toolbar:CommandButtonBar;
 
         public function init():void {
             addCollumns();
             addCommands();
+            createToolbar();
         }
 
 
         public function onCreationComplete():void {
-            createToolbar();
 
             listMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
             listMenu.hideBuiltInItems();
@@ -69,16 +67,14 @@
         }
 
 
-
         /////////////////////////////////// Toolbar ///////////////////////////////////////////
 
         public function createToolbar():void {
-            if (useToolbar > NO) {
+            if (toolbarSize > 0) {
                 toolbar = new CommandButtonBar();
-                if (useToolbar == SMALL) {
-                    toolbar.small = true;
-                    toolbar.label = label;
-                }
+
+                toolbar.size = toolbarSize;
+                toolbar.label = label;
                 toolbar.invoker = this;
                 toolbar.commands = commands
                 contentPanel.addChildAt(DisplayObject(toolbar), 0);

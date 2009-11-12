@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
                 xmlns:comps="de.ama.framework.gui.*"
-                layout="absolute" width="272" height="172"
+                layout="absolute" width="292" height="172"
                 title="Login" showCloseButton="true"
                 close="PopUpManager.removePopUp(this)"
                 borderAlpha="0.75" backgroundColor="#FFFFFF" backgroundAlpha="1.0" color="#000000" borderColor="#6E7272" borderStyle="solid" cornerRadius="3" alpha="1.0" borderThickness="8">
@@ -245,7 +245,7 @@
 
 
     <mx:Button x="167" y="84" label="Log in" click="okButtonPressed()" id="okButton" width="69" color="#000000" tabIndex="3"/>
-    <mx:LinkButton x="10" y="84" label="neu bei huyua ?" width="136" fontWeight="normal" textAlign="center" color="#1AA8C2" id="linkbutton1" click="newAccountButtonPressed()"/>
+    <mx:LinkButton x="10" y="84" label="new account ?" width="136" fontWeight="normal" textAlign="center" color="#1AA8C2" id="linkbutton1" click="newAccountButtonPressed()"/>
 
 
 </mx:TitleWindow>

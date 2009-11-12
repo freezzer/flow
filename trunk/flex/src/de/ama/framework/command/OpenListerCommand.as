@@ -1,4 +1,5 @@
 package de.ama.framework.command {
+import de.ama.framework.gui.fields.CommandButton;
 import de.ama.framework.gui.frames.ApplicationPanel;
 import de.ama.framework.gui.frames.ListPanel;
 import de.ama.services.Factory;
@@ -16,7 +17,7 @@ public class OpenListerCommand extends Command{
 
         var lp:ListPanel = Factory.createLister(getProperty("lister"))
         lp.label = label;
-        lp.useToolbar = 1;
+        lp.toolbarSize = CommandButton.MEDIUM;
 
         var cp:ApplicationPanel = Application.application.getContentPane();
         cp.addContent(lp);
