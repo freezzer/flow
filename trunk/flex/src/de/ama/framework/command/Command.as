@@ -116,6 +116,10 @@ public class Command {
     	return (_permitted == 1);
     }
 
+    public function get enabled():Boolean {
+        return isPermitted();
+    }
+
     public function get permissionContext():String {
         return _permissionId.split(":")[0];
     }

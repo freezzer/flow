@@ -40,19 +40,18 @@ public class Flex_tabbed_application_panel extends Tag {
         write("<frames:TabbedApplicationPanel " +
                 "\nxmlns:mx=\"http://www.adobe.com/2006/mxml\" " +
                 "\nxmlns:frames=\"de.ama.framework.gui.frames.*\"" +
-                "\nimplements=\"de.ama.framework.gui.frames.ApplicationPanel\">"+
-                "\n   <mx:Script><![CDATA[\n" +
-                "\n" +
-                "       override protected function executeGeneratedBootstrap():void {\n" +
-                "           var bootstrap:Bootstrap = new Bootstrap();\n" +
-                "           bootstrap.execute();\n" +
-                "           \n" +
-                "       }]]></mx:Script>");
+                "\nimplements=\"de.ama.framework.gui.frames.ApplicationPanel\">");
+        
+        write("<mx:Script><![CDATA[");
+        write("    override protected function executeGeneratedBootstrap():void {");
+        write("       var bootstrap:Bootstrap = new Bootstrap();");
+        write("           bootstrap.execute();");
+        write("    }");
         writeLine();
-
-        visitChildren(MENUBAR);
-
-        write("");
+        write("    override protected function initializeMenu():void {");
+                         visitChildren(MENUBAR);
+        write("    }");
+        write("]]></mx:Script>");
         write("</frames:TabbedApplicationPanel>");
         flush();
     }

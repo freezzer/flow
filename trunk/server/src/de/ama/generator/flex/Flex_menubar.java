@@ -29,18 +29,12 @@ public class Flex_menubar extends Tag {
         String w = getAttribute(W, "100%");
         String h = getAttribute(H, "20");
 
+        write("       import de.ama.framework.command.*;");
+        write("       import mx.collections.ArrayCollection;");
+        write("       var cmd:Command;");
+        write("       var menu:ArrayCollection;");
         writeLine();
-
-        write(" <mx:MenuBar id='mainMenuBar' labelField='@label' width='"+w+"' height='"+h+"'" +
-        "\n        itemClick='handleMenuClick(event)' " +
-        "\n        top='3' left='3' right='3' >");
-        write("  <mx:XMLList>");
-
         visitChildren(MENU);
-
-        write("  </mx:XMLList>");
-        write(" </mx:MenuBar>");
-
 
     }
 
