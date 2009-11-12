@@ -72,12 +72,14 @@ public class Flex_command extends Tag {
         String use = getAttribute(USE, "");
         String editor = getAttribute(EDITOR, "");
         String lister = getAttribute(LISTER, "");
+        String permitted = getAttribute(PERMITTED, "");
 
         String permissionContext = getParentAttribute(PERMISSION,NAME,"global");
+        icon = isEmpty(icon) ? "" : ","+quote(icon);
 
         if (Util.isNotEmpty(name)) // import non CRUD command
         write("        import " + pckg + "." + name + ";");
-        write("        cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\",\"" + icon + "\");");
+        write("        cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\"" + icon + ");");
         write("        cmd.permissionId = \""+permissionContext+":"+Util.saveToString(use, name)+" ("+ label+")\";");
 
         if (Util.isNotEmpty(editor))
@@ -86,6 +88,8 @@ public class Flex_command extends Tag {
         write("        cmd.setProperty(\"lister\",\"" + lister + "\");");
         if (Util.isNotEmpty(name))
         write("        cmd.setProperty(\"name\",\"" + name + "\");");
+        if (Util.isNotEmpty(permitted))
+        write("        cmd.setProperty(\"permitted\",\"" + permitted + "\");");
 
     }
 

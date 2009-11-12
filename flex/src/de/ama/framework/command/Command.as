@@ -12,13 +12,12 @@ import flash.ui.ContextMenuItem;
 public class Command {
 
     public var label:String;
-    public var icon:String;
+    public var _iconName:String;
     private var _invoker:Invoker = null;
     private var _selectionModel:SelectionModel = null;
 
     private var _contextMenuItem:ContextMenuItem=null;
     private var _permissionId:String;
-    private var _permitted:int = -1;
 
     ////////////////////////////// Properties ////////////////////////////////////////
 
@@ -48,14 +47,14 @@ public class Command {
 
     ///////////////////////////////////////////////////////////////////////////////////
 
-    public function Command(label:String="", icon:String="") {
+    public function Command(label:String="", iconName:String="") {
         this.label = label;
-        this.icon = icon;
+        this._iconName = iconName;
     }
 
-    public function getIcon():Class {
+    public function get icon():Class {
         var iconClass:Class;
-        return IconStore.getIcon(icon);
+        return IconStore.getIcon(_iconName);
     }
 
 
@@ -106,14 +105,10 @@ public class Command {
     }
 
     public function isPermitted():Boolean {
-    	if(Util.isEmpty(_permissionId)){
+    	if(Util.isEmpty(_permissionId) || Util.isEqual("true",getProperty("permitted"))) {
     		return true;
     	}
-    	if(_permitted < 0){
-    	   _permitted  = PermissionService.instance.isPermitted(this) ? 1 : 0;
-    	}
-    	
-    	return (_permitted == 1);
+    	return PermissionService.instance.isPermitted(this);
     }
 
     public function get enabled():Boolean {

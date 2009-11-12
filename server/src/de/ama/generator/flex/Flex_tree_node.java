@@ -22,7 +22,6 @@ package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
 import de.ama.generator.Visitor;
-import de.ama.util.Util;
 
 import java.util.List;
 
@@ -35,20 +34,15 @@ public class Flex_tree_node extends Tag {
         String label = getRequiredAttribute(LABEL);
         String type = getRequiredParentAttribute(TYPE);
         String path = getRequiredAttribute(PATH);
-        String panel = getAttribute(PANEL, "");
         boolean open = getAttribute(OPEN,false);
-        String lister = getAttribute(LISTER,"");
 
-        if(!hasAttribute(LISTER) && !hasAttribute(PANEL)){
-           throwAttributeException(LISTER+" or "+PANEL);
-        }
-
-        listView = Util.isNotEmpty(lister);
+        listView = hasAttribute(LISTER);
+        String panel = getRequiredAttributeAlternative(PANEL,LISTER);
 
         String icon = getAttribute(ICON, listView?"table":"edit");
 
         writeLine();
-        write("        node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+(listView?lister:panel)+"\");");
+        write("        node = new TreeNode(\""+path+"\", \""+label+"\", "+listView+", \""+icon+"\", \""+type+"\", \""+panel+"\");");
         write("        node.defaultOpen="+open+";");
 
         if(getParent() instanceof Flex_tree_node) {

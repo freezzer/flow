@@ -80,22 +80,7 @@
 
         protected function handleMenuClick(evt:MenuEvent):void {
             var cmd:Command = Command(evt.item);
-//            var command:String = mitem.attribute("command")[0];
-//            var lister:String = mitem.attribute("lister")[0];
-//            var editor:String = mitem.attribute("editor")[0];
-//            var label:String = mitem.attribute("label")[0];
-
-//            var cmd:Command = Factory.createCommand(command);
-//            cmd.setProperty("command", command);
-//            cmd.setProperty("lister", lister);
-//            cmd.setProperty("editor", editor);
-//            cmd.setProperty("label", label);
-//            if (cmd.isPermitted()) {
-//                var invoker:MenuInvoker;
                 cmd.start(new MenuInvoker());
-//            } else {
-//                mitem.@editable = false;
-//            }
         }
 
 

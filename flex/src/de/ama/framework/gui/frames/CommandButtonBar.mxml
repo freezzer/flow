@@ -3,7 +3,7 @@
          styleName="CommandButtonBar" >
 
     <mx:Repeater id="trp" dataProvider="{commands}">
-        <fields:CommandButton command="{trp.currentItem}" small="{_small}" invoker="{_invoker}"/>
+        <fields:CommandButton command="{trp.currentItem}" size="{_size}" invoker="{_invoker}"/>
     </mx:Repeater>
 
 
@@ -17,9 +17,9 @@
 
         [Bindable]
         private var _commands:ArrayCollection = new ArrayCollection();
-        
+
         private var _label:Label;
-        private var _small:Boolean = false ;
+        private var _size:int = CommandButton.LARGE ;
         private var _invoker:Invoker ;
 
 
@@ -27,19 +27,22 @@
             _invoker = invoker;
         }
 
-        public function set small(value:Boolean):void {
-            _small = value;
-            _label = new Label();
-            _label.setStyle("horizontalAlign", "left");
-            _label.percentWidth = 100;
-            addChildAt(_label, 0);
-
-            height = 20;
+        public function set size(value:int):void {
+            _size = value;
+            if(_size==CommandButton.SMALL){
+                _label = new Label();
+                _label.setStyle("horizontalAlign", "left");
+                _label.percentWidth = 100;
+                addChildAt(_label, 0);
+                height = 20;
+            }
         }
 
 
         override public function set label(value:String):void {
-            _label.text = value;
+        	if(_label!=null){
+              _label.text = value;
+            }
         }
 
 
