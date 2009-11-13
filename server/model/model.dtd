@@ -1,0 +1,95 @@
+<!ELEMENT define (model|permission|comment|import)*>
+<!ELEMENT comment (#PCDATA)>
+<!ELEMENT import (bean)*>
+<!ATTLIST import
+        file CDATA #REQUIRED>
+
+<!ELEMENT model (bean)*>
+<!ATTLIST model
+        package CDATA #REQUIRED>
+<!ELEMENT bean (field|collection|bean)*>
+<!ATTLIST bean
+        create CDATA #IMPLIED
+        name CDATA #REQUIRED
+        persistent CDATA #IMPLIED
+        unique-key CDATA #IMPLIED>
+<!ELEMENT field (#PCDATA)>
+<!ATTLIST field
+        name CDATA #REQUIRED
+        type CDATA #IMPLIED>
+<!ELEMENT collection (bean)*>
+<!ATTLIST collection
+        create CDATA #IMPLIED
+        name CDATA #REQUIRED
+        type CDATA #IMPLIED>
+<!ELEMENT permission (view)*>
+<!ATTLIST permission
+        package CDATA #IMPLIED
+        name CDATA #REQUIRED>
+<!ELEMENT view (tree_editor|panel|lister|tabbed_application_panel)*>
+<!ATTLIST view
+        package CDATA #IMPLIED
+        >
+<!ELEMENT tree_editor (tree_node|command)*>
+<!ATTLIST tree_editor
+        name CDATA #REQUIRED
+        type CDATA #REQUIRED
+        label CDATA #REQUIRED>
+<!ELEMENT tree_node (tree_node|command)*>
+<!ATTLIST tree_node
+        icon CDATA #IMPLIED
+        label CDATA #REQUIRED
+        lister CDATA #IMPLIED
+        open CDATA #IMPLIED
+        panel CDATA #IMPLIED
+        path CDATA #REQUIRED
+        type CDATA #IMPLIED>
+<!ELEMENT command (#PCDATA)>
+<!ATTLIST command
+        editor CDATA #IMPLIED
+        icon CDATA #IMPLIED
+        label CDATA #REQUIRED
+        name CDATA #IMPLIED
+        lister CDATA #IMPLIED
+        permitted CDATA #IMPLIED
+        use CDATA #IMPLIED>
+<!ELEMENT panel (panel|input)*>
+<!ATTLIST panel
+        border CDATA #IMPLIED
+        editable CDATA #IMPLIED
+        gap CDATA #IMPLIED
+        label CDATA #IMPLIED
+        name CDATA #IMPLIED
+        path CDATA #IMPLIED
+        use CDATA #IMPLIED
+        x CDATA #IMPLIED
+        y CDATA #IMPLIED>
+<!ELEMENT input (lister)*>
+<!ATTLIST input
+        label CDATA #REQUIRED
+        path CDATA #REQUIRED
+        type CDATA #IMPLIED>
+<!ELEMENT lister (command|column)*>
+<!ATTLIST lister
+        label CDATA #IMPLIED
+        name CDATA #REQUIRED
+        type CDATA #REQUIRED>
+<!ELEMENT column (#PCDATA)>
+<!ATTLIST column
+        label CDATA #REQUIRED
+        searchable CDATA #IMPLIED
+        path CDATA #REQUIRED>
+<!ELEMENT bootstrap (#PCDATA)>
+<!ELEMENT menuitem (command)*>
+<!ATTLIST menuitem
+        type (separator|check) >
+<!ELEMENT menu (menuitem)*>
+<!ATTLIST menu
+        name CDATA #REQUIRED >
+<!ELEMENT menubar (menu)*>
+<!ATTLIST menubar
+        h CDATA #IMPLIED >
+<!ELEMENT tabbed_application_panel (bootstrap|menubar)*>
+<!ATTLIST tabbed_application_panel
+        name CDATA #REQUIRED
+        package CDATA #IMPLIED>

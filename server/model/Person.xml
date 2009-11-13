@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<define>
+<!DOCTYPE define SYSTEM "model.dtd">
 
+<define>
 
     <model package="person.bom">
 
@@ -22,7 +23,7 @@
 
     <permission package="permission" name="Person">
 
-        <view package="person.view" type="Person">
+        <view package="person.view" >
 
             <lister name="PersonLister" label="Personen Auflister" type="Person">
                 <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
@@ -34,7 +35,7 @@
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
 
-            <tree_editor name="PersonEditor" label="Daten von {nachname} ">
+            <tree_editor name="PersonEditor" label="Daten von {nachname} " type="Person">
                 <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default">
                     <tree_node label="Adressen" path="adressen" icon="table" open="true" type="Adresse"
                                lister="default">

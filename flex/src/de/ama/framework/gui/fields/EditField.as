@@ -3,15 +3,19 @@ import de.ama.framework.data.Data;
 import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.util.Util;
 
+import de.ama.services.Environment;
+
 import flash.events.Event;
+import flash.events.EventPhase;
 import flash.events.FocusEvent;
+import flash.events.MouseEvent;
 
 import mx.containers.Canvas;
 import mx.controls.Label;
 import mx.controls.TextInput;
 import mx.core.UIComponent;
 
-public class EditField extends Canvas{
+public class EditField extends Canvas implements GUIComponent {
 
     protected var _label:Label;
     protected var _input:UIComponent;
@@ -38,7 +42,17 @@ public class EditField extends Canvas{
 	        _label.setStyle("textAlign","left");
 	        _label.y=3;
         }
+        
+        if(_label){
+           _label.addEventListener(MouseEvent.CLICK,onClick);
+        }
 
+    }
+
+    private function onClick(event:MouseEvent):void {
+        if(Environment.designer ){
+            Environment.designer.addGuiComponent(this);
+        }
     }
 
 

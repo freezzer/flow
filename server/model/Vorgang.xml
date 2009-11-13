@@ -1,14 +1,16 @@
 <?xml version="1.0"?>
+<!DOCTYPE define SYSTEM "model.dtd">
+
 <define>
 
-    <model package="vorgang.bom">
+    <model package="vorgang.bom" >
 
 
-        <bean name="Vorgang" persistent="true" unique-key="id" editor="VorgangEditor">
+        <bean name="Vorgang" persistent="true" unique-key="id" >
             <field name="nummer"/>
             <field name="id"/>
             <field name="typ"/>
-            <collection name="transitions" create="1">
+            <collection name="transitions" create="1" >
                 <bean name="Transition">
                     <field name="name"/>
                     <field name="dir"/>
@@ -64,8 +66,8 @@
     </model>
 
     <permission package="permission" name="Vorgang">
-      <view package="vorgang.view" type="Vorgang">
-        <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}">
+      <view package="vorgang.view" >
+        <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}" type="Vorgang">
             <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="." open="true" panel="default">
                 <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition" open="true" panel="default">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel"/>
@@ -179,9 +181,10 @@
         <!--  ********************* Listen *******************************   -->
 
         <lister name="VorgangLister" type="Vorgang" label="Vorgaenge">
-            <command use="LoadTableCommand" icon="refresh" label="Uebersicht Vorgaenge neu laden"/>
-            <command use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen" icon="edit"/>
-            <command use="DeleteBoCommand" label="Vorgang loeschen" icon="delete"/>
+            <command use="LoadTableCommand" label="Uebersicht Vorgaenge neu laden"/>
+            <command use="OpenNewEditorCommand" editor="VorgangEditor" label="neuen Vorgang oeffnen" />
+            <command use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen"/>
+            <command use="DeleteBoCommand" label="Vorgang loeschen"/>
 
             <column label="Nummer" path="nummer"/>
             <column label="Id" path="id"/>
