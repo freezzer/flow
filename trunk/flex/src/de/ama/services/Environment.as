@@ -140,8 +140,8 @@ public class Environment {
         if(b){
           if(_designer==null){
              _designer = Designer(PopUpManager.createPopUp(Container(Application.application), Designer, false));
-             _designer.x = (Application.application.width - _designer.width );
-             _designer.y = 10;
+             _designer.y = (Application.application.height - _designer.height -20);
+             _designer.x = 20;
           }
         } else {
            _designer = null;

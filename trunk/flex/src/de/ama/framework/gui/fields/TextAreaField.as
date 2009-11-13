@@ -29,6 +29,9 @@ public class TextAreaField extends EditField{
         TextArea(_input).height = h;
     }
 
+    override public function getXmlSourceCode():String {
+        return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"area\" />";
+    }
 
 }
 }

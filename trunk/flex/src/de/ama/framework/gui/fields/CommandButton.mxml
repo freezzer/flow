@@ -66,8 +66,16 @@
         }
 
 
-        public function set labelWidth(val:int):void { }
-        public function get labelWidth():int {  return 0;   }
+        public function set labelWidth(val:int):void {
+        }
+
+        public function get labelWidth():int {
+            return 0;
+        }
+
+        public function getXmlSourceCode():String {
+            return "<button x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" h=\""+height+"\" label=\""+label+"\" />";
+        }
 
         ]]></mx:Script>
 	

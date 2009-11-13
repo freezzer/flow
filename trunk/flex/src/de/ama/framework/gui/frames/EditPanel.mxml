@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
 	implements="de.ama.framework.gui.frames.Panel"
-    initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   
+    initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"
     borderStyle="none"  clipContent="false" click="onClick(event)">
 
     <mx:Script><![CDATA[
@@ -12,6 +12,7 @@
         import de.ama.framework.gui.fields.CommandButton;
         import de.ama.framework.gui.fields.DateField;
         import de.ama.framework.gui.fields.EditField;
+        import de.ama.framework.gui.fields.GUIComponent;
         import de.ama.framework.gui.fields.ListField;
         import de.ama.framework.gui.fields.TextAreaField;
         import de.ama.framework.util.Util;
@@ -20,12 +21,6 @@
 
         import mx.controls.Button;
         import mx.core.UIComponent;
-
-        private function onClick(event:MouseEvent):void {
-            if(Environment.designer && event.eventPhase == EventPhase.AT_TARGET){
-                Environment.designer.setPanel(this);
-            }
-        }
 
         private function init():void {
             addFields();
@@ -177,19 +172,28 @@
 
 
         public function getEditField(path:String):EditField {
-            var childs:Array = getChildren();
-            var i:int;
-            var len:int = childs.length;
             var f:EditField = null;
-            for (i = 0; i < len; i++) {
-                if (childs[i] is EditField) {
-                    f = EditField(childs.getItemAt(i));
+            var len:int = numChildren;
+            for (var i:int = 0; i < len; i++) {
+                if (getChildAt(i) is EditField) {
+                    f = EditField(getChildAt(i));
                     if (f.localpath == path) return f;
                 }
             }
             return null;
         }
 
+
+        public function getAllGUIComponents():Array {
+            var ret:Array = new Array();
+            var len:int = numChildren;
+            for (var i:int = 0; i < len; i++) {
+                if (getChildAt(i) is GUIComponent) {
+                    ret.push(getChildAt(i));
+                }
+            }
+            return ret;
+        }
 
         public function endEditing():void {
 
@@ -215,6 +219,20 @@
         public function getSelectionModel():SelectionModel {
             return new SelectionModel(getData());
         }
+
+        ///////////////////////////// design mode ////////////////////////////////////////
+
+        function getXmlSourceCode():String {
+        }
+
+        private function onClick(event:MouseEvent):void {
+            if(Environment.designer && event.eventPhase == EventPhase.AT_TARGET){
+                Environment.designer.setPanel(this);
+            }
+        }
+
+
+
 
         ]]></mx:Script>
 

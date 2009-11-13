@@ -29,5 +29,10 @@ public class BoolField extends EditField{
     override public function getValue():Object {
         return CheckBox(_input).selected;
     }
+
+    override public function getXmlSourceCode():String {
+         return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"boolean\" />";
+    }
+
 }
 }

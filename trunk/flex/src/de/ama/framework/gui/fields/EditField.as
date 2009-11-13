@@ -26,8 +26,11 @@ public class EditField extends Canvas implements GUIComponent {
 
 
     public function EditField(caption:String="EditField", path:String=null) {
-        super.width=400;
+        super.width=300;
         super.height=25;
+        super.setStyle("horizontalScrollPolicy","off");
+        super.setStyle("verticalScrollPolicy","off");
+        super.setStyle("clipContent","false");
 
         createLabel(caption);
         createInput();
@@ -47,12 +50,9 @@ public class EditField extends Canvas implements GUIComponent {
            _label.addEventListener(MouseEvent.CLICK,onClick);
         }
 
-    }
+        super.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
+        super.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
 
-    private function onClick(event:MouseEvent):void {
-        if(Environment.designer ){
-            Environment.designer.addGuiComponent(this);
-        }
     }
 
 
@@ -92,7 +92,7 @@ public class EditField extends Canvas implements GUIComponent {
     }
 
     override public function set width(w:Number):void {
-        super.width = w+5;
+        super.width = w;
         labelWidth = _labelWidth;
     }
 
@@ -142,6 +142,31 @@ public class EditField extends Canvas implements GUIComponent {
     public function get editPanel():EditPanel {
         return EditPanel(parent);
     }
+    
+    ////////////////////////////////////// design mode ///////////////////////////////////////////////
+
+    protected function onClick(event:MouseEvent):void {
+        if(Environment.designer ){
+            Environment.designer.addGuiComponent(this,event.ctrlKey);
+        }
+    }
+
+    private function startDragging(event:MouseEvent):void {
+        if(Environment.designer ){
+           super.startDrag();
+        }
+    }
+
+    private function stopDragging(event:MouseEvent):void {
+        if(Environment.designer ){
+            super.stopDrag();
+        }
+    }
+
+    public function getXmlSourceCode():String {
+        return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"string\" />";
+    }
+    
 
 }
 }
