@@ -4,11 +4,11 @@ Menu
 	borderThickness: 2;
 	cornerRadius: 4;
 	borderStyle: solid;
-	leading: 4;
+	leading: 5;
 	paddingLeft: 2;
 	paddingRight: 2;
-	paddingTop: 2;
-	paddingBottom: 2;
+	paddingTop: 4;
+	paddingBottom: 0;
 	backgroundColor: #F0F0F0;
 	backgroundAlpha: 0.97;
 }

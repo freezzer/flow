@@ -2,6 +2,7 @@ package de.ama.services {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoginAction;
 import de.ama.framework.action.LogoutAction;
+import de.ama.framework.gui.frames.Designer;
 import de.ama.framework.gui.frames.LoginDialog;
 import de.ama.framework.util.*;
 import de.ama.services.permission.PermissionService;
@@ -20,6 +21,7 @@ public class Environment {
     private static var _hostPort:int;
     private static var _hostContext:String;
     private static var _catalog:String;
+    private static var _designer:Designer;
 
     public static function initForProduction():void{
         _hostAdress     = "localhost";
@@ -28,6 +30,16 @@ public class Environment {
         _catalog        = "flow";
     }
 
+    public static function useHessianProtocoll():Boolean {
+        return true;
+    }
+
+    public static function get catalog():String {
+        return _catalog;
+    }
+
+
+    /////////////////////////////////// IP-Adress /////////////////////////////////
 
     public static function getServerUrl():String {
         var port:String = _hostPort>0 ? ":"+_hostPort : "" ;
@@ -45,6 +57,16 @@ public class Environment {
     public static function get hostPort():String {
         return hostPort;
     }
+
+    public static function registerHostAdress():void{
+       _hostAdress  = URLUtil.getServerName(Application.application.loaderInfo.url);
+       _hostPort    = URLUtil.getPort(Application.application.loaderInfo.url);
+       
+       PermissionService.instance.load();
+       
+    }
+
+    /////////////////////////////////// UserData/Cockie //////////////////////////
 
     public static function getUserSessionId():String {
         var so:SharedObject = SharedObject.getLocal("userdata");
@@ -76,6 +98,8 @@ public class Environment {
         so.flush();
     }
 
+    /////////////////////////////////// Login/Logout /////////////////////////////
+
     public static function isLoggedIn():Boolean {
         return !Util.isEmpty(getUserId());
     }
@@ -90,7 +114,7 @@ public class Environment {
 
     public static function registerLoginData(la:LoginAction):void{
         setUserData(UserData(la.data), la.userSessionId);
-        
+
         PermissionService.instance.setPermissionContexts(la.permissionContexts);
     }
 
@@ -101,27 +125,27 @@ public class Environment {
         eraseLoginData();
     }
 
-    public static function registerHostAdress():void{
-       _hostAdress  = URLUtil.getServerName(Application.application.loaderInfo.url);
-       _hostPort    = URLUtil.getPort(Application.application.loaderInfo.url);
-       
-       PermissionService.instance.load();
-       
-    }
-
     public static function eraseLoginData():void{
         setUserData(new UserData(), "");
     }
 
+    /////////////////////////////////// Designer /////////////////////////////////
 
-    public static function useHessianProtocoll():Boolean {
-        return true;
+
+    public static function get designer():Designer {
+        return _designer;
     }
 
-    public static function get catalog():String {
-        return _catalog;
+    public static function set designMode(b:Boolean):void {
+        if(b){
+          if(_designer==null){
+             _designer = Designer(PopUpManager.createPopUp(Container(Application.application), Designer, false));
+             _designer.x = (Application.application.width - _designer.width );
+             _designer.y = 10;
+          }
+        } else {
+           _designer = null;
+        }
     }
 
-
-}
-}
+}}

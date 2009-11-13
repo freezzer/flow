@@ -2,7 +2,7 @@
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
 	implements="de.ama.framework.gui.frames.Panel"
     initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"   
-    borderStyle="none"  clipContent="false">
+    borderStyle="none"  clipContent="false" click="onClick(event)">
 
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
@@ -16,8 +16,16 @@
         import de.ama.framework.gui.fields.TextAreaField;
         import de.ama.framework.util.Util;
 
+        import de.ama.services.Environment;
+
         import mx.controls.Button;
         import mx.core.UIComponent;
+
+        private function onClick(event:MouseEvent):void {
+            if(Environment.designer && event.eventPhase == EventPhase.AT_TARGET){
+                Environment.designer.setPanel(this);
+            }
+        }
 
         private function init():void {
             addFields();

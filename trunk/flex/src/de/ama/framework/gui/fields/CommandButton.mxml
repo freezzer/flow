@@ -3,6 +3,7 @@
             	       click="onButtonClick(event)"
                        fillColors="[#FFFFFF, #CCCCCC, #CE6874, #CE6874]"
                        fillAlphas="[1.0, 1.0, 1.0, 1.0]" cornerRadius="4"
+                       implements="de.ama.framework.gui.fields.GUIComponent"
 	>
 
 
@@ -47,14 +48,14 @@
 
         public function set size(s:int):void {
             _size = s;
-            if (command != null && _size==CommandButton.SMALL) {
+            if (command != null && _size == CommandButton.SMALL) {
                 label = "";
                 toolTip = command.label;
                 height = 18;
                 width = 18;
                 setStyle("cornerRadius", "2");
                 setStyle("borderColor", "#FFFFFF");
-            } else if (command != null && _size==CommandButton.MEDIUM) {
+            } else if (command != null && _size == CommandButton.MEDIUM) {
                 label = "";
                 toolTip = command.label;
                 width = 30;
@@ -63,6 +64,11 @@
                 toolTip = command.label;
             }
         }
+
+
+        public function set labelWidth(val:int):void { }
+        public function get labelWidth():int {  return 0;   }
+
         ]]></mx:Script>
 	
 </mx:Button>

@@ -24,6 +24,8 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.ama.framework.util.DTDResolver;
+
 
 public class OutputWriter {
     private Tag templateRoot;
@@ -43,7 +45,7 @@ public class OutputWriter {
 
     public Tag readTemplateFile(String fileName) {
         SAXBuilder builder = new SAXBuilder(false);
-//        builder.setEntityResolver(new DTDResolver());
+        builder.setEntityResolver(new DTDResolver());
         File in = new File(inDir, fileName);
         if (!in.exists()) {
             throw new RuntimeException("Can't find inputFile " + fileName);

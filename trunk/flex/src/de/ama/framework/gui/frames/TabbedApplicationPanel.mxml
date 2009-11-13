@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
            xmlns:frames="de.ama.framework.gui.frames.*"
-           initialize="init()" >
+           initialize="init()" keyUp="onKeyPressed(event)">
 
 
     <mx:Script><![CDATA[
-    	import mx.binding.utils.BindingUtils;
-    	import mx.collections.ArrayCollection;
         import de.ama.framework.command.Command;
         import de.ama.framework.command.MenuInvoker;
         import de.ama.services.BootstrapDefault;
-        import de.ama.services.Factory;
-        import de.ama.framework.util.Util;
 
+        import de.ama.services.Environment;
 
-        import mx.controls.Menu;
+        import mx.collections.ArrayCollection;
         import mx.controls.MenuBar;
-        import mx.controls.menuClasses.MenuBarItem;
         import mx.core.Container;
         import mx.events.MenuEvent;
+
+        private function onKeyPressed(event:KeyboardEvent):void {
+            var key:String = String.fromCharCode(event.charCode).toLowerCase();
+            if (event.altKey && event.ctrlKey) {
+                if (key == 'd') {
+                    Environment.designMode = true;
+                }
+            }
+        }
 
         private var mainTabs:AdvanceTabNavigator = null;
         private var mainMenuBar:MenuBar;
@@ -37,11 +42,11 @@
             mainMenuBar = new MenuBar();
             mainMenuBar.labelField = "label";
             mainMenuBar.iconField = "icon";
-            mainMenuBar.height=23;
-            mainMenuBar.setStyle("top",3);
-            mainMenuBar.setStyle("left",3);
-            mainMenuBar.setStyle("right",3);
-            mainMenuBar.addEventListener("itemClick",handleMenuClick);
+            mainMenuBar.height = 23;
+            mainMenuBar.setStyle("top", 3);
+            mainMenuBar.setStyle("left", 3);
+            mainMenuBar.setStyle("right", 3);
+            mainMenuBar.addEventListener("itemClick", handleMenuClick);
             mainMenuBar.dataProvider = menuStructure;
             addChild(mainMenuBar);
 
@@ -66,7 +71,7 @@
 
         public function addMenu(label:String):ArrayCollection {
             var menu:Object = new Object();
-            menu.label = label; 
+            menu.label = label;
             menu.children = new ArrayCollection();
             menuStructure.addItem(menu);
             return menu.children;
@@ -80,7 +85,7 @@
 
         protected function handleMenuClick(evt:MenuEvent):void {
             var cmd:Command = Command(evt.item);
-                cmd.start(new MenuInvoker());
+            cmd.start(new MenuInvoker());
         }
 
 

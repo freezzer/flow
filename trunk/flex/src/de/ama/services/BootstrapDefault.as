@@ -1,4 +1,5 @@
 package de.ama.services {
+import de.ama.framework.command.OpenNewEditorCommand;
 import de.ama.framework.util.*;
 import de.ama.framework.command.CopyDataCommand;
 import de.ama.framework.command.LoadTableCommand;
@@ -23,6 +24,7 @@ public class BootstrapDefault {
         Factory.registerLister("PermissionSwitchesLister", PermissionSwitchesLister);
 
         Factory.registerCommand("LoadTableCommand", LoadTableCommand);
+        Factory.registerCommand("OpenNewEditorCommand", OpenNewEditorCommand);
         Factory.registerCommand("OpenEditorCommand", OpenEditorCommand);
         Factory.registerCommand("OpenListerCommand", OpenListerCommand);
 
