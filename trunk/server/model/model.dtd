@@ -1,4 +1,4 @@
-<!ELEMENT define (model|permission|comment|import)*>
+<!ELEMENT define (model|view|permission|comment|import)*>
 <!ELEMENT comment (#PCDATA)>
 <!ELEMENT import (bean)*>
 <!ATTLIST import
@@ -82,7 +82,7 @@
 <!ELEMENT bootstrap (#PCDATA)>
 <!ELEMENT menuitem (command)*>
 <!ATTLIST menuitem
-        type (separator|check) >
+        type CDATA #IMPLIED >
 <!ELEMENT menu (menuitem)*>
 <!ATTLIST menu
         name CDATA #REQUIRED >

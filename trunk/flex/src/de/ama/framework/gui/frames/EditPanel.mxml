@@ -223,6 +223,10 @@
         ///////////////////////////// design mode ////////////////////////////////////////
 
         function getXmlSourceCode():String {
+            var border:String = Util.isEqual("none",getStyle("borderStyle")) ? "false" : "true";
+            return "<panel name=\""+Util.getUnqualifiedClassName(this)+"\" label=\""+label+
+                   "\" border=\""+border+"\" x=\""+x+"\" y=\""+y+
+                   "\" w=\""+width+"\" h=\""+height+"\" path=\""+path+"\" >"
         }
 
         private function onClick(event:MouseEvent):void {
