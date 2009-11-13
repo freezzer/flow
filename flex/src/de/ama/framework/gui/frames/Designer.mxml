@@ -1,28 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
-                layout="absolute" width="406" height="318"
+                layout="absolute" width="332" height="260"
                 title="Designer" showCloseButton="true"
                 backgroundColor="#C0C0C0"
                 close="onClose()"
-         backgroundAlpha="0.78">
-	<mx:Button x="334" y="245" icon="@Embed(source='../icons/page_code.png')"  fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="toClipBoard()"/>
-	<mx:Button x="40"  y="41"  icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moveLeft()"/>
-	<mx:Button x="40"  y="102" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="adjustLeft()"/>
-	<mx:Button x="13"  y="245" icon="@Embed(source='../icons/shape_ungroup.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="selectAll()"/>
-	<mx:Button x="62"  y="245" icon="@Embed(source='../icons/shape_square.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="unselectAll()"/>
-	<mx:Button x="132" y="16"  icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="lessLabelSize()"/>
-	<mx:Button x="293" y="16"  icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="lessWidth()"/>
-	<mx:Button x="62"  y="65"  icon="@Embed(source='../icons/arrow_down.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moveDown()"/>
-	<mx:Button x="334" y="64"  icon="@Embed(source='../icons/arrow_down.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moreHeigth()"/>
-	<mx:Button x="62"  y="16"  icon="@Embed(source='../icons/arrow_up.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moveUp()"/>
-	<mx:Button x="334" y="42"  icon="@Embed(source='../icons/arrow_up.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="lessHeight()"/>
-	<mx:Button x="85"  y="41"  icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moveRight()"/>
-	<mx:Button x="172" y="16"  icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moreLabelSize()"/>
-	<mx:Button x="333" y="16"  icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="moreWidth()"/>
-	<mx:Label x="133"  y="43" text="Label" width="35"/>
-	<mx:TextInput x="172" y="41" backgroundAlpha="0.72"/>
-	<mx:CheckBox id="fast" x="7" y="4" label="fast"/>
-	<mx:TextArea x="13" y="151" width="363" height="86" id="info" enabled="true" wordWrap="false" backgroundAlpha="0.77"/>
+                backgroundAlpha="0.63" cornerRadius="4">
+    <mx:Button x="163" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="xyToClipBoard()" label="x,y"
+               fontWeight="normal" color="#2B7B07"/>
+    <mx:Button x="210" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="whToClipBoard()" label="w,h"
+               fontWeight="normal" color="#1C34E9"/>
+    <mx:Button x="258" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="toClipBoard()" label="&lt;/&gt;"
+               fontWeight="normal" color="#1C34E9"/>
+    <mx:Button x="86" y="90" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="adjustLeft()"/>
+    <mx:Button x="140" y="90" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" 
+    			click="adjustLabelWidth()"/>
+    <mx:Button x="239" y="90" icon="@Embed(source='../icons/shape_align_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" 
+    			click="adjustWidth()"/>
+    <mx:Button x="5" y="191" icon="@Embed(source='../icons/shape_ungroup.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="selectAll()"/>
+    <mx:Button x="47" y="191" icon="@Embed(source='../icons/shape_square.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="unselectAll()"/>
+    <mx:Button x="4" y="41" icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moveLeft()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="112" y="16" icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="lessLabelSize()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="228" y="16" icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="lessWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="26" y="65" icon="@Embed(source='../icons/arrow_down.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moveDown()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="268" y="64" icon="@Embed(source='../icons/arrow_down.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moreHeigth()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="26" y="16" icon="@Embed(source='../icons/arrow_up.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moveUp()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="268" y="42" icon="@Embed(source='../icons/arrow_up.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="lessHeight()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="49" y="41" icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moveRight()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="153" y="16" icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moreLabelSize()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Button x="268" y="16" icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               buttonDown="moreWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+    <mx:Label x="97" y="43" text="Label" width="35"/>
+    <mx:TextInput x="152" y="41" backgroundAlpha="0.72" width="115" borderStyle="outset"/>
+    <mx:CheckBox id="fast" x="5" y="90" label="fast"/>
+    <mx:TextArea x="3" y="121" width="305" height="66" id="info" enabled="true" wordWrap="true"
+                 backgroundAlpha="0.77" fontSize="9" fontFamily="Georgia" text="Test &lt;&gt;"/>
+    <mx:VRule x="264" y="65" width="2" height="22"/>
+    <mx:VRule x="152" y="65" width="2" height="22"/>
+    <mx:VRule x="98" y="65" width="2" height="22"/>
 
     <mx:Script><![CDATA[
         import de.ama.framework.gui.fields.EditField;
@@ -31,75 +57,86 @@
         import de.ama.services.Environment;
 
         import mx.collections.ArrayCollection;
+        import mx.core.UIComponent;
         import mx.managers.PopUpManager;
 
         private var comps:ArrayCollection = new ArrayCollection();
         private var panel:EditPanel = null;
         private var store:Array = new Array();
+        private static var SEL_COLOR:int = 0xefac0c;
 
 
+        private function get stepSize():int {
+            return fast.selected ? 5 : 1;
+        }
 
         public function onClose():void {
             PopUpManager.removePopUp(this);
             unsetPanel(panel);
-            unselectAll();
             Environment.designMode = false;
         }
 
+        /////////////////////////////////// Panel /////////////////////////////////
+
         public function setPanel(p:EditPanel):void {
-          unsetPanel(panel);	 
-          store["panelBorderColor"] = p.getStyle("borderColor");
-          store["panelBorderStyle"] = p.getStyle("borderStyle");
+            unsetPanel(panel);
+            store["panelBorderColor"] = p.getStyle("borderColor");
+            store["panelBorderStyle"] = p.getStyle("borderStyle");
 
-          p.setStyle("borderStyle","solid");
-          p.setStyle("borderColor",0xff0000);  
+            p.setStyle("borderStyle", "solid");
+            p.setStyle("borderColor", SEL_COLOR);
 
-          panel = p;
+            panel = p;
+            pasteToClipboard(panel.getXmlSourceCode());
         }
-
 
         public function unsetPanel(p:EditPanel):void {
-            if(panel){
-            	panel.setStyle("borderColor",store["panelBorderColor"]);
-            	panel.setStyle("borderStyle",store["panelBorderStyle"]);
-            } 
-          	panel = null;
-        }
-
-        public function addGuiComponent(gc:GUIComponent):void {
-          if(!comps.contains(gc)){
-              comps.addItem(gc);
-              gc.setStyle("borderStyle","solid");
-              gc.setStyle("borderColor",0xff0000);
-          }
-        }
-
-        private function get stepSize():int {
-            return fast.selected ? 5 : 1;
+            unselectAll();
+            if (panel) {
+                panel.setStyle("borderColor", store["panelBorderColor"]);
+                panel.setStyle("borderStyle", store["panelBorderStyle"]);
+            }
+            panel = null;
         }
 
 
         /////////////////////////////////// move /////////////////////////////////
 
         private function moveUp():void {
+            if (comps.length == 0 && panel) {
+                panel.y = panel.y - stepSize;
+            }
+
             for each(var c:GUIComponent in comps) {
                 c.y = c.y - stepSize;
             }
         }
 
         private function moveDown():void {
+            if (comps.length == 0 && panel) {
+                panel.y = panel.y + stepSize;
+            }
+
             for each(var c:GUIComponent in comps) {
                 c.y = c.y + stepSize;
             }
         }
 
         private function moveLeft():void {
+            if (comps.length == 0 && panel) {
+                panel.x = panel.x - stepSize;
+            }
+
+
             for each(var c:GUIComponent in comps) {
                 c.x = c.x - stepSize;
             }
         }
 
         private function moveRight():void {
+            if (comps.length == 0 && panel) {
+                panel.x = panel.x + stepSize;
+            }
             for each(var c:GUIComponent in comps) {
                 c.x = c.x + stepSize;
             }
@@ -122,24 +159,36 @@
         /////////////////////////////////// size /////////////////////////////////
 
         private function moreHeigth():void {
+            if (comps.length == 0 && panel) {
+                panel.height = panel.height + stepSize;
+            }
             for each(var c:GUIComponent in comps) {
                 c.height = c.height + stepSize;
             }
         }
 
         private function lessHeight():void {
+            if (comps.length == 0 && panel) {
+                panel.height = panel.height - stepSize;
+            }
             for each(var c:GUIComponent in comps) {
                 c.height = c.height - stepSize;
             }
         }
 
         private function lessWidth():void {
+            if (comps.length == 0 && panel) {
+                panel.width = panel.width - stepSize;
+            }
             for each(var c:GUIComponent in comps) {
                 c.width = c.width - stepSize;
             }
         }
 
         private function moreWidth():void {
+            if (comps.length == 0 && panel) {
+                panel.width = panel.width + stepSize;
+            }
             for each(var c:GUIComponent in comps) {
                 c.width = c.width + stepSize;
             }
@@ -149,9 +198,9 @@
 
 
         private function adjustLeft():void {
-            var x:Number = -10;
+            var x:Number = -1;
             for each(var c:GUIComponent in comps) {
-                if (x == -10) {
+                if (x == -1) {
                     x = c.x;
                 } else {
                     c.x = x;
@@ -159,27 +208,113 @@
             }
         }
 
-        /////////////////////////////////// select /////////////////////////////////
+        private function adjustLabelWidth():void {
+            var w:Number = -1;
+            for each(var c:GUIComponent in comps) {
+                if (w == -1) {
+                    w = c.labelWidth;
+                } else {
+                    c.labelWidth = w;
+                }
+            }
+        }
+
+        private function adjustWidth():void {
+            var w:Number = -1;
+            for each(var c:GUIComponent in comps) {
+                if (w == -1) {
+                    w = c.width;
+                } else {
+                    c.width = w;
+                }
+            }
+        }
+
+
+        /////////////////////////////////// select component /////////////////////////////////
+
+
+        public function addGuiComponent(gc:GUIComponent, ctrlDown:Boolean):void {
+            if (!ctrlDown) unselectAll();
+            if (!comps.contains(gc)) {
+                comps.addItem(gc);
+                gc.setStyle("borderStyle", "solid");
+                gc.setStyle("borderColor", SEL_COLOR);
+                info.text = gc.getXmlSourceCode();
+            } else {
+                if (ctrlDown) unselect(gc);
+            }
+        }
 
         private function selectAll():void {
             if (!panel) return;
+            var array:Array = panel.getAllGUIComponents();
+            for each(var gc:GUIComponent in array) {
+                addGuiComponent(gc, true);
+            }
         }
 
         private function unselectAll():void {
             for each(var c:GUIComponent in comps) {
-                if(c is EditField){
-                    c.setStyle("borderStyle","none");
+                if (c is EditField) {
+                    c.setStyle("borderStyle", "none");
                 }
             }
             comps.removeAll();
         }
 
+        private function unselect(c:GUIComponent):void {
+            c.setStyle("borderStyle", "none");
+            var i:int = comps.getItemIndex(c);
+            if (i >= 0) {
+                comps.removeItemAt(i);
+            }
+        }
+
         /////////////////////////////////// clipboard /////////////////////////////////
 
+        private function whToClipBoard():void {
+            if (comps.length == 0 && panel) {
+                pasteToClipboard(getWHString(panel));
+            }
+            var tmp:String = "";
+            for each(var c:GUIComponent in comps) {
+                tmp += getWHString(UIComponent(c)) + "\r\n";
+            }
+            pasteToClipboard(tmp);
+        }
+
+        private function xyToClipBoard():void {
+            if (comps.length == 0 && panel) {
+                pasteToClipboard(getXYString(panel));
+            }
+            var tmp:String = "";
+            for each(var c:GUIComponent in comps) {
+                tmp += getXYString(UIComponent(c)) + "\r\n";
+            }
+            pasteToClipboard(tmp);
+        }
 
         private function toClipBoard():void {
-            System.setClipboard("hier kommts");
+            var tmp:String = "";
+            for each(var c:GUIComponent in comps) {
+                tmp += c.getXmlSourceCode() + "\r\n";
+            }
+            pasteToClipboard(tmp);
         }
+
+        private function getXYString(c:UIComponent):String {
+            return  "x=\"" + c.x + "\" y=\"" + c.y + "\"";
+        }
+
+        private function getWHString(c:UIComponent):String {
+            return  "w=\"" + c.width + "\" h=\"" + c.height + "\"";
+        }
+		
+		private function pasteToClipboard(s:String):void{
+            System.setClipboard(s);
+            info.text = s;
+		}
 
 
         ]]></mx:Script>
