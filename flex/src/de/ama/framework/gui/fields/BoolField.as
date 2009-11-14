@@ -13,6 +13,7 @@ public class BoolField extends EditField{
     public override function createInput():void{
         _input = new CheckBox();
         _input.x = labelWidth+10;
+        _input.y = 2;
         addChild(_input);
     }
 

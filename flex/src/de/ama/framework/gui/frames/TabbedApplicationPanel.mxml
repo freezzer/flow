@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
            xmlns:frames="de.ama.framework.gui.frames.*"
-           initialize="init()" keyUp="onKeyPressed(event)">
+           initialize="init()" keyDown="onKeyPressed(event)">
 
 
     <mx:Script><![CDATA[
@@ -23,6 +23,10 @@
                     Environment.designMode = true;
                 }
             }
+            if(Environment.designer!=null){
+                Environment.designer.keyHandler(event);
+            }
+
         }
 
         private var mainTabs:AdvanceTabNavigator = null;
