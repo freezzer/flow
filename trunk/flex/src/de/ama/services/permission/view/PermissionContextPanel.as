@@ -21,12 +21,15 @@ public class PermissionContextPanel  extends EditPanel {
    
      override public function addFields():void {
         labelWidth = 70;
-        insertTextField("Kontext","context");
-        insertTextField("UserName","userName");
-        insertBoolField("Permitted","permitted");
-        var lf:ListField = insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",470,20,500);
+        insertTextField("Kontext","context",10,20,70,240);
+        insertTextField("UserName","userName",10,50,70,240);
+        insertBoolField("Permitted","permitted",10,80,70,240);
+        var lf:ListField = insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",262,20,470,500);
         lf.addCommand(new SelectAllCommand()); 
         lf.addCommand(new SelectNoneCommand());
+
+        width = 746; height = 530; 
      }
 
 }}
+

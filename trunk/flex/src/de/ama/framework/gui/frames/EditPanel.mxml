@@ -30,6 +30,7 @@
 
         public  var gap:int = 5;
         public  var labelWidth:int = 100;
+        public  var inputWidth:int = 300;
         private var _path:String;
         private var _generic:Boolean = false;
         private var _data:Data;
@@ -108,46 +109,52 @@
             }
         }
 
-        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1):EditField {
+        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1,w:int = -1):EditField {
             var editField:EditField = new EditField(label, path);
             editField.labelWidth = lw < 0 ? labelWidth : lw;
+            editField.width = w < 0 ? inputWidth : w;
             insertComponent(editField, x, y);
             return editField;
         }
 
-        public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1):BoolField {
+        public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1,w:int = -1):BoolField {
             var boolField:BoolField = new BoolField(label, path);
             boolField.labelWidth = lw < 0 ? labelWidth : lw;
+            boolField.width = w < 0 ? inputWidth : w;
             insertComponent(boolField, x, y);
             return boolField;
         }
 
-        public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1):DateField {
+        public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1,w:int = -1):DateField {
             var dateField:DateField = new DateField(label, path);
             dateField.labelWidth = lw < 0 ? labelWidth : lw;
+            dateField.width = w < 0 ? inputWidth : w;
             insertComponent(dateField, x, y);
             return dateField;
         }
 
-        public function insertListField(label:String, path:String = null, lister:String = null, x:int = -1, y:int = -1, h:int = 150, lw:int = -1):ListField {
+        public function insertListField(label:String, path:String = null, lister:String = null, x:int = -1, y:int = -1, w:int = -1, h:int = 150):ListField {
             var listField:ListField = new ListField(label, path, lister);
             listField.height = h;
-            listField.labelWidth = lw < 0 ? labelWidth : lw;
+            listField.width = w < 0 ? inputWidth : w;
             insertComponent(listField, x, y);
             return listField;
         }
 
-        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, h:int = 90, lw:int = -1):TextAreaField {
+        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, h:int = 90, lw:int = -1,w:int = -1):TextAreaField {
             var textAreaField:TextAreaField = new TextAreaField(label, path);
             textAreaField.height = h;
             textAreaField.labelWidth = lw < 0 ? labelWidth : lw;
+            textAreaField.width = w < 0 ? inputWidth : w;
             insertComponent(textAreaField, x, y);
             return textAreaField;
         }
 
-        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1):Button {
+        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1,w:int = -1):Button {
             var button:CommandButton = new CommandButton();
             button.command = cmd;
+            button.width = w < 0 ? 100 : w;
+
             button.invoker = this;
             insertComponent(button, x, y);
             return button;
@@ -226,7 +233,7 @@
             var border:String = Util.isEqual("none",getStyle("borderStyle")) ? "false" : "true";
             return "<panel name=\""+Util.getUnqualifiedClassName(this)+"\" label=\""+label+
                    "\" border=\""+border+"\" x=\""+x+"\" y=\""+y+
-                   "\" w=\""+width+"\" h=\""+height+"\" path=\""+path+"\" >"
+                   "\" w=\""+width+"\" h=\""+height+"\" path=\""+Util.saveToString(path,".")+"\" >"
         }
 
         private function onClick(event:MouseEvent):void {

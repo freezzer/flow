@@ -13,10 +13,12 @@
                fontWeight="normal" color="#1C34E9"/>
     <mx:Button x="86" y="90" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
                click="adjustLeft()"/>
-    <mx:Button x="140" y="90" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" 
-    			click="adjustLabelWidth()"/>
-    <mx:Button x="239" y="90" icon="@Embed(source='../icons/shape_align_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]" 
-    			click="adjustWidth()"/>
+    <mx:Button x="140" y="90" icon="@Embed(source='../icons/shape_align_left.png')"
+               fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="adjustLabelWidth()"/>
+    <mx:Button x="239" y="90" icon="@Embed(source='../icons/shape_align_right.png')"
+               fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="adjustWidth()"/>
     <mx:Button x="5" y="191" icon="@Embed(source='../icons/shape_ungroup.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
                click="selectAll()"/>
     <mx:Button x="47" y="191" icon="@Embed(source='../icons/shape_square.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
@@ -63,23 +65,51 @@
         private var comps:ArrayCollection = new ArrayCollection();
         private var panel:EditPanel = null;
         private var store:Array = new Array();
+        private var keyStep:int = -1;
         private static var SEL_COLOR:int = 0xefac0c;
 
 
         private function get stepSize():int {
+            if (keyStep > 0) return keyStep;
             return fast.selected ? 5 : 1;
         }
 
         public function onClose():void {
             PopUpManager.removePopUp(this);
-            unsetPanel(panel);
+            unsetPanel();
             Environment.designMode = false;
         }
+
+        public function keyHandler(e:KeyboardEvent):void {
+            keyStep = e.shiftKey ? 1 : 5;
+
+            if (e.keyCode == Keyboard.DOWN) {
+                if (!e.altKey && !e.ctrlKey) { moveDown(); }
+                if (e.altKey )  moreHeigth();
+            }
+            if (e.keyCode == Keyboard.UP) {
+                if (!e.altKey && !e.ctrlKey ) { moveUp(); }
+                if (e.altKey )  lessHeight();
+            }
+            if (e.keyCode == Keyboard.LEFT) {
+                if (!e.altKey && !e.ctrlKey) moveLeft();
+                if (e.altKey )  lessWidth();
+                if (e.ctrlKey)  lessLabelSize();
+            }
+            if (e.keyCode == Keyboard.RIGHT) {
+                if (!e.altKey && !e.ctrlKey) moveRight();
+                if (e.altKey )  moreWidth();
+                if (e.ctrlKey)  moreLabelSize();
+            }
+
+            keyStep = -1;
+        }
+
 
         /////////////////////////////////// Panel /////////////////////////////////
 
         public function setPanel(p:EditPanel):void {
-            unsetPanel(panel);
+            unsetPanel();
             store["panelBorderColor"] = p.getStyle("borderColor");
             store["panelBorderStyle"] = p.getStyle("borderStyle");
 
@@ -90,7 +120,7 @@
             pasteToClipboard(panel.getXmlSourceCode());
         }
 
-        public function unsetPanel(p:EditPanel):void {
+        public function unsetPanel():void {
             unselectAll();
             if (panel) {
                 panel.setStyle("borderColor", store["panelBorderColor"]);
@@ -310,11 +340,11 @@
         private function getWHString(c:UIComponent):String {
             return  "w=\"" + c.width + "\" h=\"" + c.height + "\"";
         }
-		
-		private function pasteToClipboard(s:String):void{
+
+        private function pasteToClipboard(s:String):void {
             System.setClipboard(s);
             info.text = s;
-		}
+        }
 
 
         ]]></mx:Script>
