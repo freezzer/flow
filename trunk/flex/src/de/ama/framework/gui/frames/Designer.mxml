@@ -6,46 +6,55 @@
                 close="onClose()"
                 backgroundAlpha="0.63" cornerRadius="4">
     <mx:Button x="163" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="xyToClipBoard()" label="x,y"
-               fontWeight="normal" color="#2B7B07"/>
-    <mx:Button x="210" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="whToClipBoard()" label="w,h"
-               fontWeight="normal" color="#1C34E9"/>
-    <mx:Button x="258" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="toClipBoard()" label="&lt;/&gt;"
-               fontWeight="normal" color="#1C34E9"/>
-    <mx:Button x="86" y="90" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               click="adjustLeft()"/>
-    <mx:Button x="140" y="90" icon="@Embed(source='../icons/shape_align_left.png')"
+               fontWeight="normal" color="#2B7B07" toolTip="show x,y values (also pastes to clipboaed)"/>
+    <mx:Button x="208" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="whToClipBoard()" label="w,h"
+               fontWeight="normal" color="#1C34E9">
+        <mx:toolTip>show width,height values (also pastes to clipboaed)</mx:toolTip>
+    </mx:Button>
+    <mx:Button x="256" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="toClipBoard()" label="code"
+               fontWeight="normal" color="#1C34E9" toolTip="paste code to clipboard" width="52" textAlign="left"/>
+    <mx:Button x="92" y="90" icon="@Embed(source='../icons/shape_align_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="adjustLeft()" width="27" toolTip="aligne left at first selected"/>
+    <mx:Button x="146" y="90" icon="@Embed(source='../icons/shape_align_left.png')"
                fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               click="adjustLabelWidth()"/>
-    <mx:Button x="239" y="90" icon="@Embed(source='../icons/shape_align_right.png')"
+               click="adjustLabelWidth()" width="27" toolTip="adjust labelwidth at first selected"/>
+    <mx:Button x="245" y="90" icon="@Embed(source='../icons/shape_align_left_right.png')"
                fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               click="adjustWidth()"/>
+               click="adjustWidth()" width="27" toolTip="adjust width at first selected"/>
+    <mx:Button x="66" y="90" icon="@Embed(source='../icons/shape_align_top.png')"
+               fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="adjustTop()" width="27" toolTip="aligne top at first selected"/>
+    <mx:Button x="196" y="90" icon="@Embed(source='../icons/shape_align_top_bottom.png')"
+               fillAlphas="[0.74, 0.74, 0.74, 0.74]"
+               click="adjustHeight()" width="27" toolTip="adjust height at first selected"/>
     <mx:Button x="5" y="191" icon="@Embed(source='../icons/shape_ungroup.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               click="selectAll()"/>
+               click="selectAll()" toolTip="select all components from panel"/>
     <mx:Button x="47" y="191" icon="@Embed(source='../icons/shape_square.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               click="unselectAll()"/>
+               click="unselectAll()" toolTip="unselect all components"/>
     <mx:Button x="4" y="41" icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moveLeft()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="moveLeft()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="move left (+ shift 1 pixel)"/>
     <mx:Button x="112" y="16" icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="lessLabelSize()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="lessLabelSize()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="less labelwidth (+ shift 1 pixel)"/>
     <mx:Button x="228" y="16" icon="@Embed(source='../icons/arrow_left.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="lessWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="lessWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="less width (+ shift 1 pixel)"/>
     <mx:Button x="26" y="65" icon="@Embed(source='../icons/arrow_down.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moveDown()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="moveDown()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="move down (+ shift 1 pixel)"/>
     <mx:Button x="268" y="64" icon="@Embed(source='../icons/arrow_down.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moreHeigth()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="moreHeigth()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="more height (+ shift 1 pixel)"/>
     <mx:Button x="26" y="16" icon="@Embed(source='../icons/arrow_up.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moveUp()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="moveUp()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="move up (+ shift 1 pixel)"/>
     <mx:Button x="268" y="42" icon="@Embed(source='../icons/arrow_up.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="lessHeight()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="lessHeight()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="less height (+ shift 1 pixel)"/>
     <mx:Button x="49" y="41" icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moveRight()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="moveRight()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="move right (+ shift 1 pixel)"/>
     <mx:Button x="153" y="16" icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moreLabelSize()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
+               buttonDown="moreLabelSize()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="more labelwidth (+ shift 1 pixel)"/>
     <mx:Button x="268" y="16" icon="@Embed(source='../icons/arrow_right.png')" fillAlphas="[0.74, 0.74, 0.74, 0.74]"
-               buttonDown="moreWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100"/>
-    <mx:Label x="97" y="43" text="Label" width="35"/>
-    <mx:TextInput x="152" y="41" backgroundAlpha="0.72" width="115" borderStyle="outset"/>
-    <mx:CheckBox id="fast" x="5" y="90" label="fast"/>
+               buttonDown="moreWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="more width (+ shift 1 pixel)"/>
+    <mx:Label x="97" y="43" text="Label" width="35" toolTip="example input"/>
+    <mx:TextInput x="152" y="41" backgroundAlpha="0.72" width="115" borderStyle="inset" toolTip="example input"/>
+    <mx:CheckBox id="fast" x="5" y="90" label="fast" toolTip="faster movement (5 pixel per click)"/>
+    <mx:CheckBox id="codeXml" x="114" y="191" label="xml" toolTip="faster movement (5 pixel per click)"/>
     <mx:TextArea x="3" y="121" width="305" height="66" id="info" enabled="true" wordWrap="true"
                  backgroundAlpha="0.77" fontSize="9" fontFamily="Georgia" text="Test &lt;&gt;"/>
     <mx:VRule x="264" y="65" width="2" height="22"/>
@@ -56,6 +65,7 @@
         import de.ama.framework.gui.fields.EditField;
         import de.ama.framework.gui.fields.GUIComponent;
 
+        import de.ama.framework.util.Util;
         import de.ama.services.Environment;
 
         import mx.collections.ArrayCollection;
@@ -69,6 +79,10 @@
         private static var SEL_COLOR:int = 0xefac0c;
 
 
+        private function get xmlCode():Boolean {
+            return codeXml.selected;
+        }
+
         private function get stepSize():int {
             if (keyStep > 0) return keyStep;
             return fast.selected ? 5 : 1;
@@ -80,7 +94,7 @@
             Environment.designMode = false;
         }
 
-        public function keyHandler(e:KeyboardEvent):void {
+        public function keyHandler(e:KeyboardEvent, lowerkey:String):void {
             keyStep = e.shiftKey ? 1 : 5;
 
             if (e.keyCode == Keyboard.DOWN) {
@@ -92,14 +106,20 @@
                 if (e.altKey )  lessHeight();
             }
             if (e.keyCode == Keyboard.LEFT) {
-                if (!e.altKey && !e.ctrlKey) moveLeft();
                 if (e.altKey )  lessWidth();
                 if (e.ctrlKey)  lessLabelSize();
+                if (!e.altKey && !e.ctrlKey) moveLeft();
             }
             if (e.keyCode == Keyboard.RIGHT) {
-                if (!e.altKey && !e.ctrlKey) moveRight();
-                if (e.altKey )  moreWidth();
+                if (e.altKey )  {
+                    moreWidth();
+                }
                 if (e.ctrlKey)  moreLabelSize();
+                if (!e.altKey && !e.ctrlKey) moveRight();
+            }
+
+            if(Util.isEqual("a",lowerkey) && e.ctrlKey){
+                selectAll();
             }
 
             keyStep = -1;
@@ -136,7 +156,6 @@
             if (comps.length == 0 && panel) {
                 panel.y = panel.y - stepSize;
             }
-
             for each(var c:GUIComponent in comps) {
                 c.y = c.y - stepSize;
             }
@@ -146,7 +165,6 @@
             if (comps.length == 0 && panel) {
                 panel.y = panel.y + stepSize;
             }
-
             for each(var c:GUIComponent in comps) {
                 c.y = c.y + stepSize;
             }
@@ -156,8 +174,6 @@
             if (comps.length == 0 && panel) {
                 panel.x = panel.x - stepSize;
             }
-
-
             for each(var c:GUIComponent in comps) {
                 c.x = c.x - stepSize;
             }
@@ -238,6 +254,18 @@
             }
         }
 
+        private function adjustTop():void {
+            var y:Number = -1;
+            for each(var c:GUIComponent in comps) {
+                if (y == -1) {
+                    y = c.y;
+                } else {
+                    c.y = y;
+                }
+            }
+        }
+
+
         private function adjustLabelWidth():void {
             var w:Number = -1;
             for each(var c:GUIComponent in comps) {
@@ -260,6 +288,16 @@
             }
         }
 
+        private function adjustHeight():void {
+            var h:Number = -1;
+            for each(var c:GUIComponent in comps) {
+                if (h == -1) {
+                    h = c.height;
+                } else {
+                    c.height = h;
+                }
+            }
+        }
 
         /////////////////////////////////// select component /////////////////////////////////
 
@@ -270,7 +308,7 @@
                 comps.addItem(gc);
                 gc.setStyle("borderStyle", "solid");
                 gc.setStyle("borderColor", SEL_COLOR);
-                info.text = gc.getXmlSourceCode();
+                info.text = gc.getSourceCode(xmlCode);
             } else {
                 if (ctrlDown) unselect(gc);
             }
@@ -328,17 +366,25 @@
         private function toClipBoard():void {
             var tmp:String = "";
             for each(var c:GUIComponent in comps) {
-                tmp += c.getXmlSourceCode() + "\r\n";
+                tmp += c.getSourceCode(xmlCode) + "\r\n";
             }
             pasteToClipboard(tmp);
         }
 
         private function getXYString(c:UIComponent):String {
-            return  "x=\"" + c.x + "\" y=\"" + c.y + "\"";
+            if(xmlCode){
+               return  "x=\"" + c.x + "\" y=\"" + c.y + "\"";
+            } else {
+               return c.x+","+c.y;
+            }
         }
 
         private function getWHString(c:UIComponent):String {
-            return  "w=\"" + c.width + "\" h=\"" + c.height + "\"";
+            if(xmlCode){
+                return  "w=\"" + c.width + "\" h=\"" + c.height + "\"";
+            } else {
+               return c.width+","+c.height;
+            }
         }
 
         private function pasteToClipboard(s:String):void {

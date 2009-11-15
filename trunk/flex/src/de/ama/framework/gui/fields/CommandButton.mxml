@@ -10,6 +10,7 @@
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
         import de.ama.framework.command.Invoker;
+        import de.ama.framework.util.Util;
 
         public var _size:int = 0 ;
         public var _invoker:Invoker ;
@@ -73,9 +74,13 @@
             return 0;
         }
 
-        public function getXmlSourceCode():String {
-            return "<button x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" h=\""+height+"\" label=\""+label+"\" />";
-        }
+        public function getSourceCode(xml:Boolean):String {
+            if(xml){
+                return "<button x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" h=\""+height+"\" label=\""+label+"\" />";
+            } else {
+               return "insertCommandButton(\""+Util.getUnqualifiedClassName(command)+"\","+x+","+y+","+width+");"; 
+            }
+    }
 
         ]]></mx:Script>
 	

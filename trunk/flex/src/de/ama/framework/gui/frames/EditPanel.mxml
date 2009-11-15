@@ -141,7 +141,7 @@
             return listField;
         }
 
-        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, h:int = 90, lw:int = -1,w:int = -1):TextAreaField {
+        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1,h:int = -1):TextAreaField {
             var textAreaField:TextAreaField = new TextAreaField(label, path);
             textAreaField.height = h;
             textAreaField.labelWidth = lw < 0 ? labelWidth : lw;

@@ -27,6 +27,7 @@ public class PermissionContextPanel  extends EditPanel {
         var lf:ListField = insertListField("Einzelberechtigungen","switches","PermissionSwitchesLister",262,20,470,500);
         lf.addCommand(new SelectAllCommand()); 
         lf.addCommand(new SelectNoneCommand());
+         
 
         width = 746; height = 530; 
      }
