@@ -66,6 +66,11 @@
         y CDATA #IMPLIED>
 <!ELEMENT input (lister)*>
 <!ATTLIST input
+        x CDATA #IMPLIED
+        y CDATA #IMPLIED
+        w CDATA #IMPLIED
+        h CDATA #IMPLIED
+        labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
         type CDATA #IMPLIED>

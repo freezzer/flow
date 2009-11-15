@@ -41,7 +41,7 @@
                                lister="default">
                         <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
                         <tree_node label="Adresse {ort}" path="adressen" icon="form" open="true" type="Adresse"
-                                   panel="default">
+                                   panel="AdressePanel">
                             <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
                             <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
                             <command use="DeleteNodeCommand" label="Adresse loeschen" icon="delete"/>
@@ -54,6 +54,12 @@
                 <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
             </tree_editor>
 
+            <panel name="AdressePanel" border="true" editable="true"  >
+                <input x="10" y="20" w="300" labelwidth="100"  label="Ort" path="ort" type="string" />
+                <input x="10" y="49" w="300" labelwidth="100"  label="Plz" path="plz" type="string" />
+                <input x="10" y="81" w="300" labelwidth="100"  label="Strasse" path="strasse" type="string" />
+                <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" type="string" />
+            </panel>
         </view>
 
     </permission>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
            xmlns:frames="de.ama.framework.gui.frames.*"
-           initialize="init()" keyDown="onKeyPressed(event)">
+           initialize="init()" keyDown="onKeyPressed(event)" >
 
 
     <mx:Script><![CDATA[
