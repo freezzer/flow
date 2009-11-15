@@ -29,9 +29,12 @@ public class TextAreaField extends EditField{
         TextArea(_input).height = h;
     }
 
-    override public function getXmlSourceCode():String {
-        return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"area\" />";
+    override public function getSourceCode(xml:Boolean):String {
+        if(xml){
+            return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"area\" />";
+        } else {
+           return "insertTextAreaField(\""+label+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+","+height+");";
+        }
     }
-
 }
 }

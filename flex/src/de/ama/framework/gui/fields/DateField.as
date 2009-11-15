@@ -33,9 +33,12 @@ public class DateField extends EditField{
         return mx.controls.DateField.dateToString(mx.controls.DateField(_input).selectedDate,FORMAT);
     }
 
-    override public function getXmlSourceCode():String {
-         return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"date\" />";
+    override public function getSourceCode(xml:Boolean):String {
+        if(xml){
+            return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"date\" />";
+        } else {
+           return "insertDateField(\""+label+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
+        }
     }
-
 }
 }

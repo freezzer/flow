@@ -12,6 +12,6 @@ public interface GUIComponent {
     function get labelWidth():int;
     function get height():Number;
     function get width():Number;
-    function getXmlSourceCode():String;
+    function getSourceCode(xml:Boolean):String;
 
 }}

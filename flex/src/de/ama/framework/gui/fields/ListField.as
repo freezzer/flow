@@ -70,8 +70,12 @@ public class ListField extends EditField{
         ListPanel(_input).addCommand(cmd);
     }
 
-    override public function getXmlSourceCode():String {
-        return "<input x=\"" + x + "\" y=\"" + y + "\" w=\"" + width + "\" h=\"" + height + "\" label=\"" + label + "\" path=\"" + localpath + "\" type=\"list\" >";
+    override public function getSourceCode(xml:Boolean):String {
+        if(xml){
+            return "<input x=\"" + x + "\" y=\"" + y + "\" w=\"" + width + "\" h=\"" + height + "\" label=\"" + label + "\" path=\"" + localpath + "\" type=\"list\" >";
+        } else {
+           return "insertListField(\""+label+"\",\""+localpath+"\",\""+Util.getUnqualifiedClassName(_input)+"\","+x+","+y+","+width+","+height+");";
+        }
     }
 
 }

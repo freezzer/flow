@@ -163,8 +163,12 @@ public class EditField extends Canvas implements GUIComponent {
         }
     }
 
-    public function getXmlSourceCode():String {
-        return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"string\" />";
+    public function getSourceCode(xml:Boolean):String {
+        if(xml){
+           return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"string\" />";
+        } else {
+           return "insertTextField(\""+label+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
+        }
     }
     
 

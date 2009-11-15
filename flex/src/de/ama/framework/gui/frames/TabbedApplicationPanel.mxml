@@ -17,14 +17,14 @@
         import mx.events.MenuEvent;
 
         private function onKeyPressed(event:KeyboardEvent):void {
-            var key:String = String.fromCharCode(event.charCode).toLowerCase();
+            var lowerkey:String = String.fromCharCode(event.charCode).toLowerCase();
+            if(Environment.designer!=null){
+                Environment.designer.keyHandler(event, lowerkey);
+            }
             if (event.altKey && event.ctrlKey) {
-                if (key == 'd') {
+                if (lowerkey == 'd') {
                     Environment.designMode = true;
                 }
-            }
-            if(Environment.designer!=null){
-                Environment.designer.keyHandler(event);
             }
 
         }

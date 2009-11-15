@@ -31,8 +31,12 @@ public class BoolField extends EditField{
         return CheckBox(_input).selected;
     }
 
-    override public function getXmlSourceCode():String {
-         return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"boolean\" />";
+    override public function getSourceCode(xml:Boolean):String {
+        if(xml){
+            return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"boolean\" />";
+        } else {
+           return "insertBoolField(\""+label+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
+        }
     }
 
 }
