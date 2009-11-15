@@ -111,9 +111,7 @@
                 if (!e.altKey && !e.ctrlKey) moveLeft();
             }
             if (e.keyCode == Keyboard.RIGHT) {
-                if (e.altKey )  {
-                    moreWidth();
-                }
+                if (e.altKey ) moreWidth();
                 if (e.ctrlKey)  moreLabelSize();
                 if (!e.altKey && !e.ctrlKey) moveRight();
             }
