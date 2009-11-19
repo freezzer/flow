@@ -60,6 +60,10 @@ public class Tag extends XmlElement implements Const {
     }
 
 
+    public void registerClass(String key, String className) {
+        getWriter().registerClass(target+":"+key,className);
+    }
+
     public PrintWriter createPrintWriter(String _dir, String fileName) {
         try {
             File dir = new File(".",_dir);

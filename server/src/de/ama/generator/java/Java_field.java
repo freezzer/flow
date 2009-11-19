@@ -31,8 +31,8 @@ public class Java_field extends Tag {
     public void generate() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE,"String");
-        boolean create = getAttribute(CREATE,true);
-        if(!isLeaf()){
+        boolean create = getAttribute(CREATE,false);
+        if(isEmpty(type) && !isLeaf()){
             type = getChild(0).getRequiredAttribute(NAME);
         }
         boolean str = "String".equals(type);

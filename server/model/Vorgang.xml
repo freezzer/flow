@@ -68,7 +68,7 @@
     <permission package="permission" name="Vorgang">
       <view package="vorgang.view" >
         <tree_editor name="VorgangEditor" label="Ausfuhr {nummer}" type="Vorgang">
-            <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="." open="true" panel="default">
+            <tree_node label="Vorgang {nummer}" icon="lorry" type="Vorgang" path="." open="true" panel="VorgangPanel">
                 <tree_node label="Transition" path="transitions" icon="arrow.right" type="Transition" open="true" panel="default">
                     <tree_node label="Kopf" path="workmodel" panel="KopfPanel"/>
                     <tree_node label="Positionen" path="workmodel.positionen" type="Position" lister="PositionenLister"  open="true">
@@ -119,32 +119,38 @@
 
         <!--  ********************* Panels *******************************   -->
 
-        <panel name="KopfPanel" label="Kopfdaten des Vorgangs" gap="3">
-            <panel name="KopfAllgemeinPanel" label="Allgemein" border="true" x="10" y="25" path="kopf">
+        <panel name="VorgangPanel" border="true" editable="true" label="Vorgang" path="." x="25" y="25" w="315" h="126">
+            <input x="10" y="50" w="300" labelwidth="100" h="25" label="Typ" path="typ"  />
+            <input x="10" y="20" w="300" labelwidth="100" h="25" label="Id" path="id" />
+            <input x="10" y="80" w="300" labelwidth="100" h="25" label="Nummer" path="nummer" />
+        </panel>
+
+        <panel name="KopfPanel" label="Kopfdaten des Vorgangs" border="true" x="25" y="25" w="380" h="354" path="." >
+            <panel name="KopfAllgemeinPanel" label="Allgemein" border="true" x="30" y="25" w="313" h="163" path="kopf" >
                 <input label="MRN" path="mrn" type="string"/>
                 <input label="Zollstelle" path="zollstelle" type="lookup"/>
                 <input label="erstellt am" path="erstellt" type="date"/>
                 <input label="angemeldet am" path="angemeldet" type="date"/>
                 <input label="container" path="container" type="Boolean"/>
             </panel>
-            <panel name="GeschaeftPanel" label="Geschaeft" border="true" x="10" y="210" path="geschaeft">
+            <panel name="GeschaeftPanel" label="Geschaeft" border="true" x="30" y="210" w="313" h="107" path="geschaeft" >
                 <input label="Geschaeftsart" path="art"/>
                 <input label="Waehrung" path="waehrung"/>
                 <input label="Betrag" path="betrag"/>
             </panel>
         </panel>
 
-        <panel name="PosPanel">
-            <panel name="PosHead" y="10" x="5" label="Warendaten" border="true">
+        <panel name="PosPanel" >
+            <panel name="PosHead" label="Warendaten" border="true" x="5" y="10" w="315" h="175" path="." >
                 <input label="Nummer" path="nummer"/>
                 <input label="Warennummer" path="warennummer"/>
                 <input label="Rohgewicht" path="roh_gewicht" type="number"/>
                 <input label="Nettogewicht" path="netto_gewicht" type="number"/>
             </panel>
-            <panel use="DokumentePanel" y="10" x="445" border="true" label="Dokumente"/>
+            <panel use="DokumentePanel" label="Dokumente" border="true" x="332" y="10" path="." />
         </panel>
 
-        <panel name="DokumentePanel" editable="true" label="Unterlagen PackStuecke Verschluesse">
+       <panel name="DokumentePanel" label="Dokumente" border="true" x="332" y="10" w="335" h="500" path="." >
             <input label="Unterlagen" path="unterlagen" type="list">
                 <lister name="UnterlagenLister" type="Unterlage">
                     <command use="CreateNodeCommand" label="neue Unterlage" icon="new"/>

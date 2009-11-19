@@ -53,8 +53,8 @@
                buttonDown="moreWidth()" autoRepeat="true" repeatDelay="300" repeatInterval="100" toolTip="more width (+ shift 1 pixel)"/>
     <mx:Label x="97" y="43" text="Label" width="35" toolTip="example input"/>
     <mx:TextInput x="152" y="41" backgroundAlpha="0.72" width="115" borderStyle="inset" toolTip="example input"/>
-    <mx:CheckBox id="fast" x="5" y="90" label="fast" toolTip="faster movement (5 pixel per click)"/>
-    <mx:CheckBox id="codeXml" x="114" y="191" label="xml" toolTip="switch between xml ore ecma-script"/>
+    <mx:CheckBox id="fast" x="5" y="90" label="fast" toolTip="faster movement (5 pixel per click)" selected="true"/>
+    <mx:CheckBox id="codeXml" x="114" y="191" label="xml" toolTip="switch between xml ore ecma-script" selected="true"/>
     <mx:TextArea x="3" y="121" width="305" height="66" id="info" enabled="true" wordWrap="true"
                  backgroundAlpha="0.77" fontSize="9" fontFamily="Georgia" text="Test &lt;&gt;"/>
     <mx:VRule x="264" y="65" width="2" height="22"/>

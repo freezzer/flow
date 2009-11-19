@@ -34,6 +34,15 @@ public class OutputWriter {
     private File inDir;
     private String targets;
     private Map objectStore = new HashMap();
+    private Map<String,String> classDictionary = new HashMap<String,String>();
+
+    public void registerClass(String key, String className) {
+        String s = classDictionary.put(key, className);
+        if(s!=null){
+            throw new RuntimeException("duplicate key["+key+"] for class "+ className);
+        }
+    }
+
 
     public Map getObjectStore() {
         return objectStore;

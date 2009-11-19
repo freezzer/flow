@@ -54,7 +54,7 @@
             var selectionModel:SelectionModel = new SelectionModel();
             var array:Array = grid.selectedItems;
             for each (var data:Data in array) {
-                selectionModel.addSelection(data);
+                selectionModel.addData(data);
             }
 
             if (selectionModel == null) {

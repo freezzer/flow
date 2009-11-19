@@ -31,7 +31,12 @@ public class Java_collection extends Tag {
 
     public void generate() {
         String name = getRequiredAttribute(NAME);
-        String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
+        String type = getAttribute(TYPE);
+        if(isEmpty(type) && !isLeaf()){
+           type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
+        }
+
+
         String list="java.util.List<"+type+">";
 
         writeLine();

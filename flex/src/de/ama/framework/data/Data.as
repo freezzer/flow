@@ -32,6 +32,10 @@ public class Data{
        return Util.getUnqualifiedClassName(this); 
     }
 
+    public function getGuiRepresentation():String {
+       return getName(); 
+    }
+
     public function clone():Data {
         var info:Object = ObjectUtil.getClassInfo(this);
         var c:Class = Util.getClass(this);

@@ -3,9 +3,9 @@
 
 <define>
 
-    <model package="person.bom">
+    <model package="bom">
 
-        <bean name="Person" persistent="true" unique-key="vorname+nachname">
+        <bean name="Person" persistent="true" unique-key="vorname+nachname" >
             <field name="vorname"/>
             <field name="nachname"/>
             <field name="telefon"/>
@@ -16,6 +16,7 @@
                     <field name="ort"/>
                     <field name="plz"/>
                     <field name="strasse"/>
+                    <field name="hausnummer"/>
                 </bean>
             </collection>
         </bean>
@@ -23,7 +24,7 @@
 
     <permission package="permission" name="Person">
 
-        <view package="person.view" >
+        <view package="view.person" >
 
             <lister name="PersonLister" label="Personen Auflister" type="Person">
                 <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
@@ -54,11 +55,12 @@
                 <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
             </tree_editor>
 
-            <panel name="AdressePanel" border="true" editable="true"  >
-                <input x="10" y="20" w="300" labelwidth="100"  label="Ort" path="ort" type="string" />
-                <input x="10" y="49" w="300" labelwidth="100"  label="Plz" path="plz" type="string" />
-                <input x="10" y="81" w="300" labelwidth="100"  label="Strasse" path="strasse" type="string" />
-                <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" type="string" />
+            <panel name="AdressePanel" border="true" editable="true">
+                <input x="10" y="20" w="300" labelwidth="100" label="Ort" path="ort" type="string"/>
+                <input x="10" y="49" w="300" labelwidth="100" label="Plz" path="plz" type="string"/>
+                <input x="10" y="81" w="300" labelwidth="100" label="Strasse" path="strasse" type="string"/>
+                <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" type="string"/>
+                <input x="10" y="143" w="300" labelwidth="100" label="Hausnummer" path="hausnummer" type="string"/>
             </panel>
         </view>
 

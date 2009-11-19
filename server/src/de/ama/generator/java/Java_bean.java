@@ -74,7 +74,7 @@ public class Java_bean extends Tag{
         write("}");
         flush();
 
-
+        registerClass(name,pckg+"."+name);
     }
 
 

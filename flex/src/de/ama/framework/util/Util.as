@@ -296,5 +296,12 @@ public class Util
         return str.charAt(0).toLowerCase() + str.substr(1);
     }
 
+    public static function asString(o:Object):String {
+        if(o==null) return "";
+        if(o is String) return String(o);
+        if(o is Date) return Date(o).toLocaleDateString();
+        if(o is Number) return Number(o).toString();
+    }
+
 }
 }
