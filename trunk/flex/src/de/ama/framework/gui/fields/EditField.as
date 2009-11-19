@@ -34,6 +34,7 @@ public class EditField extends Canvas implements GUIComponent {
 
         createLabel(caption);
         createInput();
+        createAditionals();
         _localpath = path;
 
         _input.setStyle("color","0x202020");
@@ -53,6 +54,9 @@ public class EditField extends Canvas implements GUIComponent {
         super.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
         super.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
 
+    }
+
+    protected function createAditionals():void {
     }
 
 

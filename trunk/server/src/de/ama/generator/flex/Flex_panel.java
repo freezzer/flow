@@ -123,6 +123,7 @@ public class Flex_panel extends Tag {
         write("     override public function addFields():void {");
         write("        var field:EditField;");
                         visitChildren(INPUT);
+                        visitChildren(LOOKUP);
         write("     } ");
         write("");
         write("}}");

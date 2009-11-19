@@ -54,7 +54,7 @@
         lister CDATA #IMPLIED
         permitted CDATA #IMPLIED
         use CDATA #IMPLIED>
-<!ELEMENT panel (panel|input)*>
+<!ELEMENT panel (panel|input|lookup)*>
 <!ATTLIST panel
         border CDATA #IMPLIED
         editable CDATA #IMPLIED
@@ -73,6 +73,17 @@
         y CDATA #IMPLIED
         w CDATA #IMPLIED
         h CDATA #IMPLIED
+        labelwidth CDATA #IMPLIED
+        label CDATA #REQUIRED
+        path CDATA #REQUIRED
+        type CDATA #IMPLIED>
+<!ELEMENT lookup (lister)*>
+<!ATTLIST lookup
+        x CDATA #IMPLIED
+        y CDATA #IMPLIED
+        w CDATA #IMPLIED
+        h CDATA #IMPLIED
+        guirep CDATA #IMPLIED
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
