@@ -126,6 +126,9 @@ public class IconStore {
   [Embed(source="../icons/arrow_redo.png")]
   public static const REDO:Class;
 
+  [Embed(source="../icons/building.png")]
+  public static const BUILDING:Class;
+
   public static function getIcon(iconName:String):Class{
       if (iconName == null) {
           return CANCEL;
@@ -166,6 +169,7 @@ public class IconStore {
               case "print":         return PRINT;
               case "refresh":       return REFRESH;
               case "redo":          return REDO;
+              case "building":      return BUILDING;
           }
       }
 

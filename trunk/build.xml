@@ -52,7 +52,7 @@
                 <pathelement location="server/classes"/>
             </classpath>
             <arg value="inFile"/>
-            <arg file="server/model/TestApplication.xml"/>
+            <arg file="server/model/PMS.xml"/>
             <arg value="root_package"/>
             <arg value="${root_package}"/>
             <arg value="targets"/>

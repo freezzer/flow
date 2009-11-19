@@ -6,12 +6,16 @@ public class SelectionModel {
 
     public function SelectionModel(data:Data=null) {
     	if(data!=null){
-	        addSelection(data);
+	        addData(data);
     	}
     }
 
-    public function addSelection(data:Data):void {
+    public function addData(data:Data):void {
         selections.push(new Selection(data));
+    }
+
+    public function addSelection(s:Selection):void {
+        selections.push(s);
     }
 
     public function getSelections():Array {

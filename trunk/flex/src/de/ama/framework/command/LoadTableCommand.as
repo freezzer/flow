@@ -1,4 +1,5 @@
 package de.ama.framework.command {
+import de.ama.framework.gui.fields.ProxyField;
 import de.ama.framework.gui.frames.ListPanel;
 
 public class LoadTableCommand extends Command{
@@ -13,6 +14,10 @@ public class LoadTableCommand extends Command{
     	if( invoker is ListPanel){
     		var lp:ListPanel = invoker as ListPanel;
 			lp.reload();    		
+    	}
+    	if( invoker is ProxyField){
+    		var pf:ProxyField = invoker as ProxyField;
+			pf.reload();
     	}
     }
 

@@ -15,6 +15,7 @@
         unique-key CDATA #IMPLIED>
 <!ELEMENT field (#PCDATA)>
 <!ATTLIST field
+        create CDATA #IMPLIED
         name CDATA #REQUIRED
         type CDATA #IMPLIED>
 <!ELEMENT collection (bean)*>
@@ -63,7 +64,9 @@
         path CDATA #IMPLIED
         use CDATA #IMPLIED
         x CDATA #IMPLIED
-        y CDATA #IMPLIED>
+        y CDATA #IMPLIED
+        w CDATA #IMPLIED
+        h CDATA #IMPLIED>
 <!ELEMENT input (lister)*>
 <!ATTLIST input
         x CDATA #IMPLIED

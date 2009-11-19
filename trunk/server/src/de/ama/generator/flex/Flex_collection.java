@@ -25,11 +25,14 @@ import de.ama.generator.Tag;
 public class Flex_collection extends Tag {
 
     public void generate() {
-        String name = getRequiredAttribute(NAME);
-        String type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
         String pckg =  getPackage();
+        String name = getRequiredAttribute(NAME);
+        String type = getAttribute(TYPE);
+        int create = getAttribute(CREATE, 0);
+        if(isEmpty(type) && !isLeaf()){
+           type = getAttribute(TYPE, getChild(0).getAttribute(NAME));
+        }
 
-        int create = getAttribute(CREATE, getChild(0).getAttribute(CREATE,0));
         writeLine();
         if( create>0 ){
             write("    public var "+name+":Array = Util.createArray(\""+pckg+"."+type+"\","+create+");");

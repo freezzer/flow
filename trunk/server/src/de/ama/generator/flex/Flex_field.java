@@ -26,8 +26,6 @@ public class Flex_field extends Tag {
     public void generate() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE,"String");
-        boolean  create = getAttribute(CREATE, false);
-        String obj = "";
         if(!isLeaf()){
             type = getChild(0).getRequiredAttribute(NAME);
         }

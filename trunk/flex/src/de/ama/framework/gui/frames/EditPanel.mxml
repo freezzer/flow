@@ -40,6 +40,12 @@
             _generic = value;
         }
 
+
+        override public function set label(value:String):void {
+            setStyle("borderStyle","solid");
+            super.label = value;
+        }
+
         public function get path():String {
             return _path;
         }
@@ -58,6 +64,8 @@
 
             if (_generic) {
                 createDefaultFields(_data);
+                label = _data.getName();
+                x=25; y=25;
             }
 
             var childs:Array = getChildren();
@@ -109,7 +117,7 @@
             }
         }
 
-        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1,w:int = -1):EditField {
+        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1):EditField {
             var editField:EditField = new EditField(label, path);
             editField.labelWidth = lw < 0 ? labelWidth : lw;
             editField.width = w < 0 ? inputWidth : w;
@@ -117,7 +125,7 @@
             return editField;
         }
 
-        public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1,w:int = -1):BoolField {
+        public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1):BoolField {
             var boolField:BoolField = new BoolField(label, path);
             boolField.labelWidth = lw < 0 ? labelWidth : lw;
             boolField.width = w < 0 ? inputWidth : w;
@@ -125,7 +133,7 @@
             return boolField;
         }
 
-        public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1,w:int = -1):DateField {
+        public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1):DateField {
             var dateField:DateField = new DateField(label, path);
             dateField.labelWidth = lw < 0 ? labelWidth : lw;
             dateField.width = w < 0 ? inputWidth : w;
@@ -141,7 +149,7 @@
             return listField;
         }
 
-        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1,h:int = -1):TextAreaField {
+        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = -1):TextAreaField {
             var textAreaField:TextAreaField = new TextAreaField(label, path);
             textAreaField.height = h;
             textAreaField.labelWidth = lw < 0 ? labelWidth : lw;
@@ -150,7 +158,7 @@
             return textAreaField;
         }
 
-        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1,w:int = -1):Button {
+        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1, w:int = -1):Button {
             var button:CommandButton = new CommandButton();
             button.command = cmd;
             button.width = w < 0 ? 100 : w;
@@ -230,19 +238,17 @@
         ///////////////////////////// design mode ////////////////////////////////////////
 
         function getXmlSourceCode():String {
-            var border:String = Util.isEqual("none",getStyle("borderStyle")) ? "false" : "true";
-            return "<panel name=\""+Util.getUnqualifiedClassName(this)+"\" label=\""+label+
-                   "\" border=\""+border+"\" x=\""+x+"\" y=\""+y+
-                   "\" w=\""+width+"\" h=\""+height+"\" path=\""+Util.saveToString(path,".")+"\" >"
+            var border:String = Util.isEqual("none", getStyle("borderStyle")) ? "false" : "true";
+            return "<panel name=\"" + Util.getUnqualifiedClassName(this) + "\" label=\"" + label +
+                   "\" border=\"" + border + "\" x=\"" + x + "\" y=\"" + y +
+                   "\" w=\"" + width + "\" h=\"" + height + "\" path=\"" + Util.saveToString(path, ".") + "\" >"
         }
 
         private function onClick(event:MouseEvent):void {
-            if(Environment.designer && event.eventPhase == EventPhase.AT_TARGET){
+            if (Environment.designer && event.eventPhase == EventPhase.AT_TARGET) {
                 Environment.designer.setPanel(this);
             }
         }
-
-
 
 
         ]]></mx:Script>
