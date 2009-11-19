@@ -15,10 +15,6 @@ public class LoadTableCommand extends Command{
     		var lp:ListPanel = invoker as ListPanel;
 			lp.reload();    		
     	}
-    	if( invoker is ProxyField){
-    		var pf:ProxyField = invoker as ProxyField;
-			pf.reload();
-    	}
     }
 
 }

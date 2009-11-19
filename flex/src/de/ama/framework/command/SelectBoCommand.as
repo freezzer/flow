@@ -1,11 +1,11 @@
 package de.ama.framework.command {
-import de.ama.framework.action.ActionStarter;
-import de.ama.framework.action.LoadBoAction;
-import de.ama.framework.data.Data;
-import de.ama.framework.data.SelectionModel;
+import de.ama.framework.data.LookupCache;
+import de.ama.framework.gui.frames.LookupDialog;
 import de.ama.framework.util.Callback;
 
-import mx.collections.ArrayCollection;
+import mx.core.Application;
+import mx.core.Container;
+import mx.managers.PopUpManager;
 
 public class SelectBoCommand extends Command{
 
@@ -15,9 +15,15 @@ public class SelectBoCommand extends Command{
     }
 
     override protected function execute():void {
-        var table:ArrayCollection = LookupCache.getTable(selectionModel);
-        
+        var dlg:LookupDialog = LookupDialog(PopUpManager.createPopUp(Container(Application.application), LookupDialog, true));
+        dlg.x = (Application.application.width / 2 - (dlg.width / 2));
+        dlg.y = (Application.application.height / 2 - (dlg.height / 2));
+        dlg.setDataTable(LookupCache.instance.getTable(selectionModel));
+        dlg.setCallback(new Callback(this, lookupDone));
+    }
 
+    private function lookupDone(dlg:LookupDialog):void {
+        
     }
 
 }

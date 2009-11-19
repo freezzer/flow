@@ -299,8 +299,9 @@ public class Util
     public static function asString(o:Object):String {
         if(o==null) return "";
         if(o is String) return String(o);
-        if(o is Date) return Date(o).toLocaleDateString();
+        if(o is Date) return (o as Date).toLocaleDateString();
         if(o is Number) return Number(o).toString();
+        return getUnqualifiedClassName(o);
     }
 
 }
