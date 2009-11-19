@@ -52,7 +52,7 @@
                     <tree_node label="Notizen" path="notizen" icon="table" open="true" type="Notiz"  lister="default">
                         <command use="CreateNodeCommand" label="neue Notiz" icon="new"/>
                         <tree_node label="Notiz {name}" path="notizen" icon="dock" open="true" type="Notiz"
-                                   panel="default">
+                                   panel="NotizPanel">
                             <command use="CreateNodeCommand" label="neue Notiz" icon="new"/>
                             <command use="CopyNodeCommand" label="Notiz kopieren" icon="copy"/>
                             <command use="DeleteNodeCommand" label="Notiz loeschen" icon="delete"/>
@@ -65,7 +65,13 @@
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
             </tree_editor>
 
-
+            <panel name="NotizPanel" border="true" x="25" y="25" label="Notiz">
+                <lookup x="10" y="41" w="300" labelwidth="50" label="Kontakt" path="kontaktperson" type="Person" guirep="vorname"/>
+                <lookup x="10" y="68" w="300" labelwidth="50" label="Erfasser" path="erfasser"     type="Person" guirep="vorname"/>
+                <input x="10" y="13" w="265" labelwidth="50" h="25" label="erfasst" path="datum" type="date" />
+                <input x="10" y="99" w="300" labelwidth="50" h="74" label="Notiz" path="text" type="area" />
+                <input x="10" y="176" w="300" labelwidth="50" h="74" label="ToDo" path="todo" type="area" />
+            </panel>
             
 
         </view>

@@ -23,34 +23,23 @@ import de.ama.generator.Tag;
 import de.ama.util.Util;
 
 
-public class Flex_input extends Tag {
+public class Flex_lookup extends Tag {
 
     public void generate() {
         String label = getRequiredAttribute(LABEL);
-        String type = getAttribute(TYPE, "String");
+        String type = getRequiredAttribute(TYPE);
         String path = getRequiredAttribute(PATH);
+        String guirep = getRequiredAttribute(GUIREP);
+        String  labelWith = getParentAttribute(LABELWIDTH,"");
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
-        String  labelWith = getParentAttribute(LABELWIDTH,"");
 
         String xy="";
         if(x>=0 || y>=0){
             xy= " ," + x + "," + y;
         }
-        if (STRING.equalsIgnoreCase(type)) {
-            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        } else if (DATE.equalsIgnoreCase(type)) {
-            write("        field = insertDateField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        } else if (NUMBER.equalsIgnoreCase(type)) {
-            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        } else if (BOOLEAN.equalsIgnoreCase(type)) {
-            write("        field = insertBoolField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        } else if (LIST.equalsIgnoreCase(type)) {
-            String lister = isLeaf() ? getRequiredAttribute(LISTER) : getChild(0).getAttribute(NAME);
-            write("        field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xy+ ");");
-        } else if (AREA.equalsIgnoreCase(type)) {
-            write("        field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        }
+
+        write("        field = insertProxyField(\"" + type + "\",\"" + guirep + "\",\"" + label + "\",\"" + path + "\"" + xy+ ");");
         if(!Util.isEmpty(labelWith)){
             write("        field.labelWidth="+labelWith+";");
         }

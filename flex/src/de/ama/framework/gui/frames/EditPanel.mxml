@@ -14,6 +14,7 @@
         import de.ama.framework.gui.fields.EditField;
         import de.ama.framework.gui.fields.GUIComponent;
         import de.ama.framework.gui.fields.ListField;
+        import de.ama.framework.gui.fields.ProxyField;
         import de.ama.framework.gui.fields.TextAreaField;
         import de.ama.framework.util.Util;
 
@@ -156,6 +157,17 @@
             textAreaField.width = w < 0 ? inputWidth : w;
             insertComponent(textAreaField, x, y);
             return textAreaField;
+        }
+
+        public function insertProxyField(type:String, guiRepPath:String, label:String,  path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = -1):ProxyField {
+            var proxyField:ProxyField = new ProxyField(label, path);
+            proxyField.height = h;
+            proxyField.labelWidth = lw < 0 ? labelWidth : lw;
+            proxyField.width = w < 0 ? inputWidth : w;
+            proxyField.guiRepPath = guiRepPath;
+            proxyField.type = type;
+            insertComponent(proxyField, x, y);
+            return proxyField;
         }
 
         public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1, w:int = -1):Button {

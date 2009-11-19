@@ -1,5 +1,6 @@
 package de.ama.framework.gui.fields {
 import de.ama.framework.command.Invoker;
+import de.ama.framework.command.OpenEditorCommand;
 import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.Data;
 import de.ama.framework.data.Data;
@@ -13,6 +14,9 @@ import mx.controls.TextInput;
 public class ProxyField extends EditField implements Invoker{
     private var _selection:Selection;
     private var _guiRepPath:String;
+    private var _type:String;
+    private var _searchButton:CommandButton;
+    private var _editButton:CommandButton;
 
     public function ProxyField(caption:String="ProxyField", path:String = null) {
         super(caption, path);
@@ -35,18 +39,31 @@ public class ProxyField extends EditField implements Invoker{
     }
 
     public function getSelectionModel():SelectionModel {
-        return new SelectionModel(getData());
+        if(hasData()){
+           return new SelectionModel(getData());
+        } else {
+           var sm:SelectionModel= new SelectionModel();
+           sm.type = type;
+           return sm;
+        }
     }
 
-    override public function createInput():void {
-        super.createInput();
-        var searchButton:CommandButton = new CommandButton();
-        searchButton.command = new SelectBoCommand();
-        searchButton.invoker = this;
-        searchButton.x = super.width-25;
-        searchButton.width = 25;
-        addChild(searchButton);
+    override protected function createAditionals():void {
+        _searchButton = new CommandButton();
+        _searchButton.command = new SelectBoCommand();
+        _searchButton.invoker = this;
+        _searchButton.x = super.width-50;
+        _searchButton.width = 20;
+        _searchButton.height = 20;
+        addChild(_searchButton);
 
+        _editButton = new CommandButton();
+        _editButton.command = new OpenEditorCommand();
+        _editButton.invoker = this;
+        _editButton.x = super.width-25;
+        _editButton.width = 20;
+        _editButton.height = 20;
+        addChild(_editButton);
     }
 
     public function get guiRepPath():String {
@@ -56,6 +73,23 @@ public class ProxyField extends EditField implements Invoker{
     public function set guiRepPath(value:String):void {
         _guiRepPath = value;
     }
+
+
+    public function get type():String {
+        return _type;
+    }
+
+    public function set type(value:String):void {
+        _type = value;
+    }
+
+    override public function set labelWidth(w:int):void {
+       super.labelWidth = w;
+       _input.width = width-50-labelWidth-15;
+       _searchButton.x = super.width-50;
+       _editButton.x = super.width-25;
+    }
+
 
     override public function getValue():Object {
         return _selection;
@@ -92,9 +126,9 @@ public class ProxyField extends EditField implements Invoker{
 
     override public function getSourceCode(xml:Boolean):String {
         if(xml){
-            return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"proxy\" guirep=\""+guiRepPath+"\"/>";
+            return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"lookup\" guirep=\""+guiRepPath+"\"/>";
         } else {
-           return "insertProxyField(\""+label+"\",\""+localpath+"\",\""+guiRepPath+"\","+x+","+y+","+labelWidth+","+width+");";
+           return "insertProxyField(\""+label+"\",\""+guiRepPath+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
         }
     }
 
