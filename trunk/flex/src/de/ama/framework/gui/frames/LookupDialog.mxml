@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
+                layout="absolute" width="332" height="260"
+                title="Suche" showCloseButton="true"
+                backgroundColor="#C0C0C0"
+                close="onClose()"
+                cornerRadius="4"
+        >
+
+    <mx:Script><![CDATA[
+        import de.ama.framework.util.Callback;
+        import de.ama.services.Factory;
+
+        import mx.managers.PopUpManager;
+
+        public function setCallback(cb:Callback):void {
+            _callback = cb;
+        }
+
+        public function setDataTable(arr:Array):void {
+            var listPanel:ListPanel = getListPanel();
+            listPanel.dataTable = arr;
+        }
+
+        private var _listpane:ListPanel;
+        private var _lister:String = "default";
+        private var _callback:Callback = null;
+
+
+        private function callback():void {
+            if(_callback!=null) {
+                _callback.execute(this);
+            }
+        }
+
+        public function onClose():void {
+            PopUpManager.removePopUp(this);
+            callback();
+        }
+
+        public function keyHandler(e:KeyboardEvent):void {
+        }
+
+        public function getListPanel():ListPanel {
+            if (_listpane == null) {
+                _listpane = Factory.createLister(lister);
+            }
+            return _listpane;
+        }
+
+        public function get lister():String {
+            return _lister;
+        }
+
+        public function set lister(value:String):void {
+            _lister = value;
+        }
+
+
+
+        ]]></mx:Script>
+</mx:TitleWindow>

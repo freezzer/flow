@@ -45,6 +45,7 @@ public class Selection {
         if(hasData()){
           return _data.getName()  
         }
+        return "";
     }
 
     public function hasData():Boolean {
