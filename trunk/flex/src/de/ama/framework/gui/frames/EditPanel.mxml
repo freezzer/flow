@@ -150,7 +150,7 @@
             return listField;
         }
 
-        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = -1):TextAreaField {
+        public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = 75):TextAreaField {
             var textAreaField:TextAreaField = new TextAreaField(label, path);
             textAreaField.height = h;
             textAreaField.labelWidth = lw < 0 ? labelWidth : lw;
@@ -170,11 +170,10 @@
             return proxyField;
         }
 
-        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1, w:int = -1):Button {
+        public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1, w:int = 100):Button {
             var button:CommandButton = new CommandButton();
             button.command = cmd;
-            button.width = w < 0 ? 100 : w;
-
+            button.width = w;
             button.invoker = this;
             insertComponent(button, x, y);
             return button;
@@ -193,7 +192,7 @@
             f.y = y;
             addChild(f);
 
-            height = f.y + f.height + gap + gap;
+            height = Math.max(height,f.y + f.height + gap + gap);
             width = Math.max(width, f.x + f.width + gap);
         }
 

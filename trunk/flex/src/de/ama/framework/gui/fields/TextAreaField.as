@@ -11,12 +11,17 @@ public class TextAreaField extends EditField{
 
     public override function createInput():void{
         _input = new TextArea();
-        _input.x = labelWidth+10;
         addChild(_input);
+        layout();
     }
 
     public override function setValue(val:Object):void {
         TextArea(_input).text = Util.saveToString(val);
+    }
+
+    override public function layout():void {
+        super.layout();
+        TextArea(_input).height = super.height;
     }
 
 
@@ -26,7 +31,7 @@ public class TextAreaField extends EditField{
 
     override public function set height(h:Number):void {
         super.height = h;
-        TextArea(_input).height = h;
+        layout();
     }
 
     override public function getSourceCode(xml:Boolean):String {

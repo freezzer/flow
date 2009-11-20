@@ -59,6 +59,8 @@
         border CDATA #IMPLIED
         editable CDATA #IMPLIED
         gap CDATA #IMPLIED
+        labelwidth CDATA #IMPLIED
+        inputwidth CDATA #IMPLIED
         label CDATA #IMPLIED
         name CDATA #IMPLIED
         path CDATA #IMPLIED

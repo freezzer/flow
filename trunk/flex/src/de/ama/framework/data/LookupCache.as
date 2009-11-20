@@ -1,7 +1,6 @@
 package de.ama.framework.data {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadTableAction;
-import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 import de.ama.services.Factory;
 
@@ -12,7 +11,7 @@ public class LookupCache {
     private static var _instance:LookupCache = null;
 
     private var table_dictionary:Object = new Object();
-    private var wait:Boolean = false;
+    private var _cb:Callback = null;
 
     public static function get instance ():LookupCache{
         if(_instance==null){
@@ -21,30 +20,25 @@ public class LookupCache {
         return _instance;
     }
 
-    public function getTable(selectionModel:SelectionModel):Array {
+    public function getTable(selectionModel:SelectionModel, cb:Callback):void {
+        _cb = cb;
         var key:String = selectionModel.type;
         var table:Array = table_dictionary[key];
         if(table == null){
             var lta:LoadTableAction = new LoadTableAction();
             lta.data = Factory.createBean(selectionModel.type);
             lta.selectionModel = selectionModel;
-            wait = true;
             ActionStarter.instance.execute(lta, new Callback(this, resulthandler));
-        }
-        waitForResponse();
-        return table;
-    }
-
-    private function waitForResponse():void {
-        while(wait) {
-            setTimeout(waitForResponse,100);
+        } else {
+            _cb.execute(table);
         }
     }
 
     private function resulthandler(a:LoadTableAction):void {
         var key:String = a.selectionModel.type;
-        table_dictionary[key] = a.data as Array;
-        wait = false;
+        var array:Array = a.data as Array;
+        table_dictionary[key] = array;
+        _cb.execute(array);
     }
 
 }}

@@ -14,7 +14,7 @@ public class DateField extends EditField{
         df.editable = true;
         _input=df;
         addChild(_input);
-        labelWidth=super.labelWidth; // resize
+        layout();
     }
 
     public override function setValue(val:Object):void {

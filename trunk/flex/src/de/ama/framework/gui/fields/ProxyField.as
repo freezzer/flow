@@ -52,18 +52,13 @@ public class ProxyField extends EditField implements Invoker{
         _searchButton = new CommandButton();
         _searchButton.command = new SelectBoCommand();
         _searchButton.invoker = this;
-        _searchButton.x = super.width-50;
-        _searchButton.width = 20;
-        _searchButton.height = 20;
         addChild(_searchButton);
 
         _editButton = new CommandButton();
         _editButton.command = new OpenEditorCommand();
         _editButton.invoker = this;
-        _editButton.x = super.width-25;
-        _editButton.width = 20;
-        _editButton.height = 20;
         addChild(_editButton);
+        layout();
     }
 
     public function get guiRepPath():String {
@@ -83,13 +78,20 @@ public class ProxyField extends EditField implements Invoker{
         _type = value;
     }
 
-    override public function set labelWidth(w:int):void {
-       super.labelWidth = w;
-       _input.width = width-50-labelWidth-15;
-       _searchButton.x = super.width-50;
-       _editButton.x = super.width-25;
+    override public function layout():void {
+        super.height=25;
+        _input.x = labelWidth +10;
+        _input.width = width-50-labelWidth-15;
+        _label.width = labelWidth;
+        _searchButton.x = super.width-50;
+        _searchButton.y = 2;
+        _searchButton.width = 20;
+        _searchButton.height = 20;
+        _editButton.x = super.width-25;
+        _editButton.y = 2;
+        _editButton.width = 20;
+        _editButton.height = 20;
     }
-
 
     override public function getValue():Object {
         return _selection;
@@ -126,7 +128,7 @@ public class ProxyField extends EditField implements Invoker{
 
     override public function getSourceCode(xml:Boolean):String {
         if(xml){
-            return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"lookup\" guirep=\""+guiRepPath+"\"/>";
+            return "<lookup x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" label=\""+label+"\" path=\""+localpath+"\" type=\""+type+"\" guirep=\""+guiRepPath+"\"/>";
         } else {
            return "insertProxyField(\""+label+"\",\""+guiRepPath+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
         }

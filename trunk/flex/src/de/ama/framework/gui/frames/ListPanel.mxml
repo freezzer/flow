@@ -230,7 +230,7 @@
         ]]></mx:Script>
 
     <mx:VBox id="contentPanel" width="100%" height="100%" paddingBottom="0" paddingRight="0" paddingLeft="0" paddingTop="0"
-             verticalGap="0" >
+             verticalGap="0" creationPolicy="all">
 
         <mx:DataGrid id="grid" dataProvider="{rows}"
         	      	change="onSelectionChange(event)" width="100%" height="100%"

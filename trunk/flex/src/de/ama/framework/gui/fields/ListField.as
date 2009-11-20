@@ -31,6 +31,10 @@ public class ListField extends EditField{
         return _labelText;
     }
 
+    public function get listPanel():ListPanel {
+        return ListPanel(_input);
+    }
+
 
     override public function set labelWidth(w:int):void {
     }
@@ -39,12 +43,15 @@ public class ListField extends EditField{
         if (_input != null) {
             removeChild(_input);
         }
-        lp.toolbarSize = CommandButton.SMALL;
         lp.label = _labelText;
         _input = lp;
         _input.addEventListener(MouseEvent.CLICK, onClick);
         addChild(_input);
+        layout();
+    }
 
+    override public function layout():void {
+        listPanel.toolbarSize = CommandButton.SMALL;
     }
 
     public override function setValue(val:Object):void {
@@ -58,7 +65,7 @@ public class ListField extends EditField{
 
     override public function set height(h:Number):void {
         super.height = h;
-        ListPanel(_input).height = h;
+        listPanel.height = h;
     }
 
     public function addCollumn(label:String, path:String, editable:Boolean):void {

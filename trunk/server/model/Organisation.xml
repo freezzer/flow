@@ -65,12 +65,12 @@
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
             </tree_editor>
 
-            <panel name="NotizPanel" border="true" x="25" y="25" label="Notiz">
-                <lookup x="10" y="41" w="300" labelwidth="50" label="Kontakt" path="kontaktperson" type="Person" guirep="vorname"/>
-                <lookup x="10" y="68" w="300" labelwidth="50" label="Erfasser" path="erfasser"     type="Person" guirep="vorname"/>
-                <input x="10" y="13" w="265" labelwidth="50" h="25" label="erfasst" path="datum" type="date" />
-                <input x="10" y="99" w="300" labelwidth="50" h="74" label="Notiz" path="text" type="area" />
-                <input x="10" y="176" w="300" labelwidth="50" h="74" label="ToDo" path="todo" type="area" />
+            <panel name="NotizPanel" border="true" x="25" y="25" label="Notiz" gap="5" labelwidth="100" inputwidth="300">
+                <lookup label="Erfasser" path="erfasser" type="Person" guirep="vorname"/>
+                <lookup label="Kontakt" path="kontaktperson" type="Person" guirep="vorname"/>
+                <input  label="erfasst" path="datum" type="date" />
+                <input  h="75" label="Notiz" path="text" type="area" />
+                <input  h="75" label="ToDo" path="todo" type="area" />
             </panel>
             
 

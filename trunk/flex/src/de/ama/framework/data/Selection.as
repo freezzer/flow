@@ -34,7 +34,7 @@ public class Selection {
                 ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
             }
         }
-        return data;
+        return _data;
     }
 
     private function resulthandler(action:LoadBoAction): void {

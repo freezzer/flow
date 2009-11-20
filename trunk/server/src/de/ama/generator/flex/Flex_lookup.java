@@ -30,19 +30,19 @@ public class Flex_lookup extends Tag {
         String type = getRequiredAttribute(TYPE);
         String path = getRequiredAttribute(PATH);
         String guirep = getRequiredAttribute(GUIREP);
-        String  labelWith = getParentAttribute(LABELWIDTH,"");
+        String  lw = getParentAttribute(LABELWIDTH,"");
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
 
-        String xy="";
+        String xylw="";
         if(x>=0 || y>=0){
-            xy= " ," + x + "," + y;
+            xylw= " ," + x + "," + y;
+            if(!isEmpty(lw)){
+                xylw += ","+lw;
+            }
         }
 
-        write("        field = insertProxyField(\"" + type + "\",\"" + guirep + "\",\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        if(!Util.isEmpty(labelWith)){
-            write("        field.labelWidth="+labelWith+";");
-        }
+        write("        field = insertProxyField(\"" + type + "\",\"" + guirep + "\",\"" + label + "\",\"" + path + "\"" + xylw+ ");");
     }
 
 }
