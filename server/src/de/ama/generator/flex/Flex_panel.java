@@ -42,6 +42,8 @@ public class Flex_panel extends Tag {
                 int y  = getAttribute(Y,-1);
                 int w  = getAttribute(W,-1);
                 int h  = getAttribute(H,-1);
+                String lw  = getParentAttribute(LABELWIDTH,"");
+                String iw  = getParentAttribute(INPUTWIDTH,"");
                 String gap  = getParentAttribute(GAP,"");
                 boolean  border = getAttribute(BORDER,false);
                 write("        panel=Factory.createPanel(\""+panelName+"\");");
@@ -55,6 +57,10 @@ public class Flex_panel extends Tag {
                 write("        panel.width="+w+";");
            if(h>=0)
                 write("        panel.height="+h+";");
+           if(Util.isNotEmpty(iw))
+                write("        panel.inputWidth="+iw+";");
+           if(Util.isNotEmpty(lw))
+                write("        panel.labelWidth="+lw+";");
            if(Util.isNotEmpty(gap))
                 write("        panel.gap="+gap+";");
            if(Util.isNotEmpty(path))

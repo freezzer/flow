@@ -86,9 +86,13 @@ public class EditField extends Canvas implements GUIComponent {
 
     public function set labelWidth(w:int):void{
         _labelWidth = w;
+        layout();
+    }
+
+    public function layout():void{
         _input.x = _labelWidth +10;
         _input.width = super.width - 15 - _labelWidth;
-        _label.width = labelWidth;
+        _label.width = _labelWidth;
     }
 
     public function get labelWidth():int {

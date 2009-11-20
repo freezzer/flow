@@ -75,6 +75,7 @@ public interface Const {
     public static final String OPEN = "open";
 
     public static final String LABELWIDTH = "labelwidth";
+    public static final String INPUTWIDTH = "inputwidth";
     public static final String X = "x";
     public static final String Y = "y";
     public static final String W = "w";

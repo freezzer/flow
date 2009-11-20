@@ -31,28 +31,29 @@ public class Flex_input extends Tag {
         String path = getRequiredAttribute(PATH);
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
-        String  labelWith = getParentAttribute(LABELWIDTH,"");
+        String  lw = getParentAttribute(LABELWIDTH,"");
 
-        String xy="";
+        String xylw="";
         if(x>=0 || y>=0){
-            xy= " ," + x + "," + y;
+            xylw= " ," + x + "," + y;
+            if(!isEmpty(lw)){
+                xylw += ","+lw;
+            }
         }
+
         if (STRING.equalsIgnoreCase(type)) {
-            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
+            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
         } else if (DATE.equalsIgnoreCase(type)) {
-            write("        field = insertDateField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
+            write("        field = insertDateField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
         } else if (NUMBER.equalsIgnoreCase(type)) {
-            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
+            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
         } else if (BOOLEAN.equalsIgnoreCase(type)) {
-            write("        field = insertBoolField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
+            write("        field = insertBoolField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
         } else if (LIST.equalsIgnoreCase(type)) {
             String lister = isLeaf() ? getRequiredAttribute(LISTER) : getChild(0).getAttribute(NAME);
-            write("        field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xy+ ");");
+            write("        field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xylw+ ");");
         } else if (AREA.equalsIgnoreCase(type)) {
-            write("        field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xy+ ");");
-        }
-        if(!Util.isEmpty(labelWith)){
-            write("        field.labelWidth="+labelWith+";");
+            write("        field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
         }
     }
 
