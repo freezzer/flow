@@ -3,16 +3,13 @@ import de.ama.framework.command.Invoker;
 import de.ama.framework.command.OpenEditorCommand;
 import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.Data;
-import de.ama.framework.data.Data;
-import de.ama.framework.data.Data;
-import de.ama.framework.data.Selection;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Util;
 
 import mx.controls.TextInput;
 
 public class ProxyField extends EditField implements Invoker{
-    private var _selection:Selection;
+    private var _data:Data;
     private var _guiRepPath:String;
     private var _type:String;
     private var _searchButton:CommandButton;
@@ -28,14 +25,11 @@ public class ProxyField extends EditField implements Invoker{
     }
 
     public function getData():Data {
-        if(hasData()){
-            return _selection.data;
-        }
-        return null;
+        return _data;
     }
 
     private function hasData():Boolean {
-        return (_selection!=null && _selection.hasData());
+        return (_data!=null);
     }
 
     public function getSelectionModel():SelectionModel {
@@ -94,33 +88,33 @@ public class ProxyField extends EditField implements Invoker{
     }
 
     override public function getValue():Object {
-        return _selection;
+        return _data;
     }
 
     override public function setValue(val:Object):void {
-       if(val is Selection){
-           _selection = Selection(val);
-       }
        if(val is Data){
-           _selection = new Selection(Data(val));
+           _data = Data(val);
        }
 
        TextInput(_input).text = guiRep;
     }
 
     public function get guiRep():String {
-        if (_selection != null && _selection.hasData()) {
+        if (hasData()) {
             if (Util.isEmpty(_guiRepPath)) {
-                return _selection.data.getGuiRepresentation();
+                return _data.getGuiRepresentation();
             }
 
             if (_guiRepPath.indexOf("{") >= 0 && _guiRepPath.indexOf("}") > 0) {
                 var pre:String = _guiRepPath.split("{")[0];
                 var post:String = _guiRepPath.split("}")[1];
                 var lpath:String = _guiRepPath.substring(_guiRepPath.indexOf("{") + 1, _guiRepPath.indexOf("}"));
-                var prop:String = Util.asString(_selection.data.getValue(lpath));
+                var prop:String = Util.asString(_data.getValue(lpath));
                 return pre + prop + post;
-            }
+            } else {
+            	return Util.asString(_data.getValue(_guiRepPath));
+            } 
+            
         }
         return "";
     }
@@ -134,7 +128,7 @@ public class ProxyField extends EditField implements Invoker{
         }
     }
 
-    function reload():void {
+    public function reload():void {
 
     }}
 }

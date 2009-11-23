@@ -1,13 +1,8 @@
 package de.ama.framework.action;
 
 import de.ama.framework.data.Data;
-import de.ama.framework.data.DataDictionary;
-import de.ama.framework.data.DataTable;
-import de.ama.framework.data.Selection;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
-import de.ama.util.Util;
-import de.ama.db.Query;
 
 /**
  * Created by IntelliJ IDEA.
@@ -21,9 +16,9 @@ public class LoadBoAction extends ActionScriptAction {
     @Override
     public void execute() throws Exception {
 
-        Selection s = selectionModel.getSingleSelection();
-        data = getBo(s);
+        Object o = selectionModel.getSingleSelection();
         PersistentService ps = Environment.getPersistentService();
+        data = ps.getObject(ps.getOidString(o));
         data = ps.releaseObject(data);
 
     }

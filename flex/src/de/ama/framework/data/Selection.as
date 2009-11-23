@@ -9,15 +9,15 @@ public class Selection {
     public var className:String;
     public var oid:int = 0;
 
-    public function Selection(data:Data=null) {
-        this.data = data;
+    public function Selection(d:Data=null) {
+        this.data = d;
     }
 
     public function set data(d:Data):void {
-        if(data!=null){
-           oid = data.oid;
-           className  = Util.getClassName(data);
-           _data = data;
+        if(d!=null){
+           oid = d.oid;
+           className  = Util.getClassName(d);
+           _data = d;
         } else {
            _data = null;
            className = "";
