@@ -15,22 +15,7 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Selection.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/Selection.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/ProxyField.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/fields/ProxyField.as" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\src\de\ama\framework\action\DataAction.java" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/icons/building.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/SelectionModel.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/SelectionModel.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadTableAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadTableAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/services/Factory.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/Factory.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/LookupDialog.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/LookupDialog.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadBoAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/command/SelectBoCommand.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/command/SelectBoCommand.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/DeleteBoAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/DeleteBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/SelectionModel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/SelectionModel.java" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\frames\ListPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/ListPanel.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.ipr" afterPath="$PROJECT_DIR$/flow.ipr" />
+    <list default="true" readonly="true" name="Default" comment="Lookups">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
     </list>
     <list name="nocommit" comment="">
