@@ -1,5 +1,6 @@
 package de.ama.framework.command {
 import de.ama.framework.data.LookupCache;
+import de.ama.framework.gui.fields.ProxyField;
 import de.ama.framework.gui.frames.LookupDialog;
 import de.ama.framework.util.Callback;
 
@@ -27,6 +28,10 @@ public class SelectBoCommand extends Command{
     }
 
     private function lookupDone(dlg:LookupDialog):void {
+       if(invoker is ProxyField){
+       	  var pf:ProxyField = ProxyField(invoker);
+          pf.setValue(_dlg.selection); 
+       } 
        _dlg = null;
     }
 

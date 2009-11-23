@@ -3,15 +3,23 @@
                 layout="absolute" width="332" height="260"
                 title="Suche" showCloseButton="true"
                 backgroundColor="#C0C0C0"
-                close="onClose()"
+                close="close()"
                 cornerRadius="4"
-        >
+         xmlns:ns1="de.ama.framework.gui.frames.*">
 
     <mx:Script><![CDATA[
+        import de.ama.framework.data.Data;
+        import de.ama.framework.data.SelectionModel;
         import de.ama.framework.util.Callback;
         import de.ama.services.Factory;
 
         import mx.managers.PopUpManager;
+
+        private var _listpane:ListPanel;
+        private var _lister:String = "default";
+        private var _callback:Callback = null;
+        private var _data:Data = null;
+
 
         public function setCallback(cb:Callback):void {
             _callback = cb;
@@ -22,18 +30,13 @@
             listPanel.dataTable = arr;
         }
 
-        private var _listpane:ListPanel;
-        private var _lister:String = "default";
-        private var _callback:Callback = null;
-
-
         private function callback():void {
-            if(_callback!=null) {
+            if (_callback != null) {
                 _callback.execute(this);
             }
         }
 
-        public function onClose():void {
+        public function close():void {
             PopUpManager.removePopUp(this);
             callback();
         }
@@ -41,9 +44,17 @@
         public function keyHandler(e:KeyboardEvent):void {
         }
 
+        private function onListDoubleClick(lp:ListPanel):void {
+            var sm:SelectionModel = lp.getSelectionModel();
+            _data = sm.getFirstSelection();
+            close();
+        }
+
         public function getListPanel():ListPanel {
             if (_listpane == null) {
                 _listpane = Factory.createLister(lister);
+                _listpane.doubleClickCallback = new Callback(this, onListDoubleClick);
+                addChild(_listpane);
             }
             return _listpane;
         }
@@ -57,6 +68,10 @@
         }
 
 
+        public function get selection():Data {
+            return _data;
+        }
 
         ]]></mx:Script>
+
 </mx:TitleWindow>

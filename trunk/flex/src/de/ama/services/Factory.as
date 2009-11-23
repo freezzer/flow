@@ -94,8 +94,7 @@ public class Factory {
             return ListPanel(new c());
         }
 
-        var ret:ListPanel = new ListPanel();  // DefaultPanel
-        ret.generic = true;
+        var ret:ListPanel = new ListPanel(true);  // DefaultPanel
         return ret;
     }
 

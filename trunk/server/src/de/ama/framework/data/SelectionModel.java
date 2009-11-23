@@ -25,8 +25,8 @@ public class SelectionModel implements Serializable{
     }
 
 
-    public SelectionModel(Selection s) {
-        setSelection(s);
+    public SelectionModel(Object d) {
+        setSelection(d);
     }
 
     public SelectionModel(String type) {
@@ -50,18 +50,18 @@ public class SelectionModel implements Serializable{
         return getSelections().size();
     }
 
-    public void setSelection(Selection selection){
+    public void setSelection(Object d){
         selections = null;
-        getSelections().add(selection);
+        getSelections().add(d);
     }
 
     public void setSelections(List selectionList){
         selections=selectionList;
     }
 
-    public Selection getSelection(int index){
+    public Object getSelection(int index){
         if( index>=0 && getSelectionSize()>index){
-           return (Selection)getSelections().get(index);
+           return getSelections().get(index);
         }else{
            throw new IllegalStateException("SelectionModel has only "+getSelectionSize()+ " entrys, index "+index+" is out of bounds");
         }
@@ -74,7 +74,7 @@ public class SelectionModel implements Serializable{
         return selections;
     }
 
-    public Selection getSingleSelection(){
+    public Object getSingleSelection(){
         return getSelection(0);
     }
 
@@ -87,8 +87,8 @@ public class SelectionModel implements Serializable{
         return "SelectionModel("+hashCode()+") size("+getSelectionSize()+") type:"+getType();
     }
 
-    public void removeSelection(Selection selection) {
-        getSelections().remove(selection);
+    public void removeSelection(Data d) {
+        getSelections().remove(d);
     }
 
 }

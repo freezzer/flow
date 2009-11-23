@@ -177,9 +177,9 @@ public class ActionScriptAction implements java.io.Serializable {
         return getBo(data.getOidString());
     }
 
-    public Object getBo(Selection s) {
-        return Environment.getPersistentService().getObject(new Query(Util.createClass(s.getClassName()),"oid",Query.EQ, s.getOid()),true);
-    }
+//    public Object getBo(Selection s) {
+//        return Environment.getPersistentService().getObject(new Query(Util.createClass(s.getClassName()),"oid",Query.EQ, s.getOid()),true);
+//    }
 
     public Object getBo(String oidString) {
         return Environment.getPersistentService().getObject(oidString);

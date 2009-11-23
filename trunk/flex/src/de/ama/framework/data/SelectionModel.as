@@ -1,4 +1,6 @@
 package de.ama.framework.data {
+import de.ama.framework.util.Util;
+
 public class SelectionModel {
     public var selections:Array = new Array();
     public var condition:String;
@@ -11,18 +13,21 @@ public class SelectionModel {
     }
 
     public function addData(data:Data):void {
-        selections.push(new Selection(data));
+        addSelection(data);
     }
 
-    public function addSelection(s:Selection):void {
-        selections.push(s);
+    public function addSelection(d:Data):void {
+        selections.push(d);
+        if(selections.length==1 || Util.isEmpty(type)){
+        	type =  Util.getClassName(d);
+        }
     }
 
     public function getSelections():Array {
         return selections;
     }
 
-    public function getFirstSelection():Selection {
+    public function getFirstSelection():Data {
         if(selections.length>0){
            return selections[0];
         }
