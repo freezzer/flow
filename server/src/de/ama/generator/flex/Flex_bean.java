@@ -45,7 +45,8 @@ public class Flex_bean extends Tag{
         write("import mx.collections.ArrayCollection;");
         write("import de.ama.framework.data.*;");
         write("import de.ama.framework.util.*;");
-        write("public class "+name+" "+" extends Data { ");
+        write("[RemoteClass(alias=\""+pckg+"."+name+"\")]");
+        write("public class "+name+" "+" extends BusinessObject { ");
 
         visitChildren(FIELD);
         writeLine();

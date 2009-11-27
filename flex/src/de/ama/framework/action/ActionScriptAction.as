@@ -1,7 +1,9 @@
 package de.ama.framework.action {
 import de.ama.framework.data.SelectionModel;
-
+[RemoteClass(alias="de.ama.framework.action.ActionScriptAction")]
 public class ActionScriptAction {
+
+    public var registry:Array = new Array();
 
     public var userSessionId:String;
     public var catalog:String;

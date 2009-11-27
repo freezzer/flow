@@ -38,14 +38,14 @@ public class Flex_lister extends Tag {
         initPrintWriter(dir,listerName+".as");
 
         write("package "+pckg+" {");
-        write("import de.ama.framework.data.Data;");
+        write("import de.ama.framework.data.BusinessObject;");
         write("import de.ama.framework.gui.frames.ListPanel;");
         write("import de.ama.services.Factory;");
         write("import de.ama.framework.command.*;");
         write("     ");
         write("public class "+listerName+" extends ListPanel {");
         write("     ");
-        write("     override public function createData():Data {");
+        write("     override public function createData():BusinessObject {");
         write("        return Factory.createBean(\""+type+"\"); ");
         write("     } ");
         write("");

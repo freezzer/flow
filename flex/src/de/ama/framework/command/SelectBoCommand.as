@@ -31,6 +31,7 @@ public class SelectBoCommand extends Command{
        if(invoker is ProxyField){
        	  var pf:ProxyField = ProxyField(invoker);
           pf.setValue(_dlg.selection); 
+          pf.writeToData();
        } 
        _dlg = null;
     }

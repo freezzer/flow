@@ -19,7 +19,8 @@ public class LoadTableAction extends ActionScriptAction {
     public void execute() throws Exception {
         PersistentService ps = Environment.getPersistentService();
         List objects = ps.getObjects(new Query(data.getClass()));
-        data = objects;
+        data = ps.releaseObject(objects);
+
 
     }
 

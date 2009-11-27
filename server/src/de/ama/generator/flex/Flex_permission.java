@@ -37,7 +37,7 @@ public class Flex_permission extends Tag {
         writeLine();
         write("package "+pckg+" {");
         write("import de.ama.services.permission.*;");
-
+        write("[RemoteClass(alias=\""+pckg+".Permission"+name+"\")]");
         write("public class Permission"+name+" "+" extends PermissionContext { ");
         writeLine();
         write("}}");

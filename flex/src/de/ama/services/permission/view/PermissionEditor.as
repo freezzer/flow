@@ -1,7 +1,7 @@
 package de.ama.services.permission.view {
 import de.ama.framework.gui.frames.*; 
 import de.ama.framework.command.*; 
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.services.Factory;
 import de.ama.services.permission.PermissionService;
 import de.ama.services.permission.PermissionsData;
@@ -10,7 +10,7 @@ public class PermissionEditor extends TreeEditor {
 
 
 
-     override public function createData():Data {
+     override public function createData():BusinessObject {
         return PermissionService.instance.getPermissionsData();
      }
      

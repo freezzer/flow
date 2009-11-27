@@ -1,8 +1,10 @@
 package de.ama.framework.action;
 
 import de.ama.framework.data.Data;
+import de.ama.framework.data.BoReference;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
+import de.ama.db.Query;
 
 /**
  * Created by IntelliJ IDEA.
@@ -15,11 +17,19 @@ public class LoadBoAction extends ActionScriptAction {
 
     @Override
     public void execute() throws Exception {
-
-        Object o = selectionModel.getSingleSelection();
         PersistentService ps = Environment.getPersistentService();
-        data = ps.getObject(ps.getOidString(o));
-        data = ps.releaseObject(data);
+        Object bo;
+
+        if (data instanceof BoReference) {
+            BoReference ref = (BoReference) data;
+            bo = ps.getObject(new Query(ref.getType(),"oid",Query.EQ, ref.getOid()),false);
+
+        } else {
+            BoReference boRef = (BoReference) selectionModel.getSingleSelection();
+            bo = boRef.getBo();
+        }
+
+        data = ps.releaseObject(bo);
 
     }
 

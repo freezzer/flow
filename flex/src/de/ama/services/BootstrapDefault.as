@@ -1,11 +1,10 @@
 package de.ama.services {
-import de.ama.framework.command.OpenNewEditorCommand;
-import de.ama.framework.command.SelectBoCommand;
-import de.ama.framework.util.*;
-import de.ama.framework.command.CopyDataCommand;
 import de.ama.framework.command.LoadTableCommand;
 import de.ama.framework.command.OpenEditorCommand;
 import de.ama.framework.command.OpenListerCommand;
+import de.ama.framework.command.OpenNewEditorCommand;
+import de.ama.framework.command.SelectBoCommand;
+import de.ama.framework.data.BoReference;
 import de.ama.services.permission.PermissionContext;
 import de.ama.services.permission.PermissionSwitch;
 import de.ama.services.permission.PermissionsData;
@@ -29,6 +28,8 @@ public class BootstrapDefault {
         Factory.registerCommand("OpenNewEditorCommand", OpenNewEditorCommand);
         Factory.registerCommand("OpenEditorCommand", OpenEditorCommand);
         Factory.registerCommand("OpenListerCommand", OpenListerCommand);
+
+        Factory.registerCommand("BoReference", BoReference);
 
 
     }}

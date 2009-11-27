@@ -23,7 +23,7 @@ public class LookupCache {
     public function getTable(selectionModel:SelectionModel, cb:Callback):void {
         _cb = cb;
         var key:String = selectionModel.type;
-        var table:Array = table_dictionary[key];
+        var table:Array = null; //table_dictionary[key];
         if(table == null){
             var lta:LoadTableAction = new LoadTableAction();
             lta.data = Factory.createBean(selectionModel.type);

@@ -1,5 +1,5 @@
 package de.ama.framework.gui.fields {
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.util.Util;
 
@@ -64,7 +64,11 @@ public class EditField extends Canvas implements GUIComponent {
     }
 
     protected function onFocusLost(e:FocusEvent):void {
-        var d:Data = editPanel.getData();
+        writeToData();
+    }
+
+    public function writeToData():void {
+        var d:BusinessObject = editPanel.getData();
         d.setValue(localpath, getValue());
     }
 

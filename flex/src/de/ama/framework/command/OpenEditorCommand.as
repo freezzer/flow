@@ -1,7 +1,7 @@
 package de.ama.framework.command {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadBoAction;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.frames.ApplicationPanel;
 import de.ama.framework.gui.frames.ListPanel;
@@ -37,10 +37,10 @@ public class OpenEditorCommand extends Command{
     }
 
     private function resulthandler(action:LoadBoAction): void {
-        showEditor(Data(action.data));
+        showEditor(BusinessObject(action.data));
     }
 
-    private function showEditor(data:Data):void {
+    private function showEditor(data:BusinessObject):void {
         var cp:ApplicationPanel = Application.application.getContentPane();
         cp.addContent(Container(editor));
 

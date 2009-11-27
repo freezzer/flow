@@ -18,6 +18,9 @@ public class SelectionModel implements Serializable{
 
    /////////////////////////// C'tor //////////////////////////////////////
 
+    public SelectionModel() {
+    }
+
     public SelectionModel(SelectionModel sm) {
         setSelections(sm.getSelections());
         setCondition(sm.getCondition());

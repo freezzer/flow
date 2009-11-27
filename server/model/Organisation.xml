@@ -11,8 +11,8 @@
             <collection name="personen" type="Person" create="1"/>
             <collection name="notizen" create="1">
                 <bean name="Notiz">
-                    <field name="kontaktperson" type="Person"/>
-                    <field name="erfasser" type="Person"/>
+                    <field name="kontaktperson" type="Person" reference="true"/>
+                    <field name="erfasser" type="Person" reference="true"/>
                     <field name="datum" type="date"/>
                     <field name="text"/>
                     <field name="todo"/>

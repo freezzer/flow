@@ -40,11 +40,11 @@ public class Flex_tree_editor extends Tag {
         write("package "+pckg+" {     ");
         write("import de.ama.framework.gui.frames.*; ");
         write("import de.ama.framework.command.*; ");
-        write("import de.ama.framework.data.Data;");
+        write("import de.ama.framework.data.BusinessObject;");
         write("import de.ama.services.Factory;");
         write("public class "+editorName+" extends TreeEditor {");
         write("     ");
-        write("     override public function createData():Data {");
+        write("     override public function createData():BusinessObject {");
         write("        return Factory.createBean(\""+type+"\"); ");
         write("     } ");
         write("     ");

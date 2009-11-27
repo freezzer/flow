@@ -30,25 +30,46 @@ public class Java_field extends Tag {
 
     public void generate() {
         String name = getRequiredAttribute(NAME);
-        String type = getAttribute(TYPE,"String");
-        boolean create = getAttribute(CREATE,false);
-        if(isEmpty(type) && !isLeaf()){
+        String type = getAttribute(TYPE, "String");
+        boolean create = getAttribute(CREATE, false);
+        boolean reference = getAttribute(REFERENCE, false);
+
+        if (isEmpty(type) && !isLeaf()) {
             type = getChild(0).getRequiredAttribute(NAME);
         }
         boolean str = "String".equals(type);
-        if("date".equalsIgnoreCase(type))  { type = "String";  create = false; str = true;}
-        if("number".equalsIgnoreCase(type)){ type = "String";  create = false; }
-        if("boolean".equalsIgnoreCase(type)){ type = "boolean"; create = false; }
-        writeLine();
-        write("    private "+type+" "+ name +";");
-        if(str){
-            write("    public  "+type+" get" + Util.firstCharToUpper(name)+"() { return de.ama.util.Util.saveToString("+name+"); }" );
-        } else {
-            String lazy="";
-            if(create) lazy="if("+name+"==null){ "+name+"=new "+type+"(); }";
-            write("    public  "+type+" get" + Util.firstCharToUpper(name)+ "() { "+lazy+" return "+name+"; }"  );
+        if ("date".equalsIgnoreCase(type)) {
+            type = "String";
+            create = false;
+            str = true;
         }
-        write("    public  void   set" + Util.firstCharToUpper(name)+"("+type+" in) { "+ (getAttribute(MANDATORY,false)?"check(in,\""+name+"\"); ":" ") + name+"=in; }");
+        if ("number".equalsIgnoreCase(type)) {
+            type = "String";
+            create = false;
+        }
+        if ("boolean".equalsIgnoreCase(type)) {
+            type = "boolean";
+            create = false;
+        }
+        writeLine();
+        if (reference) {
+            write("    private BoReference<" + type + "> " + name + ";");
+            write("    public  BoReference<" + type + "> get" + Util.firstCharToUpper(name+"Reference") + "() { return " + name + "; }");
+            write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { if(" + name + "==null)return null;  return " + name + ".getBo(); }");
+            String lazy = "if(" + name + "==null){ " + name + " = new BoReference<" + type + ">(); }";
+            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + lazy+" "+name + ".setBo(in); }");
+
+        } else {
+            write("    private " + type + " " + name + ";");
+            if (str) {
+                write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { return de.ama.util.Util.saveToString(" + name + "); }");
+            } else {
+                String lazy = "";
+                if (create) lazy = "if(" + name + "==null){ " + name + "=new " + type + "(); }";
+                write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { " + lazy + " return " + name + "; }");
+            }
+            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + (getAttribute(MANDATORY, false) ? "check(in,\"" + name + "\"); " : " ") + name + "=in; }");
+        }
     }
 
 

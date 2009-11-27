@@ -6,7 +6,7 @@
 
     <mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-        import de.ama.framework.data.Data;
+        import de.ama.framework.data.BusinessObject;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.gui.fields.BoolField;
         import de.ama.framework.gui.fields.CommandButton;
@@ -34,7 +34,7 @@
         public  var inputWidth:int = 300;
         private var _path:String;
         private var _generic:Boolean = false;
-        private var _data:Data;
+        private var _data:BusinessObject;
 
 
         public function set generic(value:Boolean):void {
@@ -43,7 +43,7 @@
 
 
         override public function set label(value:String):void {
-            setStyle("borderStyle","solid");
+            setStyle("borderStyle", "solid");
             super.label = value;
         }
 
@@ -55,18 +55,19 @@
             _path = val;
         }
 
-        public function getData():Data {
+        public function getData():BusinessObject {
             return _data;
         }
 
 
-        public function setData(data:Data):void {
+        public function setData(data:BusinessObject):void {
             _data = data;
 
             if (_generic) {
                 createDefaultFields(_data);
                 label = _data.getName();
-                x=25; y=25;
+                x = 25;
+                y = 25;
             }
 
             var childs:Array = getChildren();
@@ -80,7 +81,7 @@
                     f.setValue(data.getValue(f.localpath));
                 } else if (childs[i] is EditPanel) {
                     p = childs[i];
-                    p.setData(Data(data.getValue(p.path)));
+                    p.setData(BusinessObject(data.getValue(p.path)));
                 }
             }
         }
@@ -92,7 +93,7 @@
             titleBox.visible = true;
         }
 
-        public function createDefaultFields(data:Data):void {
+        public function createDefaultFields(data:BusinessObject):void {
             if (Util.isEmpty(label)) {
                 label = data.getName();
             }
@@ -159,7 +160,7 @@
             return textAreaField;
         }
 
-        public function insertProxyField(type:String, guiRepPath:String, label:String,  path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = -1):ProxyField {
+        public function insertProxyField(type:String, guiRepPath:String, label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = -1):ProxyField {
             var proxyField:ProxyField = new ProxyField(label, path);
             proxyField.height = h;
             proxyField.labelWidth = lw < 0 ? labelWidth : lw;
@@ -192,7 +193,7 @@
             f.y = y;
             addChild(f);
 
-            height = Math.max(height,f.y + f.height + gap + gap);
+            height = Math.max(height, f.y + f.height + gap + gap);
             width = Math.max(width, f.x + f.width + gap);
         }
 

@@ -117,7 +117,7 @@
       <delete dir="${deploy.dir}" failonerror="false"/>
       <mkdir dir="${deploy.dir}" />
       <mkdir dir="${deploy.dir}/${app.name}" />
-      <mkdir dir="${deploy.dir}/pages" />
+      <mkdir dir="${deploy.dir}/pages/WEB-INF" />
     </target>
 
     <target name="client.compile" description="compiles the flex sources">
@@ -137,7 +137,7 @@
                debug="false" >
 
          <compiler.library-path dir="${home.dir}/flex/libs" append="true">
-              <include name="hessian-flex-3.1.5.swc" />
+              <include name="hessian-flex-4.0.0.swc" />
               <include name="as3corelib.swc" />
               <include name="map_flex_1_16.swc" />
         </compiler.library-path>
@@ -164,6 +164,9 @@
             <fileset dir="server/src/de/ama/pages">
                 <include name="*.htm"/>
             </fileset>
+        </copy>
+        <copy todir="${deploy.dir}/pages/WEB-INF">
+            <fileset dir="server/src/de/ama/pages/WEB-INF"/>
         </copy>
         <copy todir="${deploy.dir}/${app.name}">
             <fileset dir="server/src/de/ama/pages">
@@ -198,7 +201,9 @@
     </target>
     
     <target name="build.server" description="make server " depends="server.compile.environment,generate,server.compile.generated,server.enhance,client.deploy" />
-    <target name="build.client" description="make client " depends="client.clean,client.compile,client.deploy,client.wrapper" />
+    <target name="build.client" description="make client " depends="client.clean,client.compile,client.wrapper" >
+        <antcall target="client.deploy"/>
+    </target>
     <target name="build.all" description="make/deploy whole project" depends="build.server,build.client" />
 
 

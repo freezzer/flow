@@ -1,7 +1,7 @@
 package de.ama.framework.command {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadBoAction;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 
@@ -20,7 +20,7 @@ public class LoadBoCommand extends Command{
     }
 
     private function resulthandler(action:LoadBoAction): void {
-        invoker.setData(Data(action.data));
+        invoker.setData(BusinessObject(action.data));
     }
 }
 }

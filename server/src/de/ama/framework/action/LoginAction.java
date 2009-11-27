@@ -11,10 +11,14 @@ import java.util.List;
 
 public class LoginAction extends ActionScriptAction {
 
+    public UserData _userData;
     public String _user;
     public String _pwd;
     public List<PermissionContext> permissionContexts;
 
+    public LoginAction() {
+        System.out.println("LoginAction.LoginAction");
+    }
 
     public void execute() {
         userSessionId = Environment.getUserService().login(_user, _pwd);

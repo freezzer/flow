@@ -1,7 +1,7 @@
 package de.ama.framework.command {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.SaveBoAction;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.util.Callback;
 
 public class SaveBoCommand extends Command{
@@ -19,7 +19,7 @@ public class SaveBoCommand extends Command{
     }
 
     private function resulthandler(action:SaveBoAction): void {
-        invoker.setData(Data(action.data));
+        invoker.setData(BusinessObject(action.data));
     }
 }
 }

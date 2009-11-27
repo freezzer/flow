@@ -31,7 +31,7 @@ public class Environment {
     }
 
     public static function useHessianProtocoll():Boolean {
-        return true;
+        return false;
     }
 
     public static function get catalog():String {

@@ -1,7 +1,8 @@
 package de.ama.services.permission {
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 
-public class PermissionSwitch extends Data{
+[RemoteClass(alias="de.ama.services.permission.PermissionSwitch")]
+public class PermissionSwitch extends BusinessObject{
     public var key :String ;
     public var isOn:Boolean;
 }}

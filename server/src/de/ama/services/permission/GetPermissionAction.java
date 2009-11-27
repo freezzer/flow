@@ -12,6 +12,7 @@ import de.ama.services.Environment;
  */
 public class GetPermissionAction extends ActionScriptAction {
 
+    public PermissionContext perm_context;
     public String context;
 
     @Override

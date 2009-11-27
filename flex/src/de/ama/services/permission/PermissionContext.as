@@ -1,8 +1,9 @@
 package de.ama.services.permission {
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.util.Util;
 
-public class PermissionContext extends Data{
+[RemoteClass(alias="de.ama.services.permission.PermissionContext")]
+public class PermissionContext extends BusinessObject{
 
 public var permitted:Boolean;
 

@@ -2,7 +2,7 @@ package de.ama.framework.gui.frames {
 import de.ama.framework.command.Command;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.command.SaveBoCommand;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
@@ -18,7 +18,7 @@ public class Editor extends Canvas implements Invoker{
 
     private var _permissionContext:String;
     protected var _label:String = null;
-    protected var _data:Data = null;
+    protected var _data:BusinessObject = null;
     public var buttonbar:CommandButtonBar;
 
     //////////////////////////// init ///////////////////////////////////
@@ -73,15 +73,15 @@ public class Editor extends Canvas implements Invoker{
     //////////////////////////// Data ///////////////////////////////////
 
 
-    public function createData():Data {
+    public function createData():BusinessObject {
         return null;
     }
 
-    public function getData():Data {
+    public function getData():BusinessObject {
         return _data;
     }
 
-    public function setData(data:Data):void {
+    public function setData(data:BusinessObject):void {
         if (data == null) {
             data = createData();
         }

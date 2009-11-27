@@ -1,7 +1,7 @@
 package de.ama.services {
 import de.ama.framework.util.*;
 import de.ama.framework.command.*;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.*;
 import de.ama.services.permission.*;
 
@@ -47,8 +47,8 @@ public class Factory {
         register(bean_dictionary,key,c);
     }
 
-    public static function createBean(key:String):Data {
-        return Data(createObject(bean_dictionary,key));
+    public static function createBean(key:String):BusinessObject {
+        return BusinessObject(createObject(bean_dictionary,key));
     }
 
     public static function createBeanClass(key:String):Class {

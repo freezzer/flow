@@ -2,14 +2,16 @@ package de.ama.framework.gui.fields {
 import de.ama.framework.command.Invoker;
 import de.ama.framework.command.OpenEditorCommand;
 import de.ama.framework.command.SelectBoCommand;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BoReference;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
+import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 
 import mx.controls.TextInput;
 
 public class ProxyField extends EditField implements Invoker{
-    private var _data:Data;
+    private var _data:BusinessObject;
     private var _guiRepPath:String;
     private var _type:String;
     private var _searchButton:CommandButton;
@@ -20,11 +22,11 @@ public class ProxyField extends EditField implements Invoker{
     }
 
 
-    public function setData(data:Data):void {
+    public function setData(data:BusinessObject):void {
         setValue(data);
     }
 
-    public function getData():Data {
+    public function getData():BusinessObject {
         return _data;
     }
 
@@ -87,13 +89,25 @@ public class ProxyField extends EditField implements Invoker{
         _editButton.height = 20;
     }
 
+    override public function writeToData():void {
+        if(hasData()){
+           var d:BusinessObject = editPanel.getData();
+           d.setValue(localpath, new BoReference(getData()));
+        }
+    }
+
     override public function getValue():Object {
         return _data;
     }
 
     override public function setValue(val:Object):void {
-       if(val is Data){
-           _data = Data(val);
+       if(val is BoReference){
+           var boRef:BoReference = BoReference(val);
+           boRef.getBusinessObject(new Callback(this,setData))
+       }
+
+       if(val is BusinessObject){
+           _data = BusinessObject(val);
        }
 
        TextInput(_input).text = guiRep;

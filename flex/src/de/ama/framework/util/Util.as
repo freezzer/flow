@@ -116,7 +116,7 @@ public class Util
 
     public static function divideString(str:String, del:String):Array {
         var ret:Array = new Array();
-        var pos:int = str.indexOf(".");
+        var pos:int = str.indexOf(del);
         if (pos >= 0) {
             ret.push(str.substring(0, pos));
             ret.push(str.substring(pos + 1));

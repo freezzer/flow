@@ -7,7 +7,7 @@
 
 	<mx:Script><![CDATA[
         import de.ama.framework.command.Command;
-        import de.ama.framework.data.Data;
+        import de.ama.framework.data.BusinessObject;
         import de.ama.framework.gui.icons.IconStore;
         import de.ama.services.Factory;
 
@@ -104,7 +104,7 @@
             return IconStore.getIcon(iconName);
         }
 
-        override public function setData(data:Data):void {
+        override public function setData(data:BusinessObject):void {
             super.setData(data);
 
             if (_data != null) {
@@ -120,7 +120,7 @@
         }
 
 
-        override public function getData():Data {
+        override public function getData():BusinessObject {
             lastSelectedIndex = myTree.selectedIndex;
             return super.getData();
         }

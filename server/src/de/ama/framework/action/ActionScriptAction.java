@@ -7,6 +7,7 @@ import de.ama.util.Util;
 import de.ama.db.Query;
 
 import java.util.Collection;
+import java.util.List;
 
 
 /**
@@ -19,6 +20,7 @@ import java.util.Collection;
 public class ActionScriptAction implements java.io.Serializable {
 
     // ************** ActionScript Members *********************
+    public List registry ;
 
     public String userSessionId;
     public String catalog;
