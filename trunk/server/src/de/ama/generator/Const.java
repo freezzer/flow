@@ -35,6 +35,7 @@ public interface Const {
     public static final String EDITOR = "editor";
     public static final String LISTER = "lister";
     public static final String TYPE = "type";
+    public static final String REFERENCE = "reference";
     public static final String CREATE = "create";
     public static final String MANDATORY = "mandatory";
     public static final String PERSISTENT = "persistent";

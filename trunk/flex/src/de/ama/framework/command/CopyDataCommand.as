@@ -1,5 +1,5 @@
 package de.ama.framework.command {
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.ApplicationPanel;
 import de.ama.framework.gui.frames.Editor;
 import de.ama.services.Factory;

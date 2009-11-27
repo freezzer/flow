@@ -3,8 +3,8 @@ import de.ama.framework.gui.frames.TreeEditor;
 import de.ama.framework.util.Util;
 
 import mx.utils.ObjectUtil;
-
-public class Data{
+[RemoteClass(alias="de.ama.framework.data.BusinessObject")]
+public class BusinessObject {
     public var oid:int;
     public var version:int;
 
@@ -36,21 +36,21 @@ public class Data{
        return getName(); 
     }
 
-    public function clone():Data {
+    public function clone():BusinessObject {
         var info:Object = ObjectUtil.getClassInfo(this);
         var c:Class = Util.getClass(this);
-        var dst:Data = new c();
+        var dst:BusinessObject = new c();
 
         for each(var key:String in info.properties) {
             var value:* = this[key];
-            if(value is Data){
-               dst[key] = Data(value).clone();
+            if(value is BusinessObject){
+               dst[key] = BusinessObject(value).clone();
             } else if(value is Array){
                var sourceTable:Array = value as Array;
                var destTable:Array = new Array();
-               var d:Data = null;
+               var d:BusinessObject = null;
                for (var i:int=0; i< sourceTable.length; i++ ) {
-  					d= Data(sourceTable[i]);
+  					d= BusinessObject(sourceTable[i]);
                	    destTable.push(d.clone());
                }
                dst[key] = destTable;
@@ -68,17 +68,17 @@ public class Data{
     public function asString(indent:String):String {
   		indent += "  ";
     	
-        var ret:String="\n"+indent+"Data ("+getName()+") " + oid+":"+version;
+        var ret:String="\n"+indent+"BusinessObject ("+getName()+") " + oid+":"+version;
         var info:Object = ObjectUtil.getClassInfo(this);
 
         for each(var key:String in info.properties) {
             var value:* = this[key];
-            if(value is Data){
-               ret += Data(value).asString(indent);
+            if(value is BusinessObject){
+               ret += BusinessObject(value).asString(indent);
             } else if(value is Array){
                var table:Array = value as Array;
                ret += indent+ "Array ("+table.length+")";	
-               for each(var d:Data in table) {
+               for each(var d:BusinessObject in table) {
                	  ret += d.asString(indent);
                }
 

@@ -1,5 +1,5 @@
 package de.ama.framework.command {
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.icons.IconStore;
 import de.ama.framework.util.Util;
@@ -66,7 +66,7 @@ public class Command {
         _contextMenuItem = value;
     }
 
-    public function getData(required:Boolean):Data{
+    public function getData(required:Boolean):BusinessObject{
         if(required && _invoker == null){
             throw new Error("CommandContext Illegal state: invoker is required in getData()");
         }

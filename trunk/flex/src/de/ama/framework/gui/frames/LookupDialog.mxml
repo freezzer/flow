@@ -8,7 +8,7 @@
          xmlns:ns1="de.ama.framework.gui.frames.*">
 
     <mx:Script><![CDATA[
-        import de.ama.framework.data.Data;
+        import de.ama.framework.data.BoReference;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.util.Callback;
         import de.ama.services.Factory;
@@ -18,7 +18,7 @@
         private var _listpane:ListPanel;
         private var _lister:String = "default";
         private var _callback:Callback = null;
-        private var _data:Data = null;
+        private var _boRef:BoReference = null;
 
 
         public function setCallback(cb:Callback):void {
@@ -46,7 +46,7 @@
 
         private function onListDoubleClick(lp:ListPanel):void {
             var sm:SelectionModel = lp.getSelectionModel();
-            _data = sm.getFirstSelection();
+            _boRef = sm.getFirstSelection();
             close();
         }
 
@@ -68,8 +68,8 @@
         }
 
 
-        public function get selection():Data {
-            return _data;
+        public function get selection():BoReference {
+            return _boRef;
         }
 
         ]]></mx:Script>

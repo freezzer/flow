@@ -12,6 +12,12 @@ import org.mortbay.jetty.handler.HandlerList;
 import org.mortbay.jetty.handler.ResourceHandler;
 import org.mortbay.jetty.servlet.Context;
 import org.mortbay.jetty.servlet.ServletHolder;
+import flex.messaging.MessageBrokerServlet;
+import flex.messaging.io.ClassAliasRegistry;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import java.util.Enumeration;
 
 /**
  * Created by IntelliJ IDEA.
@@ -62,10 +68,18 @@ public class Starter {
             String rootdir = Environment.getHomeRelativDir("webapp/pages").getAbsolutePath();
             Context servlet_handler = new Context(server, context, Context.SESSIONS);
             servlet_handler.setResourceBase(rootdir);
-            servlet_handler.addServlet(new ServletHolder(new ActionServiceImpl()), "/action/*");
             servlet_handler.addServlet(new ServletHolder(new DownloadServlet()), "/download/*");
             servlet_handler.addServlet(new ServletHolder(new UploadServlet()), "/upload/*");
             servlet_handler.addServlet(new ServletHolder(new org.apache.click.ClickServlet()), "*.htm");
+
+            // Hessian
+            // servlet_handler.addServlet(new ServletHolder(new ActionServiceImpl()), "/action/*");
+
+            // BlazeDS
+            MessageBrokerServlet messageBrokerServlet = new MessageBrokerServlet();
+            servlet_handler.addServlet(new ServletHolder(messageBrokerServlet), "/messagebroker/*");
+            ClassAliasRegistry.getRegistry().registerAlias("de.ama.framework.data.BusinessObject","de.ama.framework.data.BusinessObject");
+
 
             // put it all together
             HandlerList handlers = new HandlerList();

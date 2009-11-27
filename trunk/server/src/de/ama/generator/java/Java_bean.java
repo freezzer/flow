@@ -45,6 +45,7 @@ public class Java_bean extends Tag{
         write("*/ ");
         writeLine();
         write("package "+pckg+";");
+        write("import de.ama.framework.data.*;");
         writeLine();
 
         String ext = " implements java.io.Serializable ";

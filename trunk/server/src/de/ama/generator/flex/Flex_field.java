@@ -26,6 +26,8 @@ public class Flex_field extends Tag {
     public void generate() {
         String name = getRequiredAttribute(NAME);
         String type = getAttribute(TYPE,"String");
+        boolean reference = getAttribute(REFERENCE, false);
+
         if(!isLeaf()){
             type = getChild(0).getRequiredAttribute(NAME);
         }
@@ -39,7 +41,11 @@ public class Flex_field extends Tag {
         else
         if(BOOLEAN.equalsIgnoreCase(type)){ write("    public var "+name+":Boolean;"); }
         else {
-            write("    public var "+name+":"+type+" = new "+type+"();");
+            if(reference){
+               write("    public var "+name+":BoReference = new BoReference();");
+            } else {
+               write("    public var "+name+":"+type+" = new "+type+"();");
+            }
         }
 
     }

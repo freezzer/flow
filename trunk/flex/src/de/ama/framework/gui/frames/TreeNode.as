@@ -1,7 +1,7 @@
 package de.ama.framework.gui.frames {
 import de.ama.framework.command.Command;
 import de.ama.framework.command.Invoker;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.services.Factory;
 import de.ama.framework.util.Util;
@@ -16,7 +16,7 @@ public class TreeNode implements Invoker{
     
     
     private var _parent:TreeNode;
-    private var _data:Data;
+    private var _data:BusinessObject;
     private var _dataTable:Array;
     public var  _label:String;
 
@@ -83,7 +83,7 @@ public class TreeNode implements Invoker{
 
 
     public function addNewChild():void {
-        var data:Data = Factory.createBean(type);
+        var data:BusinessObject = Factory.createBean(type);
         var template:TreeNode = findTemplate(data);
         addChild(template.templateClone(data),true);
     }
@@ -114,11 +114,11 @@ public class TreeNode implements Invoker{
         return _label;
     }
 
-    public function getData():Data {
+    public function getData():BusinessObject {
         return data;
     }
 
-    public function setData(data:Data):void {
+    public function setData(data:BusinessObject):void {
         if(_data!=null){
             throw new Error("this TreeNode is not a prototype, it is in use !");
         }
@@ -141,17 +141,17 @@ public class TreeNode implements Invoker{
             		node._dataTable = dataValue as Array;
                     addChild(node,false);
             	} else {
-	                for each(var d:Data in dataValue) {
+	                for each(var d:BusinessObject in dataValue) {
 	                    addChild(proto.templateClone(d),false);
 	                }
 	            }
-            } else if (dataValue is Data) {
-                addChild(proto.templateClone(Data(dataValue)),false);
+            } else if (dataValue is BusinessObject) {
+                addChild(proto.templateClone(BusinessObject(dataValue)),false);
             }
         }
     }
 
-    public function templateClone(data:Data):TreeNode {
+    public function templateClone(data:BusinessObject):TreeNode {
         var node:TreeNode = new TreeNode(this.path,
                  this._label,
                  this.isListView,
@@ -166,7 +166,7 @@ public class TreeNode implements Invoker{
         return node;
     }
 
-    public function findTemplate(data:Data):TreeNode {
+    public function findTemplate(data:BusinessObject):TreeNode {
         if(templates.length==1){
             return TreeNode(templates.getItemAt(0));
         }
@@ -182,7 +182,7 @@ public class TreeNode implements Invoker{
     public function toString():String {
         if(_dataTable!=null){
             var ret:String = "Array: "+_dataTable.length;
-            for each (var data:Data in _dataTable ){
+            for each (var data:BusinessObject in _dataTable ){
                ret += data.asString("  ");
             }
             return ret;
@@ -218,7 +218,7 @@ public class TreeNode implements Invoker{
         return parent.root;
     }
 
-    public function get data():Data {
+    public function get data():BusinessObject {
         return _data;
     }
 

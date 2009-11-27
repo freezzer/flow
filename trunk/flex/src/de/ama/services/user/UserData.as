@@ -1,7 +1,7 @@
 package de.ama.services.user {
-import de.ama.framework.data.Data;
-
-public class UserData extends Data{
+import de.ama.framework.data.BusinessObject;
+[RemoteClass(alias="de.ama.services.user.UserData")]
+public class UserData extends BusinessObject{
 
    public var name:String = "";
    public var pwd:String = "";

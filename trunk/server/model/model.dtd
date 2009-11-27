@@ -17,7 +17,8 @@
 <!ATTLIST field
         create CDATA #IMPLIED
         name CDATA #REQUIRED
-        type CDATA #IMPLIED>
+        type CDATA #IMPLIED
+        reference CDATA #IMPLIED>
 <!ELEMENT collection (bean)*>
 <!ATTLIST collection
         create CDATA #IMPLIED

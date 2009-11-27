@@ -4,7 +4,7 @@ import de.ama.framework.action.LoadTableAction;
 import de.ama.framework.command.Command;
 import de.ama.framework.command.CreateNodeCommand;
 import de.ama.framework.command.Invoker;
-import de.ama.framework.data.Data;
+import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
@@ -127,10 +127,10 @@ public class ListPanel extends VBox implements Panel,Invoker{
     public function contextMenuTriggered(event:ContextMenuEvent):void
     {
         var cmis:Array = new Array();
-        var data:Data = null;
+        var data:BusinessObject = null;
 
         if (event.mouseTarget is IDataRenderer) {
-            data = Data(IDataRenderer(event.mouseTarget).data);
+            data = BusinessObject(IDataRenderer(event.mouseTarget).data);
         }
 
         if (data != null) {
@@ -171,7 +171,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
         }
     }
 
-    public function createDefaultColumns(data:Data):void {
+    public function createDefaultColumns(data:BusinessObject):void {
         var classInfo:XML = describeType(data);
         for each (var v:XML in classInfo..variable) {
             var type:String = v.@type;
@@ -195,12 +195,12 @@ public class ListPanel extends VBox implements Panel,Invoker{
     public function getSelectionModel():SelectionModel {
         var selectionModel:SelectionModel = new SelectionModel();
         var array:Array = _grid.selectedItems;
-        for each (var data:Data in array) {
-            selectionModel.addData(data);
+        for each (var data:BusinessObject in array) {
+            selectionModel.addSelection(data);
         }
 
         if (selectionModel.getSelections().length<1) {
-            selectionModel.addData(createData());
+            selectionModel.addSelection(createData());
         }
         
         return selectionModel;
@@ -230,14 +230,14 @@ public class ListPanel extends VBox implements Panel,Invoker{
     }
 
     public function addNewRow():void {
-        var data:Data = createData();
+        var data:BusinessObject = createData();
         rows.addItem(data);
         _grid.selectedItem = data;
     }
 
     public function copySelectedRow():void {
         if (_grid.selectedIndex < 0 && _grid.selectedItem == null) return;
-        var data:Data = Data(_grid.selectedItem).clone();
+        var data:BusinessObject = BusinessObject(_grid.selectedItem).clone();
         rows.addItem(data);
         _grid.selectedItem = data;
     }
@@ -245,7 +245,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
     public function removeSelectedRow():void {
         if (_grid.selectedIndex < 0 && _grid.selectedItem == null) return;
         var newIndex:int = Math.max(_grid.selectedIndex - 1, 0);
-        var data:Data = Data(_grid.selectedItem);
+        var data:BusinessObject = BusinessObject(_grid.selectedItem);
         rows.removeItemAt(rows.getItemIndex(data));
         _grid.selectedIndex = newIndex;
     }
@@ -257,17 +257,17 @@ public class ListPanel extends VBox implements Panel,Invoker{
         return rows.length;
     }
 
-    public function setData(data:Data):void {
+    public function setData(data:BusinessObject):void {
     }
 
-    public function getData():Data {
+    public function getData():BusinessObject {
         return null;
     }
 
 
     /////////////////////////////////// Overwrites ///////////////////////////////////////////
 
-    public function createData():Data {
+    public function createData():BusinessObject {
         return null;
     }
 
