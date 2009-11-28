@@ -30,9 +30,11 @@ public class Flex_lookup extends Tag {
         String type = getRequiredAttribute(TYPE);
         String path = getRequiredAttribute(PATH);
         String guirep = getRequiredAttribute(GUIREP);
+        String editor = getAttribute(EDITOR,"");
         String  lw = getParentAttribute(LABELWIDTH,"");
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
+        int w = getAttribute(W, -1);
 
         String xylw="";
         if(x>=0 || y>=0){
@@ -41,8 +43,15 @@ public class Flex_lookup extends Tag {
                 xylw += ","+lw;
             }
         }
+        String width="";
+        if(w >=0 ){
+            width= " ," + w ;
+        }
 
-        write("        field = insertProxyField(\"" + type + "\",\"" + guirep + "\",\"" + label + "\",\"" + path + "\"" + xylw+ ");");
+        write("        field = insertProxyField(" + quote(type) + "," + quote(guirep) + "," + quote(label) + "," + quote(path) + xylw+ width+");");
+        if(!isEmpty(editor)){
+        write("        ProxyField(field).editor = "+quote(editor)+";");
+        }
     }
 
 }

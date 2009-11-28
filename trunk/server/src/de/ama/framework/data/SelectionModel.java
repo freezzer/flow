@@ -40,7 +40,11 @@ public class SelectionModel implements Serializable{
         return type;
     }
 
-    ////////////////// Conditions ///////////////////////////////
+    public void setType(String type) {
+        this.type = type;
+    }
+
+////////////////// Conditions ///////////////////////////////
 
     public String getCondition()                {    return Util.saveToString(condition);  }
     public void setCondition(String condition)  {    this.condition = condition;   }

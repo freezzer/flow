@@ -15,6 +15,8 @@ public class ProxyField extends EditField implements Invoker{
     private var _guiRepPath:String;
     private var _type:String;
     private var _searchButton:CommandButton;
+
+    private var _editor:String=null;
     private var _editButton:CommandButton;
 
     public function ProxyField(caption:String="ProxyField", path:String = null) {
@@ -49,13 +51,21 @@ public class ProxyField extends EditField implements Invoker{
         _searchButton.command = new SelectBoCommand();
         _searchButton.invoker = this;
         addChild(_searchButton);
-
-        _editButton = new CommandButton();
-        _editButton.command = new OpenEditorCommand();
-        _editButton.invoker = this;
-        addChild(_editButton);
+        createEditButton();
         layout();
     }
+
+    private function createEditButton():void {
+    	if(hasEditButton()) return;
+        if(!Util.isEmpty(_editor)){
+            _editButton = new CommandButton();
+            _editButton.command = new OpenEditorCommand();
+            _editButton.command.setProperty("editor",editor);
+            _editButton.invoker = this;
+            addChild(_editButton);
+        }
+    }
+
 
     public function get guiRepPath():String {
         return _guiRepPath;
@@ -65,7 +75,6 @@ public class ProxyField extends EditField implements Invoker{
         _guiRepPath = value;
     }
 
-
     public function get type():String {
         return _type;
     }
@@ -74,19 +83,36 @@ public class ProxyField extends EditField implements Invoker{
         _type = value;
     }
 
+    public function get editor():String {
+        return _editor;
+    }
+
+    public function set editor(value:String):void {
+        _editor = value;
+        createEditButton();
+        layout();
+
+    }
+
     override public function layout():void {
         super.height=25;
         _input.x = labelWidth +10;
-        _input.width = width-50-labelWidth-15;
+        _input.width = width-labelWidth-15-25-(hasEditButton()?25:0);
         _label.width = labelWidth;
         _searchButton.x = super.width-50;
         _searchButton.y = 2;
         _searchButton.width = 20;
         _searchButton.height = 20;
-        _editButton.x = super.width-25;
-        _editButton.y = 2;
-        _editButton.width = 20;
-        _editButton.height = 20;
+        if(hasEditButton()){
+            _editButton.x = super.width-25;
+            _editButton.y = 2;
+            _editButton.width = 20;
+            _editButton.height = 20;
+        }
+    }
+
+    private function hasEditButton():Boolean {
+        return _editButton != null;
     }
 
     override public function writeToData():void {
