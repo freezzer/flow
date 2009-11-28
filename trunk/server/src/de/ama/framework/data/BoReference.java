@@ -19,6 +19,12 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
     public String type;
     private transient C bo;
 
+    public boolean hasReference(){
+        if(Util.isEmpty(type)) return false;
+        if(oid<=0) return false;
+        return true;
+    }
+
     public long getOid() {
         return oid;
     }
@@ -28,7 +34,7 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
     }
 
     public C getBo() {
-        if(bo==null){
+        if(bo==null && hasReference()){
            bo =  (C) DB.session().getObject(new Query(getType(),"oid",Query.EQ, getOid()));
         }
         return bo;

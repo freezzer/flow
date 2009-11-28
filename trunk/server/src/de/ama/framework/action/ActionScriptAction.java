@@ -22,6 +22,7 @@ public class ActionScriptAction implements java.io.Serializable {
     // ************** ActionScript Members *********************
     public List registry ;
 
+    public int actionId;
     public String userSessionId;
     public String catalog;
 

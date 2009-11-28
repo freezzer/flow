@@ -54,10 +54,11 @@ public class Java_field extends Tag {
         writeLine();
         if (reference) {
             write("    private BoReference<" + type + "> " + name + ";");
-            write("    public  BoReference<" + type + "> get" + Util.firstCharToUpper(name+"Reference") + "() { return " + name + "; }");
-            write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { if(" + name + "==null)return null;  return " + name + ".getBo(); }");
-            String lazy = "if(" + name + "==null){ " + name + " = new BoReference<" + type + ">(); }";
-            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + lazy+" "+name + ".setBo(in); }");
+            write("    public  BoReference<" + type + "> get" + Util.firstCharToUpper(name) + "() { return " + name + "; }");
+            write("    public  void set" + Util.firstCharToUpper(name) + "(BoReference<" + type + "> in) { "+ name + " =in; }");
+//            write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { if(" + name + "==null)return null;  return " + name + ".getBo(); }");
+//            String lazy = "if(" + name + "==null){ " + name + " = new BoReference<" + type + ">(); }";
+//            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + lazy+" "+name + ".setBo(in); }");
 
         } else {
             write("    private " + type + " " + name + ";");

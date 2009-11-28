@@ -5,6 +5,7 @@ public class ActionScriptAction {
 
     public var registry:Array = new Array();
 
+    public var actionId:int;
     public var userSessionId:String;
     public var catalog:String;
 

@@ -32,13 +32,19 @@ public class BoReference {
 
     public function getBusinessObject(cb:Callback):void {
         _cb = cb;
-        if (_bo == null) {
+        if (_bo == null && hasReference()) {
             var sa:LoadBoAction = new LoadBoAction();
             sa.data = this;
             ActionStarter.instance.execute(sa, new Callback(this, resulthandler));
         } else {
             _cb.execute(_bo);
         }
+    }
+
+    private function hasReference():Boolean {
+        if(Util.isEmpty(type)) return false;
+        if(oid<=0) return false;
+        return true;
     }
 
 
