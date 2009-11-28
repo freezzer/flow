@@ -34,7 +34,8 @@
         <channel-definition id="my-amf" class="mx.messaging.channels.AMFChannel">
             <endpoint url="http://localhost:8400/flow/messagebroker/amf" class="flex.messaging.endpoints.AMFEndpoint"/>
             <properties>
-              <serialization legacy-collection="true"/>
+              <serialization legacy-collection="true"
+                             restore-references="true"/>
             </properties>
         </channel-definition>
 

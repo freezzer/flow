@@ -4,15 +4,9 @@ import de.ama.framework.command.Invoker;
 import de.ama.framework.command.SaveBoCommand;
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
-import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 
-import de.ama.services.permission.PermissionService;
-
-import flash.events.MouseEvent;
-
 import mx.containers.Canvas;
-import mx.controls.Button;
 
 public class Editor extends Canvas implements Invoker{
 
