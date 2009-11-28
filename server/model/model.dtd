@@ -87,6 +87,7 @@
         w CDATA #IMPLIED
         h CDATA #IMPLIED
         guirep CDATA #IMPLIED
+        editor CDATA #IMPLIED
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED

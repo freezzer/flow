@@ -31,6 +31,8 @@ public class Flex_input extends Tag {
         String path = getRequiredAttribute(PATH);
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
+        int w = getAttribute(W, -1);
+        int h = getAttribute(H, -1);
         String  lw = getParentAttribute(LABELWIDTH,"");
 
         String xylw="";
@@ -40,20 +42,28 @@ public class Flex_input extends Tag {
                 xylw += ","+lw;
             }
         }
+        String width="";
+        if(w >=0 ){
+            width= " ," + w ;
+        }
+        String height="";
+        if(h>=0){
+            height= "," + h;
+        }
 
         if (STRING.equalsIgnoreCase(type)) {
-            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
+            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ width+");");
         } else if (DATE.equalsIgnoreCase(type)) {
-            write("        field = insertDateField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
+            write("        field = insertDateField(\"" + label + "\",\"" + path + "\"" + xylw+ width+");");
         } else if (NUMBER.equalsIgnoreCase(type)) {
-            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
+            write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ width+");");
         } else if (BOOLEAN.equalsIgnoreCase(type)) {
-            write("        field = insertBoolField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
+            write("        field = insertBoolField(\"" + label + "\",\"" + path + "\"" + xylw+ width+");");
         } else if (LIST.equalsIgnoreCase(type)) {
             String lister = isLeaf() ? getRequiredAttribute(LISTER) : getChild(0).getAttribute(NAME);
-            write("        field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xylw+ ");");
+            write("        field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xylw+width+height+ ");");
         } else if (AREA.equalsIgnoreCase(type)) {
-            write("        field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xylw+ ");");
+            write("        field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xylw+width+height+ ");");
         }
     }
 
