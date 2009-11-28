@@ -20,16 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/Editor.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/Editor.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/BoReference.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/BoReference.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/services/permission/GetPermissionAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/GetPermissionAction.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionStarter.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionStarter.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/BoReference.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/BoReference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/pages/WEB-INF/flex/services-config.xml" afterPath="$PROJECT_DIR$/server/src/de/ama/pages/WEB-INF/flex/services-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionScriptAction.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/data/LookupCache.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/data/LookupCache.as" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -146,10 +137,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Session.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Session.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../gna-jorm/source/de/ama/db/Session.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="161" column="79" selection-start="6593" selection-end="6593" vertical-scroll-proportion="0.32142857">
+            <state line="171" column="54" selection-start="6915" selection-end="6915" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LookupCache.as" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/data/LookupCache.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="71" selection-start="796" selection-end="796" vertical-scroll-proportion="0.5920398">
               <folding />
             </state>
           </provider>
@@ -195,15 +195,6 @@
         <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="24" column="23" selection-start="469" selection-end="469" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoteObject.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../adobe/builder/sdks/3.4.0/frameworks/projects/rpc/src/mx/rpc/remoting/RemoteObject.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="24" selection-start="3375" selection-end="3375" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -1838,13 +1829,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/flex/src/comp/bom/Notiz.as">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/action/LoadBoAction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="38" selection-start="650" selection-end="650" vertical-scroll-proportion="0.0">
@@ -1945,7 +1929,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../gna-jorm/source/de/ama/db/Session.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="161" column="79" selection-start="6593" selection-end="6593" vertical-scroll-proportion="0.32142857">
+        <state line="171" column="54" selection-start="6915" selection-end="6915" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/data/LookupCache.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="71" selection-start="796" selection-end="796" vertical-scroll-proportion="0.5920398">
           <folding />
         </state>
       </provider>
