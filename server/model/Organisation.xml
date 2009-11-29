@@ -27,7 +27,7 @@
 
             <lister name="OrganisationenLister" label="Uebersicht Organisationen" type="Organisation">
                 <command use="LoadTableCommand" icon="refresh" label="Uebersicht Organisationen neu laden"/>
-                <command use="OpenEditorCommand" editor="OrganisationenEditor" label="Organisation bearbeiten" icon="edit"/>
+                <command use="OpenEditorCommand" editor="OrganisationenEditor" label="Organisation bearbeiten" icon="edit" default="true"/>
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
                 <command use="OpenNewEditorCommand" editor="OrganisationenEditor" label="neue Organisation oeffnen" />
 
@@ -37,7 +37,7 @@
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
 
-            <tree_editor name="OrganisationenEditor" label="Daten von {name} " type="Organisation">
+            <tree_editor name="OrganisationenEditor" label="Orga {name} " type="Organisation">
                 <tree_node label="Organisation" path="." type="Organisation" icon="building" open="true" panel="default">
                     <tree_node label="Adresse {ort}" path="adresse" icon="form" open="true" type="Adresse"  panel="AdressePanel" />
                     <tree_node label="Personen" path="personen" icon="table" open="true" type="Person"  lister="PersonLister">
@@ -68,8 +68,8 @@
                 <input x="10" y="18" w="205" labelwidth="65" h="25" label="erfasst" path="datum" type="date" />
                 <input x="10" y="49" w="575" labelwidth="65" h="115" label="Notiz" path="text" type="area" />
                 <input x="10" y="170" w="575" labelwidth="65" h="115" label="ToDo" path="todo" type="area" />
-                <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="vorname" editor="PersonEditor"/>
-                <lookup x="258" y="18" w="325" labelwidth="65" label="Erfasser" path="erfasser" type="Person" guirep="vorname" editor="PersonEditor" />
+                <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="vorname" lister="PersonLister" editor="PersonEditor"/>
+                <lookup x="258" y="18" w="325" labelwidth="65" label="Erfasser" path="erfasser" type="Person" guirep="vorname" lister="PersonLister" editor="PersonEditor" />
             </panel>
             
 

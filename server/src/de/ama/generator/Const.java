@@ -47,6 +47,7 @@ public interface Const {
     public static final String BEAN = "bean";
     public static final String PERMISSION = "permission";
     public static final String PERMITTED = "permitted";
+    public static final String DEFAULT = "default";
     public static final String TREE_NODE = "tree_node";
     public static final String TREE_EDITOR = "tree_editor";
     public static final String INPUT = "input";

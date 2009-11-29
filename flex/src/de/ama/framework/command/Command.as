@@ -14,7 +14,6 @@ public class Command {
     public var label:String;
     public var _iconName:String;
     private var _invoker:Invoker = null;
-    private var _selectionModel:SelectionModel = null;
 
     private var _contextMenuItem:ContextMenuItem=null;
     private var _permissionId:String;
@@ -80,7 +79,7 @@ public class Command {
 
 
     public function get selectionModel():SelectionModel {
-        return _selectionModel;
+        return _invoker.getSelectionModel();
     }
 
     public function get invoker():Invoker {
@@ -89,7 +88,6 @@ public class Command {
 
     public function start(invoker:Invoker):void{
         _invoker=invoker;
-        _selectionModel=_invoker.getSelectionModel();
         execute();
         _contextMenuItem = null;
     }
@@ -122,5 +120,10 @@ public class Command {
     public function get permissionKey():String {
         return _permissionId.split(":")[1];
     }
+
+    public function isDefaultCommand():Boolean {
+        return Util.isEqual("true",getProperty("default"));
+    }
+
 }
 }

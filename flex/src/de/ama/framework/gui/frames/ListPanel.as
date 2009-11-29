@@ -11,8 +11,10 @@ import de.ama.framework.util.Util;
 
 import flash.display.DisplayObject;
 import flash.events.ContextMenuEvent;
+import flash.events.KeyboardEvent;
 import flash.ui.ContextMenu;
 import flash.ui.ContextMenuItem;
+import flash.ui.Keyboard;
 import flash.utils.describeType;
 
 import mx.collections.ArrayCollection;
@@ -64,9 +66,18 @@ public class ListPanel extends VBox implements Panel,Invoker{
             _grid.allowMultipleSelection = true;
             _grid.setStyle("borderStyle", "solid");
             _grid.setStyle("borderColor", 0xa0a0a0);
+            _grid.doubleClickEnabled = true;
             _grid.addEventListener(ListEvent.ITEM_DOUBLE_CLICK,onItemDoubleClick); 
             _grid.addEventListener(ListEvent.ITEM_CLICK,onItemSingleClick);
+            _grid.addEventListener(KeyboardEvent.KEY_UP,onKeyPressed);
             addChild(_grid);
+        }
+    }
+
+    private function onKeyPressed(event:KeyboardEvent):void {
+//        var lowerkey:String = String.fromCharCode(event.charCode).toLowerCase();
+        if (event.keyCode == Keyboard.ENTER) {
+            startDefaultCommands();
         }
     }
 
@@ -76,7 +87,6 @@ public class ListPanel extends VBox implements Panel,Invoker{
     }
 
     public function set doubleClickCallback(value:Callback):void {
-        _grid.doubleClickEnabled = true;
         _doubleClickCallback = value;
     }
 
@@ -84,7 +94,11 @@ public class ListPanel extends VBox implements Panel,Invoker{
     	if(_doubleClickCallback!=null){
             _doubleClickCallback.execute(this)
         }
+        startDefaultCommands();
+
     }
+
+
 
     public function onItemSingleClick(le:ListEvent):void {
     	if(_singleClickCallback!=null){
@@ -96,7 +110,13 @@ public class ListPanel extends VBox implements Panel,Invoker{
         rows.refresh();
     }
 
-
+    public function startDefaultCommands():void{
+        for each(var command:Command in _commands) {
+            if(command.isDefaultCommand()){
+               command.start(this);
+            }
+        }
+    }
     /////////////////////////////////// Toolbar ///////////////////////////////////////////
 
     public function createToolbar():void {

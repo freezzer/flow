@@ -31,11 +31,13 @@ public class Flex_lister extends Tag {
     public void writeFile() {
         String label = getAttribute(LABEL);
         String type = getRequiredAttribute(TYPE);
-        String listerName = getParentAttribute(NAME,type+"Lister");
+        String name = getAttribute(NAME);
+        if(isEmpty(name))  return;
+        
         String dir =  getDir();
         String pckg =  getPackage();
 
-        initPrintWriter(dir,listerName+".as");
+        initPrintWriter(dir,name+".as");
 
         write("package "+pckg+" {");
         write("import de.ama.framework.data.BusinessObject;");
@@ -43,7 +45,7 @@ public class Flex_lister extends Tag {
         write("import de.ama.services.Factory;");
         write("import de.ama.framework.command.*;");
         write("     ");
-        write("public class "+listerName+" extends ListPanel {");
+        write("public class "+name+" extends ListPanel {");
         write("     ");
         write("     override public function createData():BusinessObject {");
         write("        return Factory.createBean(\""+type+"\"); ");
