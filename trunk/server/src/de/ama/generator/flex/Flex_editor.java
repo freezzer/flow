@@ -28,18 +28,20 @@ public class Flex_editor extends Tag {
 
     public void writeFile() {
         String label = getRequiredAttribute(LABEL);
-        String type = getRequiredParentAttribute(TYPE);
-        String editorName = getParentAttribute(NAME,type+"Editor");
+        String type = getRequiredAttribute(TYPE);
+        String name = getAttribute(NAME);
+        if(isEmpty(name))  return;
+
         String dir =  getDir();
         String pckg =  getPackage();
 
-        initPrintWriter(dir,editorName+".as");
+        initPrintWriter(dir,name+".as");
         write("package "+pckg+" {     ");
         write("import de.ama.framework.gui.frames.*; ");
         write("import de.ama.framework.command.*; ");
         write("import de.ama.framework.data.BusinessObject;");
         write("import de.ama.services.Factory;");
-        write("public class "+editorName+" extends Editor {");
+        write("public class "+name+" extends Editor {");
         write("     ");
         write("     override public function createData():BusinessObject {");
         write("       return Factory.createBean(\""+type+"\"); ");

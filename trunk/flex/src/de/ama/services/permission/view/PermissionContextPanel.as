@@ -10,7 +10,7 @@ import de.ama.framework.gui.fields.*;
 import de.ama.framework.gui.frames.EditPanel;
 public class PermissionContextPanel  extends EditPanel {
     public function PermissionContextPanel() {
-        x=0;  y=0; 
+        x=15;  y=15; 
         setStyle("borderStyle","none");
         label="Berechtigungs Kontext";
     }

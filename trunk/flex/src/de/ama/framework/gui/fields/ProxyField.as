@@ -16,6 +16,7 @@ public class ProxyField extends EditField implements Invoker{
     private var _type:String;
     private var _searchButton:CommandButton;
 
+    private var _lister:String=null;
     private var _editor:String=null;
     private var _editButton:CommandButton;
 
@@ -91,7 +92,16 @@ public class ProxyField extends EditField implements Invoker{
         _editor = value;
         createEditButton();
         layout();
+    }
 
+
+    public function get lister():String {
+        return _lister;
+    }
+
+    public function set lister(value:String):void {
+        _lister = value;
+        _searchButton.command.setProperty("lister",lister);
     }
 
     override public function layout():void {

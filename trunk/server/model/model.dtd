@@ -54,6 +54,7 @@
         name CDATA #IMPLIED
         lister CDATA #IMPLIED
         permitted CDATA #IMPLIED
+        default CDATA #IMPLIED
         use CDATA #IMPLIED>
 <!ELEMENT panel (panel|input|lookup)*>
 <!ATTLIST panel
@@ -88,15 +89,24 @@
         h CDATA #IMPLIED
         guirep CDATA #IMPLIED
         editor CDATA #IMPLIED
+        lister CDATA #IMPLIED
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
         type CDATA #IMPLIED>
-<!ELEMENT lister (command|column)*>
+<!ELEMENT provider (#PCDATA)>
+<!ATTLIST provider
+        query CDATA #IMPLIED
+        name CDATA #IMPLIED
+        use CDATA #IMPLIED
+        type CDATA #REQUIRED>
+
+<!ELEMENT lister (command|column|provider)*>
 <!ATTLIST lister
         label CDATA #IMPLIED
-        name CDATA #REQUIRED
-        type CDATA #REQUIRED>
+        name CDATA #IMPLIED
+        use CDATA #IMPLIED
+        type CDATA #IMPLIED>
 <!ELEMENT column (#PCDATA)>
 <!ATTLIST column
         label CDATA #REQUIRED

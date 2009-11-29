@@ -73,23 +73,26 @@ public class Flex_command extends Tag {
         String editor = getAttribute(EDITOR, "");
         String lister = getAttribute(LISTER, "");
         String permitted = getAttribute(PERMITTED, "");
+        String doubleClickEnabled = getAttribute(DEFAULT, "false");
 
         String permissionContext = getParentAttribute(PERMISSION,NAME,"global");
         icon = isEmpty(icon) ? "" : ","+quote(icon);
 
-        if (Util.isNotEmpty(name)) // import non CRUD command
+        if (!isEmpty(name)) // import non CRUD command
         write("        import " + pckg + "." + name + ";");
         write("        cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\"" + icon + ");");
         write("        cmd.permissionId = \""+permissionContext+":"+Util.saveToString(use, name)+" ("+ label+")\";");
 
-        if (Util.isNotEmpty(editor))
+        if (!isEmpty(editor))
         write("        cmd.setProperty(\"editor\",\"" + editor + "\");");
-        if (Util.isNotEmpty(lister))
+        if (!isEmpty(lister))
         write("        cmd.setProperty(\"lister\",\"" + lister + "\");");
-        if (Util.isNotEmpty(name))
+        if (!isEmpty(name))
         write("        cmd.setProperty(\"name\",\"" + name + "\");");
-        if (Util.isNotEmpty(permitted))
-        write("        cmd.setProperty(\"permitted\",\"" + permitted + "\");");
+        if ("true".equals(permitted))
+        write("        cmd.setProperty("+quote(PERMITTED)+",\"true\");");
+        if ("true".equals(doubleClickEnabled))
+        write("        cmd.setProperty("+quote(DEFAULT)+",\"true\");");
 
     }
 
