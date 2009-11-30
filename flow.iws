@@ -20,23 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/cfgatewayadapter.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/flex-messaging-core.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\flex\libs\hessian-flex-3.1.5.swc" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/commons-codec-1.3.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/flex-messaging-remoting.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/flex-messaging-opt.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/commons-httpclient-3.0.1.jar" />
-      <change type="DELETED" beforePath="D:\dev\flow\server\lib\famfamfam_silk_icons_v013.zip" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/flex-messaging-common.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/commons-logging.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/concurrent.jar" />
       <change type="DELETED" beforePath="D:\dev\flow\flex\libs\hessian-flash-3.1.5.swc" afterPath="" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/xalan.jar" />
+      <change type="DELETED" beforePath="D:\dev\flow\flex\libs\hessian-flex-3.1.5.swc" afterPath="" />
       <change type="DELETED" beforePath="D:\dev\flow\server\lib\hessian-3.2.1.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/flex-messaging-proxy.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/lib/backport-util-concurrent.jar" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
