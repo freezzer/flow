@@ -5,7 +5,8 @@
                 backgroundColor="#C0C0C0"
                 close="close()"
                 cornerRadius="4"
-         xmlns:ns1="de.ama.framework.gui.frames.*">
+         xmlns:ns1="de.ama.framework.gui.frames.*"
+        creationComplete="init()">
 
     <mx:Script><![CDATA[
         import de.ama.framework.data.BoReference;
@@ -15,19 +16,18 @@
 
         import mx.managers.PopUpManager;
 
+        private function init():void {
+            getListPanel().reload();
+        }
+
         private var _listpane:ListPanel;
         private var _lister:String = "default";
+
         private var _callback:Callback = null;
         private var _boRef:BoReference = null;
 
-
         public function setCallback(cb:Callback):void {
             _callback = cb;
-        }
-
-        public function setDataTable(arr:Array):void {
-            var listPanel:ListPanel = getListPanel();
-            listPanel.dataTable = arr;
         }
 
         private function callback():void {
@@ -52,21 +52,16 @@
 
         public function getListPanel():ListPanel {
             if (_listpane == null) {
-                _listpane = Factory.createLister(lister);
+                _listpane = Factory.createLister(_lister);
                 _listpane.doubleClickCallback = new Callback(this, onListDoubleClick);
                 addChild(_listpane);
             }
             return _listpane;
         }
 
-        public function get lister():String {
-            return _lister;
-        }
-
-        public function set lister(value:String):void {
+        public function setLister(value:String):void {
             _lister = value;
         }
-
 
         public function get selection():BoReference {
             return _boRef;

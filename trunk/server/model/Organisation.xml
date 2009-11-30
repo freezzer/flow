@@ -64,12 +64,17 @@
                 <command use="LoadBoCommand" label="Organisation laden" icon="refresh"/>
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
             </tree_editor>
+
             <panel name="NotizPanel" label="Notiz" border="true" x="25" y="25" w="595" h="360" path="." >
                 <input x="10" y="18" w="205" labelwidth="65" h="25" label="erfasst" path="datum" type="date" />
                 <input x="10" y="49" w="575" labelwidth="65" h="115" label="Notiz" path="text" type="area" />
                 <input x="10" y="170" w="575" labelwidth="65" h="115" label="ToDo" path="todo" type="area" />
-                <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="vorname" lister="PersonLister" editor="PersonEditor"/>
-                <lookup x="258" y="18" w="325" labelwidth="65" label="Erfasser" path="erfasser" type="Person" guirep="vorname" lister="PersonLister" editor="PersonEditor" />
+                <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="nachname" editor="PersonEditor">
+                    <lister use="PersonLister" type="Person">
+                        <provider type="Person" name="OrgaPersonenProvider" />
+                    </lister>
+                </lookup>
+                <lookup x="258" y="18" w="325" labelwidth="65" label="Erfasser" path="erfasser" type="Person" guirep="nachname" />
             </panel>
             
 

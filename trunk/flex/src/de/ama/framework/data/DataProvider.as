@@ -1,11 +1,11 @@
 package de.ama.framework.data {
 import de.ama.framework.command.Invoker;
+import de.ama.framework.util.Callback;
 
-public class DataProvider {
+public interface DataProvider {
 
-    public function getTable(i:Invoker):Array{
-        return null;
-    }
+    function setInvoker(invoker:Invoker) : void;
+    function getTable(cb:Callback) : void;
 
 }
 }

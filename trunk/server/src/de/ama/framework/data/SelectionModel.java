@@ -37,7 +37,8 @@ public class SelectionModel implements Serializable{
     }
 
     public String getType(){
-        return type;
+        if(type==null) return null;
+        return type.replace("::",".");
     }
 
     public void setType(String type) {

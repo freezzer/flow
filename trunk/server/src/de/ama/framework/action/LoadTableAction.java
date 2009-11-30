@@ -3,6 +3,7 @@ package de.ama.framework.action;
 import de.ama.db.Query;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
+import de.ama.util.Util;
 
 import java.util.List;
 
@@ -18,7 +19,8 @@ public class LoadTableAction extends ActionScriptAction {
     @Override
     public void execute() throws Exception {
         PersistentService ps = Environment.getPersistentService();
-        List objects = ps.getObjects(new Query(data.getClass()));
+
+        List objects = ps.getObjects(new Query(Util.createClass(selectionModel.getType())));
         data = ps.releaseObject(objects);
 
 

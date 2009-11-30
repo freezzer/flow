@@ -23,7 +23,7 @@ public class SelectAllCommand  extends Command {
       
     override protected function execute():void {
         var lp:ListPanel = ListPanel(invoker);
-        var array:Array = lp.dataTable;
+        var array:Array = lp.getDataTable();
         for each(var s:PermissionSwitch in array) {
            s.isOn = true;
         }

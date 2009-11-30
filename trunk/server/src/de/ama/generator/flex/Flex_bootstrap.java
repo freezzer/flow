@@ -51,11 +51,21 @@ public class Flex_bootstrap extends Tag {
                             write("        Factory.registerBean(\"" + name + "\", " +pckg+"."+ name + ");");
                         }
                     });
-                    visitAllChildren(COMMAND,new Visitor(){
+                    visitAllChildren(PROVIDER,new Visitor(){
                         public void visit(Tag visitor) {
                             String name = visitor.getAttribute(NAME);
                             if(Util.isEmpty(name)) return;
                             
+                            String pckg = visitor.getPackage();
+                            write("        import " + pckg + "." + name + ";");
+                            write("        Factory.registerProvider(\"" + name + "\", " + pckg+"."+ name + ");");
+                        }
+                    });
+                    visitAllChildren(COMMAND,new Visitor(){
+                        public void visit(Tag visitor) {
+                            String name = visitor.getAttribute(NAME);
+                            if(Util.isEmpty(name)) return;
+
                             String pckg = visitor.getPackage();
                             write("        import " + pckg + "." + name + ";");
                             write("        Factory.registerCommand(\"" + name + "\", " + pckg+"."+ name + ");");

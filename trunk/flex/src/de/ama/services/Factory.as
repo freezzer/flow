@@ -1,4 +1,5 @@
 package de.ama.services {
+import de.ama.framework.data.DataProvider;
 import de.ama.framework.util.*;
 import de.ama.framework.command.*;
 import de.ama.framework.data.BusinessObject;
@@ -12,6 +13,7 @@ public class Factory {
     private static var editor_dictionary:Object = new Object();
     private static var lister_dictionary:Object = new Object();
     private static var command_dictionary:Object = new Object();
+    private static var provider_dictionary:Object = new Object();
     private static var permission_dictionary:Object = new Object();
 
 
@@ -53,6 +55,16 @@ public class Factory {
 
     public static function createBeanClass(key:String):Class {
         return createClass(bean_dictionary,key);
+    }
+
+    /////////////////////// PROVIDER //////////////////////////////////////
+
+    public static function registerProvider(key:String, c:Class):void {
+        register(provider_dictionary,key,c);
+    }
+
+    public static function createProvider(type:String):DataProvider {
+        return DataProvider(createObject(provider_dictionary, type));
     }
 
     /////////////////////// Comands //////////////////////////////////////

@@ -5,6 +5,8 @@ import de.ama.framework.command.Command;
 import de.ama.framework.command.CreateNodeCommand;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.data.BusinessObject;
+import de.ama.framework.data.DataProvider;
+import de.ama.framework.data.QueryDataProvider;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
@@ -36,6 +38,12 @@ public class ListPanel extends VBox implements Panel,Invoker{
     private var _grid:DataGrid;
     private var _singleClickCallback:Callback;
     private var _doubleClickCallback:Callback;
+
+    private var _dataProvider:DataProvider=null;
+
+    public function setDataProvider(value:DataProvider):void {
+        _dataProvider = value;
+    }
 
     public function ListPanel(generic:Boolean = false):void {
         percentWidth=100;
@@ -228,20 +236,22 @@ public class ListPanel extends VBox implements Panel,Invoker{
 
 
     public function reload():void {
-        var lta:LoadTableAction = new LoadTableAction();
-        lta.data = createData();
-        ActionStarter.instance.execute(lta, new Callback(this, loadTableHandler));
+        if(_dataProvider==null){
+           _dataProvider = new QueryDataProvider();
+           _dataProvider.setInvoker(this);
+        }
+        _dataProvider.getTable(new Callback(this,setDataTable));
     }
 
     private function loadTableHandler(a:LoadTableAction):void {
-        dataTable = a.data as Array;
+        setDataTable(a.data as Array);
     }
 
-    public function get dataTable():Array {
+    public function getDataTable():Array {
         return rows.source;
     }
 
-    public function set dataTable(array:Array):void {
+    public function setDataTable(array:Array):void {
         if (_generic && array != null && array.length > 0) {
             createDefaultColumns(array[0]);
         }
