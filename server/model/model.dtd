@@ -90,6 +90,7 @@
         guirep CDATA #IMPLIED
         editor CDATA #IMPLIED
         lister CDATA #IMPLIED
+        provider CDATA #IMPLIED
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
@@ -106,7 +107,7 @@
         label CDATA #IMPLIED
         name CDATA #IMPLIED
         use CDATA #IMPLIED
-        type CDATA #IMPLIED>
+        type CDATA #REQUIRED>
 <!ELEMENT column (#PCDATA)>
 <!ATTLIST column
         label CDATA #REQUIRED

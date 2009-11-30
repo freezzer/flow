@@ -61,7 +61,7 @@
             if (selectedNode.isListView) {
                 var lp:ListPanel = Factory.createLister(selectedNode.panelName);
                 replaceCurrentPanel(lp);
-                lp.dataTable = selectedNode.dataTable;
+                lp.setDataTable(selectedNode.dataTable);
             } else {
                 var ep:EditPanel = Factory.createPanel(selectedNode.panelName);
                 replaceCurrentPanel(ep);

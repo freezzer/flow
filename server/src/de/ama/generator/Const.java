@@ -26,6 +26,7 @@ public interface Const {
 
     public static final String COMMENT = "comment";
     public static final String COMMAND = "command";
+    public static final String PROVIDER = "provider";
     public static final String COLUMN = "column";
     public static final String NAME = "name";
     public static final String LABEL = "label";

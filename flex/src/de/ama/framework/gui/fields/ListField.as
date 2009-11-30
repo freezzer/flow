@@ -55,12 +55,12 @@ public class ListField extends EditField{
     }
 
     public override function setValue(val:Object):void {
-        ListPanel(_input).dataTable = val as Array;
+        ListPanel(_input).setDataTable(val as Array);
     }
 
 
     override public function getValue():Object {
-        return ListPanel(_input).dataTable;
+        return ListPanel(_input).getDataTable();
     }
 
     override public function set height(h:Number):void {
