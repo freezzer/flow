@@ -60,7 +60,7 @@
                     </tree_node>
                 </tree_node>
 
-                <command use="SaveBoCommand" label="Organisation speichern" icon="save"/>
+                <command use="SaveBoCommand" label="Organisation speichern" icon="save" event="save"/>
                 <command use="LoadBoCommand" label="Organisation laden" icon="refresh"/>
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
             </tree_editor>
@@ -81,6 +81,24 @@
         </view>
 
     </permission>
+
+
+    <rules name="OrgaRules" events="save,import" type="Organisation">
+        <rule label="Name der Organisation" path="name" pattern ="an" maxlength="30" mandatory="true"/>
+        <rules use="AdresseRules" path="adresse" />
+        <rules use="PersonRules" path="personen" />
+        <rules name="NotizenRules" path="notizen" >
+            <rule label="Kontaktperson" path="kontaktperson" mandatory="true" />
+            <rule label="Erfasser" path="erfasser" mandatory="true" />
+            <rule label="Datum" path="datum" mandatory="true" />
+            <rule label="Text" path="text" mandatory="true" maxlength="255"/>
+            <rule label="ToDo" path="todo" maxlength="255" />
+        </rules>
+    </rules>
+
+    <interface name="OrgaInterface" doku="pdf,plain,html" xsd="true" dtd="true" wsdl="true" endpoint="orga/import"/>
+    <interface use="OrgaInterface" xsd="orga_Otto.xsd" transformator="otto.transform.OrgaTransformator" endpoint="orga/otto/import"/>
+
 
 </define>
 

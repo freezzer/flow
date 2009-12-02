@@ -177,6 +177,9 @@ public class Util
 
     public static function getClassName(o:Object):String {
         if (o == null) return "no classname for 'null'";
+        if(o.hasOwnProperty("className")) {
+            return o["className"];
+        }
         return getQualifiedClassName(o);
     }
 

@@ -8,6 +8,8 @@ import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 
+import de.ama.services.Factory;
+
 import mx.controls.TextInput;
 
 public class ProxyField extends EditField implements Invoker{
@@ -41,7 +43,8 @@ public class ProxyField extends EditField implements Invoker{
            return new SelectionModel(getData());
         } else {
            var sm:SelectionModel= new SelectionModel();
-           sm.type = type;
+           var c:Class = Factory.createBeanClass(type);
+           sm.type = Util.getClassName(c); 
            return sm;
         }
     }
