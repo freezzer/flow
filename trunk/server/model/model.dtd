@@ -1,4 +1,21 @@
-<!ELEMENT define (model|view|permission|comment|import)*>
+<!ELEMENT define (model|view|permission|comment|import|interface|rules)*>
+<!ELEMENT rules (rule|rules)*>
+<!ATTLIST rules
+         use CDATA #IMPLIED
+         name CDATA #IMPLIED
+         type CDATA #IMPLIED
+         events CDATA #IMPLIED
+         path CDATA #IMPLIED>
+<!ELEMENT rule (#PCDATA)>
+<!ATTLIST rule
+         use CDATA #IMPLIED
+         name CDATA #IMPLIED
+         label CDATA #IMPLIED
+         pattern CDATA #IMPLIED
+         maxlength CDATA #IMPLIED
+         mandatory CDATA #IMPLIED
+         path CDATA #IMPLIED>
+<!ELEMENT interface (#PCDATA)>
 <!ELEMENT comment (#PCDATA)>
 <!ELEMENT import (bean)*>
 <!ATTLIST import
@@ -55,6 +72,7 @@
         lister CDATA #IMPLIED
         permitted CDATA #IMPLIED
         default CDATA #IMPLIED
+        event CDATA #IMPLIED
         use CDATA #IMPLIED>
 <!ELEMENT panel (panel|input|lookup)*>
 <!ATTLIST panel
