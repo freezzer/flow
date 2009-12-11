@@ -6,28 +6,28 @@
                 close="close()"
                 cornerRadius="4"
          xmlns:ns1="de.ama.framework.gui.frames.*"
-        creationComplete="init()">
+        >
 
     <mx:Script><![CDATA[
+        import de.ama.framework.data.BoReference;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.util.Callback;
+        import de.ama.services.Factory;
 
         import mx.managers.PopUpManager;
 
-        private function init():void {
-            listPanel.doubleClickCallback = new Callback(this, onListDoubleClick);
-        }
+//        private function init():void {
+//            getListPanel().reload();
+//        }
 
+        private var _listpane:ListPanel;
         private var _lister:String = "default";
+
         private var _callback:Callback = null;
         private var _boRef:BoReference = null;
 
         public function setCallback(cb:Callback):void {
             _callback = cb;
-        }
-
-        public function setDataTable(arr:Array):void {
-            listPanel.dataTable = arr;
         }
 
         private function callback():void {
@@ -44,35 +44,46 @@
         public function keyHandler(e:KeyboardEvent):void {
         }
 
+        public function inputHandler(e:Event):void {
+        }
+
         private function onListDoubleClick(lp:ListPanel):void {
             okButtonHandler();
         }
 
         private function okButtonHandler():void {
-            var sm:SelectionModel = listPanel.getSelectionModel();
-            _data = sm.getFirstSelection();
+            var sm:SelectionModel = getListPanel().getSelectionModel();
+            _boRef = sm.getFirstSelection();
             close();
         }
 
-
-        public function get lister():String {
+        public function geLister():String {
             return _lister;
         }
 
-        public function set lister(value:String):void {
+        public function setLister(value:String):void {
             _lister = value;
         }
 
-        public function get selection():Data {
-            return _data;
+        public function get selection():BoReference {
+            return _boRef;
+        }
+
+        public function getListPanel():ListPanel {
+            if (_listpane == null) {
+                _listpane = Factory.createLister(_lister);
+                _listpane.doubleClickCallback = new Callback(this, onListDoubleClick);
+                cp.addChildAt(_listpane,1);
+            }
+            return _listpane;
         }
 
         ]]></mx:Script>
 
 
-    <mx:VBox width="100%">
+    <mx:VBox id="cp" width="100%" verticalGap="1" verticalAlign="bottom" height="100%">
+        <mx:TextInput width="100%" id="input" change="inputHandler(event)"/>
 
-        <ns1:ListPanel id="listPanel" width="100%" />
 
         <mx:HBox width="100%" bottom="0" horizontalAlign="right" horizontalGap="0">
             <mx:Button label="ok" click="okButtonHandler()"/>

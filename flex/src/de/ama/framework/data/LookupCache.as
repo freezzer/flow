@@ -22,7 +22,7 @@ public class LookupCache {
 
     public function getTable(selectionModel:SelectionModel, cb:Callback):void {
         _cb = cb;
-        var key:String = selectionModel.type;
+        var key:String = selectionModel.type.replace("::",".");
         var table:Array = table_dictionary[key];
         if(table == null){
             var lta:LoadTableAction = new LoadTableAction();

@@ -29,11 +29,12 @@ import de.ama.util.Util;
 public class Flex_lister extends Tag {
 
     public void writeFile() {
-        String label = getAttribute(LABEL);
-        String type = getRequiredAttribute(TYPE);
         String name = getAttribute(NAME);
         if(isEmpty(name))  return;
-        
+
+        String label = getAttribute(LABEL);
+        String type = getRequiredAttribute(TYPE);
+
         String dir =  getDir();
         String pckg =  getPackage();
 
