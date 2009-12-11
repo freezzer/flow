@@ -44,10 +44,17 @@ public class Flex_provider extends Tag {
             write("import de.ama.framework.util.Callback;");
             write("public class " + name + " " + " implements DataProvider { ");
             writeLine();
-            write("    public function setInvoker(invoker:Invoker):void {");
+            write("    private var _invoker:Invoker;");
+            write("    private var _cb:Callback;");
+            writeLine();
+            write("    public function setInvoker(value:Invoker):void {");
+            write("         _invoker = value;");
             write("    }");
             write("    ");
             write("    public function getTable(cb:Callback):void {");
+            write("        _cb = cb;");
+            write("        var array:Array = new Array();");
+            write("        _cb.execute(array);");
             write("    } ");
             write("    ");
             write("}}");

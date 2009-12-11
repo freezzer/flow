@@ -25,10 +25,9 @@ public class SelectBoCommand extends Command{
         _dlg.setLister(getProperty("lister"));
         _dlg.setCallback(new Callback(this, lookupDone));
 
-        var dp:DataProvider = Util.isEmpty(getProperty("provider")) ? new LookupDataProvider() : Factory.createProvider(getProperty("provider"));
-        dp.setInvoker(invoker);
-
-        _dlg.getListPanel().setDataProvider(dp);
+        _dlg.getListPanel().setDataProvider(getProperty("provider","LookupDataProvider"));
+        _dlg.getListPanel().getDataProvider().setInvoker(invoker);
+        _dlg.getListPanel().reload();
 
     }
 

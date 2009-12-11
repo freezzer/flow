@@ -5,14 +5,14 @@ package de.ama.services.impl;
  * Date: 16.05.2008
  */
 
-import com.caucho.hessian.server.HessianServlet;
+//import com.caucho.hessian.server.HessianServlet;
 import de.ama.framework.action.ActionScriptAction;
 import de.ama.services.ActionService;
 import de.ama.services.Environment;
 import de.ama.util.Util;
 
 
-public class ActionServiceImpl extends HessianServlet implements ActionService {
+public class ActionServiceImpl /*extends HessianServlet*/ implements ActionService {
 
 
     public ActionScriptAction execute(ActionScriptAction a) {

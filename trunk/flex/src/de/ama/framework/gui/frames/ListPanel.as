@@ -1,5 +1,4 @@
 package de.ama.framework.gui.frames {
-import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadTableAction;
 import de.ama.framework.command.Command;
 import de.ama.framework.command.CreateNodeCommand;
@@ -10,6 +9,7 @@ import de.ama.framework.data.QueryDataProvider;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
+import de.ama.services.Factory;
 
 import flash.display.DisplayObject;
 import flash.events.ContextMenuEvent;
@@ -39,10 +39,11 @@ public class ListPanel extends VBox implements Panel,Invoker{
     private var _singleClickCallback:Callback;
     private var _doubleClickCallback:Callback;
 
+    private var _dataProviderName:String=null;
     private var _dataProvider:DataProvider=null;
 
-    public function setDataProvider(value:DataProvider):void {
-        _dataProvider = value;
+    public function setDataProvider(value:String):void {
+        _dataProviderName = value;
     }
 
     public function ListPanel(generic:Boolean = false):void {
@@ -234,13 +235,20 @@ public class ListPanel extends VBox implements Panel,Invoker{
         return selectionModel;
     }
 
-
-    public function reload():void {
+    public function getDataProvider():DataProvider{
+        if(_dataProvider==null && !Util.isEmpty(_dataProviderName)){
+           _dataProvider = Factory.createProvider(_dataProviderName);
+           _dataProvider.setInvoker(this);
+        }
         if(_dataProvider==null){
            _dataProvider = new QueryDataProvider();
            _dataProvider.setInvoker(this);
         }
-        _dataProvider.getTable(new Callback(this,setDataTable));
+        return _dataProvider;
+    }
+
+    public function reload():void {
+        getDataProvider().getTable(new Callback(this,setDataTable));
     }
 
     private function loadTableHandler(a:LoadTableAction):void {

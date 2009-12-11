@@ -101,16 +101,21 @@ public class ProxyField extends EditField implements Invoker{
         _searchButton.command.setProperty("lister",listerName);
     }
 
+    public function set provider(providerName:String):void {
+        _searchButton.command.setProperty("provider",providerName);
+    }
+
     override public function layout():void {
         super.height=25;
         _input.x = labelWidth +10;
         _input.width = width-labelWidth-15-25-(hasEditButton()?25:0);
         _label.width = labelWidth;
-        _searchButton.x = super.width-50;
+        _searchButton.x = super.width-25;
         _searchButton.y = 2;
         _searchButton.width = 20;
         _searchButton.height = 20;
         if(hasEditButton()){
+            _searchButton.x = super.width-50;
             _editButton.x = super.width-25;
             _editButton.y = 2;
             _editButton.width = 20;

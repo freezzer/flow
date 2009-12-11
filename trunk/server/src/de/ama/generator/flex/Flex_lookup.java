@@ -20,6 +20,7 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.generator.Visitor;
 import de.ama.util.Util;
 
 
@@ -54,7 +55,21 @@ public class Flex_lookup extends Tag {
         write("        ProxyField(field).editor = "+quote(editor)+";");
         }
         if(!isEmpty(lister)){
-        write("        ProxyField(field).lister = "+quote(lister)+";");
+           write("        ProxyField(field).lister = "+quote(lister)+";");
+        } else {
+            visitChildren(LISTER, new Visitor(){
+                public void visit(Tag visitor) {
+                    String lister = visitor.getAttribute(USE,visitor.getAttribute(NAME));
+                    write("        ProxyField(field).lister = "+quote(lister)+";");
+                }
+            },false);
+            visitChildren(PROVIDER, new Visitor(){
+                public void visit(Tag visitor) {
+                    String providername = visitor.getAttribute(USE,visitor.getAttribute(NAME));
+                    write("        ProxyField(field).provider = "+quote(providername)+";");
+                }
+            },true);
+
         }
     }
 

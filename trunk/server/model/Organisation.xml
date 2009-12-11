@@ -70,7 +70,7 @@
                 <input x="10" y="49" w="575" labelwidth="65" h="115" label="Notiz" path="text" type="area" />
                 <input x="10" y="170" w="575" labelwidth="65" h="115" label="ToDo" path="todo" type="area" />
                 <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="nachname" editor="PersonEditor">
-                    <lister use="PersonLister" type="Person">
+                    <lister use="PersonLister" type="Person" >
                         <provider type="Person" name="OrgaPersonenProvider" />
                     </lister>
                 </lookup>

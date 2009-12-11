@@ -3,8 +3,9 @@ package de.ama;
 import de.ama.framework.servlet.DownloadServlet;
 import de.ama.framework.servlet.UploadServlet;
 import de.ama.services.Environment;
-import de.ama.services.impl.ActionServiceImpl;
 import de.ama.util.Ini;
+import flex.messaging.MessageBrokerServlet;
+import flex.messaging.io.ClassAliasRegistry;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.handler.DefaultHandler;
@@ -12,12 +13,6 @@ import org.mortbay.jetty.handler.HandlerList;
 import org.mortbay.jetty.handler.ResourceHandler;
 import org.mortbay.jetty.servlet.Context;
 import org.mortbay.jetty.servlet.ServletHolder;
-import flex.messaging.MessageBrokerServlet;
-import flex.messaging.io.ClassAliasRegistry;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import java.util.Enumeration;
 
 /**
  * Created by IntelliJ IDEA.

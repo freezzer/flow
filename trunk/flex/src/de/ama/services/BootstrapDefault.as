@@ -5,6 +5,7 @@ import de.ama.framework.command.OpenListerCommand;
 import de.ama.framework.command.OpenNewEditorCommand;
 import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.BoReference;
+import de.ama.framework.data.LookupDataProvider;
 import de.ama.services.permission.PermissionContext;
 import de.ama.services.permission.PermissionSwitch;
 import de.ama.services.permission.PermissionsData;
@@ -30,6 +31,7 @@ public class BootstrapDefault {
         Factory.registerCommand("OpenListerCommand", OpenListerCommand);
 
         Factory.registerCommand("BoReference", BoReference);
+        Factory.registerProvider("LookupDataProvider", LookupDataProvider);
 
 
     }}
