@@ -1,6 +1,7 @@
 package de.ama.framework.action;
 
 import de.ama.framework.data.Data;
+import de.ama.framework.data.BoReference;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
 
@@ -21,6 +22,10 @@ public class DeleteBoAction extends ActionScriptAction {
         List selections = selectionModel.getSelections();
         for (int i = 0; i < selections.size(); i++) {
             Object o =  selections.get(i);
+            if (o instanceof BoReference) {
+                BoReference boReference = (BoReference) o;
+                o= boReference.getBo();
+            }
             ps.delete(o);
         }
         commit();
