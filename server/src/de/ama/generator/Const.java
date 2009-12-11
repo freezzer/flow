@@ -67,8 +67,8 @@ public interface Const {
     public static final String DIR =       "dir";
     public static final String PACKAGE =   "package";
 
-    public static final String SRC =   "src";
-    public static final String GENERATED =  "generated";
+    public static final String GEN =  "generated";
+    public static final String MAN =  "man";
 
     public static final String UNIQUE_KEY = "unique-key";
 
