@@ -363,9 +363,9 @@ public class Tag extends XmlElement implements Const {
         }
 
         String targetDir = target;
-        if(target.equals("java")) targetDir = "server";
+//        if(target.equals("java")) targetDir = "server";
 
-        return targetDir+"/"+ SRC+"/"+getRootPackage() + "/" + dir ;
+        return GEN + "/" + targetDir + "/" + getRootPackage() + "/" + dir ;
     }
 
     public String getPackage(){

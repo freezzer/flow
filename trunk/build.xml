@@ -6,8 +6,6 @@
 
     <property name="deploy.dir" value="${home.dir}/server/webapp"/>
     <property name="root_package" value="comp"/>
-    <property name="generate.dir" value="gen"/>
-    <property name="manuel.dir" value="man"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="server/classes" failonerror="false"/>
@@ -45,10 +43,8 @@
 
 
     <target name="generate" depends="server.compile.environment" description="generates the sources">
-        <delete dir="flex/${generate.dir}" failonerror="false"/>
-        <mkdir dir="flex/${generate.dir}"/>
-        <delete dir="server/${generate.dir}" failonerror="false"/>
-        <mkdir dir="server/${generate.dir}"/>
+        <delete dir="generated" failonerror="false"/>
+        <mkdir dir="generated"/>
 
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
@@ -60,17 +56,23 @@
             <arg value="inFile"/>
             <arg file="server/model/PMS.xml"/>
             <arg value="root_package"/>
-            <arg value="${generate.dir}/"/>
+            <arg value="${root_package}"/>
             <arg value="targets"/>
             <arg value="flex,java"/>
         </java>
     </target>
 
-    <target name="copy.sources" >
+    <target name="copy.server.sources" >
+        <delete dir="server/src/${root_package}" failonerror="false"/>
+        <copy todir="server/src">
+            <fileset dir="generated/java" />
+            <fileset dir="server/man" />
+        </copy>
+    </target>
+
+    <target name="copy.client.sources" >
         <delete dir="flex/src/${root_package}" failonerror="false"/>
         <mkdir dir="flex/src/${root_package}"/>
-        <delete dir="server/src/${root_package}" failonerror="false"/>
-        <mkdir dir="server/src/${root_package}"/>
 
         <copy todir="flex/src/${root_package}">
             <fileset dir="flex/{generate.dir}">
@@ -80,15 +82,6 @@
                 <include name="**/**"/>
             </fileset>
         </copy>
-        <copy todir="server/src/${root_package}">
-            <fileset dir="server/{generate.dir}">
-                <include name="**/**"/>
-            </fileset>
-            <fileset dir="server/{manuel.dir}">
-                <include name="**/**"/>
-            </fileset>
-        </copy>
-
     </target>
 
     <target name="server.enhance" description="enhances the classes">
@@ -220,8 +213,8 @@
         </ftp>
     </target>
     
-    <target name="build.server" description="make server " depends="server.compile.environment,generate,server.compile.generated,server.enhance,client.deploy" />
-    <target name="build.client" description="make client " depends="client.clean,client.compile,client.wrapper" >
+    <target name="build.server" description="make server " depends="server.compile.environment,generate,copy.server.sources,server.compile.generated,server.enhance,client.deploy" />
+    <target name="build.client" description="make client " depends="client.clean,copy.client.sources,client.compile,client.wrapper" >
         <antcall target="client.deploy"/>
     </target>
     <target name="build.all" description="make/deploy whole project" depends="build.server,build.client" />
