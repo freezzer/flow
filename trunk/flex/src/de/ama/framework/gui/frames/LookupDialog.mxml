@@ -9,25 +9,25 @@
         creationComplete="init()">
 
     <mx:Script><![CDATA[
-        import de.ama.framework.data.BoReference;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.util.Callback;
-        import de.ama.services.Factory;
 
         import mx.managers.PopUpManager;
 
         private function init():void {
-            getListPanel().reload();
+            listPanel.doubleClickCallback = new Callback(this, onListDoubleClick);
         }
 
-        private var _listpane:ListPanel;
         private var _lister:String = "default";
-
         private var _callback:Callback = null;
         private var _boRef:BoReference = null;
 
         public function setCallback(cb:Callback):void {
             _callback = cb;
+        }
+
+        public function setDataTable(arr:Array):void {
+            listPanel.dataTable = arr;
         }
 
         private function callback():void {
@@ -45,28 +45,39 @@
         }
 
         private function onListDoubleClick(lp:ListPanel):void {
-            var sm:SelectionModel = lp.getSelectionModel();
-            _boRef = sm.getFirstSelection();
+            okButtonHandler();
+        }
+
+        private function okButtonHandler():void {
+            var sm:SelectionModel = listPanel.getSelectionModel();
+            _data = sm.getFirstSelection();
             close();
         }
 
-        public function getListPanel():ListPanel {
-            if (_listpane == null) {
-                _listpane = Factory.createLister(_lister);
-                _listpane.doubleClickCallback = new Callback(this, onListDoubleClick);
-                addChild(_listpane);
-            }
-            return _listpane;
+
+        public function get lister():String {
+            return _lister;
         }
 
-        public function setLister(value:String):void {
+        public function set lister(value:String):void {
             _lister = value;
         }
 
-        public function get selection():BoReference {
-            return _boRef;
+        public function get selection():Data {
+            return _data;
         }
 
         ]]></mx:Script>
+
+
+    <mx:VBox width="100%">
+
+        <ns1:ListPanel id="listPanel" width="100%" />
+
+        <mx:HBox width="100%" bottom="0" horizontalAlign="right" horizontalGap="0">
+            <mx:Button label="ok" click="okButtonHandler()"/>
+            <mx:Button label="close" click="close()"/>
+        </mx:HBox>
+    </mx:VBox>
 
 </mx:TitleWindow>
