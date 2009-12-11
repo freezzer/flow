@@ -22,7 +22,7 @@ public class LoadBoAction extends ActionScriptAction {
 
         if (data instanceof BoReference) {
             BoReference ref = (BoReference) data;
-            bo = ps.getObject(new Query(ref.getType(),"oid",Query.EQ, ref.getOid()),false);
+            bo = ref.getBo();
 
         } else {
             BoReference boRef = (BoReference) selectionModel.getSingleSelection();
