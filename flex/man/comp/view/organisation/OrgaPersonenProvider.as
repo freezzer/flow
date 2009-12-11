@@ -11,7 +11,7 @@ import comp.bom.Person;
 import de.ama.framework.data.*;
 import de.ama.framework.command.Invoker;
 import de.ama.framework.util.Callback;
-public class OrgaPersonenProvider  implements DataProvider { 
+public class OrgaPersonenProvider  implements DataProvider {
 
     private var _invoker:Invoker;
     private var _cb:Callback;
@@ -23,7 +23,8 @@ public class OrgaPersonenProvider  implements DataProvider {
     public function getTable(cb:Callback):void {
         _cb = cb;
         var array:Array = new Array();
-        array.push(new Person()); hh
+        array.push(new Person());
+        array.push(new Person());
         _cb.execute(array);
     } 
     

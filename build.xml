@@ -7,7 +7,7 @@
     <property name="deploy.dir" value="${home.dir}/server/webapp"/>
     <property name="root_package" value="comp"/>
 
-    <target name="server.compile.environment" description="compiles the java sources">
+    <target name="server.compile.environment" >
          <delete dir="server/classes" failonerror="false"/>
          <delete dir="server/src/${root_package}" failonerror="false"/>
          <mkdir dir="server/classes" />
@@ -28,7 +28,7 @@
      </target>
 
 
-    <target name="server.compile.generated" description="compiles the sources">
+    <target name="server.compile.generated" >
         <delete dir="server/classes/${root_package}" failonerror="false"/>
         <mkdir dir="server/classes/${root_package}"/>
         <javac destdir="server/classes" debug="on">
@@ -42,7 +42,7 @@
     </target>
 
 
-    <target name="generate" depends="server.compile.environment" description="generates the sources">
+    <target name="generate" depends="server.compile.environment" >
         <delete dir="generated" failonerror="false"/>
         <mkdir dir="generated"/>
 
@@ -64,27 +64,23 @@
 
     <target name="copy.server.sources" >
         <delete dir="server/src/${root_package}" failonerror="false"/>
-        <copy todir="server/src">
-            <fileset dir="generated/java" />
-            <fileset dir="server/man" />
+        <copy todir="server/src/${root_package}" overwrite="true">
+            <fileset dir="generated/java/${root_package}" />
+            <fileset dir="server/man/${root_package}" />
         </copy>
     </target>
 
     <target name="copy.client.sources" >
         <delete dir="flex/src/${root_package}" failonerror="false"/>
-        <mkdir dir="flex/src/${root_package}"/>
-
         <copy todir="flex/src/${root_package}">
-            <fileset dir="flex/{generate.dir}">
-                <include name="**/**"/>
-            </fileset>
-            <fileset dir="flex/{manuel.dir}">
-                <include name="**/**"/>
-            </fileset>
+            <fileset dir="generated/flex/${root_package}" />
+        </copy>
+        <copy todir="flex/src/${root_package}" overwrite="true">
+            <fileset dir="flex/man/${root_package}" />
         </copy>
     </target>
 
-    <target name="server.enhance" description="enhances the classes">
+    <target name="server.enhance" >
         <java classname="de.ama.db.tools.Enhancer" fork="true">
             <classpath>
                 <fileset dir="server/lib">
@@ -143,7 +139,7 @@
       <mkdir dir="${deploy.dir}/pages/WEB-INF" />
     </target>
 
-    <target name="client.compile" description="compiles the flex sources">
+    <target name="client.compile" >
 
         <mxmlc file="flex/src/${app.name}.mxml"
                output="${deploy.dir}/${app.name}/${app.name}.swf"
@@ -172,7 +168,7 @@
                 output="${deploy.dir}/${app.name}"/>
     </target>
 
-    <target name="client.deploy">
+    <target name="deploy">
         <copy todir="${deploy.dir}/pages">
             <fileset dir="server/src/de/ama/pages">
                 <include name="*.htm"/>
@@ -213,9 +209,9 @@
         </ftp>
     </target>
     
-    <target name="build.server" description="make server " depends="server.compile.environment,generate,copy.server.sources,server.compile.generated,server.enhance,client.deploy" />
+    <target name="build.server" description="make server " depends="server.compile.environment,generate,copy.server.sources,server.compile.generated,server.enhance,deploy" />
     <target name="build.client" description="make client " depends="client.clean,copy.client.sources,client.compile,client.wrapper" >
-        <antcall target="client.deploy"/>
+        <antcall target="deploy"/>
     </target>
     <target name="build.all" description="make/deploy whole project" depends="build.server,build.client" />
 
