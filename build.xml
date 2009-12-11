@@ -6,6 +6,8 @@
 
     <property name="deploy.dir" value="${home.dir}/server/webapp"/>
     <property name="root_package" value="comp"/>
+    <property name="generate.dir" value="gen"/>
+    <property name="manuel.dir" value="man"/>
 
     <target name="server.compile.environment" description="compiles the java sources">
          <delete dir="server/classes" failonerror="false"/>
@@ -43,7 +45,11 @@
 
 
     <target name="generate" depends="server.compile.environment" description="generates the sources">
-        <delete dir="flex/src/${root_package}" failonerror="false"/>
+        <delete dir="flex/${generate.dir}" failonerror="false"/>
+        <mkdir dir="flex/${generate.dir}"/>
+        <delete dir="server/${generate.dir}" failonerror="false"/>
+        <mkdir dir="server/${generate.dir}"/>
+
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
                 <fileset dir="server/lib">
@@ -54,12 +60,36 @@
             <arg value="inFile"/>
             <arg file="server/model/PMS.xml"/>
             <arg value="root_package"/>
-            <arg value="${root_package}"/>
+            <arg value="${generate.dir}/"/>
             <arg value="targets"/>
             <arg value="flex,java"/>
         </java>
     </target>
 
+    <target name="copy.sources" >
+        <delete dir="flex/src/${root_package}" failonerror="false"/>
+        <mkdir dir="flex/src/${root_package}"/>
+        <delete dir="server/src/${root_package}" failonerror="false"/>
+        <mkdir dir="server/src/${root_package}"/>
+
+        <copy todir="flex/src/${root_package}">
+            <fileset dir="flex/{generate.dir}">
+                <include name="**/**"/>
+            </fileset>
+            <fileset dir="flex/{manuel.dir}">
+                <include name="**/**"/>
+            </fileset>
+        </copy>
+        <copy todir="server/src/${root_package}">
+            <fileset dir="server/{generate.dir}">
+                <include name="**/**"/>
+            </fileset>
+            <fileset dir="server/{manuel.dir}">
+                <include name="**/**"/>
+            </fileset>
+        </copy>
+
+    </target>
 
     <target name="server.enhance" description="enhances the classes">
         <java classname="de.ama.db.tools.Enhancer" fork="true">
@@ -121,16 +151,6 @@
     </target>
 
     <target name="client.compile" description="compiles the flex sources">
-
-        <!--<mxmlc file="flex/src/backend.mxml"-->
-               <!--output="${deploy.dir}/${app.name}/backend.swf"-->
-               <!--debug="false" >-->
-
-            <!--<compiler.library-path dir="${home.dir}/flex/libs" append="true">-->
-                 <!--<include name="hessian-flex-3.1.5.swc" />-->
-           <!--</compiler.library-path>-->
-
-        <!--</mxmlc>-->
 
         <mxmlc file="flex/src/${app.name}.mxml"
                output="${deploy.dir}/${app.name}/${app.name}.swf"

@@ -3,10 +3,10 @@ import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 import de.ama.services.Environment;
 
-import hessian.client.HessianService;
+//import hessian.client.HessianService;
 
 import mx.collections.ArrayList;
-import mx.rpc.AsyncToken;
+//import mx.rpc.AsyncToken;
 import mx.rpc.IResponder;
 import mx.rpc.events.FaultEvent;
 import mx.rpc.events.ResultEvent;
@@ -17,7 +17,7 @@ public class ActionStarter implements IResponder{
     private static var _instance:ActionStarter = null;
 
     private  var blazedsStub:RemoteObject = null;
-    private  var hessianStub:HessianService = null;
+//    private  var hessianStub:HessianService = null;
 
     private  var actionIdGenerator:int = 1;
     private  var callbacks:ArrayList = new ArrayList();
@@ -33,7 +33,7 @@ public class ActionStarter implements IResponder{
     public function ActionStarter() {
 
         if (Environment.useHessianProtocoll()) {
-            hessianStub = new HessianService(Environment.getServerUrl() + "/action");
+//            hessianStub = new HessianService(Environment.getServerUrl() + "/action");
             //            hessianStub.showBusyCursor = true;
             //            hessianStub.concurrency = "single";
         } else {
@@ -67,12 +67,12 @@ public class ActionStarter implements IResponder{
         action.userSessionId = Environment.getUserSessionId();
         action.catalog = Environment.catalog;
 
-        if (hessianStub != null) {
-            var token:AsyncToken = hessianStub.execute.send(action);
-            token.addResponder(this);
-        } else {
+//        if (hessianStub != null) {
+//            var token:AsyncToken = hessianStub.execute.send(action);
+//            token.addResponder(this);
+//        } else {
             blazedsStub.execute(action);
-        }
+//        }
     }
 
 
