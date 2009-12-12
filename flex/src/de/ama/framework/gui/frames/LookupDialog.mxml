@@ -16,9 +16,9 @@
 
         import mx.managers.PopUpManager;
 
-//        private function init():void {
-//            getListPanel().reload();
-//        }
+        //        private function init():void {
+        //            getListPanel().reload();
+        //        }
 
         private var _listpane:ListPanel;
         private var _lister:String = "default";
@@ -72,12 +72,23 @@
         public function getListPanel():ListPanel {
             if (_listpane == null) {
                 _listpane = Factory.createLister(_lister);
+            }
+            if(cp.getChildren().length<3){
                 _listpane.doubleClickCallback = new Callback(this, onListDoubleClick);
-                cp.addChildAt(_listpane,1);
+                cp.addChildAt(_listpane, 1);
             }
             return _listpane;
         }
 
+
+        public function setListPanel(lp:ListPanel):void {
+            _listpane = lp;
+        }
+
+        public function reload():void{
+            getListPanel().reload();
+        }
+        
         ]]></mx:Script>
 
 

@@ -151,7 +151,7 @@
         </panel>
 
        <panel name="DokumentePanel" label="Dokumente" border="true" x="332" y="10" w="335" h="500" path="." >
-            <input label="Unterlagen" path="unterlagen" type="list">
+            <input label="Unterlagen" path="unterlagen" type="list" editable="true">
                 <lister name="UnterlagenLister" type="Unterlage">
                     <command use="CreateNodeCommand" label="neue Unterlage" icon="new"/>
                     <command use="CopyNodeCommand" label="Unterlage kopieren" icon="copy"/>
@@ -159,17 +159,17 @@
                     <column label="Nummer" path="nummer"/>
                     <column label="Art" path="art"/>
                     <column label="Bezeichnung" path="bezeichnung"/>
-                    <column label="Begin" path="begin"/>
-                    <column label="Ende" path="ende"/>
+                    <column label="Begin" path="begin" editable="false"/>
+                    <column label="Ende" path="ende" editable="false"/>
                 </lister>
             </input>
             <input label="Packstuecke" path="packstuecke" type="list">
-                <lister name="PackstueckLister" type="Packstueck">
+                <lister name="PackstueckLister" type="Packstueck" >
                     <command use="CreateNodeCommand" label="neues Packstueck" icon="new"/>
                     <command use="CopyNodeCommand" label="Packstueck kopieren" icon="copy"/>
                     <command use="DeleteNodeCommand" label="Packstueck loeschen" icon="delete"/>
-                    <column label="Nummer" path="nummer"/>
-                    <column label="Art" path="art"/>
+                    <column label="Nummer" path="nummer" editable="true"/>
+                    <column label="Art" path="art" />
                     <column label="Anzahl" path="anzahl"/>
                 </lister>
             </input>

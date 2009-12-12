@@ -26,6 +26,23 @@ import de.ama.util.Util;
 
 public class Flex_provider extends Tag {
 
+    public void generate() {
+        String name = getAttribute(NAME);
+        String use = getAttribute(USE);
+        String path = getAttribute(PATH);
+        String query = getAttribute(QUERY);
+        String type = getAttribute(TYPE);
+
+        write("        var provider:DataProvider = Factory.createProvider(" + quote(Util.saveToString(use, name))+");");
+        if(!isEmpty(path))
+        write("        provider.path="+quote(path)+";");
+        if(!isEmpty(query))
+        write("        provider.query="+quote(query)+";");
+        if(!isEmpty(type))
+        write("        provider.type="+quote(type)+";");
+
+    }
+
     @Override
     public void writeFile() {
         String name = getAttribute(NAME);

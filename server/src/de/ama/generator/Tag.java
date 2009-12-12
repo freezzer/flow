@@ -264,6 +264,19 @@ public class Tag extends XmlElement implements Const {
 
         }
     }
+    protected boolean hasChildren(String tagName, boolean recursive) {
+        ListIterator listIterator = getChildIterator();
+        while (listIterator.hasNext()) {
+            Tag tag = (Tag) listIterator.next();
+            if(tag.getName().equals(tagName)){
+                return true;
+            }
+            if(recursive){
+                return tag.hasChildren(tagName,recursive);
+            }
+        }
+        return false;
+    }
 
     protected List<Tag> getChildren(Class c) {
         List<Tag> ret = new ArrayList<Tag>();

@@ -22,12 +22,20 @@ public class SelectBoCommand extends Command{
         _dlg = LookupDialog(PopUpManager.createPopUp(Container(Application.application), LookupDialog, true));
         _dlg.x = (Application.application.width / 2 - (_dlg.width / 2));
         _dlg.y = (Application.application.height / 2 - (_dlg.height / 2));
-        _dlg.setLister(getProperty("lister"));
         _dlg.setCallback(new Callback(this, lookupDone));
 
-        _dlg.getListPanel().setDataProvider(getProperty("provider","LookupDataProvider"));
-        _dlg.getListPanel().getDataProvider().setInvoker(invoker);
-        _dlg.getListPanel().reload();
+        if(invoker is ProxyField){
+            var pf:ProxyField = ProxyField(invoker);
+            if(!pf.getListPanel().hasDataProvider()){
+                var lookupDataProvider:LookupDataProvider = new LookupDataProvider();
+                pf.getListPanel().setDataProvider(lookupDataProvider)
+            }
+
+            pf.getListPanel().getDataProvider().invoker = pf;
+
+            _dlg.setListPanel(pf.getListPanel());
+            _dlg.reload();
+        }
 
     }
 

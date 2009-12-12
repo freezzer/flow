@@ -42,7 +42,11 @@ public class ListPanel extends VBox implements Panel,Invoker{
     private var _dataProviderName:String=null;
     private var _dataProvider:DataProvider=null;
 
-    public function setDataProvider(value:String):void {
+    public function setDataProvider(dp:DataProvider):void {
+        _dataProvider = dp;
+    }
+
+    public function set dataProviderName(value:String):void {
         _dataProviderName = value;
     }
 
@@ -102,9 +106,9 @@ public class ListPanel extends VBox implements Panel,Invoker{
     public function onItemDoubleClick(le:ListEvent):void {
     	if(_doubleClickCallback!=null){
             _doubleClickCallback.execute(this)
+        } else {
+            startDefaultCommands();
         }
-        startDefaultCommands();
-
     }
 
 
@@ -235,14 +239,18 @@ public class ListPanel extends VBox implements Panel,Invoker{
         return selectionModel;
     }
 
+    public function hasDataProvider():Boolean {
+        return _dataProvider != null;
+    }
+
     public function getDataProvider():DataProvider{
         if(_dataProvider==null && !Util.isEmpty(_dataProviderName)){
            _dataProvider = Factory.createProvider(_dataProviderName);
-           _dataProvider.setInvoker(this);
+           _dataProvider.invoker=this;
         }
         if(_dataProvider==null){
            _dataProvider = new QueryDataProvider();
-           _dataProvider.setInvoker(this);
+           _dataProvider.invoker=this;
         }
         return _dataProvider;
     }

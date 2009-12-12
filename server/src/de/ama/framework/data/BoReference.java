@@ -32,12 +32,7 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
 
     public C getBo() {
         if(bo==null && hasReference()){
-            try {
-                bo =  (C) DB.session().getObject(new Query(getType(),"oid",Query.EQ, getOid()));
-            } catch (DBException e) {
-                bo=null;
-                oid=0;
-            }
+           bo =  (C) DB.session().getObject(new Query(getType(),"oid",Query.EQ, getOid()));
         }
         return bo;
     }

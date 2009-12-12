@@ -1,6 +1,7 @@
 package de.ama.framework.gui.fields {
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.EditPanel;
+import de.ama.framework.gui.frames.Editor;
 import de.ama.framework.util.Util;
 
 import de.ama.services.Environment;
@@ -23,6 +24,7 @@ public class EditField extends Canvas implements GUIComponent {
     private var _fullpath:String;
     private var _localpath:String;
     private var _labelWidth:int = 160;
+    private var _editable:Boolean = true;
 
 
     public function EditField(caption:String="EditField", path:String=null) {
@@ -67,8 +69,25 @@ public class EditField extends Canvas implements GUIComponent {
         writeToData();
     }
 
+    public function get editable():Boolean{
+        return _editable;
+    }
+
+    public function set editable(b:Boolean):void{
+        _editable = b;
+        inputComponent.setStyle("editable",_editable);
+    }
+
+    public function setReadOnly():void{
+        inputComponent.setStyle("editable",false);
+    }
+
+    public function resetReadOnly():void{
+        inputComponent.setStyle("editable",_editable);
+    }
+
     public function writeToData():void {
-        var d:BusinessObject = editPanel.getData();
+        var d:BusinessObject = parentEditPanel.getData();
         d.setValue(localpath, getValue());
     }
 
@@ -138,7 +157,7 @@ public class EditField extends Canvas implements GUIComponent {
 
     public function get fullpath():String {
         if(Util.isEmpty(_fullpath)){
-            _fullpath = editPanel.path +"/"+ _localpath
+            _fullpath = parentEditPanel.path +"/"+ _localpath
         }
         return _fullpath;
     }
@@ -151,10 +170,14 @@ public class EditField extends Canvas implements GUIComponent {
        TextInput(_input).text = Util.saveToString(val);
     }
 
-    public function get editPanel():EditPanel {
+    public function get parentEditPanel():EditPanel {
         return EditPanel(parent);
     }
     
+    public function get parentEditor():Editor {
+        return Util.findParentEditor(this);
+    }
+
     ////////////////////////////////////// design mode ///////////////////////////////////////////////
 
     protected function onClick(event:MouseEvent):void {
@@ -182,7 +205,8 @@ public class EditField extends Canvas implements GUIComponent {
            return "insertTextField(\""+label+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
         }
     }
-    
+
+
 
 }
 }

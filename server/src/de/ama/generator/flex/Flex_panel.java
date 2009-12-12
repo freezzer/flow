@@ -102,8 +102,9 @@ public class Flex_panel extends Tag {
         writeLine();
         write("package "+pckg+" {");
         write("import de.ama.framework.gui.fields.*;");
+        write("import de.ama.framework.gui.frames.*;");
+        write("import de.ama.framework.data.*;");
         write("import de.ama.services.Factory;");
-        write("import de.ama.framework.gui.frames.EditPanel;");
 
         write("public class "+name+" "+" extends EditPanel { ");
         write("    public function "+name+"() {");

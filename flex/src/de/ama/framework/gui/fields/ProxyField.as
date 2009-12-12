@@ -5,6 +5,7 @@ import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.BoReference;
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
+import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 
@@ -17,6 +18,9 @@ public class ProxyField extends EditField implements Invoker{
     private var _guiRepPath:String;
     private var _type:String;
     private var _searchButton:CommandButton;
+
+    private var _lister:String=null;
+    private var _listPanel:ListPanel;
 
     private var _editor:String=null;
     private var _editButton:CommandButton;
@@ -97,12 +101,23 @@ public class ProxyField extends EditField implements Invoker{
     }
 
 
-    public function set lister(listerName:String):void {
-        _searchButton.command.setProperty("lister",listerName);
+    public function set lister(value:String):void {
+        _lister = value;
     }
 
-    public function set provider(providerName:String):void {
-        _searchButton.command.setProperty("provider",providerName);
+    public function get lister():String {
+        return _lister;
+    }
+
+    public function setListPanel(value:ListPanel):void {
+        _listPanel = value;
+    }
+
+    public function getListPanel():ListPanel {
+        if(_listPanel==null){
+           _listPanel = Factory.createLister(_lister); 
+        }
+        return _listPanel;
     }
 
     override public function layout():void {
@@ -129,7 +144,7 @@ public class ProxyField extends EditField implements Invoker{
 
     override public function writeToData():void {
         if(hasData()){
-           var d:BusinessObject = editPanel.getData();
+           var d:BusinessObject = parentEditPanel.getData();
            d.setValue(localpath, new BoReference(getData()));
         }
     }
@@ -180,7 +195,5 @@ public class ProxyField extends EditField implements Invoker{
         }
     }
 
-    public function reload():void {
-
-    }}
+}
 }

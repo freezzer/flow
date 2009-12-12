@@ -95,6 +95,7 @@
         y CDATA #IMPLIED
         w CDATA #IMPLIED
         h CDATA #IMPLIED
+        editable CDATA #IMPLIED
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
@@ -118,6 +119,7 @@
         query CDATA #IMPLIED
         name CDATA #IMPLIED
         use CDATA #IMPLIED
+        path CDATA #IMPLIED
         type CDATA #REQUIRED>
 
 <!ELEMENT lister (command|column|provider)*>
@@ -130,6 +132,7 @@
 <!ATTLIST column
         label CDATA #REQUIRED
         searchable CDATA #IMPLIED
+        editable CDATA #IMPLIED
         path CDATA #REQUIRED>
 <!ELEMENT bootstrap (#PCDATA)>
 <!ELEMENT menuitem (command)*>
