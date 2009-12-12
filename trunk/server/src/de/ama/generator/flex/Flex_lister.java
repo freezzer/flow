@@ -24,9 +24,18 @@ import de.ama.generator.Visitor;
 import de.ama.generator.VisitorGenerate;
 import de.ama.util.Util;
 
-
-
 public class Flex_lister extends Tag {
+
+    public void generate() {
+        String name = getAttribute(NAME);
+        String use = getAttribute(USE);
+
+        write("        var lister:ListPanel = Factory.createLister(" + quote(Util.saveToString(use, name))+");");
+        if(hasChildren(PROVIDER,false)){
+            visitChildren(PROVIDER);
+            write("        lister.setDataProvider(provider)");
+        }
+    }
 
     public void writeFile() {
         String name = getAttribute(NAME);

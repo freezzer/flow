@@ -28,6 +28,7 @@ public class Flex_input extends Tag {
     public void generate() {
         String label = getRequiredAttribute(LABEL);
         String type = getAttribute(TYPE, "String");
+        boolean editable = getAttribute(EDITABLE, true);
         String path = getRequiredAttribute(PATH);
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
@@ -51,6 +52,7 @@ public class Flex_input extends Tag {
             height= "," + h;
         }
 
+        write(" ");
         if (STRING.equalsIgnoreCase(type)) {
             write("        field = insertTextField(\"" + label + "\",\"" + path + "\"" + xylw+ width+");");
         } else if (DATE.equalsIgnoreCase(type)) {
@@ -64,6 +66,10 @@ public class Flex_input extends Tag {
             write("        field = insertListField(\"" + label + "\",\"" + path + "\",\"" + lister +"\""+ xylw+width+height+ ");");
         } else if (AREA.equalsIgnoreCase(type)) {
             write("        field = insertTextAreaField(\"" + label + "\",\"" + path + "\"" + xylw+width+height+ ");");
+        }
+
+        if(!editable){
+            write("        field.editable=false;");
         }
     }
 

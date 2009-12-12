@@ -31,46 +31,34 @@ public class Flex_lookup extends Tag {
         String type = getRequiredAttribute(TYPE);
         String path = getRequiredAttribute(PATH);
         String guirep = getRequiredAttribute(GUIREP);
-        String editor = getAttribute(EDITOR,"");
-        String lister = getAttribute(LISTER,"");
-        String  lw = getParentAttribute(LABELWIDTH,"");
+        String editor = getAttribute(EDITOR, "");
+        String lw = getParentAttribute(LABELWIDTH, "");
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
         int w = getAttribute(W, -1);
 
-        String xylw="";
-        if(x>=0 || y>=0){
-            xylw= " ," + x + "," + y;
-            if(!isEmpty(lw)){
-                xylw += ","+lw;
+        String xylw = "";
+        if (x >= 0 || y >= 0) {
+            xylw = " ," + x + "," + y;
+            if (!isEmpty(lw)) {
+                xylw += "," + lw;
             }
         }
-        String width="";
-        if(w >=0 ){
-            width= " ," + w ;
+        String width = "";
+        if (w >= 0) {
+            width = " ," + w;
         }
 
-        write("        field = insertProxyField(" + quote(type) + "," + quote(guirep) + "," + quote(label) + "," + quote(path) + xylw+ width+");");
-        if(!isEmpty(editor)){
-        write("        ProxyField(field).editor = "+quote(editor)+";");
+        write(" ");
+        write("        field = insertProxyField(" + quote(type) + "," + quote(guirep) + "," + quote(label) + "," + quote(path) + xylw + width + ");");
+        if (!isEmpty(editor)) {
+            write("        ProxyField(field).editor = " + quote(editor) + ";");
         }
-        if(!isEmpty(lister)){
-           write("        ProxyField(field).lister = "+quote(lister)+";");
-        } else {
-            visitChildren(LISTER, new Visitor(){
-                public void visit(Tag visitor) {
-                    String lister = visitor.getAttribute(USE,visitor.getAttribute(NAME));
-                    write("        ProxyField(field).lister = "+quote(lister)+";");
-                }
-            },false);
-            visitChildren(PROVIDER, new Visitor(){
-                public void visit(Tag visitor) {
-                    String providername = visitor.getAttribute(USE,visitor.getAttribute(NAME));
-                    write("        ProxyField(field).provider = "+quote(providername)+";");
-                }
-            },true);
+        if (hasChildren(LISTER,false)) {
+            visitChildren(LISTER);
+            write("        ProxyField(field).setListPanel(lister);");
+        }
 
-        }
     }
 
 }

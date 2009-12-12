@@ -64,8 +64,10 @@
 
     <target name="copy.server.sources" >
         <delete dir="server/src/${root_package}" failonerror="false"/>
-        <copy todir="server/src/${root_package}" overwrite="true">
+        <copy todir="server/src/${root_package}" >
             <fileset dir="generated/java/${root_package}" />
+        </copy>
+        <copy todir="server/src/${root_package}" overwrite="true">
             <fileset dir="server/man/${root_package}" />
         </copy>
     </target>

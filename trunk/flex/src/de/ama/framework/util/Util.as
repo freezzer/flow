@@ -2,6 +2,7 @@ package de.ama.framework.util
 {
 import de.ama.framework.gui.frames.AdvanceTabNavigator;
 import de.ama.framework.gui.frames.EditPanel;
+import de.ama.framework.gui.frames.Editor;
 import de.ama.framework.gui.frames.InfoDialog;
 import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.gui.frames.TreeEditor;
@@ -58,6 +59,19 @@ public class Util
             if (comp.parent == null) return null;
             if (comp.parent is EditPanel) return EditPanel(comp.parent);
             return findParentEditPanel(UIComponent(comp.parent));
+        }
+
+        return null;
+    }
+
+    public static function findParentEditor(comp:Object):Editor {
+        if (comp == null) return null;
+        if (comp is Editor) return Editor(comp);
+
+        if (comp is DisplayObject) {
+            if (comp.parent == null) return null;
+            if (comp.parent is Editor) return Editor(comp.parent);
+            return findParentEditor(UIComponent(comp.parent));
         }
 
         return null;

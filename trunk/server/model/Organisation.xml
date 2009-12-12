@@ -71,7 +71,7 @@
                 <input x="10" y="170" w="575" labelwidth="65" h="115" label="ToDo" path="todo" type="area" />
                 <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="nachname" editor="PersonEditor">
                     <lister use="PersonLister" type="Person" >
-                        <provider type="Person" name="OrgaPersonenProvider" />
+                        <provider type="Person" use="ModelDataProvider" path="personen"/>
                     </lister>
                 </lookup>
                 <lookup x="258" y="18" w="325" labelwidth="65" label="Erfasser" path="erfasser" type="Person" guirep="nachname" />

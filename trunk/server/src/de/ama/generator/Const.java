@@ -41,6 +41,7 @@ public interface Const {
     public static final String MANDATORY = "mandatory";
     public static final String PERSISTENT = "persistent";
     public static final String PATH = "path";
+    public static final String QUERY = "query";
     public static final String GUIREP = "guirep";
     public static final String USE = "use";
     public static final String FIELD = "field";

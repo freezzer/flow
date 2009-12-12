@@ -84,9 +84,11 @@ public class Factory {
     }
 
     public static function createPanel(name:String):EditPanel {
-        var c:Class = panel_dictionary[name];
-        if (c != null) {
-            return EditPanel(new c());
+        if(!Util.isEmpty(name)){
+            var c:Class = panel_dictionary[name];
+            if (c != null) {
+                return EditPanel(new c());
+            }
         }
 
         var ret:EditPanel = new EditPanel();  // DefaultPanel
@@ -101,9 +103,11 @@ public class Factory {
     }
 
     public static function createLister(name:String):ListPanel {
-        var c:Class = lister_dictionary[name];
-        if (c != null) {
-            return ListPanel(new c());
+        if(!Util.isEmpty(name)){
+            var c:Class = lister_dictionary[name];
+            if (c != null) {
+                return ListPanel(new c());
+            }
         }
 
         var ret:ListPanel = new ListPanel(true);  // DefaultPanel
