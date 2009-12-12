@@ -7,7 +7,7 @@
            this code is property of Andreas Marochow
     ]]></comment>
 
-    <!--<import file="Vorgang.xml"/>-->
+    <import file="Vorgang.xml"/>
     <import file="Person.xml"/>
     <import file="Organisation.xml"/>
 
@@ -30,6 +30,12 @@
                         </menuitem>
                         <menuitem>
                             <command label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"/>
                         </menuitem>
                     </menu>
                     <menu name="Admin">
