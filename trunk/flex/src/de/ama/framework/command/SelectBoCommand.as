@@ -33,8 +33,10 @@ public class SelectBoCommand extends Command{
 
             pf.getListPanel().getDataProvider().invoker = pf;
 
-            _dlg.setListPanel(pf.getListPanel());
-            _dlg.reload();
+            _dlg.callLater(function ():void {
+                _dlg.setListPanel(pf.getListPanel());
+                _dlg.reload();
+            });
         }
 
     }
