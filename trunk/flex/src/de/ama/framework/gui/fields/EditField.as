@@ -21,6 +21,8 @@ public class EditField extends Canvas implements GUIComponent {
     protected var _label:Label;
     protected var _input:UIComponent;
 
+    private var _defaultValue:String;
+
     private var _fullpath:String;
     private var _localpath:String;
     private var _labelWidth:int = 160;
@@ -61,13 +63,28 @@ public class EditField extends Canvas implements GUIComponent {
     protected function createAditionals():void {
     }
 
-
-    protected function onInputCanged(e:Event):void {
+    public function get parentEditPanel():EditPanel {
+        return EditPanel(parent);
+    }
+    
+    public function get parentEditor():Editor {
+        return Util.findParentEditor(this);
     }
 
-    protected function onFocusLost(e:FocusEvent):void {
-        writeToData();
+    ////////////////////////////////////// layout ///////////////////////////////////////////////
+
+    public function layout():void{
+        _input.x = _labelWidth +10;
+        _input.width = super.width - 15 - _labelWidth;
+        _label.width = _labelWidth;
     }
+
+    override public function set width(w:Number):void {
+        super.width = w;
+        labelWidth = _labelWidth;
+    }
+
+    ////////////////////////////////////// editable ///////////////////////////////////////////////
 
     public function get editable():Boolean{
         return _editable;
@@ -86,10 +103,33 @@ public class EditField extends Canvas implements GUIComponent {
         inputComponent.setStyle("editable",_editable);
     }
 
-    public function writeToData():void {
-        var d:BusinessObject = parentEditPanel.getData();
-        d.setValue(localpath, getValue());
+
+
+    ////////////////////////////////////// input ///////////////////////////////////////////////
+
+    public function createInput():void{
+        _input = new TextInput();
+        _input.x = _labelWidth+10;
+        _input.width = super.width - 15 - _labelWidth;
+        addChild(_input);
     }
+
+    public function get inputComponent():UIComponent {
+        if(_input==null){
+           createInput();
+        }
+
+        return _input;
+    }
+
+    protected function onInputCanged(e:Event):void {
+    }
+
+    protected function onFocusLost(e:FocusEvent):void {
+        writeToData();
+    }
+
+    ////////////////////////////////////// label ///////////////////////////////////////////////
 
     public function createLabel(caption:String):void{
         _label = new Label();
@@ -100,11 +140,8 @@ public class EditField extends Canvas implements GUIComponent {
         addChild(_label);
     }
 
-    public function createInput():void{
-        _input = new TextInput();
-        _input.x = _labelWidth+10;
-        _input.width = super.width - 15 - _labelWidth;
-        addChild(_input);
+    public function get labelComponent():UIComponent {
+        return _label;
     }
 
     public function set labelWidth(w:int):void{
@@ -112,20 +149,10 @@ public class EditField extends Canvas implements GUIComponent {
         layout();
     }
 
-    public function layout():void{
-        _input.x = _labelWidth +10;
-        _input.width = super.width - 15 - _labelWidth;
-        _label.width = _labelWidth;
-    }
-
     public function get labelWidth():int {
         return _labelWidth;
     }
 
-    override public function set width(w:Number):void {
-        super.width = w;
-        labelWidth = _labelWidth;
-    }
 
     public override function get label():String {
         return _label.text;
@@ -138,18 +165,46 @@ public class EditField extends Canvas implements GUIComponent {
         }
     }
 
-    public function get inputComponent():UIComponent {
-        if(_input==null){
-           createInput();
+    ////////////////////////////////////// value ///////////////////////////////////////////////
+
+    public function getValue():Object {
+       return TextInput(_input).text;
+    }
+
+    public function setValue(val:Object):void {
+       TextInput(_input).text = Util.saveToString(val);
+    }
+
+    public function isEmpty():Boolean {
+       return Util.isEmpty(getInputText());
+    }
+
+    public function getInputText():String {
+       return TextInput(_input).text;
+    }
+
+    public function get defaultValue():String {
+        return _defaultValue;
+    }
+
+    public function set defaultValue(value:String):void {
+        _defaultValue = value;
+    }
+
+    public function initDefaultValue():void {
+        if(isEmpty()){
+            if(defaultValue.indexOf("{system.user.name}")==0){
+               setValue(Environment.getUserName());
+            } else {
+               setValue(defaultValue);
+            }
         }
-
-        return _input;
     }
 
-    public function get labelComponent():UIComponent {
-        return _label;
+    public function writeToData():void {
+        var d:BusinessObject = parentEditPanel.getData();
+        d.setValue(localpath, getValue());
     }
-
 
     public function get localpath():String {
         return _localpath;
@@ -160,22 +215,6 @@ public class EditField extends Canvas implements GUIComponent {
             _fullpath = parentEditPanel.path +"/"+ _localpath
         }
         return _fullpath;
-    }
-
-    public function getValue():Object {
-       return TextInput(_input).text;
-    }
-
-    public function setValue(val:Object):void {
-       TextInput(_input).text = Util.saveToString(val);
-    }
-
-    public function get parentEditPanel():EditPanel {
-        return EditPanel(parent);
-    }
-    
-    public function get parentEditor():Editor {
-        return Util.findParentEditor(this);
     }
 
     ////////////////////////////////////// design mode ///////////////////////////////////////////////
@@ -205,7 +244,6 @@ public class EditField extends Canvas implements GUIComponent {
            return "insertTextField(\""+label+"\",\""+localpath+"\","+x+","+y+","+labelWidth+","+width+");";
         }
     }
-
 
 
 }

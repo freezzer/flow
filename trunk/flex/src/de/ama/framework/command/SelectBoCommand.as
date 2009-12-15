@@ -1,11 +1,8 @@
 package de.ama.framework.command {
-import de.ama.framework.data.DataProvider;
 import de.ama.framework.data.LookupDataProvider;
 import de.ama.framework.gui.fields.ProxyField;
 import de.ama.framework.gui.frames.LookupDialog;
 import de.ama.framework.util.Callback;
-import de.ama.framework.util.Util;
-import de.ama.services.Factory;
 
 import mx.core.Application;
 import mx.core.Container;

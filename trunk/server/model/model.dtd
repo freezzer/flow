@@ -99,6 +99,7 @@
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
+        default CDATA #IMPLIED
         type CDATA #IMPLIED>
 <!ELEMENT lookup (lister)*>
 <!ATTLIST lookup
