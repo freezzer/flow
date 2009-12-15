@@ -32,6 +32,9 @@ public class BoolField extends EditField{
         return CheckBox(_input).selected;
     }
 
+    override public function initDefaultValue():void {
+    }
+    
     override public function getSourceCode(xml:Boolean):String {
         if(xml){
             return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"boolean\" />";

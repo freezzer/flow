@@ -58,7 +58,9 @@ public class ListField extends EditField{
         ListPanel(_input).setDataTable(val as Array);
     }
 
-
+    override public function initDefaultValue():void {
+    }
+    
     override public function getValue():Object {
         return ListPanel(_input).getDataTable();
     }

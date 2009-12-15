@@ -79,6 +79,7 @@
                 if (childs[i] is EditField) {
                     f = childs[i];
                     f.setValue(data.getValue(f.localpath));
+                    f.initDefaultValue();
                 } else if (childs[i] is EditPanel) {
                     p = childs[i];
                     p.setData(BusinessObject(data.getValue(p.path)));

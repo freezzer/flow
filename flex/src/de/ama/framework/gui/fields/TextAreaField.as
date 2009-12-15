@@ -29,6 +29,9 @@ public class TextAreaField extends EditField{
         return TextArea(_input).text;
     }
 
+    override public function initDefaultValue():void {
+    }
+    
     override public function set height(h:Number):void {
         super.height = h;
         layout();

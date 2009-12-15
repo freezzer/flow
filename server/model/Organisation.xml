@@ -11,10 +11,11 @@
             <collection name="personen" type="Person" create="1"/>
             <collection name="notizen" create="1">
                 <bean name="Notiz">
-                    <field name="kontaktperson" type="Person" reference="true"/>
-                    <field name="erfasser" type="Person" reference="true"/>
+                    <field name="erfasser"   type="String"/>
                     <field name="datum" type="date"/>
+                    <field name="kontaktperson" type="Person" reference="true"/>
                     <field name="text"/>
+                    <field name="assignedTo" type="Person" reference="true"/>
                     <field name="todo"/>
                 </bean>
             </collection>
@@ -38,11 +39,11 @@
             </lister>
 
             <tree_editor name="OrganisationenEditor" label="Orga {name} " type="Organisation">
-                <tree_node label="Organisation" path="." type="Organisation" icon="building" open="true" panel="default">
+                <tree_node label="Organisation {name}" path="." type="Organisation" icon="building" open="true" panel="default">
                     <tree_node label="Adresse {ort}" path="adresse" icon="form" open="true" type="Adresse"  panel="AdressePanel" />
                     <tree_node label="Personen" path="personen" icon="table" open="true" type="Person"  lister="PersonLister">
                         <command use="CreateNodeCommand" label="neue Person" icon="new"/>
-                        <tree_node label="Kontakt {name}" path="personen" icon="user" open="true" type="Person"
+                        <tree_node label="Kontakt {nachname}" path="personen" icon="user" open="true" type="Person"
                                    panel="default">
                             <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
                             <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
@@ -51,7 +52,7 @@
                     </tree_node>
                     <tree_node label="Notizen" path="notizen" icon="table" open="true" type="Notiz"  lister="default">
                         <command use="CreateNodeCommand" label="neue Notiz" icon="new"/>
-                        <tree_node label="Notiz {name}" path="notizen" icon="dock" open="true" type="Notiz"
+                        <tree_node label="Notiz {datum}" path="notizen" icon="dock" open="true" type="Notiz"
                                    panel="NotizPanel">
                             <command use="CreateNodeCommand" label="neue Notiz" icon="new"/>
                             <command use="CopyNodeCommand" label="Notiz kopieren" icon="copy"/>
@@ -66,18 +67,18 @@
             </tree_editor>
 
             <panel name="NotizPanel" label="Notiz" border="true" x="25" y="25" w="595" h="360" path="." >
-                <input x="10" y="18" w="205" labelwidth="65" h="25" label="erfasst" path="datum" type="date" />
-                <input x="10" y="49" w="575" labelwidth="65" h="115" label="Notiz" path="text" type="area" />
-                <input x="10" y="170" w="575" labelwidth="65" h="115" label="ToDo" path="todo" type="area" />
-                <lookup x="10" y="296" w="400" labelwidth="65" label="Kontakt" path="kontaktperson" type="Person" guirep="nachname" editor="PersonEditor">
+                <input x="9" y="22" w="205" labelwidth="80" h="25" label="erfasst" path="datum" type="date" default="{system.user.name}"/>
+                <input x="301" y="18" w="280" labelwidth="55" label="Erfasser" path="erfasser" type="string"/>
+                <input x="8" y="63" w="575" labelwidth="80" h="115" label="Notiz" path="text" type="area" />
+                <lookup x="9" y="184" w="354" labelwidth="80" label="Kontakt" path="kontaktperson" type="Person" guirep="nachname" editor="PersonEditor">
                     <lister use="PersonLister" type="Person" >
                         <provider type="Person" use="ModelDataProvider" path="personen"/>
                     </lister>
                 </lookup>
-                <lookup x="258" y="18" w="325" labelwidth="65" label="Erfasser" path="erfasser" type="Person" guirep="nachname" />
-            </panel>
-            
 
+                <lookup x="8" y="344" w="354" labelwidth="80" label="zugewiesen" path="assignedTo" type="Person" guirep="nachname" editor="PersonEditor" lister="PersonLister"/>
+                <input x="9" y="235" w="575" labelwidth="80" h="105" label="ToDo" path="todo" type="area" />
+            </panel>
         </view>
 
     </permission>

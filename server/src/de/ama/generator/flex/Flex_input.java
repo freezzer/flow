@@ -30,6 +30,7 @@ public class Flex_input extends Tag {
         String type = getAttribute(TYPE, "String");
         boolean editable = getAttribute(EDITABLE, true);
         String path = getRequiredAttribute(PATH);
+        String def = getAttribute(DEFAULT);
         int x = getAttribute(X, -1);
         int y = getAttribute(Y, -1);
         int w = getAttribute(W, -1);
@@ -70,6 +71,9 @@ public class Flex_input extends Tag {
 
         if(!editable){
             write("        field.editable=false;");
+        }
+        if(!isEmpty(def)){
+            write("        field.defaultValue="+quote(def)+";");
         }
     }
 
