@@ -180,7 +180,7 @@ public class EditField extends Canvas implements GUIComponent {
     }
 
     public function getInputText():String {
-       return TextInput(_input).text;
+       return String(getValue());
     }
 
     public function get defaultValue():String {
@@ -192,12 +192,13 @@ public class EditField extends Canvas implements GUIComponent {
     }
 
     public function initDefaultValue():void {
-        if(isEmpty()){
+        if(isEmpty() && !Util.isEmpty(defaultValue)){
             if(defaultValue.indexOf("{system.user.name}")==0){
                setValue(Environment.getUserName());
             } else {
                setValue(defaultValue);
             }
+            writeToData();
         }
     }
 

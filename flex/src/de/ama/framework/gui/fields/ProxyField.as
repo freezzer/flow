@@ -166,9 +166,6 @@ public class ProxyField extends EditField implements Invoker{
        TextInput(_input).text = guiRep;
     }
     
-    override public function initDefaultValue():void {
-    }
-
     public function get guiRep():String {
         if (hasData()) {
             if (Util.isEmpty(_guiRepPath)) {
