@@ -1,4 +1,6 @@
 package de.ama.framework.gui.fields {
+import de.ama.framework.util.Util;
+
 import mx.controls.DateField;
 
 public class DateField extends EditField{
@@ -32,8 +34,17 @@ public class DateField extends EditField{
     override public function getValue():Object {
         return mx.controls.DateField.dateToString(mx.controls.DateField(_input).selectedDate,FORMAT);
     }
-
+    
     override public function initDefaultValue():void {
+    	if(isEmpty() && !Util.isEmpty(defaultValue)){
+            if(defaultValue.indexOf("{system.date}")==0){
+               setValue(new Date());
+            } else {
+               setValue(defaultValue);
+            }
+            writeToData();
+        }
+
     }
       
     override public function getSourceCode(xml:Boolean):String {

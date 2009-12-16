@@ -67,8 +67,8 @@
             </tree_editor>
 
             <panel name="NotizPanel" label="Notiz" border="true" x="25" y="25" w="595" h="360" path="." >
-                <input x="9" y="22" w="205" labelwidth="80" h="25" label="erfasst" path="datum" type="date" default="{system.user.name}"/>
-                <input x="301" y="18" w="280" labelwidth="55" label="Erfasser" path="erfasser" type="string"/>
+                <input x="9" y="22" w="205" labelwidth="80" h="25" label="erfasst" path="datum" type="date" />
+                <input x="301" y="18" w="280" labelwidth="55" label="Erfasser" path="erfasser" type="string" default="{system.user.name}"/>
                 <input x="8" y="63" w="575" labelwidth="80" h="115" label="Notiz" path="text" type="area" />
                 <lookup x="9" y="184" w="354" labelwidth="80" label="Kontakt" path="kontaktperson" type="Person" guirep="nachname" editor="PersonEditor">
                     <lister use="PersonLister" type="Person" >
