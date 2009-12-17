@@ -1,8 +1,10 @@
 package de.ama.framework.data;
 
-import de.ama.util.Util;
+import de.ama.db.Embeded;
+import de.ama.db.Persistent;
+import de.ama.services.Environment;
 import de.ama.util.StringDivider;
-import de.ama.db.*;
+import de.ama.util.Util;
 
 /**
  * Created by IntelliJ IDEA.
@@ -32,7 +34,8 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
 
     public C getBo() {
         if(bo==null && hasReference()){
-           bo =  (C) DB.session().getObject(new Query(getType(),"oid",Query.EQ, getOid()));
+           Query q=new Query(getType() , new Condition("oid", Condition.EQ, getOid()));
+           bo =  (C) Environment.getPersistentService().getObject(q,true );
         }
         return bo;
     }

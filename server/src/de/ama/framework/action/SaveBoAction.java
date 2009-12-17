@@ -1,11 +1,7 @@
 package de.ama.framework.action;
 
-import de.ama.framework.data.Data;
-import de.ama.framework.data.DataDictionary;
-import de.ama.framework.data.DataTable;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
-import de.ama.util.Util;
 
 /**
  * Created by IntelliJ IDEA.

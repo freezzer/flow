@@ -4,7 +4,6 @@ import de.ama.framework.data.*;
 import de.ama.services.Environment;
 import de.ama.services.user.User;
 import de.ama.util.Util;
-import de.ama.db.Query;
 
 import java.util.Collection;
 import java.util.List;

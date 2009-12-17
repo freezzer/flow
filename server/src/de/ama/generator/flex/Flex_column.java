@@ -20,7 +20,6 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
-import de.ama.util.Util;
 
 
 public class Flex_column extends Tag {

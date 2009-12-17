@@ -1,7 +1,7 @@
 package de.ama.services.picture;
 
-import de.ama.services.user.User;
 import de.ama.db.PersistentMarker;
+import de.ama.services.user.User;
 
 /**
  * Created by IntelliJ IDEA.

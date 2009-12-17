@@ -3,7 +3,7 @@
 package de.ama.services;
 
 import de.ama.db.OidIterator;
-import de.ama.db.Query;
+import de.ama.framework.data.Query;
 
 import java.util.List;
 

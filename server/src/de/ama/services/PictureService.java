@@ -1,7 +1,7 @@
 package de.ama.services;
 
-import de.ama.services.user.User;
 import de.ama.services.picture.Picture;
+import de.ama.services.user.User;
 import org.apache.commons.fileupload.FileItem;
 
 import java.util.List;

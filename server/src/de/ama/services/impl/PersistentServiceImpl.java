@@ -1,11 +1,17 @@
 package de.ama.services.impl;
 
-import de.ama.db.*;
+import de.ama.db.DB;
+import de.ama.db.OidIterator;
+import de.ama.db.Persistent;
+import de.ama.db.Query;
+import de.ama.framework.data.Condition;
 import de.ama.services.PersistentService;
 import de.ama.services.UserService;
 import de.ama.util.Util;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * User: x
@@ -24,13 +30,14 @@ public class PersistentServiceImpl implements PersistentService {
                     getNextNumber("keepalive");
                     commit();
                     leave();
-                    Util.sleep(1000*60); // 1 Min
+                    Util.sleep(1000 * 60); // 1 Min
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }
     }
+
     Keepalive keepalive = new Keepalive();
 
 
@@ -48,7 +55,7 @@ public class PersistentServiceImpl implements PersistentService {
 
     public void stop() {
         DB.get().disconnect();
-        keepalive.stop=true;
+        keepalive.stop = true;
     }
 
     public void join(String catalog) {
@@ -64,20 +71,21 @@ public class PersistentServiceImpl implements PersistentService {
         return DB.session().getObject(oid);
     }
 
-    public List getObjects(Query query) {
-        return DB.session().getOidIterator(query).asList();
+    public List getObjects(de.ama.framework.data.Query query) {
+        return DB.session().getOidIterator(toJormQuery(query)).asList();
     }
 
-    public OidIterator getObjectsIterator(Query query) {
-        return DB.session().getOidIterator(query);
+
+    public OidIterator getObjectsIterator(de.ama.framework.data.Query query) {
+        return DB.session().getOidIterator(toJormQuery(query));
     }
 
-    public long getObjectCount(Query q) {
-        return DB.session().getObjectCount(q);
+    public long getObjectCount(de.ama.framework.data.Query q) {
+        return DB.session().getObjectCount(toJormQuery(q));
     }
 
-    public Object getObject(Query query, boolean exact) {
-        OidIterator oidIterator = DB.session().getOidIterator(query);
+    public Object getObject(de.ama.framework.data.Query query, boolean exact) {
+        OidIterator oidIterator = DB.session().getOidIterator(toJormQuery(query));
         if (exact && oidIterator.size() > 1) {
             throw new RuntimeException("more than one Object for [" + query.toString() + "] found in DB");
         }
@@ -130,8 +138,8 @@ public class PersistentServiceImpl implements PersistentService {
         }
     }
 
-    public void delete(Query q) {
-        DB.session().delete(q);
+    public void delete(de.ama.framework.data.Query q) {
+        DB.session().delete(toJormQuery(q));
     }
 
     public void commit() {
@@ -153,10 +161,43 @@ public class PersistentServiceImpl implements PersistentService {
         }
     }
 
-    public void createSequenze(String picture_number) {
+    public void createSequenze(String prefix) {
         join(DB.get().getDefault_catalog());
-        DB.session().createSequenze(picture_number, 1);
+        DB.session().createSequenze(prefix, 1);
         commit();
         leave();
     }
+
+    private Query toJormQuery(de.ama.framework.data.Query boQuery) {
+        Query ret = new Query(boQuery.getTarget());
+        ret = ret.limit(boQuery.getLimit());
+        ret = ret.orderByColumn(boQuery.getOrderColumn());
+        if (boQuery.isNegated()) {
+            ret = ret.negate();
+        }
+        return ret.and(toJormQuery(boQuery.getTarget(), boQuery.getCondition()));
+    }
+
+    private Query toJormQuery(Class target, Condition cond) {
+        Query ret = new Query(target);
+        if (cond != null) {
+            ret = new Query(target, cond.getPath(), cond.getOp(), cond.getValue());
+            if (cond.getChildren() != null) {
+                Iterator it = cond.getChildren().iterator();
+                while (it.hasNext()) {
+                    Condition c = (Condition) it.next();
+                    if (c.getConcatOperator() == c.AND) {
+                        ret.and(toJormQuery(target, c));
+                    }
+                    if (c.getConcatOperator() == c.OR) {
+                        ret.and(toJormQuery(target, c));
+                    }
+                }
+            }
+        }
+
+
+        return ret;
+    }
+
 }

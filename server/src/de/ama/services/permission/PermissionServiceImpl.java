@@ -1,6 +1,7 @@
 package de.ama.services.permission;
 
-import de.ama.db.Query;
+import de.ama.framework.data.Condition;
+import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.services.PermissionService;
 import de.ama.services.user.User;
@@ -23,9 +24,10 @@ public class PermissionServiceImpl implements PermissionService{
 
 
     public PermissionContext getPermissionContext(User user, String context) {
-        Query q_context = new Query(PermissionContext.class, "context", Query.EQ, context);
-        Query q_userId = new Query(PermissionContext.class, "userId", Query.EQ, user.getId());
-        PermissionContext ret = (PermissionContext) Environment.getPersistentService().getObject(q_context.and(q_userId),false);
+        Condition q_context = new Condition("context", de.ama.db.Query.EQ, context);
+        Condition q_userId = new Condition("userId", de.ama.db.Query.EQ, user.getId());
+        PermissionContext ret = (PermissionContext) Environment.getPersistentService().
+                getObject(new Query(PermissionContext.class,q_context.and(q_userId)),false);
 
         if(ret!=null){
            Environment.getPersistentService().releaseObject(ret);

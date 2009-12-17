@@ -21,7 +21,6 @@ package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
 import de.ama.generator.Visitor;
-import de.ama.generator.VisitorGenerate;
 import de.ama.util.Util;
 
 public class Flex_lister extends Tag {

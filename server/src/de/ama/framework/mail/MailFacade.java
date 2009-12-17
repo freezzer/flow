@@ -1,7 +1,8 @@
 package de.ama.framework.mail;
 
 import de.ama.db.DB;
-import de.ama.db.Query;
+import de.ama.framework.data.Condition;
+import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.util.StringDivider;
 import de.ama.util.Util;
@@ -316,11 +317,11 @@ public class MailFacade {
             }
         }
 
-        Query q1 = new Query(Adressat.class, "adresse", Query.EQ, internetAddress.getAddress());
-        Query q2 = new Query(Adressat.class, "name", Query.EQ, internetAddress.getPersonal());
-        Query q3 = new Query(Adressat.class, "typ", Query.EQ, Adressat.EMAIL);
+        Condition c1 = new Condition("adresse", de.ama.db.Query.EQ, internetAddress.getAddress());
+        Condition c2 = new Condition("name", de.ama.db.Query.EQ, internetAddress.getPersonal());
+        Condition c3 = new Condition("typ", de.ama.db.Query.EQ, Adressat.EMAIL);
 
-        addr = (Adressat) Environment.getPersistentService().getObject(q1.and(q2).and(q3),false);
+        addr = (Adressat) Environment.getPersistentService().getObject(new Query(Adressat.class, c1.and(c2).and(c3)),false);
 
         if(addr==null){
             addr = new Adressat(internetAddress.getAddress(),internetAddress.getPersonal(),Adressat.EMAIL);
@@ -350,11 +351,11 @@ public class MailFacade {
 
 
     public Email getMail(int nummer) {
-        return (Email) DB.session().getObject(new Query(Email.class, "msgNum", Query.EQ, new Integer(nummer)));
+        return (Email) DB.session().getObject(new de.ama.db.Query(Email.class, "msgNum", de.ama.db.Query.EQ, new Integer(nummer)));
     }
 
     public boolean isReceivedMail(int nummer) {
-        int objectCount = DB.session().getObjectCount(new Query(Email.class, "msgNum", Query.EQ, new Integer(nummer)));
+        int objectCount = DB.session().getObjectCount(new de.ama.db.Query(Email.class, "msgNum", de.ama.db.Query.EQ, new Integer(nummer)));
         if (objectCount > 0)
             System.out.println("Mail " + nummer + " is allready received.");
         return objectCount > 0;

@@ -1,6 +1,7 @@
 package de.ama.services.picture;
 
-import de.ama.db.Query;
+import de.ama.framework.data.Condition;
+import de.ama.framework.data.Query;
 import de.ama.framework.util.ImageConverter;
 import de.ama.services.Environment;
 import de.ama.services.PictureService;
@@ -75,7 +76,7 @@ public class PictureServiceImpl implements PictureService {
 
 
     public List findPictures(User user) {
-        Query q = new Query(Picture.class, "owner" , Query.EQ, user);
+        Query q = new Query(Picture.class, new Condition("owner", de.ama.db.Query.EQ, user));
         List ret = Environment.getPersistentService().getObjects(q);
         return ret;
     }
@@ -87,7 +88,7 @@ public class PictureServiceImpl implements PictureService {
 
     public Picture findPictureByThumb(String thumbName) {
         if(Util.isEmpty(thumbName)) return null;
-        return (Picture) Environment.getPersistentService().getObject(new Query(Picture.class,"thumbName",Query.EQ, thumbName),false);
+        return (Picture) Environment.getPersistentService().getObject(new Query(Picture.class,new Condition("thumbName", de.ama.db.Query.EQ, thumbName)),false);
     }
 
 
