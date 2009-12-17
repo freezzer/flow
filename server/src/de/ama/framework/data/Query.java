@@ -2,6 +2,8 @@
 
 package de.ama.framework.data;
 
+import de.ama.util.Util;
+
 import java.io.Serializable;
 
 /**
@@ -10,7 +12,7 @@ import java.io.Serializable;
  */
 public class Query implements Serializable {
 
-    private Class target;
+    private String targetName;
     private String orderColumn = "";
     private long limit = -1;
     private boolean negated = false;
@@ -37,18 +39,26 @@ public class Query implements Serializable {
     }
 
     public Query(Class target, String orderColumn, long limit, Condition condition) {
-        this.target = target;
+        this.targetName = target.getName();
         this.orderColumn = orderColumn;
         this.limit = limit;
         this.condition = condition;
     }
 
     public Class getTarget() {
-        return target;
+        return Util.createClass(targetName.replace("::","."));
     }
 
     public void setTarget(Class target) {
-        this.target = target;
+        this.targetName = target.getName();
+    }
+
+    public String getTargetName() {
+        return targetName;
+    }
+
+    public void setTargetName(String targetName) {
+        this.targetName = targetName;
     }
 
     public String getOrderColumn() {
