@@ -4,10 +4,7 @@ import org.xml.sax.EntityResolver;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import java.io.IOException;
 import java.io.InputStream;
-
-import de.ama.util.StringDivider;
 
 /**
  * Created by IntelliJ IDEA.

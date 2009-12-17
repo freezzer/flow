@@ -19,7 +19,6 @@ package de.ama.generator.java;
 
 import de.ama.generator.Tag;
 import de.ama.generator.Visitor;
-import de.ama.util.Util;
 
 public class Java_bootstrap extends Tag {
 

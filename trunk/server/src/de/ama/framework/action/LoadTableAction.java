@@ -1,6 +1,6 @@
 package de.ama.framework.action;
 
-import de.ama.db.Query;
+import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
 import de.ama.util.Util;

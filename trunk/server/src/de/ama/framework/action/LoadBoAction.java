@@ -1,10 +1,8 @@
 package de.ama.framework.action;
 
-import de.ama.framework.data.Data;
 import de.ama.framework.data.BoReference;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
-import de.ama.db.Query;
 
 /**
  * Created by IntelliJ IDEA.

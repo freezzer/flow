@@ -17,14 +17,13 @@ package de.ama.generator;
 
 */
 
+import de.ama.framework.util.DTDResolver;
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
-
-import de.ama.framework.util.DTDResolver;
 
 
 public class OutputWriter {

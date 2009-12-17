@@ -20,7 +20,6 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
-import de.ama.generator.Visitor;
 
 
 public class Flex_menu extends Tag {

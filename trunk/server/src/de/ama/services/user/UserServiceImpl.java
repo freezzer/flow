@@ -1,9 +1,9 @@
 package de.ama.services.user;
 
-import de.ama.db.Query;
+import de.ama.framework.data.Condition;
+import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.services.UserService;
-import de.ama.services.user.UserSession;
 import de.ama.util.Util;
 
 import java.util.HashMap;
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("password required") ;
         }
 
-        long count = Environment.getPersistentService().getObjectCount(new Query(User.class, "name", Query.EQ, name));
+        long count = Environment.getPersistentService().getObjectCount(new Query(User.class, new Condition("name", de.ama.db.Query.EQ, name)));
 
         if (count == 0) {
             User user = new User(name, pwd);
@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         user = (User) Environment.getPersistentService().getObject(user.getId());
 
         if (!Util.saveToString(user.getName()).equals(name)) {
-            long count = Environment.getPersistentService().getObjectCount(new Query(User.class, "name", Query.EQ, name));
+            long count = Environment.getPersistentService().getObjectCount(new Query(User.class, new Condition("name", de.ama.db.Query.EQ, name)));
             if(count>0){
                 return "failed";
             }
@@ -115,8 +115,8 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("password required") ;
         }
 
-        List users = Environment.getPersistentService().getObjects(new Query(User.class, "name", Query.EQ, name).
-                                                                    and(new Query(User.class, "pwd", Query.EQ, pwd)));
+        List users = Environment.getPersistentService().getObjects(new Query(User.class, new Condition("name", de.ama.db.Query.EQ, name).
+                                                                    and(new Condition("pwd", de.ama.db.Query.EQ, pwd))));
         if (users.size() == 0) {
             return null;
         }

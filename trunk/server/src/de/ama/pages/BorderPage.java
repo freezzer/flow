@@ -1,6 +1,6 @@
 package de.ama.pages;
 
-import de.ama.db.Query;
+import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.services.user.User;
 import org.apache.click.Page;
