@@ -21,46 +21,10 @@
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" readonly="true" name="Default" comment="default value,">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_panel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_panel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_lookup.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_lookup.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_input.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_input.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/PictureService.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/PictureService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/user/UserSession.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/user/UserSession.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/user/UserServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/user/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/picture/PictureServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/picture/PictureServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_permission.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_permission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/mail/MailFacade.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/mail/MailFacade.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Condition.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/pages/BorderPage.java" afterPath="$PROJECT_DIR$/server/src/de/ama/pages/BorderPage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionServiceImpl.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/PersistentService.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/PersistentService.java" />
+    <list default="true" readonly="true" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menu.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menu.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/picture/Picture.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/picture/Picture.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/util/DTDResolver.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/util/DTDResolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_lister.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_lister.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadTableAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadTableAction.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/Condition.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/ActionScriptAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menubar.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menubar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menuitem.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_menuitem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadBoAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/LoadBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/data/BoReference.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/data/BoReference.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bootstrap.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/DeleteBoAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/DeleteBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/framework/action/SaveBoAction.java" afterPath="$PROJECT_DIR$/server/src/de/ama/framework/action/SaveBoAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_provider.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_provider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_tabbed_application_panel.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_tabbed_application_panel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/services/picture/PictureData.java" afterPath="$PROJECT_DIR$/server/src/de/ama/services/picture/PictureData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -150,19 +114,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Query.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java">
+      <file leaf-file-name="Query.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="164" selection-end="326" vertical-scroll-proportion="0.0">
+            <state line="13" column="36" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Query.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as">
+      <file leaf-file-name="ListPanel.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/ListPanel.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
+            <state line="41" column="57" selection-start="1493" selection-end="1493" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -171,19 +135,37 @@
       <file leaf-file-name="Condition.as" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/Condition.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="27" selection-start="597" selection-end="603" vertical-scroll-proportion="0.0">
+            <state line="13" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PersistentServiceImpl.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="StringTokenizer.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/StringTokenizer.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PersistentServiceImpl.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="56" selection-start="593" selection-end="593" vertical-scroll-proportion="0.46484375">
+            <state line="168" column="52" selection-start="4471" selection-end="4471" vertical-scroll-proportion="0.0">
               <folding>
                 <marker date="1261064439718" expanded="true" signature="38:357" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LogoutAction.as" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/LogoutAction.as">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -192,24 +174,6 @@
         <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/DataAction.as">
           <provider selected="true" editor-type-id="text-editor">
             <state line="1" column="0" selection-start="34" selection-end="91" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ActionStarter.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/ActionStarter.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FileAction.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/FileAction.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -224,19 +188,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IDisplayObjectContainerInterface.as" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../adobe/builder/sdks/3.4.0/frameworks/projects/framework/src/mx/core/IDisplayObjectContainerInterface.as">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="13" selection-start="708" selection-end="708" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Condition.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Condition.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="84" column="31" selection-start="1798" selection-end="1798" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Query.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="48" column="62" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.47887325">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -664,6 +630,78 @@
           <option name="myItemId" value="framework" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gui" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="de" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="gui" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="frames" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flow" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="flex" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="src" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="de" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ama" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="framework" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+        </PATH_ELEMENT>
       </PATH>
       <PATH>
         <PATH_ELEMENT>
@@ -927,15 +965,15 @@
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="7" side_tool="false" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5428894" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.080906145" sideWeight="0.68171555" order="1" side_tool="false" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5428894" sideWeight="0.5" order="1" side_tool="false" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.080906145" sideWeight="0.44920993" order="1" side_tool="false" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38939053" sideWeight="0.5" order="3" side_tool="false" />
       <window_info id="Dataflow to this" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37471783" sideWeight="0.5" order="8" side_tool="false" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31038374" sideWeight="0.5" order="9" side_tool="false" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31038374" sideWeight="0.5" order="9" side_tool="false" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33090615" sideWeight="0.68171555" order="0" side_tool="false" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33090615" sideWeight="0.44920993" order="0" side_tool="false" />
       <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3295711" sideWeight="0.5" order="2" side_tool="false" />
@@ -960,7 +998,7 @@
     <option name="PERFORM_CHECKOUT_IN_BACKGROUND" value="true" />
     <option name="PERFORM_ADD_REMOVE_IN_BACKGROUND" value="true" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="default value," />
+    <option name="LAST_COMMIT_MESSAGE" value="query" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="REFORMAT_BEFORE_FILE_COMMIT" value="false" />
@@ -977,6 +1015,7 @@
     <MESSAGE value="manuel coding" />
     <MESSAGE value="&#10;" />
     <MESSAGE value="default value," />
+    <MESSAGE value="query" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1032,33 +1071,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/mail/MailFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="320" column="0" selection-start="13231" selection-end="13231" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1261062232531" expanded="false" signature="39:630" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/permission/PermissionServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="30" column="86" selection-start="1081" selection-end="1081" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1261062233046" expanded="false" signature="37:349" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/BoReference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="32" selection-start="590" selection-end="590" vertical-scroll-proportion="0.0">
-          <folding>
-            <marker date="1261062232812" expanded="true" signature="39:181" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/de/ama/pages/BorderPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="21" column="77" selection-start="628" selection-end="628" vertical-scroll-proportion="0.0">
@@ -1078,13 +1090,6 @@
     <entry file="file://$PROJECT_DIR$/../gna-jorm/source/de/ama/util/Composite.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="38" column="13" selection-start="966" selection-end="966" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="164" selection-end="326" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1124,6 +1129,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/action/LogoutAction.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/StringTokenizer.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/ListPanel.as">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="57" selection-start="1493" selection-end="1493" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Condition.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="84" column="31" selection-start="1798" selection-end="1798" vertical-scroll-proportion="0.0">
@@ -1133,25 +1159,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as">
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="0" selection-start="280" selection-end="280" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="168" column="52" selection-start="4471" selection-end="4471" vertical-scroll-proportion="0.0">
+          <folding>
+            <marker date="1261064439718" expanded="true" signature="38:357" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/Condition.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="27" selection-start="597" selection-end="603" vertical-scroll-proportion="0.0">
+        <state line="13" column="19" selection-start="541" selection-end="541" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/services/impl/PersistentServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/util/Query.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="56" selection-start="593" selection-end="593" vertical-scroll-proportion="0.46484375">
+        <state line="13" column="36" selection-start="461" selection-end="461" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/framework/data/Query.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="62" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.47887325">
           <folding>
-            <marker date="1261064439718" expanded="true" signature="38:357" placeholder="..." />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
