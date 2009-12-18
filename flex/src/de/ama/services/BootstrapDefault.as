@@ -7,6 +7,8 @@ import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.BoReference;
 import de.ama.framework.data.LookupDataProvider;
 import de.ama.framework.data.ModelDataProvider;
+import de.ama.framework.util.Condition;
+import de.ama.framework.util.Query;
 import de.ama.services.permission.PermissionContext;
 import de.ama.services.permission.PermissionSwitch;
 import de.ama.services.permission.PermissionsData;
@@ -18,6 +20,10 @@ public class BootstrapDefault {
 
     public function execute():void {
 
+        Factory.registerBean("Condition", Condition);
+        Factory.registerBean("Query", Query);
+
+        Factory.registerBean("PermissionsData", PermissionsData);
         Factory.registerBean("PermissionsData", PermissionsData);
         Factory.registerBean("PermissionContext", PermissionContext);
         Factory.registerBean("PermissionSwitch", PermissionSwitch);

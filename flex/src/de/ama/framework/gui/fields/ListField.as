@@ -70,8 +70,8 @@ public class ListField extends EditField{
         listPanel.height = h;
     }
 
-    public function addCollumn(label:String, path:String, editable:Boolean):void {
-        ListPanel(_input).addCollumn(label, path, editable);
+    public function addCollumn(type:String,label:String, path:String, editable:Boolean):void {
+        ListPanel(_input).addCollumn(type,label, path, editable);
     }
 
 
