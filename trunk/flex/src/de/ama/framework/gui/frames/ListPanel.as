@@ -191,8 +191,8 @@ public class ListPanel extends VBox implements Panel,Invoker{
 
     /////////////////////////////////// Columns ///////////////////////////////////////////
 
-    public function addCollumn(label:String, path:String, editable:Boolean, w:int = 100):void {
-        var col:DataGridColumn = new DataGridColumn(label);
+    public function addCollumn(type:String,label:String, path:String, editable:Boolean, w:int = 100):void {
+        var col:ListPanelColumn = new ListPanelColumn(label , type);
         col.dataField = path;
         col.editable = editable;
         col.width = w;
@@ -216,11 +216,20 @@ public class ListPanel extends VBox implements Panel,Invoker{
                 case "Boolean":
                 case "Number":
                 case "String": {
-                    addCollumn(Util.firstCharToUpper(name), name, false);
+                    addCollumn(type,Util.firstCharToUpper(name), name, false);
                     break;
                 }
             }
         }
+    }
+
+    public function getColumns():Array{
+        return _grid.columns;
+    }
+
+
+    public function get grid():DataGrid {
+        return _grid;
     }
 
     ///////////////////////////////////////////////// Data ///////////////////////////////////////////
@@ -325,5 +334,6 @@ public class ListPanel extends VBox implements Panel,Invoker{
     }
 
 }
+
 }
 

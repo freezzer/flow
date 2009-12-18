@@ -2,14 +2,14 @@ package de.ama.framework.util {
 [RemoteClass(alias="de.ama.framework.data.Condition")]
 
 public class Condition {
-    public static final var EQ   :String = " = ";
-    public static final var LE   :String = " <= ";
-    public static final var GE   :String = " >= ";
-    public static final var LT   :String = " < ";
-    public static final var GT   :String = " > ";
-    public static final var LIKE :String = " like ";
-    public static final var AND  :String = " AND ";
-    public static final var OR   :String = " OR ";
+    public static  var EQ   :String = " = ";
+    public static  var LE   :String = " <= ";
+    public static  var GE   :String = " >= ";
+    public static  var LT   :String = " < ";
+    public static  var GT   :String = " > ";
+    public static  var LIKE :String = " like ";
+    public static  var AND  :String = " AND ";
+    public static  var OR   :String = " OR ";
 
     public var path:String;
     public var op:String;

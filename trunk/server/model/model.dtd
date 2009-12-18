@@ -134,6 +134,7 @@
         label CDATA #REQUIRED
         searchable CDATA #IMPLIED
         editable CDATA #IMPLIED
+        type CDATA #IMPLIED
         path CDATA #REQUIRED>
 <!ELEMENT bootstrap (#PCDATA)>
 <!ELEMENT menuitem (command)*>

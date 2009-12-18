@@ -32,7 +32,7 @@
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
                 <command use="OpenNewEditorCommand" editor="OrganisationenEditor" label="neue Organisation anlegen" />
 
-                <column path="name" label="Name"         searchable="true"/>
+                <column path="name"    label="Name"         searchable="true"/>
                 <column path="adresse.land" label="Land" searchable="true"/>
                 <column path="adresse.ort" label="Ort"   searchable="true"/>
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
