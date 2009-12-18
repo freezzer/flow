@@ -15,8 +15,8 @@ public class PermissionSwitchesLister extends ListPanel {
      } 
 
      override public function addCollumns():void {
-        addCollumn("String","Name" , "key",false);
-        addCollumn("Bolean","An/Aus" , "isOn",true,25);
+        addCollumn("String","Name" , "key",false,true);
+        addCollumn("Boolean","An/Aus" , "isOn",true,false,25);
      } 
 }}
 

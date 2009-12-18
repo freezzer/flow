@@ -191,10 +191,11 @@ public class ListPanel extends VBox implements Panel,Invoker{
 
     /////////////////////////////////// Columns ///////////////////////////////////////////
 
-    public function addCollumn(type:String,label:String, path:String, editable:Boolean, w:int = 100):void {
+    public function addCollumn(type:String,label:String, path:String, editable:Boolean,  searchable:Boolean, w:int = 100):void {
         var col:ListPanelColumn = new ListPanelColumn(label , type);
         col.dataField = path;
         col.editable = editable;
+        col.searchable = searchable;
         col.width = w;
         var array:Array = _grid.columns;
         array.push(col);
@@ -216,7 +217,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
                 case "Boolean":
                 case "Number":
                 case "String": {
-                    addCollumn(type,Util.firstCharToUpper(name), name, false);
+                    addCollumn(type,Util.firstCharToUpper(name), name, false,true);
                     break;
                 }
             }

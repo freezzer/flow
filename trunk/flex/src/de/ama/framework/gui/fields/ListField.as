@@ -71,7 +71,7 @@ public class ListField extends EditField{
     }
 
     public function addCollumn(type:String,label:String, path:String, editable:Boolean):void {
-        ListPanel(_input).addCollumn(type,label, path, editable);
+        ListPanel(_input).addCollumn(type,label, path, editable,false);
     }
 
 

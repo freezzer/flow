@@ -28,8 +28,9 @@ public class Flex_column extends Tag {
         String label = getRequiredAttribute(LABEL);
         String path = getRequiredAttribute(PATH);
         String type = getAttribute(TYPE,"String");
+        boolean searchable = getAttribute(SEARCHABLE,false);
         boolean  editable = Boolean.parseBoolean(getParentAttribute(EDITABLE,"false"));
-        write("        addCollumn("+quote(type)+" ,"+quote(label)+" , "+quote(path)+","+editable+");");
+        write("        addCollumn("+quote(type)+" ,"+quote(label)+" , "+quote(path)+","+editable+","+searchable+");");
     }
 
 

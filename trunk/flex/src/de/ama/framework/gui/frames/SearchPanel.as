@@ -28,13 +28,24 @@ public class SearchPanel  extends EditPanel {
 
         var collumns:Array = _listPanel.getColumns();
         for each (var col:ListPanelColumn in collumns) {
+            if(!col.searchable) continue;
             var type:String = col.type;
             var name:String = col.label;
             switch (type) {
-                case "Date":
-                case "Boolean":
-                case "Number":
+                case "Date":  {
+                    insertDateField(label);
+                    break;
+                }
+                case "Number":{
+                    insertTextField(label);
+                    break;
+                }
+                case "Boolean":{
+                    insertBoolField(label);
+                    break;
+                }
                 case "String": {
+                    insertTextField(label);
                     break;
                 }
             }
