@@ -3,8 +3,13 @@
 
 <define>
 
-    <model package="bom">
 
+
+    <!--     *********************   Persistenz *******************************                -->
+
+
+
+    <model package="bom">
         <bean name="Person" persistent="true" unique-key="vorname+nachname" >
             <field name="vorname"/>
             <field name="nachname"/>
@@ -23,8 +28,9 @@
     </model>
 
     <permission package="permission" name="Person">
-
         <view package="view.person" >
+
+            <!--     *********************   Auflister  ****************************    -->
 
             <lister name="PersonLister" label="Personen Auflister" type="Person">
                 <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
@@ -36,6 +42,8 @@
                 <column path="nachname" label="Nachname" searchable="true"/>
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
+
+            <!--     *********************   Editor  *******************************    -->
 
             <tree_editor name="PersonEditor" label="Daten von {nachname} " type="Person">
                 <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default">
@@ -56,6 +64,8 @@
                 <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
             </tree_editor>
 
+            <!--     *********************   Panel   *******************************    -->
+
             <panel name="AdressePanel" border="true" editable="true">
                 <input x="10" y="20" w="300" labelwidth="100" label="Ort" path="ort" type="string"/>
                 <input x="10" y="49" w="300" labelwidth="100" label="Plz" path="plz" type="string"/>
@@ -64,9 +74,7 @@
                 <input x="10" y="143" w="300" labelwidth="100" label="Hausnummer" path="hausnummer" type="string"/>
             </panel>
         </view>
-
     </permission>
-
 </define>
 
 

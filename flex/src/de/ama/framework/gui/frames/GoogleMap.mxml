@@ -1,0 +1,115 @@
+<?xml version="1.0" ?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="200"
+	xmlns:maps="com.google.maps.*"
+	cornerRadius="6" borderStyle="solid" borderColor="#248ED8" >
+  <mx:Script><![CDATA[
+      import com.google.maps.InfoWindowOptions;
+      import com.google.maps.LatLng;
+      import com.google.maps.MapMouseEvent;
+      import com.google.maps.controls.MapTypeControl;
+      import com.google.maps.controls.ZoomControl;
+      import com.google.maps.overlays.Marker;
+      import com.google.maps.overlays.MarkerOptions;
+      import com.google.maps.services.ClientGeocoder;
+      import com.google.maps.services.GeocodingEvent;
+
+      import de.ama.framework.util.Util;
+
+      public function moveToLocation(country:String,city:String=null,street:String=null):void {
+          _country = country;
+          _city = city;
+          _street = street;
+          if(!Util.isEmpty(_country)){
+             doGeocode(null);
+          }
+      }
+
+      private var finished:Boolean = false;
+      public var silent:Boolean = true;
+
+      private var _street:String;
+      private var _city:String;
+      private var _country:String;
+
+
+
+      private function onMapReady(event:Event):void {
+          map.enableScrollWheelZoom();
+          map.enableContinuousZoom();
+          map.addControl(new ZoomControl());
+          map.addControl(new MapTypeControl());
+          map.addEventListener(MapMouseEvent.CLICK, onMapClick);
+      }
+
+      private function onMapClick(event:MapMouseEvent):void {
+          doGeocode(event.latLng);
+          finished = true;
+      }
+
+      private function doGeocode(latlng:LatLng = null):void {
+          var geocoder:ClientGeocoder = new ClientGeocoder();
+          geocoder.addEventListener(
+                  GeocodingEvent.GEOCODING_SUCCESS,
+                  function(event:GeocodingEvent):void {
+                      var placemarks:Array = event.response.placemarks;
+                      if (placemarks.length > 0) {
+                          map.clearOverlays();
+                          map.setCenter(placemarks[0].point);
+                          var marker:Marker = new Marker(placemarks[0].point, new MarkerOptions({draggable: true}));
+
+                          if (placemarks[0].addressDetails != null) {
+                              if (placemarks[0].addressDetails.Country != null)
+                                  _country = Util.saveToString(placemarks[0].addressDetails.Country.CountryName, "?");
+                              //                             if(placemarks[0].addressDetails.City != null) {
+                              //                                _city = Util.saveToString(placemarks[0].addressDetails.City.CityName, "?");
+                              //                             if(placemarks[0].addressDetails.Street != null) {
+                              //                                _street = Util.saveToString(placemarks[0].addressDetails.Street.StreetName, "?");
+                          }
+
+                          marker.addEventListener(MapMouseEvent.CLICK, function (event:MapMouseEvent):void {
+                              marker.openInfoWindow(new InfoWindowOptions({content: placemarks[0].address}));
+                          });
+
+                          marker.addEventListener(MapMouseEvent.DRAG_END, function(event:Event):void {
+                              geocoder.reverseGeocode(marker.getLatLng());
+                          });
+
+                          map.addOverlay(marker);
+                      }
+                  });
+          geocoder.addEventListener(
+                  GeocodingEvent.GEOCODING_FAILURE,
+                  function(event:GeocodingEvent):void {
+                  	   if(!silent){
+                         Util.showMessage("Dieser Ort ist nicht verzeichnet");
+                       }
+                       finished = false;
+                  });
+
+          if (latlng != null) {
+              geocoder.reverseGeocode(latlng);
+          } else {
+              var zoom:Number = 5;
+          	  var addr:String = Util.saveToString(_country,"Deutschland");
+          	  if(!Util.isEmpty(_city)){
+          	  	addr+=","+_city;
+                zoom=11;
+          	  }
+          	  if(!Util.isEmpty(_street)){
+          	  	addr+=","+_street;
+                zoom=16;
+          	  } 
+              geocoder.geocode(addr);
+              map.setZoom(zoom);
+          }
+      }
+
+
+      ]]></mx:Script>
+  
+
+
+    <maps:Map id="map"  key="ABQIAAAAK7AsHxY1HCEEhqzGfPOq4RQNBUbHWORdu9BffY4TAGVewGMWjBQEc7BLYXOpOkze1XGxFxU9NFB8aA" 
+        mapevent_mapready="onMapReady(event)" width="100%" height="100%" language="de"/>
+
+</mx:Canvas>

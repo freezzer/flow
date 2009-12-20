@@ -2,6 +2,7 @@ package de.ama.framework.gui.fields {
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.gui.frames.Editor;
+import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 
 import de.ama.services.Environment;
@@ -27,6 +28,7 @@ public class EditField extends Canvas implements GUIComponent {
     private var _localpath:String;
     private var _labelWidth:int = 160;
     private var _editable:Boolean = true;
+    private var _changeCallback:Callback=null;
 
 
     public function EditField(caption:String="EditField", path:String=null) {
@@ -69,6 +71,11 @@ public class EditField extends Canvas implements GUIComponent {
     
     public function get parentEditor():Editor {
         return Util.findParentEditor(this);
+    }
+
+
+    public function set changeCallback(value:Callback):void {
+        _changeCallback = value;
     }
 
     ////////////////////////////////////// layout ///////////////////////////////////////////////
@@ -123,6 +130,9 @@ public class EditField extends Canvas implements GUIComponent {
     }
 
     protected function onInputCanged(e:Event):void {
+        if(_changeCallback!=null){
+            _changeCallback.execute(this);
+        }
     }
 
     protected function onFocusLost(e:FocusEvent):void {
