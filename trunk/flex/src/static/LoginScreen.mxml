@@ -89,6 +89,7 @@
         import de.ama.framework.util.Util;
         import de.ama.services.Environment;
 
+        import mx.core.Application;
         import mx.events.ValidationResultEvent;
         import mx.managers.PopUpManager;
 
@@ -106,7 +107,8 @@
                 var la:LoginAction = LoginAction(a);
                 if (la.success) {
                     Environment.registerLoginData(la);
-                    PopUpManager.removePopUp(this);
+                    //PopUpManager.removePopUp(this);
+                    Application.application.goTo("application");
                 } else {
                     Util.showMessage("Anmeldung fehlgeschlagen, falls Sie noch keinen Account haben, \n" +
                                      "klicken Sie bitte auf 'neuer Account' ");

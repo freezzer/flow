@@ -24,7 +24,6 @@ public class BootstrapDefault {
         Factory.registerBean("Query", Query);
 
         Factory.registerBean("PermissionsData", PermissionsData);
-        Factory.registerBean("PermissionsData", PermissionsData);
         Factory.registerBean("PermissionContext", PermissionContext);
         Factory.registerBean("PermissionSwitch", PermissionSwitch);
         Factory.registerEditor("PermissionEditor", PermissionEditor);

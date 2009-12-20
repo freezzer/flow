@@ -29,7 +29,20 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
     }
 
     public Class getType() {
-        return Util.createClass(type.replace("::","."));
+        Class ret = null;
+        if(Util.isEmpty(type)) return null;
+        if(type.indexOf(".")<0){
+            try {
+                ret = Environment.getBeanClass(type);
+            } catch (Exception e) {
+                ret=null;
+            }
+        }
+        if(ret==null){
+            ret = Util.createClass(type.replace("::","."));
+        }
+        
+        return ret;
     }
 
     public C getBo() {

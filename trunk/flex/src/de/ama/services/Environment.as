@@ -62,8 +62,6 @@ public class Environment {
        _hostAdress  = URLUtil.getServerName(Application.application.loaderInfo.url);
        _hostPort    = URLUtil.getPort(Application.application.loaderInfo.url);
        
-       PermissionService.instance.load();
-       
     }
 
     /////////////////////////////////// UserData/Cockie //////////////////////////

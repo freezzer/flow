@@ -14,14 +14,15 @@
     <mx:Fade id="fadeIn" alphaFrom="20" alphaTo="100" duration="1000"/>
 
     <mx:ViewStack id="mainPanels" width="100%" height="100%" x="0" y="34" creationPolicy="all">
-        <views:MyApplicationPanel id="app"  showEffect="{fadeIn}" height="100%" width="100%"/>
         <static:LoginScreen id="panelLogin" hideEffect="{slideOut}"  height="100%" width="100%"/>
+        <views:MyApplicationPanel id="app"  showEffect="{fadeIn}" height="100%" width="100%"/>
     </mx:ViewStack>
 
     <mx:Script><![CDATA[
         import de.ama.framework.gui.frames.ApplicationPanel;
         import de.ama.framework.util.Util;
         import de.ama.services.Environment;
+        import de.ama.services.permission.PermissionService;
 
         protected function bootstrap():void {
             Environment.initForProduction();
@@ -41,6 +42,7 @@
             }
             else if (Util.isEqual(dest, "application")) {
                 mainPanels.selectedChild = app;
+                PermissionService.instance.load();
             }
         }
 
