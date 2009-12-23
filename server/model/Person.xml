@@ -17,7 +17,7 @@
             <field name="email"/>
             <collection name="adressen" create="1">
                 <bean name="Adresse">
-                    <field name="land"/>
+                    <field name="land" />
                     <field name="ort"/>
                     <field name="plz"/>
                     <field name="strasse"/>
@@ -27,9 +27,9 @@
         </bean>
     </model>
 
-    <permission package="permission" name="Person">
         <view package="view.person" >
 
+            <permission package="permission" name="PersonAuflister">
             <!--     *********************   Auflister  ****************************    -->
 
             <lister name="PersonLister" label="Personen Auflister" type="Person">
@@ -43,8 +43,10 @@
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
 
+            </permission>
             <!--     *********************   Editor  *******************************    -->
 
+            <permission package="permission" name="PersonEditor">
             <tree_editor name="PersonEditor" label="Daten von {nachname} " type="Person">
                 <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default">
                     <tree_node label="Adressen" path="adressen" icon="table" open="true" type="Adresse"
@@ -73,8 +75,8 @@
                 <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" type="string"/>
                 <input x="10" y="143" w="300" labelwidth="100" label="Hausnummer" path="hausnummer" type="string"/>
             </panel>
+            </permission>
         </view>
-    </permission>
 </define>
 
 
