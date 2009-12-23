@@ -41,11 +41,11 @@
         create CDATA #IMPLIED
         name CDATA #REQUIRED
         type CDATA #IMPLIED>
-<!ELEMENT permission (view)*>
+<!ELEMENT permission (view|lister|tree_editor|panel)*>
 <!ATTLIST permission
         package CDATA #IMPLIED
         name CDATA #REQUIRED>
-<!ELEMENT view (tree_editor|panel|lister|tabbed_application_panel)*>
+<!ELEMENT view (tree_editor|panel|lister|tabbed_application_panel|permission)*>
 <!ATTLIST view
         package CDATA #IMPLIED
         >
