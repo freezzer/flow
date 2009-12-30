@@ -27,9 +27,10 @@
         </bean>
     </model>
 
-        <view package="view.person" >
 
-            <permission package="permission" name="PersonAuflister">
+      <permission package="permission" name="PersonAuflister">
+
+            <view package="view.person" >
             <!--     *********************   Auflister  ****************************    -->
 
             <lister name="PersonLister" label="Personen Auflister" type="Person">
@@ -42,11 +43,14 @@
                 <column path="nachname" label="Nachname" searchable="true"/>
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
+            </view>
 
-            </permission>
+      </permission>
             <!--     *********************   Editor  *******************************    -->
 
-            <permission package="permission" name="PersonEditor">
+      <permission package="permission" name="PersonEditor">
+
+          <view package="view.person" >
             <tree_editor name="PersonEditor" label="Daten von {nachname} " type="Person">
                 <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default">
                     <tree_node label="Adressen" path="adressen" icon="table" open="true" type="Adresse"
@@ -75,8 +79,8 @@
                 <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" type="string"/>
                 <input x="10" y="143" w="300" labelwidth="100" label="Hausnummer" path="hausnummer" type="string"/>
             </panel>
-            </permission>
-        </view>
+          </view>
+     </permission>
 </define>
 
 
