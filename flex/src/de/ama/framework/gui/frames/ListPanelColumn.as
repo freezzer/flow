@@ -21,7 +21,7 @@ public class ListPanelColumn extends DataGridColumn{
         _type = value;
     }
 
-    function get label():String {
+    public function get label():String {
         return super.headerText;
     }
 

@@ -15,6 +15,7 @@ public class SaveBoCommand extends Command{
     override protected function execute():void {
         var sa:SaveBoAction    = new SaveBoAction();
         sa.data = invoker.getData();
+        sa.readCommand(this);
         ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
     }
 

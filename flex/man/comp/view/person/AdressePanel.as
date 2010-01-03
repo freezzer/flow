@@ -13,7 +13,7 @@ import de.ama.framework.util.Callback;
 import de.ama.services.Factory;
 public class AdressePanel  extends EditPanel {
 
-    var map:GoogleMap = null;
+    private var map:GoogleMap = null;
 
     public function AdressePanel() {
         x=0;  y=0;

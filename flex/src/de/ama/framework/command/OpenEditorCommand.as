@@ -28,7 +28,7 @@ public class OpenEditorCommand extends Command{
 
         if(selectionModel.getFirstSelection()!=null){
             var sa:LoadBoAction    = new LoadBoAction();
-            sa.selectionModel = selectionModel;
+            sa.readCommand(this);
             ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
         } else {
             showEditor(null);

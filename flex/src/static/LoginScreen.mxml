@@ -15,7 +15,6 @@
         </mx:Canvas>
         <mx:LinkButton id="okButton" x="594.8" y="126.15" label="Login" width="68.65" height="24" fontWeight="bold" textAlign="center" click="okButtonPressed()"/>
         <mx:LinkButton id="newAccountButton" x="607.45" y="158.1" label="neu" width="45.65" height="24" fontWeight="normal" textAlign="left" click="newAccountButtonPressed()" color="#EE2814"/>
-        <ns2:ScheduleViewer x="10" y="177" width="565.45" height="234.15"/>
     </mx:Canvas>
 
     <mx:states>

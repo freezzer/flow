@@ -25,6 +25,7 @@ public class Environment {
         singletons.put(ActionService.NAME       ,Util.createObject("de.ama.services.impl.ActionServiceImpl"));
         singletons.put(MailService.NAME         ,Util.createObject("de.ama.services.impl.MailServiceImpl"));
         singletons.put(GoogleService.NAME         ,Util.createObject("de.ama.services.impl.GoogleServiceImpl"));
+        singletons.put(EventService.NAME         ,Util.createObject("de.ama.services.event.EventServiceImpl"));
 
         PreMainInitializer.initForServer();
     }
@@ -60,6 +61,10 @@ public class Environment {
 
     public static PersistentService getPersistentService(){
         return (PersistentService) getSingleton(PersistentService.NAME);
+    }
+
+    public static EventService getEventService(){
+        return (EventService) getSingleton(EventService.NAME);
     }
 
     public static UserService getUserService(){
