@@ -72,6 +72,7 @@ public class Flex_command extends Tag {
         String editor = getAttribute(EDITOR, "");
         String lister = getAttribute(LISTER, "");
         String permitted = getAttribute(PERMITTED, "");
+        String eventName = getAttribute(EVENT, "");
         String doubleClickEnabled = getAttribute(DEFAULT, "false");
 
         String permissionContext = getParentAttribute(PERMISSION,NAME,"global");
@@ -83,11 +84,13 @@ public class Flex_command extends Tag {
         write("        cmd.permissionId = \""+permissionContext+":"+Util.saveToString(use, name)+" ("+ label+")\";");
 
         if (!isEmpty(editor))
-        write("        cmd.setProperty(\"editor\",\"" + editor + "\");");
+        write("        cmd.setProperty(\"editor\"," + quote(editor) + ");");
         if (!isEmpty(lister))
-        write("        cmd.setProperty(\"lister\",\"" + lister + "\");");
+        write("        cmd.setProperty(\"lister\"," + quote(lister) + ");");
+        if (!isEmpty(eventName))
+        write("        cmd.setProperty(\"eventName\"," + quote(eventName) + ");");
         if (!isEmpty(name))
-        write("        cmd.setProperty(\"name\",\"" + name + "\");");
+        write("        cmd.setProperty(\"name\"," + quote(name) + ");");
         if ("true".equals(permitted))
         write("        cmd.setProperty("+quote(PERMITTED)+",\"true\");");
         if ("true".equals(doubleClickEnabled))

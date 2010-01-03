@@ -15,7 +15,7 @@ public class LoadBoCommand extends Command{
 
     override protected function execute():void {
         var sa:LoadBoAction    = new LoadBoAction();
-        sa.selectionModel = selectionModel;
+        sa.readCommand(this);
         ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
     }
 

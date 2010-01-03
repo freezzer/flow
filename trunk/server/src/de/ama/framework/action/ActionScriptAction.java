@@ -1,12 +1,13 @@
 package de.ama.framework.action;
 
 import de.ama.framework.data.*;
+import de.ama.services.event.EventServiceImpl;
+import de.ama.services.event.Event;
 import de.ama.services.Environment;
 import de.ama.services.user.User;
 import de.ama.util.Util;
 
 import java.util.Collection;
-import java.util.List;
 
 
 /**
@@ -27,6 +28,7 @@ public class ActionScriptAction implements java.io.Serializable {
     public SelectionModel selectionModel;
     public Object data;
     public String message;
+    public String eventName;
     public String detailErrorMessage;
     public boolean needsLogin;
 
@@ -62,8 +64,25 @@ public class ActionScriptAction implements java.io.Serializable {
         this.user = user;
     }
 
+    private boolean emittsEvent() {
+        return Util.isNotEmpty(eventName);
+    }
+
+    public void preExecute() {
+        if(emittsEvent() && eventName.startsWith("pre")){
+            Environment.getEventService().emit(new Event(eventName,this));
+        }
+    }
+
     public void execute() throws Exception {
     }
+
+    public void postExecute() {
+        if(emittsEvent() && eventName.startsWith("post")){
+            Environment.getEventService().emit(new Event(eventName,this));
+        }
+    }
+
 
     public String getCatalog(){
         return catalog;
@@ -194,4 +213,5 @@ public class ActionScriptAction implements java.io.Serializable {
             Environment.getPersistentService().refresh(toRefresh);
         }
     }
+
 }

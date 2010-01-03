@@ -13,7 +13,7 @@ public class DeleteBoCommand extends Command{
 
     override protected function execute():void {
         var sa:DeleteBoAction  = new DeleteBoAction();
-        sa.selectionModel = selectionModel;
+        sa.readCommand(this);
         ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
     }
 

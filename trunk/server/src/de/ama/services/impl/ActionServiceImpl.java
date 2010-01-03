@@ -33,7 +33,9 @@ public class ActionServiceImpl /*extends HessianServlet*/ implements ActionServi
                 }
             }
 
+            a.preExecute();
             a.execute();
+            a.postExecute();
 
             System.out.println("ActionServiceImpl.execute OK " + a.getName());
             return a;
