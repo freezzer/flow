@@ -26,9 +26,10 @@ public class AdressePanel  extends EditPanel {
         map.y=120;
         map.height=400;
         map.width=650;
+        map.callback = new Callback(this,onMapMoved);
         addChild(map);
-     } 
-   
+     }
+
      override public function addFields():void {
         var field:EditField;
  
@@ -52,5 +53,12 @@ public class AdressePanel  extends EditPanel {
                 getEditField("ort").getInputText() ,
                 getEditField("strasse").getInputText());
     }
+
+    private function onMapMoved():void {
+        getEditField("land").setInputText(map.country);
+        getEditField("strasse").setInputText(map.street);
+        getEditField("ort").setInputText(map.city);
+    }
+   
 
 }}

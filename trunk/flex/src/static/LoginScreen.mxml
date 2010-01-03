@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="1033.5607" height="571.9697" backgroundColor="#F0F0F0">
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="1033.5607" height="571.9697" backgroundColor="#F0F0F0" xmlns:ns1="flexlib.scheduling.timelineClasses.*" xmlns:ns2="flexlib.scheduling.*">
     <mx:Image source="static/dbh_logo_de.gif" scaleContent="false" top="4" width="973" horizontalCenter="0"/>
     <mx:Canvas width="973" top="119.55000000000001" horizontalCenter="0" bottom="9.086395" backgroundColor="#D0D0CF" horizontalScrollPolicy="off" verticalScrollPolicy="off" id="canvas1">
         <mx:Label y="91.25" text="Name" id="label2" textAlign="right" width="59.772728" height="18.030302"
@@ -15,6 +15,7 @@
         </mx:Canvas>
         <mx:LinkButton id="okButton" x="594.8" y="126.15" label="Login" width="68.65" height="24" fontWeight="bold" textAlign="center" click="okButtonPressed()"/>
         <mx:LinkButton id="newAccountButton" x="607.45" y="158.1" label="neu" width="45.65" height="24" fontWeight="normal" textAlign="left" click="newAccountButtonPressed()" color="#EE2814"/>
+        <ns2:ScheduleViewer x="10" y="177" width="565.45" height="234.15"/>
     </mx:Canvas>
 
     <mx:states>

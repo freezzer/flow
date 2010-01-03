@@ -193,6 +193,11 @@ public class EditField extends Canvas implements GUIComponent {
        return String(getValue());
     }
 
+    public function setInputText(txt:String ):void {
+       setValue(txt);
+       writeToData();
+    }
+
     public function get defaultValue():String {
         return _defaultValue;
     }
