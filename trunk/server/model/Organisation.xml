@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE define SYSTEM "model.dtd">
 
-<define>
+<define >
 
     <model package="bom">
 
@@ -20,6 +20,9 @@
                 </bean>
             </collection>
         </bean>
+
+        <event_consumer name="PreSaveOrgaConsumer" type="Organisation" events="pre.save"/>
+
     </model>
 
     <permission package="permission" name="Organisation">
@@ -61,7 +64,7 @@
                     </tree_node>
                 </tree_node>
 
-                <command use="SaveBoCommand" label="Organisation speichern" icon="save" event="save"/>
+                <command use="SaveBoCommand" label="Organisation speichern" icon="save" event="pre.save"/>
                 <command use="LoadBoCommand" label="Organisation laden" icon="refresh"/>
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
             </tree_editor>
@@ -84,7 +87,8 @@
     </permission>
 
 
-    <rules name="OrganisationRules" events="save,import" type="Organisation">
+
+    <rules name="OrganisationRules" events="pre.save" type="Organisation">
         <rule label="Name der Organisation" path="name" pattern="an" maxlength="30" mandatory="true"/>
         <rules use="AdresseRules" path="adresse" />
         <rules use="PersonRules" path="personen" />

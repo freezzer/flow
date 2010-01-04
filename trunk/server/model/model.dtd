@@ -1,4 +1,4 @@
-<!ELEMENT define (model|view|permission|comment|import|interface|rules)*>
+<!ELEMENT define (model|view|permission|comment|import|interface|rules|event_consumer)*>
 <!ELEMENT rules (rule|rules)*>
 <!ATTLIST rules
          use CDATA #IMPLIED
@@ -21,7 +21,7 @@
 <!ATTLIST import
         file CDATA #REQUIRED>
 
-<!ELEMENT model (bean)*>
+<!ELEMENT model (bean|event_consumer)*>
 <!ATTLIST model
         package CDATA #REQUIRED>
 <!ELEMENT bean (field|collection|bean)*>
@@ -121,6 +121,13 @@
         name CDATA #IMPLIED
         use CDATA #IMPLIED
         path CDATA #IMPLIED
+        type CDATA #REQUIRED>
+
+<!ELEMENT event_consumer (#PCDATA)>
+<!ATTLIST event_consumer
+        name CDATA #IMPLIED
+        use CDATA #IMPLIED
+        events CDATA #REQUIRED
         type CDATA #REQUIRED>
 
 <!ELEMENT lister (command|column|provider)*>

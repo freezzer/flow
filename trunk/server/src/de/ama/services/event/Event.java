@@ -1,5 +1,7 @@
 package de.ama.services.event;
 
+import de.ama.util.Util;
+
 /**
  * Created by IntelliJ IDEA.
  * User: x
@@ -22,4 +24,8 @@ public class Event {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return name + " : "+Util.saveToString(hint);
+    }
 }

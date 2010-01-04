@@ -65,6 +65,8 @@ public interface Const {
     public static final String AREA = "area";
     public static final String LOOKUP = "lookup";
     public static final String EVENT = "event";
+    public static final String EVENTS = "events";
+    public static final String EVENT_CONSUMER = "event_consumer";
 
     public static final String DIR =       "dir";
     public static final String PACKAGE =   "package";
