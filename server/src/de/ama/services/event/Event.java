@@ -11,21 +11,15 @@ import de.ama.util.Util;
  */
 public class Event {
     public String name;
-    public String hint;
     public Object data;
 
     public Event(String name, Object data) {
-        this(name,data,"");
-    }
-
-    public Event(String name, Object data, String hint) {
         this.name = name;
-        this.hint = hint;
         this.data = data;
     }
 
     @Override
     public String toString() {
-        return name + " : "+Util.saveToString(hint);
+        return name;
     }
 }
