@@ -8,13 +8,18 @@ package de.ama.services.event;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class EventConsumer {
-    public String name;
+    public String events;
+
+
+    protected EventConsumer(String events) {
+        this.events = events;
+    }
 
     public void consume(Event e){
-
+        System.out.println("Event consume "+e);
     }
 
     public boolean isResponsible(Event e) {
-        return false;  //To change body of created methods use File | Settings | File Templates.
+        return events.indexOf(e.name)>=0 ;
     }
 }

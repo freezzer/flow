@@ -38,6 +38,7 @@ public class Java_bootstrap extends Tag {
         writeLine();
         write("import de.ama.services.Environment;");
         write("import de.ama.services.PermissionService;");
+        write("import de.ama.services.EventService;");
         writeLine();
         write("public class "+name+" { ");
         writeLine();
@@ -61,9 +62,21 @@ public class Java_bootstrap extends Tag {
           });
         write("    }");
         writeLine();
+        write("    protected void registerEventConsumer(){");
+        writeLine();
+         visitAllChildren(EVENT_CONSUMER, new Visitor(){
+              public void visit(Tag visitor) {
+                  String name = visitor.getRequiredAttributeAlternative(NAME,USE);
+                  String events = visitor.getRequiredAttribute(EVENTS);
+                  write("         Environment.getEventService().registerConsumer(new "+visitor.getPackage()+"."+name+"("+quote(events)+"));");
+              }
+          });
+        write("    }");
+        writeLine();
         write("    public void preMain() {");
         write("         registerBeans();");
         write("         registerPermissions();");
+        write("         registerEventConsumer();");
         write("         System.out.println(\"Bootstrap done OK\");");
         write("    }");
         writeLine();
