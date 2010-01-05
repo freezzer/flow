@@ -1,4 +1,9 @@
-<!ELEMENT define (model|view|permission|comment|import|interface|rules|event_consumer)*>
+<!ELEMENT define (model|view|permission|comment|import|interface|logic)*>
+
+<!ELEMENT logic (rules|event_consumer)*>
+<!ATTLIST logic
+         package CDATA #REQUIRED>
+
 <!ELEMENT rules (rule|rules)*>
 <!ATTLIST rules
          use CDATA #IMPLIED
