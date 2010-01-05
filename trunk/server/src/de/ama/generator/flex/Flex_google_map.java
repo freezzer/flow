@@ -22,14 +22,14 @@ package de.ama.generator.flex;
 import de.ama.generator.Tag;
 
 
-public class Flex_googlemap extends Tag {
+public class Flex_google_map extends Tag {
 
     public void generate() {
         int x  = getAttribute(X,10);
         int y  = getAttribute(Y,10);
         int w  = getAttribute(W,200);
         int h  = getAttribute(H,200);
-        write("        var map:GoogleMap = GoogleMap(addChild(GoogleMap.create("+x+", "+y+", "+w+", "+h+"));");
+        write("        var map:GoogleMap = GoogleMap(addChild(GoogleMap.create("+x+", "+y+", "+w+", "+h+")));");
         if(hasAttribute("countryField")){
             write("        map.countryField=getEditField("+quote(getAttribute("countryField"))+");");
         }

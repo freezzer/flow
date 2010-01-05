@@ -80,8 +80,8 @@
         event CDATA #IMPLIED
         use CDATA #IMPLIED>
 
-<!ELEMENT googlemap (#PCDATA) >
-<!ATTLIST googlemap
+<!ELEMENT google_map (#PCDATA) >
+<!ATTLIST google_map
         x CDATA #IMPLIED
         y CDATA #IMPLIED
         w CDATA #IMPLIED
@@ -92,7 +92,7 @@
         streetField CDATA #IMPLIED
         >
 
-<!ELEMENT panel (panel|input|lookup|googlemap)*>
+<!ELEMENT panel (panel|input|lookup|google_map)*>
 <!ATTLIST panel
         border CDATA #IMPLIED
         editable CDATA #IMPLIED
