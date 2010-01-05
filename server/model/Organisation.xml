@@ -21,8 +21,6 @@
             </collection>
         </bean>
 
-        <event_consumer name="PreSaveOrgaConsumer" type="Organisation" events="pre.save"/>
-
     </model>
 
     <permission package="permission" name="Organisation">
@@ -86,20 +84,26 @@
 
     </permission>
 
+    <logic package="organisation">
+
+        <event_consumer name="PreSaveOrgaConsumer" type="Organisation" events="pre.save"/>
+        <event_consumer name="PostSaveOrgaConsumer" type="Organisation" events="post.save"/>
 
 
-    <rules name="OrganisationRules" events="pre.save" type="Organisation">
-        <rule label="Name der Organisation" path="name" pattern="an" maxlength="30" mandatory="true"/>
-        <rules use="AdresseRules" path="adresse" />
-        <rules use="PersonRules" path="personen" />
-        <rules name="NotizenRules" path="notizen" >
-            <rule label="Kontaktperson" path="kontaktperson" mandatory="true" />
-            <rule label="Erfasser" path="erfasser" mandatory="true" />
-            <rule label="Datum" path="datum" mandatory="true" />
-            <rule label="Text" path="text" mandatory="true" maxlength="255"/>
-            <rule label="ToDo" path="todo" maxlength="255" />
+        <rules name="OrganisationRules" events="pre.save" type="Organisation">
+            <rule label="Name der Organisation" path="name" pattern="an" maxlength="30" mandatory="true"/>
+            <rules use="AdresseRules" path="adresse" />
+            <rules use="PersonRules" path="personen" />
+            <rules name="NotizenRules" path="notizen" >
+                <rule label="Kontaktperson" path="kontaktperson" mandatory="true" />
+                <rule label="Erfasser" path="erfasser" mandatory="true" />
+                <rule label="Datum" path="datum" mandatory="true" />
+                <rule label="Text" path="text" mandatory="true" maxlength="255"/>
+                <rule label="ToDo" path="todo" maxlength="255" />
+            </rules>
         </rules>
-    </rules>
+    </logic>
+
 
 </define>
 

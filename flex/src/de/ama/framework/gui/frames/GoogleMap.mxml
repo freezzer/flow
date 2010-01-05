@@ -13,29 +13,42 @@
       import com.google.maps.services.ClientGeocoder;
       import com.google.maps.services.GeocodingEvent;
 
-      import de.ama.framework.util.Callback;
+      import de.ama.framework.gui.fields.EditField;
       import de.ama.framework.util.Util;
-
-
-      public function moveToLocation(country:String, city:String = null, street:String = null, zip:String = null):void {
-          _country = country;
-          _city = city;
-          _street = street;
-          _zip = zip;
-          if (!Util.isEmpty(_country)) {
-              doGeocode(null);
-          }
-      }
 
       private var finished:Boolean = false;
       public var silent:Boolean = true;
 
-      private var _zip:String;
-      private var _street:String;
-      private var _city:String;
-      private var _country:String;
+      private var _countryField:EditField;
+      private var _cityField:EditField;
+      private var _streetField:EditField;
+      private var _zipField:EditField;
 
-      private var _callback:Callback;
+      public function set countryField(value:EditField):void {
+          _countryField = value;
+      }
+
+      public function set cityField(value:EditField):void {
+          _cityField = value;
+      }
+
+      public function set streetField(value:EditField):void {
+          _streetField = value;
+      }
+
+      public function set zipField(value:EditField):void {
+          _zipField = value;
+      }
+
+      public static function create(x :int, y:int, w:int, h:int):GoogleMap {
+          var map:GoogleMap = new GoogleMap();
+          map = new GoogleMap();
+          map.x = x;
+          map.y = y;
+          map.height = h;
+          map.width = w;
+          return map;
+      }
 
       private function onMapReady(event:Event):void {
           map.enableScrollWheelZoom();
@@ -64,12 +77,18 @@
                           if (placemarks[0].address != null) {
                               var address:String = placemarks[0].address;
                               var arr:Array = address.split(",");
-                              if (arr.length > 0)  _street = arr[0];
-                              if (arr.length > 1)  _city = arr[1];
-                              if (arr.length > 2)  _country = arr[2];
-                              if(_callback!=null){
-                              	 _callback.execute(null);
+                              if (arr.length > 0)  _streetField.setInputText(arr[0]);
+                              if (arr.length > 1) {
+                                  var city:String = arr[1];
+                                  var array:Array = city.split(" ");
+                                  if(array!=null && array.length>1){
+                                      _zipField.setInputText(array[0]);
+                                      _cityField.setInputText(array[1]);
+                                  } else {
+                                      _cityField.setInputText(city);
+                                  }
                               }
+                              if (arr.length > 2)  _countryField.setInputText(arr[2]);
                           }
 
                           marker.addEventListener(MapMouseEvent.CLICK, function (event:MapMouseEvent):void {
@@ -96,18 +115,22 @@
               geocoder.reverseGeocode(latlng);
           } else {
               var zoom:Number = 5;
-              var addr:String = Util.saveToString(_country, "Deutschland");
-              if (!Util.isEmpty(_city)) {
-                  addr += "," + _city;
+              var addr:String = "Deutschland";
+              if (_countryField!=null && !_countryField.isEmpty()) {
+                  addr = _countryField.getInputText();
+                  zoom = 5;
+              }
+              if (_cityField!=null && !_cityField.isEmpty()) {
+                  addr += "," + _cityField.getInputText();
                   zoom = 11;
               }
-              if (!Util.isEmpty(_street)) {
-                  addr += "," + _street;
-                  zoom = 16;
+              if (_streetField!=null && !_streetField.isEmpty()) {
+                  addr += "," + _streetField.getInputText();
+                  zoom = 11;
               }
-              if (!Util.isEmpty(_zip)) {
-                  addr += "," + _zip;
-                  zoom = 16;
+              if (_zipField!=null && !_zipField.isEmpty()) {
+                  addr += "," + _zipField.getInputText();
+                  zoom = 11;
               }
               geocoder.geocode(addr);
               map.setZoom(zoom);
@@ -115,27 +138,6 @@
       }
 
 
-      public function set callback(value:Callback):void {
-          _callback = value;
-      }
-
-
-      public function get zip():String {
-          return _zip;
-      }
-
-      public function get street():String {
-          return _street;
-      }
-
-      public function get city():String {
-          return _city;
-      }
-
-      public function get country():String {
-          return _country;
-      }
-      
       ]]></mx:Script>
   
 
