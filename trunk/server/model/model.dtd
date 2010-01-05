@@ -79,7 +79,20 @@
         default CDATA #IMPLIED
         event CDATA #IMPLIED
         use CDATA #IMPLIED>
-<!ELEMENT panel (panel|input|lookup)*>
+
+<!ELEMENT googlemap (#PCDATA) >
+<!ATTLIST googlemap
+        x CDATA #IMPLIED
+        y CDATA #IMPLIED
+        w CDATA #IMPLIED
+        h CDATA #IMPLIED
+        countryField CDATA #IMPLIED
+        cityField CDATA #IMPLIED
+        zipField CDATA #IMPLIED
+        streetField CDATA #IMPLIED
+        >
+
+<!ELEMENT panel (panel|input|lookup|googlemap)*>
 <!ATTLIST panel
         border CDATA #IMPLIED
         editable CDATA #IMPLIED

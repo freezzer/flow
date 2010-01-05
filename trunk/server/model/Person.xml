@@ -76,7 +76,7 @@
                 <input x="10" y="81" w="300" labelwidth="100" label="Strasse" path="strasse" />
                 <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" default="Deutschland"/>
                 <input x="10" y="143" w="300" labelwidth="100" label="Hausnummer" path="hausnummer" />
-                <!--<map x="10" y="120" w="600" h="400" country="{land}" city="{ort}" street="{strasse}" code="plz" />-->
+                <googlemap x="10" y="120" w="600" h="400" countryField="land" cityField="ort" streetField="strasse" zipField="plz" />
             </panel>
           </view>
      </permission>
