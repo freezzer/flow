@@ -14,6 +14,7 @@
       import com.google.maps.services.GeocodingEvent;
 
       import de.ama.framework.gui.fields.EditField;
+      import de.ama.framework.util.Callback;
       import de.ama.framework.util.Util;
 
       private var finished:Boolean = false;
@@ -24,20 +25,29 @@
       private var _streetField:EditField;
       private var _zipField:EditField;
 
-      public function set countryField(value:EditField):void {
-          _countryField = value;
+      public function set countryField(f:EditField):void {
+          if(f==null) return;
+          f.changeCallback = new Callback(this,readEditFields);
+          _countryField = f;
       }
 
-      public function set cityField(value:EditField):void {
-          _cityField = value;
+      public function set cityField(f:EditField):void {
+          if(f==null) return;
+          f.changeCallback = new Callback(this,readEditFields);
+          _cityField = f;
       }
 
-      public function set streetField(value:EditField):void {
-          _streetField = value;
+      public function set streetField(f:EditField):void {
+          if(f==null) return;
+          f.changeCallback = new Callback(this,readEditFields);
+          _streetField = f;
       }
 
-      public function set zipField(value:EditField):void {
-          _zipField = value;
+      public function set zipField(f:EditField):void {
+          if(f==null) return;
+          f.changeCallback = new Callback(this,readEditFields);
+          _zipField = f;
+
       }
 
       public static function create(x :int, y:int, w:int, h:int):GoogleMap {
@@ -49,6 +59,11 @@
           map.width = w;
           return map;
       }
+
+      public function readEditFields():void {
+          doGeocode(null);
+      }
+
 
       private function onMapReady(event:Event):void {
           map.enableScrollWheelZoom();

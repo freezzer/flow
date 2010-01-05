@@ -124,6 +124,7 @@ public class Flex_panel extends Tag {
         write("     override public function addPanels():void {");
         write("        var panel:EditPanel;");
                         visitChildren(PANEL);
+                        visitChildren(GOOGLE_MAP);
         write("     } ");
         write("   ");
         write("     override public function addFields():void {");

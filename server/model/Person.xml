@@ -70,13 +70,12 @@
 
             <!--     *********************   Panel   *******************************    -->
 
-            <panel name="AdressePanel" border="true" editable="true">
+            <panel name="AdressePanel" border="true" editable="true" x="10" y="10" w="650" h="600">
                 <input x="10" y="20" w="300" labelwidth="100" label="Ort" path="ort" />
                 <input x="10" y="49" w="300" labelwidth="100" label="Plz" path="plz" />
                 <input x="10" y="81" w="300" labelwidth="100" label="Strasse" path="strasse" />
                 <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" default="Deutschland"/>
-                <input x="10" y="143" w="300" labelwidth="100" label="Hausnummer" path="hausnummer" />
-                <googlemap x="10" y="120" w="600" h="400" countryField="land" cityField="ort" streetField="strasse" zipField="plz" />
+                <google_map x="10" y="170" w="600" h="400" countryField="land" cityField="ort" streetField="strasse" zipField="plz" />
             </panel>
           </view>
      </permission>

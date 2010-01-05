@@ -120,11 +120,14 @@
             }
         }
 
-        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1):EditField {
+        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1, defaultString:String=null):EditField {
             var editField:EditField = new EditField(label, path);
             editField.labelWidth = lw < 0 ? labelWidth : lw;
             editField.width = w < 0 ? inputWidth : w;
             insertComponent(editField, x, y);
+            if(!Util.isEmpty(defaultString)){
+                editField.defaultValue = defaultString;
+            }
             return editField;
         }
 

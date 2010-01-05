@@ -33,6 +33,7 @@ public interface Const {
     public static final String BORDER = "border";
     public static final String ICON = "icon";
     public static final String PANEL = "panel";
+    public static final String GOOGLE_MAP = "google_map";
     public static final String EDITOR = "editor";
     public static final String LISTER = "lister";
     public static final String TYPE = "type";
