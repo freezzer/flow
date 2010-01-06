@@ -17,8 +17,10 @@
       import de.ama.framework.util.Callback;
       import de.ama.framework.util.Util;
 
-      private var finished:Boolean = false;
+      import mx.utils.StringUtil;
+
       public var silent:Boolean = true;
+      public var adjusting:Boolean = false;
 
       private var _countryField:EditField;
       private var _cityField:EditField;
@@ -26,26 +28,26 @@
       private var _zipField:EditField;
 
       public function set countryField(f:EditField):void {
-          if(f==null) return;
-          f.changeCallback = new Callback(this,readEditFields);
+          if (f == null) return;
+          f.enterCallback = new Callback(this, readEditFields);
           _countryField = f;
       }
 
       public function set cityField(f:EditField):void {
-          if(f==null) return;
-          f.changeCallback = new Callback(this,readEditFields);
+          if (f == null) return;
+          f.enterCallback = new Callback(this, readEditFields);
           _cityField = f;
       }
 
       public function set streetField(f:EditField):void {
-          if(f==null) return;
-          f.changeCallback = new Callback(this,readEditFields);
+          if (f == null) return;
+          f.enterCallback = new Callback(this, readEditFields);
           _streetField = f;
       }
 
       public function set zipField(f:EditField):void {
-          if(f==null) return;
-          f.changeCallback = new Callback(this,readEditFields);
+          if (f == null) return;
+          f.enterCallback = new Callback(this, readEditFields);
           _zipField = f;
 
       }
@@ -60,7 +62,32 @@
           return map;
       }
 
-      public function readEditFields():void {
+      public function readEditFields(f:EditField):void {
+
+          if(f==_countryField){
+              if(_zipField!=null) _zipField.setInputText("");
+              if(_streetField!=null) _streetField.setInputText("");
+              if(_cityField!=null) _cityField.setInputText("");
+              map.setZoom(5);
+          }
+
+          if(f==_zipField){
+              if(_cityField!=null) _cityField.setInputText("");
+              if(_streetField!=null) _streetField.setInputText("");
+              map.setZoom(15);
+          }
+
+          if(f==_cityField){
+              map.setZoom(11);
+              if(_zipField!=null) _zipField.setInputText("");
+              if(_streetField!=null) _streetField.setInputText("");
+          }
+
+          if(f==_streetField){
+              map.setZoom(17);
+          }
+
+
           doGeocode(null);
       }
 
@@ -75,82 +102,106 @@
 
       private function onMapClick(event:MapMouseEvent):void {
           doGeocode(event.latLng);
-          finished = true;
+      }
+
+      private function interpretCity(str:String):void {
+          if(Util.isEmpty(str)) return;
+          var split:Array = StringUtil.trim(str).split(" ");
+          if (split.length == 2) {
+              _zipField.setInputText(split[0]);
+              _cityField.setInputText(split[1]);
+          } else {
+              _cityField.setInputText(str);
+          }
       }
 
       private function doGeocode(latlng:LatLng = null):void {
-          var geocoder:ClientGeocoder = new ClientGeocoder();
-          geocoder.addEventListener(
-                  GeocodingEvent.GEOCODING_SUCCESS,
-                  function(event:GeocodingEvent):void {
-                      var placemarks:Array = event.response.placemarks;
-                      if (placemarks.length > 0) {
-                          map.clearOverlays();
-                          map.setCenter(placemarks[0].point);
-                          var marker:Marker = new Marker(placemarks[0].point, new MarkerOptions({draggable: true}));
+          if (adjusting) return;
 
-                          if (placemarks[0].address != null) {
-                              var address:String = placemarks[0].address;
-                              var arr:Array = address.split(",");
-                              if (arr.length > 0)  _streetField.setInputText(arr[0]);
-                              if (arr.length > 1) {
-                                  var city:String = arr[1];
-                                  var array:Array = city.split(" ");
-                                  if(array!=null && array.length>1){
-                                      _zipField.setInputText(array[0]);
-                                      _cityField.setInputText(array[1]);
-                                  } else {
-                                      _cityField.setInputText(city);
+          adjusting = true;
+
+
+          try {
+              var geocoder:ClientGeocoder = new ClientGeocoder();
+              geocoder.addEventListener(
+                      GeocodingEvent.GEOCODING_SUCCESS,
+                      function(event:GeocodingEvent):void {
+                          var placemarks:Array = event.response.placemarks;
+                          if (placemarks.length > 0) {
+                              map.clearOverlays();
+                              map.setCenter(placemarks[0].point);
+                              var marker:Marker = new Marker(placemarks[0].point, new MarkerOptions({draggable: true}));
+
+                              if (placemarks[0].address != null) {
+                                  var address:String = placemarks[0].address;
+                                  var arr:Array = address.split(",");
+
+                                  if (arr.length == 1) {
+                                      _countryField.setInputText(arr[0]);
+                                  }
+
+                                  if (arr.length == 2) {
+                                      interpretCity(arr[0]);
+                                      _countryField.setInputText(arr[1]);
+                                  }
+
+                                  if (arr.length == 3) {
+                                      _streetField.setInputText(arr[0]);
+                                      interpretCity(arr[1]);
+                                      _countryField.setInputText(arr[2]);
                                   }
                               }
-                              if (arr.length > 2)  _countryField.setInputText(arr[2]);
+
+                              marker.addEventListener(MapMouseEvent.CLICK, function (event:MapMouseEvent):void {
+                                  marker.openInfoWindow(new InfoWindowOptions({content: placemarks[0].address}));
+                              });
+
+                              marker.addEventListener(MapMouseEvent.DRAG_END, function(event:Event):void {
+                                  geocoder.reverseGeocode(marker.getLatLng());
+                              });
+
+                              map.addOverlay(marker);
                           }
-
-                          marker.addEventListener(MapMouseEvent.CLICK, function (event:MapMouseEvent):void {
-                              marker.openInfoWindow(new InfoWindowOptions({content: placemarks[0].address}));
-                          });
-
-                          marker.addEventListener(MapMouseEvent.DRAG_END, function(event:Event):void {
-                              geocoder.reverseGeocode(marker.getLatLng());
-                          });
-
-                          map.addOverlay(marker);
                       }
-                  });
-          geocoder.addEventListener(
-                  GeocodingEvent.GEOCODING_FAILURE,
-                  function(event:GeocodingEvent):void {
-                      if (!silent) {
-                          Util.showMessage("Dieser Ort ist nicht verzeichnet");
-                      }
-                      finished = false;
-                  });
+                      );
 
-          if (latlng != null) {
-              geocoder.reverseGeocode(latlng);
-          } else {
-              var zoom:Number = 5;
-              var addr:String = "Deutschland";
-              if (_countryField!=null && !_countryField.isEmpty()) {
-                  addr = _countryField.getInputText();
-                  zoom = 5;
+              geocoder.addEventListener(
+                      GeocodingEvent.GEOCODING_FAILURE,
+                      function(event:GeocodingEvent):void {
+                          if (!silent) {
+                              Util.showMessage("Dieser Ort ist nicht verzeichnet");
+                          }
+                      }
+                      );
+
+
+              if (latlng != null) {
+
+                  geocoder.reverseGeocode(latlng);
+
+              } else {
+                  var addr:String = "Deutschland";
+                  if (_countryField != null && !_countryField.isEmpty()) {
+                      addr = _countryField.getInputText();
+                  }
+                  if (_streetField != null && !_streetField.isEmpty()) {
+                      addr += "," + _streetField.getInputText();
+                  }
+                  if (_cityField != null && !_cityField.isEmpty()) {
+                      addr += "," + _cityField.getInputText();
+                  } else
+                  if (_zipField != null && !_zipField.isEmpty()) {
+                      addr += "," + _zipField.getInputText();
+                  }
+                  geocoder.geocode(addr);
               }
-              if (_cityField!=null && !_cityField.isEmpty()) {
-                  addr += "," + _cityField.getInputText();
-                  zoom = 11;
-              }
-              if (_streetField!=null && !_streetField.isEmpty()) {
-                  addr += "," + _streetField.getInputText();
-                  zoom = 11;
-              }
-              if (_zipField!=null && !_zipField.isEmpty()) {
-                  addr += "," + _zipField.getInputText();
-                  zoom = 11;
-              }
-              geocoder.geocode(addr);
-              map.setZoom(zoom);
+          } finally {
+              adjusting = false;
           }
+
       }
+
+
 
 
       ]]></mx:Script>

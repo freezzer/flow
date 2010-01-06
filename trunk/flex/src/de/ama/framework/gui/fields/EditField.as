@@ -10,7 +10,10 @@ import de.ama.services.Environment;
 import flash.events.Event;
 import flash.events.EventPhase;
 import flash.events.FocusEvent;
+import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
+
+import flash.ui.Keyboard;
 
 import mx.containers.Canvas;
 import mx.controls.Label;
@@ -29,6 +32,7 @@ public class EditField extends Canvas implements GUIComponent {
     private var _labelWidth:int = 160;
     private var _editable:Boolean = true;
     private var _changeCallback:Callback=null;
+    private var _enterCallback:Callback=null;
 
 
     public function EditField(caption:String="EditField", path:String=null) {
@@ -45,6 +49,7 @@ public class EditField extends Canvas implements GUIComponent {
 
         _input.setStyle("color","0x202020");
         _input.addEventListener(Event.CHANGE, onInputCanged);
+        _input.addEventListener(KeyboardEvent.KEY_UP, onKeyPressed);
         _input.addEventListener(FocusEvent.FOCUS_OUT, onFocusLost);
 
 		if(_label!=null){
@@ -76,6 +81,11 @@ public class EditField extends Canvas implements GUIComponent {
 
     public function set changeCallback(value:Callback):void {
         _changeCallback = value;
+    }
+
+
+    public function set enterCallback(value:Callback):void {
+        _enterCallback = value;
     }
 
     ////////////////////////////////////// layout ///////////////////////////////////////////////
@@ -133,6 +143,14 @@ public class EditField extends Canvas implements GUIComponent {
         if(_changeCallback!=null){
             _changeCallback.execute(this);
         }
+    }
+
+    protected function onKeyPressed(e:KeyboardEvent):void {
+
+        if(_enterCallback!=null && e.keyCode == Keyboard.ENTER){
+            _enterCallback.execute(this);
+        }
+
     }
 
     protected function onFocusLost(e:FocusEvent):void {
