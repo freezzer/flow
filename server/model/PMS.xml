@@ -24,7 +24,7 @@
                         <menuitem>
                             <command label="Neue Organisation anlegen" use="OpenEditorCommand" editor="OrganisationenEditor"/>
                         </menuitem>
-                        <menuitem type="separator" />
+                        <!--<menuitem type="separator" />-->
                         <menuitem>
                             <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
                         </menuitem>

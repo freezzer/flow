@@ -68,25 +68,17 @@
               if(_zipField!=null) _zipField.setInputText("");
               if(_streetField!=null) _streetField.setInputText("");
               if(_cityField!=null) _cityField.setInputText("");
-              map.setZoom(5);
           }
 
           if(f==_zipField){
               if(_cityField!=null) _cityField.setInputText("");
               if(_streetField!=null) _streetField.setInputText("");
-              map.setZoom(15);
           }
 
           if(f==_cityField){
-              map.setZoom(11);
               if(_zipField!=null) _zipField.setInputText("");
               if(_streetField!=null) _streetField.setInputText("");
           }
-
-          if(f==_streetField){
-              map.setZoom(17);
-          }
-
 
           doGeocode(null);
       }
@@ -98,6 +90,8 @@
           map.addControl(new ZoomControl());
           map.addControl(new MapTypeControl());
           map.addEventListener(MapMouseEvent.CLICK, onMapClick);
+
+          doGeocode(null);
       }
 
       private function onMapClick(event:MapMouseEvent):void {
@@ -180,19 +174,26 @@
                   geocoder.reverseGeocode(latlng);
 
               } else {
+                  var zoom:Number = 5;
                   var addr:String = "Deutschland";
                   if (_countryField != null && !_countryField.isEmpty()) {
                       addr = _countryField.getInputText();
                   }
-                  if (_streetField != null && !_streetField.isEmpty()) {
-                      addr += "," + _streetField.getInputText();
-                  }
                   if (_cityField != null && !_cityField.isEmpty()) {
                       addr += "," + _cityField.getInputText();
-                  } else
+                      zoom=11;
+                  }
                   if (_zipField != null && !_zipField.isEmpty()) {
                       addr += "," + _zipField.getInputText();
+                      zoom=15;
                   }
+                  if (_streetField != null && !_streetField.isEmpty()) {
+                      addr += "," + _streetField.getInputText();
+                      zoom=17;
+                  }
+
+                  map.setZoom(zoom);
+
                   geocoder.geocode(addr);
               }
           } finally {
