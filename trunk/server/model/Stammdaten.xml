@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<!DOCTYPE define SYSTEM "model.dtd">
+
+<define >
+
+
+
+    <!--     *********************   Persistenz *******************************                -->
+
+
+
+    <model package="stammdaten">
+        <bean name="TextBaustein" persistent="true" unique-key="key" >
+            <field name="key"/>
+            <field name="text"/>
+        </bean>
+
+        <bean name="CodeElement" persistent="true" unique-key="key" >
+            <field name="code"/>
+            <field name="kurztext"/>
+            <field name="langtext"/>
+        </bean>
+    </model>
+
+    <permission package="permission" name="Stammdaten">
+
+    <!--     *********************   Auflister  ****************************    -->
+
+        <view package="stammdaten.view" >
+            <lister name="TextBausteinLister" label="Textbausteine" type="TextBaustein">
+                <command use="LoadTableCommand" icon="refresh" label="Textbausteine neu laden"/>
+                <command use="OpenEditorCommand" editor="TextBausteinEditor" label="Textbaustein bearbeiten" icon="edit" default="true"/>
+                <command use="DeleteBoCommand" label="Textbaustein loeschen" icon="delete"/>
+                <command use="OpenNewEditorCommand" editor="TextBausteinEditor" label="neuen Textbaustein anlegen" />
+
+                <column path="key" label="Sequenz" searchable="true"/>
+                <column path="text" label="Text" searchable="true"/>
+            </lister>
+
+            <lister name="CodeElementLister" label="Code Elemente" type="CodeElement">
+                <command use="LoadTableCommand" icon="refresh" label="Code Elemente neu laden"/>
+                <command use="OpenEditorCommand" editor="CodeElementEditor" label="Code Element bearbeiten" icon="edit" default="true"/>
+                <command use="DeleteBoCommand" label="Code-Element loeschen" icon="delete"/>
+                <command use="OpenNewEditorCommand" editor="CodeElementEditor" label="neues Code Element anlegen" />
+
+                <column path="code" label="Code" searchable="true"/>
+                <column path="kurztext" label="Kurztext" searchable="true"/>
+                <column path="langtext" label="Langtext" searchable="true"/>
+            </lister>
+
+    <!--     *********************   Editor  *******************************    -->
+
+            <editor name="TextBausteinEditor" label="Textbaustein {key} " type="TextBaustein">
+                <panel name="TextBausteinPanel" editable="true" x="10" y="10" w="650" h="600">
+                    <input x="10" y="20" w="300" labelwidth="100" label="Tasten Sequenz" path="key" />
+                    <input x="10" y="50" w="300" labelwidth="100" label="Text" path="text" type="area"/>
+                </panel>
+
+                <command use="SaveBoCommand" label="Textbaustein speichern" icon="save"/>
+                <command use="LoadBoCommand" label="Textbaustein laden" icon="refresh"/>
+                <command use="DeleteBoCommand" label="Textbaustein loeschen" icon="delete"/>
+            </editor>
+
+
+            <editor name="CodeElementEditor" label="Code-Element {nachname} " type="CodeElement">
+                <panel name="CodeElementPanel" editable="true" x="10" y="10" w="650" h="600">
+                    <input x="10" y="20" w="300" labelwidth="100" label="Code" path="code" />
+                    <input x="10" y="50" w="300" labelwidth="100" label="Kurztext" path="kurztext" />
+                    <input x="10" y="80" w="300" labelwidth="100" label="Langtext" path="langtext" type="area"/>
+                </panel>
+
+                <command use="SaveBoCommand" label="Code-Element speichern" icon="save"/>
+                <command use="LoadBoCommand" label="Code-Element laden" icon="refresh"/>
+                <command use="DeleteBoCommand" label="Code-Element loeschen" icon="delete"/>
+            </editor>
+
+
+
+
+          </view>
+
+    </permission>
+
+</define>
+
+
+
+

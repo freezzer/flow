@@ -46,16 +46,22 @@
         create CDATA #IMPLIED
         name CDATA #REQUIRED
         type CDATA #IMPLIED>
-<!ELEMENT permission (view|lister|tree_editor|panel)*>
+<!ELEMENT permission (view|lister|tree_editor|panel|editor)*>
 <!ATTLIST permission
         package CDATA #IMPLIED
         name CDATA #REQUIRED>
-<!ELEMENT view (tree_editor|panel|lister|tabbed_application_panel|permission)*>
+<!ELEMENT view (editor|tree_editor|panel|lister|tabbed_application_panel|permission)*>
 <!ATTLIST view
         package CDATA #IMPLIED
         >
 <!ELEMENT tree_editor (tree_node|command)*>
 <!ATTLIST tree_editor
+        name CDATA #REQUIRED
+        type CDATA #REQUIRED
+        label CDATA #REQUIRED>
+
+<!ELEMENT editor (panel|command)*>
+<!ATTLIST editor
         name CDATA #REQUIRED
         type CDATA #REQUIRED
         label CDATA #REQUIRED>

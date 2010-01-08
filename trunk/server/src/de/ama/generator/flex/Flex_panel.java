@@ -20,6 +20,7 @@
 package de.ama.generator.flex;
 
 import de.ama.generator.Tag;
+import de.ama.generator.Visitor;
 import de.ama.util.Util;
 
 /**

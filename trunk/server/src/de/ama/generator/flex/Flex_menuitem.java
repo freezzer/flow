@@ -25,8 +25,16 @@ public class Flex_menuitem extends Tag {
 
     @Override
     public void generate() {
-        visitChildren(COMMAND);
-        write("        menu.addItem(cmd);");
-        write("   ");
+
+        String type = getAttribute(TYPE);
+        if(isEmpty(type)){
+            visitChildren(COMMAND);
+            write("        menu.addItem(cmd);");
+            write("");
+        } else {
+            write("");
+            write("menu.addItem(new Separator()); // --------------------------------------");
+            write("");
+        }
     }
 }
