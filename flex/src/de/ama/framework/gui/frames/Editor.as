@@ -72,6 +72,9 @@ public class Editor extends Canvas implements Invoker{
     }
 
     public function getData():BusinessObject {
+        if (_data == null) {
+            _data = createData();
+        }
         return _data;
     }
 

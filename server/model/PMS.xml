@@ -10,6 +10,7 @@
     <import file="Vorgang.xml"/>
     <import file="Person.xml"/>
     <import file="Organisation.xml"/>
+    <import file="Stammdaten.xml"/>
 
 
     <permission package="permission" name="MainMenu">
@@ -17,20 +18,43 @@
             <tabbed_application_panel name="MyApplicationPanel" package="app">
                 <bootstrap/>
                 <menubar h="23">
-                    <menu name="Daten">
-                        <menuitem>
-                            <command label="Uebersicht Organisationen" use="OpenListerCommand" lister="OrganisationenLister"/>
-                        </menuitem>
-                        <menuitem>
-                            <command label="Neue Organisation anlegen" use="OpenEditorCommand" editor="OrganisationenEditor"/>
-                        </menuitem>
-                        <!--<menuitem type="separator" />-->
+                    <menu name="Stammdaten">
+
                         <menuitem>
                             <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"/>
                         </menuitem>
+
+
+                        <menuitem type="separator"/>
+                        <menuitem>
+                            <command label="Uebersicht TextBausteine" use="OpenListerCommand" lister="TextBausteinLister"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Neuen TextBausteine anlegen" use="OpenEditorCommand" editor="TextBausteinEditor"/>
+                        </menuitem>
+
+
+                        <menuitem type="separator"/>
+                        <menuitem>
+                            <command label="Uebersicht Code-Elemente" use="OpenListerCommand" lister="CodeElementLister"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Neues Code-Element anlegen" use="OpenEditorCommand" editor="CodeElementEditor"/>
+                        </menuitem>
+
+                    </menu>
+                    <menu name="Geschaeftsdaten">
+                        <menuitem>
+                            <command label="Uebersicht Organisationen" use="OpenListerCommand" lister="OrganisationenLister"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Neue Organisation anlegen" use="OpenEditorCommand" editor="OrganisationenEditor"/>
+                        </menuitem>
+
+                        <menuitem type="separator"/>
                         <menuitem>
                             <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
                         </menuitem>

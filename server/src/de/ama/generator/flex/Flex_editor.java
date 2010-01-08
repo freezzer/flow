@@ -40,7 +40,7 @@ public class Flex_editor extends Tag {
         write("import de.ama.framework.command.*; ");
         write("import de.ama.framework.data.BusinessObject;");
         write("import de.ama.services.Factory;");
-        write("public class "+name+" extends Editor {");
+        write("public class "+name+" extends PanelEditor {");
         write("     ");
         write("     override public function createData():BusinessObject {");
         write("       return Factory.createBean(\""+type+"\"); ");

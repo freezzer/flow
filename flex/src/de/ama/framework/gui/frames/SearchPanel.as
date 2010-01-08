@@ -11,7 +11,7 @@ import de.ama.framework.gui.frames.*;
 import de.ama.framework.data.*;
 import de.ama.services.Factory;
 
-public class SearchPanel  extends EditPanel {
+public class PanelEditor  extends EditPanel {
     private var _listPanel:ListPanel;
 
 
