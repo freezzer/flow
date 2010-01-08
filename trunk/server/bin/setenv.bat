@@ -1,4 +1,3 @@
-set JAVA=D:\dev\java\bin\java
 set HOME=D:\dev\flow\server
 set LIB=%HOME%\lib
 set BDS=D:\dev\blazeds\WEB-INF\lib

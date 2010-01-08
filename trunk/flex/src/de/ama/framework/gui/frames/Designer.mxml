@@ -135,7 +135,7 @@
             p.setStyle("borderColor", SEL_COLOR);
 
             panel = p;
-            pasteToClipboard(panel.getXmlSourceCode());
+            pasteToClipboard(panel.getSourceCode(xmlCode));
         }
 
         public function unsetPanel():void {
