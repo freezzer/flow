@@ -47,7 +47,6 @@ public class GoogleMap extends EditPanel {
         _map.language = "de";
         addChild(_map);
         
-        callLater(doGeocode,null);
     }
 
 
@@ -105,7 +104,7 @@ public class GoogleMap extends EditPanel {
         _map.addControl(new MapTypeControl());
         _map.addEventListener(MapMouseEvent.CLICK, onMapClick);
 
-        doGeocode(null);
+        callLater(doGeocode,null);
     }
 
     private function onMapClick(event:MapMouseEvent):void {

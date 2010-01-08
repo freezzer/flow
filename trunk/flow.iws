@@ -23,18 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_google_map.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_google_map.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/bin/setenv.bat" afterPath="$PROJECT_DIR$/server/bin/setenv.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/model/Person.xml" afterPath="$PROJECT_DIR$/server/model/Person.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/bin/schema.bat" afterPath="$PROJECT_DIR$/server/bin/schema.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/bin/server.bat" afterPath="$PROJECT_DIR$/server/bin/server.bat" />
-      <change type="MOVED" beforePath="D:\dev\flow\flex\src\de\ama\framework\gui\frames\GoogleMap.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/GoogleMap.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/EditPanel.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/EditPanel.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/Designer.mxml" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/Designer.mxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/bin/enhance.bat" afterPath="$PROJECT_DIR$/server/bin/enhance.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionContextPanel.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/services/permission/view/PermissionContextPanel.as" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.ipr" afterPath="$PROJECT_DIR$/flow.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/GoogleMap.as" afterPath="$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/GoogleMap.as" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -188,7 +177,7 @@
       <file leaf-file-name="GoogleMap.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/GoogleMap.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="73" selection-start="707" selection-end="707" vertical-scroll-proportion="0.59694654">
+            <state line="11" column="82" selection-start="485" selection-end="485" vertical-scroll-proportion="0.28549618">
               <folding />
             </state>
           </provider>
@@ -1511,7 +1500,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flex/src/de/ama/framework/gui/frames/GoogleMap.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="73" selection-start="707" selection-end="707" vertical-scroll-proportion="0.59694654">
+        <state line="11" column="82" selection-start="485" selection-end="485" vertical-scroll-proportion="0.28549618">
           <folding />
         </state>
       </provider>
