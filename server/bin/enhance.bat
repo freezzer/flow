@@ -9,6 +9,6 @@ title=enhancer
 call setenv.bat
 set CP=%CP%;%LIB%\javassist.jar
 
-%JAVA% -cp %CP% -Xmx64M de.ama.db.tools.Enhancer inDir %HOME%\classes verbose 1
+java -cp %CP% -Xmx64M de.ama.db.tools.Enhancer inDir %HOME%\classes verbose 1
 pause
 echo all classes enhanced OK

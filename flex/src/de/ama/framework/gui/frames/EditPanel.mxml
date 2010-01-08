@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
-	implements="de.ama.framework.gui.frames.Panel"
+	implements="de.ama.framework.gui.frames.Panel, de.ama.framework.gui.fields.GUIComponent "
     initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"
     borderStyle="none"  clipContent="false" click="onClick(event)">
 
@@ -27,11 +27,15 @@
             addFields();
             addPanels();
             showTitle(label);
+
+            super.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
+            super.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
+
         }
 
         public  var gap:int = 5;
-        public  var labelWidth:int = 100;
-        public  var inputWidth:int = 300;
+        public  var _fieldLabelWidth:int = 100;
+        public  var _fieldInputWidth:int = 300;
         private var _path:String;
         private var _generic:Boolean = false;
         private var _data:BusinessObject;
@@ -120,12 +124,12 @@
             }
         }
 
-        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1, defaultString:String=null):EditField {
+        public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1, defaultString:String = null):EditField {
             var editField:EditField = new EditField(label, path);
-            editField.labelWidth = lw < 0 ? labelWidth : lw;
-            editField.width = w < 0 ? inputWidth : w;
+            editField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            editField.width = w < 0 ? _fieldInputWidth : w;
             insertComponent(editField, x, y);
-            if(!Util.isEmpty(defaultString)){
+            if (!Util.isEmpty(defaultString)) {
                 editField.defaultValue = defaultString;
             }
             return editField;
@@ -133,16 +137,16 @@
 
         public function insertBoolField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1):BoolField {
             var boolField:BoolField = new BoolField(label, path);
-            boolField.labelWidth = lw < 0 ? labelWidth : lw;
-            boolField.width = w < 0 ? inputWidth : w;
+            boolField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            boolField.width = w < 0 ? _fieldInputWidth : w;
             insertComponent(boolField, x, y);
             return boolField;
         }
 
         public function insertDateField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1):DateField {
             var dateField:DateField = new DateField(label, path);
-            dateField.labelWidth = lw < 0 ? labelWidth : lw;
-            dateField.width = w < 0 ? inputWidth : w;
+            dateField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            dateField.width = w < 0 ? _fieldInputWidth : w;
             insertComponent(dateField, x, y);
             return dateField;
         }
@@ -150,7 +154,7 @@
         public function insertListField(label:String, path:String = null, lister:String = null, x:int = -1, y:int = -1, w:int = -1, h:int = 150):ListField {
             var listField:ListField = new ListField(label, path, lister);
             listField.height = h;
-            listField.width = w < 0 ? inputWidth : w;
+            listField.width = w < 0 ? _fieldInputWidth : w;
             insertComponent(listField, x, y);
             return listField;
         }
@@ -158,16 +162,16 @@
         public function insertTextAreaField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = 75):TextAreaField {
             var textAreaField:TextAreaField = new TextAreaField(label, path);
             textAreaField.height = h;
-            textAreaField.labelWidth = lw < 0 ? labelWidth : lw;
-            textAreaField.width = w < 0 ? inputWidth : w;
+            textAreaField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            textAreaField.width = w < 0 ? _fieldInputWidth : w;
             insertComponent(textAreaField, x, y);
             return textAreaField;
         }
 
         public function insertProxyField(type:String, guiRepPath:String, label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1):ProxyField {
             var proxyField:ProxyField = new ProxyField(label, path);
-            proxyField.labelWidth = lw < 0 ? labelWidth : lw;
-            proxyField.width = w < 0 ? inputWidth : w;
+            proxyField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            proxyField.width = w < 0 ? _fieldInputWidth : w;
             proxyField.guiRepPath = guiRepPath;
             proxyField.type = type;
             insertComponent(proxyField, x, y);
@@ -252,11 +256,16 @@
 
         ///////////////////////////// design mode ////////////////////////////////////////
 
-        function getXmlSourceCode():String {
-            var border:String = Util.isEqual("none", getStyle("borderStyle")) ? "false" : "true";
-            return "<panel name=\"" + Util.getUnqualifiedClassName(this) + "\" label=\"" + label +
-                   "\" border=\"" + border + "\" x=\"" + x + "\" y=\"" + y +
-                   "\" w=\"" + width + "\" h=\"" + height + "\" path=\"" + Util.saveToString(path, ".") + "\" >"
+        private function startDragging(event:MouseEvent):void {
+            if (Environment.designer && event.target == this) {
+                super.startDrag();
+            }
+        }
+
+        private function stopDragging(event:MouseEvent):void {
+            if (Environment.designer && event.target == this) {
+                super.stopDrag();
+            }
         }
 
         private function onClick(event:MouseEvent):void {
@@ -264,6 +273,22 @@
                 Environment.designer.setPanel(this);
             }
         }
+
+
+        public function getSourceCode(xml:Boolean):String {
+            var border:String = Util.isEqual("none", getStyle("borderStyle")) ? "false" : "true";
+            if (xml) {
+                return "<panel name=\"" + Util.getUnqualifiedClassName(this) + "\" label=\"" + label +
+                       "\" border=\"" + border + "\" x=\"" + x + "\" y=\"" + y +
+                       "\" w=\"" + width + "\" h=\"" + height + "\" path=\"" + Util.saveToString(path, ".") + "\" >"
+            } else {
+                return "EditPanel " + _path + "x=" + x + ",y=" + y;
+            }
+        }
+
+        // GuiComponent
+        public function set labelWidth(val:int):void {     }
+        public function get labelWidth():int {  return 0;   }
 
 
         ]]></mx:Script>

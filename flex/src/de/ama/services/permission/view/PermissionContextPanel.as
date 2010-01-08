@@ -20,7 +20,7 @@ public class PermissionContextPanel  extends EditPanel {
      } 
    
      override public function addFields():void {
-        labelWidth = 70;
+        _fieldLabelWidth = 70;
         insertTextField("Kontext","context",10,20,70,240);
         insertTextField("UserName","userName",10,50,70,240);
         insertBoolField("Permitted","permitted",10,80,70,240);
