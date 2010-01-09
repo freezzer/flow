@@ -188,7 +188,7 @@
 
         <lister name="VorgangLister" type="Vorgang" label="Vorgaenge">
             <command use="LoadTableCommand" label="Uebersicht Vorgaenge neu laden"/>
-            <command use="OpenNewEditorCommand" editor="VorgangEditor" label="neuen Vorgang oeffnen" />
+            <command use="OpenEditorCommand_New" editor="VorgangEditor" label="neuen Vorgang oeffnen" />
             <command use="OpenEditorCommand" editor="VorgangEditor" label="Vorgang oeffnen" default="true"/>
             <command use="DeleteBoCommand" label="Vorgang loeschen"/>
 

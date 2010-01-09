@@ -33,7 +33,7 @@ public class Flex_menuitem extends Tag {
             write("");
         } else {
             write("");
-            write("menu.addItem(new Separator()); // --------------------------------------");
+            write("        menu.addItem(new Separator()); // --------------------------------------");
             write("");
         }
     }

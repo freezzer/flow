@@ -88,8 +88,14 @@ public class Command {
 
     public function start(invoker:Invoker):void{
         _invoker=invoker;
-        execute();
-        _contextMenuItem = null;
+        try {
+            execute();
+        } catch(e:Error) {
+            Util.showError("Aktion fehlgeschlagen ("+e.message+")", e.getStackTrace())
+        } finally {
+            _contextMenuItem = null;
+            _invoker = null;
+        }
     }
 
     protected function execute():void{

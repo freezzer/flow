@@ -6,7 +6,7 @@ import de.ama.framework.util.Callback;
 public class DeleteBoCommand extends Command{
 
 
-    public function DeleteBoCommand(label:String="laden",icon:String="refresh") {
+    public function DeleteBoCommand(label:String="laden",icon:String="delete") {
         super(label,icon);
     }
 

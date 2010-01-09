@@ -4,21 +4,21 @@ import de.ama.framework.gui.frames.EditPanel;
 import de.ama.framework.gui.frames.Editor;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
-
 import de.ama.services.Environment;
 
+import de.ama.services.text.TextService;
+
 import flash.events.Event;
-import flash.events.EventPhase;
 import flash.events.FocusEvent;
 import flash.events.KeyboardEvent;
 import flash.events.MouseEvent;
-
 import flash.ui.Keyboard;
 
 import mx.containers.Canvas;
 import mx.controls.Label;
 import mx.controls.TextInput;
 import mx.core.UIComponent;
+import mx.utils.StringUtil;
 
 public class EditField extends Canvas implements GUIComponent {
 
@@ -33,6 +33,7 @@ public class EditField extends Canvas implements GUIComponent {
     private var _editable:Boolean = true;
     private var _changeCallback:Callback=null;
     private var _enterCallback:Callback=null;
+    private var _useTextService:Boolean =true;
 
 
     public function EditField(caption:String="EditField", path:String=null) {
@@ -151,6 +152,43 @@ public class EditField extends Canvas implements GUIComponent {
             _enterCallback.execute(this);
         }
 
+        if(_useTextService && e.keyCode == Keyboard.SPACE && e.ctrlKey){
+            var key:String = getTextAtCaret();
+            if(!Util.isEmpty(key)) {
+                TextService.instance().getProposal(key,new Callback(this, replaceTextHandler, key));
+            }
+        }
+    }
+
+    private function replaceTextHandler(str:String, key):void {
+        if (inputComponent is TextInput) {
+            var input:TextInput = TextInput(inputComponent);
+            var start:int = input.selectionBeginIndex;
+            var string:String = input.text;
+            while (start > 0 && string.charAt(start) != " ") {
+                start--;
+            }
+            if(start>0) start++;
+            var pre:String = string.substr(0, start);
+            var post:String = string.substr(input.selectionBeginIndex);
+            setInputText(pre+str+post);
+            input.selectionBeginIndex = start+str.length;
+            input.selectionEndIndex = start+str.length;
+        }
+    }
+
+    protected function getTextAtCaret():String {
+        if (inputComponent is TextInput) {
+            var input:TextInput = TextInput(inputComponent);
+            var start:int = input.selectionBeginIndex;
+            var string:String = input.text;
+            while (start > 0 && string.charAt(start) != " ") {
+                start--;
+            }
+            return StringUtil.trim(string.substr(start, input.selectionBeginIndex));
+        }
+
+        return null;
     }
 
     protected function onFocusLost(e:FocusEvent):void {
