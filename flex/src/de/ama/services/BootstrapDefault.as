@@ -2,7 +2,7 @@ package de.ama.services {
 import de.ama.framework.command.LoadTableCommand;
 import de.ama.framework.command.OpenEditorCommand;
 import de.ama.framework.command.OpenListerCommand;
-import de.ama.framework.command.OpenNewEditorCommand;
+import de.ama.framework.command.OpenEditorCommand_New;
 import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.BoReference;
 import de.ama.framework.data.LookupDataProvider;
@@ -32,7 +32,7 @@ public class BootstrapDefault {
 
         Factory.registerCommand("SelectBoCommand", SelectBoCommand);
         Factory.registerCommand("LoadTableCommand", LoadTableCommand);
-        Factory.registerCommand("OpenNewEditorCommand", OpenNewEditorCommand);
+        Factory.registerCommand("OpenNewEditorCommand", OpenEditorCommand_New);
         Factory.registerCommand("OpenEditorCommand", OpenEditorCommand);
         Factory.registerCommand("OpenListerCommand", OpenListerCommand);
 

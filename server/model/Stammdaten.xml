@@ -31,7 +31,7 @@
                 <command use="LoadTableCommand" icon="refresh" label="Textbausteine neu laden"/>
                 <command use="OpenEditorCommand" editor="TextBausteinEditor" label="Textbaustein bearbeiten" icon="edit" default="true"/>
                 <command use="DeleteBoCommand" label="Textbaustein loeschen" icon="delete"/>
-                <command use="OpenNewEditorCommand" editor="TextBausteinEditor" label="neuen Textbaustein anlegen" />
+                <command use="OpenEditorCommand_New" editor="TextBausteinEditor" label="neuen Textbaustein anlegen" />
 
                 <column path="key" label="Sequenz" searchable="true"/>
                 <column path="text" label="Text" searchable="true"/>
@@ -41,7 +41,7 @@
                 <command use="LoadTableCommand" icon="refresh" label="Code Elemente neu laden"/>
                 <command use="OpenEditorCommand" editor="CodeElementEditor" label="Code Element bearbeiten" icon="edit" default="true"/>
                 <command use="DeleteBoCommand" label="Code-Element loeschen" icon="delete"/>
-                <command use="OpenNewEditorCommand" editor="CodeElementEditor" label="neues Code Element anlegen" />
+                <command use="OpenEditorCommand_New" editor="CodeElementEditor" label="neues Code Element anlegen" />
 
                 <column path="code" label="Code" searchable="true"/>
                 <column path="kurztext" label="Kurztext" searchable="true"/>

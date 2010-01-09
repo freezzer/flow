@@ -37,7 +37,8 @@
                 <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
                 <command use="OpenEditorCommand" editor="PersonEditor" label="Person bearbeiten" icon="edit" default="true"/>
                 <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
-                <command use="OpenNewEditorCommand" editor="PersonEditor" label="neue Person anlegen" />
+                <command use="OpenEditorCommand_New" editor="PersonEditor" label="neue Person anlegen" />
+                <command use="OpenEditorCommand_Copy" editor="PersonEditor" label="Person kopieren" />
 
                 <column path="vorname" label="Vorname" searchable="true"/>
                 <column path="nachname" label="Nachname" searchable="true"/>

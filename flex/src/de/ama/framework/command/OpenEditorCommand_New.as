@@ -13,11 +13,11 @@ import de.ama.services.Factory;
 import mx.core.Application;
 import mx.core.Container;
 
-public class OpenNewEditorCommand extends Command{
+public class OpenEditorCommand_New extends Command{
 
     private var editor:Editor = null;
 
-    public function OpenNewEditorCommand(label:String="Neu",icon:String="new") {
+    public function OpenEditorCommand_New(label:String="Neu",icon:String="new") {
         super(label,icon);
     }
 

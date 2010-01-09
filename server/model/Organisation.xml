@@ -31,7 +31,7 @@
                 <command use="LoadTableCommand" icon="refresh" label="Uebersicht Organisationen neu laden"/>
                 <command use="OpenEditorCommand" editor="OrganisationenEditor" label="Organisation bearbeiten" icon="edit" default="true"/>
                 <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
-                <command use="OpenNewEditorCommand" editor="OrganisationenEditor" label="neue Organisation anlegen" />
+                <command use="OpenEditorCommand_New" editor="OrganisationenEditor" label="neue Organisation anlegen" />
 
                 <column path="name"    label="Name"         searchable="true"/>
                 <column path="adresse.land" label="Land" searchable="true"/>
