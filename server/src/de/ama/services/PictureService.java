@@ -14,7 +14,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface PictureService {
-    String NAME = "PictureService";
+    public static final String NAME = "PictureService";
 
     public void storePicture(User user, FileItem fileItem, String description) ;
     public List findPictures(User user);

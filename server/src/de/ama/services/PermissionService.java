@@ -13,7 +13,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface PermissionService {
-    public static String NAME = "PermissionService";
+    public static final String NAME = "PermissionService";
 
     public PermissionContext getPermissionContext(User user, String context);
     public List<PermissionContext> getUserPermissionContexts(User user);
