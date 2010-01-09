@@ -26,6 +26,7 @@ public class Environment {
         singletons.put(MailService.NAME         ,Util.createObject("de.ama.services.impl.MailServiceImpl"));
         singletons.put(GoogleService.NAME         ,Util.createObject("de.ama.services.impl.GoogleServiceImpl"));
         singletons.put(EventService.NAME         ,Util.createObject("de.ama.services.event.EventServiceImpl"));
+        singletons.put(TextService.NAME         ,Util.createObject("de.ama.services.text.TextServiceImpl"));
 
         PreMainInitializer.initForServer();
     }
@@ -77,6 +78,10 @@ public class Environment {
 
     public static MailService getMailService() {
         return (MailService) getSingleton(MailService.NAME);
+    }
+
+    public static TextService getTextService() {
+        return (TextService) getSingleton(TextService.NAME);
     }
 
     public static PictureService getPictureService() {

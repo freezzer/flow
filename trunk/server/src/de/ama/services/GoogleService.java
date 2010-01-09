@@ -10,7 +10,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface GoogleService {
-    public static String NAME = "GoogleService";
+    public static final String NAME = "GoogleService";
 
     public static String imgcolor_black ="black";
     public static String imgcolor_blue  ="blue";

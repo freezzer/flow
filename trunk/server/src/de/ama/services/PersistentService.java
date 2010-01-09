@@ -12,7 +12,7 @@ import java.util.List;
  * Date: 19.05.2008
  */
 public interface PersistentService {
-    public static String NAME = "PersistentService";
+    public static final String NAME = "PersistentService";
 
     public void start();
     public void stop();

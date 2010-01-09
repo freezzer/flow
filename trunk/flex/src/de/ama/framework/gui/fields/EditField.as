@@ -5,8 +5,7 @@ import de.ama.framework.gui.frames.Editor;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 import de.ama.services.Environment;
-
-import de.ama.services.text.TextService;
+import de.ama.services.text.SelectTextBausteinCommand;
 
 import flash.events.Event;
 import flash.events.FocusEvent;
@@ -49,7 +48,7 @@ public class EditField extends Canvas implements GUIComponent {
         _localpath = path;
 
         _input.setStyle("color","0x202020");
-        _input.addEventListener(Event.CHANGE, onInputCanged);
+        _input.addEventListener(Event.CHANGE, onInputChanged);
         _input.addEventListener(KeyboardEvent.KEY_UP, onKeyPressed);
         _input.addEventListener(FocusEvent.FOCUS_OUT, onFocusLost);
 
@@ -140,7 +139,7 @@ public class EditField extends Canvas implements GUIComponent {
         return _input;
     }
 
-    protected function onInputCanged(e:Event):void {
+    protected function onInputChanged(e:Event):void {
         if(_changeCallback!=null){
             _changeCallback.execute(this);
         }
@@ -153,14 +152,13 @@ public class EditField extends Canvas implements GUIComponent {
         }
 
         if(_useTextService && e.keyCode == Keyboard.SPACE && e.ctrlKey){
-            var key:String = getTextAtCaret();
-            if(!Util.isEmpty(key)) {
-                TextService.instance().getProposal(key,new Callback(this, replaceTextHandler, key));
-            }
+            var cmd:SelectTextBausteinCommand = new SelectTextBausteinCommand();
+            cmd.start(new EditFieldInvoker(this));
         }
     }
 
-    private function replaceTextHandler(str:String, key):void {
+    public function getTextAtCaret():Object {
+        var ret:Object = new Object();
         if (inputComponent is TextInput) {
             var input:TextInput = TextInput(inputComponent);
             var start:int = input.selectionBeginIndex;
@@ -168,24 +166,8 @@ public class EditField extends Canvas implements GUIComponent {
             while (start > 0 && string.charAt(start) != " ") {
                 start--;
             }
-            if(start>0) start++;
-            var pre:String = string.substr(0, start);
-            var post:String = string.substr(input.selectionBeginIndex);
-            setInputText(pre+str+post);
-            input.selectionBeginIndex = start+str.length;
-            input.selectionEndIndex = start+str.length;
-        }
-    }
-
-    protected function getTextAtCaret():String {
-        if (inputComponent is TextInput) {
-            var input:TextInput = TextInput(inputComponent);
-            var start:int = input.selectionBeginIndex;
-            var string:String = input.text;
-            while (start > 0 && string.charAt(start) != " ") {
-                start--;
-            }
-            return StringUtil.trim(string.substr(start, input.selectionBeginIndex));
+            ret.start start;
+            ret.key = StringUtil.trim(string.substr(start, input.selectionBeginIndex));
         }
 
         return null;
@@ -193,6 +175,14 @@ public class EditField extends Canvas implements GUIComponent {
 
     protected function onFocusLost(e:FocusEvent):void {
         writeToData();
+    }
+
+    function setCaretPosition(pos:int):void {
+        if (inputComponent is TextInput) {
+            var input:TextInput = TextInput(inputComponent);
+            input.selectionBeginIndex = pos;
+            input.selectionEndIndex = pos;
+        }
     }
 
     ////////////////////////////////////// label ///////////////////////////////////////////////

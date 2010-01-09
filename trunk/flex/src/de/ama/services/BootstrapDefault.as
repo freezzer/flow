@@ -15,6 +15,10 @@ import de.ama.services.permission.PermissionsData;
 import de.ama.services.permission.view.PermissionContextPanel;
 import de.ama.services.permission.view.PermissionEditor;
 import de.ama.services.permission.view.PermissionSwitchesLister;
+import de.ama.services.text.TextBaustein;
+import de.ama.services.text.view.TextBausteinEditor;
+import de.ama.services.text.view.TextBausteinLister;
+import de.ama.services.text.view.TextBausteinPanel;
 
 public class BootstrapDefault {
 
@@ -39,6 +43,12 @@ public class BootstrapDefault {
         Factory.registerCommand("BoReference", BoReference);
         Factory.registerProvider("LookupDataProvider", LookupDataProvider);
         Factory.registerProvider("ModelDataProvider", ModelDataProvider);
+
+
+        Factory.registerBean("TextBaustein", TextBaustein);
+        Factory.registerPanel("TextBausteinPanel", TextBausteinPanel);
+        Factory.registerEditor("TextBausteinEditor", TextBausteinEditor);
+        Factory.registerEditor("TextBausteinLister", TextBausteinLister);
 
 
     }}
