@@ -35,6 +35,22 @@ public class TextAreaField extends EditField{
         layout();
     }
 
+    override public function set selectionBeginIndex(pos:int):void{
+       TextArea(inputComponent).selectionBeginIndex=pos;
+    }
+
+    override public function get selectionBeginIndex():int{
+       return TextArea(inputComponent).selectionBeginIndex;
+    }
+
+    override public function set selectionEndIndex(pos:int):void{
+       TextArea(inputComponent).selectionEndIndex=pos;
+    }
+
+    override public function get selectionEndIndex():int{
+       return TextArea(inputComponent).selectionEndIndex;
+    }
+    
     override public function getSourceCode(xml:Boolean):String {
         if(xml){
             return "<input x=\""+x+"\" y=\""+y+"\" w=\""+width+"\" labelwidth=\""+labelWidth+"\" h=\""+height+"\" label=\""+label+"\" path=\""+localpath+"\" type=\"area\" />";

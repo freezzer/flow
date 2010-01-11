@@ -26,7 +26,7 @@
             <lister name="CodeElementLister" label="Code Elemente" type="CodeElement">
                 <command use="LoadTableCommand" icon="refresh" label="Code Elemente neu laden"/>
                 <command use="OpenEditorCommand" editor="CodeElementEditor" label="Code Element bearbeiten" icon="edit" default="true"/>
-                <command use="DeleteBoCommand" label="Code-Element loeschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="Code-Element löschen" icon="delete"/>
                 <command use="OpenEditorCommand_New" editor="CodeElementEditor" label="neues Code Element anlegen" />
 
                 <column path="code" label="Code" searchable="true"/>
@@ -45,7 +45,7 @@
 
                 <command use="SaveBoCommand" label="Code-Element speichern" icon="save"/>
                 <command use="LoadBoCommand" label="Code-Element laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Code-Element loeschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="Code-Element löschen" icon="delete"/>
             </editor>
 
           </view>

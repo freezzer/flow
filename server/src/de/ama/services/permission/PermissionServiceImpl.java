@@ -35,7 +35,7 @@ public class PermissionServiceImpl implements PermissionService{
         }
 
         ret = (PermissionContext) Util.createObject(permissionContexts.get(context));
-        ret.onAfterLoad();
+        ret.addSwitches();
         ret.setUserId(user.getId());
         ret.setUserName(user.getName());
         return ret;

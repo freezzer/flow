@@ -186,6 +186,10 @@ public class ProxyField extends EditField implements Invoker{
         return "";
     }
 
+    override public function getTextAtCaret():Object {
+    	return null;
+    }
+
 
     override public function getSourceCode(xml:Boolean):String {
         if(xml){

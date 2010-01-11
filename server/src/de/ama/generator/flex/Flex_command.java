@@ -65,10 +65,10 @@ public class Flex_command extends Tag {
     public void generate() {
 
         String name = getAttribute(NAME);
+        String use = getAttribute(USE);
         String pckg =  getPackage();
         String icon = getAttribute(ICON, "");
         String label = getAttribute(LABEL, "");
-        String use = getAttribute(USE, "");
         String editor = getAttribute(EDITOR, "");
         String lister = getAttribute(LISTER, "");
         String permitted = getAttribute(PERMITTED, "");
@@ -80,8 +80,9 @@ public class Flex_command extends Tag {
 
         if (!isEmpty(name)) // import non CRUD command
         write("        import " + pckg + "." + name + ";");
-        write("        cmd = new " + Util.saveToString(use, name) + "(\"" + label + "\"" + icon + ");");
-        write("        cmd.permissionId = \""+permissionContext+":"+Util.saveToString(use, name)+" ("+ label+")\";");
+
+        write("        cmd = new " + getRequiredAttributeAlternative(USE,NAME) + "(\"" + label + "\"" + icon + ");");
+        write("        cmd.permissionId = \""+permissionContext+":"+getRequiredAttributeAlternative(USE,NAME)+" ("+ label+")\";");
 
         if (!isEmpty(editor))
         write("        cmd.setProperty(\"editor\"," + quote(editor) + ");");

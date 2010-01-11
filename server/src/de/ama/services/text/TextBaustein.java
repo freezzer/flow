@@ -6,9 +6,8 @@
 */
 
 package de.ama.services.text;
-import de.ama.framework.data.*;
 
-public class TextBaustein  implements java.io.Serializable , de.ama.db.PersistentMarker { 
+public class TextBaustein  implements java.io.Serializable , de.ama.db.PersistentMarker {
 
 
     private String key;

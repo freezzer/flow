@@ -1,8 +1,9 @@
 package de.ama.services {
 import de.ama.framework.command.LoadTableCommand;
+import de.ama.framework.command.LoginCommand;
 import de.ama.framework.command.OpenEditorCommand;
-import de.ama.framework.command.OpenListerCommand;
 import de.ama.framework.command.OpenEditorCommand_New;
+import de.ama.framework.command.OpenListerCommand;
 import de.ama.framework.command.SelectBoCommand;
 import de.ama.framework.data.BoReference;
 import de.ama.framework.data.LookupDataProvider;
@@ -16,6 +17,7 @@ import de.ama.services.permission.view.PermissionContextPanel;
 import de.ama.services.permission.view.PermissionEditor;
 import de.ama.services.permission.view.PermissionSwitchesLister;
 import de.ama.services.text.TextBaustein;
+import de.ama.services.text.view.PermissionTextBausteine;
 import de.ama.services.text.view.TextBausteinEditor;
 import de.ama.services.text.view.TextBausteinLister;
 import de.ama.services.text.view.TextBausteinPanel;
@@ -39,8 +41,9 @@ public class BootstrapDefault {
         Factory.registerCommand("OpenNewEditorCommand", OpenEditorCommand_New);
         Factory.registerCommand("OpenEditorCommand", OpenEditorCommand);
         Factory.registerCommand("OpenListerCommand", OpenListerCommand);
+        Factory.registerCommand("LoginCommand", LoginCommand);
 
-        Factory.registerCommand("BoReference", BoReference);
+        Factory.registerBean("BoReference", BoReference);
         Factory.registerProvider("LookupDataProvider", LookupDataProvider);
         Factory.registerProvider("ModelDataProvider", ModelDataProvider);
 
@@ -48,7 +51,8 @@ public class BootstrapDefault {
         Factory.registerBean("TextBaustein", TextBaustein);
         Factory.registerPanel("TextBausteinPanel", TextBausteinPanel);
         Factory.registerEditor("TextBausteinEditor", TextBausteinEditor);
-        Factory.registerEditor("TextBausteinLister", TextBausteinLister);
+        Factory.registerLister("TextBausteinLister", TextBausteinLister);
+        Factory.registerPermission("PermissionTextBausteine", PermissionTextBausteine);
 
 
     }}

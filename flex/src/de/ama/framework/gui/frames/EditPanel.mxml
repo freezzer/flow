@@ -15,6 +15,7 @@
         import de.ama.framework.gui.fields.GUIComponent;
         import de.ama.framework.gui.fields.ListField;
         import de.ama.framework.gui.fields.ProxyField;
+        import de.ama.framework.gui.fields.RichTextEditorField;
         import de.ama.framework.gui.fields.TextAreaField;
         import de.ama.framework.util.Util;
 
@@ -166,6 +167,15 @@
             textAreaField.width = w < 0 ? _fieldInputWidth : w;
             insertComponent(textAreaField, x, y);
             return textAreaField;
+        }
+
+        public function insertRichTextEditorField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1, h:int = 75):RichTextEditorField {
+            var editor:RichTextEditorField = new RichTextEditorField(label, path);
+            editor.height = h;
+            editor.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            editor.width = w < 0 ? _fieldInputWidth : w;
+            insertComponent(editor, x, y);
+            return editor;
         }
 
         public function insertProxyField(type:String, guiRepPath:String, label:String, path:String = null, x:int = -1, y:int = -1, lw:int = 90, w:int = -1):ProxyField {

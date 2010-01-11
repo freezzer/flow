@@ -11,17 +11,17 @@ public class TextBausteinEditor extends PanelEditor {
      
      override public function addCommands():void {
         label = "Textbaustein {key} "
-   permissionContext="Stammdaten";     
+   permissionContext="TextBausteine";
 
         var cmd:Command;
         cmd = new SaveBoCommand("Textbaustein speichern","save");
-        cmd.permissionId = "Stammdaten:SaveBoCommand (Textbaustein speichern)";
+        cmd.permissionId = "TextBausteine:SaveBoCommand (Textbaustein speichern)";
         addCommand(cmd);
         cmd = new LoadBoCommand("Textbaustein laden","refresh");
-        cmd.permissionId = "Stammdaten:LoadBoCommand (Textbaustein laden)";
+        cmd.permissionId = "TextBausteine:LoadBoCommand (Textbaustein laden)";
         addCommand(cmd);
         cmd = new DeleteBoCommand("Textbaustein loeschen","delete");
-        cmd.permissionId = "Stammdaten:DeleteBoCommand (Textbaustein loeschen)";
+        cmd.permissionId = "TextBausteine:DeleteBoCommand (Textbaustein loeschen)";
         addCommand(cmd);
      } 
 

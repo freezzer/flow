@@ -13,18 +13,18 @@ public class TextBausteinLister extends ListPanel {
      override public function addCommands():void {
         var cmd:Command;
         cmd = new LoadTableCommand("Textbausteine neu laden","refresh");
-        cmd.permissionId = "Stammdaten:LoadTableCommand (Textbausteine neu laden)";
+        cmd.permissionId = "TextBausteine:LoadTableCommand (Textbausteine neu laden)";
         addCommand(cmd);
         cmd = new OpenEditorCommand("Textbaustein bearbeiten","edit");
-        cmd.permissionId = "Stammdaten:OpenEditorCommand (Textbaustein bearbeiten)";
+        cmd.permissionId = "TextBausteine:OpenEditorCommand (Textbaustein bearbeiten)";
         cmd.setProperty("editor","TextBausteinEditor");
         cmd.setProperty("default","true");
         addCommand(cmd);
         cmd = new DeleteBoCommand("Textbaustein loeschen","delete");
-        cmd.permissionId = "Stammdaten:DeleteBoCommand (Textbaustein loeschen)";
+        cmd.permissionId = "TextBausteine:DeleteBoCommand (Textbaustein loeschen)";
         addCommand(cmd);
         cmd = new OpenEditorCommand_New("neuen Textbaustein anlegen");
-        cmd.permissionId = "Stammdaten:OpenEditorCommand_New (neuen Textbaustein anlegen)";
+        cmd.permissionId = "TextBausteine:OpenEditorCommand_New (neuen Textbaustein anlegen)";
         cmd.setProperty("editor","TextBausteinEditor");
         addCommand(cmd);
      } 

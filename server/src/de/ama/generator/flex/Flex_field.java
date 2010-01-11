@@ -33,6 +33,8 @@ public class Flex_field extends Tag {
         }
         writeLine();
 
+        if(TEXT.equalsIgnoreCase(type)){    write("    public var "+name+":String;"); }
+        else
         if(STRING.equalsIgnoreCase(type)){    write("    public var "+name+":String;"); }
         else
         if(DATE.equalsIgnoreCase(type)){    write("    public var "+name+":String;"); }
