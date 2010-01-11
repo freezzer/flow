@@ -14,9 +14,9 @@
                     <field name="erfasser"   type="String"/>
                     <field name="datum" type="date"/>
                     <field name="kontaktperson" type="Person" reference="true"/>
-                    <field name="text"/>
+                    <field name="text" type="text"/>
                     <field name="assignedTo" type="Person" reference="true"/>
-                    <field name="todo"/>
+                    <field name="todo" type="text"/>
                 </bean>
             </collection>
         </bean>
