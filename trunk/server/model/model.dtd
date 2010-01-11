@@ -98,7 +98,7 @@
         streetField CDATA #IMPLIED
         >
 
-<!ELEMENT panel (panel|input|lookup|google_map)*>
+<!ELEMENT panel (panel|input|lookup|google_map|rich_text_editor)*>
 <!ATTLIST panel
         border CDATA #IMPLIED
         editable CDATA #IMPLIED
@@ -139,6 +139,22 @@
         label CDATA #REQUIRED
         path CDATA #REQUIRED
         type CDATA #IMPLIED>
+
+<!ELEMENT rich_text_editor (#PCDATA)>
+<!ATTLIST rich_text_editor
+        x CDATA #IMPLIED
+        y CDATA #IMPLIED
+        w CDATA #IMPLIED
+        h CDATA #IMPLIED
+        labelwidth CDATA #IMPLIED
+        label CDATA #REQUIRED
+        path CDATA #REQUIRED
+        link_input CDATA #IMPLIED
+        bullet_button CDATA #IMPLIED
+        align_buttons CDATA #IMPLIED
+        color_picker CDATA #IMPLIED
+        >
+
 <!ELEMENT provider (#PCDATA)>
 <!ATTLIST provider
         query CDATA #IMPLIED

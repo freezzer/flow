@@ -16,6 +16,7 @@ CP=$CP:$LIB/click-2.0.1-incubating.jar
 CP=$CP:$LIB/mail.jar
 CP=$CP:$LIB/activation.jar
 CP=$CP:$LIB/stringtree-json-2.0.9.jar
+CP=$CP:$LIB/jdom.jar
 
 CP=$CP:$LIB/flex-messaging-remoting.jar
 CP=$CP:$LIB/flex-messaging-common.jar

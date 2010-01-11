@@ -60,6 +60,7 @@ public interface Const {
 
     public static final String DATE = "date";
     public static final String STRING = "string";
+    public static final String TEXT = "text";
     public static final String NUMBER = "number";
     public static final String BOOLEAN = "boolean";
     public static final String LIST = "list";
@@ -91,5 +92,14 @@ public interface Const {
     public static final String GAP = "gap";
     public static final String COLOR = "color";
     public static final String BGCOLOR = "bgcolor";
+
+    // RichtextEditor ----------------------------------
+
+    public static final String  RICH_TEXT_EDITOR ="rich_text_editor";
+    public static final String  LINK_INPUT ="link_input";
+    public static final String  BULLET_BUTTON ="bullet_button";
+    public static final String  ALIGN_BUTTONS="align_buttons";
+    public static final String  COLOR_PICKER="color_picker";
+
 
 }

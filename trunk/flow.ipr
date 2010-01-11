@@ -51,7 +51,20 @@
     <option name="ADDITIONAL_OPTIONS_STRING" value="" />
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/flex/src/comp/permission/PermissionMainMenu.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/comp/permission/PermissionOrganisation.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/comp/permission/PermissionPerson.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/comp/permission/PermissionStammdaten.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/comp/permission/PermissionVorgang.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/de/ama/framework/command/Command.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/de/ama/framework/command/CreateNodeCommand.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/de/ama/framework/command/LoginCommand.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/flex/src/de/ama/framework/command/Target.as" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/model/model.dtd" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/src/comp/app/Bootstrap.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/server/src/de/ama/services/text/PermissionTextBausteine.java" charset="UTF-8" />
+  </component>
   <component name="FacetAutodetectingManager">
     <autodetection-disabled>
       <facet-type id="web" />
@@ -82,7 +95,7 @@
     <option name="DEBUGGING_INFO" value="true" />
     <option name="GENERATE_NO_WARNINGS" value="false" />
     <option name="DEPRECATION" value="true" />
-    <option name="ADDITIONAL_OPTIONS_STRING" value="" />
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-encoding UTF-8" />
     <option name="MAXIMUM_HEAP_SIZE" value="128" />
   </component>
   <component name="JavadocGenerationManager">

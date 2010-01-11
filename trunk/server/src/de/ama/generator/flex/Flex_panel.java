@@ -132,6 +132,7 @@ public class Flex_panel extends Tag {
         write("        var field:EditField;");
                         visitChildren(INPUT);
                         visitChildren(LOOKUP);
+                        visitChildren(RICH_TEXT_EDITOR);
         write("     } ");
         write("");
         write("}}");

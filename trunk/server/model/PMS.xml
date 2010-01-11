@@ -9,6 +9,7 @@
 
     <import file="Vorgang.xml"/>
     <import file="Person.xml"/>
+    <import file="Patient.xml"/>
     <import file="Organisation.xml"/>
     <import file="Stammdaten.xml"/>
 
@@ -21,7 +22,7 @@
                     <menu name="Stammdaten">
 
                         <menuitem>
-                            <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
+                            <command label="Übersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"/>
@@ -30,7 +31,7 @@
 
                         <menuitem type="separator"/>
                         <menuitem>
-                            <command label="Uebersicht TextBausteine" use="OpenListerCommand" lister="TextBausteinLister"/>
+                            <command label="Übersicht TextBausteine" use="OpenListerCommand" lister="TextBausteinLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neuen TextBausteine anlegen" use="OpenEditorCommand" editor="TextBausteinEditor"/>
@@ -39,16 +40,16 @@
 
                         <menuitem type="separator"/>
                         <menuitem>
-                            <command label="Uebersicht Code-Elemente" use="OpenListerCommand" lister="CodeElementLister"/>
+                            <command label="Übersicht Code-Elemente" use="OpenListerCommand" lister="CodeElementLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neues Code-Element anlegen" use="OpenEditorCommand" editor="CodeElementEditor"/>
                         </menuitem>
 
                     </menu>
-                    <menu name="Geschaeftsdaten">
+                    <menu name="Geschäftsdaten">
                         <menuitem>
-                            <command label="Uebersicht Organisationen" use="OpenListerCommand" lister="OrganisationenLister"/>
+                            <command label="Übersicht Organisationen" use="OpenListerCommand" lister="OrganisationenLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neue Organisation anlegen" use="OpenEditorCommand" editor="OrganisationenEditor"/>
@@ -56,13 +57,24 @@
 
                         <menuitem type="separator"/>
                         <menuitem>
-                            <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
+                            <command label="Übersicht Vorgänge" use="OpenListerCommand" lister="VorgangLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"/>
                         </menuitem>
+
+                        <menuitem type="separator"/>
+                        <menuitem>
+                            <command label="Übersicht Patientendaten" use="OpenListerCommand" lister="PatientLister"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Neuen Patienten anlegen" use="OpenEditorCommand" editor="PatientEditor"/>
+                        </menuitem>
                     </menu>
                     <menu name="Admin">
+                        <menuitem>
+                            <command label="Anmelden" use="LoginCommand" permitted="true"/>
+                        </menuitem>
                         <menuitem>
                             <command label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"
                                      permitted="true"/>

@@ -18,14 +18,14 @@
                 <menubar h="23">
                     <menu name="Daten">
                         <menuitem>
-                            <command label="Uebersicht Vorgaenge" use="OpenListerCommand" lister="VorgangLister"/>
+                            <command label="Übersicht Vorgänge" use="OpenListerCommand" lister="VorgangLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neuen Vorgang anlegen" use="OpenEditorCommand" editor="VorgangEditor"/>
                         </menuitem>
                         <menuitem type="separator" />
                         <menuitem>
-                            <command label="Uebersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
+                            <command label="Übersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
                         </menuitem>
                         <menuitem>
                             <command label="Neue Person anlegen" use="OpenEditorCommand" editor="PersonEditor"/>

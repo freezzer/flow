@@ -27,16 +27,17 @@
 
         <view package="view.organisation">
 
-            <lister name="OrganisationenLister" label="Uebersicht Organisationen" type="Organisation">
-                <command use="LoadTableCommand" icon="refresh" label="Uebersicht Organisationen neu laden"/>
+            <lister name="OrganisationenLister" label="Übersicht Organisationen" type="Organisation">
+                <command use="LoadTableCommand" icon="refresh" label="Übersicht Organisationen neu laden"/>
                 <command use="OpenEditorCommand" editor="OrganisationenEditor" label="Organisation bearbeiten" icon="edit" default="true"/>
-                <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="Organisation löschen" icon="delete"/>
                 <command use="OpenEditorCommand_New" editor="OrganisationenEditor" label="neue Organisation anlegen" />
 
-                <column path="name"    label="Name"         searchable="true"/>
+                <column path="name"    label="Name"         searchable="true" />
+                <column path="adresse.strasse" label="Strasse"   searchable="true"/>
+                <column path="adresse.plz" label="Postleitzahl"   searchable="true"/>
+                <column path="adresse.ort" label="Stadt"   searchable="true"/>
                 <column path="adresse.land" label="Land" searchable="true"/>
-                <column path="adresse.ort" label="Ort"   searchable="true"/>
-                <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
 
             <tree_editor name="OrganisationenEditor" label="Orga {name} " type="Organisation">
@@ -48,7 +49,7 @@
                                    panel="default">
                             <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
                             <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
-                            <command use="DeleteNodeCommand" label="Adresse loeschen" icon="delete"/>
+                            <command use="DeleteNodeCommand" label="Adresse löschen" icon="delete"/>
                         </tree_node>
                     </tree_node>
                     <tree_node label="Notizen" path="notizen" icon="table" open="true" type="Notiz"  lister="default">
@@ -57,17 +58,17 @@
                                    panel="NotizPanel">
                             <command use="CreateNodeCommand" label="neue Notiz" icon="new"/>
                             <command use="CopyNodeCommand" label="Notiz kopieren" icon="copy"/>
-                            <command use="DeleteNodeCommand" label="Notiz loeschen" icon="delete"/>
+                            <command use="DeleteNodeCommand" label="Notiz löschen" icon="delete"/>
                         </tree_node>
                     </tree_node>
                 </tree_node>
 
                 <command use="SaveBoCommand" label="Organisation speichern" icon="save" event="pre.save"/>
                 <command use="LoadBoCommand" label="Organisation laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Organisation loeschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="Organisation löschen" icon="delete"/>
             </tree_editor>
 
-            <panel name="NotizPanel" label="Notiz" border="true" x="25" y="25" w="595" h="360" path="." >
+            <panel name="NotizPanel" label="Notiz" border="true" x="12" y="15" w="645" h="679" path="." >
                 <input x="9" y="22" w="205" labelwidth="80" h="25" label="erfasst" path="datum" type="date" />
                 <input x="301" y="18" w="280" labelwidth="55" label="Erfasser" path="erfasser" type="string" default="{system.user.name}"/>
                 <input x="8" y="63" w="575" labelwidth="80" h="115" label="Notiz" path="text" type="area" />
@@ -77,8 +78,8 @@
                     </lister>
                 </lookup>
 
-                <lookup x="8" y="344" w="354" labelwidth="80" label="zugewiesen" path="assignedTo" type="Person" guirep="nachname" editor="PersonEditor" lister="PersonLister"/>
-                <input x="9" y="235" w="575" labelwidth="80" h="105" label="ToDo" path="todo" type="area" />
+                <rich_text_editor x="9" y="216" w="575" labelwidth="80" h="410" label="ToDo" path="todo" color_picker="false" link_input="false" bullet_button="false"/>
+                <lookup x="8" y="644" w="354" labelwidth="80" label="zugewiesen" path="assignedTo" type="Person" guirep="nachname" editor="PersonEditor" lister="PersonLister"/>
             </panel>
         </view>
 

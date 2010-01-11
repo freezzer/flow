@@ -17,7 +17,7 @@ import java.util.List;
 public class TextServiceImpl implements TextService {
 
     public List<TextBaustein> getTextBausteine(String key) {
-        Query q = new Query(TextBaustein.class, new Condition("key",Condition.EQ,key));
+        Query q = new Query(TextBaustein.class, new Condition("key",Condition.LIKE,key));
         return Environment.getPersistentService().getObjects(q);
     }
 }

@@ -33,6 +33,7 @@ public class Java_field extends Tag {
         String type = getAttribute(TYPE, "String");
         boolean create = getAttribute(CREATE, false);
         boolean reference = getAttribute(REFERENCE, false);
+        boolean largeText = false;
 
         if (isEmpty(type) && !isLeaf()) {
             type = getChild(0).getRequiredAttribute(NAME);
@@ -46,6 +47,12 @@ public class Java_field extends Tag {
         if ("number".equalsIgnoreCase(type)) {
             type = "String";
             create = false;
+        }
+        if ("text".equalsIgnoreCase(type)) {
+            str = true;
+            type = "String";
+            create = false;
+            largeText = true;
         }
         if ("boolean".equalsIgnoreCase(type)) {
             type = "boolean";
@@ -61,15 +68,16 @@ public class Java_field extends Tag {
 //            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + lazy+" "+name + ".setBo(in); }");
 
         } else {
-            write("    private " + type + " " + name + ";");
+            String fieldName = name + (largeText ? "_TEXT":"");
+            write("    private " + type + " " + fieldName + ";");
             if (str) {
-                write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { return de.ama.util.Util.saveToString(" + name + "); }");
+                write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { return de.ama.util.Util.saveToString(" + fieldName + "); }");
             } else {
                 String lazy = "";
                 if (create) lazy = "if(" + name + "==null){ " + name + "=new " + type + "(); }";
                 write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { " + lazy + " return " + name + "; }");
             }
-            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + (getAttribute(MANDATORY, false) ? "check(in,\"" + name + "\"); " : " ") + name + "=in; }");
+            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + (getAttribute(MANDATORY, false) ? "check(in,\"" + fieldName + "\"); " : " ") + fieldName + "=in; }");
         }
     }
 

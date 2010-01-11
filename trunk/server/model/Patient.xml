@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE define SYSTEM "model.dtd">
+
+<define>
+
+    <model package="bom">
+        <bean name="Patient" persistent="true" unique-key="vorname+nachname" >
+            <field name="vorname"/>
+            <field name="nachname"/>
+            <field name="telefon"/>
+            <field name="email"/>
+            <field name="status"/>
+            <field name="kasse"/>
+            <field name="beruf"/>
+            <field name="geschlecht" />
+            <field name="erfasst"  type="date"/>
+
+            <field name="adresse" type="Adresse" create="true"/>
+
+            <collection name="eintraege" create="1">
+                <bean name="Eintrag">
+                    <field name="erfasser"   type="String"/>
+                    <field name="datum"      type="date"/>
+                    <field name="anamnese"   type="text"/>
+                    <field name="befund"     type="text" />
+                    <field name="therapie"   type="text" />
+                    <collection name="dokumente" >
+                        <bean name="Dokument">
+                            <field name="typ"/>
+                            <field name="name"/>
+                            <field name="url"/>
+                        </bean>
+                    </collection>
+                </bean>
+            </collection>
+        </bean>
+    </model>
+
+
+      <permission package="permission" name="Patient">
+
+            <view package="patient.view" >
+
+            <lister name="PatientLister" label="Patienten Auflister" type="Patient">
+                <command use="LoadTableCommand" icon="refresh" label="Übersicht Patienten neu laden"/>
+                <command use="OpenEditorCommand" editor="PatientEditor" label="Patient bearbeiten" icon="edit" default="true"/>
+                <command use="DeleteBoCommand" label="Patient löschen" icon="delete"/>
+                <command use="OpenEditorCommand_New" editor="PatientEditor" label="neue Patient anlegen" />
+                <command use="OpenEditorCommand_Copy" editor="PatientEditor" label="Patient kopieren" />
+
+                <column path="vorname" label="Vorname" searchable="true"/>
+                <column path="nachname" label="Nachname" searchable="true"/>
+                <column path="geschlecht" label="Geschlecht" searchable="true"/>
+                <column path="kasse" label="Kasse" searchable="true"/>
+            </lister>
+
+
+
+            <tree_editor name="PatientEditor" label="Daten von {nachname} " type="Patient">
+                <tree_node label="Patient" path="." type="Patient" icon="user" open="true" panel="PatientPanel">
+                    <tree_node label="Einträge" path="eintraege" icon="table" open="true" type="Eintrag" lister="default">
+                        <command use="CreateNodeCommand" label="neuen Eintrag" icon="new"/>
+                        <tree_node label="Eintrag {datum}" path="eintraege" icon="form" open="true" type="Eintrag" panel="EintragPanel">
+                            <command use="CreateNodeCommand" label="neuer Eintrag" icon="new"/>
+                            <command use="CopyNodeCommand" label="Eintrag kopieren" icon="copy"/>
+                            <command use="DeleteNodeCommand" label="Eintrag löschen" icon="delete"/>
+                        </tree_node>
+                    </tree_node>
+                </tree_node>
+
+                <command use="SaveBoCommand" label="Patient speichern" icon="save"/>
+                <command use="LoadBoCommand" label="Patient laden" icon="refresh"/>
+                <command use="DeleteBoCommand" label="Patient löschen" icon="delete"/>
+            </tree_editor>
+
+
+
+            <panel name="EintragPanel" border="true" editable="true" x="10" y="10" w="650" h="600">
+                <input x="11" y="53" w="300" labelwidth="100" h="25" label="Erfasser" path="erfasser" type="string" />
+                <input x="11" y="20" w="300" labelwidth="100" h="25" label="Datum" path="datum" type="date" />
+                <input x="11" y="295" w="615" labelwidth="90" h="90" label="Anamnese" path="anamnese" type="area" />
+                <input x="11" y="392" w="615" labelwidth="90" h="90" label="Befund" path="befund" type="area" />
+                <input x="11" y="488" w="615" labelwidth="90" h="90" label="Therapie" path="therapie" type="area" />
+                <input x="326" y="23" w="295" h="255" label="Dokumente" path="dokumente" type="list" >
+                    <lister name="DokumenteLister" type="Dokument" >
+                        <command name="CreateDokumentCommand" label="neues Dokument" icon="new"/>
+                        <command use="DeleteNodeCommand" label="Dokument löschen" icon="delete"/>
+                        <column label="Typ" path="typ" editable="false"/>
+                        <column label="Name" path="name" editable="false"/>
+                        <column label="Pfad" path="url" editable="false"/>
+                    </lister>
+                </input>
+            </panel>
+
+            <panel name="PatientPanel" editable="true" x="10" y="10" w="650" h="600">
+               <panel border="true" path="." label="Patientendaten" name="PatientKopfPanel">
+                   <input x="10" y="65" w="300" labelwidth="100" h="25" label="Vorname" path="vorname" type="string" />
+                   <input x="10" y="95" w="300" labelwidth="100" h="25" label="Nachname" path="nachname" type="string" />
+                   <input x="10" y="313" w="300" labelwidth="100" h="25" label="Telefon" path="telefon" type="string" />
+                   <input x="10" y="279" w="300" labelwidth="100" h="25" label="Email" path="email" type="string" />
+                   <input x="10" y="154" w="300" labelwidth="100" h="25" label="Status" path="status" type="string" />
+                   <input x="10" y="185" w="300" labelwidth="100" h="25" label="Kasse" path="kasse" type="string" />
+                   <input x="10" y="218" w="300" labelwidth="100" h="25" label="Beruf" path="beruf" type="string" />
+                   <input x="10" y="125" w="300" labelwidth="100" h="25" label="Geschlecht" path="geschlecht" type="string" />
+                   <input x="8" y="16" w="300" labelwidth="100" h="25" label="Erfasst am" path="erfasst" type="date" />
+               </panel>
+               <panel use="AdressePanel" label="Adresse" border="true" path="adresse" x="334" y="1" w="650" h="600" />
+            </panel>
+          </view>
+     </permission>
+</define>
+
+
+
+

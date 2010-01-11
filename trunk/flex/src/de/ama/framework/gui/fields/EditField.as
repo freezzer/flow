@@ -158,33 +158,85 @@ public class EditField extends Canvas implements GUIComponent {
     }
 
     public function getTextAtCaret():Object {
-        var ret:Object = new Object();
-        if (inputComponent is TextInput) {
-            var input:TextInput = TextInput(inputComponent);
-            var start:int = input.selectionBeginIndex;
-            var string:String = input.text;
-            while (start > 0 && string.charAt(start) != " ") {
-                start--;
-            }
-            ret.start start;
-            ret.key = StringUtil.trim(string.substr(start, input.selectionBeginIndex));
+        var ret:Object = null;
+        var start:int = selectionBeginIndex;
+        var stop:int = selectionBeginIndex;
+        var string:String = getInputText();
+
+        while ( true ) {
+            if(start<0) { start=0; break; }
+            if(string.charAt(start) != "\r") { break};
+            start--;
         }
 
-        return null;
+        while ( true ) {
+            if(start<0) { start=0; break; }
+            if(string.charAt(start) == " ") { start++ ; break};
+            if(string.charAt(start) == "\n") { start++ ; break};
+            if(string.charAt(start) == "\r") { start++ ; break};
+            start--;
+        }
+
+        stop = start;
+        while (true) {
+            if(stop>string.length) {stop = string.length; break; }
+            if(string.charAt(stop) == " ") { break; }
+            if(string.charAt(stop) == "\n") { break; }
+            if(string.charAt(stop) == "\r") { break; }
+            stop++;
+        }
+
+        ret = new Object();
+        ret.start = start;
+        ret.stop = stop;
+        var tmp:String = string.substr(start, stop-start);
+        ret.key = StringUtil.trim(tmp);
+
+        return ret;
     }
 
     protected function onFocusLost(e:FocusEvent):void {
         writeToData();
     }
 
-    function setCaretPosition(pos:int):void {
+    public function setCaretPosition(pos:int):void {
+        selectionBeginIndex = pos;
+        selectionEndIndex = pos;
+    }
+
+    public function replaceText(_start:int, _stop:int, key:String, text:String):void {
+        var fieldText:String = getInputText();
+        var pre:String = fieldText.substr(0, _start);
+        var post:String = fieldText.substr(_stop);
+        setInputText(pre + text + post);
+        setCaretPosition(_stop+text.length+1);
+    }
+
+    public function set selectionBeginIndex(pos:int):void{
         if (inputComponent is TextInput) {
-            var input:TextInput = TextInput(inputComponent);
-            input.selectionBeginIndex = pos;
-            input.selectionEndIndex = pos;
+            TextInput(inputComponent).selectionBeginIndex=pos;
         }
     }
 
+    public function get selectionBeginIndex():int{
+        if (inputComponent is TextInput) {
+            return TextInput(inputComponent).selectionBeginIndex;
+        }
+        return 0;
+    }
+
+    public function set selectionEndIndex(pos:int):void{
+        if (inputComponent is TextInput) {
+            TextInput(inputComponent).selectionEndIndex=pos;
+        }
+    }
+
+    public function get selectionEndIndex():int{
+        if (inputComponent is TextInput) {
+            return TextInput(inputComponent).selectionEndIndex;
+        }
+        return 0;
+    }
     ////////////////////////////////////// label ///////////////////////////////////////////////
 
     public function createLabel(caption:String):void{

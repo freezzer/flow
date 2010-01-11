@@ -22,10 +22,7 @@ package de.ama.generator;
 import de.ama.util.Util;
 import de.ama.util.XmlElement;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -70,8 +67,7 @@ public class Tag extends XmlElement implements Const {
             if (!dir.exists()) {
                 dir.mkdirs();
             }
-
-            return new PrintWriter(new FileWriter(new File(dir , fileName)));
+            return new PrintWriter(new OutputStreamWriter(new FileOutputStream(new File(_dir,fileName)),"UTF-8"));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

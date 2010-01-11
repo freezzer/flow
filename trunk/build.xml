@@ -11,7 +11,7 @@
          <delete dir="server/classes" failonerror="false"/>
          <delete dir="server/src/${root_package}" failonerror="false"/>
          <mkdir dir="server/classes" />
-        <javac destdir="server/classes" debug="on">
+        <javac destdir="server/classes" debug="on"  encoding="UTF-8">
             <src path="server/src"/>
             <classpath>
                 <fileset dir="server/lib">
@@ -31,7 +31,7 @@
     <target name="server.compile.generated" >
         <delete dir="server/classes/${root_package}" failonerror="false"/>
         <mkdir dir="server/classes/${root_package}"/>
-        <javac destdir="server/classes" debug="on">
+        <javac destdir="server/classes" debug="on" encoding="UTF-8">
             <src path="server/src/${root_package}"/>
             <classpath>
                 <fileset dir="server/lib">
@@ -151,6 +151,7 @@
               <!--<include name="hessian-flex-3.1.5.swc" />-->
               <include name="as3corelib.swc" />
               <include name="map_flex_1_16.swc" />
+              <include name="flexlib.swc" />
         </compiler.library-path>
 
         </mxmlc>

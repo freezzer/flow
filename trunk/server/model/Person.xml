@@ -34,9 +34,9 @@
             <!--     *********************   Auflister  ****************************    -->
 
             <lister name="PersonLister" label="Personen Auflister" type="Person">
-                <command use="LoadTableCommand" icon="refresh" label="Uebersicht Personen neu laden"/>
+                <command use="LoadTableCommand" icon="refresh" label="Übersicht Personen neu laden"/>
                 <command use="OpenEditorCommand" editor="PersonEditor" label="Person bearbeiten" icon="edit" default="true"/>
-                <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="Person löschen" icon="delete"/>
                 <command use="OpenEditorCommand_New" editor="PersonEditor" label="neue Person anlegen" />
                 <command use="OpenEditorCommand_Copy" editor="PersonEditor" label="Person kopieren" />
 
@@ -59,23 +59,23 @@
                                    panel="AdressePanel">
                             <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
                             <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
-                            <command use="DeleteNodeCommand" label="Adresse loeschen" icon="delete"/>
+                            <command use="DeleteNodeCommand" label="Adresse löschen" icon="delete"/>
                         </tree_node>
                     </tree_node>
                 </tree_node>
 
                 <command use="SaveBoCommand" label="Person speichern" icon="save"/>
                 <command use="LoadBoCommand" label="Person laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Person loeschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="Person löschen" icon="delete"/>
             </tree_editor>
 
             <!--     *********************   Panel   *******************************    -->
 
             <panel name="AdressePanel" border="true" editable="true" x="10" y="10" w="650" h="600">
-                <input x="10" y="20" w="300" labelwidth="100" label="Ort" path="ort" />
-                <input x="10" y="49" w="300" labelwidth="100" label="Plz" path="plz" />
-                <input x="10" y="81" w="300" labelwidth="100" label="Strasse" path="strasse" />
-                <input x="10" y="113" w="300" labelwidth="100" label="Land" path="land" default="Deutschland"/>
+                <input x="10" y="12" w="300" labelwidth="100" h="25" label="Land" path="land" type="string" default="Deutschland" />
+                <input x="11" y="41" w="300" labelwidth="100" h="25" label="Ort" path="ort" type="string" />
+                <input x="11" y="71" w="300" labelwidth="100" h="25" label="Plz" path="plz" type="string" />
+                <input x="11" y="101" w="300" labelwidth="100" h="25" label="Strasse" path="strasse" type="string" />
                 
                 <google_map x="10" y="147" w="625" h="440" countryField="land" cityField="ort" streetField="strasse" zipField="plz" />
             </panel>

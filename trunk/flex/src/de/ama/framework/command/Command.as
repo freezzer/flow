@@ -94,7 +94,6 @@ public class Command {
             Util.showError("Aktion fehlgeschlagen ("+e.message+")", e.getStackTrace())
         } finally {
             _contextMenuItem = null;
-            _invoker = null;
         }
     }
 
