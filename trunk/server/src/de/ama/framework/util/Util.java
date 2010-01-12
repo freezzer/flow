@@ -8,7 +8,7 @@ package de.ama.framework.util;
  * To change this template use File | Settings | File Templates.
  */
 public class Util {
-
+              
 //    public static String toDBString(String path){
 //        path=replaceSubString(path,"\\","/");
 //        path=replaceSubString(path,"ä", "&au");

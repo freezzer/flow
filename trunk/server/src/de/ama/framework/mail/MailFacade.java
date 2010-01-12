@@ -43,7 +43,7 @@ public class MailFacade {
         //session = Session.getDefaultInstance(systemProperties, null);
         session = Session.getInstance(systemProperties, null);
     }
-
+           
     public void setEncoding(String encoding) {
         this.encoding = encoding;
     }

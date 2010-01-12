@@ -38,7 +38,7 @@ public class DownloadServlet extends HttpServlet {
         os.flush();
         fis.close();
     }
-
+              
     private void prepareResponseFor(HttpServletResponse response, File file) {
         StringBuilder type = new StringBuilder("attachment; filename=");
         type.append(Util.normalizeFileName(file.getName()));

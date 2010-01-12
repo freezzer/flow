@@ -40,7 +40,7 @@ import java.util.zip.ZipFile;
  *
  * Neue Klassen_Namens-Pattern können hier in der initForServer() oder initForClient() Methode registriert werden.
  *
- *
+ *        
  */
 public class PreMainInitializer {
     
