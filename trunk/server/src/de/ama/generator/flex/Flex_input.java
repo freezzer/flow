@@ -22,6 +22,7 @@ package de.ama.generator.flex;
 import de.ama.generator.Tag;
 
 
+
 public class Flex_input extends Tag {
 
     public void generate() {
