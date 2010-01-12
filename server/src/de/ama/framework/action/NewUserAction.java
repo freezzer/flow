@@ -8,7 +8,7 @@ public class NewUserAction extends ActionScriptAction {
     public static int TYPE_UPDATE = 1;
 	public static int TYPE_GET    = 2;
 	public static int TYPE_NEW    = 3;
-
+       
     public String name;
     public String pwd;
     public String email;

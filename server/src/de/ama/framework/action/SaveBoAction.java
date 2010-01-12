@@ -12,7 +12,7 @@ import de.ama.services.PersistentService;
  */
 public class SaveBoAction extends ActionScriptAction {
 
-    @Override
+    @Override   
     public void execute() throws Exception {
 
         PersistentService ps = Environment.getPersistentService();

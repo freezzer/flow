@@ -19,7 +19,7 @@ public class LoginAction extends ActionScriptAction {
     public LoginAction() {
         System.out.println("LoginAction.LoginAction");
     }
-
+         
     public void execute() {
         userSessionId = Environment.getUserService().login(_user, _pwd);
         if(!Util.isEmpty(userSessionId)){

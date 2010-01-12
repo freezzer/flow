@@ -12,7 +12,7 @@ import de.ama.services.PersistentService;
  * To change this template use File | Settings | File Templates.
  */
 public class LoadBoAction extends ActionScriptAction {
-
+          
     @Override
     public void execute() throws Exception {
         PersistentService ps = Environment.getPersistentService();
