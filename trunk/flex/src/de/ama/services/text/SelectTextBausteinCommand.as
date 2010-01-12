@@ -44,7 +44,7 @@ public class SelectTextBausteinCommand extends Command{
                 replaceFieldText(tb.text);
             }
             if (arr.length > 1) {
-               var cmd:SelectBoCommand = new SelectBoCommand("Textbaustein ausw√§hlen","search");
+               var cmd:SelectBoCommand = new SelectBoCommand("Textbaustein auswählen","search");
                cmd.callBack = new Callback(this, selectionHandler) ;
                cmd.dataTable=arr;
                cmd.start(invoker);
