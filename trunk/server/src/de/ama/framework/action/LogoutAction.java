@@ -7,7 +7,7 @@ public class LogoutAction extends ActionScriptAction {
 
     public boolean success;
 
-
+     
     public void execute() {
         Environment.getUserService().logout(userSessionId);
         success = true;
