@@ -15,9 +15,9 @@ import java.lang.reflect.Method;
 /**
  *
  * @author  ama
- * DataBinding hält alle MethodBindinds in einer Hashmap zusammen. Die ganze Sache ist nur wegen der schlechten Performance
+ * DataBinding haelt alle MethodBindinds in einer Hashmap zusammen. Die ganze Sache ist nur wegen der schlechten Performance
  * bei reflection unter java 1.3.x entstanden.
- * Es gibt für jede Bo- respective Data-Klasse ein MethodBinding. In einem MethodBinding werden die benötigten Methoden
+ * Es gibt fuer jede Bo- respective Data-Klasse ein MethodBinding. In einem MethodBinding werden die benoetigten Methoden
  * eines Bo's und die Fields eines Data's zusammengehalten.
  *
  *      Bo  <--- MethodBinding---> Data

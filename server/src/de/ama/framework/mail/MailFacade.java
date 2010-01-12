@@ -87,7 +87,7 @@ public class MailFacade {
 
         String encodingInfo = "text/plain; charset=" + getEncoding();
         messageBodyPart.setContent(emailData.getMessage(), encodingInfo);
-//        messageBodyPart.setText(emailData.getMessage());  // Problem hier: keine Angabe von Encoding möglich !!!!
+//        messageBodyPart.setText(emailData.getMessage());  // Problem hier: keine Angabe von Encoding moeglich !!!!
 
         Multipart multipart = new MimeMultipart();
         multipart.addBodyPart(messageBodyPart);
@@ -145,7 +145,7 @@ public class MailFacade {
 
     /**
      * @param popServer     Der Server,  von dem Mails abgeholt werden sollen
-     * @param popServerPort Port, auf dem der Server zu erreichen ist (-1 für default)
+     * @param popServerPort Port, auf dem der Server zu erreichen ist (-1 fuer default)
      * @param popUser       Username des Pop-Accounts
      * @param popPassword   Passwort des Pop-Accounts
      * @param fileFilter    see asEmail()
@@ -218,7 +218,7 @@ public class MailFacade {
      *
      * @param message    Eine Message
      * @param fileFilter Map, die Suffixe auf Verzeichnisse (beides Strings!) abbildet.
-     *                   Das Suffix ist ohne Punkt anzugeben. Für Files, die kein Suffix oder "" als Suffix haben, kann als Suffix "" angegeben werden.
+     *                   Das Suffix ist ohne Punkt anzugeben. Fuer Files, die kein Suffix oder "" als Suffix haben, kann als Suffix "" angegeben werden.
      *                   Als Joker ist "*" angebbar. Der Joker greift immer dann, wenn kein anderer Entrag greift .
      */
     private Email createIncomingEmail(Message message, Map fileFilter) throws MessagingException, IOException {
@@ -333,7 +333,7 @@ public class MailFacade {
     }
 
     /**
-     * Löst alle Schachtelungen durch Multiparts auf und sammelt die einzelnen Parts inklusive des übergebenen Parts
+     * Loest alle Schachtelungen durch Multiparts auf und sammelt die einzelnen Parts inklusive des uebergebenen Parts
      */
     private static List getParts(Part part) throws MessagingException, IOException {
         List parts = new ArrayList();

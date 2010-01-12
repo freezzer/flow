@@ -47,8 +47,8 @@ public class StringData extends Data{
     }
 
     /**
-     * Ist nur für absolut seltene Fälle von Nöten, in denen die Build
-     * die Zusätzlichen Prüfungen bezüglich Reflection  BO <->  Data unterlaesst.
+     * Ist nur fuer absolut seltene Faelle von Noeten, in denen die Build
+     * die Zusaetzlichen Pruefungen bezueglich Reflection  BO <->  Data unterlaesst.
      * Es gibt kein getValue() in java.lang.String
      * @return
      */

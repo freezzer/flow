@@ -8,7 +8,7 @@ import java.util.*;
  * Date: 07.09.2003
  * Time: 22:08:23
  * Diese hashmap stellt die Verbindung zwischen Bo und DataObject her.
- * Die Datas registrieren sich selbst über den premain-Mechanismus.
+ * Die Datas registrieren sich selbst ueber den premain-Mechanismus.
  */
 public class DataDictionary {
 
@@ -74,7 +74,7 @@ public class DataDictionary {
             System.out.println("***********************************************************");
             System.out.println("******         DOUBLE DATA-OBJECT             *************");
             System.out.println("******        " + data.getClass().getName());
-            dataDictionary.put(data.getBoClassName(), Double.class);        // Marker für doppelte BO-Einträge
+            dataDictionary.put(data.getBoClassName(), Double.class);        // Marker fuer doppelte BO-Eintraege
             System.out.println("******     removed : " + data.getBoClassName());
             String key = data.getBoClassName() + "|" + containedClass.getName();
             System.out.println("******     registered instead : " + key + " --> " + containedClass.getName());

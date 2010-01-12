@@ -18,8 +18,8 @@ import java.util.*;
 
 /**
  * @author ama
- *         Dieser Mapper übernimmt das generische mappen aus Business-Objekten in Data-Objekte und zurück.
- *         Spezielle Mapper werden in der  entspr. Data-Klasse vereinbart, indem diese den Mapper über getMapper() herausgibt.
+ *         Dieser Mapper uebernimmt das generische mappen aus Business-Objekten in Data-Objekte und zurueck.
+ *         Spezielle Mapper werden in der  entspr. Data-Klasse vereinbart, indem diese den Mapper ueber getMapper() herausgibt.
  */
 
 public abstract class DataMapper {
@@ -31,7 +31,7 @@ public abstract class DataMapper {
     public final static int XML = 4;
 
     ////////////////////////////// abstracts ///////////////////////////////////////
-    // In Mapper-Derivaten müssen diese Methoden überschrieben werden.
+    // In Mapper-Derivaten muessen diese Methoden ueberschrieben werden.
 
     public abstract void writeDataToBo(Object bo, Data rootData, String[] keys) ;
 
@@ -59,17 +59,17 @@ public abstract class DataMapper {
     public void writeDataToBo(Object bo, Data rootData) throws MappingException {
 
         try {
-            // Hook für den Entwickler des Data-Objekts
+            // Hook fuer den Entwickler des Data-Objekts
             rootData.preWriteDataToBo(bo);
 
             String[] keys = getMappingKeys(rootData, FULL_OBJECT);
             writeDataToBo(bo, rootData, keys);
 
-            // Hook für den Entwickler des Data-Objekts
+            // Hook fuer den Entwickler des Data-Objekts
             rootData.postWriteDataToBo(bo);
 
         } finally {
-            // Hook für den Entwickler des Data-Objekts
+            // Hook fuer den Entwickler des Data-Objekts
             rootData.finalyWriteDataToBo(bo);
         }
 
@@ -79,20 +79,20 @@ public abstract class DataMapper {
     public Data readDataFromBo(Object bo, Data rootData, int type)  {
         readOidAndVersion(bo, rootData);
 
-        // Hook für den Entwickler des Data-Objekts
+        // Hook fuer den Entwickler des Data-Objekts
         rootData.preReadDataFromBo(bo);
 
         String[] keys = getMappingKeys(rootData, type);
         readDataFromBo(bo, rootData, keys);
 
-        // Hook für den Entwickler des Data-Objekts
+        // Hook fuer den Entwickler des Data-Objekts
         rootData.postReadDataFromBo(bo);
 
         return rootData;
     }
 
     /**
-     * ausgelagert weil hier geprüft wird ob ein neues Bo angelegt werden muss, oder nur upgedatet wird.
+     * ausgelagert weil hier geprueft wird ob ein neues Bo angelegt werden muss, oder nur upgedatet wird.
      *
      * @param bo
      * @param data
@@ -162,7 +162,7 @@ public abstract class DataMapper {
             if (o instanceof Data) {
                 Data data = (Data) o;
                 if(data.isNew()){
-                    // bei ganz neuen Daten muß auch ein passendes Bo erzeugt werden.
+                    // bei ganz neuen Daten muss auch ein passendes Bo erzeugt werden.
                     o = data.createEmptyBo();
                 } else {
                     // sonst nehnmen wir das alte BO.
@@ -173,7 +173,7 @@ public abstract class DataMapper {
 
             bos.add(o);
 
-            // remove macht Probleme wenn hashCode und equals überschrieben wird
+            // remove macht Probleme wenn hashCode und equals ueberschrieben wird
             for (Iterator iterator = oldContainer.iterator(); iterator.hasNext();) {
                 if(iterator.next() == o){
                     iterator.remove();
@@ -202,7 +202,7 @@ public abstract class DataMapper {
 
     }
 
-    ////////////////////////////////////// für UpdateTableCommands //////////////////////////////////
+    ////////////////////////////////////// fuer UpdateTableCommands //////////////////////////////////
 
     public static Query buildQuery(Data data, String condition) throws MappingException, ClassNotFoundException {
 
@@ -215,9 +215,9 @@ public abstract class DataMapper {
 
         StrTokenizer st = new StrTokenizer(condition, "|");
 
-        // Wir sammeln erst mal in einer HashMap auf, um dann später die Query-Reihenfolge
+        // Wir sammeln erst mal in einer HashMap auf, um dann spaeter die Query-Reihenfolge
         // aus Data.getQueryColKeys() einzuhalten. Dies ist wichtig da, die Performance stark von
-        // Query-Reihenfolge abhängen kann.
+        // Query-Reihenfolge abhaengen kann.
         HashMap queryMap = new HashMap();
         while (st.hasMoreTokens()) {
             String part = st.nextToken();
@@ -241,7 +241,7 @@ public abstract class DataMapper {
             }
         }
 
-        // Die restlichen Parts (Klauseln) die im Data nicht aufgeführt sind (createQueryDescriptions) noch anfügen
+        // Die restlichen Parts (Klauseln) die im Data nicht aufgefuehrt sind (createQueryDescriptions) noch anfuegen
         for (Iterator iterator = queryMap.values().iterator(); iterator.hasNext();) {
             String part = (String) iterator.next();
             query.and(buildPartQuery(data, part));
@@ -267,7 +267,7 @@ public abstract class DataMapper {
     /**
      * Eine einzelne QueryDefinition formulieren.
      * Formate :  "attribute:value..value"   -> attribute im Interval
-     * "attribute:< value"        -> attribute größer value
+     * "attribute:< value"        -> attribute groesser value
      * "attribute:> value"        -> attribute kleiner value
      * "attribute:value"          -> attribute gleich value
      * Beispiele :
@@ -294,10 +294,10 @@ public abstract class DataMapper {
             } else if (sd.post().indexOf('<') >= 0) {      // Kleiner
                 arg = Util.replaceFirstSubString(sd.post(), "<", "").trim();
                 operator = Query.LT;
-            } else if (sd.post().indexOf(">=") >= 0) {     // Größer gleich
+            } else if (sd.post().indexOf(">=") >= 0) {     // Groesser gleich
                 arg = Util.replaceFirstSubString(sd.post(), ">=", "").trim();
                 operator = Query.GE;
-            } else if (sd.post().indexOf('>') >= 0) {      // Größer
+            } else if (sd.post().indexOf('>') >= 0) {      // Groesser
                 arg = Util.replaceFirstSubString(sd.post(), ">", "").trim();
                 operator = Query.GT;
             } else if (sd.post().indexOf("..") >= 0 /*|| sd.post().indexOf("-") >= 0*/) {         // Interval
@@ -339,7 +339,7 @@ public abstract class DataMapper {
                     boolean oderListe = ((String) value).indexOf(',') != -1;
                     boolean undListe = ((String) value).indexOf('|') != -1;
                     if (oderListe || undListe) {
-                        // der Value enthält wieder eine Liste -> Rekursion
+                        // der Value enthaelt wieder eine Liste -> Rekursion
                         query = buildQuery(data, (String) value);
                     } else {
                         query = new Query(target, path, operator, value);
