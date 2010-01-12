@@ -15,18 +15,18 @@ import java.util.Date;
 
 /**
  * @author ama
- *         Dieser Mapper übernimmt das generische mappen aus Business-Objekten in Data-Objekte und zurück
+ *         Dieser Mapper uebernimmt das generische mappen aus Business-Objekten in Data-Objekte und zurueck
  */
 public class DataMapperDefault extends DataMapper {
 
     public Class getBoClass() {
-        return this.getClass();  // dies ist natürlich keine BoClass, aber im DataDictionary soll dieser Mapper nicht
+        return this.getClass();  // dies ist natuerlich keine BoClass, aber im DataDictionary soll dieser Mapper nicht
         // gefunden werden, es wird immer auf diesen DataMapperDefault ausgewichen.
     }
 
     /**
-     * Generisches Mapping über Reflection, sollte eigentlich für alle Bo's funktionieren.
-     * Wenn mann aber mal ganz etwas seltsames in ein Data-Object hieven muß, kann ein spezieller
+     * Generisches Mapping ueber Reflection, sollte eigentlich fuer alle Bo's funktionieren.
+     * Wenn mann aber mal ganz etwas seltsames in ein Data-Object hieven muss, kann ein spezieller
      * DataMapperDefault geschrieben werden. Spezielle Mapper werden vom Data-Objekt geliefert.
      *
      * @param bo       , das Business-Objetc aus dem gelesen (in das geschrieben ) wird
@@ -71,8 +71,8 @@ public class DataMapperDefault extends DataMapper {
                         bos = new ArrayList();
                     }
                     writeObjects(bos, dataTable);
-                    // container ist an sich ein eigenständiges Object, wir setzen es aber zurück ins bo,
-                    // damit wir dort noch Verknüpfungsarbeiten leisten können.
+                    // container ist an sich ein eigenstaendiges Object, wir setzen es aber zurueck ins bo,
+                    // damit wir dort noch Verknuepfungsarbeiten leisten koennen.
                     mb.setBoValue(bo, bos);
                 }
             } else if (dataValue instanceof Data) {
@@ -111,20 +111,20 @@ public class DataMapperDefault extends DataMapper {
                 } else if (dataValue instanceof DataTable) {
                     DataTable dataTable = (DataTable) dataValue;
                     if (dataTable == null) {
-                        throw new MappingException("DataTables müssen im DataObjekt initialisiert werden Field: " + mb.getKey());
+                        throw new MappingException("DataTables muessen im DataObjekt initialisiert werden Field: " + mb.getKey());
                     }
                     readObjects(dataTable, (Collection) boValue, false);
                 } else if (dataValue instanceof Data) {
                     Data data = (Data) mb.getDataValue(rootData);
                     if (data == null) {
-                        throw new MappingException("Data's müssen im DataObjekt initialisiert werden Field: " + mb.getKey());
+                        throw new MappingException("Data's muessen im DataObjekt initialisiert werden Field: " + mb.getKey());
                     }
                     data = readDataFromBo(boValue, data, FULL_OBJECT);
                     mb.setDataValue(rootData, data);
-                    //                            System.out.println("Data gesetzt für "+keys[i]);
+                    //                            System.out.println("Data gesetzt fuer "+keys[i]);
                 } else {   // primitives
                     mb.setDataValue(rootData, boValue);
-                    //                            System.out.println("Value gesetzt für "+keys[i]);
+                    //                            System.out.println("Value gesetzt fuer "+keys[i]);
                 }
             }
         }

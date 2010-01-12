@@ -10,8 +10,8 @@ import java.io.InputStream;
  * Created by IntelliJ IDEA.
  * User: ama
  * Date: 23.03.2007
- * Mit dieser Klasse ist es möglich ein DTD aus unseren resources zu laden.
- * Einem SaxParser oder Jdom Builder kann ein solcher DTDResolver übergeben werden.
+ * Mit dieser Klasse ist es moeglich ein DTD aus unseren resources zu laden.
+ * Einem SaxParser oder Jdom Builder kann ein solcher DTDResolver uebergeben werden.
  * Beispiel:
  * JDOM:
  *       SAXBuilder builder = new SAXBuilder(false);
@@ -68,7 +68,7 @@ public class DTDResolver implements EntityResolver {
 
         if(ret==null){
             System.out.println("***************************************************************");
-            System.out.println("* DTDResolver kann systemId ["+ systemId +"] nicht auflösen ");
+            System.out.println("* DTDResolver kann systemId ["+ systemId +"] nicht aufloesen ");
             System.out.println("***************************************************************");
         }
 

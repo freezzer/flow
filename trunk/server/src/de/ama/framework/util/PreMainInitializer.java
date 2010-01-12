@@ -20,7 +20,7 @@ import java.util.zip.ZipFile;
  * @author  Andreas Marochow
  * Diese Klasse untersucht ein oder mehrere Zip-Archive und das classes Verzeichnis, um darin spezielle Klassen zu finden, die
  * sich selbst initialisieren oder irgendwo registieren wollen.
- * Zu diesm Zweck überschreibt der Anwendungsentwickler die Methode preMain() (möglicherweise in einer BasisKlasse. )
+ * Zu diesm Zweck ueberschreibt der Anwendungsentwickler die Methode preMain() (moeglicherweise in einer BasisKlasse. )
  *
  *     Beispiel : Materialien
  *         public abstract class BasicMaterial implements BasicMaterialIfc, BearbeitbarIfc {
@@ -30,23 +30,23 @@ import java.util.zip.ZipFile;
  *          }
  *           ...........
  *
- *  Ab jetzt können einfach neue Materialien erfunden werden. Diese registrieren sich selbstätig
+ *  Ab jetzt koennen einfach neue Materialien erfunden werden. Diese registrieren sich selbstaetig
  *  in ihrer Materialfactory. Die preMain()-Methode konnte in der BasisKlasse implementiert werden.
  *
  * Der Vorteil ist das nicht mehr in zentralen Klassen, die eigentlich nichts mit den fachlichen
- * Zusammenhängen zu tun haben, irgendwelche Registrierungen vorgenommen werden müssen. Die Erfahrung hat
- * gezeigt das genau diese Einträge in Zentralen Klassen oft vergessen werden, oder nicht eingecheckt
+ * Zusammenhaengen zu tun haben, irgendwelche Registrierungen vorgenommen werden muessen. Die Erfahrung hat
+ * gezeigt das genau diese Eintraege in Zentralen Klassen oft vergessen werden, oder nicht eingecheckt
  * werden.
  *
- * Neue Klassen_Namens-Pattern können hier in der initForServer() oder initForClient() Methode registriert werden.
+ * Neue Klassen_Namens-Pattern koennen hier in der initForServer() oder initForClient() Methode registriert werden.
  *
  *        
  */
 public class PreMainInitializer {
     
     /**
-     * Die zentralen Initialisierungsmethoden für den Client oder RmiServiceIfc.
-     * Hier können neue NamensPattern aufgenommen werden.
+     * Die zentralen Initialisierungsmethoden fuer den Client oder RmiServiceIfc.
+     * Hier koennen neue NamensPattern aufgenommen werden.
      */
     public static void initForClient(){
         PreMainInitializer preMainInitializer = new PreMainInitializer();

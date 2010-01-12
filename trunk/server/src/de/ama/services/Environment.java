@@ -42,7 +42,7 @@ public class Environment {
 
     /**
      * Testumgebung "hochfahren"
-     * Hier können andere Services instantiiert werden die für Tests geeigneter sind (Mocks, etc)
+     * Hier koennen andere Services instantiiert werden die fuer Tests geeigneter sind (Mocks, etc)
      * In der TEstclasse muss eben initTest anstatt initProduction()  gerufen werden.
      */
     public static void initTest(){

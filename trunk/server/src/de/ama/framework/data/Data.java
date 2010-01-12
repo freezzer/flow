@@ -24,7 +24,7 @@ import java.util.List;
 
 /**
  * @author  Andreas Marochow
- * Data-Objecte transportiern Daten vom RmiServiceIfc zum Client und wieder zurück.
+ * Data-Objecte transportiern Daten vom RmiServiceIfc zum Client und wieder zurueck.
  */
 public abstract class Data implements Serializable {
     private int version = 0;
@@ -35,7 +35,7 @@ public abstract class Data implements Serializable {
 
 
     /**
-     * Werden zur Zeit für generische Editoren (SearchPanel) benötigt. Hat kein Einfluss auf Editoren.
+     * Werden zur Zeit fuer generische Editoren (SearchPanel) benoetigt. Hat kein Einfluss auf Editoren.
      * @return
      */
     public String[] getUpperCaseFields() {
@@ -52,7 +52,7 @@ public abstract class Data implements Serializable {
     }
 
     /**
-     * Hook zum festlegen der Spalte, nach der defaultmäßig sortiert werden soll.
+     * Hook zum festlegen der Spalte, nach der defaultmaessig sortiert werden soll.
      * Die Sortierung findet sofort nachdem die DataTable aus der Db geladen wurde statt.
      *
      * @return der MethodKey ohne session/set  !!Die Richtung kann hier ebenfalls angegeben werden.
@@ -91,7 +91,7 @@ public abstract class Data implements Serializable {
 
     /**
      * Soll ein spezieller Mapper benutzt werden so kann diese Methode im Data-Object
-     * überschrieben werden.
+     * ueberschrieben werden.
      *
      * @return , ein spezieller Mapper.
      */
@@ -114,8 +114,8 @@ public abstract class Data implements Serializable {
     }
 
     /**
-     * Diese Methode wird auf jeden fall nach dem Mappen aufgerufen. Wenn sie überschrieben wird,
-     * sollte hierin möglichst keine Exception mehr geworfen werden.
+     * Diese Methode wird auf jeden fall nach dem Mappen aufgerufen. Wenn sie ueberschrieben wird,
+     * sollte hierin moeglichst keine Exception mehr geworfen werden.
      *
      * @param bo
      */
@@ -124,7 +124,7 @@ public abstract class Data implements Serializable {
 
 
     /**
-     * Hook zum löschen von Werten nach einer tiefen Copy.
+     * Hook zum loeschen von Werten nach einer tiefen Copy.
      *
      */
     public void postDeepCopy()  {
@@ -132,12 +132,12 @@ public abstract class Data implements Serializable {
     }
     
     /**
-     * Dies Methode muss überschrieben werden um QueryDescriptions anzupassen.
-     * - Es können Typ-Differenzen zwischen BO und Data angegeben werden.
-     * - Es können Path-Querys angegeben werden.
+     * Dies Methode muss ueberschrieben werden um QueryDescriptions anzupassen.
+     * - Es koennen Typ-Differenzen zwischen BO und Data angegeben werden.
+     * - Es koennen Path-Querys angegeben werden.
      *
-     * Wer nur Angaben zu bestimmten methodKeys machen will, aber sonst die Default QueryDescriptions, die für
-     * die Einfachen Datentypen erzeugtwerden können mitbenutzen will schreibt
+     * Wer nur Angaben zu bestimmten methodKeys machen will, aber sonst die Default QueryDescriptions, die fuer
+     * die Einfachen Datentypen erzeugtwerden koennen mitbenutzen will schreibt
      *  super.createQueryDescriptions() zu Beginn der Methode
      *
      * Beispiel :
@@ -148,7 +148,7 @@ public abstract class Data implements Serializable {
      *     addQueryDescription("wayOfTransportLangtext", "wayOfTransport{de.logas.basics.TransportWegNeuImpl}->code", String.class);
      *  }
      *
-     *   ersetzt nur die QueryDefinitions für die MethodKeys : "shipmentCountry" und  "wayOfTransportLangtext"
+     *   ersetzt nur die QueryDefinitions fuer die MethodKeys : "shipmentCountry" und  "wayOfTransportLangtext"
      */
     public void createQueryDescriptions() {
         createDefaultQueryDescriptions();
@@ -161,7 +161,7 @@ public abstract class Data implements Serializable {
     }
 
     /**
-     * Erzeugt ein Leeres Bo. Bo's müssen hierfür einen No-Arg-Konstruktor haben. In dieser
+     * Erzeugt ein Leeres Bo. Bo's muessen hierfuer einen No-Arg-Konstruktor haben. In dieser
      * Methode wird die Information die im Hook getBoClassName() angegeben wird ausgewertet.
      *
      * @return  ein leeres BO.
@@ -238,20 +238,20 @@ public abstract class Data implements Serializable {
     }
     
     /**
-     * Sollte überschrieben werden wenn die Auflister-Tabelle nicht alle Field-Keys(Spalten) des
-     * Data-Objects zeigen soll, oder die Reihenfolge verändert werden soll.
+     * Sollte ueberschrieben werden wenn die Auflister-Tabelle nicht alle Field-Keys(Spalten) des
+     * Data-Objects zeigen soll, oder die Reihenfolge veraendert werden soll.
      *
-     * @return ein String-Array mit den gewünschten FieldKeys(Spalten) für den Auflister.
+     * @return ein String-Array mit den gewuenschten FieldKeys(Spalten) fuer den Auflister.
      */
     public String[] getTableColKeys() {
         return getFieldKeys();
     }
     
     /**
-     * Sollte überschrieben werden, wenn die Spaltenköpfe abweichende Bezeichner haben sollen.
+     * Sollte ueberschrieben werden, wenn die Spaltenkoepfe abweichende Bezeichner haben sollen.
      *
-     * @param methodKey , der umzuschlüsselnde Wert
-     * @return Spaltenkopfnamne, welcher an der Oberfläche noch durch den Translations-Mechanismus umgesetzt wird.
+     * @param methodKey , der umzuschluesselnde Wert
+     * @return Spaltenkopfnamne, welcher an der Oberflaeche noch durch den Translations-Mechanismus umgesetzt wird.
      */
     
     public String getTableColumnName(String methodKey) {
@@ -259,20 +259,20 @@ public abstract class Data implements Serializable {
     }
     
     /**
-     * Sollte überschrieben werden, wenn die Spalten vom Standard abweichende Cell-Renderer haben sollen.
+     * Sollte ueberschrieben werden, wenn die Spalten vom Standard abweichende Cell-Renderer haben sollen.
      *
-     * @param methodKey , der SpaltenSchlüssel
-     * @return der für diese Spalte gewünschte CellRenderer
+     * @param methodKey , der SpaltenSchluessel
+     * @return der fuer diese Spalte gewuenschte CellRenderer
      */
     
     public TableCellRenderer getTableCellRenderer(String methodKey) {
         return null;
     }
     /**
-     * Sollte überschrieben werden, wenn die Spalten vom Standard abweichende Cell-Editoren haben sollen.
+     * Sollte ueberschrieben werden, wenn die Spalten vom Standard abweichende Cell-Editoren haben sollen.
      *
-     * @param methodKey , der SpaltenSchlüssel
-     * @return der für diese Spalte gewünschte Cell-Editor
+     * @param methodKey , der SpaltenSchluessel
+     * @return der fuer diese Spalte gewuenschte Cell-Editor
      */
     
     public TableCellEditor getTableCellEditor(String methodKey) {
@@ -298,22 +298,22 @@ public abstract class Data implements Serializable {
     
     
     /**
-     * Sollte überschrieben werden wenn die LookUp-Tabelle sich von der Auflister-Tabelle
+     * Sollte ueberschrieben werden wenn die LookUp-Tabelle sich von der Auflister-Tabelle
      * unterscheiden soll (meistens weniger Spalten). Der erste columnKey ist dann auch der
-     * Default-Search-Key für die LookUps.
+     * Default-Search-Key fuer die LookUps.
      *
-     * @return ein String-Array mit den gewünschten FieldKeys(Spalten) für die LookUp-Dialoge.
+     * @return ein String-Array mit den gewuenschten FieldKeys(Spalten) fuer die LookUp-Dialoge.
      */
     public String[] getMiniTableColKeys() {
         return getTableColKeys();
     }
     
     /**
-     * Liefert nur die collumnKeys, die für die in getGuiRepresentation und getGuiRepresentationLong benötigt
-     * werden, durch diese Eingrenzung kann der Mapping-Vorgang für große DatenMmengen möglicherweise noch
-     * beschleunigt werden, weil eben nur das nötigste gemappt wird.
+     * Liefert nur die collumnKeys, die fuer die in getGuiRepresentation und getGuiRepresentationLong benoetigt
+     * werden, durch diese Eingrenzung kann der Mapping-Vorgang fuer grosse DatenMmengen moeglicherweise noch
+     * beschleunigt werden, weil eben nur das noetigste gemappt wird.
      *
-     * @return ein String-Array mit den gewünschten FieldKeys(Spalten) für die Gui-Representation.
+     * @return ein String-Array mit den gewuenschten FieldKeys(Spalten) fuer die Gui-Representation.
      */
     
     public String[] getGuiRepTableColKeys() {
@@ -346,7 +346,7 @@ public abstract class Data implements Serializable {
     }
     
     /**
-     * Fügt eine Default QueryDescription hinzu.
+     * Fuegt eine Default QueryDescription hinzu.
      * Achtung ! Der Vorgang kann abgelehnt werden, wenn der Typ nicht ermittelbar ist.
      * z.B. bey DataReferenze oder DataProxy oder Data.
      * @param methodKey
@@ -407,8 +407,8 @@ public abstract class Data implements Serializable {
     }
 
 //    /**
-//     * Diese Methode liefert einen Query-String für LookUps. Die DEfaultImplementierung
-//     * Hängt wenn nicht schon vorhanden noch einen '*' an.
+//     * Diese Methode liefert einen Query-String fuer LookUps. Die DEfaultImplementierung
+//     * Haengt wenn nicht schon vorhanden noch einen '*' an.
 //     *
 //     * @param searchColumnKey
 //     * @param input
@@ -598,8 +598,8 @@ public abstract class Data implements Serializable {
     }
 
     /**
-     * Hook, mit dem bestimmt werden kann ob eine Lookup-Table für diese Data-Klasse erlaubt ist. Wenn hier mit false
-     * geantwortet wird, werden immer die aktuellen Daten vom RmiServiceIfc geholt (für volatile Bewegungsdaten geeignet).
+     * Hook, mit dem bestimmt werden kann ob eine Lookup-Table fuer diese Data-Klasse erlaubt ist. Wenn hier mit false
+     * geantwortet wird, werden immer die aktuellen Daten vom RmiServiceIfc geholt (fuer volatile Bewegungsdaten geeignet).
      *
      * @return
      */
@@ -622,9 +622,9 @@ public abstract class Data implements Serializable {
     }
 
     /**
-     * Hook mit dem ein ganzer Query-Ausdruck für eine Spalte erzeugt werden kann. Z.B. Erweiterung auf unsichtbare Attribute.
+     * Hook mit dem ein ganzer Query-Ausdruck fuer eine Spalte erzeugt werden kann. Z.B. Erweiterung auf unsichtbare Attribute.
      *
-     * @return Raus kommt die komplette Querydefinition für diese Spalte
+     * @return Raus kommt die komplette Querydefinition fuer diese Spalte
      */
     public Query  buildExtendedThermQuery(String methodKey, String value)  throws MappingException {
         return null;
@@ -694,9 +694,9 @@ public abstract class Data implements Serializable {
     }
 
     /**
-     * Fügt zwei String-Arrays zusammen. null als Argument wird wie ein leeres Array interpretiert.
+     * Fuegt zwei String-Arrays zusammen. null als Argument wird wie ein leeres Array interpretiert.
      *
-     * @return ein Array, das alle Elemente von array1 und array2 enthält.
+     * @return ein Array, das alle Elemente von array1 und array2 enthaelt.
      */
     public String[] concat(String[] array1, String[] array2) {
         return Util.concat(array1, array2);

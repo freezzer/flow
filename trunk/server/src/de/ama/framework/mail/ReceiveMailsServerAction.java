@@ -22,7 +22,7 @@ public class ReceiveMailsServerAction extends ActionScriptAction {
     public void executeOnServer() throws MessagingException, IOException {
         Map map = new HashMap();
         File filesDir = Environment.getHomeRelativDir("files");
-        map.put("*", Ini.getString("mail.attachment.dir", filesDir.getAbsolutePath()  , "temporäres Verzeichnis für eingehende mail-attachements"));
+        map.put("*", Ini.getString("mail.attachment.dir", filesDir.getAbsolutePath()  , "temporaeres Verzeichnis fuer eingehende mail-attachements"));
 
         data = de.ama.services.Environment.getMailService().receiveEmails( "ama", ".ama", 100);
 

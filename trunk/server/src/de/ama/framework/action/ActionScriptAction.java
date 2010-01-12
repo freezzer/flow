@@ -117,7 +117,7 @@ public class ActionScriptAction implements java.io.Serializable {
 
      /**
      * transferiert die Daten eines Data-Graphen in den Bo-Graphen.
-     * Wichtig ! Um Auskunft über Versionsmismatch zu bekommen, muß nach dem save() über die
+     * Wichtig ! Um Auskunft ueber Versionsmismatch zu bekommen, muss nach dem save() ueber die
      * Methode hasVersionMismatch() kontrolliert werden ob ein Versionsmismatch vorlag.
      * @param data ,das gemapped werden soll
      * @return ein refeshter Data_Graph.

@@ -12,9 +12,9 @@ import java.util.Map;
 /**
  *
  * @author  ama
- * DataBinding hält alle MethodBindinds in einer Hashmap zusammen. Die ganze Sache ist nur wegen der schlechten Performance
- * bei reflection unter java 1.3.x entstanden. Es gibt für jede Bo- respective Data-Klasse ein MethodBinding. In einem MethodBinding
- * werden die benötigten Methoden eines Bo's und die Fields eines Data's zusammengehalten.
+ * DataBinding haelt alle MethodBindinds in einer Hashmap zusammen. Die ganze Sache ist nur wegen der schlechten Performance
+ * bei reflection unter java 1.3.x entstanden. Es gibt fuer jede Bo- respective Data-Klasse ein MethodBinding. In einem MethodBinding
+ * werden die benoetigten Methoden eines Bo's und die Fields eines Data's zusammengehalten.
  *   Bo  <--- MethodBinding---> Data 
  */
 public class DataBinding {
@@ -58,7 +58,7 @@ public class DataBinding {
 //    /**
 //     * Methode zum automatischen Mappen von Bo-values in Data Values
 //     * @param bo  das Bo aus dem gelesen wird
-//     * @param key  der Methoden-Schlüssel. Er wird benutzt um Getter/Setter-Namen zu generieren
+//     * @param key  der Methoden-Schluessel. Er wird benutzt um Getter/Setter-Namen zu generieren
 //     */
 //    public static void readBo(Object bo, String key, Data data)throws MappingException{
 //        DataBinding db = getBinding(data);
