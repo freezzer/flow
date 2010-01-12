@@ -41,7 +41,7 @@ public class Flex_provider extends Tag {
         write("        provider.type="+quote(type)+";");
 
     }
-
+       
     @Override
     public void writeFile() {
         String name = getAttribute(NAME);

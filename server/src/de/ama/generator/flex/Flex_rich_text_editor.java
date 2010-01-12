@@ -39,7 +39,7 @@ public class Flex_rich_text_editor extends Tag {
         int w = getAttribute(W, -1);
         int h = getAttribute(H, -1);
         String  lw = getParentAttribute(LABELWIDTH,"");
-
+          
         String xylw="";
         if(x>=0 || y>=0){
             xylw= " ," + x + "," + y;

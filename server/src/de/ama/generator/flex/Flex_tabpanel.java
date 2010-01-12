@@ -27,7 +27,7 @@ import de.ama.generator.Tag;
  */
 public class Flex_tabpanel extends Tag {
 
-
+      
     public void writeFile() {
         String w = getAttribute(W, "100%");
         String h = getAttribute(H, "100%");

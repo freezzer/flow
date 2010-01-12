@@ -28,7 +28,7 @@ public class Flex_permission extends Tag {
         String pckg =  getPackage();
         initPrintWriter(dir,"Permission"+name+".as");
 
-
+            
         write("/* ");
         write(getStoredObject(COMMENT));
         write("*/ ");

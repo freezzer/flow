@@ -35,6 +35,6 @@ public class Flex_menuitem extends Tag {
             write("");
             write("        menu.addItem(new Separator()); // --------------------------------------");
             write("");
-        }
+        }   
     }
 }

@@ -29,7 +29,7 @@ import java.util.List;
 public class Flex_tree_node extends Tag {
 
     private boolean listView;
-
+          
     public void generate() {
         String label = getRequiredAttribute(LABEL);
         String type = getRequiredParentAttribute(TYPE);
