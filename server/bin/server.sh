@@ -6,8 +6,8 @@ LIB=$HOME/lib
 DEBUG="-Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=5005"
  
 CP=$HOME/classes
-CP=$CP:$LIB/mysql-connector-java-5.1.0-bin.jar
-CP=$CP:$LIB/gna-jorm-runtime-05.11.jar
+CP=$CP:$LIB/mysql-connector-java-5.1.10-bin.jar
+CP=$CP:$LIB/gna-jorm-runtime-05.12.jar
 CP=$CP:$LIB/jetty-6.1.15.rc3.jar
 CP=$CP:$LIB/jetty-util-6.1.15.rc3.jar
 CP=$CP:$LIB/hessian-3.2.1.jar
