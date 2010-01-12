@@ -33,7 +33,7 @@ public class Flex_panel extends Tag {
     public void generate() {
 
 //        if(getPrintWriter()==null) return;
-
+             
         if(isLeaf()){
                 String panelName = getRequiredAttribute(USE);
                 String label = getAttribute(LABEL,"");

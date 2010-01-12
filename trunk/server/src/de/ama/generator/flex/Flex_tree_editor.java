@@ -28,7 +28,7 @@ import de.ama.generator.Visitor;
  */
 
 public class Flex_tree_editor extends Tag {
- 
+               
     public void writeFile() {
         String label = getRequiredAttribute(LABEL);
         String type = getRequiredParentAttribute(TYPE);

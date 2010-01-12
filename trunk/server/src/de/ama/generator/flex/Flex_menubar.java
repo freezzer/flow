@@ -38,6 +38,6 @@ public class Flex_menubar extends Tag {
     }
 
     protected void endWrite() {
-    }
+    }    
 
 }
