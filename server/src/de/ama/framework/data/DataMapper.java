@@ -38,7 +38,7 @@ public abstract class DataMapper {
     public abstract void readDataFromBo(Object bo, Data rootData, String[] keys) ;
 
     ////////////////////////////// abstracts ///////////////////////////////////////
-
+            
     public void checkVersion(Object bo, Data rootData) throws MappingException {
         if (bo instanceof Persistent) {
             // Optimistic Locking Kontrolle .

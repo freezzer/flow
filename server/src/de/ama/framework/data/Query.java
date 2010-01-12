@@ -17,7 +17,7 @@ public class Query implements Serializable {
     private long limit = -1;
     private boolean negated = false;
     private Condition condition;
-
+           
     public Query() {
         // for Serializable
     }

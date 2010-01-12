@@ -30,7 +30,7 @@ public class MethodBinding {
     private Field dataField;
     private Class setterParamClass;
     private String key;
-
+          
     public MethodBinding(Class boClass, Class dataClass, String key) throws MappingException {
         //System.out.println("try to create new MethodBinding for "+key+".......");
         this.key = key;

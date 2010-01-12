@@ -34,7 +34,7 @@ public class DataMapperDefault extends DataMapper {
      * @throws MappingException
      * @throws MappingException
      */
-
+          
     public void writeDataToBo(Object bo, Data rootData, String[] keys) throws MappingException {
         int size = keys.length;
         DataBinding binding = DataBinding.getBinding(rootData);

@@ -19,7 +19,7 @@ public class Selection implements Serializable {
     public String getClassName() {
         className = className.replace("::",".");
         return className;
-    }
+    }      
 
     public int getOid() {
         return oid;

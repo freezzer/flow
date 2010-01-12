@@ -38,7 +38,7 @@ public class DataTable implements java.io.Serializable {
     public Object get(int i) {
         return collection.get(i);
     }
-
+            
     public void add(Data data) {
 //        Data[] datas = new Data[collection.length+1];
 //        for (int i = 0; i < collection.length; i++) {
