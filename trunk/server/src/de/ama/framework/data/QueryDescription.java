@@ -17,7 +17,7 @@ public class QueryDescription {
 
     public QueryDescription(String methodKey, Class attributeType) {
         this(methodKey,methodKey,attributeType, null);
-    }
+    }   
 
     public QueryDescription(String methodKey, String path, Class attributeType, String startCondition) {
         this.startCondition = startCondition;

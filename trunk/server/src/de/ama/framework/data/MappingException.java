@@ -38,7 +38,7 @@ public class MappingException extends RuntimeException {
         this(msg,null,error);
     }
 
-
+      
     public boolean hasError(int error) {
         return this.error==error;
     }

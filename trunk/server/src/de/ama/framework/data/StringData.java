@@ -29,7 +29,7 @@ public class StringData extends Data{
 
     public String toString() {
         return value.toString();
-    }
+    }         
 
     public boolean equals(Object o) {
         if (this == o) return true;

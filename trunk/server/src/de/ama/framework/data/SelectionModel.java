@@ -27,7 +27,7 @@ public class SelectionModel implements Serializable{
         type=sm.type;
     }
 
-
+         
     public SelectionModel(Object d) {
         setSelection(d);
     }
