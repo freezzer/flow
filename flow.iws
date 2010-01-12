@@ -23,21 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" readonly="true" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_event_consumer.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_event_consumer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_collection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_action.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_action.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Starter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Starter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Visitor.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Visitor.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_import.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_import.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_comment.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag_comment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_permission.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_permission.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/VisitorGenerate.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/VisitorGenerate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bootstrap.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bootstrap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Const.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Const.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bean.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/Tag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bootstrap.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bootstrap.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_collection.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_collection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bean.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_field.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_field.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java" afterPath="$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java" />
     </list>
     <list name="nocommit" comment="nocommit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
@@ -218,69 +210,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Java_field.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Java_permission.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_permission.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Const.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Const.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OutputWriter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/OutputWriter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="0" selection-start="921" selection-end="921" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Starter.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Starter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tag.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="0" selection-start="950" selection-end="950" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tag_comment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag_comment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="0" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Tag_import.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/Tag_import.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -299,10 +228,73 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VisitorGenerate.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="VisitorGenerate.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/VisitorGenerate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.040332146">
+            <state line="2" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_field.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_field.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="0" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_editor.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="24" column="0" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_command.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="0" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_column.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_collection.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_collection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_bean.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bean.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="25" column="0" selection-start="846" selection-end="846" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Flex_bootstrap.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bootstrap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="26" column="0" selection-start="847" selection-end="847" vertical-scroll-proportion="0.16425121">
               <folding />
             </state>
           </provider>
@@ -1054,55 +1046,6 @@
     </buildFile>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_action.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bean.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="0" selection-start="846" selection-end="846" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_bootstrap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="752" selection-end="752" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_collection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="0" selection-start="813" selection-end="813" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_event_consumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_field.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="0" selection-start="758" selection-end="758" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/java/Java_permission.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="0" selection-start="753" selection-end="753" vertical-scroll-proportion="0.0">
@@ -1161,7 +1104,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/VisitorGenerate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.040332146">
+        <state line="2" column="0" selection-start="27" selection-end="27" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_field.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="789" selection-end="789" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_editor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="24" column="0" selection-start="821" selection-end="821" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="814" selection-end="814" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_column.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_collection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="788" selection-end="788" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="25" column="0" selection-start="846" selection-end="846" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/src/de/ama/generator/flex/Flex_bootstrap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="0" selection-start="847" selection-end="847" vertical-scroll-proportion="0.16425121">
           <folding />
         </state>
       </provider>

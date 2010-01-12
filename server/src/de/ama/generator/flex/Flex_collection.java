@@ -22,6 +22,7 @@ package de.ama.generator.flex;
 import de.ama.generator.Tag;
 
 
+
 public class Flex_collection extends Tag {
 
     public void generate() {
