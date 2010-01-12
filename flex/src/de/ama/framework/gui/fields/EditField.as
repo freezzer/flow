@@ -163,11 +163,9 @@ public class EditField extends Canvas implements GUIComponent {
         var stop:int = selectionBeginIndex;
         var string:String = getInputText();
 
-        if(string.length==start) { start--; };
-        
         while ( true ) {
             if(start<0) { start=0; break; }
-            if(string.charAt(start) != "\r") { break};
+            if((string.charAt(start) != " ") && (string.charAt(start) != "\r")) { break};
             start--;
         }
 
