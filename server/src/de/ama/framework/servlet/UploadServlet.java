@@ -33,7 +33,7 @@ public class UploadServlet extends HttpServlet {
         String description = "uploaded file";
         String userSessionId = null;
         boolean onlyImage = false;
-
+               
         try {
             List items = upload.parseRequest(request);
             for (int i = 0; i < items.size(); i++) {

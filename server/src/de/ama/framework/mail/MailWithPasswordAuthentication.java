@@ -22,7 +22,7 @@ public class MailWithPasswordAuthentication {
 
 		Transport.send(message);
 	}
-
+         
 	private Session getSession() {
 		Authenticator authenticator = new Authenticator();
 

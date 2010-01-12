@@ -15,7 +15,7 @@ import java.util.Iterator;
 public class ImageConverter {
 
 
-
+             
     public static void writeCompressedAndScaledJpeg(InputStream instream, File outfile, int width, int height, float quality ) throws IOException {
 
         ImageReader imageReader;

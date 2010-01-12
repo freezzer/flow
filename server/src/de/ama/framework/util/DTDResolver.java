@@ -19,7 +19,7 @@ import java.io.InputStream;
  * SAX:
  *       XMLReader reader = SAXParserFactory.newInstance().newSAXParser().getXMLReader();
  *       reader.setEntityResolver(new DTDResolver());
- */
+ */             
 public class DTDResolver implements EntityResolver {
     /**
      * Allow the application to resolve external entities.

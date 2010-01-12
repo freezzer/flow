@@ -26,5 +26,5 @@ public class ReceiveMailsServerAction extends ActionScriptAction {
 
         data = de.ama.services.Environment.getMailService().receiveEmails( "ama", ".ama", 100);
 
-    }
+    }  
 }
