@@ -19,6 +19,7 @@
 
 package de.ama.generator;
 
+
 import de.ama.util.UniversalIterator;
 import de.ama.util.Util;
 

@@ -18,6 +18,7 @@
 
 package de.ama.generator;
 
+
 /**
  * User: x
  * Date: 26.04.2008

@@ -1,5 +1,6 @@
 package de.ama.generator;
 
+
 /**
  * Created by IntelliJ IDEA.
  * User: x

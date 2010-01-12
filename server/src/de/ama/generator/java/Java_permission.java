@@ -18,6 +18,7 @@ package de.ama.generator.java;
 */
 
 
+
 import de.ama.generator.Tag;
 import de.ama.generator.Visitor;
 
