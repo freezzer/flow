@@ -159,30 +159,34 @@ public class EditField extends Canvas implements GUIComponent {
 
     public function getTextAtCaret():Object {
         var ret:Object = null;
-        var start:int = selectionBeginIndex;
-        var stop:int = selectionBeginIndex;
+        var start:int = selectionBeginIndex-1;
+        var stop:int = selectionBeginIndex-1;
         var string:String = getInputText();
-
-        while ( true ) {
-            if(start<0) { start=0; break; }
-            if((string.charAt(start) != " ") && (string.charAt(start) != "\r")) { break};
+        var c:String = null;
+        var len:int = string.length;
+        
+        while ( start > 0 ) {
+        	c = string.charAt(start);
+            if((c != " ") && (c != "\r")) { break};
             start--;
         }
 
-        while ( true ) {
-            if(start<0) { start=0; break; }
-            if(string.charAt(start) == " ") { start++ ; break};
-            if(string.charAt(start) == "\n") { start++ ; break};
-            if(string.charAt(start) == "\r") { start++ ; break};
+        while ( start >= 0 ) {
+        	c = string.charAt(start);
+            if(c == " ") { start++ ; break};
+            if(c == "\n") { start++ ; break};
+            if(c == "\r") { start++ ; break};
             start--;
         }
-
+		
+		if(start<0) start = 0;
+		
         stop = start;
-        while (true) {
-            if(stop>string.length) {stop = string.length; break; }
-            if(string.charAt(stop) == " ") { break; }
-            if(string.charAt(stop) == "\n") { break; }
-            if(string.charAt(stop) == "\r") { break; }
+        while (stop < len) {
+        	c = string.charAt(stop);
+            if(c == " ") { break; }
+            if(c == "\n") { break; }
+            if(c == "\r") { break; }
             stop++;
         }
 
