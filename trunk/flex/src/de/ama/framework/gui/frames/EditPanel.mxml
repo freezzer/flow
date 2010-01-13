@@ -228,11 +228,12 @@
         }
 
 
-        public function getAllGUIComponents():Array {
+        public function getAllGUIComponents(c:Class = null):Array {
+            if(c=null) c=GUIComponent;
             var ret:Array = new Array();
             var len:int = numChildren;
             for (var i:int = 0; i < len; i++) {
-                if (getChildAt(i) is GUIComponent) {
+                if (getChildAt(i) is c) {
                     ret.push(getChildAt(i));
                 }
             }

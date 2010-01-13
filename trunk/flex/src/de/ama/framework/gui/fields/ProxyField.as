@@ -48,7 +48,7 @@ public class ProxyField extends EditField implements Invoker{
         } else {
            var sm:SelectionModel= new SelectionModel();
            var c:Class = Factory.createBeanClass(type);
-           sm.type = Util.getClassName(c); 
+           sm.type = Util.getClassName(c);
            return sm;
         }
     }

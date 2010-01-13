@@ -2,7 +2,6 @@ package de.ama.framework.command {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadBoAction;
 import de.ama.framework.data.BusinessObject;
-import de.ama.framework.data.SelectionModel;
 import de.ama.framework.util.Callback;
 
 public class LoadBoCommand extends Command{

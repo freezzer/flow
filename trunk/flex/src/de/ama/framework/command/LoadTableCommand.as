@@ -1,5 +1,4 @@
 package de.ama.framework.command {
-import de.ama.framework.gui.fields.ProxyField;
 import de.ama.framework.gui.frames.ListPanel;
 
 public class LoadTableCommand extends Command{

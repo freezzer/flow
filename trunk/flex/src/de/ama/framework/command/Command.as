@@ -3,8 +3,6 @@ import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.icons.IconStore;
 import de.ama.framework.util.Util;
-import de.ama.services.Environment;
-
 import de.ama.services.permission.PermissionService;
 
 import flash.ui.ContextMenuItem;

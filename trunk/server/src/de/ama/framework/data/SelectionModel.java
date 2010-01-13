@@ -13,7 +13,6 @@ import java.util.List;
 public class SelectionModel implements Serializable{
 
     private List   selections = new ArrayList();
-    private String condition;
     private String  type;
 
    /////////////////////////// C'tor //////////////////////////////////////
@@ -23,7 +22,6 @@ public class SelectionModel implements Serializable{
 
     public SelectionModel(SelectionModel sm) {
         setSelections(sm.getSelections());
-        setCondition(sm.getCondition());
         type=sm.type;
     }
 
@@ -37,19 +35,12 @@ public class SelectionModel implements Serializable{
     }
 
     public String getType(){
-        if(type==null) return null;
         return type.replace("::",".");
     }
 
     public void setType(String type) {
         this.type = type;
     }
-
-////////////////// Conditions ///////////////////////////////
-
-    public String getCondition()                {    return Util.saveToString(condition);  }
-    public void setCondition(String condition)  {    this.condition = condition;   }
-    public boolean hasCondition()               {    return condition!=null && condition.length() > 0;    }
 
     /////////////////////////////////////////////////////
 

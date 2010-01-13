@@ -245,7 +245,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
         if (selectionModel.getSelections().length<1) {
             selectionModel.addSelection(createData());
         }
-        
+
         return selectionModel;
     }
 
