@@ -7,8 +7,8 @@ import de.ama.framework.command.*;
 public class TextBausteinLister extends ListPanel {
      
      override public function createData():BusinessObject {
-        return Factory.createBean("TextBaustein"); 
-     } 
+        return Factory.createBean("TextBaustein");
+     }
 
      override public function addCommands():void {
         var cmd:Command;

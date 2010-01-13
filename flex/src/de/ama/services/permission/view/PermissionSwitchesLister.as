@@ -7,8 +7,8 @@ import de.ama.framework.command.*;
 public class PermissionSwitchesLister extends ListPanel {
      
      override public function createData():BusinessObject {
-        return Factory.createBean("default"); 
-     } 
+        return Factory.createBean("default");
+     }
 
      override public function addCommands():void {
         var cmd:Command;

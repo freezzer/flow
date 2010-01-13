@@ -2,7 +2,6 @@
        package de.ama.framework.command {
        import de.ama.framework.gui.frames.ListPanel;
        import de.ama.framework.gui.frames.TreeEditor;
-       import de.ama.framework.gui.frames.TreeNode;
 
        public class CopyNodeCommand  extends Command {
 

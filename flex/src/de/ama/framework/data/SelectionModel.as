@@ -3,7 +3,6 @@ import de.ama.framework.util.Util;
 [RemoteClass(alias="de.ama.framework.data.SelectionModel")]
 public class SelectionModel {
     public var selections:Array = new Array();
-    public var condition:String;
     public var type:String;
 
     public function SelectionModel(data:BusinessObject=null) {

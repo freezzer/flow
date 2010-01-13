@@ -9,9 +9,10 @@ package de.ama.framework.gui.frames {
 import de.ama.framework.gui.fields.*;
 import de.ama.framework.gui.frames.*;
 import de.ama.framework.data.*;
+import de.ama.framework.util.Query;
 import de.ama.services.Factory;
 
-public class PanelEditor  extends EditPanel {
+public class SearchPanel  extends EditPanel {
     private var _listPanel:ListPanel;
 
 
@@ -29,31 +30,35 @@ public class PanelEditor  extends EditPanel {
         var collumns:Array = _listPanel.getColumns();
         for each (var col:ListPanelColumn in collumns) {
             if(!col.searchable) continue;
-            var type:String = col.type;
+            var type:String = col.type.toLowerCase();
             var name:String = col.label;
             switch (type) {
-                case "Date":  {
+                case "dDate":  {
                     insertDateField(label);
                     break;
                 }
-                case "Number":{
+                case "number":{
                     insertTextField(label);
                     break;
                 }
-                case "Boolean":{
+                case "boolean":{
                     insertBoolField(label);
                     break;
                 }
-                case "String": {
+                case "string": {
                     insertTextField(label);
                     break;
                 }
             }
+        }
+    }
+
+    public function getQuery():Query{
+        var q:Query = new Query(_listPanel.getType());
+        var fields:Array = getAllGUIComponents(EditField);
+        for each (var ef:EditField in fields) {
 
         }
-
-        field = insertTextField("Ort", "ort", 10, 20, 100, 300);
-
     }
 
 }
