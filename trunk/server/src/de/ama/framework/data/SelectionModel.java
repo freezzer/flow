@@ -13,6 +13,7 @@ import java.util.List;
 public class SelectionModel implements Serializable{
 
     private List   selections = new ArrayList();
+    private Query  query;
     private String  type;
 
    /////////////////////////// C'tor //////////////////////////////////////
@@ -90,4 +91,10 @@ public class SelectionModel implements Serializable{
         getSelections().remove(d);
     }
 
+    public Query getQuery() {
+        if(query==null){
+           query = new Query(Util.createClass(getType()));
+        }
+        return query;
+    }
 }

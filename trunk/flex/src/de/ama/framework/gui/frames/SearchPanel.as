@@ -7,10 +7,7 @@
 
 package de.ama.framework.gui.frames {
 import de.ama.framework.gui.fields.*;
-import de.ama.framework.gui.frames.*;
-import de.ama.framework.data.*;
-import de.ama.framework.util.Query;
-import de.ama.services.Factory;
+import de.ama.framework.util.Condition;
 
 public class SearchPanel  extends EditPanel {
     private var _listPanel:ListPanel;
@@ -34,31 +31,39 @@ public class SearchPanel  extends EditPanel {
             var name:String = col.label;
             switch (type) {
                 case "dDate":  {
-                    insertDateField(label);
+                    insertDateField(label, col.dataField);
                     break;
                 }
                 case "number":{
-                    insertTextField(label);
+                    insertTextField(label, col.dataField);
                     break;
                 }
                 case "boolean":{
-                    insertBoolField(label);
+                    insertBoolField(label, col.dataField);
                     break;
                 }
                 case "string": {
-                    insertTextField(label);
+                    insertTextField(label, col.dataField);
                     break;
                 }
             }
         }
     }
 
-    public function getQuery():Query{
-        var q:Query = new Query(_listPanel.getType());
-        var fields:Array = getAllGUIComponents(EditField);
-        for each (var ef:EditField in fields) {
-
+    public function getCondition():Condition {
+        var cond:Condition = null;
+        var path:String = null;
+        var collumns:Array = _listPanel.getColumns();
+        for each (var col:ListPanelColumn in collumns) {
+            if(!col.searchable) continue;
+            path = col.dataField;
+            if(cond==null){
+                cond = new Condition(path, Condition.EQ , getEditField(path).getValue());
+            } else {
+                cond.and(new Condition(path, Condition.EQ , getEditField(path).getValue()));
+            }
         }
+        return cond;
     }
 
 }

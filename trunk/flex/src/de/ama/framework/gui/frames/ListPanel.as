@@ -22,14 +22,17 @@ import flash.utils.describeType;
 import mx.collections.ArrayCollection;
 import mx.containers.VBox;
 import mx.controls.DataGrid;
-import mx.controls.dataGridClasses.DataGridColumn;
+import mx.core.Application;
+import mx.core.Container;
 import mx.core.IDataRenderer;
 import mx.events.ListEvent;
+import mx.managers.PopUpManager;
 
 public class ListPanel extends VBox implements Panel,Invoker{
 
     protected var rows:ArrayCollection = new ArrayCollection();
 
+    private var _searchPanel:SearchPanel = null;
     private var _commands:ArrayCollection = new ArrayCollection();
     private var _listMenu:ContextMenu = new ContextMenu();
     private var _generic:Boolean = false;
@@ -38,6 +41,8 @@ public class ListPanel extends VBox implements Panel,Invoker{
     private var _grid:DataGrid;
     private var _singleClickCallback:Callback;
     private var _doubleClickCallback:Callback;
+
+    private var _emptyData:BusinessObject = null;
 
     private var _dataProviderName:String=null;
     private var _dataProvider:DataProvider=null;
@@ -92,6 +97,21 @@ public class ListPanel extends VBox implements Panel,Invoker{
         if (event.keyCode == Keyboard.ENTER) {
             startDefaultCommands();
         }
+        if (event.keyCode == Keyboard.F3) {
+            showSearchPanel();
+        }
+    }
+
+    private function showSearchPanel():void {
+        if(_searchPanel==null){
+           _searchPanel = new SearchPanel(this);
+           _searchPanel.width = grid.width/2;
+           _searchPanel.height = grid.height-30;
+           _searchPanel.x = 0;
+           _searchPanel.y = 0;
+        }
+
+		PopUpManager.addPopUp(_searchPanel , grid ,false);
     }
 
 
@@ -243,9 +263,12 @@ public class ListPanel extends VBox implements Panel,Invoker{
         }
 
         if (selectionModel.getSelections().length<1) {
-            selectionModel.addSelection(createData());
+            selectionModel.type = Util.getClassName(getData());
         }
 
+        if(_searchPanel!=null){
+            selectionModel.getQuery().condition = _searchPanel.getCondition();
+        }
         return selectionModel;
     }
 
@@ -317,7 +340,10 @@ public class ListPanel extends VBox implements Panel,Invoker{
     }
 
     public function getData():BusinessObject {
-        return null;
+        if(_emptyData==null){
+            _emptyData = createData();
+        }
+        return _emptyData;
     }
 
 

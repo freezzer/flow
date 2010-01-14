@@ -1,6 +1,7 @@
 package de.ama.framework.data {
 import de.ama.framework.action.ActionStarter;
 import de.ama.framework.action.LoadTableAction;
+import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.util.Callback;
 
 public class QueryDataProvider extends DataProvider {
