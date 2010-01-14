@@ -20,15 +20,13 @@ import flash.ui.Keyboard;
 import flash.utils.describeType;
 
 import mx.collections.ArrayCollection;
+import mx.containers.Canvas;
 import mx.containers.VBox;
 import mx.controls.DataGrid;
-import mx.core.Application;
-import mx.core.Container;
 import mx.core.IDataRenderer;
 import mx.events.ListEvent;
-import mx.managers.PopUpManager;
 
-public class ListPanel extends VBox implements Panel,Invoker{
+public class ListPanel extends Canvas implements Panel,Invoker{
 
     protected var rows:ArrayCollection = new ArrayCollection();
 
@@ -39,6 +37,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
     private var _toolbarSize:int = 0;
     private var _toolbar:CommandButtonBar;
     private var _grid:DataGrid;
+    private var _center:VBox;
     private var _singleClickCallback:Callback;
     private var _doubleClickCallback:Callback;
 
@@ -56,17 +55,23 @@ public class ListPanel extends VBox implements Panel,Invoker{
     }
 
     public function ListPanel(generic:Boolean = false):void {
-        percentWidth=100;
-        percentHeight=100;
-        setStyle("paddingTop",0);
-        setStyle("paddingRight",0);
-        setStyle("paddingLeft",0);
-        setStyle("paddingBottom",0);
-        setStyle("verticalGap",0);
+        setStyle("left",0);
+        setStyle("right",0);
+        setStyle("top",0);
+        setStyle("bottomm",0);
         _generic = generic;
 
-        createToolbar();
+        _center = new VBox();
+        _center.setStyle("left",0);
+        _center.setStyle("right",0);
+        _center.setStyle("top",0);
+        _center.setStyle("bottom",0);
+        _center.setStyle("verticalGap",0);
+        addChild(_center)
+
         createGrid();
+        createToolbar();
+
         addCollumns();
         addCommands();
         _listMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
@@ -88,7 +93,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
             _grid.addEventListener(ListEvent.ITEM_DOUBLE_CLICK,onItemDoubleClick); 
             _grid.addEventListener(ListEvent.ITEM_CLICK,onItemSingleClick);
             _grid.addEventListener(KeyboardEvent.KEY_UP,onKeyPressed);
-            addChild(_grid);
+            _center.addChild(_grid);
         }
     }
 
@@ -102,18 +107,25 @@ public class ListPanel extends VBox implements Panel,Invoker{
         }
     }
 
-    private function showSearchPanel():void {
-        if(_searchPanel==null){
-           _searchPanel = new SearchPanel(this);
-           _searchPanel.width = grid.width/2;
-           _searchPanel.height = grid.height-30;
-           _searchPanel.x = 0;
-           _searchPanel.y = 0;
-        }
 
-		PopUpManager.addPopUp(_searchPanel , grid ,false);
+    private function get searchPanelVisible():Boolean {
+        return _searchPanel !=null && _searchPanel.visible;
     }
 
+    private function showSearchPanel():void {
+        if(_searchPanel==null){
+            _searchPanel = new SearchPanel(this);
+            _searchPanel.width = grid.width/2;
+            _searchPanel.height = grid.height;
+            addChild(_searchPanel);
+        }
+        _searchPanel.visible = true;
+    }
+
+    private function hideSearchPanel():void {
+        if(_searchPanel==null) return;
+        _searchPanel.visible = false;
+    }
 
     public function set singleClickCallback(value:Callback):void {
         _singleClickCallback = value;
@@ -130,7 +142,6 @@ public class ListPanel extends VBox implements Panel,Invoker{
             startDefaultCommands();
         }
     }
-
 
 
     public function onItemSingleClick(le:ListEvent):void {
@@ -160,7 +171,7 @@ public class ListPanel extends VBox implements Panel,Invoker{
             _toolbar.label = label;
             _toolbar.invoker = this;
             _toolbar.commands = _commands
-            addChildAt(DisplayObject(_toolbar), 0);
+            _center.addChildAt(DisplayObject(_toolbar), 0);
         }
     }
 

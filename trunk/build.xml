@@ -145,7 +145,7 @@
 
         <mxmlc file="flex/src/${app.name}.mxml"
                output="${deploy.dir}/${app.name}/${app.name}.swf"
-               debug="false" >
+               debug="true" >
 
          <compiler.library-path dir="${home.dir}/flex/libs" append="true">
               <!--<include name="hessian-flex-3.1.5.swc" />-->
