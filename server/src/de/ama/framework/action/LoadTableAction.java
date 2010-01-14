@@ -15,12 +15,13 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public class LoadTableAction extends ActionScriptAction {
-            
+
+
     @Override
     public void execute() throws Exception {
         PersistentService ps = Environment.getPersistentService();
 
-        List objects = ps.getObjects(new Query(Util.createClass(selectionModel.getType())));
+        List objects = ps.getObjects(selectionModel.getQuery());
         data = ps.releaseObject(objects);
 
 

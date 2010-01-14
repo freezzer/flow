@@ -1,12 +1,13 @@
 package de.ama.framework.data {
 import de.ama.framework.command.Invoker;
 import de.ama.framework.util.Callback;
+import de.ama.framework.util.Query;
 
 public class DataProvider {
     private var _invoker:Invoker;
     private var _callback:Callback;
     private var _path:String;
-    private var _query:String;
+    private var _query:Query;
     private var _type:String;
 
 
@@ -34,11 +35,11 @@ public class DataProvider {
         _path = value;
     }
 
-    public function get query():String {
+    public function get query():Query {
         return _query;
     }
 
-    public function set query(value:String):void {
+    public function set query(value:Query):void {
         _query = value;
     }
 

@@ -1,8 +1,10 @@
 package de.ama.framework.data {
+import de.ama.framework.util.Query;
 import de.ama.framework.util.Util;
 [RemoteClass(alias="de.ama.framework.data.SelectionModel")]
 public class SelectionModel {
     public var selections:Array = new Array();
+    private var _query:Query;
     public var type:String;
 
     public function SelectionModel(data:BusinessObject=null) {
@@ -13,7 +15,7 @@ public class SelectionModel {
 
     public function addSelection(d:BusinessObject):void {
         selections.push(new BoReference(d));
-        if(selections.length==1 || Util.isEmpty(type)){
+        if( Util.isEmpty(type)){
         	type =  Util.getClassName(d);
         }
     }
@@ -26,8 +28,14 @@ public class SelectionModel {
         if(selections.length>0){
            return selections[0];
         }
-
         return null;
+    }
+
+    public function getQuery():Query {
+        if(_query==null){
+            _query = new Query(type);
+        }
+        return _query;
     }
 
 }
