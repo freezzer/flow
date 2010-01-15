@@ -5,20 +5,22 @@
                 backgroundColor="#C0C0C0"
                 close="close()"
                 cornerRadius="4"
+                keyUp="keyHandler(event)"
+                creationComplete="init()"
          xmlns:ns1="de.ama.framework.gui.frames.*"
         >
 
     <mx:Script><![CDATA[
+    	import de.ama.framework.command.MenuInvoker;
+    	import de.ama.framework.command.CallbackCommand;
+    	import de.ama.framework.command.Invoker;
+    	import de.ama.framework.gui.fields.CommandButton;
         import de.ama.framework.data.BoReference;
         import de.ama.framework.data.SelectionModel;
         import de.ama.framework.util.Callback;
         import de.ama.services.Factory;
 
         import mx.managers.PopUpManager;
-
-        //        private function init():void {
-        //            getListPanel().reload();
-        //        }
 
         private var _listpane:ListPanel;
         private var _lister:String = "default";
@@ -36,12 +38,26 @@
             }
         }
 
-        public function close():void {
+        public function init():void {
+        	buttons.size = CommandButton.LARGE;
+        	buttons.invoker = new MenuInvoker();
+        	buttons.addCommand(new CallbackCommand("Übernehmen","accept",new Callback(this,okButtonHandler)));
+        	buttons.addCommand(new CallbackCommand("Schließen","cancel",new Callback(this,close)));
+        	focusManager.setFocus(input);
+        }
+
+        public function close(inv:Invoker=null):void {
             PopUpManager.removePopUp(this);
             callback();
         }
 
         public function keyHandler(e:KeyboardEvent):void {
+        	if(e.keyCode == Keyboard.ESCAPE){
+        		close();
+        	}
+        	if(e.keyCode == Keyboard.ENTER){
+        		okButtonHandler();
+        	}
         }
 
         public function inputHandler(e:Event):void {
@@ -51,7 +67,7 @@
             okButtonHandler();
         }
 
-        private function okButtonHandler():void {
+        private function okButtonHandler(inv:Invoker=null):void {
             var sm:SelectionModel = getListPanel().getSelectionModel();
             _boRef = sm.getFirstSelection();
             close();
@@ -94,12 +110,7 @@
 
     <mx:VBox id="cp" width="100%" verticalGap="1" verticalAlign="bottom" height="100%">
         <mx:TextInput width="100%" id="input" change="inputHandler(event)"/>
-
-
-        <mx:HBox width="100%" bottom="0" horizontalAlign="right" horizontalGap="0">
-            <mx:Button label="ok" click="okButtonHandler()"/>
-            <mx:Button label="close" click="close()"/>
-        </mx:HBox>
+        <ns1:CommandButtonBar id="buttons"/>
     </mx:VBox>
 
 </mx:TitleWindow>

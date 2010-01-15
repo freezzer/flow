@@ -4,7 +4,7 @@ import de.ama.framework.util.Util;
 [RemoteClass(alias="de.ama.framework.data.SelectionModel")]
 public class SelectionModel {
     public var selections:Array = new Array();
-    private var _query:Query;
+    public var query:Query;
     public var type:String;
 
     public function SelectionModel(data:BusinessObject=null) {
@@ -32,10 +32,10 @@ public class SelectionModel {
     }
 
     public function getQuery():Query {
-        if(_query==null){
-            _query = new Query(type);
+        if(query==null){
+            query = new Query(type);
         }
-        return _query;
+        return query;
     }
 
 }

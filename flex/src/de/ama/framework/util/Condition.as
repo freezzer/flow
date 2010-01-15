@@ -19,7 +19,7 @@ public class Condition {
     public var children:Array = null;
 
 
-    public function Condition(path:String, op:String, value:Object) {
+    public function Condition(path:String=null, op:String=null, value:Object=null) {
         this.path = path;
         this.op = op;
         this.value = value;

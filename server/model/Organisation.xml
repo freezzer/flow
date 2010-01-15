@@ -45,11 +45,10 @@
                     <tree_node label="Adresse {ort}" path="adresse" icon="form" open="true" type="Adresse"  panel="AdressePanel" />
                     <tree_node label="Personen" path="personen" icon="table" open="true" type="Person"  lister="PersonLister">
                         <command use="CreateNodeCommand" label="neue Person" icon="new"/>
-                        <tree_node label="Kontakt {nachname}" path="personen" icon="user" open="true" type="Person"
-                                   panel="default">
-                            <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
-                            <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
-                            <command use="DeleteNodeCommand" label="Adresse löschen" icon="delete"/>
+                        <tree_node label="Kontakt {nachname}" path="personen" icon="user" open="true" type="Person"  panel="KontaktPanel">
+                            <command use="CreateNodeCommand" label="neuer Kontakt" icon="new"/>
+                            <command use="CopyNodeCommand" label="Kontakt kopieren" icon="copy"/>
+                            <command use="DeleteNodeCommand" label="Kontakt löschen" icon="delete"/>
                         </tree_node>
                     </tree_node>
                     <tree_node label="Notizen" path="notizen" icon="table" open="true" type="Notiz"  lister="default">
@@ -81,6 +80,14 @@
                 <rich_text_editor x="9" y="216" w="575" labelwidth="80" h="410" label="ToDo" path="todo" color_picker="false" link_input="false" bullet_button="false"/>
                 <lookup x="8" y="644" w="354" labelwidth="80" label="zugewiesen" path="assignedTo" type="Person" guirep="nachname" editor="PersonEditor" lister="PersonLister"/>
             </panel>
+
+            <panel name="KontaktPanel" label="Kontakt" border="true" x="12" y="15" w="350" h="145" path="." >
+                <input x="9" y="13" w="300" labelwidth="100" h="25" label="Vorname" path="vorname" type="string" />
+                <input x="9" y="44" w="300" labelwidth="100" h="25" label="Nachname" path="nachname" type="string" />
+                <input x="9" y="75" w="300" labelwidth="100" h="25" label="Telefon" path="telefon" type="string" />
+                <input x="9" y="107" w="300" labelwidth="100" h="25" label="Email" path="email" type="string" />
+            </panel>
+
         </view>
 
     </permission>

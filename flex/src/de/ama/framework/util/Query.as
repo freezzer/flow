@@ -10,7 +10,7 @@ public class Query {
     public var condition:Condition;
 
 
-    public function Query(targetName:String, condition:Condition=null, orderColumn:String=null, limit:Number=-1, negated:Boolean=false) {
+    public function Query(targetName:String=null, condition:Condition=null, orderColumn:String=null, limit:Number=-1, negated:Boolean=false) {
         this.targetName = targetName;
         this.orderColumn = orderColumn;
         this.limit = limit;

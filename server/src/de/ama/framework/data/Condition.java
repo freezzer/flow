@@ -58,31 +58,23 @@ public class Condition implements Serializable{
         return this;
     }
 
-    public String getPath() {
-        return path;
-    }
 
-    public String getOp() {
-        return op;
-    }
+    public String getPath()                     {           return path;            }
+    public void setPath(String path)            {           this.path = path;       }
 
-    public Object getValue() {
-        return value;
-    }
+    public String getOp()                       {           return op;              }
+    public void setOp(String op)                {           this.op = op;           }
 
-    public String getConcatOperator() {
-        return concatOperator;
-    }
+    public Object getValue()                    {           return value;           }
+    public void setValue(Object value)          {           this.value = value;     }
 
-    public boolean isNegated() {
-        return negated;
-    }
+    public String getConcatOperator()           {           return concatOperator;  }
+    public void setConcatOperator(String concatOperator) {  this.concatOperator = concatOperator;     }
 
-    public void setNegated(boolean negated) {
-        this.negated = negated;
-    }
+    public boolean isNegated()                  {           return negated;         }
+    public void setNegated(boolean negated)     {           this.negated = negated; }
 
-    public List getChildren() {
-        return children;
-    }
+    public List getChildren()                   {           return children;        }
+    public void setChildren(List children)      {           this.children = children;  }
+    
 }

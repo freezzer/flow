@@ -81,6 +81,10 @@ public class Query implements Serializable {
         return condition;
     }
 
+    public void setCondition(Condition condition) {
+        this.condition = condition;
+    }
+
     public boolean isNegated() {
         return negated;
     }

@@ -1,9 +1,4 @@
-/* 
 
- generated code by flow "flex on wings"
- this code is property of Andreas Marochow
-
- */
 
 package de.ama.framework.gui.frames {
 import de.ama.framework.command.CallbackCommand;
@@ -14,18 +9,27 @@ import de.ama.framework.gui.fields.*;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Condition;
 
-import mx.containers.VBox;
+import de.ama.framework.util.Util;
 
-public class SearchPanel  extends VBox{
+import mx.containers.Panel;
+import mx.effects.Move;
+
+public class SearchPanel  extends Panel{
 
     private var _listPanel:ListPanel;
     private var _editPanel:EditPanel;
     private var _buttonbar:CommandButtonBar;
 
-
+    private var slideIn:Move = new Move(this); 
+    private var slideOut:Move = new Move(this); 
 
     public function SearchPanel(listPanel:ListPanel) {
-        alpha=0,8;
+    	
+        width = 400;
+       	setStyle("backgrondAlpha",0.8);
+       	setStyle("verticalGap",0);
+        setStyle("horizontalGap",0);
+       	
         _listPanel = listPanel;
         _editPanel = new EditPanel();
         addChild(_editPanel);
@@ -40,6 +44,12 @@ public class SearchPanel  extends VBox{
         _buttonbar.addCommand(new CallbackCommand("Aktualisieren","refresh",new Callback(this,refreshListPanel)));
 
         addFields();
+        _editPanel.percentWidth = 100;
+        x=listPanel.width;
+        y=53;
+        slideIn.xFrom=x;   slideIn.xTo=listPanel.width-400;  slideIn.duration =500;
+        slideOut.xFrom=listPanel.width-400;  slideOut.xTo=listPanel.width;  slideOut.duration =500;
+			
     }
 
     private function refreshListPanel(invoker:Invoker):void {
@@ -47,11 +57,18 @@ public class SearchPanel  extends VBox{
     }
 
     private function close(invoker:Invoker):void {
-        visible = false;
+        show(false);
     }
-
-
-     public function addFields():void {
+    
+    public function show(show:Boolean):void {
+    	if(show){
+           slideIn.play();
+    	} else {
+           slideOut.play();
+    	}
+    }
+    
+    public function addFields():void {
         var field:EditField;
 
         var collumns:Array = _listPanel.getColumns();
@@ -59,21 +76,26 @@ public class SearchPanel  extends VBox{
             if(!col.searchable) continue;
             var type:String = col.type.toLowerCase();
             var name:String = col.label;
+            var path:String = col.dataField;
             switch (type) {
                 case "date":  {
-                    _editPanel.insertDateField(label, col.dataField);
+                    var oldgap:int = _editPanel.gap;
+                    _editPanel.gap = 2;
+                    _editPanel.insertDateField(name, path);
+                    _editPanel.insertDateField(" bis", path);
+                    _editPanel.gap = oldgap;
                     break;
                 }
                 case "number":{
-                    _editPanel.insertTextField(label, col.dataField);
+                    _editPanel.insertTextField(name, path);
                     break;
                 }
                 case "boolean":{
-                    _editPanel.insertBoolField(label, col.dataField);
+                    _editPanel.insertBoolField(name, path);
                     break;
                 }
                 case "string": {
-                    _editPanel.insertTextField(label, col.dataField);
+                    _editPanel.insertTextField(name, path);
                     break;
                 }
             }
@@ -83,29 +105,68 @@ public class SearchPanel  extends VBox{
     public function getCondition():Condition {
         var cond:Condition = null;
         var path:String = null;
+        var ef:EditField = null;
         var collumns:Array = _listPanel.getColumns();
         for each (var col:ListPanelColumn in collumns) {
             if(!col.searchable) continue;
             path = col.dataField;
-            if(cond==null){
-                cond = new Condition(path, Condition.EQ , _editPanel.getEditField(path).getValue());
-            } else {
-                cond.and(new Condition(path, Condition.EQ , _editPanel.getEditField(path).getValue()));
+            ef = _editPanel.getEditField(path);
+            if(!ef.isEmpty()) {
+                if(cond==null){
+                    cond = buildSubCondition(path);
+                } else {
+                    cond.and(buildSubCondition(path));
+                }
             }
         }
         return cond;
     }
+    
+    private function buildSubCondition(path:String):Condition{
+        var cond:Condition = null;
+        var ef:EditField = null;
 
+        var fields:Array = new Array();
+        _editPanel.getEditField(path,fields);
 
-    public function setData(bo:BusinessObject):void {
+        if(fields.length == 1){
+            ef = EditField(fields[0]);
+            var str:String = ef.getInputText();
+            var parts:Array = str.split(",");
+            if(parts.length > 1){
+                for each(var part:String in parts){
+                	if(!Util.isEmpty(part)){
+                 	   if(cond==null){ cond = new Condition(); }
+                       cond.or( new Condition(path, ef.getInputText().indexOf("*")>=0? Condition.LIKE : Condition.EQ , ef.getValue()) );
+                    }
+                }
+            } else {
+                if(!ef.isEmpty()){
+                    cond = new Condition(path, ef.getInputText().indexOf("*")>=0? Condition.LIKE : Condition.EQ , ef.getValue());
+                }
+            }
+        }
+
+        // Intervalle
+        if(fields.length == 2){
+            ef = EditField(fields[0]);
+            if(!ef.isEmpty()){
+           	    if(cond==null){ cond = new Condition(); }
+                cond.and( new Condition(path, Condition.GE, ef.getValue()) );
+            }
+            ef = EditField(fields[1]);
+            if(!ef.isEmpty()){
+           	    if(cond==null){ cond = new Condition(); }
+                cond.and( new Condition(path, Condition.LT , ef.getValue()) );
+            }
+        }
+
+        return cond;
     }
 
-    public function getData():BusinessObject {
-        return null;
-    }
 
-    public function getSelectionModel():SelectionModel {
-        return null;
-    }
+    public function setData(bo:BusinessObject):void     {     }
+    public function getData():BusinessObject            {        return null;    }
+    public function getSelectionModel():SelectionModel  {        return null;    }
 }
 }
