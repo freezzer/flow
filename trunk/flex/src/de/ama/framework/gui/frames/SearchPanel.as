@@ -8,7 +8,6 @@ import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.fields.*;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Condition;
-
 import de.ama.framework.util.Util;
 
 import mx.containers.Panel;
@@ -24,10 +23,11 @@ public class SearchPanel  extends Panel{
     private var slideOut:Move = new Move(this); 
 
     public function SearchPanel(listPanel:ListPanel) {
-    	
+
         width = 400;
-       	setStyle("backgrondAlpha",0.8);
-       	setStyle("verticalGap",0);
+        setStyle("backgrondAlpha",0.8);
+        setStyle("verticalGap",0);
+        setStyle("backgroundColor",0x505090);
         setStyle("horizontalGap",0);
        	
         _listPanel = listPanel;
@@ -103,21 +103,14 @@ public class SearchPanel  extends Panel{
     }
 
     public function getCondition():Condition {
-        var cond:Condition = null;
+        var cond:Condition = new Condition();
         var path:String = null;
         var ef:EditField = null;
         var collumns:Array = _listPanel.getColumns();
         for each (var col:ListPanelColumn in collumns) {
             if(!col.searchable) continue;
             path = col.dataField;
-            ef = _editPanel.getEditField(path);
-            if(!ef.isEmpty()) {
-                if(cond==null){
-                    cond = buildSubCondition(path);
-                } else {
-                    cond.and(buildSubCondition(path));
-                }
-            }
+            cond.and(buildSubCondition(path));
         }
         return cond;
     }
@@ -137,7 +130,7 @@ public class SearchPanel  extends Panel{
                 for each(var part:String in parts){
                 	if(!Util.isEmpty(part)){
                  	   if(cond==null){ cond = new Condition(); }
-                       cond.or( new Condition(path, ef.getInputText().indexOf("*")>=0? Condition.LIKE : Condition.EQ , ef.getValue()) );
+                       cond.or( new Condition(path, part.indexOf("*")>=0? Condition.LIKE : Condition.EQ , part) );
                     }
                 }
             } else {
@@ -149,14 +142,13 @@ public class SearchPanel  extends Panel{
 
         // Intervalle
         if(fields.length == 2){
+          	cond = new Condition();
             ef = EditField(fields[0]);
             if(!ef.isEmpty()){
-           	    if(cond==null){ cond = new Condition(); }
                 cond.and( new Condition(path, Condition.GE, ef.getValue()) );
             }
             ef = EditField(fields[1]);
             if(!ef.isEmpty()){
-           	    if(cond==null){ cond = new Condition(); }
                 cond.and( new Condition(path, Condition.LT , ef.getValue()) );
             }
         }
