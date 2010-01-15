@@ -215,13 +215,19 @@
         }
 
 
-        public function getEditField(path:String):EditField {
+        public function getEditField(path:String, array:Array=null):EditField {
             var f:EditField = null;
             var len:int = numChildren;
             for (var i:int = 0; i < len; i++) {
                 if (getChildAt(i) is EditField) {
                     f = EditField(getChildAt(i));
-                    if (f.localpath == path) return f;
+                    if (f.localpath == path){
+                        if(array==null){
+                            return f;
+                        } else {
+                            array.push(f);
+                        }
+                    }
                 }
             }
             return null;

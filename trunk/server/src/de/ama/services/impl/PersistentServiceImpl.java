@@ -181,7 +181,6 @@ public class PersistentServiceImpl implements PersistentService {
     private Query toJormQuery(Class target, Condition cond) {
         Query ret = new Query(target);
         if (cond != null) {
-            ret = new Query(target, cond.getPath(), cond.getOp(), cond.getValue());
             if (cond.getChildren() != null) {
                 Iterator it = cond.getChildren().iterator();
                 while (it.hasNext()) {
@@ -190,13 +189,13 @@ public class PersistentServiceImpl implements PersistentService {
                         ret.and(toJormQuery(target, c));
                     }
                     if (c.getConcatOperator() == c.OR) {
-                        ret.and(toJormQuery(target, c));
+                        ret.or(toJormQuery(target, c));
                     }
                 }
+            } else if(cond.getValue()!=null){
+                ret = new Query(target, cond.getPath(), cond.getOp(), cond.getValue());
             }
         }
-
-
         return ret;
     }
 

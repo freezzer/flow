@@ -1,5 +1,4 @@
 package de.ama.framework.data {
-import de.ama.framework.gui.frames.TreeEditor;
 import de.ama.framework.util.Util;
 
 import mx.utils.ObjectUtil;
@@ -7,6 +6,9 @@ import mx.utils.ObjectUtil;
 public class BusinessObject {
     public var oid:int;
     public var version:int;
+
+	public function set dirty(d:Boolean):void{}; // nur für streaming
+	public function set loaded(d:Boolean):void{}; // nur für streaming
 
     public function readProperties(src:Object):void{
         Util.mapProperties(src,this);

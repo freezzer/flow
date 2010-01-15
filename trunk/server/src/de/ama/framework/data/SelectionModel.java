@@ -97,4 +97,8 @@ public class SelectionModel implements Serializable{
         }
         return query;
     }
+
+    public void setQuery(Query q) {
+        this.query = q;
+    }
 }

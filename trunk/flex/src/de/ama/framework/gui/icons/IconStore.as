@@ -42,7 +42,7 @@ public class IconStore {
   [Embed(source="../icons/wrench.png")]
   public static const WRENCH:Class;
 
-  [Embed(source="../icons/arrow_right.png")]
+  [Embed(source="../icons/arrow_left.png")]
   public static const ARROW_LEFT:Class;
 
   [Embed(source="../icons/arrow_right.png")]

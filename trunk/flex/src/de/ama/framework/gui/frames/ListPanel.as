@@ -1,12 +1,7 @@
 package de.ama.framework.gui.frames {
 import de.ama.framework.action.LoadTableAction;
-import de.ama.framework.command.Command;
-import de.ama.framework.command.CreateNodeCommand;
-import de.ama.framework.command.Invoker;
-import de.ama.framework.data.BusinessObject;
-import de.ama.framework.data.DataProvider;
-import de.ama.framework.data.QueryDataProvider;
-import de.ama.framework.data.SelectionModel;
+import de.ama.framework.command.*;
+import de.ama.framework.data.*;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
 import de.ama.services.Factory;
@@ -55,10 +50,10 @@ public class ListPanel extends Canvas implements Panel,Invoker{
     }
 
     public function ListPanel(generic:Boolean = false):void {
-        setStyle("left",0);
-        setStyle("right",0);
-        setStyle("top",0);
-        setStyle("bottomm",0);
+        percentHeight = 100;
+        percentWidth = 100;
+        horizontalScrollPolicy="off";
+        
         _generic = generic;
 
         _center = new VBox();
@@ -74,6 +69,9 @@ public class ListPanel extends Canvas implements Panel,Invoker{
 
         addCollumns();
         addCommands();
+        
+        addCommand(new CallbackCommand("Suchen","search",new Callback(this,toggleSearchPanel)));
+
         _listMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
         _listMenu.hideBuiltInItems();
     }
@@ -103,28 +101,20 @@ public class ListPanel extends Canvas implements Panel,Invoker{
             startDefaultCommands();
         }
         if (event.keyCode == Keyboard.F3) {
-            showSearchPanel();
+        	toggleSearchPanel();
         }
     }
 
-
-    private function get searchPanelVisible():Boolean {
-        return _searchPanel !=null && _searchPanel.visible;
-    }
-
-    private function showSearchPanel():void {
+    private function toggleSearchPanel(inv:Invoker=null):void {
         if(_searchPanel==null){
             _searchPanel = new SearchPanel(this);
-            _searchPanel.width = grid.width/2;
-            _searchPanel.height = grid.height;
             addChild(_searchPanel);
         }
-        _searchPanel.visible = true;
-    }
-
-    private function hideSearchPanel():void {
-        if(_searchPanel==null) return;
-        _searchPanel.visible = false;
+      	if(_searchPanel.x >= width){
+            _searchPanel.show(true)
+       	} else {
+            _searchPanel.show(false);
+       	}
     }
 
     public function set singleClickCallback(value:Callback):void {
@@ -368,7 +358,6 @@ public class ListPanel extends Canvas implements Panel,Invoker{
     }
 
     public function addCommands():void {
-        addCommand(new CreateNodeCommand());
     }
 
 }

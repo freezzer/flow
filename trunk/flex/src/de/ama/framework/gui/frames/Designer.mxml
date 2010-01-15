@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
-                layout="absolute" width="332" height="260"
+                layout="absolute" width="350" height="276"
                 title="Designer" showCloseButton="true"
                 backgroundColor="#C0C0C0"
                 close="onClose()"

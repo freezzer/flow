@@ -8,6 +8,7 @@ import de.ama.framework.util.Util;
 public class BoReference {
     public var oid:int;
     private var _type:String;
+	public function set bo(d:Object):void{}; // nur für streaming
 
     [Transient]
     private var _bo:BusinessObject;

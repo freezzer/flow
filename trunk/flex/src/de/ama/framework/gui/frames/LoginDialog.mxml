@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
                 xmlns:comps="de.ama.framework.gui.*"
-                layout="absolute" width="292" height="172"
+                layout="absolute" width="308" height="192"
                 title="Login" showCloseButton="true"
                 close="PopUpManager.removePopUp(this)"
                 borderAlpha="0.75" backgroundColor="#FFFFFF" backgroundAlpha="1.0" color="#000000" borderColor="#6E7272" borderStyle="solid" cornerRadius="3" alpha="1.0" borderThickness="8">
@@ -13,7 +13,7 @@
             <mx:SetProperty target="{pwdInput}" name="y" value="52"/>
             <mx:SetProperty target="{label1}" name="y" value="54"/>
             <mx:AddChild relativeTo="{userInput}" position="before">
-                <mx:Label x="49.65" y="84" text="Bestätigen" id="label0" width="87.26667" textAlign="right" height="18" fontWeight="bold"/>
+                <mx:Label x="29.65" y="84" text="Bestätigen" id="label0" width="111.35" textAlign="right" height="18" fontWeight="bold"/>
             </mx:AddChild>
             <mx:AddChild relativeTo="{userInput}" position="before">
                 <mx:TextInput x="149" y="82" id="pwdRepeatInput" displayAsPassword="true" tabIndex="3" width="219.9" height="22" maxChars="20"/>
@@ -22,11 +22,11 @@
             <mx:SetProperty target="{okButton}" name="x" value="299.9"/>
             <mx:SetProperty target="{pwdInput}" name="x" value="149"/>
             <mx:SetProperty target="{userInput}" name="x" value="149"/>
-            <mx:SetProperty target="{label1}" name="x" value="78.35"/>
-            <mx:SetProperty target="{label2}" name="x" value="69.65"/>
+            <mx:SetProperty target="{label1}" name="x" value="58.35"/>
+            <mx:SetProperty target="{label2}" name="x" value="49.65"/>
             <mx:SetProperty target="{label2}" name="text" value="Name"/>
-            <mx:SetProperty target="{label2}" name="width" value="67.333336"/>
-            <mx:SetProperty target="{label1}" name="width" value="58.666664"/>
+            <mx:SetProperty target="{label2}" name="width" value="91.350006"/>
+            <mx:SetProperty target="{label1}" name="width" value="82.65"/>
             <mx:SetStyle target="{label1}" name="textAlign" value="right"/>
             <mx:SetStyle target="{label2}" name="textAlign" value="right"/>
             <mx:SetProperty target="{label1}" name="height" value="18"/>
@@ -37,7 +37,7 @@
             <mx:SetProperty target="{pwdInput}" name="text"/>
             <mx:SetStyle name="color" value="#000000"/>
             <mx:AddChild relativeTo="{label1}" position="before">
-                <mx:Label x="69.65" y="113" text="Email" textAlign="right" width="67.333336" height="18" fontWeight="bold"/>
+                <mx:Label x="49.65" y="113" text="Email" textAlign="right" width="91.350006" height="18" fontWeight="bold"/>
             </mx:AddChild>
             <mx:AddChild relativeTo="{pwdInput}" position="before">
                 <mx:TextInput x="149" y="112" id="emailInput" tabIndex="4" width="219.9" height="22" maxChars="40"/>
@@ -60,7 +60,7 @@
                 <mx:TextInput x="267.25" y="142" id="monkeyRepeat" displayAsPassword="false" tabIndex="5" width="101.65" text="" color="#000000" fontFamily="Verdana" fontSize="12" maxChars="10"/>
             </mx:AddChild>
             <mx:AddChild relativeTo="{label1}" position="before">
-                <mx:Label x="45.7" y="146" text="bitte abtippen" textAlign="right" width="95.3" height="18"/>
+                <mx:Label x="25.7" y="146" text="bitte abtippen" textAlign="right" width="115.3" height="18"/>
             </mx:AddChild>
             <mx:SetProperty target="{okButton}" name="tabIndex" value="6"/>
             <mx:SetStyle target="{okButton}" name="color" value="#000000"/>
@@ -240,12 +240,12 @@
     <mx:Label x="21.35" y="7" text="Name" id="label2" textAlign="right" width="44.666668" height="18" fontWeight="bold"/>
     <mx:Label x="6" y="42" text="Password" id="label1" textAlign="right" fontWeight="bold"/>
 
-    <mx:TextInput x="74" y="5" id="userInput" tabIndex="1" maxChars="20" />
-    <mx:TextInput x="74" y="40" id="pwdInput" displayAsPassword="true" tabIndex="2" maxChars="20"/>
+    <mx:TextInput x="88" y="5" id="userInput" tabIndex="1" maxChars="20"  text="aaaaa"/>
+    <mx:TextInput x="88" y="40" id="pwdInput" displayAsPassword="true" tabIndex="2" maxChars="20" text="aaaaa"/>
 
 
-    <mx:Button x="167" y="84" label="Log in" click="okButtonPressed()" id="okButton" width="69" color="#000000" tabIndex="3"/>
-    <mx:LinkButton x="10" y="84" label="new account ?" width="136" fontWeight="normal" textAlign="center" color="#1AA8C2" id="linkbutton1" click="newAccountButtonPressed()"/>
+    <mx:Button x="179" y="88" label="Log in" click="okButtonPressed()" id="okButton" width="69" color="#000000" tabIndex="3"/>
+    <mx:LinkButton x="10" y="88" label="new account ?" width="136" fontWeight="normal" textAlign="center" color="#1AA8C2" id="linkbutton1" click="newAccountButtonPressed()"/>
 
 
 </mx:TitleWindow>

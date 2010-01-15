@@ -18,6 +18,9 @@ public class ActionScriptAction {
     public var dontCommit:Boolean;
     public var needsLogin:Boolean = true;
 
+  	public function set user(d:Object):void{}; // nur für streaming
+
+
     public function readCommand(c:Command):void {
         this.selectionModel = c.selectionModel;
         this.eventName = c.getProperty("eventName");
