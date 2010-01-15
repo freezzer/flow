@@ -76,12 +76,12 @@
 
 
             <panel name="EintragPanel" border="true" editable="true" x="10" y="10" w="650" h="600">
-                <input x="11" y="53" w="300" labelwidth="100" h="25" label="Erfasser" path="erfasser" type="string" />
-                <input x="11" y="20" w="300" labelwidth="100" h="25" label="Datum" path="datum" type="date" />
-                <input x="11" y="295" w="615" labelwidth="90" h="90" label="Anamnese" path="anamnese" type="area" />
-                <input x="11" y="392" w="615" labelwidth="90" h="90" label="Befund" path="befund" type="area" />
-                <input x="11" y="488" w="615" labelwidth="90" h="90" label="Therapie" path="therapie" type="area" />
-                <input x="326" y="23" w="295" h="255" label="Dokumente" path="dokumente" type="list" >
+                <input x="330" y="22" w="300" labelwidth="60" h="25" label="Erfasser" path="erfasser" type="string" />
+                <input x="23" y="22" w="210" labelwidth="90" h="25" label="Datum" path="datum" type="date" />
+                <input x="18" y="86" w="615" labelwidth="90" h="90" label="Anamnese" path="anamnese" type="area" />
+                <input x="18" y="182" w="615" labelwidth="90" h="90" label="Befund" path="befund" type="area" />
+                <input x="18" y="278" w="615" labelwidth="90" h="90" label="Therapie" path="therapie" type="area" />
+                <input x="637" y="22" w="375" h="345" label="Dokumente" path="dokumente" type="list" >
                     <lister name="DokumenteLister" type="Dokument" >
                         <command name="CreateDokumentCommand" label="neues Dokument" icon="new"/>
                         <command use="DeleteNodeCommand" label="Dokument löschen" icon="delete"/>

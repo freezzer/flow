@@ -11,8 +11,11 @@ Menu
 	paddingBottom: 0;
 	backgroundColor: #F0F0F0;
 	backgroundAlpha: 0.97;
+	fontWeight:normal;
 }
-
+MenuBar{
+	fontWeight:bold;
+}
 
 Canvas
 {
@@ -103,5 +106,21 @@ DataGrid
 	cornerRadius: 0;
 	thumbOffset: 1;
 }
+TabNavigator
+{
+	backgroundColor: #f0f0f0;
+	tabStyleName: tabNavigatorTab;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	fontWeight: normal;
+	firstTabStyleName: tabNavigatorFirstTab;
+	lastTabStyleName: tabNavigatorLastTab;
+	fontWeight: normal;
+}
+.tabNavigatorSelectedTabText
+{
+	fontWeight: bold;
+	color: #F3596B;
+}
+
 
 

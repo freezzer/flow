@@ -56,5 +56,5 @@
 
         ]]></mx:Script>
 
-    <mx:Style source="static/styles.css"/>
+    <mx:Style source="static/styles_blue.css"/>
 </mx:Application>

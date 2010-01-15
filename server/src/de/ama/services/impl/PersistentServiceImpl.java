@@ -175,7 +175,9 @@ public class PersistentServiceImpl implements PersistentService {
         if (boQuery.isNegated()) {
             ret = ret.negate();
         }
-        return ret.and(toJormQuery(boQuery.getTarget(), boQuery.getCondition()));
+        ret.and(toJormQuery(boQuery.getTarget(), boQuery.getCondition()));
+        System.out.println("Query = "+ret);
+        return ret;
     }
 
     private Query toJormQuery(Class target, Condition cond) {
@@ -185,10 +187,10 @@ public class PersistentServiceImpl implements PersistentService {
                 Iterator it = cond.getChildren().iterator();
                 while (it.hasNext()) {
                     Condition c = (Condition) it.next();
-                    if (c.getConcatOperator() == c.AND) {
+                    if (Query.AND.equals(cond.getConcatOperator())) {
                         ret.and(toJormQuery(target, c));
                     }
-                    if (c.getConcatOperator() == c.OR) {
+                    if (Query.OR.equals(cond.getConcatOperator())) {
                         ret.or(toJormQuery(target, c));
                     }
                 }

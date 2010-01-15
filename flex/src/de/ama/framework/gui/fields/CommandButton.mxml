@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Button xmlns:mx="http://www.adobe.com/2006/mxml"
             	       click="onButtonClick(event)"
-                       fillColors="[#FFFFFF, #CCCCCC, #CE6874, #CE6874]"
-                       fillAlphas="[1.0, 1.0, 1.0, 1.0]" cornerRadius="4"
                        implements="de.ama.framework.gui.fields.GUIComponent"
 	>
 
