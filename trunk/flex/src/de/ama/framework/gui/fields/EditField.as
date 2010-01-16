@@ -320,7 +320,11 @@ public class EditField extends Canvas implements GUIComponent {
     public function writeToData():void {
         var d:BusinessObject = parentEditPanel.getData();
         if(d!=null){
-           d.setValue(localpath, getValue());
+           if(localpath.indexOf("#")==0){
+              parentEditor.getData().setValue(localpath.substring(1), getValue());
+           } else {
+               d.setValue(localpath, getValue());
+           }
         }
     }
 

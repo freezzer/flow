@@ -46,6 +46,11 @@
             _generic = value;
         }
 
+        public function get parentEditor():Editor {
+            return Util.findParentEditor(this);
+        }
+
+
 
         override public function set label(value:String):void {
             setStyle("borderStyle", "solid");
@@ -83,11 +88,19 @@
             for (i = 0; i < len; i++) {
                 if (childs[i] is EditField) {
                     f = childs[i];
-                    f.setValue(data.getValue(f.localpath));
+                    if(f.localpath.indexOf("#")==0){
+                       f.setValue(parentEditor.getData().getValue(f.localpath.substring(1)));
+                    } else {
+                       f.setValue(data.getValue(f.localpath));
+                    }
                     f.initDefaultValue();
                 } else if (childs[i] is EditPanel) {
                     p = childs[i];
-                    p.setData(BusinessObject(data.getValue(p.path)));
+                    if(!Util.isEmpty(p.path) && p.path.indexOf("#")==0){
+                       p.setData(BusinessObject(parentEditor.getData().getValue(p.path.substring(1))));
+                    } else {
+                       p.setData(BusinessObject(data.getValue(p.path)));
+                    }
                 }
             }
         }

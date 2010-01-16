@@ -5,10 +5,13 @@
 
     <model package="bom">
         <bean name="Person" persistent="true" unique-key="vorname+nachname" >
+            <field name="titel"/>
             <field name="vorname"/>
             <field name="nachname"/>
             <field name="telefon"/>
+            <field name="mobil"/>
             <field name="email"/>
+            <field name="notizen" type="text"/>
             <collection name="adressen" create="1">
                 <bean name="Adresse">
                     <field name="land" />
@@ -40,12 +43,11 @@
 
           <view package="view.person" >
             <tree_editor name="PersonEditor" label="Daten von {nachname} " type="Person">
-                <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="default">
+                <tree_node label="Person" path="." type="Person" icon="user" open="true" panel="PersonPanel">
                     <tree_node label="Adressen" path="adressen" icon="table" open="true" type="Adresse"
                                lister="default">
                         <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
-                        <tree_node label="Adresse {ort}" path="adressen" icon="form" open="true" type="Adresse"
-                                   panel="AdressePanel">
+                        <tree_node label="Adresse {ort}" path="adressen" icon="form" open="true" type="Adresse"  panel="AdressePanel">
                             <command use="CreateNodeCommand" label="neue Adresse" icon="new"/>
                             <command use="CopyNodeCommand" label="Adresse kopieren" icon="copy"/>
                             <command use="DeleteNodeCommand" label="Adresse löschen" icon="delete"/>
@@ -59,14 +61,27 @@
             </tree_editor>
 
 
-            <panel name="AdressePanel" border="true" editable="true" x="10" y="10" w="650" h="600">
-                <input x="10" y="12" w="300" labelwidth="100" h="25" label="Land" path="land" type="string" default="Deutschland" />
-                <input x="11" y="41" w="300" labelwidth="100" h="25" label="Ort" path="ort" type="string" />
-                <input x="11" y="71" w="300" labelwidth="100" h="25" label="Plz" path="plz" type="string" />
-                <input x="11" y="101" w="300" labelwidth="100" h="25" label="Strasse" path="strasse" type="string" />
-                
-                <google_map x="10" y="147" w="625" h="440" countryField="land" cityField="ort" streetField="strasse" zipField="plz" />
-            </panel>
+              <panel name="AdressePanel" border="true" editable="true" x="10" y="10" w="350" h="360" >
+
+                  <input x="10" y="12" w="300" labelwidth="100" h="25" label="Land" path="land" type="string" default="Deutschland"/>
+                  <input x="10" y="41" w="300" labelwidth="100" h="25" label="Ort" path="ort" type="string"/>
+                  <input x="10" y="71" w="300" labelwidth="100" h="25" label="Plz" path="plz" type="string"/>
+                  <input x="10" y="101" w="300" labelwidth="100" h="25" label="Strasse" path="strasse" type="string"/>
+
+                  <google_map x="10" y="147" w="325" h="205" countryField="land" cityField="ort" streetField="strasse" zipField="plz"/>
+
+              </panel>
+
+              <panel name="PersonPanel" border="true" editable="true" x="10" y="10" w="350" h="300">
+                  <input x="10" y="15" w="190" labelwidth="100" h="25" label="Titel" path="titel" type="string" />
+                  <input x="10" y="45" w="300" labelwidth="100" h="25" label="Vorname" path="vorname" type="string" />
+                  <input x="10" y="75" w="300" labelwidth="100" h="25" label="Nachname" path="nachname" type="string" />
+                  <input x="10" y="105" w="300" labelwidth="100" h="25" label="Telefon" path="telefon" type="string" />
+                  <input x="10" y="135" w="300" labelwidth="100" h="25" label="Mobil" path="mobil" type="string" />
+                  <input x="10" y="165" w="300" labelwidth="100" h="25" label="E-Mail" path="email" type="string" />
+                  <input x="10" y="195" w="405" labelwidth="100" h="100" label="Notizen" path="notizen" type="area" />
+              </panel>
+
           </view>
      </permission>
 </define>
