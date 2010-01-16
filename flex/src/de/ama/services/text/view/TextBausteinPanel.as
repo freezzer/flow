@@ -15,19 +15,12 @@ public class TextBausteinPanel  extends EditPanel {
         x=10;  y=10;
         setStyle("borderStyle","none");
         width=650;
-        height=600;
+        height=230;
     }
    
-     override public function addPanels():void {
-        var panel:EditPanel;
-     } 
-   
      override public function addFields():void {
-        var field:EditField;
- 
-        field = insertTextField("Tasten Sequenz","key" ,10,20,100 ,300);
- 
-        field = insertTextAreaField("Text","text" ,10,50,100 ,300);
+        insertTextField("Tasten Sequenz","key",10,20,120,300);
+        insertTextAreaField("Text","text",10,50,120,530,135);
      } 
 
 }}

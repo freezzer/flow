@@ -23,19 +23,19 @@
                         </menuitem>
 
                         <menuitem>
-                            <command label="Übersicht Resourcen" use="OpenListerCommand" lister="PersonLister"/>
+                            <command label="Resourcen" use="OpenListerCommand" lister="ResourceLister"/>
                         </menuitem>
 
                         <menuitem>
-                            <command label="Übersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
+                            <command label="Personen" use="OpenListerCommand" lister="PersonLister"/>
                         </menuitem>
 
                         <menuitem>
-                            <command label="Übersicht TextBausteine" use="OpenListerCommand" lister="TextBausteinLister"/>
+                            <command label="TextBausteine" use="OpenListerCommand" lister="TextBausteinLister"/>
                         </menuitem>
 
                         <menuitem>
-                            <command label="Übersicht Code-Elemente" use="OpenListerCommand" lister="CodeElementLister"/>
+                            <command label="EBM Elemete" use="OpenListerCommand" lister="CodeElementLister"/>
                         </menuitem>
                         <menuitem type="separator"/>
                         <menuitem>
@@ -43,12 +43,12 @@
                                      permitted="true"/>
                         </menuitem>
                     </menu>
-                    <menu name="Patientendaten">
+                    <menu name="Patient">
                         <menuitem>
-                            <command label="Patientendaten" use="OpenListerCommand" lister="PatientLister"/>
+                            <command label="Karteikarten" use="OpenListerCommand" lister="PatientLister"/>
                         </menuitem>
                         <menuitem>
-                            <command label="Neuen Patienten anlegen" use="OpenEditorCommand" editor="PatientEditor"/>
+                            <command label="Neuen Karteikarte anlegen" use="OpenEditorCommand" editor="PatientEditor"/>
                         </menuitem>
                     </menu>
                     <menu name="Kalender">

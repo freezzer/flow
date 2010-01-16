@@ -39,7 +39,7 @@
 
       <permission package="permission" name="Patient">
 
-            <view package="view.patient" >
+          <view package="view.patient" >
 
             <lister name="PatientLister" label="Patienten Auflister" type="Patient">
                 <command use="LoadTableCommand" icon="refresh" label="Übersicht Patienten neu laden"/>
@@ -75,13 +75,18 @@
 
 
 
-            <panel name="EintragPanel" border="true" editable="true" x="10" y="10" w="650" h="600">
-                <input x="330" y="22" w="300" labelwidth="60" h="25" label="Erfasser" path="erfasser" type="string" />
-                <input x="23" y="22" w="210" labelwidth="90" h="25" label="Datum" path="datum" type="date" />
-                <input x="18" y="86" w="615" labelwidth="90" h="90" label="Anamnese" path="anamnese" type="area" />
-                <input x="18" y="182" w="615" labelwidth="90" h="90" label="Befund" path="befund" type="area" />
-                <input x="18" y="278" w="615" labelwidth="90" h="90" label="Therapie" path="therapie" type="area" />
-                <input x="637" y="22" w="375" h="345" label="Dokumente" path="dokumente" type="list" >
+            <panel name="EintragPanel" border="true" editable="true" x="10" y="10" w="650" h="600" path=".">
+                <input x="18" y="13" w="300" labelwidth="90" h="25" label="Vorname" path="#vorname" type="string" editable="false"/>
+                <input x="18" y="41" w="300" labelwidth="90" h="25" label="Nachname" path="#nachname" type="string" editable="false"/>
+                <input x="330" y="42" w="300" labelwidth="60" h="25" label="Status" path="#status" type="string" editable="false"/>
+                <input x="330" y="12" w="300" labelwidth="60" h="25" label="Kasse" path="#kasse" type="string" editable="false"/>
+                
+                <input x="330" y="102" w="300" labelwidth="60" h="25" label="Erfasser" path="erfasser" type="string" />
+                <input x="23" y="102" w="210" labelwidth="90" h="25" label="Datum" path="datum" type="date" />
+                <input x="18" y="166" w="615" labelwidth="90" h="90" label="Anamnese" path="anamnese" type="area" />
+                <input x="18" y="262" w="615" labelwidth="90" h="90" label="Befund" path="befund" type="area" />
+                <input x="18" y="358" w="615" labelwidth="90" h="90" label="Therapie" path="therapie" type="area" />
+                <input x="637" y="102" w="375" h="345" label="Dokumente" path="dokumente" type="list" >
                     <lister name="DokumenteLister" type="Dokument" >
                         <command name="CreateDokumentCommand" label="neues Dokument" icon="new"/>
                         <command use="DeleteNodeCommand" label="Dokument löschen" icon="delete"/>
@@ -92,8 +97,8 @@
                 </input>
             </panel>
 
-            <panel name="PatientPanel" editable="true" x="10" y="10" w="650" h="600">
-               <panel border="true" path="." label="Patientendaten" name="PatientKopfPanel">
+            <panel name="PatientPanel" editable="true"  x="10" y="10" w="700" h="385">
+               <panel border="true" path="." label="Patientendaten" name="PatientKopfPanel"  w="315" h="383">
                    <input x="10" y="65" w="300" labelwidth="100" h="25" label="Vorname" path="vorname" type="string" />
                    <input x="10" y="95" w="300" labelwidth="100" h="25" label="Nachname" path="nachname" type="string" />
                    <input x="10" y="313" w="300" labelwidth="100" h="25" label="Telefon" path="telefon" type="string" />
@@ -104,7 +109,7 @@
                    <input x="10" y="125" w="300" labelwidth="100" h="25" label="Geschlecht" path="geschlecht" type="string" />
                    <input x="8" y="16" w="300" labelwidth="100" h="25" label="Erfasst am" path="erfasst" type="date" />
                </panel>
-               <panel use="AdressePanel" label="Adresse" border="true" path="adresse" x="334" y="1" w="650" h="600" />
+               <panel use="AdressePanel" label="Adresse" border="true" path="adresse" x="334" y="1" w="355" h="380"  />
             </panel>
           </view>
      </permission>

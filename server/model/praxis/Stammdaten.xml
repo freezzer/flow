@@ -20,8 +20,8 @@
             <field name="name"/>
             <field name="typ"/>
             <field name="beschreibung"/>
-            <field name="farbe"/>
-            <field name="Person" />
+            <field name="farbe" type="number"/>
+            <field name="Person" reference="true" type="Person"/>
         </bean>
     </model>
 
@@ -34,7 +34,7 @@
             <lister name="CodeElementLister" label="Code Elemente" type="CodeElement">
                 <command use="LoadTableCommand" icon="refresh" label="Code Elemente neu laden"/>
                 <command use="OpenEditorCommand" editor="CodeElementEditor" label="Code Element bearbeiten" icon="edit" default="true"/>
-                <command use="DeleteBoCommand" label="Code-Element löschen" icon="delete"/>
+                <command use="DeleteBoCommand" label="CodeElement löschen" icon="delete"/>
                 <command use="OpenEditorCommand_New" editor="CodeElementEditor" label="neues Code Element anlegen" />
 
                 <column path="code" label="Code" searchable="true"/>
@@ -42,18 +42,41 @@
                 <column path="langtext" label="Langtext" searchable="true"/>
             </lister>
 
+            <lister name="ResourceLister" label="Resourcen" type="Resource">
+                <command use="LoadTableCommand" icon="refresh" label="Resource neu laden"/>
+                <command use="OpenEditorCommand" editor="ResourceEditor" label="Resource bearbeiten" icon="edit" default="true"/>
+                <command use="DeleteBoCommand" label="Resource löschen" icon="delete"/>
+                <command use="OpenEditorCommand_New" editor="ResourceEditor" label="neue Resource anlegen" />
+
+                <column path="name" label="Name" searchable="true"/>
+                <column path="typ" label="Typ" searchable="true"/>
+                <column path="beschreibung" label="Beschreibung" searchable="true"/>
+            </lister>
+
     <!--     *********************   Editor  *******************************    -->
 
-            <editor name="CodeElementEditor" label="Code-Element {nachname} " type="CodeElement">
-                <panel name="CodeElementPanel" editable="true" x="10" y="10" w="650" h="600">
+            <editor name="CodeElementEditor" label="Code-Element {code} " type="CodeElement">
+                <panel name="CodeElementPanel" editable="true" x="10" y="10" w="420" h="195">
                     <input x="10" y="20" w="300" labelwidth="100" label="Code" path="code" />
                     <input x="10" y="50" w="300" labelwidth="100" label="Kurztext" path="kurztext" />
-                    <input x="10" y="80" w="300" labelwidth="100" label="Langtext" path="langtext" type="area"/>
+                    <input x="10" y="80" w="400" labelwidth="100" h="100" label="Langtext" path="langtext" type="area" />
                 </panel>
-
                 <command use="SaveBoCommand" label="Code-Element speichern" icon="save"/>
                 <command use="LoadBoCommand" label="Code-Element laden" icon="refresh"/>
                 <command use="DeleteBoCommand" label="Code-Element löschen" icon="delete"/>
+            </editor>
+
+            <editor name="ResourceEditor" label="Resource {name} " type="Resource">
+                <panel name="ResourcePanel" editable="true" x="10" y="10" w="450" h="285" >
+                    <input x="10" y="20" w="300" labelwidth="100" h="25" label="Name" path="name" type="string" />
+                    <input x="10" y="50" w="300" labelwidth="100" h="25" label="Typ" path="typ" type="string" />
+                    <input x="319" y="80" w="115" labelwidth="45" h="25" label="Farbe" path="farbe" type="string" />
+                    <input x="9" y="114" w="425" labelwidth="100" h="135" label="Beschreibung" path="beschreibung" type="area" />
+                    <lookup x="10" y="80" w="300" labelwidth="100" label="Person" path="person" type="Person" guirep="nachname"  editor="PersonEditor" lister="PersonLister"/>
+                </panel>
+                <command use="SaveBoCommand" label="Resource speichern" icon="save"/>
+                <command use="LoadBoCommand" label="Resource laden" icon="refresh"/>
+                <command use="DeleteBoCommand" label="Resource löschen" icon="delete"/>
             </editor>
 
           </view>
