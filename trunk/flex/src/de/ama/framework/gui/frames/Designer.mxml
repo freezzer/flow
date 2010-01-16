@@ -2,7 +2,6 @@
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
                 layout="absolute" width="350" height="276"
                 title="Designer" showCloseButton="true"
-                backgroundColor="#C0C0C0"
                 close="onClose()"
                 backgroundAlpha="0.63" cornerRadius="4">
     <mx:Button x="163" y="191" fillAlphas="[0.74, 0.74, 0.74, 0.74]" click="xyToClipBoard()" label="x,y"

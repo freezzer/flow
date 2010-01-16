@@ -16,6 +16,7 @@ public class ListField extends EditField{
         }
     }
 
+
     public override function createInput():void {
         if (_input == null) {
             setListPanel(new ListPanel());
@@ -44,11 +45,14 @@ public class ListField extends EditField{
             removeChild(_input);
         }
         lp.label = _labelText;
+        lp.searchEnabled = false;
         _input = lp;
         _input.addEventListener(MouseEvent.CLICK, onClick);
+        _input.styleName="ListField";
         addChild(_input);
         layout();
     }
+
 
     override public function layout():void {
         listPanel.toolbarSize = CommandButton.SMALL;

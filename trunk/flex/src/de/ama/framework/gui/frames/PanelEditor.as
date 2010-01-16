@@ -18,9 +18,7 @@ public class PanelEditor  extends Editor {
         super.addChild(vbox);
         
         _contenPanel = new Canvas();
-        _contenPanel.setStyle("borderStyle","solid");
-        _contenPanel.setStyle("borderThickness",2);
-        _contenPanel.setStyle("cornerRadius",4);
+        _contenPanel.styleName = "PanelEditorCanvas";
         _contenPanel.percentWidth=100;
         _contenPanel.percentHeight=100;
         vbox.addChild(_contenPanel);

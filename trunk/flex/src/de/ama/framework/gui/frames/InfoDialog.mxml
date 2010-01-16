@@ -4,8 +4,7 @@
                 layout="absolute" width="456" height="252"
                 showCloseButton="true"
                 close="PopUpManager.removePopUp(this)"
-                borderAlpha="0.75" backgroundColor="#FFFFFF" backgroundAlpha="1.0" color="#000000" 
-                borderColor="#B5D7DD" borderStyle="solid" cornerRadius="0" alpha="1.0" 
+                borderColor="#4c535b" borderStyle="solid" cornerRadius="4" alpha="1.0" 
                 borderThickness="6" title="Info">
     <mx:states>
         <mx:State name="expanded">

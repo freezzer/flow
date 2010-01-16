@@ -25,9 +25,7 @@ public class SearchPanel  extends Panel{
     public function SearchPanel(listPanel:ListPanel) {
 
         width = 400;
-        setStyle("backgrondAlpha",0.8);
         setStyle("verticalGap",0);
-        setStyle("backgroundColor",0x505090);
         setStyle("horizontalGap",0);
        	
         _listPanel = listPanel;
@@ -35,13 +33,13 @@ public class SearchPanel  extends Panel{
         addChild(_editPanel);
 
         _buttonbar = CommandButtonBar(addChild(new CommandButtonBar()));
-        _buttonbar.setStyle("horizontalAlign","right");
+        _buttonbar.setStyle("horizontalAlign","left");
         _buttonbar.setStyle("verticalAlign","middle");
         _buttonbar.invoker = _editPanel;
         addChild(_buttonbar);
 
-        _buttonbar.addCommand(new CallbackCommand("Schließen","accept",new Callback(this,close)));
         _buttonbar.addCommand(new CallbackCommand("Aktualisieren","refresh",new Callback(this,refreshListPanel)));
+        _buttonbar.addCommand(new CallbackCommand("Schließen","accept",new Callback(this,close)));
 
         addFields();
         _editPanel.percentWidth = 100;

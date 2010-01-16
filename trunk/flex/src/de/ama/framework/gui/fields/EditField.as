@@ -47,13 +47,11 @@ public class EditField extends Canvas implements GUIComponent {
         createAditionals();
         _localpath = path;
 
-        _input.setStyle("color","0x202020");
         _input.addEventListener(Event.CHANGE, onInputChanged);
         _input.addEventListener(KeyboardEvent.KEY_UP, onKeyPressed);
         _input.addEventListener(FocusEvent.FOCUS_OUT, onFocusLost);
 
 		if(_label!=null){
-	        _label.setStyle("color","0x202020");
 	        _label.setStyle("textAlign","left");
 	        _label.y=3;
         }

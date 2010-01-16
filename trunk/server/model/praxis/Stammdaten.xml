@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE define SYSTEM "model.dtd">
+<!DOCTYPE define SYSTEM "../model.dtd">
 
 <define >
 
@@ -9,11 +9,19 @@
 
 
 
-    <model package="stammdaten">
-        <bean name="CodeElement" persistent="true" unique-key="key" >
+    <model package="bom">
+        <bean name="CodeElement" persistent="true" >
             <field name="code"/>
             <field name="kurztext"/>
             <field name="langtext"/>
+        </bean>
+
+        <bean name="Resource" persistent="true"  >
+            <field name="name"/>
+            <field name="typ"/>
+            <field name="beschreibung"/>
+            <field name="farbe"/>
+            <field name="Person" />
         </bean>
     </model>
 
@@ -21,7 +29,7 @@
 
     <!--     *********************   Auflister  ****************************    -->
 
-        <view package="stammdaten.view" >
+        <view package="view.stammdaten" >
 
             <lister name="CodeElementLister" label="Code Elemente" type="CodeElement">
                 <command use="LoadTableCommand" icon="refresh" label="Code Elemente neu laden"/>

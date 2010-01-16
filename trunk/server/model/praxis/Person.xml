@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
-<!DOCTYPE define SYSTEM "model.dtd">
+<!DOCTYPE define SYSTEM "../model.dtd">
 
 <define>
-
-
-
-    <!--     *********************   Persistenz *******************************                -->
-
-
 
     <model package="bom">
         <bean name="Person" persistent="true" unique-key="vorname+nachname" >
@@ -31,8 +25,6 @@
       <permission package="permission" name="Person">
 
             <view package="view.person" >
-            <!--     *********************   Auflister  ****************************    -->
-
             <lister name="PersonLister" label="Personen Auflister" type="Person">
                 <command use="LoadTableCommand" icon="refresh" label="Übersicht Personen neu laden"/>
                 <command use="OpenEditorCommand" editor="PersonEditor" label="Person bearbeiten" icon="edit" default="true"/>
@@ -45,9 +37,6 @@
                 <!--<column path="adressen.Adresse[1]/ort" label="1. Adresse" searchable="true"/>-->
             </lister>
             </view>
-
-            <!--     *********************   Editor  *******************************    -->
-
 
           <view package="view.person" >
             <tree_editor name="PersonEditor" label="Daten von {nachname} " type="Person">
@@ -69,7 +58,6 @@
                 <command use="DeleteBoCommand" label="Person löschen" icon="delete"/>
             </tree_editor>
 
-            <!--     *********************   Panel   *******************************    -->
 
             <panel name="AdressePanel" border="true" editable="true" x="10" y="10" w="650" h="600">
                 <input x="10" y="12" w="300" labelwidth="100" h="25" label="Land" path="land" type="string" default="Deutschland" />

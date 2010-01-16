@@ -35,6 +35,7 @@ public class ListPanel extends Canvas implements Panel,Invoker{
     private var _center:VBox;
     private var _singleClickCallback:Callback;
     private var _doubleClickCallback:Callback;
+    private var _searchCommand:Command;
 
     private var _emptyData:BusinessObject = null;
 
@@ -53,7 +54,6 @@ public class ListPanel extends Canvas implements Panel,Invoker{
         percentHeight = 100;
         percentWidth = 100;
         horizontalScrollPolicy="off";
-        
         _generic = generic;
 
         _center = new VBox();
@@ -70,12 +70,27 @@ public class ListPanel extends Canvas implements Panel,Invoker{
         addCollumns();
         addCommands();
         
-        addCommand(new CallbackCommand("Suchen","search",new Callback(this,toggleSearchPanel)));
-
         _listMenu.addEventListener(ContextMenuEvent.MENU_SELECT, contextMenuTriggered);
         _listMenu.hideBuiltInItems();
+        searchEnabled = true;
     }
 
+
+    public function get searchEnabled():Boolean {
+        return _searchCommand !=null;;
+    }
+
+    public function set searchEnabled(value:Boolean):void {
+        if(value){
+           _searchCommand = new CallbackCommand("Suchen","search",new Callback(this,toggleSearchPanel));
+           addCommand(_searchCommand);
+        } else {
+            if(_searchCommand){
+                removeCommand(_searchCommand);
+                _searchCommand = null;
+            }
+        }
+    }
 
     protected function createGrid():void {
         if (_grid == null) {
@@ -85,12 +100,11 @@ public class ListPanel extends Canvas implements Panel,Invoker{
             _grid.percentHeight = 100;
             _grid.contextMenu = _listMenu;
             _grid.allowMultipleSelection = true;
-            _grid.setStyle("borderStyle", "solid");
-            _grid.setStyle("borderColor", 0xa0a0a0);
             _grid.doubleClickEnabled = true;
             _grid.addEventListener(ListEvent.ITEM_DOUBLE_CLICK,onItemDoubleClick); 
             _grid.addEventListener(ListEvent.ITEM_CLICK,onItemSingleClick);
             _grid.addEventListener(KeyboardEvent.KEY_UP,onKeyPressed);
+            _grid.styleName = "ListPanelGrid";
             _center.addChild(_grid);
         }
     }
@@ -100,7 +114,7 @@ public class ListPanel extends Canvas implements Panel,Invoker{
         if (event.keyCode == Keyboard.ENTER) {
             startDefaultCommands();
         }
-        if (event.keyCode == Keyboard.F3) {
+        if (event.keyCode == Keyboard.F3 && searchEnabled) {
         	toggleSearchPanel();
         }
     }
@@ -135,6 +149,7 @@ public class ListPanel extends Canvas implements Panel,Invoker{
 
 
     public function onItemSingleClick(le:ListEvent):void {
+
     	if(_singleClickCallback!=null){
             _singleClickCallback.execute(this)
         }
@@ -167,6 +182,10 @@ public class ListPanel extends Canvas implements Panel,Invoker{
 
     public function addCommand(command:Command):void {
         _commands.addItem(command);
+    }
+
+    public function removeCommand(command:Command):void {
+        _commands.removeItemAt(_commands.getItemIndex(command));
     }
 
     public function set toolbarSize(toolbarSize:int):void {
