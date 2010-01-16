@@ -5,7 +5,7 @@
     <property file="build.properties" />
 
     <property name="deploy.dir" value="${home.dir}/server/webapp"/>
-    <property name="root_package" value="comp"/>
+    <property name="root_package" value="praxis"/>
 
     <target name="server.compile.environment" >
          <delete dir="server/classes" failonerror="false"/>
@@ -54,7 +54,7 @@
                 <pathelement location="server/classes"/>
             </classpath>
             <arg value="inFile"/>
-            <arg file="server/model/PMS.xml"/>
+            <arg file="server/model/praxis/PraxisSoftware.xml"/>
             <arg value="root_package"/>
             <arg value="${root_package}"/>
             <arg value="targets"/>
@@ -64,20 +64,20 @@
 
     <target name="copy.server.sources" >
         <delete dir="server/src/${root_package}" failonerror="false"/>
-        <copy todir="server/src/${root_package}" >
+        <copy todir="server/src/${root_package}" failonerror="false">
             <fileset dir="generated/java/${root_package}" />
         </copy>
-        <copy todir="server/src/${root_package}" overwrite="true">
+        <copy todir="server/src/${root_package}" overwrite="true" failonerror="false">
             <fileset dir="server/man/${root_package}" />
         </copy>
     </target>
 
     <target name="copy.client.sources" >
         <delete dir="flex/src/${root_package}" failonerror="false"/>
-        <copy todir="flex/src/${root_package}">
+        <copy todir="flex/src/${root_package}" failonerror="false">
             <fileset dir="generated/flex/${root_package}" />
         </copy>
-        <copy todir="flex/src/${root_package}" overwrite="true">
+        <copy todir="flex/src/${root_package}" overwrite="true" failonerror="false">
             <fileset dir="flex/man/${root_package}" />
         </copy>
     </target>

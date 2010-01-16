@@ -2,7 +2,6 @@
 <mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml"
                 layout="absolute" width="332" height="260"
                 title="Suche" showCloseButton="true"
-                backgroundColor="#C0C0C0"
                 close="close()"
                 cornerRadius="4"
                 keyUp="keyHandler(event)"

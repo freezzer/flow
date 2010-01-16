@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<!DOCTYPE define SYSTEM "model.dtd">
+<!DOCTYPE define SYSTEM "../model.dtd">
 
 <define>
 
@@ -39,7 +39,7 @@
 
       <permission package="permission" name="Patient">
 
-            <view package="patient.view" >
+            <view package="view.patient" >
 
             <lister name="PatientLister" label="Patienten Auflister" type="Patient">
                 <command use="LoadTableCommand" icon="refresh" label="Übersicht Patienten neu laden"/>

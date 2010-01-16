@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" styleName="EditPanel"  
 	implements="de.ama.framework.gui.frames.Panel, de.ama.framework.gui.fields.GUIComponent "
-    initialize="init()" color="#202020" cornerRadius="4" borderColor="#909090"
+    initialize="init()" cornerRadius="4" 
     borderStyle="none"  clipContent="false" click="onClick(event)">
 
     <mx:Script><![CDATA[
@@ -310,7 +310,8 @@
 
         ]]></mx:Script>
 
-         <mx:Box id="titleBox" paddingLeft="3" paddingRight="3" y="-8" backgroundColor="#E0E0E0" borderStyle="solid" borderColor="#E0E0E0" cornerRadius="3" horizontalCenter="0" visible="false" height="16">
-             <mx:Label  id="title" fontWeight="normal" fontSize="10" color="#808080" fontStyle="normal" textAlign="left"  text="xxx"/>
+
+         <mx:Box id="titleBox" styleName="TitleBox" y="-8" horizontalCenter="0" visible="false" >
+             <mx:Label  id="title" y="2" fontWeight="normal" fontSize="10" fontStyle="normal" textAlign="left"  text="xxx"/>
          </mx:Box>
 </mx:Canvas>

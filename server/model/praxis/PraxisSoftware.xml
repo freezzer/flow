@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE define SYSTEM "../model.dtd">
+
+<define>
+    <comment><![CDATA[
+           generated code by flow "flex on wings"
+           this code is property of Andreas Marochow
+    ]]></comment>
+
+    <import file="Person.xml"/>
+    <import file="Patient.xml"/>
+    <import file="Stammdaten.xml"/>
+
+
+    <permission package="permission" name="HauptMenu">
+        <view>
+            <tabbed_application_panel name="MyApplicationPanel" package="view">
+                <bootstrap/>
+                <menubar h="23">
+                    <menu name="System">
+                        <menuitem>
+                            <command label="Anmelden" use="LoginCommand" permitted="true"/>
+                        </menuitem>
+
+                        <menuitem>
+                            <command label="Übersicht Resourcen" use="OpenListerCommand" lister="PersonLister"/>
+                        </menuitem>
+
+                        <menuitem>
+                            <command label="Übersicht Personen" use="OpenListerCommand" lister="PersonLister"/>
+                        </menuitem>
+
+                        <menuitem>
+                            <command label="Übersicht TextBausteine" use="OpenListerCommand" lister="TextBausteinLister"/>
+                        </menuitem>
+
+                        <menuitem>
+                            <command label="Übersicht Code-Elemente" use="OpenListerCommand" lister="CodeElementLister"/>
+                        </menuitem>
+                        <menuitem type="separator"/>
+                        <menuitem>
+                            <command label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"
+                                     permitted="true"/>
+                        </menuitem>
+                    </menu>
+                    <menu name="Patientendaten">
+                        <menuitem>
+                            <command label="Patientendaten" use="OpenListerCommand" lister="PatientLister"/>
+                        </menuitem>
+                        <menuitem>
+                            <command label="Neuen Patienten anlegen" use="OpenEditorCommand" editor="PatientEditor"/>
+                        </menuitem>
+                    </menu>
+                    <menu name="Kalender">
+                    </menu>
+                </menubar>
+
+
+            </tabbed_application_panel>
+        </view>
+    </permission>
+
+
+</define>
+
+
+
+

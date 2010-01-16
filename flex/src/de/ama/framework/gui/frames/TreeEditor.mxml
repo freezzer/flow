@@ -198,7 +198,7 @@
                      showRoot="true" dataProvider="{rootNode}"  change="treeChanged(event)" contextMenu="{treeMenu}"
                      />
 
-            <mx:Canvas height="100%" id="contenPanel"  borderStyle="solid" borderThickness="2" cornerRadius="4"/>
+            <mx:Canvas styleName="TreeCanvas" height="100%" id="contenPanel"/>
 
 
         </mx:HDividedBox>
