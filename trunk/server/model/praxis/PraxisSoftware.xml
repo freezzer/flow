@@ -21,6 +21,11 @@
                         <menuitem>
                             <command label="Anmelden" use="LoginCommand" permitted="true"/>
                         </menuitem>
+                        <menuitem>
+                            <command label="Abmelden" use="LogoutCommand" permitted="true"/>
+                        </menuitem>
+
+                        <menuitem type="separator"/>
 
                         <menuitem>
                             <command label="Resourcen" use="OpenListerCommand" lister="ResourceLister"/>
@@ -40,7 +45,7 @@
                         <menuitem type="separator"/>
                         <menuitem>
                             <command label="Benutzer Berechtigungen" use="OpenEditorCommand" editor="PermissionEditor"
-                                     permitted="true"/>
+                            permitted="true"/>
                         </menuitem>
                     </menu>
                     <menu name="Patient">

@@ -23,6 +23,8 @@
             <field name="farbe" type="number"/>
             <field name="Person" reference="true" type="Person"/>
         </bean>
+
+        
     </model>
 
     <permission package="permission" name="Stammdaten">
