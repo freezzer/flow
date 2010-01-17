@@ -10,6 +10,7 @@
     <import file="Person.xml"/>
     <import file="Patient.xml"/>
     <import file="Stammdaten.xml"/>
+    <import file="Kalender.xml"/>
 
 
     <permission package="permission" name="HauptMenu">
@@ -57,6 +58,9 @@
                         </menuitem>
                     </menu>
                     <menu name="Kalender">
+                        <menuitem>
+                            <command label="Kalender pflegen" use="OpenEditorCommand" editor="CalendarEditor"/>
+                        </menuitem>
                     </menu>
                 </menubar>
 

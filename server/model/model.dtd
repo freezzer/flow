@@ -35,12 +35,15 @@
         name CDATA #REQUIRED
         persistent CDATA #IMPLIED
         unique-key CDATA #IMPLIED>
+
 <!ELEMENT field (#PCDATA)>
 <!ATTLIST field
         create CDATA #IMPLIED
         name CDATA #REQUIRED
         type CDATA #IMPLIED
-        reference CDATA #IMPLIED>
+        reference (true|false) "false"
+        >
+
 <!ELEMENT collection (bean)*>
 <!ATTLIST collection
         create CDATA #IMPLIED
@@ -50,10 +53,12 @@
 <!ATTLIST permission
         package CDATA #IMPLIED
         name CDATA #REQUIRED>
+
 <!ELEMENT view (editor|tree_editor|panel|lister|tabbed_application_panel|permission)*>
 <!ATTLIST view
         package CDATA #IMPLIED
         >
+
 <!ELEMENT tree_editor (tree_node|command)*>
 <!ATTLIST tree_editor
         name CDATA #REQUIRED
@@ -65,6 +70,7 @@
         name CDATA #REQUIRED
         type CDATA #REQUIRED
         label CDATA #REQUIRED>
+
 <!ELEMENT tree_node (tree_node|command)*>
 <!ATTLIST tree_node
         icon CDATA #IMPLIED
@@ -74,6 +80,7 @@
         panel CDATA #IMPLIED
         path CDATA #REQUIRED
         type CDATA #IMPLIED>
+
 <!ELEMENT command (#PCDATA)>
 <!ATTLIST command
         editor CDATA #IMPLIED
@@ -81,7 +88,7 @@
         label CDATA #REQUIRED
         name CDATA #IMPLIED
         lister CDATA #IMPLIED
-        permitted CDATA #IMPLIED
+        permitted (true|false) "false"
         default CDATA #IMPLIED
         event CDATA #IMPLIED
         use CDATA #IMPLIED>
@@ -128,6 +135,7 @@
         path CDATA #REQUIRED
         default CDATA #IMPLIED
         type CDATA #IMPLIED>
+
 <!ELEMENT lookup (lister)*>
 <!ATTLIST lookup
         x CDATA #IMPLIED
@@ -179,23 +187,29 @@
         name CDATA #IMPLIED
         use CDATA #IMPLIED
         type CDATA #REQUIRED>
+
 <!ELEMENT column (#PCDATA)>
 <!ATTLIST column
         label CDATA #REQUIRED
-        searchable CDATA #IMPLIED
-        editable CDATA #IMPLIED
+        searchable (true|false) "false"
+        editable (true|false) "false"
         type CDATA #IMPLIED
         path CDATA #REQUIRED>
+
 <!ELEMENT bootstrap (#PCDATA)>
+
 <!ELEMENT menuitem (command)*>
 <!ATTLIST menuitem
         type CDATA #IMPLIED >
+
 <!ELEMENT menu (menuitem)*>
 <!ATTLIST menu
         name CDATA #REQUIRED >
+
 <!ELEMENT menubar (menu)*>
 <!ATTLIST menubar
         h CDATA #IMPLIED >
+
 <!ELEMENT tabbed_application_panel (bootstrap|menubar)*>
 <!ATTLIST tabbed_application_panel
         name CDATA #REQUIRED

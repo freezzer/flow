@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:ns1="de.ama.framework.gui.frames.*">
+	<mx:DateChooser x="10" y="37" id="chooser"/>
+	<mx:HBox x="209" y="10" width="550" height="520" id="mainGrid" horizontalGap="2">
+	
+	</mx:HBox>
+	<mx:LinkButton x="18" y="10" label="day"/>
+	<mx:LinkButton x="71" y="10" label="week"/>
+	<mx:LinkButton x="135" y="10" label="month"/>
+	<ns1:EditPanel x="10" y="247" width="191" height="283">
+	</ns1:EditPanel>
+	
+</mx:Canvas>

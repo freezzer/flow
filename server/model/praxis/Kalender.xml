@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE define SYSTEM "../model.dtd">
+
+<define>
+
+    <model package="bom">
+        <bean name="CalendarEntry" persistent="true"  >
+            <field name="date"/>
+            <field name="time"/>
+            <field name="label"/>
+            <field name="text"/>
+            <field name="resource" type="Resource" reference="true"/>
+        </bean>
+    </model>
+
+
+      <permission package="permission" name="Kalender">
+
+          <view package="view.kalender" >
+
+              <editor name="CalendarEditor" label="Kalender" type="CalendarEntry">
+                  <panel name="CalendarPanel"  >
+                      <panel name="ItemEditPanel" >
+                          <input label="date" path="."/>
+                      </panel>
+                  </panel>
+                  <command use="SaveBoCommand" label="Kalender speichern" icon="save"/>
+              </editor>
+
+          </view>
+     </permission>
+</define>
+
+
+
+
