@@ -1,0 +1,209 @@
+/* CSS file */
+Menu
+{
+	borderThickness: 2;
+	cornerRadius: 4;
+	borderStyle: solid;
+	leading: 2;
+	paddingLeft: 2;
+	paddingRight: 2;
+	paddingTop: 4;
+	paddingBottom: 0;
+	backgroundColor: #B8DAF4;
+	backgroundAlpha: 0.97;
+	fontWeight:normal;
+	selectionColor: #4AA8F1;
+	rollOverColor: #E3EDF5;
+	color: #4C535B;
+	textSelectedColor: #032853;
+}
+MenuBar{
+	fontWeight:bold;
+	fillAlphas: 1.0, 1.0, 1.0, 1.0;
+	fillColors: #B8DAF4, #B8DAF4, #E4EEF6, #E4EEF6;
+	cornerRadius: 0;
+	borderColor: #E0E0E0;
+	color: #4C535B;
+}
+
+
+Application
+{
+	backgroundColor: #ffffff;
+	paddingBottom: 5;
+	paddingLeft: 5;
+	paddingRight: 5;
+	paddingTop: 5;
+	backgroundGradientAlphas: 1.0, 1.0;
+}
+
+ViewStack
+{
+	backgroundColor: #ffffff;
+	borderStyle: none;
+}
+
+Button
+{
+    color: #4C535B;
+	textRollOverColor: #255183;
+	themeColor: #5F9FD1;
+	textSelectedColor: #1A68C0;
+	fillColors: #FFFFFF, #CCCCCC;
+}
+
+
+
+global
+{
+	themeColor: #a5d0f1;
+	fontFamily: Verdana;
+	fontSize: 12;
+	fontWeight: normal;
+	color: #4C535B;
+	textRollOverColor: #4C535B;
+}
+
+HBox.CommandButtonBar
+{
+	horizontalGap: 4;
+	verticalAlign: middle;
+	borderStyle: none;
+	paddingLeft: 4;
+	paddingRight: 4;
+	backgroundColor: #F0F0F0;
+}
+
+
+Canvas.EditPanel
+{
+	/*backgroundColor: #E0E0E0;*/
+	borderStyle: none;
+	cornerRadius: 0;
+    color: #4C535B;
+	backgroundColor: #E0E7F4;
+}
+
+.PanelEditorCanvas
+{
+  borderStyle:solid;
+  borderThickness:2;
+  cornerRadius:4;
+  backgroundColor: #E0E7F4;
+}
+
+.TitleBox
+{
+    backgroundColor: #E0E7F4;
+    paddingLeft:3;
+    paddingRight:3;
+    borderStyle:solid;
+    borderColor:#E0E0E0;
+    cornerRadius:3;
+    y:-8;
+    height:16;
+    horizontalCenter:0;
+}
+
+.ListField
+{
+    backgroundColor: #E0E7F4;
+    borderStyle: solid;
+    borderThickness: 1;
+    borderColor: #e0e0e0;
+}
+
+DataGrid
+{
+	horizontalGridLines: false;
+	headerStyleName: dataGridHeader;
+	rollOverColor: #D3E5F4;
+	selectionColor: #B8DAF4;
+	textSelectedColor: #4C535B;
+	horizontalGridLineColor: #E0E0E0;
+	verticalScrollBarStyleName: dataGridVerticalScrollBar;
+	paddingLeft: 1;
+	paddingRight: 0;
+	paddingTop: 1;
+	paddingBottom: 1;
+	verticalAlign: middle;
+	alternatingItemColors: #F0F0F0, #FFFFFF;
+	headerColors: #E2EDF6, #E2EDF6;
+	textRollOverColor: #4C535B;
+    color: #4C535B;
+}
+.dataGridHeader
+{
+	textAlign: left;
+}
+.dataGridVerticalScrollBar
+{
+	cornerRadius: 0;
+	thumbOffset: 1;
+}
+/*
+.ListPanelGrid
+{
+	borderStyle: solid;
+	borderThickness: 1;
+    borderColor:#E0E0E0;
+}*/
+
+Tree
+{
+	borderStyle: solid;
+	borderThickness: 2;
+	cornerRadius: 4;
+	fontWeight: normal;
+	rollOverColor: #D3E5F4;
+	selectionColor: #B8DAF4;
+	textSelectedColor: #2E6093;
+	color: #4C535B;
+}
+
+TabNavigator
+{
+	tabStyleName: tabNavigatorTab;
+	selectedTabTextStyleName: tabNavigatorSelectedTabText;
+	firstTabStyleName: tabNavigatorFirstTab;
+	lastTabStyleName: tabNavigatorLastTab;
+    fontWeight: normal;
+	backgroundColor: #F0F0F0;
+}
+.tabNavigatorTab
+{
+	fontWeight: bold;
+	textRollOverColor: #2E6093;
+	textSelectedColor: #2E6093;
+    selectionColor: #B8DAF4;
+}
+
+.tabNavigatorSelectedTabText
+{
+	fontWeight: bold;
+	color: #2E6093;
+}
+
+
+SearchPanel
+{
+	borderColor: #2E6093;
+    backgrondAlpha:0.8;
+    backgroundColor:#E0E7F4;
+
+}
+
+.TreeCanvas
+{
+	borderStyle: solid;
+	borderThickness: 2;
+	cornerRadius: 4;
+	backgroundColor: #E0E7F4;
+}
+LinkButton
+{
+}
+
+
+
+

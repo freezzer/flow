@@ -68,7 +68,8 @@
                   <input x="10" y="71" w="300" labelwidth="100" h="25" label="Plz" path="plz" type="string"/>
                   <input x="10" y="101" w="300" labelwidth="100" h="25" label="Strasse" path="strasse" type="string"/>
 
-                  <google_map x="10" y="147" w="325" h="205" countryField="land" cityField="ort" streetField="strasse" zipField="plz"/>
+                  <google_map x="10" y="147" w="325" h="205" countryField="land" cityField="ort" streetField="strasse" zipField="plz"
+                          typeControl="false" zoomControl="false"/>
 
               </panel>
 

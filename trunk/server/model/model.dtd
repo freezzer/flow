@@ -96,12 +96,14 @@
         cityField CDATA #IMPLIED
         zipField CDATA #IMPLIED
         streetField CDATA #IMPLIED
+        zoomControl (true|false) "false"
+        typeControl (true|false) "false"
         >
 
 <!ELEMENT panel (panel|input|lookup|google_map|rich_text_editor)*>
 <!ATTLIST panel
-        border CDATA #IMPLIED
-        editable CDATA #IMPLIED
+        border (true|false) "false"
+        editable (true|false) "false"
         gap CDATA #IMPLIED
         labelwidth CDATA #IMPLIED
         inputwidth CDATA #IMPLIED
@@ -113,13 +115,14 @@
         y CDATA #IMPLIED
         w CDATA #IMPLIED
         h CDATA #IMPLIED>
+
 <!ELEMENT input (lister)*>
 <!ATTLIST input
         x CDATA #IMPLIED
         y CDATA #IMPLIED
         w CDATA #IMPLIED
         h CDATA #IMPLIED
-        editable CDATA #IMPLIED
+        editable (true|false) "false"
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
@@ -149,10 +152,10 @@
         labelwidth CDATA #IMPLIED
         label CDATA #REQUIRED
         path CDATA #REQUIRED
-        link_input CDATA #IMPLIED
-        bullet_button CDATA #IMPLIED
-        align_buttons CDATA #IMPLIED
-        color_picker CDATA #IMPLIED
+        link_input (true|false) "false"
+        bullet_button (true|false) "false"
+        align_buttons (true|false) "false"
+        color_picker (true|false) "false"
         >
 
 <!ELEMENT provider (#PCDATA)>
