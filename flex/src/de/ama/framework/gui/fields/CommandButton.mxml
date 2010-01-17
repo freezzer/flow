@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Button xmlns:mx="http://www.adobe.com/2006/mxml"
+<mx:LinkButton xmlns:mx="http://www.adobe.com/2006/mxml"
             	       click="onButtonClick(event)"
                        implements="de.ama.framework.gui.fields.GUIComponent"
-	>
+	 label="Test" fontFamily="Verdana">
 
 
     <mx:Script><![CDATA[
@@ -53,14 +53,13 @@
                 height = 18;
                 width = 18;
                 setStyle("cornerRadius", "2");
-                setStyle("borderColor", "#FFFFFF");
             } else if (command != null && _size == CommandButton.MEDIUM) {
                 label = "";
                 toolTip = command.label;
-                width = 30;
+                width = 25;
             } else {
                 label = command.label;
-                toolTip = command.label;
+                //toolTip = command.label;
             }
         }
 
@@ -82,4 +81,4 @@
 
         ]]></mx:Script>
 	
-</mx:Button>
+</mx:LinkButton>

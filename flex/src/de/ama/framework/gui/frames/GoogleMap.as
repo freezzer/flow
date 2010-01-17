@@ -23,6 +23,8 @@ public class GoogleMap extends EditPanel {
 
     private var _silent:Boolean = true;
     private var _adjusting:Boolean = false;
+    private var _zoomControl:Boolean = false;
+    private var _typeControl:Boolean = false;
 
     private var _countryField:EditField;
     private var _cityField:EditField;
@@ -49,6 +51,14 @@ public class GoogleMap extends EditPanel {
         
     }
 
+
+    public function set zoomControl(value:Boolean):void {
+        _zoomControl = value;
+    }
+
+    public function set typeControl(value:Boolean):void {
+        _typeControl = value;
+    }
 
     public function set countryField(f:EditField):void {
         if (f == null) return;
@@ -100,8 +110,12 @@ public class GoogleMap extends EditPanel {
     private function onMapReady(event:Event):void {
         _map.enableScrollWheelZoom();
         _map.enableContinuousZoom();
-        _map.addControl(new ZoomControl());
-        _map.addControl(new MapTypeControl());
+        if(_zoomControl) {
+           _map.addControl(new ZoomControl());
+        }
+        if(_typeControl){
+           _map.addControl(new MapTypeControl());
+        }
         _map.addEventListener(MapMouseEvent.CLICK, onMapClick);
 
         callLater(doGeocode,null);

@@ -102,5 +102,9 @@ public interface Const {
     public static final String  ALIGN_BUTTONS="align_buttons";
     public static final String  COLOR_PICKER="color_picker";
 
+    // GoogleMap ----------------------------------------
+    
+
+
 
 }

@@ -43,6 +43,12 @@ public class Flex_google_map extends Tag {
         if(hasAttribute("streetField")){
             write("        map.streetField=getEditField("+quote(getAttribute("streetField"))+");");
         }
+        if(hasAttribute("zoomControl")){
+            write("        map.zoomControl="+getAttribute("zoomControl",false)+";");
+        }
+        if(hasAttribute("typeControl")){
+            write("        map.typeControl="+getAttribute("typeControl",false)+";");
+        }
     }
 
 

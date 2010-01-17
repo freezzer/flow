@@ -66,6 +66,7 @@
             mainTabs.setStyle("bottom", "0");
             mainTabs.setStyle("left", "3");
             mainTabs.setStyle("right", "3");
+            mainTabs.setStyle("paddingTop", "0");
             addChild(mainTabs);
 
             var bootstrapDefault:BootstrapDefault = new BootstrapDefault();
