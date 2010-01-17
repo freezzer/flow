@@ -81,7 +81,7 @@ Canvas.EditPanel
 	borderStyle: none;
 	cornerRadius: 0;
     color: #4C535B;
-	backgroundColor: #E0E7F4;
+	backgroundColor: #cce0f0;
 }
 
 .PanelEditorCanvas
@@ -89,16 +89,16 @@ Canvas.EditPanel
   borderStyle:solid;
   borderThickness:2;
   cornerRadius:4;
-  backgroundColor: #E0E7F4;
+  backgroundColor: #cce0f0;
 }
 
 .TitleBox
 {
-    backgroundColor: #E0E7F4;
+    backgroundColor: #cce0f0;
     paddingLeft:3;
     paddingRight:3;
     borderStyle:solid;
-    borderColor:#E0E0E0;
+    borderColor:#cce0f0;
     cornerRadius:3;
     y:-8;
     height:16;
@@ -107,7 +107,7 @@ Canvas.EditPanel
 
 .ListField
 {
-    backgroundColor: #E0E7F4;
+    backgroundColor: #cce0f0;
     borderStyle: solid;
     borderThickness: 1;
     borderColor: #e0e0e0;
@@ -189,7 +189,7 @@ SearchPanel
 {
 	borderColor: #2E6093;
     backgrondAlpha:0.8;
-    backgroundColor:#E0E7F4;
+    backgroundColor:#cce0f0;
 
 }
 
@@ -198,7 +198,7 @@ SearchPanel
 	borderStyle: solid;
 	borderThickness: 2;
 	cornerRadius: 4;
-	backgroundColor: #E0E7F4;
+	backgroundColor: #cce0f0;
 }
 LinkButton
 {
