@@ -38,21 +38,27 @@ public class PanelEditor  extends Editor {
             _editPanel = EditPanel(child);
             _contenPanel.addChild(child);
         } else {
-            throw new TypeError("PanelEditor accepts only EditPanel as child");
+            _contenPanel.addChild(child);
+//            throw new TypeError("PanelEditor accepts only EditPanel as child");
         }
 
         return _editPanel;
     }
 
     override public function setData(data:BusinessObject):void {
-    	if(data==null){
-    	   data = createData();
-    	}
-        _editPanel.setData(data);
+        if(_editPanel){
+            if(data==null){
+                data = createData();
+            }
+            _editPanel.setData(data);
+        }
     }
 
     override public function getData():BusinessObject {
-        return _editPanel.getData();
+        if(_editPanel ) {
+            return _editPanel.getData();
+        }
+        return null;
     }
 }
 }
