@@ -36,13 +36,9 @@ public class PanelEditor  extends Editor {
     override public function addChild(child:DisplayObject):DisplayObject {
         if(child is EditPanel){
             _editPanel = EditPanel(child);
-            _contenPanel.addChild(child);
-        } else {
-            _contenPanel.addChild(child);
-//            throw new TypeError("PanelEditor accepts only EditPanel as child");
         }
-
-        return _editPanel;
+        _contenPanel.addChild(child);
+        return child;
     }
 
     override public function setData(data:BusinessObject):void {
