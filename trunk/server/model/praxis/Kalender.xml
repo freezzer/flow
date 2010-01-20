@@ -18,14 +18,14 @@
 
           <view package="view.kalender" >
 
-              <editor name="CalendarEditor" label="Kalender" type="CalendarEntry">
-                  <panel name="CalendarPanel"  >
-                      <panel name="ItemEditPanel" >
-                          <input label="date" path="."/>
-                      </panel>
-                  </panel>
-                  <command use="SaveBoCommand" label="Kalender speichern" icon="save"/>
-              </editor>
+              <!--<editor name="CalendarEditor" label="Kalender" type="CalendarEntry">-->
+                  <!--<panel name="CalendarPanel"  >-->
+                      <!--<panel name="ItemEditPanel" >-->
+                          <!--<input label="date" path="."/>-->
+                      <!--</panel>-->
+                  <!--</panel>-->
+                  <!--<command use="SaveBoCommand" label="Kalender speichern" icon="save"/>-->
+              <!--</editor>-->
 
           </view>
      </permission>

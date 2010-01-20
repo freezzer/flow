@@ -22,6 +22,8 @@ import de.ama.services.text.view.TextBausteinEditor;
 import de.ama.services.text.view.TextBausteinLister;
 import de.ama.services.text.view.TextBausteinPanel;
 
+import praxis.view.kalender.CalendarEditor;
+
 public class BootstrapDefault {
 
     public function execute():void {
@@ -54,6 +56,7 @@ public class BootstrapDefault {
         Factory.registerLister("TextBausteinLister", TextBausteinLister);
         Factory.registerPermission("PermissionTextBausteine", PermissionTextBausteine);
 
+        Factory.registerEditor("CalendarEditor", CalendarEditor);
 
     }}
 }
