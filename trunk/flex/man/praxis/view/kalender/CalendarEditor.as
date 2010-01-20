@@ -26,6 +26,7 @@ public class CalendarEditor extends PanelEditor {
         addCommand(cmd);
      } 
 
+    
      override public function addPanels():void {
         _dayButton = LinkButton(addChild(new LinkButton()));
         _dayButton.x = 18; 
