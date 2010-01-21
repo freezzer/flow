@@ -69,8 +69,8 @@
                 </tree_node>
 
                 <command use="SaveBoCommand" label="Patient speichern" icon="save"/>
-                <command use="LoadBoCommand" label="Patient laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Patient löschen" icon="delete"/>
+                <!--<command use="LoadBoCommand" label="Patient laden" icon="refresh"/>-->
+                <!--<command use="DeleteBoCommand" label="Patient löschen" icon="delete"/>-->
             </tree_editor>
 
 

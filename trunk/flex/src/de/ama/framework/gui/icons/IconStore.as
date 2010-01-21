@@ -1,5 +1,6 @@
 package de.ama.framework.gui.icons {
 import de.ama.framework.gui.frames.ApplicationPanel;
+import de.ama.framework.util.Util;
 
 public class IconStore {
 
@@ -130,9 +131,7 @@ public class IconStore {
   public static const BUILDING:Class;
 
   public static function getIcon(iconName:String):Class{
-      if (iconName == null) {
-          return CANCEL;
-      } else {
+      if (!Util.isEmpty(iconName)) {
           switch (iconName) {
               case "user":          return USER;
               case "group":         return GROUP;
@@ -172,10 +171,7 @@ public class IconStore {
               case "building":      return BUILDING;
           }
       }
-
-      return CANCEL;
-
-
+      return null;
   }
 
 

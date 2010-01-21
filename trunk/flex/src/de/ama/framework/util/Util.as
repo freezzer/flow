@@ -155,6 +155,7 @@ public class Util
         try {
             return obj[path];
         } catch(e:Error) {
+            Util.showError("getObjectValue failed for path "+path+" in "+getUnqualifiedClassName(obj), e.getStackTrace());
         }
         return null;
     }
@@ -172,6 +173,7 @@ public class Util
         try {
             obj[path] = value;
         } catch(e:Error) {
+        	Util.showError("setObjectValue failed for path "+path+" in "+getUnqualifiedClassName(obj), e.getStackTrace());
         }
     }
 

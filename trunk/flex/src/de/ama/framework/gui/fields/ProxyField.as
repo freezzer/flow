@@ -8,7 +8,6 @@ import de.ama.framework.data.SelectionModel;
 import de.ama.framework.gui.frames.ListPanel;
 import de.ama.framework.util.Callback;
 import de.ama.framework.util.Util;
-
 import de.ama.services.Factory;
 
 import mx.controls.TextInput;
@@ -54,21 +53,21 @@ public class ProxyField extends EditField implements Invoker{
     }
 
     override protected function createAditionals():void {
-        _searchButton = new CommandButton();
-        _searchButton.command = new SelectBoCommand();
-        _searchButton.invoker = this;
-        addChild(_searchButton);
+    	createSearchButton();
         createEditButton();
         layout();
+    }
+
+    private function createSearchButton():void {
+    	if(_searchButton) return;
+        _searchButton = new CommandButton(new SelectBoCommand(),this,CommandButton.SMALL);
+        addChild(_searchButton);
     }
 
     private function createEditButton():void {
     	if(hasEditButton()) return;
         if(!Util.isEmpty(_editor)){
-            _editButton = new CommandButton();
-            _editButton.command = new OpenEditorCommand();
-            _editButton.command.setProperty("editor",editor);
-            _editButton.invoker = this;
+            _editButton = new CommandButton(new OpenEditorCommand("bearbeiten","edit",_editor),this,CommandButton.SMALL);
             addChild(_editButton);
         }
     }
@@ -161,6 +160,15 @@ public class ProxyField extends EditField implements Invoker{
 
        if(val is BusinessObject){
            _data = BusinessObject(val);
+       }
+
+        
+       if(val == null ){
+           _data = null;
+       }
+
+       if(val is String && String(val).length==0){
+           _data = null;
        }
 
        TextInput(_input).text = guiRep;

@@ -14,8 +14,11 @@ public class OpenEditorCommand extends Command{
 
     private var editor:Editor = null;
 
-    public function OpenEditorCommand(label:String="Bearbeiten",icon:String="edit") {
+    public function OpenEditorCommand(label:String="Bearbeiten",icon:String="edit",editorName:String=null) {
         super(label,icon);
+        if(editorName!=null){
+        	setProperty("editor",editorName);
+        }
     }
 
 

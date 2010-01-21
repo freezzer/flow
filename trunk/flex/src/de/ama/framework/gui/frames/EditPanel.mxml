@@ -13,6 +13,7 @@
         import de.ama.framework.gui.fields.DateField;
         import de.ama.framework.gui.fields.EditField;
         import de.ama.framework.gui.fields.GUIComponent;
+        import de.ama.framework.gui.fields.LabelField;
         import de.ama.framework.gui.fields.ListField;
         import de.ama.framework.gui.fields.ProxyField;
         import de.ama.framework.gui.fields.RichTextEditorField;
@@ -138,6 +139,17 @@
             }
         }
 
+        public function insertLabelField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1, defaultString:String = null):LabelField {
+            var labelField:LabelField = new LabelField(label, path);
+            labelField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
+            labelField.width = w < 0 ? _fieldInputWidth : w;
+            insertComponent(labelField, x, y);
+            if (!Util.isEmpty(defaultString)) {
+                labelField.defaultValue = defaultString;
+            }
+            return labelField;
+        }
+
         public function insertTextField(label:String, path:String = null, x:int = -1, y:int = -1, lw:int = -1, w:int = -1, defaultString:String = null):EditField {
             var editField:EditField = new EditField(label, path);
             editField.labelWidth = lw < 0 ? _fieldLabelWidth : lw;
@@ -202,16 +214,13 @@
         }
 
         public function insertCommandButton(cmd:Command, x:int = -1, y:int = -1, w:int = 100):Button {
-            var button:CommandButton = new CommandButton();
-            button.command = cmd;
+            var button:CommandButton = new CommandButton(cmd,this,CommandButton.LARGE);
             button.width = w;
-            button.invoker = this;
             insertComponent(button, x, y);
             return button;
         }
 
         public function insertComponent(f:UIComponent, x:int = -1, y:int = -1):void {
-            f.x = x > 0 ? x : 10;
             if (y < 0) {
                 if (numChildren > 1) {
                     var c:DisplayObject = getChildAt(numChildren - 1);

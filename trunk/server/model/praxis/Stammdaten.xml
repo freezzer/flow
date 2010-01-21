@@ -21,7 +21,7 @@
             <field name="typ"/>
             <field name="beschreibung"/>
             <field name="farbe" type="number"/>
-            <field name="Person" reference="true" type="Person"/>
+            <field name="person" reference="true" type="Person"/>
         </bean>
 
         
@@ -64,8 +64,8 @@
                     <input x="10" y="80" w="400" labelwidth="100" h="100" label="Langtext" path="langtext" type="area" />
                 </panel>
                 <command use="SaveBoCommand" label="Code-Element speichern" icon="save"/>
-                <command use="LoadBoCommand" label="Code-Element laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Code-Element löschen" icon="delete"/>
+                <!--<command use="LoadBoCommand" label="Code-Element laden" icon="refresh"/>-->
+                <!--<command use="DeleteBoCommand" label="Code-Element löschen" icon="delete"/>-->
             </editor>
 
             <editor name="ResourceEditor" label="Resource {name} " type="Resource">
@@ -77,8 +77,8 @@
                     <lookup x="10" y="80" w="300" labelwidth="100" label="Person" path="person" type="Person" guirep="nachname"  editor="PersonEditor" lister="PersonLister"/>
                 </panel>
                 <command use="SaveBoCommand" label="Resource speichern" icon="save"/>
-                <command use="LoadBoCommand" label="Resource laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Resource löschen" icon="delete"/>
+                <!--<command use="LoadBoCommand" label="Resource laden" icon="refresh"/>-->
+                <!--<command use="DeleteBoCommand" label="Resource löschen" icon="delete"/>-->
             </editor>
 
           </view>
