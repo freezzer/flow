@@ -50,7 +50,6 @@ public class Command {
     }
 
     public function get icon():Class {
-        var iconClass:Class;
         return IconStore.getIcon(_iconName);
     }
 

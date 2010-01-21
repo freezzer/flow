@@ -56,8 +56,8 @@
                 </tree_node>
 
                 <command use="SaveBoCommand" label="Person speichern" icon="save"/>
-                <command use="LoadBoCommand" label="Person laden" icon="refresh"/>
-                <command use="DeleteBoCommand" label="Person löschen" icon="delete"/>
+                <!--<command use="LoadBoCommand" label="Person laden" icon="refresh"/>-->
+                <!--<command use="DeleteBoCommand" label="Person löschen" icon="delete"/>-->
             </tree_editor>
 
 
