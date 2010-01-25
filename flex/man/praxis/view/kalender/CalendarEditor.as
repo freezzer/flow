@@ -19,10 +19,18 @@ public class CalendarEditor extends PanelEditor {
      private var _monthButton:LinkButton;
      private var _timeLines:HBox;
      
-     private var _startTime:Number;
-     private var _endTime:Number;
-     private var _deltaTime:int;
+     private var _startTime:Date;
+     private var _endTime:Date;
+     private var _deltaTime:int; // in minutes
 
+	public function CalendarEditor(){
+		_startTime = new Date();
+		_startTime.setHours(8,0,0,0);
+		_endTime = new Date();
+		_endTime.setHours(18,0,0,0);
+		_deltaTime = 15;
+		addTimeLine(new TimeLine(null,_startTime,_endTime,_deltaTime));
+	}
 
      override public function createData():BusinessObject {
        return Factory.createBean("CalendarEntry"); 
@@ -69,6 +77,7 @@ public class CalendarEditor extends PanelEditor {
         _timeLines.setStyle("bottom",10);
         _timeLines.setStyle("borderStyle","solid");
         _timeLines.setStyle("horizontalGap",1);
+
       
         load();  
      }

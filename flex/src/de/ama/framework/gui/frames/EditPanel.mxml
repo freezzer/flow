@@ -5,6 +5,7 @@
     borderStyle="none"  clipContent="false" click="onClick(event)">
 
     <mx:Script><![CDATA[
+    	import mx.events.DragEvent;
         import de.ama.framework.command.Command;
         import de.ama.framework.data.BusinessObject;
         import de.ama.framework.data.SelectionModel;
@@ -32,6 +33,7 @@
 
             super.addEventListener(MouseEvent.MOUSE_DOWN, startDragging);
             super.addEventListener(MouseEvent.MOUSE_UP, stopDragging);
+            super.addEventListener(MouseEvent.MOUSE_MOVE, doDragging);
 
         }
 
@@ -69,6 +71,7 @@
         public function getData():BusinessObject {
             return _data;
         }
+
 
 
         public function setData(data:BusinessObject):void {
@@ -221,6 +224,7 @@
         }
 
         public function insertComponent(f:UIComponent, x:int = -1, y:int = -1):void {
+            f.x = x > 0 ? x : 10;
             if (y < 0) {
                 if (numChildren > 1) {
                     var c:DisplayObject = getChildAt(numChildren - 1);
@@ -295,19 +299,25 @@
 
         ///////////////////////////// design mode ////////////////////////////////////////
 
-        private function startDragging(event:MouseEvent):void {
-            if (Environment.designer && event.target == this) {
+
+        protected function startDragging(event:MouseEvent):void {
+            if ( Environment.designer && event.target == this) {
                 super.startDrag();
             }
         }
+        
+        protected function doDragging(event:MouseEvent):void {
+        	
+        }
+        
 
-        private function stopDragging(event:MouseEvent):void {
-            if (Environment.designer && event.target == this) {
+        protected function stopDragging(event:MouseEvent):void {
+            if ( Environment.designer && event.target == this) {
                 super.stopDrag();
             }
         }
 
-        private function onClick(event:MouseEvent):void {
+        protected function onClick(event:MouseEvent):void {
             if (Environment.designer && event.eventPhase == EventPhase.AT_TARGET) {
                 Environment.designer.setPanel(this);
             }

@@ -316,6 +316,17 @@ public class Util
         if(o is Number) return Number(o).toString();
         return getUnqualifiedClassName(o);
     }
+    
+    public static function toHourMinutesString(minutes:int, offset:int=0):String {
+    	var h:int = Math.floor(minutes/60);
+    	var m:int = minutes - (h*60);
+    	if(offset>0){
+    		offset = Math.floor(offset/60);
+    	}
+    	return ""+(offset+h)+":"+ (m > 9 ? m : "0"+m);
+    }
+
+
 
 }
 }
