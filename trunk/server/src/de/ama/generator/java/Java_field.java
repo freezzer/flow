@@ -40,14 +40,16 @@ public class Java_field extends Tag {
             type = getChild(0).getRequiredAttribute(NAME);
         }
         boolean str = "String".equals(type);
+
         if ("date".equalsIgnoreCase(type)) {
             type = "String";
             create = false;
             str = true;
         }
         if ("number".equalsIgnoreCase(type)) {
-            type = "String";
+            type = "BigDecimal";
             create = false;
+            str = false;
         }
         if ("text".equalsIgnoreCase(type)) {
             str = true;
@@ -60,7 +62,12 @@ public class Java_field extends Tag {
             create = false;
         }
         writeLine();
-        if (reference) {
+
+        if("BigDecimal".equals(type)){
+            write("    private String " + name + ";");
+            write("    public BigDecimal get" + Util.firstCharToUpper(name) + "() { return new BigDecimal(" + name + "); }");
+            write("    public  void   set" + Util.firstCharToUpper(name) + "(BigDecimal  in) { "  + name + " = in.toPlainString(); }");
+        } else  if (reference) {
             write("    private BoReference<" + type + "> " + name + ";");
             write("    public  BoReference<" + type + "> get" + Util.firstCharToUpper(name) + "() { return " + name + "; }");
             write("    public  void set" + Util.firstCharToUpper(name) + "(BoReference<" + type + "> in) { "+ name + " =in; }");
@@ -68,7 +75,7 @@ public class Java_field extends Tag {
 //            String lazy = "if(" + name + "==null){ " + name + " = new BoReference<" + type + ">(); }";
 //            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + lazy+" "+name + ".setBo(in); }");
 
-        } else {
+        }  else {
             String fieldName = name + (largeText ? "_TEXT":"");
             write("    private " + type + " " + fieldName + ";");
             if (str) {

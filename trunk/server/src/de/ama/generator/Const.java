@@ -63,6 +63,7 @@ public interface Const {
     public static final String STRING = "string";
     public static final String TEXT = "text";
     public static final String NUMBER = "number";
+    public static final String INT = "int";
     public static final String BOOLEAN = "boolean";
     public static final String LIST = "list";
     public static final String AREA = "area";

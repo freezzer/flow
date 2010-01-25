@@ -43,6 +43,8 @@ public class Flex_field extends Tag {
         else
         if(NUMBER.equalsIgnoreCase(type)){  write("    public var "+name+":String;"); }
         else
+        if(INT.equalsIgnoreCase(type)){  write("    public var "+name+":int;"); }
+        else
         if(BOOLEAN.equalsIgnoreCase(type)){ write("    public var "+name+":Boolean;"); }
         else {
             if(reference){

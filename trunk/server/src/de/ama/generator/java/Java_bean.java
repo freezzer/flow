@@ -47,6 +47,7 @@ public class Java_bean extends Tag{
         writeLine();
         write("package "+pckg+";");
         write("import de.ama.framework.data.*;");
+        write("import java.math.BigDecimal;");
         writeLine();
 
         String ext = " implements java.io.Serializable ";
