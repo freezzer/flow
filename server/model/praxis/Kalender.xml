@@ -6,6 +6,7 @@
     <model package="bom">
         <bean name="CalendarEntry" persistent="true"  >
             <field name="date"/>
+            <field name="durationInMinutes" type="int"/>
             <field name="time"/>
             <field name="label"/>
             <field name="text"/>

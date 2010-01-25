@@ -1,6 +1,5 @@
 set HOME=D:\dev\flow\server
 set LIB=%HOME%\lib
-set BDS=D:\dev\blazeds\WEB-INF\lib
 set CATALOG=flow
 
 set CP=%HOME%\classes
@@ -16,10 +15,10 @@ set CP=%CP%;%LIB%\activation.jar
 set CP=%CP%;%LIB%\stringtree-json-2.0.9.jar
 set CP=%CP%;%LIB%\jdom.jar
 
-set CP=%CP%;%BDS%\flex-messaging-remoting.jar
-set CP=%CP%;%BDS%\flex-messaging-common.jar
-set CP=%CP%;%BDS%\flex-messaging-core.jar
-set CP=%CP%;%BDS%\backport-util-concurrent.jar
-set CP=%CP%;%BDS%\flex-messaging-proxy.jar
-set CP=%CP%;%BDS%\commons-httpclient-3.0.1.jar
-set CP=%CP%;%BDS%\commons-logging.jar
+set CP=%CP%;%LIB%\flex-messaging-remoting.jar
+set CP=%CP%;%LIB%\flex-messaging-common.jar
+set CP=%CP%;%LIB%\flex-messaging-core.jar
+set CP=%CP%;%LIB%\backport-util-concurrent.jar
+set CP=%CP%;%LIB%\flex-messaging-proxy.jar
+set CP=%CP%;%LIB%\commons-httpclient-3.0.1.jar
+set CP=%CP%;%LIB%\commons-logging.jar
