@@ -71,8 +71,8 @@ public class ActionStarter implements IResponder{
 //            var token:AsyncToken = hessianStub.execute.send(action);
 //            token.addResponder(this);
 //        } else {
-            blazedsStub.execute(action);
-//        }
+
+        blazedsStub.execute(new ActionTransporter(action.catalog,action));//        }
     }
 
 

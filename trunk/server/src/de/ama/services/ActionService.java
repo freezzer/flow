@@ -2,6 +2,7 @@
 package de.ama.services;
 
 import de.ama.framework.action.ActionScriptAction;
+import de.ama.framework.action.ActionTransporter;
 
 /**
  * User: x
@@ -10,5 +11,5 @@ import de.ama.framework.action.ActionScriptAction;
 public interface ActionService {
     public static final String NAME = "ActionService";
 
-    public ActionScriptAction execute(ActionScriptAction asa);
+    public ActionScriptAction execute(ActionTransporter asa);
 }
