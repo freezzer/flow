@@ -68,12 +68,11 @@ public class Java_field extends Tag {
             write("    public BigDecimal get" + Util.firstCharToUpper(name) + "() { return new BigDecimal(" + name + "); }");
             write("    public  void   set" + Util.firstCharToUpper(name) + "(BigDecimal  in) { "  + name + " = in.toPlainString(); }");
         } else  if (reference) {
-            write("    private BoReference<" + type + "> " + name + ";");
-            write("    public  BoReference<" + type + "> get" + Util.firstCharToUpper(name) + "() { return " + name + "; }");
-            write("    public  void set" + Util.firstCharToUpper(name) + "(BoReference<" + type + "> in) { "+ name + " =in; }");
-//            write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { if(" + name + "==null)return null;  return " + name + ".getBo(); }");
-//            String lazy = "if(" + name + "==null){ " + name + " = new BoReference<" + type + ">(); }";
-//            write("    public  void   set" + Util.firstCharToUpper(name) + "(" + type + " in) { " + lazy+" "+name + ".setBo(in); }");
+            write("    private " + type + " " + name + ";");
+            write("    public  " + type + " get" + Util.firstCharToUpper(name) + "() { return " + name + "; }");
+            write("    public  void set" + Util.firstCharToUpper(name) + "(" + type + " in) { "+ name + " =in; }");
+            write("    public  BoReference<" + type + "> get" + Util.firstCharToUpper(name) + "Reference() { return new BoReference<"+type+">(" + name + "); }");
+            write("    public  void set" + Util.firstCharToUpper(name) + "Reference(BoReference<" + type + "> in) { "+ name + " =in.getBo(); }");
 
         }  else {
             String fieldName = name + (largeText ? "_TEXT":"");

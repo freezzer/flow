@@ -37,18 +37,20 @@ public class Flex_field extends Tag {
 
         if(TEXT.equalsIgnoreCase(type)){    write("    public var "+name+":String;"); }
         else
-        if(STRING.equalsIgnoreCase(type)){    write("    public var "+name+":String;"); }
+        if(STRING.equalsIgnoreCase(type)){  write("    public var "+name+":String;"); }
         else
         if(DATE.equalsIgnoreCase(type)){    write("    public var "+name+":String;"); }
         else
         if(NUMBER.equalsIgnoreCase(type)){  write("    public var "+name+":String;"); }
         else
-        if(INT.equalsIgnoreCase(type)){  write("    public var "+name+":int;"); }
+        if(INT.equalsIgnoreCase(type)){     write("    public var "+name+":int;"); }
         else
         if(BOOLEAN.equalsIgnoreCase(type)){ write("    public var "+name+":Boolean;"); }
         else {
             if(reference){
                write("    public var "+name+":BoReference = new BoReference();");
+               write("    public function set "+name+"BoReference(in:BoReference):void{ "+name+" = in;   }");
+               write("    public function get "+name+"BoReference():BoReference       { return "+name+"; }");
             } else {
                write("    public var "+name+":"+type+" = new "+type+"();");
             }

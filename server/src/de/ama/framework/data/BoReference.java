@@ -24,6 +24,13 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
         return true;
     }
 
+    public BoReference() {
+    }
+
+    public BoReference(C bo) {
+        this.bo = bo;
+    }
+
     public long getOid() {
         return oid;
     }
