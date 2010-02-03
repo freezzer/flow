@@ -212,11 +212,33 @@
         </ftp>
     </target>
     
-    <target name="build.server" description="make server " depends="server.compile.environment,generate,copy.server.sources,server.compile.generated,server.enhance,deploy" />
-    <target name="build.client" description="make client " depends="client.clean,copy.client.sources,client.compile,client.wrapper" >
+    <target name="build.server" description="make server " >
+        <antcall target="server.compile.environment"/>
+        <antcall target="generate"/>
+        <antcall target="copy.server.sources"/>
+        <antcall target="server.compile.generated"/>
+        <antcall target="server.enhance"/>
+        <antcall target="deploy"/>
+   </target>
+    <target name="build.client" description="make client " >
+        <antcall target="client.clean"/>
+        <antcall target="copy.client.sources"/>
+        <antcall target="client.compile"/>
+        <antcall target="client.wrapper"/>
         <antcall target="deploy"/>
     </target>
-    <target name="build.all" description="make/deploy whole project" depends="build.server,build.client" />
+    <target name="build.all" description="make/deploy whole project" >
+        <antcall target="client.clean"/>
+        <antcall target="server.compile.environment"/>
+        <antcall target="generate"/>
+        <antcall target="copy.server.sources"/>
+        <antcall target="copy.client.sources"/>
+        <antcall target="client.compile"/>
+        <antcall target="client.wrapper"/>
+        <antcall target="server.compile.generated"/>
+        <antcall target="server.enhance"/>
+        <antcall target="deploy"/>
+    </target>
 
 
 </project>
