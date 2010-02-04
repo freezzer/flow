@@ -49,8 +49,8 @@ public class Flex_field extends Tag {
         else {
             if(reference){
                write("    public var "+name+":BoReference = new BoReference();");
-               write("    public function set "+name+"BoReference(in:BoReference):void{ "+name+" = in;   }");
-               write("    public function get "+name+"BoReference():BoReference       { return "+name+"; }");
+//               write("    public function set "+name+"BoReference(in:BoReference):void{ "+name+" = in;   }");
+//               write("    public function get "+name+"BoReference():BoReference       { return "+name+"; }");
             } else {
                write("    public var "+name+":"+type+" = new "+type+"();");
             }

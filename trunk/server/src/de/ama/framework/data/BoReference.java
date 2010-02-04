@@ -13,7 +13,7 @@ import de.ama.util.Util;
  * Time: 21:10:56
  * To change this template use File | Settings | File Templates.
  */
-public class BoReference<C> implements Embeded, java.io.Serializable{
+public class BoReference<C> implements java.io.Serializable{
     public long oid;
     public String type;
     private transient C bo;
@@ -28,7 +28,7 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
     }
 
     public BoReference(C bo) {
-        this.bo = bo;
+        setBo(bo);
     }
 
     public long getOid() {
@@ -70,15 +70,4 @@ public class BoReference<C> implements Embeded, java.io.Serializable{
         this.bo = bo;
     }
 
-    public String writeDBString() {
-        return type+"{}"+oid;
-    }
-
-    public void readDBString(String str) {
-        StringDivider sd = new StringDivider(str,"{}");
-        if(sd.ok()){
-            type=sd.pre();
-            oid=Long.parseLong(sd.post());
-        }
-    }
 }
