@@ -1,5 +1,6 @@
 package praxis.view.kalender {     
 import de.ama.framework.command.*;
+import de.ama.framework.data.BoReference;
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.data.QueryDataProvider;
 import de.ama.framework.gui.frames.*;
@@ -10,6 +11,7 @@ import mx.containers.HBox;
 import mx.controls.DateChooser;
 import mx.controls.LinkButton;
 
+import praxis.bom.CalendarEntry;
 import praxis.bom.Resource;
 
 public class CalendarEditor extends PanelEditor {
@@ -41,7 +43,7 @@ public class CalendarEditor extends PanelEditor {
         permissionContext="Kalender";     
 
         var cmd:Command;
-        cmd = new SaveBoCommand("Kalender speichern","save");
+        cmd = new SaveCalendarCommand("Kalender speichern","save");
 //        cmd.permissionId = "Kalender:SaveBoCommand (Kalender speichern)";
         addCommand(cmd);    
      } 
@@ -96,6 +98,36 @@ public class CalendarEditor extends PanelEditor {
      	_timeLines.addChild(timeLine);
      }
 
-   }
+     public function getTimeLine(r:BoReference):TimeLine {
+       var children:Array = getChildren();
+       for each (var o:Object in children){
+           if(o is TimeLine){
+              TimeLine(o).resource.oid == r.oid;
+              return TimeLine(o);
+           }
+       }
+       return null;
+    }
+
+     public function getCalendarEntries():Array {
+       var ret:Array = new Array();
+       var children:Array = getChildren();
+       for each (var o:Object in children){
+           if(o is TimeLine){
+              ret.push(TimeLine(o).getCalendarEntries());
+           }
+       }
+       return ret;
+    }
+
+
+    function setCalendarEntries(arr:Array):void {
+        for each (var e:CalendarEntry in arr){
+           var timeLine:TimeLine = getTimeLine(e.resource);
+           timeLine.removeAllItemPanels();
+           timeLine.insertItemPanel(new ItemPanel(e));
+        }
+
+    }}
 }
 

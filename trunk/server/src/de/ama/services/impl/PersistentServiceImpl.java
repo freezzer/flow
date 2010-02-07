@@ -104,7 +104,19 @@ public class PersistentServiceImpl implements PersistentService {
     }
 
     public void attacheObject(Object o) {
-        DB.session().attacheObject(o);
+        if (o instanceof Persistent) {
+            Persistent persistent = (Persistent) o;
+            DB.session().attacheObject(persistent);
+        } else if (o instanceof Collection) {
+            Collection col = (Collection) o;
+            for (Iterator iterator = col.iterator(); iterator.hasNext();) {
+                Object io = iterator.next();
+                DB.session().attacheObject(io);
+            }
+        } else {
+            throw new RuntimeException("can not attache object of type "+o.getClass().getName());
+
+        }
     }
 
     public Object releaseObject(Object o) {
@@ -117,6 +129,9 @@ public class PersistentServiceImpl implements PersistentService {
                 Object io = iterator.next();
                 DB.session().releaseObject(io);
             }
+        } else {
+            throw new RuntimeException("can not releaseObject object of type "+o.getClass().getName());
+
         }
         return o;
     }

@@ -30,7 +30,7 @@ public class ActionTransporter implements java.io.Serializable, Externalizable {
         catalog = (String) input.readObject();
 
         Environment.getPersistentService().join(catalog);
-//        System.out.println("ActionTransporter.readExternal");
+        System.out.println("ActionTransporter.readExternal");
 
         action = (ActionScriptAction) input.readObject();
     }
