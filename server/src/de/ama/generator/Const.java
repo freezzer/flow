@@ -60,6 +60,7 @@ public interface Const {
     public static final String MENUITEM = "menuitem";
 
     public static final String DATE = "date";
+    public static final String DATA = "data";
     public static final String STRING = "string";
     public static final String TEXT = "text";
     public static final String NUMBER = "number";

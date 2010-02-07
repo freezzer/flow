@@ -1,4 +1,5 @@
-package praxis.view.kalender {     
+package praxis.view.kalender {
+import de.ama.framework.action.ActionStarter;
 import de.ama.framework.command.*;
 import de.ama.framework.data.BoReference;
 import de.ama.framework.data.BusinessObject;
@@ -46,6 +47,7 @@ public class CalendarEditor extends PanelEditor {
         cmd = new SaveCalendarCommand("Kalender speichern","save");
 //        cmd.permissionId = "Kalender:SaveBoCommand (Kalender speichern)";
         addCommand(cmd);    
+
      } 
 
     
@@ -92,42 +94,66 @@ public class CalendarEditor extends PanelEditor {
 				}
          }));
          
+        var sa:CalendarAction    = new CalendarAction();
+        sa.type = CalendarAction.LOAD_DAY;
+        ActionStarter.instance.execute(sa , new Callback(this, resulthandler ));
+     }
+
+     public function resulthandler(sa:CalendarAction):void{
+    	setCalendarEntries(sa.data as Array);
      }
 
      public function addTimeLine(timeLine:TimeLine):void{
      	_timeLines.addChild(timeLine);
      }
 
-     public function getTimeLine(r:BoReference):TimeLine {
-       var children:Array = getChildren();
+     public function getTimeLines():Array {
+       var ret:Array = new Array();
+       var children:Array = _timeLines.getChildren();
        for each (var o:Object in children){
-           if(o is TimeLine){
-              TimeLine(o).resource.oid == r.oid;
-              return TimeLine(o);
+           if(o is TimeLine && TimeLine(o).resource!=null){
+           	  ret.push(o);
            }
+       }
+       return ret;
+     }
+     
+     public function getTimeLine(r:BoReference):TimeLine {
+       var lines:Array = getTimeLines();
+       for each (var l:TimeLine in lines){
+              if(l.resource.oid == r.oid){
+                 return l;
+              }
        }
        return null;
     }
 
      public function getCalendarEntries():Array {
        var ret:Array = new Array();
-       var children:Array = getChildren();
-       for each (var o:Object in children){
-           if(o is TimeLine){
-              ret.push(TimeLine(o).getCalendarEntries());
-           }
+       var lines:Array = getTimeLines();
+       for each (var l:TimeLine in lines){
+          ret = ret.concat( l.getCalendarEntries() );
        }
        return ret;
     }
 
 
-    function setCalendarEntries(arr:Array):void {
-        for each (var e:CalendarEntry in arr){
+    public function clearAllCalendarEntries():void {
+       var lines:Array = getTimeLines();
+       for each (var l:TimeLine in lines){
+          l.removeAllItemPanels();
+       }
+    }
+    
+    public function setCalendarEntries(arr:Array):void {
+       clearAllCalendarEntries();
+       for each (var e:CalendarEntry in arr){
            var timeLine:TimeLine = getTimeLine(e.resource);
-           timeLine.removeAllItemPanels();
-           timeLine.insertItemPanel(new ItemPanel(e));
-        }
+           if(timeLine)
+              timeLine.insertItemPanel(new ItemPanel(e));
+       }
+    }
+    
+}}
 
-    }}
-}
 
