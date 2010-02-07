@@ -21,7 +21,7 @@ public class ActionServiceImpl /*extends HessianServlet*/ implements ActionServi
         System.out.println("ActionServiceImpl.remote_execute " + at.action.getName());
 
         try {
-//            Environment.getPersistentService().join(a.getCatalog());
+            Environment.getPersistentService().join(a.getCatalog());
             ActionScriptAction.setCurrent(a);
 
             if (a.needsLogin) {

@@ -396,6 +396,10 @@ public class Tag extends XmlElement implements Const {
 
     //////////////////////////////////////// Util ////////////////////////////////////////
 
+    protected boolean isTypePrimitive(String type){
+       return "string.String.number.Number.int.Integer.boolean.Boolean.Text.text.Date.date".indexOf(type)>=0;
+    }
+
     public String quote(String in){
         return "\""+in+"\"";
     }
