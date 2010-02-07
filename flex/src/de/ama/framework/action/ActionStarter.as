@@ -43,7 +43,7 @@ public class ActionStarter implements IResponder{
             blazedsStub.addEventListener("result", actionResultHandler);
             blazedsStub.addEventListener("fault", actionFaultHandler);
             blazedsStub.showBusyCursor = true;
-            //            blazedsStub.concurrency = "single";
+            //blazedsStub.concurrency = "single";
         }
     }
 

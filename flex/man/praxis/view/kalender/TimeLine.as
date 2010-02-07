@@ -108,7 +108,7 @@ public class TimeLine extends Canvas {
 
     // ---------------------------------------------------------------------------
 
-    private function insertItemPanel(ip:ItemPanel):void {
+    public function insertItemPanel(ip:ItemPanel):void {
         addChild(ip);
         ip.timeLine = this;
         ip.snapToGrid();
@@ -238,6 +238,27 @@ public class TimeLine extends Canvas {
         _deltaTimeInMinutes = value;
     }
 
-}
+    public function getCalendarEntries():Array {
+       var ret:Array = new Array();
+       var children:Array = getChildren();
+       for each (var o:Object in children){
+           if(o is ItemPanel){
+              // todo dirty check
+              ret.push(ItemPanel(o).getCalendarEntry());
+           }
+       }
+       return ret;
+    }
+
+
+    function removeAllItemPanels():void {
+        var children:Array = getChildren();
+        for each (var o:Object in children){
+            if(o is ItemPanel){
+               removeChild(ItemPanel(o));
+            }
+        }
+
+    }}
 }
 

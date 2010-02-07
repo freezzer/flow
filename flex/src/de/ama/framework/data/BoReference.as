@@ -62,5 +62,13 @@ public class BoReference {
     public function set type(value:String):void {
         _type = value;
     }
+
+    public function equals(other:BoReference):Boolean{
+        if(other==null) return false;
+        if(other==this) return true;
+        if(other.oid != this.oid) return false;
+        if(other._type != this._type) return false;
+        return true;
+    }
 }
 }

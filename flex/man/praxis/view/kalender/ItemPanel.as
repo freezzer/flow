@@ -118,7 +118,9 @@ public class ItemPanel  extends Canvas {
         _label.text = _data.time +"("+Util.toHourMinutesString(_data.durationInMinutes)+") "+_data.label;
     }
 
- 
 
+    public function getCalendarEntry():CalendarEntry {
+        return _data;
+    }
 }
 }
