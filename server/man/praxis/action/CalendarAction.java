@@ -5,11 +5,14 @@ package praxis.action;
 import de.ama.framework.action.ActionScriptAction;
 import de.ama.framework.data.Data;
 import de.ama.framework.data.DataDictionary;
+import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;
 
 import java.util.List;
 import java.util.Date;
+
+import praxis.bom.CalendarEntry;
 
 /**
  * Created by IntelliJ IDEA.
@@ -22,6 +25,7 @@ public class CalendarAction extends ActionScriptAction {
     public int type;
     public Date date;
 
+
     @Override
     public void execute() throws Exception {
 
@@ -30,10 +34,10 @@ public class CalendarAction extends ActionScriptAction {
         if(data!=null){
             ps.attacheObject(data);
             ps.commit();
-        }
-
-        if(selectionModel.getQuery()!=null){
-            List objects = ps.getObjects(selectionModel.getQuery());
+            data = ps.releaseObject(data);
+            return;
+        } else {
+            List objects = ps.getObjects(new Query(CalendarEntry.class));
             data = ps.releaseObject(objects);
         }
     }
