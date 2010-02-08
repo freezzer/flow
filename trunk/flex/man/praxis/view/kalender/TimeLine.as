@@ -111,12 +111,13 @@ public class TimeLine extends Canvas {
     public function insertItemPanel(ip:ItemPanel):void {
         addChild(ip);
         ip.timeLine = this;
-        ip.snapToGrid();
+        ip.moveToTimePosition();
     }
 
     private function mouseClickHandler(e:MouseEvent):void {
     	if(e.ctrlKey) {
     		var ip:ItemPanel = new ItemPanel(new CalendarEntry());
+            ip.getCalendarEntry().time = calcTimeString(e.localY);
     	    insertItemPanel(ip);
 	        ip.keepInSight();
     	}

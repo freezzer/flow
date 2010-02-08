@@ -326,6 +326,13 @@ public class Util
     	return ""+(offset+h)+":"+ (m > 9 ? m : "0"+m);
     }
 
+    public static function toMinutes(str:String):int {
+        var arr:Array = str.split(":");
+        var hours:int = int(arr[0]);
+        var minutes:int = int(arr[1]);
+        return hours*60+minutes;
+    }
+
 
 
 }

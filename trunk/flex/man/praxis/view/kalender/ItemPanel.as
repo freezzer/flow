@@ -92,6 +92,14 @@ public class ItemPanel  extends Canvas {
        }
     }
 
+    public function moveToTimePosition():void {
+    	if(_timeLine==null) return;
+    	var timeInMinutes:int =Util.toMinutes(_data.time);
+    	var snapTime:int = Math.round(timeInMinutes / _timeLine.deltaTimeInMinutes)* _timeLine.deltaTimeInMinutes;
+    	y = _timeLine.calcPos(snapTime);
+  		recalcValues();
+    }
+
     public function snapToGrid():void {
     	if(_timeLine==null) return;
     	var timeInMinutes:int =_timeLine.calcTimeInMinutes(y);

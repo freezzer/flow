@@ -19,7 +19,7 @@ public class SaveCalendarCommand extends Command{
     }
 
     private function resulthandler(action:CalendarAction): void {
-        CalendarEditor(invoker).setCalendarEntries(Array(action.data));
+        CalendarEditor(invoker).setCalendarEntries(action.data as Array);
 
     }
 }
