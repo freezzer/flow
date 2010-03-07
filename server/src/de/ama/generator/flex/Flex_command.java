@@ -38,7 +38,7 @@ public class Flex_command extends Tag {
 
             initPrintWriter(dir, name + ".as");
             write("/* ");
-            write(getStoredObject(COMMENT));
+            write(getStoredString(COMMENT));
             write("*/ ");
             writeLine();
             write("package " + pckg + " {");
@@ -46,15 +46,18 @@ public class Flex_command extends Tag {
             write("import de.ama.framework.command.*;");
             write("import de.ama.framework.data.*;");
             write("public class " + name + " " + " extends Command { ");
+
             writeLine();
             write("    public function " + name + "(label:String=\"" + label + "\", icon:String=\"" + icon + "\") {");
             write("       super(label,icon); ");
             write("    } ");
-            write("      ");
+
+            writeCodeBlock("execute");
             write("    override protected function execute():void {");
             write("      ");
             write("    } ");
             write("    ");
+            writeManualBLock();
             write("}}");
             flush();
 

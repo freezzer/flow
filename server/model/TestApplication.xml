@@ -6,8 +6,9 @@
            generated code by flow "flex on wings"
            this code is property of Andreas Marochow
     ]]></comment>
+    
 
-    <import file="Person.xml"/>
+    <import file="praxis/Person.xml"/>
     <import file="Vorgang.xml"/>
 
 

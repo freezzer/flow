@@ -56,11 +56,13 @@ public class Flex_lister extends Tag {
         write("import de.ama.framework.command.*;");
         write("     ");
         write("public class "+name+" extends ListPanel {");
-        write("     ");
+
+        writeCodeBlock("createData");
         write("     override public function createData():BusinessObject {");
         write("        return Factory.createBean(\""+type+"\"); ");
         write("     } ");
-        write("");
+
+        writeCodeBlock("addCommands");
         write("     override public function addCommands():void {");
         write("        var cmd:Command;");
                          visitChildren(COMMAND, new Visitor(){
@@ -70,12 +72,14 @@ public class Flex_lister extends Tag {
                              }
                          },false);
         write("     } ");
-        write("");
+
+        writeCodeBlock("addCollumns");
         write("     override public function addCollumns():void {");
         if(!Util.isEmpty(label))
         write("        label = \""+label+"\"");
                        visitChildren(COLUMN);
         write("     } ");
+        writeManualBLock();
         write("}}");
         writeLine();
         flush();

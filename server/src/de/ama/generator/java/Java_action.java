@@ -36,7 +36,7 @@ public class Java_action extends Tag {
         initPrintWriter(dir,name+".java");
 
         write("/*");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/");
         writeLine();
         write("package "+pckg+";");
@@ -45,10 +45,12 @@ public class Java_action extends Tag {
         write("import de.ama.app.service.*;");
         writeLine();
         write("public class "+name+" extends Action { ");
-        writeLine();
+
+        writeCodeBlock("execute");
         write("public boolean execute(ActionData data) {");
+        write(" ");
         write(" }");
-        writeLine();
+        writeManualBLock();
         write("}");
         flush();
     }

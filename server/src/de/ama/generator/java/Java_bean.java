@@ -42,7 +42,7 @@ public class Java_bean extends Tag{
         initPrintWriter(dir,name+".java");
 
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
         writeLine();
         write("package "+pckg+";");
@@ -73,7 +73,7 @@ public class Java_bean extends Tag{
                 f.generate();
             }
         },false);
-        writeLine();
+        writeManualBLock();
         write("}");
         flush();
 

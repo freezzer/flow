@@ -32,7 +32,7 @@ public class Java_bootstrap extends Tag {
         initPrintWriter(dir,name+".java");
 
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
         writeLine();
         write("package "+pckg+";");
@@ -42,7 +42,8 @@ public class Java_bootstrap extends Tag {
         write("import de.ama.services.EventService;");
         writeLine();
         write("public class "+name+" { ");
-        writeLine();
+
+        writeCodeBlock("registerBeans");
         write("    protected void registerBeans(){");
         writeLine();
         visitAllChildren(BEAN, new Visitor(){
@@ -52,7 +53,8 @@ public class Java_bootstrap extends Tag {
              }
          });
         write("    }");
-        writeLine();
+
+        writeCodeBlock("registerPermissions");
         write("    protected void registerPermissions(){");
         writeLine();
          visitAllChildren(PERMISSION, new Visitor(){
@@ -62,7 +64,8 @@ public class Java_bootstrap extends Tag {
               }
           });
         write("    }");
-        writeLine();
+
+        writeCodeBlock("registerEventConsumer");
         write("    protected void registerEventConsumer(){");
         writeLine();
          visitAllChildren(EVENT_CONSUMER, new Visitor(){
@@ -73,14 +76,15 @@ public class Java_bootstrap extends Tag {
               }
           });
         write("    }");
-        writeLine();
+
+        writeCodeBlock("preMain");
         write("    public void preMain() {");
         write("         registerBeans();");
         write("         registerPermissions();");
         write("         registerEventConsumer();");
         write("         System.out.println(\"Bootstrap done OK\");");
         write("    }");
-        writeLine();
+        writeManualBLock();
         write("}");
         flush();
 

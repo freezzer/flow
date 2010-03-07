@@ -32,7 +32,7 @@ public class Java_permission extends Tag {
 
 
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
         writeLine();
         write("package "+pckg+";");
@@ -40,11 +40,13 @@ public class Java_permission extends Tag {
         write("import de.ama.services.permission.PermissionSwitch;");
         writeLine();
         write("public class Permission"+name+" extends de.ama.services.permission.PermissionContext { ");
+
         writeLine();
         write("    public Permission"+name+"() {");
         write("        setContext(\""+name+"\");");
         write("    }");
-        writeLine();
+
+        writeCodeBlock("addSwitches");
         write("    @Override");
         write("    protected void addSwitches(){");
         writeLine();
@@ -56,7 +58,7 @@ public class Java_permission extends Tag {
                 }
             },true);
         write("    }");
-        writeLine();
+        writeManualBLock();
         write("}");
         flush();
     }

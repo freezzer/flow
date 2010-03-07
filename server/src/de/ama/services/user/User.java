@@ -15,6 +15,10 @@ public class User implements PersistentMarker {
     private String pwd;
     private String email;
 
+
+    public User() {
+    }
+
     public User(String name, String pwd) {
         this.name = name;
         this.pwd = pwd;

@@ -38,7 +38,7 @@ public class Java_event_consumer extends Tag {
         initPrintWriter(dir,name+".java");
 
         write("/*");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/");
         writeLine();
         write("package "+pckg+";");
@@ -46,15 +46,17 @@ public class Java_event_consumer extends Tag {
         write("import de.ama.services.event.*;");
         writeLine();
         write("public class "+name+" extends EventConsumer { ");
-        writeLine();
+
+        writeCodeBlock(name);
         write("    public "+name+"(String events) {");
         write("        super(events);");
         write("    }");
-        writeLine();
+
+        writeCodeBlock("consume");
         write("    public void consume(Event e){");
         write("        super.consume(e);");
         write("    }");
-        writeLine();
+        writeManualBLock();
         write("}");
         flush();
     }
