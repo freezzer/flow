@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/person/PersonLister.as)
+// @Generated(flex/src/praxis/view/person/PersonLister.as)
 package praxis.view.person {
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.ListPanel;

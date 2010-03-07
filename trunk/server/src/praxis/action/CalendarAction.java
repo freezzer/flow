@@ -3,8 +3,6 @@
 package praxis.action;
 
 import de.ama.framework.action.ActionScriptAction;
-import de.ama.framework.data.Data;
-import de.ama.framework.data.DataDictionary;
 import de.ama.framework.data.Query;
 import de.ama.services.Environment;
 import de.ama.services.PersistentService;

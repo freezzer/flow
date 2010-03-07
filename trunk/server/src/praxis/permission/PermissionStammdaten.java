@@ -1,4 +1,4 @@
-// @Generated(generated/java/praxis/permission/PermissionStammdaten.java)
+// @Generated(server/src/praxis/permission/PermissionStammdaten.java)
 /* 
 
            generated code by flow "flex on wings"

@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/stammdaten/ResourcePanel.as)
+// @Generated(flex/src/praxis/view/stammdaten/ResourcePanel.as)
 /* 
 
            generated code by flow "flex on wings"

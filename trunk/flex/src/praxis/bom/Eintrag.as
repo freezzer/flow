@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/bom/Eintrag.as)
+// @Generated(flex/src/praxis/bom/Eintrag.as)
 /* 
 
            generated code by flow "flex on wings"

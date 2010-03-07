@@ -7,11 +7,11 @@
     <property name="deploy.dir" value="${home.dir}/server/webapp"/>
     <property name="root_package" value="praxis"/>
 
-    <target name="server.compile.environment" >
+    <target name="server.compile.tools" >
          <delete dir="server/classes" failonerror="false"/>
-         <!--<delete dir="server/src/${root_package}" failonerror="false"/>-->
          <mkdir dir="server/classes" />
         <javac destdir="server/classes" debug="on"  encoding="UTF-8">
+            <src path="server/tools"/>
             <src path="server/src"/>
             <classpath>
                 <fileset dir="server/lib">
@@ -43,8 +43,6 @@
 
 
     <target name="generate"  >
-        <delete dir="generated" failonerror="false"/>
-        <mkdir dir="generated"/>
 
         <java classname="de.ama.generator.Starter" fork="true">
             <classpath>
@@ -58,29 +56,10 @@
             <arg value="root_package"/>
             <arg value="${root_package}"/>
             <arg value="targets"/>
-            <arg value="flex,java"/>
+            <arg value="flex:flex/src,java:server/src"/>
         </java>
     </target>
 
-    <target name="copy.server.sources" >
-        <!--<delete dir="server/src/${root_package}" failonerror="false"/>-->
-        <copy todir="server/src/${root_package}" failonerror="false">
-            <fileset dir="generated/java/${root_package}" />
-        </copy>
-        <!--<copy todir="server/src/${root_package}" overwrite="true" failonerror="false">-->
-            <!--<fileset dir="server/man/${root_package}" />-->
-        <!--</copy>-->
-    </target>
-
-    <target name="copy.client.sources" >
-        <!--<delete dir="flex/src/${root_package}" failonerror="false"/>-->
-        <copy todir="flex/src/${root_package}" failonerror="false">
-            <fileset dir="generated/flex/${root_package}" />
-        </copy>
-        <!--<copy todir="flex/src/${root_package}" overwrite="true" failonerror="false">-->
-            <!--<fileset dir="flex/man/${root_package}" />-->
-        <!--</copy>-->
-    </target>
 
     <target name="server.enhance" >
         <java classname="de.ama.db.tools.Enhancer" fork="true">
@@ -96,36 +75,7 @@
             <arg value="1"/>
         </java>
     </target>
-    
-<!--
-    <target name="deploy" description="deploy to tomcat">
-        <copy overwrite="true" todir="${deploy.dir}/WEB-INF/classes">
-            <fileset dir="classes">
-                <include name="**/**"/>
-                <exclude name="generator/**"/>
-                <exclude name="logic/**"/>
-            </fileset>
-        </copy>
-        <copy overwrite="false" todir="${deploy.dir}/WEB-INF/lib">
-            <fileset dir="lib">
-                <include name="**/*.jar"/>
-            </fileset>
-        </copy>
-        <copy overwrite="false" todir="${deploy.dir}/WEB-INF/flex">
-            <fileset dir="conf">
-                <include name="**/messaging-config.xml"/>
-                <include name="**/proxy-config.xml"/>
-                <include name="**/remoting-config.xml"/>
-                <include name="**/services-config.xml"/>
-            </fileset>
-        </copy>
-        <copy overwrite="false" todir="${deploy.dir}/WEB-INF">
-            <fileset dir="conf">
-                <include name="**/web.xml"/>
-            </fileset>
-        </copy>
-    </target>
--->
+
 
     <!--  ********************************* CLIENT ************************************************* -->
 
@@ -213,26 +163,22 @@
     </target>
     
     <target name="build.server" description="make server " >
-        <antcall target="server.compile.environment"/>
+        <antcall target="server.compile.tools"/>
         <antcall target="generate"/>
-        <antcall target="copy.server.sources"/>
         <antcall target="server.compile.generated"/>
         <antcall target="server.enhance"/>
         <antcall target="deploy"/>
    </target>
     <target name="build.client" description="make client " >
         <antcall target="client.clean"/>
-        <antcall target="copy.client.sources"/>
         <antcall target="client.compile"/>
         <antcall target="client.wrapper"/>
         <antcall target="deploy"/>
     </target>
     <target name="build.all" description="make/deploy whole project" >
         <antcall target="client.clean"/>
-        <antcall target="server.compile.environment"/>
+        <antcall target="server.compile.tools"/>
         <antcall target="generate"/>
-        <antcall target="copy.server.sources"/>
-        <antcall target="copy.client.sources"/>
         <antcall target="client.compile"/>
         <antcall target="client.wrapper"/>
         <antcall target="server.compile.generated"/>

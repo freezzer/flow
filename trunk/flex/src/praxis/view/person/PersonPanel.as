@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/person/PersonPanel.as)
+// @Generated(flex/src/praxis/view/person/PersonPanel.as)
 /* 
 
            generated code by flow "flex on wings"

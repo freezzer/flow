@@ -1,4 +1,4 @@
-// @Generated(generated/java/praxis/bom/CalendarEntry.java)
+// @Generated(server/src/praxis/bom/CalendarEntry.java)
 /* 
 
            generated code by flow "flex on wings"

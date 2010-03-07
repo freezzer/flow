@@ -1,4 +1,4 @@
-// @Generated(generated/java/praxis/permission/PermissionKalender.java)
+// @Generated(server/src/praxis/permission/PermissionKalender.java)
 /* 
 
            generated code by flow "flex on wings"

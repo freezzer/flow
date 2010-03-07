@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/patient/CreateDokumentCommand.as)
+// @Generated(flex/src/praxis/view/patient/CreateDokumentCommand.as)
 /* 
 
            generated code by flow "flex on wings"

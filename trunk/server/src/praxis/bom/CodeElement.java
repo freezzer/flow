@@ -1,4 +1,4 @@
-// @Generated(generated/java/praxis/bom/CodeElement.java)
+// @Generated(server/src/praxis/bom/CodeElement.java)
 /* 
 
            generated code by flow "flex on wings"

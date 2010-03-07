@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/permission/PermissionPatient.as)
+// @Generated(flex/src/praxis/permission/PermissionPatient.as)
 /* 
 
            generated code by flow "flex on wings"

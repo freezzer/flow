@@ -93,9 +93,9 @@ public interface Const {
     public static final String GWT = "gwt";
 
     // andere
-    public static final String DIR =       "dir";
+    public static final String DIR =  "dir";
     public static final String GEN =  "generated";
-    public static final String SRC =  "source";
+    public static final String SRC =  "src";
 
 
 }

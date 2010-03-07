@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/person/AdressePanel.as)
+// @Generated(flex/src/praxis/view/person/AdressePanel.as)
 /* 
 
            generated code by flow "flex on wings"
@@ -55,6 +55,11 @@ public class AdressePanel  extends EditPanel {
 // *****************************************************************************************
 // [MANUAL.CODE] insert manual code here
 // *****************************************************************************************
+
+    override public function set label(value:String):void {
+        super.label = value;
+    }
+
 // [MANUAL.CODE.END] 
 
 }}

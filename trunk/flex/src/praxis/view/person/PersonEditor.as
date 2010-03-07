@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/person/PersonEditor.as)
+// @Generated(flex/src/praxis/view/person/PersonEditor.as)
 package praxis.view.person {     
 import de.ama.framework.gui.frames.*; 
 import de.ama.framework.command.*; 
