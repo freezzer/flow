@@ -1,35 +1,24 @@
-/*
-    This file is part of flow xml-model based app-generator using java and flex .
-
-    flow is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    flow is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-    
-*/
-
 
 package de.ama.generator;
 
 
 /**
- * User: x
- * Date: 16.06.2008
+ * User: Andreas Marochow
+ * Das import Tag loest einen Import auf. Es wird die Xml-Datei importiert, die im Attribute file uebergeben wird eingelesen
+ * und in das aufrufende Model importiert.
+ *
+ * Beispiel:
+ *      <import file="alias.xml"/>
+        <import file="Person.xml"/>
+        <import file="Vorgang.xml"/>
  */
 public class Tag_import extends Tag{
 
-    public void prepareElement() {
-        String filename = getRequiredAttribute("file");
+    @Override
+    public  void prepareElement() {
+        String filename = getRequiredAttribute(FILE);
         try {
-            Tag tag = getWriter().readTemplateFile(filename);
+            Tag tag = getOutputWriter().readTemplateFile(filename);
             tag.prepareRecursive();
             addChild(tag);
         } catch (Exception e) {

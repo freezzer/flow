@@ -1,30 +1,18 @@
-/*
-    This file is part of flow xml-model based app-generator using java and flex .
 
-    flow is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    flow is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-    
-*/
 
 package de.ama.generator;
 
 
 /**
- * User: x
- * Date: 26.04.2008
+ * User: Andreas Marochow
+ * Alle im Rahmen des Codegenerator verwendeten Konstanten
+
  */
 public interface Const {
 
+    // Tags
+    public static final String ALIAS = "alias";
+    public static final String CLASS = "class";
     public static final String COMMENT = "comment";
     public static final String COMMAND = "command";
     public static final String PROVIDER = "provider";
@@ -34,6 +22,8 @@ public interface Const {
     public static final String BORDER = "border";
     public static final String ICON = "icon";
     public static final String PANEL = "panel";
+    public static final String TABPANEL = "tabbed_panel";
+    public static final String LOCATION = "location";
     public static final String GOOGLE_MAP = "google_map";
     public static final String EDITOR = "editor";
     public static final String LISTER = "lister";
@@ -54,13 +44,18 @@ public interface Const {
     public static final String DEFAULT = "default";
     public static final String TREE_NODE = "tree_node";
     public static final String TREE_EDITOR = "tree_editor";
+    public static final String TREE_PANEL = "tree_panel";
     public static final String INPUT = "input";
     public static final String MENU = "menu";
     public static final String MENUBAR = "menubar";
     public static final String MENUITEM = "menuitem";
+    public static final String EVENT = "event";
+    public static final String EVENT_CONSUMER = "event_consumer";
+    public static final String RICH_TEXT_EDITOR ="rich_text_editor";
 
+
+    // Tag-Attribute
     public static final String DATE = "date";
-    public static final String DATA = "data";
     public static final String STRING = "string";
     public static final String TEXT = "text";
     public static final String NUMBER = "number";
@@ -69,23 +64,6 @@ public interface Const {
     public static final String LIST = "list";
     public static final String AREA = "area";
     public static final String LOOKUP = "lookup";
-    public static final String EVENT = "event";
-    public static final String EVENTS = "events";
-    public static final String EVENT_CONSUMER = "event_consumer";
-
-    public static final String DIR =       "dir";
-    public static final String PACKAGE =   "package";
-
-    public static final String GEN =  "generated";
-    public static final String MAN =  "man";
-
-    public static final String UNIQUE_KEY = "unique-key";
-
-    public static final String SORTABLE = "sortable";
-    public static final String EDITABLE = "editable";
-    public static final String SEARCHABLE = "searchable";
-    public static final String OPEN = "open";
-
     public static final String LABELWIDTH = "labelwidth";
     public static final String INPUTWIDTH = "inputwidth";
     public static final String X = "x";
@@ -95,18 +73,29 @@ public interface Const {
     public static final String GAP = "gap";
     public static final String COLOR = "color";
     public static final String BGCOLOR = "bgcolor";
+    public static final String EVENTS = "events";
+    public static final String PACKAGE =   "package";
+    public static final String FILE =       "file";
+    public static final String UNIQUE_KEY = "unique-key";
+    public static final String SORTABLE = "sortable";
+    public static final String EDITABLE = "editable";
+    public static final String SEARCHABLE = "searchable";
+    public static final String OPEN = "open";
+    public static final String LINK_INPUT ="link_input";
+    public static final String BULLET_BUTTON ="bullet_button";
+    public static final String ALIGN_BUTTONS="align_buttons";
+    public static final String COLOR_PICKER="color_picker";
 
-    // RichtextEditor ----------------------------------
+    // Aspekte
+    public static final String DATA = "data";
+    public static final String SWING = "swing";
+    public static final String JAVA = "java";
+    public static final String GWT = "gwt";
 
-    public static final String  RICH_TEXT_EDITOR ="rich_text_editor";
-    public static final String  LINK_INPUT ="link_input";
-    public static final String  BULLET_BUTTON ="bullet_button";
-    public static final String  ALIGN_BUTTONS="align_buttons";
-    public static final String  COLOR_PICKER="color_picker";
-
-    // GoogleMap ----------------------------------------
-    
-
+    // andere
+    public static final String DIR =       "dir";
+    public static final String GEN =  "generated";
+    public static final String SRC =  "source";
 
 
 }

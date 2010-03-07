@@ -1,23 +1,6 @@
 package de.ama.generator;
-/*
-    This file is part of flow xml-model based app-generator using java and flex .
 
-    flow is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
 
-    flow is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with Foobar.  If not, see <http://www.gnu.org/licenses/>.
-
-*/
-
-import de.ama.framework.util.DTDResolver;
 import org.jdom.Document;
 import org.jdom.input.SAXBuilder;
 
@@ -25,7 +8,13 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.ama.util.Util;
 
+
+/**
+ * Klasse die direkt vom Starter aufgerufen wird und das File-handling ausfuehrt. Hier wird auch der zentrale Objektstore
+ * und das classDictionary gehalten.
+ */
 
 public class OutputWriter {
     private Tag templateRoot;
@@ -37,10 +26,24 @@ public class OutputWriter {
     private Map<String,String> classDictionary = new HashMap<String,String>();
 
     public void registerClass(String key, String className) {
+//        System.out.println("OutputWriter.registerClass "+key+" "+className);
+
         String s = classDictionary.put(key, className);
         if(s!=null){
             throw new RuntimeException("duplicate key["+key+"] for class "+ className);
         }
+    }
+
+    public String getFullClassName(String key, Tag tag){
+        String className = classDictionary.get(key);
+        if(className==null){
+            throw new RuntimeException("no class for  key["+key+"] registered \n look at --> <"+tag.getName()+" "+tag.getAttributesString()+" ../>");
+        }
+        return className;
+    }
+
+    public boolean isRegisteredClass(String type) {
+        return classDictionary.containsKey(type);
     }
 
 
@@ -54,7 +57,7 @@ public class OutputWriter {
 
     public Tag readTemplateFile(String fileName) {
         SAXBuilder builder = new SAXBuilder(false);
-        builder.setEntityResolver(new DTDResolver());
+//        builder.setEntityResolver(new DTDResolver());
         File in = new File(inDir, fileName);
         if (!in.exists()) {
             throw new RuntimeException("Can't find inputFile " + fileName);
@@ -64,6 +67,7 @@ public class OutputWriter {
         try {
             doc = builder.build(in);
         } catch (Exception e) {
+            e.printStackTrace();
             throw new RuntimeException("Can't read inputFile " + fileName);
         }
 
@@ -90,7 +94,7 @@ public class OutputWriter {
             templateRoot.setWriter(this);
 
         } catch (Exception e) {
-            logError("Das Template " + inFilename + " konnte nicht eingelesen werden!", e);
+            logError("Das Template " + inFilename + " konnte nicht eingelesen werden!"+ Util.getAllExceptionInfos(e));
         }
 
         if (templateRoot == null) {
@@ -106,17 +110,17 @@ public class OutputWriter {
 //        }
     }
 
-    private static String knownTargets = "java,flex";
+    private static String knownAspects = "java,flex,data,swing,gwt";
     public void start() {
 
         String[] strings = targets.split(",");
         for (int i = 0; i < strings.length; i++) {
-            Tag.target=strings[i];
-            if(knownTargets.indexOf(Tag.target)<0){
-                throw new IllegalArgumentException("unknown target "+Tag.target);
+            Tag.actual_aspect =strings[i];
+            if(knownAspects.indexOf(Tag.actual_aspect)<0){
+                throw new IllegalArgumentException("unknown target "+Tag.actual_aspect);
             }
 
-            System.out.println("generating for target "+Tag.target);
+            System.out.println("generating for target "+Tag.actual_aspect);
             objectStore.clear();
 
             composeTemplates();

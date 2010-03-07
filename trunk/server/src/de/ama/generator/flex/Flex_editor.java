@@ -42,12 +42,14 @@ public class Flex_editor extends Tag {
         write("import de.ama.framework.data.BusinessObject;");
         write("import de.ama.services.Factory;");
         write("public class "+name+" extends PanelEditor {");
-        write("     ");
+
+        writeCodeBlock("createData");
         write("     override public function createData():BusinessObject {");
         write("       return Factory.createBean(\""+type+"\"); ");
         write("     } ");
         write("     ");
 
+        writeCodeBlock("addCommands");
         write("     override public function addCommands():void {");
         write("        label = \""+label+"\"");
                         visitParent(PERMISSION, new Visitor(){
@@ -64,12 +66,13 @@ public class Flex_editor extends Tag {
                             }
                         },false);
         write("     } ");
-        write("");
+
+        writeCodeBlock("addPanels");
         write("     override public function addPanels():void {");
         write("        var panel:EditPanel;");
                          visitChildren(PANEL);
         write("     } ");
-        write("");
+        writeManualBLock();
         write("   }");
         write("}");
 

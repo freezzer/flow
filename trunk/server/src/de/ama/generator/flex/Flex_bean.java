@@ -38,7 +38,7 @@ public class Flex_bean extends Tag{
         initPrintWriter(dir,name+".as");
 
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
 
         writeLine();
@@ -67,8 +67,7 @@ public class Flex_bean extends Tag{
                 f.generate();
             }
         },false);
-        writeLine();
-
+        writeManualBLock();        
         write("}}");
         flush();
 

@@ -9,7 +9,7 @@
 
     <target name="server.compile.environment" >
          <delete dir="server/classes" failonerror="false"/>
-         <delete dir="server/src/${root_package}" failonerror="false"/>
+         <!--<delete dir="server/src/${root_package}" failonerror="false"/>-->
          <mkdir dir="server/classes" />
         <javac destdir="server/classes" debug="on"  encoding="UTF-8">
             <src path="server/src"/>
@@ -42,7 +42,7 @@
     </target>
 
 
-    <target name="generate" depends="server.compile.environment" >
+    <target name="generate"  >
         <delete dir="generated" failonerror="false"/>
         <mkdir dir="generated"/>
 
@@ -63,23 +63,23 @@
     </target>
 
     <target name="copy.server.sources" >
-        <delete dir="server/src/${root_package}" failonerror="false"/>
+        <!--<delete dir="server/src/${root_package}" failonerror="false"/>-->
         <copy todir="server/src/${root_package}" failonerror="false">
             <fileset dir="generated/java/${root_package}" />
         </copy>
-        <copy todir="server/src/${root_package}" overwrite="true" failonerror="false">
-            <fileset dir="server/man/${root_package}" />
-        </copy>
+        <!--<copy todir="server/src/${root_package}" overwrite="true" failonerror="false">-->
+            <!--<fileset dir="server/man/${root_package}" />-->
+        <!--</copy>-->
     </target>
 
     <target name="copy.client.sources" >
-        <delete dir="flex/src/${root_package}" failonerror="false"/>
+        <!--<delete dir="flex/src/${root_package}" failonerror="false"/>-->
         <copy todir="flex/src/${root_package}" failonerror="false">
             <fileset dir="generated/flex/${root_package}" />
         </copy>
-        <copy todir="flex/src/${root_package}" overwrite="true" failonerror="false">
-            <fileset dir="flex/man/${root_package}" />
-        </copy>
+        <!--<copy todir="flex/src/${root_package}" overwrite="true" failonerror="false">-->
+            <!--<fileset dir="flex/man/${root_package}" />-->
+        <!--</copy>-->
     </target>
 
     <target name="server.enhance" >

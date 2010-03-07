@@ -96,7 +96,7 @@ public class Flex_panel extends Tag {
         initPrintWriter(dir,name+".as");
 
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
 
         writeLine();
@@ -107,6 +107,8 @@ public class Flex_panel extends Tag {
         write("import de.ama.services.Factory;");
 
         write("public class "+name+" "+" extends EditPanel { ");
+
+        writeCodeBlock(name);
         write("    public function "+name+"() {");
         write("        x="+x+";  y="+y+";");
         write("        setStyle(\"borderStyle\",\""+(border?"solid":"none")+"\");");
@@ -121,20 +123,22 @@ public class Flex_panel extends Tag {
    if(Util.isNotEmpty(path))
         write("        path=\""+path+"\";");
         write("    }");
-        write("   ");
+
+        writeCodeBlock("addPanels");
         write("     override public function addPanels():void {");
         write("        var panel:EditPanel;");
                         visitChildren(PANEL);
                         visitChildren(GOOGLE_MAP);
         write("     } ");
-        write("   ");
+
+        writeCodeBlock("addFields");
         write("     override public function addFields():void {");
         write("        var field:EditField;");
                         visitChildren(INPUT);
                         visitChildren(LOOKUP);
                         visitChildren(RICH_TEXT_EDITOR);
         write("     } ");
-        write("");
+        writeManualBLock();
         write("}}");
         flush();
     }

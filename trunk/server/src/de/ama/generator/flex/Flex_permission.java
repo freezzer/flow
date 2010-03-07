@@ -30,7 +30,7 @@ public class Flex_permission extends Tag {
 
             
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
         writeLine();
         write("package "+pckg+" {");

@@ -36,7 +36,7 @@ public class Flex_bootstrap extends Tag {
         initPrintWriter(dir,name+".as");
 
         write("/* ");
-        write(getStoredObject(COMMENT));
+        write(getStoredString(COMMENT));
         write("*/ ");
         writeLine();
         write("package "+pckg+" {");
@@ -116,6 +116,7 @@ public class Flex_bootstrap extends Tag {
                     });
         write("    }");
         write("");
+        writeManualBLock();
         write("}}");
         flush();
     }
