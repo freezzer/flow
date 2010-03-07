@@ -115,12 +115,14 @@ public class OutputWriter {
 
         String[] strings = targets.split(",");
         for (int i = 0; i < strings.length; i++) {
-            Tag.actual_aspect =strings[i];
+            String[] temp = strings[i].split(":");
+            Tag.actual_aspect = temp[0];
+            Tag.actual_aspect_dir = temp[1] ;
             if(knownAspects.indexOf(Tag.actual_aspect)<0){
                 throw new IllegalArgumentException("unknown target "+Tag.actual_aspect);
             }
 
-            System.out.println("generating for target "+Tag.actual_aspect);
+            System.out.println("generating for target "+Tag.actual_aspect+" to dir "+Tag.actual_aspect_dir);
             objectStore.clear();
 
             composeTemplates();
@@ -129,6 +131,11 @@ public class OutputWriter {
         }
 
 
+    }
+
+
+    public String getTargets() {
+        return targets;
     }
 
     ///////////////////////////// Logging //////////////////////////////////////////////
@@ -144,9 +151,5 @@ public class OutputWriter {
 
     public void logError(String msg) {
         System.out.println("ERROR : " + msg);
-    }
-
-    public String getTargets() {
-        return targets;
     }
 }

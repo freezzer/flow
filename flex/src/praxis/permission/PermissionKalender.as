@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/permission/PermissionKalender.as)
+// @Generated(flex/src/praxis/permission/PermissionKalender.as)
 /* 
 
            generated code by flow "flex on wings"

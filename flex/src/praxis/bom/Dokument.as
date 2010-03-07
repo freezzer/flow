@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/bom/Dokument.as)
+// @Generated(flex/src/praxis/bom/Dokument.as)
 /* 
 
            generated code by flow "flex on wings"
@@ -25,6 +25,12 @@ public class Dokument  extends BusinessObject {
 // *****************************************************************************************
 // [MANUAL.CODE] insert manual code here
 // *****************************************************************************************
+
+
+    override public function getValue(path:String):Object {
+        return super.getValue(path);
+    }
+
 // [MANUAL.CODE.END] 
 
 }}

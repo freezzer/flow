@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/patient/PatientEditor.as)
+// @Generated(flex/src/praxis/view/patient/PatientEditor.as)
 package praxis.view.patient {     
 import de.ama.framework.gui.frames.*; 
 import de.ama.framework.command.*; 

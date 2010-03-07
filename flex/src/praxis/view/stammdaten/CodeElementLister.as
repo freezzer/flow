@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/stammdaten/CodeElementLister.as)
+// @Generated(flex/src/praxis/view/stammdaten/CodeElementLister.as)
 package praxis.view.stammdaten {
 import de.ama.framework.data.BusinessObject;
 import de.ama.framework.gui.frames.ListPanel;

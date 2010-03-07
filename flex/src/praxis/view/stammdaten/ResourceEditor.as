@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/view/stammdaten/ResourceEditor.as)
+// @Generated(flex/src/praxis/view/stammdaten/ResourceEditor.as)
 package praxis.view.stammdaten {     
 import de.ama.framework.gui.frames.*; 
 import de.ama.framework.command.*; 

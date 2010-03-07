@@ -31,6 +31,7 @@ import java.util.Scanner;
 public class Tag extends XmlElement implements Const {
     // der Generator generiert fuer alle aspecte,
     public static String actual_aspect;
+    public static String actual_aspect_dir;
 
     private OutputWriter writer;
     private PrintWriter printWriter;
@@ -645,16 +646,8 @@ public class Tag extends XmlElement implements Const {
      * @return liefert den fuer dieses Tag relevanten Verzeichniss-Pfad im temporaeren generated Verzeichniss
      */
     protected String getDir(){
-        return GEN + "/" + actual_aspect + "/" + getPathDir();
+        return actual_aspect_dir + "/" + getPathDir();
     }
-
-    /**
-     * @return liefert den fuer dieses Tag relevanten Verzeichniss-Pfad im ziel Source-Verzeichniss
-     */
-    protected String getSourceDir(){
-        return SRC + "/" + getPathDir();
-    }
-
 
     protected OutputWriter getOutputWriter() {
         if(isRoot())  return writer;
@@ -678,7 +671,7 @@ public class Tag extends XmlElement implements Const {
                 dir.mkdirs();
             }
 
-            File inFile = new File(getSourceDir(),fileName);
+            File inFile = new File(_dir,fileName);
             if(inFile.exists()){
                 parseGeneratedFile(inFile);
             }

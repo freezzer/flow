@@ -1,4 +1,4 @@
-// @Generated(generated/flex/praxis/bom/Resource.as)
+// @Generated(flex/src/praxis/bom/Resource.as)
 /* 
 
            generated code by flow "flex on wings"
