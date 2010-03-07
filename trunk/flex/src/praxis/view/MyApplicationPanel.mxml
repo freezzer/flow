@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<frames:TabbedApplicationPanel 
+xmlns:mx="http://www.adobe.com/2006/mxml" 
+xmlns:frames="de.ama.framework.gui.frames.*"
+implements="de.ama.framework.gui.frames.ApplicationPanel">
+<mx:Script><![CDATA[
+    override protected function executeGeneratedBootstrap():void {
+       var bootstrap:Bootstrap = new Bootstrap();
+           bootstrap.execute();
+    }
+
+    override protected function initializeMenu():void {
+       import de.ama.framework.command.*;
+       import mx.collections.ArrayCollection;
+       var cmd:Command;
+       var menu:ArrayCollection;
+
+
+        //////////////////////////// Menu System ////////////////////////
+        menu = addMenu("System");
+        cmd = new LoginCommand("Anmelden");
+        cmd.permissionId = "HauptMenu:LoginCommand (Anmelden)";
+        cmd.setProperty("permitted","true");
+        menu.addItem(cmd);
+
+        cmd = new LogoutCommand("Abmelden");
+        cmd.permissionId = "HauptMenu:LogoutCommand (Abmelden)";
+        cmd.setProperty("permitted","true");
+        menu.addItem(cmd);
+
+
+        menu.addItem(new Separator()); // --------------------------------------
+
+        cmd = new OpenListerCommand("Resourcen");
+        cmd.permissionId = "HauptMenu:OpenListerCommand (Resourcen)";
+        cmd.setProperty("lister","ResourceLister");
+        menu.addItem(cmd);
+
+        cmd = new OpenListerCommand("Personen");
+        cmd.permissionId = "HauptMenu:OpenListerCommand (Personen)";
+        cmd.setProperty("lister","PersonLister");
+        menu.addItem(cmd);
+
+        cmd = new OpenListerCommand("TextBausteine");
+        cmd.permissionId = "HauptMenu:OpenListerCommand (TextBausteine)";
+        cmd.setProperty("lister","TextBausteinLister");
+        menu.addItem(cmd);
+
+        cmd = new OpenListerCommand("EBM Elemete");
+        cmd.permissionId = "HauptMenu:OpenListerCommand (EBM Elemete)";
+        cmd.setProperty("lister","CodeElementLister");
+        menu.addItem(cmd);
+
+
+        menu.addItem(new Separator()); // --------------------------------------
+
+        cmd = new OpenEditorCommand("Benutzer Berechtigungen");
+        cmd.permissionId = "HauptMenu:OpenEditorCommand (Benutzer Berechtigungen)";
+        cmd.setProperty("editor","PermissionEditor");
+        cmd.setProperty("permitted","true");
+        menu.addItem(cmd);
+
+
+        //////////////////////////// Menu Patient ////////////////////////
+        menu = addMenu("Patient");
+        cmd = new OpenListerCommand("Karteikarten");
+        cmd.permissionId = "HauptMenu:OpenListerCommand (Karteikarten)";
+        cmd.setProperty("lister","PatientLister");
+        menu.addItem(cmd);
+
+        cmd = new OpenEditorCommand("Neuen Karteikarte anlegen");
+        cmd.permissionId = "HauptMenu:OpenEditorCommand (Neuen Karteikarte anlegen)";
+        cmd.setProperty("editor","PatientEditor");
+        menu.addItem(cmd);
+
+
+        //////////////////////////// Menu Kalender ////////////////////////
+        menu = addMenu("Kalender");
+        cmd = new OpenEditorCommand("Kalender pflegen");
+        cmd.permissionId = "HauptMenu:OpenEditorCommand (Kalender pflegen)";
+        cmd.setProperty("editor","CalendarEditor");
+        menu.addItem(cmd);
+
+    }
+]]></mx:Script>
+</frames:TabbedApplicationPanel>
