@@ -25,7 +25,44 @@ public class TimeLine extends Canvas {
     private var _deltaTimeInMinutes:int;
     private var _labelOffset:int=20;
     
-
+    private var _selectedItem:ItemPanel = null;
+    private var _startPos:int = 0;
+    public function set selectedItem(itempanel:ItemPanel):void{
+    	_selectedItem = itempanel;
+    	_startPos = 0;
+    }
+    
+    
+    private function mouseUpHandler(e:MouseEvent):void {
+    	if(_selectedItem){
+        	_selectedItem.unselect();
+         }
+    }
+    
+    private function mouseMoveHandler(e:MouseEvent):void {
+    	if(_selectedItem && e.buttonDown){
+	    	if(_startPos==0){
+	    	   _startPos = e.stageY;
+	    	} else {
+	    		var diff:int = e.stageY-_startPos;
+	    		if(Math.abs(diff) > (deltaTimeInMinutes/factor)-1){
+	    		   _selectedItem.height += diff;
+	    		   _startPos = e.stageY;
+		    		if(_selectedItem.height < 20){
+		    			_selectedItem.height = 20;
+		    		}
+	    		}
+	    	}
+    	}
+    }
+    
+    private function mouseClickHandler(e:MouseEvent):void {
+    	if(e.ctrlKey) {
+    		var ip:ItemPanel = new ItemPanel(new CalendarEntry());
+    	    insertItemPanel(ip, e.localY-labelOffset);
+    	}
+    }
+    
     public function TimeLine(resource:Resource, startTime:Date, endTime:Date, deltaTime:int) {
         this.resource = resource;
         _startTime = startTime;
@@ -42,6 +79,8 @@ public class TimeLine extends Canvas {
         verticalScrollPolicy = "off";
 
         addEventListener(MouseEvent.CLICK, mouseClickHandler);
+        addEventListener(MouseEvent.MOUSE_MOVE, mouseMoveHandler);
+        addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
         
         addEventListener(DragEvent.DRAG_ENTER, dragEnterHandler);
         addEventListener(DragEvent.DRAG_DROP, dragDropHandler);
@@ -84,8 +123,7 @@ public class TimeLine extends Canvas {
         var itemPanel:ItemPanel = ItemPanel(event.dragInitiator);
         if (event.dragSource.hasFormat("offset")){
         	 var offset:int = int(event.dragSource.dataForFormat('offset'));
- 	         itemPanel.y = event.localY - offset;
-	         timeLine.insertItemPanel(itemPanel);
+	         timeLine.insertItemPanel(itemPanel,event.localY);
 	         showReceiveBorder(false);
         }
     }
@@ -108,22 +146,15 @@ public class TimeLine extends Canvas {
 
     // ---------------------------------------------------------------------------
 
-    public function insertItemPanel(ip:ItemPanel):void {
-        addChild(ip);
+    public function insertItemPanel(ip:ItemPanel, y:int):void {
+    	if(y>0){
+           ip.getCalendarEntry().time = calcTimeString(y);
+        }
         ip.timeLine = this;
+        addChild(ip);
         ip.moveToTimePosition();
+        ip.keepInSight();
     }
-
-    private function mouseClickHandler(e:MouseEvent):void {
-    	if(e.ctrlKey) {
-    		var ip:ItemPanel = new ItemPanel(new CalendarEntry());
-            ip.getCalendarEntry().time = calcTimeString(e.localY);
-    	    insertItemPanel(ip);
-	        ip.keepInSight();
-    	}
-    }
-
-
 
     public function get labelOffset():int {
     	return _labelOffset;
@@ -252,7 +283,7 @@ public class TimeLine extends Canvas {
     }
 
 
-    function removeAllItemPanels():void {
+    public function removeAllItemPanels():void {
         var children:Array = getChildren();
         for each (var o:Object in children){
             if(o is ItemPanel){

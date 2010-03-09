@@ -30,6 +30,7 @@ public class CalendarAction extends ActionScriptAction {
         PersistentService ps = Environment.getPersistentService();
 
         if(data!=null){
+            ps.delete(new Query(CalendarEntry.class));
             ps.attacheObject(data);
             ps.commit();
             data = ps.releaseObject(data);

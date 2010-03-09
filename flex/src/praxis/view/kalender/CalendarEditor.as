@@ -130,10 +130,10 @@ public class CalendarEditor extends PanelEditor {
 
      public function getCalendarEntries():Array {
        var ret:Array = new Array();
-       var lines:Array = getTimeLines();
-       for each (var l:TimeLine in lines){
-          ret = ret.concat( l.getCalendarEntries() );
-       }
+   //    var lines:Array = getTimeLines();
+   //    for each (var l:TimeLine in lines){
+   //       ret = ret.concat( l.getCalendarEntries() );
+   //    }
        return ret;
     }
 
@@ -150,7 +150,7 @@ public class CalendarEditor extends PanelEditor {
        for each (var e:CalendarEntry in arr){
            var timeLine:TimeLine = getTimeLine(e.resource);
            if(timeLine)
-              timeLine.insertItemPanel(new ItemPanel(e));
+              timeLine.insertItemPanel(new ItemPanel(e),-1);
        }
     }
     

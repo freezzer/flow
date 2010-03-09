@@ -27,6 +27,7 @@ public class ItemPanel  extends Canvas {
 	private var _label:Label;
 	private var _timeLine:TimeLine;
 	private var _data:CalendarEntry;
+	private var _selected:Boolean;
 	
     public function ItemPanel(data:CalendarEntry) {
 		this._data = data;
@@ -44,21 +45,21 @@ public class ItemPanel  extends Canvas {
 		useHandCursor = true;       	
 		buttonMode = true;       	
         
-        addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
-        addEventListener(MouseEvent.MOUSE_UP,   mouseUpHandler);
         addEventListener(MouseEvent.MOUSE_MOVE, doDragging);
+        addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
+        addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
+        addEventListener(MouseEvent.MOUSE_OUT, mouseOutHandler);
         
         _label = new Label();
         _label.setStyle("left",2);
-        _label.setStyle("right",2);
+        _label.setStyle("right",15);
         _label.setStyle("textAlign","left");
-		
         addChild(_label);
-        refreshDisplay();
     }
     
     public function set timeLine(tl:TimeLine):void{
     	this._timeLine = tl;
+    	this._data.resource = new BoReference(_timeLine.resource);
     }
 
     public function keepInSight():void {
@@ -70,34 +71,74 @@ public class ItemPanel  extends Canvas {
     	}
     }
     
-    private function mouseDownHandler(event:MouseEvent):void {
-       _resizeMode = event.localY > height*.75;
-    }    
-
-    private function mouseUpHandler(event:MouseEvent):void {
-       _resizeMode = false;	
+    private function moreTime():void {
+       _data.durationInMinutes += _timeLine.deltaTimeInMinutes;
+       height = _data.durationInMinutes/_timeLine.factor;
        snapSizeToGrid();
     }    
     
-    private function doDragging(event:MouseEvent):void {
-       if(!event.buttonDown) return;	
-       
-       if(_resizeMode) {
-       	  height = event.localY+5;
-       } else {
-          var dragInitiator:ItemPanel = event.currentTarget as ItemPanel;
-          var ds:DragSource = new DragSource();
-          ds.addData(event.localY,"offset");
-          DragManager.doDrag(dragInitiator, ds , event);
-       }
+    private function lessTime():void {
+    	if(_data.durationInMinutes > (_timeLine.deltaTimeInMinutes*2)) {
+	       _data.durationInMinutes -= _timeLine.deltaTimeInMinutes;
+	       height = _data.durationInMinutes/_timeLine.factor;
+	       snapSizeToGrid();
+    	}
+    }    
+    
+    private function mouseDownHandler(event:MouseEvent):void {
+      if(event.localY > (height-20) && event.localY <= height){
+	       select();
+	  }
+    }    
+    
+    private function mouseUpHandler(event:MouseEvent):void {
+    	unselect();
     }
+    
+    private function mouseOutHandler(event:MouseEvent):void {
+    	if(!event.buttonDown){
+           setStyle("borderColor", Application.application.getStyle("themeColor"));
+    	}
+    }
+    
+    public function unselect():void {
+        setStyle("borderColor", Application.application.getStyle("themeColor"));
+       _timeLine.selectedItem = null;
+       _selected = false;
+       snapSizeToGrid();
+    }    
+    
+    public function select():void {
+        setStyle("borderColor", 0xffaaaa);
+       _timeLine.selectedItem = this;
+       _selected = true;
+    }    
+    
+    private function doDragging(event:MouseEvent):void {
+       if(_selected) return;	
+       if(!event.buttonDown) {
+       	  if(event.localY > (height-15)){
+       	  	setStyle("borderColor", 0xffaaaa);
+       	  } else {
+            setStyle("borderColor", Application.application.getStyle("themeColor"));
+       	  }
+       	  return;
+       } 	
+       var dragInitiator:ItemPanel = event.currentTarget as ItemPanel;
+       var ds:DragSource = new DragSource();
+       ds.addData(event.localY,"offset");
+       DragManager.doDrag(dragInitiator, ds , event);
+    }
+
 
     public function moveToTimePosition():void {
     	if(_timeLine==null) return;
     	var timeInMinutes:int =Util.toMinutes(_data.time);
-    	var snapTime:int = Math.round(timeInMinutes / _timeLine.deltaTimeInMinutes)* _timeLine.deltaTimeInMinutes;
+    	var snapTime:int = Math.round((timeInMinutes-_timeLine.startInMinutes) * _timeLine.factor);
     	y = _timeLine.calcPos(snapTime);
   		recalcValues();
+  		snapToGrid();
+  		keepInSight();
     }
 
     public function snapToGrid():void {
@@ -116,16 +157,10 @@ public class ItemPanel  extends Canvas {
     }
     
     public function recalcValues():void {
-  		_data.resource = new BoReference(_timeLine.resource);
   		_data.time = _timeLine.calcTimeString(y);
   		_data.durationInMinutes = height * _timeLine.factor;
-  		refreshDisplay();
+        _label.text = _data.time +"("+Util.toHourMinutesString(_data.durationInMinutes)+") h="+height;
     }   
-    
-    private function refreshDisplay():void {
-        _label.text = _data.time +"("+Util.toHourMinutesString(_data.durationInMinutes)+") "+_data.label;
-    }
-
 
     public function getCalendarEntry():CalendarEntry {
         return _data;

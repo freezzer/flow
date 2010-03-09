@@ -327,10 +327,14 @@ public class Util
     }
 
     public static function toMinutes(str:String):int {
-        var arr:Array = str.split(":");
-        var hours:int = int(arr[0]);
-        var minutes:int = int(arr[1]);
-        return hours*60+minutes;
+    	if(isEmpty(str)) return 0;
+    	if(str.indexOf(":")>=0){
+	        var arr:Array = str.split(":");
+	        var hours:int = int(arr[0]);
+	        var minutes:int = int(arr[1]);
+	        return hours*60+minutes;
+	    }
+	    return int(str);
     }
 
 
