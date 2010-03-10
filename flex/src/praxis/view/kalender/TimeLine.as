@@ -9,6 +9,7 @@ import flash.events.MouseEvent;
 
 import mx.containers.Canvas;
 import mx.controls.Label;
+import mx.core.DragSource;
 import mx.events.DragEvent;
 import mx.events.FlexEvent;
 import mx.events.ResizeEvent;
@@ -26,10 +27,12 @@ public class TimeLine extends Canvas {
     private var _labelOffset:int=20;
     
     private var _selectedItem:ItemPanel = null;
-    private var _startPos:int = 0;
+    private var _startPosY:int = 0;
+    private var _startPosX:int = 0;
     public function set selectedItem(itempanel:ItemPanel):void{
     	_selectedItem = itempanel;
-    	_startPos = 0;
+    	_startPosX = 0;
+    	_startPosY = 0;
     }
     
     
@@ -41,16 +44,30 @@ public class TimeLine extends Canvas {
     
     private function mouseMoveHandler(e:MouseEvent):void {
     	if(_selectedItem && e.buttonDown){
-	    	if(_startPos==0){
-	    	   _startPos = e.stageY;
+	    	if(_startPosY==0){
+	    	   _startPosX = e.stageX;
+	    	   _startPosY = e.stageY;
 	    	} else {
-	    		var diff:int = e.stageY-_startPos;
-	    		if(Math.abs(diff) > (deltaTimeInMinutes/factor)-1){
-	    		   _selectedItem.height += diff;
-	    		   _startPos = e.stageY;
-		    		if(_selectedItem.height < 20){
-		    			_selectedItem.height = 20;
-		    		}
+	    		var diff:int = e.stageY-_startPosY;
+	    		if(Math.abs(diff) > (deltaTimeInMinutes*factor)){
+	    		   if(_selectedItem.resizeMode){
+		    		   if(diff>0){
+	 	    		       _selectedItem.moreTime();
+		    		   } else {
+		    		   	   _selectedItem.lessTime();
+		    		   }
+		    	   } else {
+		    	   	 _selectedItem.y += diff;
+		    	   	 _selectedItem.snapToGrid();
+		    	   	 if(Math.abs(e.stageX-_startPosX)>10){
+			    	   	 var dragInitiator:ItemPanel = _selectedItem;
+	                     var ds:DragSource = new DragSource();
+	                     ds.addData(e.localY,"offset");
+	                     DragManager.doDrag(dragInitiator, ds , e);
+                     }
+		    	   }
+	    		   _startPosY = e.stageY;
+	    		   _startPosX = e.stageX;
 	    		}
 	    	}
     	}
@@ -123,7 +140,7 @@ public class TimeLine extends Canvas {
         var itemPanel:ItemPanel = ItemPanel(event.dragInitiator);
         if (event.dragSource.hasFormat("offset")){
         	 var offset:int = int(event.dragSource.dataForFormat('offset'));
-	         timeLine.insertItemPanel(itemPanel,event.localY);
+	         timeLine.insertItemPanel(itemPanel,event.localY-offset);
 	         showReceiveBorder(false);
         }
     }
