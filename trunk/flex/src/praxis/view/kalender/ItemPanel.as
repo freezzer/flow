@@ -71,13 +71,13 @@ public class ItemPanel  extends Canvas {
     	}
     }
     
-    private function moreTime():void {
+    public function moreTime():void {
        _data.durationInMinutes += _timeLine.deltaTimeInMinutes;
        height = _data.durationInMinutes/_timeLine.factor;
        snapSizeToGrid();
     }    
     
-    private function lessTime():void {
+    public function lessTime():void {
     	if(_data.durationInMinutes > (_timeLine.deltaTimeInMinutes*2)) {
 	       _data.durationInMinutes -= _timeLine.deltaTimeInMinutes;
 	       height = _data.durationInMinutes/_timeLine.factor;
@@ -86,9 +86,8 @@ public class ItemPanel  extends Canvas {
     }    
     
     private function mouseDownHandler(event:MouseEvent):void {
-      if(event.localY > (height-20) && event.localY <= height){
-	       select();
-	  }
+ 	    _resizeMode = (event.localY > (height-20) && event.localY <= height);
+ 	    select();
     }    
     
     private function mouseUpHandler(event:MouseEvent):void {
@@ -105,6 +104,7 @@ public class ItemPanel  extends Canvas {
         setStyle("borderColor", Application.application.getStyle("themeColor"));
        _timeLine.selectedItem = null;
        _selected = false;
+       _resizeMode = false;
        snapSizeToGrid();
     }    
     
@@ -122,12 +122,7 @@ public class ItemPanel  extends Canvas {
        	  } else {
             setStyle("borderColor", Application.application.getStyle("themeColor"));
        	  }
-       	  return;
        } 	
-       var dragInitiator:ItemPanel = event.currentTarget as ItemPanel;
-       var ds:DragSource = new DragSource();
-       ds.addData(event.localY,"offset");
-       DragManager.doDrag(dragInitiator, ds , event);
     }
 
 
@@ -136,7 +131,6 @@ public class ItemPanel  extends Canvas {
     	var timeInMinutes:int =Util.toMinutes(_data.time);
     	var snapTime:int = Math.round((timeInMinutes-_timeLine.startInMinutes) * _timeLine.factor);
     	y = _timeLine.calcPos(snapTime);
-  		recalcValues();
   		snapToGrid();
   		keepInSight();
     }
@@ -164,6 +158,10 @@ public class ItemPanel  extends Canvas {
 
     public function getCalendarEntry():CalendarEntry {
         return _data;
+    }
+
+    public function get resizeMode():Boolean {
+        return _resizeMode;
     }
 }
 }
