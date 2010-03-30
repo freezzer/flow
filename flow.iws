@@ -16,13 +16,7 @@
   </component>
   <component name="ChangeListManager">
     <list name="nocommit" comment="nocommit" />
-    <list default="true" readonly="true" name="Default" comment="generator update">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.iws" afterPath="$PROJECT_DIR$/flow.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/server.iml" afterPath="$PROJECT_DIR$/server/server.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.properties" afterPath="$PROJECT_DIR$/build.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client.iml" afterPath="$PROJECT_DIR$/client.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/flow.ipr" afterPath="$PROJECT_DIR$/flow.ipr" />
-    </list>
+    <list default="true" readonly="true" name="Default" comment="" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="flow.iws" />
   </component>
@@ -276,7 +270,7 @@
       <file leaf-file-name="TimeLine.as" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/flex/src/praxis/view/kalender/TimeLine.as">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="185" column="68" selection-start="5862" selection-end="5862" vertical-scroll-proportion="0.15450644">
+            <state line="182" column="79" selection-start="5759" selection-end="5759" vertical-scroll-proportion="0.10300429">
               <folding />
             </state>
           </provider>
@@ -1278,7 +1272,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/flex/src/praxis/view/kalender/TimeLine.as">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="185" column="68" selection-start="5862" selection-end="5862" vertical-scroll-proportion="0.15450644">
+        <state line="182" column="79" selection-start="5759" selection-end="5759" vertical-scroll-proportion="0.10300429">
           <folding />
         </state>
       </provider>
