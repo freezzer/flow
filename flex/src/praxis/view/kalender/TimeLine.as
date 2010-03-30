@@ -29,10 +29,9 @@ public class TimeLine extends Canvas {
     private var _selectedItem:ItemPanel = null;
     private var _startPosY:int = 0;
     private var _startPosX:int = 0;
+    
     public function set selectedItem(itempanel:ItemPanel):void{
     	_selectedItem = itempanel;
-    	_startPosX = 0;
-    	_startPosY = 0;
     }
     
     
@@ -44,36 +43,33 @@ public class TimeLine extends Canvas {
     
     private function mouseMoveHandler(e:MouseEvent):void {
     	if(_selectedItem && e.buttonDown){
-	    	if(_startPosY==0){
-	    	   _startPosX = e.stageX;
-	    	   _startPosY = e.stageY;
-	    	} else {
-	    		var diff:int = e.stageY-_startPosY;
-	    		if(Math.abs(diff) > (deltaTimeInMinutes*factor)){
-	    		   if(_selectedItem.resizeMode){
-		    		   if(diff>0){
-	 	    		       _selectedItem.moreTime();
-		    		   } else {
-		    		   	   _selectedItem.lessTime();
-		    		   }
-		    	   } else {
-		    	   	 _selectedItem.y += diff;
-		    	   	 _selectedItem.snapToGrid();
-		    	   	 if(Math.abs(e.stageX-_startPosX)>10){
-			    	   	 var dragInitiator:ItemPanel = _selectedItem;
-	                     var ds:DragSource = new DragSource();
-	                     ds.addData(e.localY,"offset");
-	                     DragManager.doDrag(dragInitiator, ds , e);
-                     }
-		    	   }
-	    		   _startPosY = e.stageY;
-	    		   _startPosX = e.stageX;
-	    		}
-	    	}
+    		var diff:int = e.stageY-_startPosY;
+    		if(Math.abs(diff) > (deltaTimeInMinutes*factor)){
+    		   if(_selectedItem.resizeMode){
+	    		   if(diff>0){
+ 	    		       _selectedItem.moreTime();
+	    		   } else {
+	    		   	   _selectedItem.lessTime();
+	    		   }
+	    	   } else {
+	    	   	 _selectedItem.y += diff;
+	    	   	 _selectedItem.snapToGrid();
+	    	   	 if(Math.abs(e.stageX-_startPosX)>30){
+		    	   	 var dragInitiator:ItemPanel = _selectedItem;
+                     var ds:DragSource = new DragSource();
+                     ds.addData(e.localY,"offset");
+                     DragManager.doDrag(dragInitiator, ds , e);
+                 }
+	    	   }
+    		   _startPosY = e.stageY;
+    		   _startPosX = e.stageX;
+    		}
     	}
     }
     
-    private function mouseClickHandler(e:MouseEvent):void {
+    private function mouseDownHandler(e:MouseEvent):void {
+        _startPosY = e.stageY;
+	    _startPosX = e.stageX;
     	if(e.ctrlKey) {
     		var ip:ItemPanel = new ItemPanel(new CalendarEntry());
     	    insertItemPanel(ip, e.localY-labelOffset);
@@ -95,7 +91,7 @@ public class TimeLine extends Canvas {
         horizontalScrollPolicy = "off";
         verticalScrollPolicy = "off";
 
-        addEventListener(MouseEvent.CLICK, mouseClickHandler);
+        addEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
         addEventListener(MouseEvent.MOUSE_MOVE, mouseMoveHandler);
         addEventListener(MouseEvent.MOUSE_UP, mouseUpHandler);
         
